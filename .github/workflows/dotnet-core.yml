@@ -18,8 +18,8 @@ jobs:
       with:
         dotnet-version: 3.1.301
     - name: Install dependencies
-      run: dotnet restore ./source/MerriamWebster.NET.sln
+      run: dotnet restore ./source/MerriamWebster.NET/MerriamWebster.NET.sln
     - name: Build
-      run: dotnet build ./source/MerriamWebster.NET.sln --configuration Release --no-restore
+      run: dotnet build ./source/MerriamWebster.NET/MerriamWebster.NET.sln --configuration Release --no-restore
     - name: Test
-      run: dotnet test ./source/MerriamWebster.NET.sln --no-restore --verbosity normal
+      run: dotnet test ./source/MerriamWebster.NET/MerriamWebster.NET.sln --no-restore --verbosity normal
