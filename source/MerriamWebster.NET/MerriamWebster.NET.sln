@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30406.217
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MerriamWebster.NET", "MerriamWebster.NET\MerriamWebster.NET.csproj", "{CBF26EB8-203D-43F1-8DEC-63782ECF38AB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MerriamWebster.NET.Tests", "MerriamWebster.NET.Tests\MerriamWebster.NET.Tests.csproj", "{BA826010-50A2-467E-80AC-E8CBF5D01AA1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CBF26EB8-203D-43F1-8DEC-63782ECF38AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CBF26EB8-203D-43F1-8DEC-63782ECF38AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CBF26EB8-203D-43F1-8DEC-63782ECF38AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CBF26EB8-203D-43F1-8DEC-63782ECF38AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA826010-50A2-467E-80AC-E8CBF5D01AA1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA826010-50A2-467E-80AC-E8CBF5D01AA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA826010-50A2-467E-80AC-E8CBF5D01AA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA826010-50A2-467E-80AC-E8CBF5D01AA1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4E45A81A-C955-4301-89BC-726C8B36A2EC}
+	EndGlobalSection
+EndGlobal

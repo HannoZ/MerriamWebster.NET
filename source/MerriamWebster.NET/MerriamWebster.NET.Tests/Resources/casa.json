@@ -1,0 +1,668 @@
+[
+  {
+    "meta": {
+      "id": "casa",
+      "uuid": "f20678e0-daae-40bf-9051-0d2661156926",
+      "lang": "es",
+      "src": "spanish",
+      "section": "alpha",
+      "stems": [
+        "casa",
+        "casa de cambio",
+        "casa de empeños",
+        "casa de (altos) estudios",
+        "casa de salud",
+        "casa matriz",
+        "echar/tirar/botar la casa por la ventana",
+        "botar la casa por la ventana",
+        "echar la casa por la ventana",
+        "tirar la casa por la ventana"
+      ],
+      "offensive": false
+    },
+    "hwi": {
+      "hw": "casa",
+      "prs": [
+        {
+          "sound": {
+            "audio": "casa001sp"
+          }
+        }
+      ]
+    },
+    "fl": "feminine noun",
+    "def": [
+      {
+        "sseq": [
+          [
+            [
+              "sense",
+              {
+                "sn": "1",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}{a_link|house} "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "una casa de dos pisos",
+                        "tr": "a two-story house"
+                      },
+                      {
+                        "t": "la casa blanca",
+                        "tr": "the White House"
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "2",
+                "dt": [
+                  [
+                    "text",
+                    "{sx|hogar||} {bc}{a_link|home} "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "en casa",
+                        "tr": "at home"
+                      },
+                      {
+                        "t": "ir a casa",
+                        "tr": "to go home"
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "3",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}{a_link|home} (in sports) "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "equipo de casa",
+                        "tr": "home team"
+                      },
+                      {
+                        "t": "partido en casa",
+                        "tr": "home game"
+                      },
+                      {
+                        "t": "partido fuera de casa",
+                        "tr": "away game"
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "4",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}{a_link|household}, {a_link|family}"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "5",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}{a_link|company}, {a_link|firm}"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "6",
+                "vrs": [
+                  {
+                    "va": "casa de cambio"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}currency exchange"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "7",
+                "vrs": [
+                  {
+                    "va": "casa de empeños"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}{a_link|pawnshop}"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "8",
+                "vrs": [
+                  {
+                    "va": "casa de (altos) estudios"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}institute of (higher) {a_link|learning}, {a_link|college}, {a_link|university}"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "9",
+                "vrs": [
+                  {
+                    "va": "casa de salud"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}{a_link|clinic}"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "10",
+                "vrs": [
+                  {
+                    "va": "casa matriz"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}{a_link|headquarters}"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "11",
+                "vrs": [
+                  {
+                    "va": "echar/tirar/botar la casa por la ventana"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}to spare no expense"
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      }
+    ],
+    "shortdef": [
+      "house",
+      "hogar : home",
+      "home (in sports)"
+    ]
+  },
+  {
+    "meta": {
+      "id": "amo",
+      "uuid": "ef1df1ab-5de2-4f16-8855-d8a268c00e85",
+      "lang": "es",
+      "src": "spanish",
+      "section": "alpha",
+      "stems": [
+        "amo",
+        "ama",
+        "ama de casa",
+        "ama de llaves"
+      ],
+      "offensive": false
+    },
+    "hwi": {
+      "hw": "amo",
+      "prs": [
+        {
+          "sound": {
+            "audio": "amo0001sp"
+          }
+        }
+      ]
+    },
+    "ahws": [
+      {
+        "hw": "ama"
+      }
+    ],
+    "fl": "noun",
+    "def": [
+      {
+        "sseq": [
+          [
+            [
+              "sense",
+              {
+                "sn": "1",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}{a_link|master} "
+                  ],
+                  [
+                    "gl",
+                    "masculine,"
+                  ],
+                  [
+                    "text",
+                    " {a_link|mistress} "
+                  ],
+                  [
+                    "gl",
+                    "feminine"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "2",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}{a_link|owner}, {a_link|keeper} (of an animal)"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "3",
+                "vrs": [
+                  {
+                    "va": "ama de casa"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}{a_link|housewife}"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "4",
+                "vrs": [
+                  {
+                    "va": "ama de llaves"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}{a_link|housekeeper}"
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      }
+    ],
+    "shortdef": [
+      "master mistress",
+      "owner, keeper (of an animal)",
+      "housewife"
+    ]
+  },
+  {
+    "meta": {
+      "id": "gasto",
+      "uuid": "5963e0f3-f574-444f-92bc-5293e5b8c770",
+      "lang": "es",
+      "src": "spanish",
+      "section": "alpha",
+      "stems": [
+        "gasto",
+        "gastos fijos/generales/indirectos",
+        "gastos fijos",
+        "gastos generales",
+        "gastos indirectos",
+        "cubrir gastos",
+        "gastos de seguro",
+        "gastos de la casa",
+        "gastos de viaje",
+        "gastos de envío",
+        "gasto público"
+      ],
+      "offensive": false
+    },
+    "hwi": {
+      "hw": "gasto",
+      "prs": [
+        {
+          "sound": {
+            "audio": "gasto01sp"
+          }
+        }
+      ]
+    },
+    "fl": "masculine noun",
+    "def": [
+      {
+        "sseq": [
+          [
+            [
+              "sense",
+              {
+                "sn": "1",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}{a_link|expense}, {a_link|expenditure}"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "2",
+                "dt": [
+                  [
+                    "text",
+                    "{sx|deterioro||} {bc}{a_link|wear}"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "3",
+                "vrs": [
+                  {
+                    "va": "gastos fijos/generales/indirectos"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}{a_link|overhead}"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "4",
+                "vrs": [
+                  {
+                    "va": "cubrir gastos"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}to cover costs, to {a_link|break even}"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "5",
+                "vrs": [
+                  {
+                    "va": "gastos de seguro"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}insurance costs"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "6",
+                "vrs": [
+                  {
+                    "va": "gastos de la casa"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}household expenses"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "7",
+                "vrs": [
+                  {
+                    "va": "gastos de viaje"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}travel expenses"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "8",
+                "vrs": [
+                  {
+                    "va": "gastos de envío"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}{a_link|shipping and handling}"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "9",
+                "vrs": [
+                  {
+                    "va": "gasto público"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}public spending"
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      }
+    ],
+    "shortdef": [
+      "expense, expenditure",
+      "deterioro : wear",
+      "overhead"
+    ]
+  },
+  {
+    "meta": {
+      "id": "vecindad",
+      "uuid": "36d61340-5e99-4376-bf0c-8c69306bacac",
+      "lang": "es",
+      "src": "spanish",
+      "section": "alpha",
+      "stems": [
+        "vecindad",
+        "casa de vecindad"
+      ],
+      "offensive": false
+    },
+    "hwi": {
+      "hw": "vecindad",
+      "prs": [
+        {
+          "sound": {
+            "audio": "vecin01sp"
+          }
+        }
+      ]
+    },
+    "fl": "feminine noun",
+    "def": [
+      {
+        "sseq": [
+          [
+            [
+              "sense",
+              {
+                "sn": "1",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}{a_link|neighborhood}, {a_link|vicinity}"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "2",
+                "vrs": [
+                  {
+                    "va": "casa de vecindad"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}{a_link|tenement}"
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      }
+    ],
+    "shortdef": [
+      "neighborhood, vicinity",
+      "tenement"
+    ]
+  }
+]

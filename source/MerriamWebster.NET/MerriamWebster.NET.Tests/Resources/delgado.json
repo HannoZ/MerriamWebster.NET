@@ -1,0 +1,422 @@
+[
+  {
+    "meta": {
+      "id": "delgado",
+      "uuid": "fdef3097-ae12-4646-afce-2ae147b730d5",
+      "lang": "es",
+      "src": "spanish",
+      "section": "alpha",
+      "stems": [
+        "delgado",
+        "delgada"
+      ],
+      "offensive": false
+    },
+    "hwi": {
+      "hw": "delgado",
+      "prs": [
+        {
+          "sound": {
+            "audio": "delga01sp"
+          }
+        }
+      ]
+    },
+    "ahws": [
+      {
+        "hw": "delgada",
+        "hwc": "-da"
+      }
+    ],
+    "fl": "adjective",
+    "def": [
+      {
+        "sseq": [
+          [
+            [
+              "sense",
+              {
+                "sn": "1",
+                "dt": [
+                  [
+                    "text",
+                    "{sx|flaco||} {bc}{a_link|thin}, {a_link|skinny}"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "2",
+                "dt": [
+                  [
+                    "text",
+                    "{sx|esbelto||} {bc}{a_link|slender}, {a_link|slim}"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "3",
+                "dt": [
+                  [
+                    "text",
+                    "{sx|delicado||} {bc}{a_link|delicate}, {a_link|fine}"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "4",
+                "dt": [
+                  [
+                    "text",
+                    "{sx|agudo||} {bc}{a_link|sharp}, {a_link|clever}"
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      }
+    ],
+    "shortdef": [
+      "flaco : thin, skinny",
+      "esbelto : slender, slim",
+      "delicado : delicate, fine"
+    ]
+  },
+  {
+    "meta": {
+      "id": "hilar",
+      "uuid": "e475349c-a6f6-4e6b-9c80-beec75bee726",
+      "lang": "es",
+      "src": "spanish",
+      "section": "alpha",
+      "stems": [
+        "hilar",
+        "hilar delgado"
+      ],
+      "offensive": false
+    },
+    "hwi": {
+      "hw": "hilar",
+      "prs": [
+        {
+          "sound": {
+            "audio": "hilar01sp"
+          }
+        }
+      ]
+    },
+    "fl": "transitive verb",
+    "def": [
+      {
+        "sseq": [
+          [
+            [
+              "sense",
+              {
+                "sn": "1",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}to {a_link|spin} (thread)"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "2",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}to {a_link|consider}, to string together (ideas)"
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      },
+      {
+        "vd": "intransitive verb",
+        "sseq": [
+          [
+            [
+              "sense",
+              {
+                "sn": "1",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}to {a_link|spin}"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "2",
+                "vrs": [
+                  {
+                    "va": "hilar delgado"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}to split hairs"
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      }
+    ],
+    "suppl": {
+      "cjts": [
+        {
+          "cjid": "gppt",
+          "cjfs": [
+            "hilando",
+            "hilado"
+          ]
+        },
+        {
+          "cjid": "pind",
+          "cjfs": [
+            "hilo",
+            "hilas",
+            "hila",
+            "hilamos",
+            "hiláis",
+            "hilan"
+          ]
+        },
+        {
+          "cjid": "pret",
+          "cjfs": [
+            "hilaba",
+            "hilabas",
+            "hilaba",
+            "hilábamos",
+            "hilabais",
+            "hilaban"
+          ]
+        },
+        {
+          "cjid": "pprf",
+          "cjfs": [
+            "hilé",
+            "hilaste",
+            "hiló",
+            "hilamos",
+            "hilasteis",
+            "hilaron"
+          ]
+        },
+        {
+          "cjid": "futr",
+          "cjfs": [
+            "hilaré",
+            "hilarás",
+            "hilará",
+            "hilaremos",
+            "hilaréis",
+            "hilarán"
+          ]
+        },
+        {
+          "cjid": "cond",
+          "cjfs": [
+            "hilaría",
+            "hilarías",
+            "hilaría",
+            "hilaríamos",
+            "hilaríais",
+            "hilarían"
+          ]
+        },
+        {
+          "cjid": "psub",
+          "cjfs": [
+            "hile",
+            "hiles",
+            "hile",
+            "hilemos",
+            "hiléis",
+            "hilen"
+          ]
+        },
+        {
+          "cjid": "pisb1",
+          "cjfs": [
+            "hilara",
+            "hilaras",
+            "hilara",
+            "hiláramos",
+            "hilarais",
+            "hilaran"
+          ]
+        },
+        {
+          "cjid": "pisb2",
+          "cjfs": [
+            "hilase",
+            "hilases",
+            "hilase",
+            "hilásemos",
+            "hilaseis",
+            "hilasen"
+          ]
+        },
+        {
+          "cjid": "fsub",
+          "cjfs": [
+            "hilare",
+            "hilares",
+            "hilare",
+            "hiláremos",
+            "hilareis",
+            "hilaren"
+          ]
+        },
+        {
+          "cjid": "ppci",
+          "cjfs": [
+            "he hilado",
+            "has hilado",
+            "ha hilado",
+            "hemos hilado",
+            "habéis hilado",
+            "han hilado"
+          ]
+        },
+        {
+          "cjid": "ppsi",
+          "cjfs": [
+            "había hilado",
+            "habías hilado",
+            "había hilado",
+            "habíamos hilado",
+            "habíais hilado",
+            "habían hilado"
+          ]
+        },
+        {
+          "cjid": "pant",
+          "cjfs": [
+            "hube hilado",
+            "hubiste hilado",
+            "hubo hilado",
+            "hubimos hilado",
+            "hubisteis hilado",
+            "hubieron hilado"
+          ]
+        },
+        {
+          "cjid": "fpin",
+          "cjfs": [
+            "habré hilado",
+            "habrás hilado",
+            "habrá hilado",
+            "habremos hilado",
+            "habréis hilado",
+            "habrán hilado"
+          ]
+        },
+        {
+          "cjid": "cpef",
+          "cjfs": [
+            "habría hilado",
+            "habrías hilado",
+            "habría hilado",
+            "habríamos hilado",
+            "habríais hilado",
+            "habrían hilado"
+          ]
+        },
+        {
+          "cjid": "ppfs",
+          "cjfs": [
+            "haya hilado",
+            "hayas hilado",
+            "haya hilado",
+            "hayamos hilado",
+            "hayáis hilado",
+            "hayan hilado"
+          ]
+        },
+        {
+          "cjid": "ppss1",
+          "cjfs": [
+            "hubiera hilado",
+            "hubieras hilado",
+            "hubiera hilado",
+            "hubiéramos hilado",
+            "hubierais hilado",
+            "hubieran hilado"
+          ]
+        },
+        {
+          "cjid": "ppss2",
+          "cjfs": [
+            "hubiese hilado",
+            "hubieses hilado",
+            "hubiese hilado",
+            "hubiésemos hilado",
+            "hubieseis hilado",
+            "hubiesen hilado"
+          ]
+        },
+        {
+          "cjid": "fpsb",
+          "cjfs": [
+            "hubiere hilado",
+            "hubieres hilado",
+            "hubiere hilado",
+            "hubiéremos hilado",
+            "hubiereis hilado",
+            "hubieren hilado"
+          ]
+        },
+        {
+          "cjid": "impf",
+          "cjfs": [
+            "-",
+            "hila",
+            "hile",
+            "hilemos",
+            "hilad",
+            "hilen"
+          ]
+        }
+      ]
+    },
+    "shortdef": [
+      "to spin (thread)",
+      "to consider, to string together (ideas)",
+      "to spin"
+    ]
+  }
+]

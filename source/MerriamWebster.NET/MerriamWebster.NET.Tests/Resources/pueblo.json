@@ -1,0 +1,102 @@
+[
+  {
+    "meta": {
+      "id": "pueblo",
+      "uuid": "84fc416a-fd72-40d7-862f-2ef1b03f69d2",
+      "lang": "es",
+      "src": "spanish",
+      "section": "alpha",
+      "stems": [
+        "pueblo",
+        "pueblo jóven"
+      ],
+      "offensive": false
+    },
+    "hwi": {
+      "hw": "pueblo",
+      "prs": [
+        {
+          "sound": {
+            "audio": "puebl01sp"
+          }
+        }
+      ]
+    },
+    "fl": "masculine noun",
+    "def": [
+      {
+        "sseq": [
+          [
+            [
+              "sense",
+              {
+                "sn": "1",
+                "dt": [
+                  [
+                    "text",
+                    "{sx|nación||} {bc}{a_link|people}"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "2",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}common people"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "3",
+                "dt": [
+                  [
+                    "text",
+                    "{sx|aldea||} {sx|poblado||} {bc}{a_link|town}, {a_link|village}"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "4",
+                "vrs": [
+                  {
+                    "va": "pueblo jóven"
+                  }
+                ],
+                "sls": [
+                  "Peru"
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}{a_link|shantytown}, slums {it}plural{/it}"
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      }
+    ],
+    "shortdef": [
+      "nación : people",
+      "common people",
+      "aldea poblado : town, village"
+    ]
+  }
+]

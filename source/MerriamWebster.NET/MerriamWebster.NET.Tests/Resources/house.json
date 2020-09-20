@@ -1,0 +1,2763 @@
+﻿[
+  {
+    "meta": {
+      "id": "house:1",
+      "uuid": "3adceb3e-dcc3-4851-809f-5bc99a754d44",
+      "lang": "en",
+      "src": "spanish",
+      "section": "alpha",
+      "stems": [
+        "house",
+        "housed",
+        "housing",
+        "houses"
+      ],
+      "offensive": false
+    },
+    "hom": 1,
+    "hwi": {
+      "hw": "house",
+      "prs": [
+        {
+          "mw": "ˈhaʊz",
+          "sound": {
+            "audio": "house001"
+          }
+        }
+      ]
+    },
+    "fl": "transitive verb",
+    "ins": [
+      {
+        "if": "housed"
+      },
+      {
+        "if": "housing"
+      }
+    ],
+    "def": [
+      {
+        "sseq": [
+          [
+            [
+              "sense",
+              {
+                "dt": [
+                  [
+                    "text",
+                    "{bc}{a_link|albergar}, {a_link|alojar}, {a_link|hospedar}"
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      }
+    ],
+    "shortdef": [
+      "albergar, alojar, hospedar"
+    ]
+  },
+  {
+    "meta": {
+      "id": "house:2",
+      "uuid": "3a9ba201-9832-47a0-a950-68cc9dc5e948",
+      "lang": "en",
+      "src": "spanish",
+      "section": "alpha",
+      "stems": [
+        "house",
+        "houses",
+        "houseful",
+        "housefuls",
+        "houseless",
+        "houselessness",
+        "houselessnesses",
+        "on the house",
+        "to bring the house down",
+        "to clean house",
+        "to get/put/set one's house in order",
+        "to get one's house in order",
+        "to put one's house in order",
+        "to set one's house in order",
+        "to get/put/set ones house in order",
+        "to get ones house in order",
+        "to put ones house in order",
+        "to set ones house in order",
+        "to keep house",
+        "to play house",
+        "to set up house"
+      ],
+      "offensive": false
+    },
+    "hom": 2,
+    "hwi": {
+      "hw": "house",
+      "prs": [
+        {
+          "mw": "ˈhaʊs",
+          "sound": {
+            "audio": "house005"
+          }
+        }
+      ]
+    },
+    "fl": "noun",
+    "ins": [
+      {
+        "il": "plural",
+        "if": "houses",
+        "prs": [
+          {
+            "mw": "ˈhaʊzəz"
+          },
+          {
+            "mw": "-səz"
+          }
+        ]
+      }
+    ],
+    "def": [
+      {
+        "sseq": [
+          [
+            [
+              "sense",
+              {
+                "sn": "1",
+                "dt": [
+                  [
+                    "text",
+                    "{sx|home||} {bc}{a_link|casa} "
+                  ],
+                  [
+                    "gl",
+                    "feminine"
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "come (over) to my house",
+                        "tr": "ven a mi casa"
+                      },
+                      {
+                        "t": "house pet",
+                        "tr": "animal doméstico"
+                      },
+                      {
+                        "t": "house painter",
+                        "tr": "pintor de casas"
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "2",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}{a_link|cámara} "
+                  ],
+                  [
+                    "gl",
+                    "feminine"
+                  ],
+                  [
+                    "text",
+                    " (del gobierno)"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "3",
+                "dt": [
+                  [
+                    "text",
+                    "{sx|business||} {bc}{a_link|casa} "
+                  ],
+                  [
+                    "gl",
+                    "feminine"
+                  ],
+                  [
+                    "text",
+                    ", {a_link|empresa} "
+                  ],
+                  [
+                    "gl",
+                    "feminine"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "4",
+                "vrs": [
+                  {
+                    "va": "on the house"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}{a_link|gratis} "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "it's on the house",
+                        "tr": "invita la casa"
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "5",
+                "vrs": [
+                  {
+                    "va": "to bring the house down"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}ser muy aplaudido"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "6",
+                "vrs": [
+                  {
+                    "va": "to clean house"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}limpiar la casa"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "7",
+                "vrs": [
+                  {
+                    "va": "to get/put/set one's house in order"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}poner sus asuntos en orden, ordenar sus asuntos"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "8",
+                "vrs": [
+                  {
+                    "va": "to keep house"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}ocuparse de la casa"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "9",
+                "vrs": [
+                  {
+                    "va": "to play house"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}jugar a las casitas"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "10",
+                "vrs": [
+                  {
+                    "va": "to set up house"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}poner casa"
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      }
+    ],
+    "shortdef": [
+      "home : casa",
+      "cámara (del gobierno)",
+      "business : casa, empresa"
+    ]
+  },
+  {
+    "meta": {
+      "id": "rooming house",
+      "uuid": "faef5950-cd9a-40b7-9cf4-cdedd9e5a440",
+      "lang": "en",
+      "src": "spanish",
+      "section": "alpha",
+      "stems": [
+        "rooming house"
+      ],
+      "offensive": false
+    },
+    "hwi": {
+      "hw": "rooming house"
+    },
+    "fl": "noun",
+    "def": [
+      {
+        "sseq": [
+          [
+            [
+              "sense",
+              {
+                "dt": [
+                  [
+                    "text",
+                    "{bc}{a_link|pensión} "
+                  ],
+                  [
+                    "gl",
+                    "feminine"
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      }
+    ],
+    "shortdef": [
+      "pensión"
+    ]
+  },
+  {
+    "meta": {
+      "id": "row house",
+      "uuid": "8f26b1ff-bb32-47d9-a963-295eda354f80",
+      "lang": "en",
+      "src": "spanish",
+      "section": "alpha",
+      "stems": [
+        "row house"
+      ],
+      "offensive": false
+    },
+    "hwi": {
+      "hw": "row house"
+    },
+    "fl": "noun",
+    "def": [
+      {
+        "sseq": [
+          [
+            [
+              "sense",
+              {
+                "dt": [
+                  [
+                    "text",
+                    "{bc}{a_link|casa} "
+                  ],
+                  [
+                    "gl",
+                    "feminine"
+                  ],
+                  [
+                    "text",
+                    " {a_link|adosada}"
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      }
+    ],
+    "shortdef": [
+      "casa adosada"
+    ]
+  },
+  {
+    "meta": {
+      "id": "apartment building",
+      "uuid": "b7cc541e-47a4-4338-a0be-97c096d1dbc0",
+      "lang": "en",
+      "src": "spanish",
+      "section": "alpha",
+      "stems": [
+        "apartment building",
+        "apartment house"
+      ],
+      "offensive": false
+    },
+    "hwi": {
+      "hw": "apartment building"
+    },
+    "fl": "noun",
+    "def": [
+      {
+        "sseq": [
+          [
+            [
+              "sense",
+              {
+                "dt": [
+                  [
+                    "text",
+                    "{bc}{a_link|bloque} "
+                  ],
+                  [
+                    "gl",
+                    "masculine"
+                  ],
+                  [
+                    "text",
+                    " de apartamentos/departamentos, {a_link|bloque} "
+                  ],
+                  [
+                    "gl",
+                    "masculine"
+                  ],
+                  [
+                    "text",
+                    " de pisos "
+                  ],
+                  [
+                    "gl",
+                    "Spain"
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      }
+    ],
+    "shortdef": [
+      "bloque de apartamentos/departamentos, bloque de pisos"
+    ]
+  },
+  {
+    "meta": {
+      "id": "clean:1",
+      "uuid": "07834972-675e-4de9-b908-05c01c357944",
+      "lang": "en",
+      "src": "spanish",
+      "section": "alpha",
+      "stems": [
+        "clean",
+        "cleaned",
+        "cleaning",
+        "cleans",
+        "cleanability",
+        "cleanabilities",
+        "cleanable",
+        "clean house",
+        "clean one's clock",
+        "clean up one's act",
+        "to clean up",
+        "to clean one's plate",
+        "to clean ones plate",
+        "to clean out"
+      ],
+      "offensive": false
+    },
+    "hom": 1,
+    "hwi": {
+      "hw": "clean",
+      "prs": [
+        {
+          "mw": "ˈkliːn",
+          "sound": {
+            "audio": "clean001"
+          }
+        }
+      ]
+    },
+    "fl": "transitive verb",
+    "def": [
+      {
+        "sseq": [
+          [
+            [
+              "sense",
+              {
+                "sn": "1",
+                "vrs": [
+                  {
+                    "vl": "or",
+                    "va": "to clean up"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}{a_link|limpiar} "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "to clean oneself up",
+                        "tr": "lavarse"
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "2",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}{a_link|limpiar} (pescado, etc.)"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "3",
+                "vrs": [
+                  {
+                    "va": "to clean one's plate"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}comérselo todo"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "4",
+                "vrs": [
+                  {
+                    "va": "to clean out"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}limpiar y ordenar (un lugar)"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "5",
+                "vrs": [
+                  {
+                    "va": "to clean out"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}dejar pelado, {a_link|limpiar}, robarle todo"
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      },
+      {
+        "vd": "intransitive verb",
+        "sseq": [
+          [
+            [
+              "sense",
+              {
+                "sn": "1",
+                "vrs": [
+                  {
+                    "vl": "or",
+                    "va": "to clean up"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}{a_link|limpiar} "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "to clean up after dinner",
+                        "tr": "lavar los platos/trastes"
+                      },
+                      {
+                        "t": "I'm not cleaning up after you",
+                        "tr": "no voy a limpiar lo que tú ensucias"
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "2",
+                "vrs": [
+                  {
+                    "va": "to clean up"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}hacerse su agosto, {a_link|enriquecerse}"
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      }
+    ],
+    "shortdef": [
+      "limpiar",
+      "limpiar (pescado, etc.)",
+      "comérselo todo"
+    ]
+  },
+  {
+    "meta": {
+      "id": "eat",
+      "uuid": "9c58a622-e155-4f34-abfc-bbd560179322",
+      "lang": "en",
+      "src": "spanish",
+      "section": "alpha",
+      "stems": [
+        "eat",
+        "ate",
+        "eaten",
+        "eating",
+        "eats",
+        "eater",
+        "eaters",
+        "eat alive",
+        "eat one out of house and home",
+        "eat one's heart out",
+        "eat one's words",
+        "eat out of one's hand",
+        "eat someone's lunch",
+        "to eat up",
+        "to eat away at",
+        "to eat into",
+        "to eat out"
+      ],
+      "offensive": false
+    },
+    "hwi": {
+      "hw": "eat",
+      "prs": [
+        {
+          "mw": "ˈiːt"
+        }
+      ]
+    },
+    "fl": "verb",
+    "ins": [
+      {
+        "if": "ate",
+        "prs": [
+          {
+            "mw": "ˈeɪt"
+          }
+        ]
+      },
+      {
+        "if": "eaten",
+        "prs": [
+          {
+            "mw": "ˈiːt{it}ə{/it}n"
+          }
+        ]
+      },
+      {
+        "if": "eating"
+      }
+    ],
+    "def": [
+      {
+        "vd": "transitive verb",
+        "sseq": [
+          [
+            [
+              "sense",
+              {
+                "sn": "1",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}{a_link|comer} "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "eat it up!",
+                        "tr": "¡cómetelo!"
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "2",
+                "dt": [
+                  [
+                    "text",
+                    "{sx|corrode||} {bc}{a_link|corroer}"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "3",
+                "vrs": [
+                  {
+                    "vl": "or",
+                    "va": "to eat up"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{sx|consume||} {bc}{a_link|comerse} (comida, ganancias), {a_link|consumir} (tiempo, recursos), {a_link|gastar} (combustible)"
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      },
+      {
+        "vd": "intransitive verb",
+        "sseq": [
+          [
+            [
+              "sense",
+              {
+                "sn": "1",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}{a_link|comer}"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "2",
+                "vrs": [
+                  {
+                    "va": "to eat away at"
+                  },
+                  {
+                    "vl": "or",
+                    "va": "to eat into"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}{a_link|comerse}, {a_link|consumir}, {a_link|corroer}"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "3",
+                "vrs": [
+                  {
+                    "va": "to eat out"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}comer fuera"
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      }
+    ],
+    "shortdef": [
+      "comer",
+      "corrode : corroer",
+      "consume : comerse (comida, ganancias), consumir (tiempo, recursos), gastar (combustible)"
+    ]
+  },
+  {
+    "meta": {
+      "id": "keep:1",
+      "uuid": "6dd202fc-f955-4da8-a863-9a09a47d3247",
+      "lang": "en",
+      "src": "spanish",
+      "section": "alpha",
+      "stems": [
+        "keep",
+        "kept",
+        "keeping",
+        "keeps",
+        "keep an eye on",
+        "keep at",
+        "keep company",
+        "keep house",
+        "keep one's distance",
+        "keep at a distance",
+        "keep one's eyes open",
+        "keep one's eyes peeled",
+        "keep one's hand in",
+        "keep one's head down",
+        "keep one's nose clean",
+        "keep pace",
+        "keep step",
+        "keep to",
+        "keep to oneself",
+        "to keep after (school)",
+        "to keep after",
+        "to keep after school",
+        "to keep back",
+        "to keep company",
+        "to keep company with",
+        "to keep down",
+        "to keep in",
+        "to keep it down",
+        "to keep off",
+        "to keep weight off",
+        "to keep on",
+        "to keep out",
+        "to keep up",
+        "to keep up one's end of something",
+        "to keep up ones end of something",
+        "to keep at it",
+        "to keep from",
+        "to keep out (of)",
+        "to keep out of",
+        "to keep to",
+        "to keep to oneself",
+        "to keep up (with)",
+        "to keep up with",
+        "to keep up with someone"
+      ],
+      "offensive": false
+    },
+    "hom": 1,
+    "hwi": {
+      "hw": "keep",
+      "prs": [
+        {
+          "mw": "ˈkiːp",
+          "sound": {
+            "audio": "keep0001"
+          }
+        }
+      ]
+    },
+    "fl": "verb",
+    "ins": [
+      {
+        "if": "kept",
+        "prs": [
+          {
+            "mw": "ˈkɛpt",
+            "sound": {
+              "audio": "kept0001"
+            }
+          }
+        ]
+      },
+      {
+        "if": "keeping"
+      }
+    ],
+    "def": [
+      {
+        "vd": "transitive verb",
+        "sseq": [
+          [
+            [
+              "sense",
+              {
+                "sn": "1",
+                "dt": [
+                  [
+                    "text",
+                    "{sx|retain||} {bc}{a_link|guardar}, {a_link|conservar}, {a_link|quedarse con} "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "do you want to keep these papers?",
+                        "tr": "¿quieres guardar estos papeles?"
+                      },
+                      {
+                        "t": "he kept the money",
+                        "tr": "se quedó con el dinero"
+                      },
+                      {
+                        "t": "to keep one's cool",
+                        "tr": "mantener la calma"
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "2",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}{a_link|mantener} "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "keep me informed",
+                        "tr": "mantenme informado"
+                      },
+                      {
+                        "t": "she keeps herself fit",
+                        "tr": "se mantiene en forma"
+                      },
+                      {
+                        "t": "he kept his coat on",
+                        "tr": "se quedó con el abrigo puesto"
+                      },
+                      {
+                        "t": "to keep something a secret",
+                        "tr": "mantener algo en secreto"
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "3",
+                "dt": [
+                  [
+                    "text",
+                    "{sx|detain||} {bc}{a_link|retener}, {a_link|detener} "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "I won't keep you any longer",
+                        "tr": "no te entretengo más"
+                      },
+                      {
+                        "t": "what kept you?",
+                        "tr": "¿por qué tardaste?"
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "4",
+                "sls": [
+                  "(with a present participle)"
+                ],
+                "dt": [
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "don't keep her waiting",
+                        "tr": "no la hagas esperar"
+                      },
+                      {
+                        "t": "he kept the company going",
+                        "tr": "mantuvo la compañía a flote"
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "5",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}{a_link|cumplir} (su palabra), {a_link|acudir a} (una cita)"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "6",
+                "dt": [
+                  [
+                    "text",
+                    "{sx|preserve||} {bc}{a_link|guardar} "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "to keep a secret",
+                        "tr": "guardar un secreto"
+                      },
+                      {
+                        "t": "he kept it to himself",
+                        "tr": "no se lo contó a nadie"
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "7",
+                "dt": [
+                  [
+                    "text",
+                    "{sx|hide||} {bc}{a_link|ocultar} "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "he kept it from her",
+                        "tr": "se lo ocultó, no se lo dijo"
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "8",
+                "dt": [
+                  [
+                    "text",
+                    "{sx|observe||} {bc}{a_link|observar} (una fiesta)"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "9",
+                "dt": [
+                  [
+                    "text",
+                    "{sx|store||} {bc}{a_link|guardar}"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "10",
+                "dt": [
+                  [
+                    "text",
+                    "{sx|reserve||} {bc}{a_link|guardar}"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "11",
+                "dt": [
+                  [
+                    "text",
+                    "{sx|guard||} {bc}{a_link|guardar}, {a_link|cuidar}"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "12",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}{a_link|llevar}, {a_link|escribir} (un diario, etc.)"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "13",
+                "dt": [
+                  [
+                    "text",
+                    "{sx|support||} {bc}{a_link|mantener} (una familia)"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "14",
+                "dt": [
+                  [
+                    "text",
+                    "{sx|raise||} {bc}{a_link|criar} (animales)"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "15",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}{a_link|mantener} (a un amante)"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "16",
+                "vrs": [
+                  {
+                    "va": "to keep after (school)"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}hacer quedar después de clase"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "17",
+                "vrs": [
+                  {
+                    "va": "to keep back"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}no dejar acercarse a"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "18",
+                "vrs": [
+                  {
+                    "va": "to keep back"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}hacer repetir un año (a un estudiante)"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "19",
+                "vrs": [
+                  {
+                    "va": "to keep back"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{sx|hide||} {sx|repress||} {bc}{a_link|ocultar}, {a_link|retener}"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "20",
+                "vrs": [
+                  {
+                    "va": "to keep company"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}hacerle compañía a"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "21",
+                "vrs": [
+                  {
+                    "va": "to keep company with"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}andar en compañía de"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "22",
+                "vrs": [
+                  {
+                    "va": "to keep down"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}mantener bajo "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "to keep prices down",
+                        "tr": "mantener los precios bajos"
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "23",
+                "vrs": [
+                  {
+                    "va": "to keep down"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}{a_link|retener} (en el estómago)"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "24",
+                "vrs": [
+                  {
+                    "va": "to keep in"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}no dejar salir"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "25",
+                "vrs": [
+                  {
+                    "va": "to keep it down"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}no hacer tanto ruido"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "26",
+                "vrs": [
+                  {
+                    "va": "to keep in"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{sx|contain||} {bc}{a_link|contener}"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "27",
+                "vrs": [
+                  {
+                    "va": "to keep off"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}no dejar pisar, {a_link|tocar}, {a_link|etc.} "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "keep the dog off the sofa",
+                        "tr": "no dejes que el perro se suba al sofá"
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "28",
+                "vrs": [
+                  {
+                    "va": "to keep off"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}hacer evitar (un tema)"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "29",
+                "vrs": [
+                  {
+                    "va": "to keep weight off"
+                  }
+                ],
+                "dt": [
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "he has kept the weight off",
+                        "tr": "ha mantenido el peso (tras adelgazar)"
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "30",
+                "vrs": [
+                  {
+                    "va": "to keep on"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}{a_link|mantener} (a un empleado) en el puesto"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "31",
+                "vrs": [
+                  {
+                    "va": "to keep out"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{sx|block||} {bc}no dejar pasar"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "32",
+                "vrs": [
+                  {
+                    "va": "to keep up"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{sx|continue||} {bc}seguir con"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "33",
+                "vrs": [
+                  {
+                    "va": "to keep up"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{sx|maintain||} {bc}{a_link|mantener}"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "34",
+                "vrs": [
+                  {
+                    "va": "to keep up one's end of something"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}{a_link|cumplir} (con) su parte de algo"
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      },
+      {
+        "vd": "intransitive verb",
+        "sseq": [
+          [
+            [
+              "sense",
+              {
+                "sn": "1",
+                "dt": [
+                  [
+                    "text",
+                    "{sx|remain||} {sx|stay||} {bc}{a_link|mantener} "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "to keep quiet",
+                        "tr": "mantener silencio"
+                      },
+                      {
+                        "t": "to keep still",
+                        "tr": "estarse quieto"
+                      },
+                      {
+                        "t": "to keep calm",
+                        "tr": "mantener la calma"
+                      },
+                      {
+                        "t": "she likes to keep busy",
+                        "tr": "le gusta estar ocupada"
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "2",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}conservarse (dícese de los alimentos) "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "the soup will keep for a week",
+                        "tr": "la sopa se conserva una semana"
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "3",
+                "vrs": [
+                  {
+                    "vl": "or",
+                    "va": "to keep on"
+                  }
+                ],
+                "sls": [
+                  "(with a present participle)"
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{sx|continue||} {bc}{a_link|seguir}, {a_link|no dejar de} "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "keep going straight",
+                        "tr": "sigue todo recto"
+                      },
+                      {
+                        "t": "he keeps on pestering us",
+                        "tr": "no deja de molestarnos"
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "4",
+                "vrs": [
+                  {
+                    "va": "to keep after"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{sx|nag||} {bc}estarle encima a "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "he kept after me to quit smoking",
+                        "tr": "me estaba encima para que deje de fumar"
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "5",
+                "vrs": [
+                  {
+                    "va": "to keep at it"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{sx|persist||} {bc}seguir dándole"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "6",
+                "vrs": [
+                  {
+                    "va": "to keep back"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}no acercarse"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "7",
+                "vrs": [
+                  {
+                    "va": "to keep down"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}no levantarse"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "8",
+                "vrs": [
+                  {
+                    "va": "to keep from"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}abstenerse de "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "I couldn't keep from laughing",
+                        "tr": "no pude contener la risa"
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "9",
+                "vrs": [
+                  {
+                    "va": "to keep off"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}no pisar (el césped, etc.)"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "10",
+                "vrs": [
+                  {
+                    "va": "to keep off"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{sx|avoid||} {bc}{a_link|evitar} (un tema)"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "11",
+                "vrs": [
+                  {
+                    "va": "to keep on"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{sx|continue||} {bc}{a_link|seguir}, {a_link|continuar} "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "the rain kept on",
+                        "tr": "seguía lloviendo"
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "12",
+                "vrs": [
+                  {
+                    "va": "to keep out (of)"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}no entrar (en) "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "the sign says {ldquo}keep out{rdquo}",
+                        "tr": "el letrero dice {ldquo}prohibido el paso{rdquo}"
+                      },
+                      {
+                        "t": "to keep out of an argument",
+                        "tr": "no meterse en una discusión"
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "13",
+                "vrs": [
+                  {
+                    "va": "to keep to"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}no apartarse de (un camino, etc.), quedarse dentro de (una casa, etc.)"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "14",
+                "vrs": [
+                  {
+                    "va": "to keep to"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}{a_link|ceñirse a} (las reglas, un tema, etc.)"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "15",
+                "vrs": [
+                  {
+                    "va": "to keep to oneself"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}ser muy reservado"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "16",
+                "vrs": [
+                  {
+                    "va": "to keep up"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{sx|continue||} {bc}{a_link|seguir}, {a_link|continuar} "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "the rain kept up",
+                        "tr": "seguía lloviendo"
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "17",
+                "vrs": [
+                  {
+                    "va": "to keep up"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}mantenerse al tanto/corriente (de las noticias, etc.)"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "18",
+                "vrs": [
+                  {
+                    "va": "to keep up (with)"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}seguir/mantener el ritmo (de) "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "I can't keep up (with him)",
+                        "tr": "no puedo seguir su ritmo, no puedo seguirle el ritmo"
+                      },
+                      {
+                        "t": "to keep up with the Joneses",
+                        "tr": "no ser menos que el vecino"
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "19",
+                "vrs": [
+                  {
+                    "va": "to keep up with someone"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}mantener contacto con alguien"
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      }
+    ],
+    "shortdef": [
+      "retain : guardar, conservar, quedarse con",
+      "mantener",
+      "detain : retener, detener"
+    ]
+  },
+  {
+    "meta": {
+      "id": "move:1",
+      "uuid": "191ce16b-6f5c-40a0-a055-6cda644df537",
+      "lang": "en",
+      "src": "spanish",
+      "section": "alpha",
+      "stems": [
+        "move",
+        "moved",
+        "moving",
+        "moves",
+        "move house",
+        "to move aside",
+        "to move along",
+        "to move away",
+        "to move heaven and earth",
+        "to move in",
+        "to move on",
+        "to move out",
+        "to move over",
+        "to move up"
+      ],
+      "offensive": false
+    },
+    "hom": 1,
+    "hwi": {
+      "hw": "move",
+      "prs": [
+        {
+          "mw": "ˈmuːv",
+          "sound": {
+            "audio": "move0001"
+          }
+        }
+      ]
+    },
+    "fl": "verb",
+    "ins": [
+      {
+        "if": "moved"
+      },
+      {
+        "if": "moving"
+      }
+    ],
+    "def": [
+      {
+        "vd": "intransitive verb",
+        "sseq": [
+          [
+            [
+              "sense",
+              {
+                "sn": "1",
+                "dt": [
+                  [
+                    "text",
+                    "{sx|go||} {bc}{a_link|ir} "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "to move closer",
+                        "tr": "acercarse"
+                      },
+                      {
+                        "t": "to move forward/back",
+                        "tr": "echarse (hacia) adelante/atrás"
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "2",
+                "dt": [
+                  [
+                    "text",
+                    "{sx|relocate||} {bc}{a_link|mudarse}, {a_link|trasladarse}"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "3",
+                "dt": [
+                  [
+                    "text",
+                    "{sx|stir||} {bc}{a_link|moverse} "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "don't move!",
+                        "tr": "¡no te muevas!"
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "4",
+                "dt": [
+                  [
+                    "text",
+                    "{sx|act||} {bc}{a_link|actuar}"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "5",
+                "vrs": [
+                  {
+                    "va": "to move aside"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}{a_link|hacerse a un lado}"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "6",
+                "vrs": [
+                  {
+                    "va": "to move along"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{sx|proceed||} {bc}{a_link|circular}"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "7",
+                "vrs": [
+                  {
+                    "va": "to move away"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{sx|leave||} {bc}{a_link|marcharse}"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "8",
+                "vrs": [
+                  {
+                    "va": "to move away"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{sx|step back||} {bc}{a_link|apartarse}"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "9",
+                "vrs": [
+                  {
+                    "va": "to move heaven and earth"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}{a_link|hacer todo lo posible}"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "10",
+                "vrs": [
+                  {
+                    "va": "to move in"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}{a_link|mudarse} (a un lugar) "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "to move in with someone",
+                        "tr": "irse a vivir con alguien"
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "11",
+                "vrs": [
+                  {
+                    "va": "to move on"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{sx|leave||} {bc}{a_link|marcharse}"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "12",
+                "vrs": [
+                  {
+                    "va": "to move on"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{sx|continue||} {bc}{a_link|pasar}"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "13",
+                "vrs": [
+                  {
+                    "va": "to move out"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}{a_link|mudarse} (de un lugar)"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "14",
+                "vrs": [
+                  {
+                    "va": "to move over"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}hacer sitio"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "15",
+                "vrs": [
+                  {
+                    "va": "to move up"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}{a_link|subir}"
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      },
+      {
+        "vd": "transitive verb",
+        "sseq": [
+          [
+            [
+              "sense",
+              {
+                "sn": "1",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}{a_link|mover} "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "he kept moving his feet",
+                        "tr": "no dejaba de mover los pies"
+                      },
+                      {
+                        "t": "move it forward/back",
+                        "tr": "muévalo hacia adelante/atrás"
+                      },
+                      {
+                        "t": "move it over there",
+                        "tr": "ponlo allí"
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "2",
+                "dt": [
+                  [
+                    "text",
+                    "{sx|relocate||} {bc}{a_link|trasladar}"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "3",
+                "dt": [
+                  [
+                    "text",
+                    "{sx|induce||} {sx|persuade||} {bc}{a_link|inducir}, {a_link|persuadir}, {a_link|mover}"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "4",
+                "dt": [
+                  [
+                    "text",
+                    "{sx|touch||} {bc}{a_link|conmover} "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "it moved him to tears",
+                        "tr": "lo hizo llorar"
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "5",
+                "dt": [
+                  [
+                    "text",
+                    "{sx|propose||} {bc}{a_link|proponer}"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "6",
+                "vrs": [
+                  {
+                    "va": "to move along"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}{a_link|dispersar}, hacer circular"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "7",
+                "vrs": [
+                  {
+                    "va": "to move up"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}{a_link|adelantar} (una fecha)"
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      }
+    ],
+    "shortdef": [
+      "go : ir",
+      "relocate : mudarse, trasladarse",
+      "stir : moverse"
+    ]
+  },
+  {
+    "meta": {
+      "id": "ranch:2",
+      "uuid": "921969ee-c1fb-4660-acf8-4ff22704e7f6",
+      "lang": "en",
+      "src": "spanish",
+      "section": "alpha",
+      "stems": [
+        "ranch",
+        "ranches",
+        "ranch house"
+      ],
+      "offensive": false
+    },
+    "hom": 2,
+    "hwi": {
+      "hw": "ranch"
+    },
+    "fl": "noun",
+    "def": [
+      {
+        "sseq": [
+          [
+            [
+              "sense",
+              {
+                "sn": "1",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}{a_link|hacienda} "
+                  ],
+                  [
+                    "gl",
+                    "feminine"
+                  ],
+                  [
+                    "text",
+                    ", {a_link|rancho} "
+                  ],
+                  [
+                    "gl",
+                    "masculine"
+                  ],
+                  [
+                    "text",
+                    ", {a_link|finca} "
+                  ],
+                  [
+                    "gl",
+                    "feminine"
+                  ],
+                  [
+                    "text",
+                    " {a_link|ganadera}"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "2",
+                "vrs": [
+                  {
+                    "vl": "or",
+                    "va": "ranch house"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}{a_link|casa} "
+                  ],
+                  [
+                    "gl",
+                    "feminine"
+                  ],
+                  [
+                    "text",
+                    " (en una hacienda)"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "3",
+                "vrs": [
+                  {
+                    "vl": "or",
+                    "va": "ranch house"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}{a_link|casa} "
+                  ],
+                  [
+                    "gl",
+                    "feminine"
+                  ],
+                  [
+                    "text",
+                    " de una sola planta"
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      }
+    ],
+    "shortdef": [
+      "hacienda, rancho, finca ganadera",
+      "casa (en una hacienda)",
+      "casa de una sola planta"
+    ]
+  }
+]

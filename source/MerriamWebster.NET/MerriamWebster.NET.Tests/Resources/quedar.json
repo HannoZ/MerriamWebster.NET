@@ -1,0 +1,661 @@
+[
+  {
+    "meta": {
+      "id": "quedar",
+      "uuid": "786a9a42-a1bd-4819-9999-6a48e9bcb28e",
+      "lang": "es",
+      "src": "spanish",
+      "section": "alpha",
+      "stems": [
+        "quedar",
+        "quedar bien/mal con alguien",
+        "quedar bien con alguien",
+        "quedar mal con alguien",
+        "quedar en",
+        "quedarse",
+        "quedarse atrás",
+        "quedarse con"
+      ],
+      "offensive": false
+    },
+    "hwi": {
+      "hw": "quedar",
+      "prs": [
+        {
+          "sound": {
+            "audio": "queda02sp"
+          }
+        }
+      ]
+    },
+    "fl": "intransitive verb",
+    "def": [
+      {
+        "sseq": [
+          [
+            [
+              "sense",
+              {
+                "sn": "1",
+                "dt": [
+                  [
+                    "text",
+                    "{sx|permanecer||} {bc}to {a_link|remain}, to {a_link|stay} "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "queda abierto hasta el 31",
+                        "tr": "it will remain open until the 31st"
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "2",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}to {a_link|be}, to end up being "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "quedamos contentos con las mejoras",
+                        "tr": "we were pleased with the improvements"
+                      },
+                      {
+                        "t": "el partido quedó empatado",
+                        "tr": "the game ended in a tie"
+                      },
+                      {
+                        "t": "el pastel quedó muy rico",
+                        "tr": "the cake came out really well, the cake was delicious"
+                      },
+                      {
+                        "t": "queda claro que …",
+                        "tr": "it's clear that …"
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "3",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}to be situated "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "queda muy lejos",
+                        "tr": "it's very far, it's too far away"
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "4",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}to {a_link|be left} "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "quedan sólo dos alternativas",
+                        "tr": "there are only two options left"
+                      },
+                      {
+                        "t": "no me queda mucho dinero",
+                        "tr": "I don't have much money left"
+                      },
+                      {
+                        "t": "queda mucho por hacer",
+                        "tr": "there's still a lot left to do"
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "5",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}to {a_link|fit}, to {a_link|suit} "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "estos zapatos no me quedan",
+                        "tr": "these shoes don't fit"
+                      },
+                      {
+                        "t": "me queda grande",
+                        "tr": "it's big on me"
+                      },
+                      {
+                        "t": "ese color te queda bien",
+                        "tr": "that color looks good on you"
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "6",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}to agree to meet "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "¿a qué hora quedamos?",
+                        "tr": "what time are we meeting?"
+                      },
+                      {
+                        "t": "quedé con un amigo para cenar",
+                        "tr": "I arranged to have dinner with a friend"
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "7",
+                "vrs": [
+                  {
+                    "va": "quedar bien/mal con alguien"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}to make a good/bad impression on someone"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "8",
+                "vrs": [
+                  {
+                    "va": "quedar en",
+                    "vac": "~ en"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}to {a_link|agree}, to {a_link|arrange} "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "¿en qué quedamos?",
+                        "tr": "what's the plan?, what are we doing?"
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      }
+    ],
+    "dros": [
+      {
+        "drp": "quedarse",
+        "fl": "reflexive verb",
+        "def": [
+          {
+            "sseq": [
+              [
+                [
+                  "sense",
+                  {
+                    "sn": "1",
+                    "dt": [
+                      [
+                        "text",
+                        "{bc}to {a_link|stay} "
+                      ],
+                      [
+                        "vis",
+                        [
+                          {
+                            "t": "se quedó en casa",
+                            "tr": "she stayed at home"
+                          }
+                        ]
+                      ]
+                    ]
+                  }
+                ]
+              ],
+              [
+                [
+                  "sense",
+                  {
+                    "sn": "2",
+                    "dt": [
+                      [
+                        "text",
+                        "{bc}to {a_link|keep on} "
+                      ],
+                      [
+                        "vis",
+                        [
+                          {
+                            "t": "se quedó esperando",
+                            "tr": "he kept on waiting"
+                          }
+                        ]
+                      ]
+                    ]
+                  }
+                ]
+              ],
+              [
+                [
+                  "sense",
+                  {
+                    "sn": "3",
+                    "vrs": [
+                      {
+                        "va": "quedarse atrás"
+                      }
+                    ],
+                    "dt": [
+                      [
+                        "text",
+                        "{bc}to stay behind, to get left behind "
+                      ],
+                      [
+                        "vis",
+                        [
+                          {
+                            "t": "no quedarse atrás",
+                            "tr": "to be no slouch"
+                          }
+                        ]
+                      ]
+                    ]
+                  }
+                ]
+              ],
+              [
+                [
+                  "sense",
+                  {
+                    "sn": "4",
+                    "vrs": [
+                      {
+                        "va": "quedarse con",
+                        "vac": "~ con"
+                      }
+                    ],
+                    "dt": [
+                      [
+                        "text",
+                        "{bc}to {a_link|remain} "
+                      ],
+                      [
+                        "vis",
+                        [
+                          {
+                            "t": "me quedé con hambre después de comer",
+                            "tr": "I was still hungry after I ate"
+                          }
+                        ]
+                      ]
+                    ]
+                  }
+                ]
+              ]
+            ]
+          }
+        ]
+      }
+    ],
+    "suppl": {
+      "cjts": [
+        {
+          "cjid": "gppt",
+          "cjfs": [
+            "quedando",
+            "quedado"
+          ]
+        },
+        {
+          "cjid": "pind",
+          "cjfs": [
+            "quedo",
+            "quedas",
+            "queda",
+            "quedamos",
+            "quedáis",
+            "quedan"
+          ]
+        },
+        {
+          "cjid": "pret",
+          "cjfs": [
+            "quedaba",
+            "quedabas",
+            "quedaba",
+            "quedábamos",
+            "quedabais",
+            "quedaban"
+          ]
+        },
+        {
+          "cjid": "pprf",
+          "cjfs": [
+            "quedé",
+            "quedaste",
+            "quedó",
+            "quedamos",
+            "quedasteis",
+            "quedaron"
+          ]
+        },
+        {
+          "cjid": "futr",
+          "cjfs": [
+            "quedaré",
+            "quedarás",
+            "quedará",
+            "quedaremos",
+            "quedaréis",
+            "quedarán"
+          ]
+        },
+        {
+          "cjid": "cond",
+          "cjfs": [
+            "quedaría",
+            "quedarías",
+            "quedaría",
+            "quedaríamos",
+            "quedaríais",
+            "quedarían"
+          ]
+        },
+        {
+          "cjid": "psub",
+          "cjfs": [
+            "quede",
+            "quedes",
+            "quede",
+            "quedemos",
+            "quedéis",
+            "queden"
+          ]
+        },
+        {
+          "cjid": "pisb1",
+          "cjfs": [
+            "quedara",
+            "quedaras",
+            "quedara",
+            "quedáramos",
+            "quedarais",
+            "quedaran"
+          ]
+        },
+        {
+          "cjid": "pisb2",
+          "cjfs": [
+            "quedase",
+            "quedases",
+            "quedase",
+            "quedásemos",
+            "quedaseis",
+            "quedasen"
+          ]
+        },
+        {
+          "cjid": "fsub",
+          "cjfs": [
+            "quedare",
+            "quedares",
+            "quedare",
+            "quedáremos",
+            "quedareis",
+            "quedaren"
+          ]
+        },
+        {
+          "cjid": "ppci",
+          "cjfs": [
+            "he quedado",
+            "has quedado",
+            "ha quedado",
+            "hemos quedado",
+            "habéis quedado",
+            "han quedado"
+          ]
+        },
+        {
+          "cjid": "ppsi",
+          "cjfs": [
+            "había quedado",
+            "habías quedado",
+            "había quedado",
+            "habíamos quedado",
+            "habíais quedado",
+            "habían quedado"
+          ]
+        },
+        {
+          "cjid": "pant",
+          "cjfs": [
+            "hube quedado",
+            "hubiste quedado",
+            "hubo quedado",
+            "hubimos quedado",
+            "hubisteis quedado",
+            "hubieron quedado"
+          ]
+        },
+        {
+          "cjid": "fpin",
+          "cjfs": [
+            "habré quedado",
+            "habrás quedado",
+            "habrá quedado",
+            "habremos quedado",
+            "habréis quedado",
+            "habrán quedado"
+          ]
+        },
+        {
+          "cjid": "cpef",
+          "cjfs": [
+            "habría quedado",
+            "habrías quedado",
+            "habría quedado",
+            "habríamos quedado",
+            "habríais quedado",
+            "habrían quedado"
+          ]
+        },
+        {
+          "cjid": "ppfs",
+          "cjfs": [
+            "haya quedado",
+            "hayas quedado",
+            "haya quedado",
+            "hayamos quedado",
+            "hayáis quedado",
+            "hayan quedado"
+          ]
+        },
+        {
+          "cjid": "ppss1",
+          "cjfs": [
+            "hubiera quedado",
+            "hubieras quedado",
+            "hubiera quedado",
+            "hubiéramos quedado",
+            "hubierais quedado",
+            "hubieran quedado"
+          ]
+        },
+        {
+          "cjid": "ppss2",
+          "cjfs": [
+            "hubiese quedado",
+            "hubieses quedado",
+            "hubiese quedado",
+            "hubiésemos quedado",
+            "hubieseis quedado",
+            "hubiesen quedado"
+          ]
+        },
+        {
+          "cjid": "fpsb",
+          "cjfs": [
+            "hubiere quedado",
+            "hubieres quedado",
+            "hubiere quedado",
+            "hubiéremos quedado",
+            "hubiereis quedado",
+            "hubieren quedado"
+          ]
+        },
+        {
+          "cjid": "impf",
+          "cjfs": [
+            "-",
+            "queda",
+            "quede",
+            "quedemos",
+            "quedad",
+            "queden"
+          ]
+        }
+      ]
+    },
+    "shortdef": [
+      "permanecer : to remain, to stay",
+      "to be, to end up being",
+      "to be situated"
+    ]
+  },
+  {
+    "meta": {
+      "id": "malparado",
+      "uuid": "1e9124fe-3770-4ca4-87f3-fc605ad0bae0",
+      "lang": "es",
+      "src": "spanish",
+      "section": "alpha",
+      "stems": [
+        "malparado",
+        "malparada",
+        "salir malparado",
+        "quedar malparado"
+      ],
+      "offensive": false
+    },
+    "hwi": {
+      "hw": "malparado",
+      "prs": [
+        {
+          "sound": {
+            "audio": "malpa01sp"
+          }
+        }
+      ]
+    },
+    "ahws": [
+      {
+        "hw": "malparada",
+        "hwc": "-da"
+      }
+    ],
+    "fl": "adjective",
+    "def": [
+      {
+        "sseq": [
+          [
+            [
+              "sense",
+              {
+                "vrs": [
+                  {
+                    "va": "salir malparado"
+                  },
+                  {
+                    "vl": "or",
+                    "va": "quedar malparado"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}to come out of (something) {a_link|badly}, to end up in a bad state"
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      }
+    ],
+    "shortdef": [
+      "to come out of (something) badly, to end up in a bad state"
+    ]
+  }
+]

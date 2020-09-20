@@ -1,0 +1,1518 @@
+[
+  {
+    "meta": {
+      "id": "estar",
+      "uuid": "ff2d4526-bd83-4f91-892f-3815a2640cd9",
+      "lang": "es",
+      "src": "spanish",
+      "section": "alpha",
+      "stems": [
+        "estar",
+        "¿cómo estás?",
+        "¡está bien!",
+        "estar a",
+        "estar con",
+        "estar de",
+        "estar bien/mal",
+        "estar bien",
+        "estar mal",
+        "estar para",
+        "estar por",
+        "estar de más",
+        "estar que",
+        "estarse"
+      ],
+      "offensive": false
+    },
+    "hwi": {
+      "hw": "estar",
+      "prs": [
+        {
+          "sound": {
+            "audio": "estar01sp"
+          }
+        }
+      ]
+    },
+    "fl": "auxiliary verb",
+    "def": [
+      {
+        "sseq": [
+          [
+            [
+              "sense",
+              {
+                "dt": [
+                  [
+                    "text",
+                    "{bc}to {a_link|be} "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "estoy aprendiendo inglés",
+                        "tr": "I'm learning English"
+                      },
+                      {
+                        "t": "está terminado",
+                        "tr": "it's finished"
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      },
+      {
+        "vd": "intransitive verb",
+        "sseq": [
+          [
+            [
+              "sense",
+              {
+                "sn": "1",
+                "sls": [
+                  "(indicating a state or condition)"
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}to {a_link|be} "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "está lleno",
+                        "tr": "it's full"
+                      },
+                      {
+                        "t": "está claro que …",
+                        "tr": "it's clear that …"
+                      },
+                      {
+                        "t": "¿ya estás mejor?",
+                        "tr": "are you feeling better now?"
+                      },
+                      {
+                        "t": "estoy casado",
+                        "tr": "I'm married"
+                      },
+                      {
+                        "t": "está sin trabajo",
+                        "tr": "she's out of work, she has no job"
+                      },
+                      {
+                        "t": "está muy alto",
+                        "tr": "he's so tall, he's gotten very tall"
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "2",
+                "sls": [
+                  "(indicating location)"
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}to {a_link|be} "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "están en la mesa",
+                        "tr": "they're on the table"
+                      },
+                      {
+                        "t": "estamos en la página 2",
+                        "tr": "we're on page 2"
+                      },
+                      {
+                        "t": "ahí está el problema",
+                        "tr": "therein lies the problem"
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "3",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}to be at home "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "¿está Julia?",
+                        "tr": "is Julia in?"
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "4",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}to {a_link|be}, to {a_link|remain} "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "estaré aquí 5 días",
+                        "tr": "I'll be here for 5 days"
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "5",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}to be ready, to be done "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "estará para las diez",
+                        "tr": "it will be ready by ten o'clock"
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "6",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}to {a_link|agree} "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "¿estamos?",
+                        "tr": "are we in agreement?"
+                      },
+                      {
+                        "t": "estoy contigo",
+                        "tr": "I'm with you"
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "7",
+                "vrs": [
+                  {
+                    "va": "¿cómo estás?"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}how are you?"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "8",
+                "vrs": [
+                  {
+                    "va": "¡está bien!"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}all right!, that's fine!"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "9",
+                "vrs": [
+                  {
+                    "va": "estar a",
+                    "vac": "~ a"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}to {a_link|cost}"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "10",
+                "vrs": [
+                  {
+                    "va": "estar a",
+                    "vac": "~ a"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}to {a_link|be} "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "¿a qué día estamos?",
+                        "tr": "what day is today?, what's today's date?"
+                      },
+                      {
+                        "t": "está a 15 kilómetros del centro",
+                        "tr": "it's 15 kilometers from the downtown"
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "11",
+                "vrs": [
+                  {
+                    "va": "estar con",
+                    "vac": "~ con"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}to {a_link|have} "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "está con fiebre",
+                        "tr": "she has a fever"
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "12",
+                "vrs": [
+                  {
+                    "va": "estar de",
+                    "vac": "~ de"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}to {a_link|be} "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "estoy de vacaciones",
+                        "tr": "I'm on vacation"
+                      },
+                      {
+                        "t": "está de director hoy",
+                        "tr": "he's acting as director today"
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "13",
+                "vrs": [
+                  {
+                    "va": "estar bien/mal"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}to be well/sick"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "14",
+                "vrs": [
+                  {
+                    "va": "estar para",
+                    "vac": "~ para"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}to be in the mood for"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "15",
+                "vrs": [
+                  {
+                    "va": "estar para",
+                    "vac": "~ para"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}to be for (a purpose) "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "para eso está",
+                        "tr": "that's what it's here for"
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "16",
+                "vrs": [
+                  {
+                    "va": "estar por",
+                    "vac": "~ por"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}to be in favor of"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "17",
+                "vrs": [
+                  {
+                    "va": "estar por",
+                    "vac": "~ por"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}to {a_link|be about to} "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "está por cerrar",
+                        "tr": "it's on the verge of closing"
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "18",
+                "vrs": [
+                  {
+                    "va": "estar de más"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}to be unnecessary"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "19",
+                "vrs": [
+                  {
+                    "va": "estar que"
+                  }
+                ],
+                "sls": [
+                  "(indicating a state or condition)"
+                ],
+                "dt": [
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "está que echa chispas",
+                        "tr": "he's hopping mad"
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      }
+    ],
+    "dros": [
+      {
+        "drp": "estarse",
+        "fl": "reflexive verb",
+        "def": [
+          {
+            "sseq": [
+              [
+                [
+                  "sense",
+                  {
+                    "dt": [
+                      [
+                        "text",
+                        "{sx|quedarse||} {bc}to {a_link|stay}, to {a_link|remain} "
+                      ],
+                      [
+                        "vis",
+                        [
+                          {
+                            "t": "¡estáte quieto!",
+                            "tr": "be still!"
+                          }
+                        ]
+                      ]
+                    ]
+                  }
+                ]
+              ]
+            ]
+          }
+        ]
+      }
+    ],
+    "suppl": {
+      "cjts": [
+        {
+          "cjid": "gppt",
+          "cjfs": [
+            "estando",
+            "estado"
+          ]
+        },
+        {
+          "cjid": "pind",
+          "cjfs": [
+            "estoy",
+            "estás",
+            "está",
+            "estamos",
+            "estáis",
+            "están"
+          ]
+        },
+        {
+          "cjid": "pret",
+          "cjfs": [
+            "estaba",
+            "estabas",
+            "estaba",
+            "estábamos",
+            "estabais",
+            "estaban"
+          ]
+        },
+        {
+          "cjid": "pprf",
+          "cjfs": [
+            "estuve",
+            "estuviste",
+            "estuvo",
+            "estuvimos",
+            "estuvisteis",
+            "estuvieron"
+          ]
+        },
+        {
+          "cjid": "futr",
+          "cjfs": [
+            "estaré",
+            "estarás",
+            "estará",
+            "estaremos",
+            "estaréis",
+            "estarán"
+          ]
+        },
+        {
+          "cjid": "cond",
+          "cjfs": [
+            "estaría",
+            "estarías",
+            "estaría",
+            "estaríamos",
+            "estaríais",
+            "estarían"
+          ]
+        },
+        {
+          "cjid": "psub",
+          "cjfs": [
+            "esté",
+            "estés",
+            "esté",
+            "estemos",
+            "estéis",
+            "estén"
+          ]
+        },
+        {
+          "cjid": "pisb1",
+          "cjfs": [
+            "estuviera",
+            "estuvieras",
+            "estuviera",
+            "estuviéramos",
+            "estuvierais",
+            "estuvieran"
+          ]
+        },
+        {
+          "cjid": "pisb2",
+          "cjfs": [
+            "estuviese",
+            "estuvieses",
+            "estuviese",
+            "estuviésemos",
+            "estuvieseis",
+            "estuviesen"
+          ]
+        },
+        {
+          "cjid": "fsub",
+          "cjfs": [
+            "estuviere",
+            "estuvieres",
+            "estuviere",
+            "estuviéremos",
+            "estuviereis",
+            "estuvieren"
+          ]
+        },
+        {
+          "cjid": "ppci",
+          "cjfs": [
+            "he estado",
+            "has estado",
+            "ha estado",
+            "hemos estado",
+            "habéis estado",
+            "han estado"
+          ]
+        },
+        {
+          "cjid": "ppsi",
+          "cjfs": [
+            "había estado",
+            "habías estado",
+            "había estado",
+            "habíamos estado",
+            "habíais estado",
+            "habían estado"
+          ]
+        },
+        {
+          "cjid": "pant",
+          "cjfs": [
+            "hube estado",
+            "hubiste estado",
+            "hubo estado",
+            "hubimos estado",
+            "hubisteis estado",
+            "hubieron estado"
+          ]
+        },
+        {
+          "cjid": "fpin",
+          "cjfs": [
+            "habré estado",
+            "habrás estado",
+            "habrá estado",
+            "habremos estado",
+            "habréis estado",
+            "habrán estado"
+          ]
+        },
+        {
+          "cjid": "cpef",
+          "cjfs": [
+            "habría estado",
+            "habrías estado",
+            "habría estado",
+            "habríamos estado",
+            "habríais estado",
+            "habrían estado"
+          ]
+        },
+        {
+          "cjid": "ppfs",
+          "cjfs": [
+            "haya estado",
+            "hayas estado",
+            "haya estado",
+            "hayamos estado",
+            "hayáis estado",
+            "hayan estado"
+          ]
+        },
+        {
+          "cjid": "ppss1",
+          "cjfs": [
+            "hubiera estado",
+            "hubieras estado",
+            "hubiera estado",
+            "hubiéramos estado",
+            "hubierais estado",
+            "hubieran estado"
+          ]
+        },
+        {
+          "cjid": "ppss2",
+          "cjfs": [
+            "hubiese estado",
+            "hubieses estado",
+            "hubiese estado",
+            "hubiésemos estado",
+            "hubieseis estado",
+            "hubiesen estado"
+          ]
+        },
+        {
+          "cjid": "fpsb",
+          "cjfs": [
+            "hubiere estado",
+            "hubieres estado",
+            "hubiere estado",
+            "hubiéremos estado",
+            "hubiereis estado",
+            "hubieren estado"
+          ]
+        },
+        {
+          "cjid": "impf",
+          "cjfs": [
+            "-",
+            "está",
+            "esté",
+            "estemos",
+            "estad",
+            "estén"
+          ]
+        }
+      ]
+    },
+    "shortdef": [
+      "to be",
+      "to be",
+      "to be"
+    ]
+  },
+  {
+    "meta": {
+      "id": "acuerdo",
+      "uuid": "67b87130-281c-404d-a5dc-eab3479e50fd",
+      "lang": "es",
+      "src": "spanish",
+      "section": "alpha",
+      "stems": [
+        "acuerdo",
+        "estar de acuerdo",
+        "de acuerdo con",
+        "de acuerdo"
+      ],
+      "offensive": false
+    },
+    "hwi": {
+      "hw": "acuerdo",
+      "prs": [
+        {
+          "sound": {
+            "audio": "acuer01sp"
+          }
+        }
+      ]
+    },
+    "fl": "masculine noun",
+    "def": [
+      {
+        "sseq": [
+          [
+            [
+              "sense",
+              {
+                "sn": "1",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}{a_link|agreement}"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "2",
+                "vrs": [
+                  {
+                    "va": "estar de acuerdo"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}to {a_link|agree}"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "3",
+                "vrs": [
+                  {
+                    "va": "de acuerdo con"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}{a_link|in accordance with}"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "4",
+                "vrs": [
+                  {
+                    "va": "de acuerdo",
+                    "vac": "de ~"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}{a_link|OK}, {a_link|all right}"
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      }
+    ],
+    "shortdef": [
+      "agreement",
+      "to agree",
+      "in accordance with"
+    ]
+  },
+  {
+    "meta": {
+      "id": "asco",
+      "uuid": "080bf458-1273-4862-ad90-a7a5fc3cf008",
+      "lang": "es",
+      "src": "spanish",
+      "section": "alpha",
+      "stems": [
+        "asco",
+        "darle asco a alguien",
+        "estar hecho un asco",
+        "hacerle ascos a algo"
+      ],
+      "offensive": false
+    },
+    "hwi": {
+      "hw": "asco",
+      "prs": [
+        {
+          "sound": {
+            "audio": "asco001sp"
+          }
+        }
+      ]
+    },
+    "fl": "masculine noun",
+    "def": [
+      {
+        "sseq": [
+          [
+            [
+              "sense",
+              {
+                "sn": "1",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}{a_link|disgust} "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "¡qué asco!",
+                        "tr": "that's disgusting!, how revolting!"
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "2",
+                "vrs": [
+                  {
+                    "va": "darle asco a alguien"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}to disgust someone"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "3",
+                "vrs": [
+                  {
+                    "va": "estar hecho un asco"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}to be filthy"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "4",
+                "vrs": [
+                  {
+                    "va": "hacerle ascos a algo"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}to turn up one's nose at something"
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      }
+    ],
+    "shortdef": [
+      "disgust",
+      "to disgust someone",
+      "to be filthy"
+    ]
+  },
+  {
+    "meta": {
+      "id": "ascua",
+      "uuid": "49792bcb-920f-4108-b4e0-f152e465a924",
+      "lang": "es",
+      "src": "spanish",
+      "section": "alpha",
+      "stems": [
+        "ascua",
+        "estar en ascuas"
+      ],
+      "offensive": false
+    },
+    "hwi": {
+      "hw": "ascua"
+    },
+    "fl": "feminine noun",
+    "def": [
+      {
+        "sseq": [
+          [
+            [
+              "sense",
+              {
+                "sn": "1",
+                "dt": [
+                  [
+                    "text",
+                    "{sx|brasa||} {bc}{a_link|ember}"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "2",
+                "vrs": [
+                  {
+                    "va": "estar en ascuas"
+                  }
+                ],
+                "sls": [
+                  "familiar"
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}to {a_link|be on edge}"
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      }
+    ],
+    "shortdef": [
+      "brasa : ember",
+      "to be on edge"
+    ]
+  },
+  {
+    "meta": {
+      "id": "aviso",
+      "uuid": "9833292c-6ac8-4895-a82a-72b4b9ebdf12",
+      "lang": "es",
+      "src": "spanish",
+      "section": "alpha",
+      "stems": [
+        "aviso",
+        "estar sobre aviso"
+      ],
+      "offensive": false
+    },
+    "hwi": {
+      "hw": "aviso",
+      "prs": [
+        {
+          "sound": {
+            "audio": "aviso01sp"
+          }
+        }
+      ]
+    },
+    "fl": "masculine noun",
+    "def": [
+      {
+        "sseq": [
+          [
+            [
+              "sense",
+              {
+                "sn": "1",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}{a_link|notice}"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "2",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}{a_link|advertisement}, {a_link|ad}"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "3",
+                "dt": [
+                  [
+                    "text",
+                    "{sx|advertencia||} {bc}{a_link|warning}"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "4",
+                "vrs": [
+                  {
+                    "va": "estar sobre aviso"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}to be on the alert"
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      }
+    ],
+    "shortdef": [
+      "notice",
+      "advertisement, ad",
+      "advertencia : warning"
+    ]
+  },
+  {
+    "meta": {
+      "id": "cabales",
+      "uuid": "9ec79ec5-d260-4591-a0a8-5ab8e5fe1ee9",
+      "lang": "es",
+      "src": "spanish",
+      "section": "alpha",
+      "stems": [
+        "cabales",
+        "no estar en sus cabales"
+      ],
+      "offensive": false
+    },
+    "hwi": {
+      "hw": "cabales",
+      "prs": [
+        {
+          "sound": {
+            "audio": "cabal01sp"
+          }
+        }
+      ]
+    },
+    "fl": "masculine plural noun",
+    "def": [
+      {
+        "sseq": [
+          [
+            [
+              "sense",
+              {
+                "vrs": [
+                  {
+                    "va": "no estar en sus cabales"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}not to be in one's right mind"
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      }
+    ],
+    "shortdef": [
+      "not to be in one's right mind"
+    ]
+  },
+  {
+    "meta": {
+      "id": "candelero",
+      "uuid": "599c338c-376c-4772-a8a0-2d13a07cd3ea",
+      "lang": "es",
+      "src": "spanish",
+      "section": "alpha",
+      "stems": [
+        "candelero",
+        "estar en el candelero"
+      ],
+      "offensive": false
+    },
+    "hwi": {
+      "hw": "candelero"
+    },
+    "fl": "masculine noun",
+    "def": [
+      {
+        "sseq": [
+          [
+            [
+              "sense",
+              {
+                "sn": "1",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}{a_link|candlestick}"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "2",
+                "vrs": [
+                  {
+                    "va": "estar en el candelero"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}to {a_link|be in the spotlight}"
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      }
+    ],
+    "shortdef": [
+      "candlestick",
+      "to be in the spotlight"
+    ]
+  },
+  {
+    "meta": {
+      "id": "constipado:1",
+      "uuid": "a8f84cd4-9f1a-4701-951a-4944dcbc3141",
+      "lang": "es",
+      "src": "spanish",
+      "section": "alpha",
+      "stems": [
+        "constipado",
+        "constipada",
+        "estar constipado"
+      ],
+      "offensive": false
+    },
+    "hom": 1,
+    "hwi": {
+      "hw": "constipado",
+      "prs": [
+        {
+          "sound": {
+            "audio": "const05sp"
+          }
+        }
+      ]
+    },
+    "ahws": [
+      {
+        "hw": "constipada",
+        "hwc": "-da"
+      }
+    ],
+    "fl": "adjective",
+    "def": [
+      {
+        "sseq": [
+          [
+            [
+              "sense",
+              {
+                "vrs": [
+                  {
+                    "va": "estar constipado"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}to have a cold"
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      }
+    ],
+    "shortdef": [
+      "to have a cold"
+    ]
+  },
+  {
+    "meta": {
+      "id": "copete",
+      "uuid": "a4ce6d3e-a14c-4790-a97a-32648c1162d8",
+      "lang": "es",
+      "src": "spanish",
+      "section": "alpha",
+      "stems": [
+        "copete",
+        "estar hasta el copete"
+      ],
+      "offensive": false
+    },
+    "hwi": {
+      "hw": "copete",
+      "prs": [
+        {
+          "sound": {
+            "audio": "copet01sp"
+          }
+        }
+      ]
+    },
+    "fl": "masculine noun",
+    "def": [
+      {
+        "sseq": [
+          [
+            [
+              "sense",
+              {
+                "sn": "1",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}{a_link|tuft} (of hair)"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "2",
+                "vrs": [
+                  {
+                    "va": "estar hasta el copete"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}to be completely fed up"
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      }
+    ],
+    "shortdef": [
+      "tuft (of hair)",
+      "to be completely fed up"
+    ]
+  },
+  {
+    "meta": {
+      "id": "coronilla",
+      "uuid": "4eaee434-4ea4-4b3d-9ca8-3c175cfbcad2",
+      "lang": "es",
+      "src": "spanish",
+      "section": "alpha",
+      "stems": [
+        "coronilla",
+        "estar hasta la coronilla"
+      ],
+      "offensive": false
+    },
+    "hwi": {
+      "hw": "coronilla"
+    },
+    "fl": "feminine noun",
+    "def": [
+      {
+        "sseq": [
+          [
+            [
+              "sense",
+              {
+                "sn": "1",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}{a_link|crown} (of the head)"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "2",
+                "vrs": [
+                  {
+                    "va": "estar hasta la coronilla"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}to be completely fed up"
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      }
+    ],
+    "shortdef": [
+      "crown (of the head)",
+      "to be completely fed up"
+    ]
+  }
+]

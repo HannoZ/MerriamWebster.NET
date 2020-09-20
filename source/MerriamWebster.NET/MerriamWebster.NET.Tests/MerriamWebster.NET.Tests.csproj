@@ -1,0 +1,40 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\casa.json" />
+    <None Remove="Resources\delgado.json" />
+    <None Remove="Resources\estar.json" />
+    <None Remove="Resources\house.json" />
+    <None Remove="Resources\pueblo.json" />
+    <None Remove="Resources\quedar.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\casa.json" />
+    <EmbeddedResource Include="Resources\delgado.json" />
+    <EmbeddedResource Include="Resources\estar.json" />
+    <EmbeddedResource Include="Resources\house.json" />
+    <EmbeddedResource Include="Resources\pueblo.json" />
+    <EmbeddedResource Include="Resources\quedar.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.5.0" />
+    <PackageReference Include="Moq.AutoMock" Version="2.1.0" />
+    <PackageReference Include="MSTest.TestAdapter" Version="2.1.0" />
+    <PackageReference Include="MSTest.TestFramework" Version="2.1.0" />
+    <PackageReference Include="coverlet.collector" Version="1.2.0" />
+    <PackageReference Include="Shouldly" Version="3.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MerriamWebster.NET\MerriamWebster.NET.csproj" />
+  </ItemGroup>
+
+</Project>
