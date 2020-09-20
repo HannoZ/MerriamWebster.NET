@@ -1,3 +1,5 @@
+![Build & Test](https://github.com/HannoZ/MerriamWebster.NET/workflows/Build%20&%20Test/badge.svg)
+
 # MerriamWebster.NET
 A .NET client for Merriam-Webster's api's. Only tested with the Spanish-English dictionary, but it should also work for the other api's that are available. 
 
