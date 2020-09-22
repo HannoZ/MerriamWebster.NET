@@ -13,6 +13,7 @@
     <RepositoryType>Public</RepositoryType>
     <PackageTags>Merriam-Webster dictionary</PackageTags>
     <PackageReleaseNotes>Initial version. See project readme for further details.</PackageReleaseNotes>
+    <Version>1.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
