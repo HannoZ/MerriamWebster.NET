@@ -85,15 +85,22 @@ namespace MerriamWebster.NET.Tests.Parsing
             }
         }
 
+        [TestMethod]
+        public void SenseParser_CanParse_Abarrotado()
+        {
+            var defs = LoadDefinitions("abarrotado");
+            var parseOptions = new ParseOptions();
+
+            foreach (var senseParser in defs.Select(definition => new SenseParser(definition, parseOptions)))
+            {
+                _ = senseParser.Parse();
+            }
+        }
+
         private IEnumerable<Definition> LoadDefinitions(string fileName)
         {
-            var asm = Assembly.GetExecutingAssembly();
-            using var resourceStream =
-                asm.GetManifestResourceStream($"MerriamWebster.NET.Tests.Resources.{fileName}.json");
-
-            using var reader = new StreamReader(resourceStream);
-            string content = reader.ReadToEnd();
-
+            var content = TestHelper.LoadResponseFromFile(fileName);
+           
             var entries = JsonConvert.DeserializeObject<DictionaryEntry[]>(content, Converter.Settings);
             return entries.SelectMany(e => e.Definitions);
         }

@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace MerriamWebster.NET.Dto
 {
-    public class SearchResult
+    public class Entry
     {
         public string Id { get; set; }
         public string Text { get; set; }

@@ -1,0 +1,48 @@
+[
+  {
+    "meta": {
+      "id": "abarrotado",
+      "uuid": "5d3a6a41-1162-43af-ae13-e006e06467c4",
+      "lang": "es",
+      "src": "spanish",
+      "section": "alpha",
+      "stems": [
+        "abarrotado",
+        "abarrotada"
+      ],
+      "offensive": false
+    },
+    "hwi": {
+      "hw": "abarrotado"
+    },
+    "ahws": [
+      {
+        "hw": "abarrotada",
+        "hwc": "-da"
+      }
+    ],
+    "fl": "adjective",
+    "def": [
+      {
+        "sseq": [
+          [
+            [
+              "sense",
+              {
+                "dt": [
+                  [
+                    "text",
+                    "{bc}packed, crammed"
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      }
+    ],
+    "shortdef": [
+      "packed, crammed"
+    ]
+  }
+]

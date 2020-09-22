@@ -30,7 +30,8 @@
         /// </summary>
         /// <remarks>
         /// Translations are often in a pre-formatted formatting, using some specific markup tokens  (eg. "{bc}an ion NH{inf}4{\/inf}{sup}+{\/sup} derived from {a_link|ammonia}").
-        /// Set to <c>true</c> (this is the default) to remove the markup.        /// </remarks>
+        /// Set to <c>true</c> (this is the default) to remove the markup (raw value will still be returned as well).
+        /// </remarks>
         public bool RemoveMarkup { get; set; }
     }
 }

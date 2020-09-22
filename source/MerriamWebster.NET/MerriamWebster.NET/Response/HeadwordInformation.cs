@@ -11,6 +11,6 @@ namespace MerriamWebster.NET.Response
         public string Headword { get; set; }
 
         [JsonProperty("prs", NullValueHandling = NullValueHandling.Ignore)]
-        public Pronunciation[] Pronunciations { get; set; }
+        public Pronunciation[] Pronunciations { get; set; } = { };
     }
 }

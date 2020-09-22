@@ -39,7 +39,7 @@ namespace MerriamWebster.NET.Parsing
                 }
                 foreach (var def in result.Definitions)
                 {
-                    var searchResult = new SearchResult
+                    var searchResult = new Entry
                     {
                         Id = result.Metadata.Id,
                         Text = result.HeadwordInformation.Headword,
@@ -81,22 +81,22 @@ namespace MerriamWebster.NET.Parsing
                     var conjugation = ParseConjugations(result.Supplemental);
                     searchResult.Conjugations = conjugation;
 
-                    resultModel.Results.Add(searchResult);
+                    resultModel.Entries.Add(searchResult);
                 }
 
                 var additionalResults = ParseDros(result.DefinedRunOns, options);
                 foreach (var searchResult in additionalResults)
                 {
-                    resultModel.Results.Add(searchResult);
+                    resultModel.Entries.Add(searchResult);
                 }
             }
             
             return resultModel;
         }
 
-        private static IEnumerable<SearchResult> ParseDros(DefinedRunOn[] dros, ParseOptions parseOptions)
+        private static IEnumerable<Entry> ParseDros(DefinedRunOn[] dros, ParseOptions parseOptions)
         {
-            var searchResults = new List<SearchResult>();
+            var searchResults = new List<Entry>();
             if (dros == null)
             {
                 return searchResults;
@@ -104,7 +104,7 @@ namespace MerriamWebster.NET.Parsing
 
             foreach (var dro in dros)
             {
-                var searchResult = new SearchResult {Text = dro.Drp, Pos = dro.Fl};
+                var searchResult = new Entry {Text = dro.Drp, Pos = dro.Fl};
 
                 foreach (var droDef in dro.Def)
                 {

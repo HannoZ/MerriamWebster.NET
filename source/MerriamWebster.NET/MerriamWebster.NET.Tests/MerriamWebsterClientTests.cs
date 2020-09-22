@@ -38,7 +38,7 @@ namespace MerriamWebster.NET.Tests
         [TestMethod]
         public async Task MerriamWebsterClient_CanDeserialize_Casa()
         {
-            string response = await LoadResponseFromFile("casa.json");
+            string response = await TestHelper.LoadResponseFromFileAsync("casa");
 
             _handlerMock.Protected()
                 .Setup<Task<HttpResponseMessage>>("SendAsync", ItExpr.IsAny<HttpRequestMessage>(),
@@ -55,7 +55,7 @@ namespace MerriamWebster.NET.Tests
         [TestMethod]
         public async Task MerriamWebsterClient_CanDeserialize_Estar()
         {
-            string response = await LoadResponseFromFile("estar.json");
+            string response = await TestHelper.LoadResponseFromFileAsync("estar");
 
             _handlerMock.Protected()
                 .Setup<Task<HttpResponseMessage>>("SendAsync", ItExpr.IsAny<HttpRequestMessage>(),
@@ -72,7 +72,7 @@ namespace MerriamWebster.NET.Tests
         [TestMethod]
         public async Task MerriamWebsterClient_CanDeserialize_Quedar()
         {
-            string response = await LoadResponseFromFile("quedar.json");
+            string response = await TestHelper.LoadResponseFromFileAsync("quedar");
 
             _handlerMock.Protected()
                 .Setup<Task<HttpResponseMessage>>("SendAsync", ItExpr.IsAny<HttpRequestMessage>(),
@@ -89,7 +89,7 @@ namespace MerriamWebster.NET.Tests
         [TestMethod]
         public async Task MerriamWebsterClient_CanDeserialize_Delgado()
         {
-            string response = await LoadResponseFromFile("delgado.json");
+            string response = await TestHelper.LoadResponseFromFileAsync("delgado");
 
             _handlerMock.Protected()
                 .Setup<Task<HttpResponseMessage>>("SendAsync", ItExpr.IsAny<HttpRequestMessage>(),
@@ -106,7 +106,24 @@ namespace MerriamWebster.NET.Tests
         [TestMethod]
         public async Task MerriamWebsterClient_CanDeserialize_House()
         {
-            string response = await LoadResponseFromFile("house.json");
+            string response = await TestHelper.LoadResponseFromFileAsync("house");
+
+            _handlerMock.Protected()
+                .Setup<Task<HttpResponseMessage>>("SendAsync", ItExpr.IsAny<HttpRequestMessage>(),
+                    ItExpr.IsAny<CancellationToken>())
+                .ReturnsAsync(SetupOkResponseMessage(response));
+
+            // ACT
+            var result = await _client.GetDictionaryEntry("api", "entry");
+
+            // ASSERT
+            result.ShouldNotBeEmpty();
+        }
+
+        [TestMethod]
+        public async Task MerriamWebsterClient_CanDeserialize_Abarrotado()
+        {
+            string response = await TestHelper.LoadResponseFromFileAsync("abarrotado");
 
             _handlerMock.Protected()
                 .Setup<Task<HttpResponseMessage>>("SendAsync", ItExpr.IsAny<HttpRequestMessage>(),
@@ -128,18 +145,6 @@ namespace MerriamWebster.NET.Tests
             };
         }
 
-        private static Task<string> LoadResponseFromFile(string fileName)
-        {
-            var asm = Assembly.GetExecutingAssembly();
-            using var resourceStream = asm.GetManifestResourceStream($"MerriamWebster.NET.Tests.Resources.{fileName}");
-
-            if (resourceStream != null)
-            {
-                using var reader = new StreamReader(resourceStream);
-                return reader.ReadToEndAsync();
-            }
-
-            return Task.FromResult(string.Empty);
-        }
+       
     }
 }
