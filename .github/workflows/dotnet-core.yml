@@ -24,7 +24,7 @@ jobs:
     - name: Test
       run: dotnet test ./source/MerriamWebster.NET/MerriamWebster.NET.sln --no-restore --verbosity normal
     - name: Publish to Nuget
-      uses: brandedoutcast/publish-nuget@v2.5.2
+      uses: brandedoutcast/publish-nuget@v2.5.5
       with: 
           PROJECT_FILE_PATH: ./source/MerriamWebster.NET/MerriamWebster.NET/MerriamWebster.NET.csproj
           NUGET_KEY: ${{secrets.NUGET_API_KEY}}
