@@ -1,9 +1,9 @@
 ![Build & Test](https://github.com/HannoZ/MerriamWebster.NET/workflows/Build%20&%20Test/badge.svg)
 
 # MerriamWebster.NET
-A .NET client for Merriam-Webster's APIs. Only tested with the Spanish-English dictionary, but it should also work for the other APIs that are available. 
+A .NET client wrapper and object parser for Merriam-Webster's APIs. Only tested with the Spanish-English dictionary, but it should also work for the other APIs that are available. 
 
-For a list of available APIs and in-depth documentation visit Merriam Webster's [Developer Centre](https://dictionaryapi.com/).
+For a list of available APIs and in-depth documentation visit Merriam-Webster's [Developer Center](https://dictionaryapi.com/).
 
 Requests to the Merriam-Webster APIs are very simple, there is only one GET method, and all APIs use the same format: 
 > https://\<base address\>/_\<api name\>_/json/_\<entry\>_?key=myKey. 
