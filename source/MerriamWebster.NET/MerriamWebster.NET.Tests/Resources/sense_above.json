@@ -1,0 +1,66 @@
+{
+  "sseq": [
+    [
+      [
+        "sense",
+        {
+          "sn": "2 a",
+          "dt": [
+            [ "text", "{bc}superior to (as in rank, quality, or degree) " ],
+            [
+              "vis",
+              [
+                { "t": "A sergeant is {wi}above{/wi} a corporal." }
+              ]
+            ]
+          ]
+        }
+      ],
+      [
+        "sense",
+        {
+          "sn": "b",
+          "dt": [
+            [ "text", "{bc}out of reach of " ],
+            [
+              "vis",
+              [
+                { "t": "{wi}above{/wi} suspicion" }
+              ]
+            ]
+          ]
+        }
+      ],
+      [
+        "sense",
+        {
+          "sn": "c",
+          "dt": [
+            [ "text", "{bc}in preference to " ],
+            [
+              "vis",
+              [
+                { "t": "puts his child's needs {wi}above{/wi} his own needs" }
+              ]
+            ]
+          ]
+        }
+      ],
+      [
+        "sense",
+        {
+          "sn": "d",
+          "dt": [
+            [ "text", "{bc}too proud or honorable to stoop to " ],
+            [
+              "vis",
+              [
+                { "t": "not {wi}above{/wi} taking undue credit" }
+              ]
+            ]
+          ]
+        }
+      ]
+    ]
+  ]
+}

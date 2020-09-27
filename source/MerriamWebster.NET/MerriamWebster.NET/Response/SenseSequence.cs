@@ -7,7 +7,7 @@ namespace MerriamWebster.NET.Response
         [JsonProperty("sn", NullValueHandling = NullValueHandling.Ignore)]
         public string SenseNumber { get; set; }
         [JsonProperty("dt")]
-        public TranslationObject[][] Definitions { get; set; }
+        public DefiningTextObject[][] DefiningTexts { get; set; }
         [JsonProperty("vrs", NullValueHandling = NullValueHandling.Ignore)]
         public Variant[] Variants { get; set; }
         [JsonProperty("xrs", NullValueHandling = NullValueHandling.Ignore)]

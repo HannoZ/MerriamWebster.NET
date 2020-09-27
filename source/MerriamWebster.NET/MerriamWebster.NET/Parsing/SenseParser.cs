@@ -27,37 +27,38 @@ namespace MerriamWebster.NET.Parsing
                 .Where(sso => sso.SenseSequence != null)
                 .OrderBy(sso => sso.SenseSequence.SenseNumber)
                 .Select(sso => sso.SenseSequence)
-                .Where(ss => ss.Definitions != null)
+                .Where(ss => ss.DefiningTexts != null)
                 .ToList();
 
             foreach (var sourceSence in sourceSenses.Where(ss => ss != null))
             {
                 var sense = new Sense();
-                foreach (var translationObjects in sourceSence.Definitions)
+                foreach (var definingTextObjects in sourceSence.DefiningTexts)
                 {
-                    if (translationObjects.Any(d => d.String == "text"))
+                    if (definingTextObjects.Any(d => d.TypeOrText == "text"))
                     {
-                        var translationObject = translationObjects.First(d => d.String != "text");
-                        var translation = translationObject.String;
+                        var definition = definingTextObjects.FirstOrDefault(d => d.TypeOrText != "text");
+                        string definitionText = definition.TypeOrText;
 
-                        sense.Synonyms = SynonymsParser.ExtractSynonyms(translation);
-
-                        sense.RawTranslation = translation;
-                        sense.Translation = _parseOptions.RemoveMarkup
-                            ? MarkupRemover.RemoveMarkupFromString(translation)
-                            : translation;
+                        sense.Synonyms = SynonymsParser.ExtractSynonyms(definitionText);
+                        sense.RawText = definitionText;
+                        sense.Text = _parseOptions.RemoveMarkup
+                            ? MarkupRemover.RemoveMarkupFromString(definitionText)
+                            : definitionText;
                     }
 
-                    if (translationObjects.Any(d => d.String == "vis"))
+                    // the vis (verbal illustrations) element contains examples 
+                    if (definingTextObjects.Any(d => d.TypeOrText == "vis"))
                     {
-                        foreach (var translationObject in translationObjects.Where(to => to.TranslationClassArray != null))
+                        foreach (var dto in definingTextObjects.Where(to => to.DefiningTextArray != null))
                         {
-                            foreach (var translationClass in translationObject.TranslationClassArray)
+                            foreach (var definingText in dto.DefiningTextArray)
                             {
                                 var example = new Example
                                 {
-                                    Sentence = translationClass.Text,
-                                    Translation = translationClass.Translation
+                                    RawSentence = definingText.Text,
+                                    Sentence = _parseOptions.RemoveMarkup ? MarkupRemover.RemoveMarkupFromString(definingText.Text) : definingText.Text,
+                                    Translation = definingText.Translation
                                 };
                                 sense.Examples.Add(example);
                             }
@@ -71,7 +72,8 @@ namespace MerriamWebster.NET.Parsing
                     {
                         sense.Examples.Add(new Example
                         {
-                            Sentence = variant.Text
+                            RawSentence = variant.Text,
+                            Sentence = _parseOptions.RemoveMarkup ? MarkupRemover.RemoveMarkupFromString(variant.Text) : variant.Text
                         });
                     }
                 }

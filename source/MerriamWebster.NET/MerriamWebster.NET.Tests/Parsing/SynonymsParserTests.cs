@@ -54,7 +54,7 @@ namespace MerriamWebster.NET.Tests.Parsing
         }
 
         [TestMethod]
-        public void SynonymsParser_MultipleSynonyms()
+        public void SynonymsParser_MultipleSynonyms1()
         {
             string input = "{sx|aldea||} {sx|poblado||} {bc}{a_link|town}, {a_link|village} {sx|nación||} {bc}{a_link|people}";
 
@@ -63,6 +63,18 @@ namespace MerriamWebster.NET.Tests.Parsing
 
             // ASSERT
             result.Count().ShouldBe(3);
+        }
+
+        [TestMethod]
+        public void SynonymsParser_MultipleSynonyms2()
+        {
+            string input = "{bc}{sx|sly||}, {sx|treacherous||}";
+
+            // ACT
+            var result = SynonymsParser.ExtractSynonyms(input);
+
+            // ASSERT
+            result.Count().ShouldBe(2);
         }
     }
 }

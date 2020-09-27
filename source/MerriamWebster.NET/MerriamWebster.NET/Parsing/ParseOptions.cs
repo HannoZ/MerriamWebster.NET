@@ -3,9 +3,24 @@
     public class ParseOptions
     {
         /// <summary>
+        /// Returns a <see cref="ParseOptions"/> instance with default settings.
+        /// </summary>
+        public static readonly ParseOptions Default = new ParseOptions();
+
+        /// <summary>
+        /// Creates a new instance of the <see cref="ParseOptions"/> class with specified settings.
+        /// </summary>
+        public ParseOptions(AudioFormat audioFormat, bool skipAdditionalStems, bool removeMarkup)
+        {
+            AudioFormat = audioFormat;
+            SkipAdditionalStems = skipAdditionalStems;
+            RemoveMarkup = removeMarkup;
+        }
+
+        /// <summary>
         /// Creates a new instance of the <see cref="ParseOptions"/> class with default settings.
         /// </summary>
-        public ParseOptions()
+        private ParseOptions()
         {
             AudioFormat = AudioFormat.Mp3;
             SkipAdditionalStems = true;
