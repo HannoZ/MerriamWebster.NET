@@ -2,7 +2,7 @@
 
 namespace MerriamWebster.NET.Response
 {
-    public partial class Inflection
+    public class Inflection
     {
         [JsonProperty("il")]
         public string Label { get; set; }
