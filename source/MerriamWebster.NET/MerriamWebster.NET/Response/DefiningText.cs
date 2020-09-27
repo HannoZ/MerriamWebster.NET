@@ -2,7 +2,7 @@
 
 namespace MerriamWebster.NET.Response
 {
-    public class TranslationClass
+    public class DefiningText
     {
         [JsonProperty("t")]
         public string Text { get; set; }

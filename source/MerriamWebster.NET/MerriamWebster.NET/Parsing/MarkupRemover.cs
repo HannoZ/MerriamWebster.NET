@@ -26,6 +26,8 @@
             return translation;
         }
 
+
+
         private static string RemoveOpenCloseTag(this string input, string tag)
         {
             return input.Replace($"{{{tag}}}", "")

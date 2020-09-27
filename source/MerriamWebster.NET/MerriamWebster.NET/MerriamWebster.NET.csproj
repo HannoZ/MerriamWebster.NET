@@ -5,15 +5,17 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>Hanno Zwikstra</Authors>
     <Company>Hanno Zwikstra</Company>
-    <Description>A .NET client for the Merriam-Webster api's.</Description>
+    <Description>A .NET client wrapper and object parser for Merriam-Webster's APIs.</Description>
     <Copyright>MIT</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/HannoZ/MerriamWebster.NET</PackageProjectUrl>
     <RepositoryUrl>https://github.com/HannoZ/MerriamWebster.NET</RepositoryUrl>
     <RepositoryType>Public</RepositoryType>
-    <PackageTags>Merriam-Webster dictionary</PackageTags>
+    <PackageTags>Merriam-Webster dictionary thesaurus</PackageTags>
     <PackageReleaseNotes>Initial version. See project readme for further details.</PackageReleaseNotes>
-    <Version>1.0</Version>
+    <Version>1.1</Version>
+    <AssemblyVersion>1.1.0.0</AssemblyVersion>
+    <FileVersion>1.1.0.0</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>

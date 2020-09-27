@@ -19,7 +19,7 @@ namespace MerriamWebster.NET.Parsing
 
         public Task<EntryModel> GetAndParseAsync(string api, string searchTerm)
         {
-            return GetAndParseAsync(api, searchTerm, new ParseOptions());
+            return GetAndParseAsync(api, searchTerm, ParseOptions.Default);
         }
 
         public async Task<EntryModel> GetAndParseAsync(string api, string searchTerm, ParseOptions options)

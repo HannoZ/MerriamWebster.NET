@@ -1,12 +1,11 @@
-﻿using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Reflection;
-using MerriamWebster.NET.Parsing;
+﻿using MerriamWebster.NET.Parsing;
 using MerriamWebster.NET.Response;
 using MerriamWebster.NET.Response.JsonConverters;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
+using System.Collections.Generic;
+using System.Linq;
+using Shouldly;
 
 namespace MerriamWebster.NET.Tests.Parsing
 {
@@ -17,9 +16,9 @@ namespace MerriamWebster.NET.Tests.Parsing
         public void SenseParser_CanParse_Casa()
         {
             var defs = LoadDefinitions("casa");
-            var parseOptions = new ParseOptions();
 
-            foreach (var senseParser in defs.Select(definition => new SenseParser(definition, parseOptions)))
+            // ACT
+            foreach (var senseParser in defs.Select(definition => new SenseParser(definition, ParseOptions.Default)))
             {
                 _ = senseParser.Parse();
             }
@@ -29,9 +28,9 @@ namespace MerriamWebster.NET.Tests.Parsing
         public void SenseParser_CanParse_Delgado()
         {
             var defs = LoadDefinitions("delgado");
-            var parseOptions = new ParseOptions();
 
-            foreach (var senseParser in defs.Select(definition => new SenseParser(definition, parseOptions)))
+            // ACT
+            foreach (var senseParser in defs.Select(definition => new SenseParser(definition, ParseOptions.Default)))
             {
                 _ = senseParser.Parse();
             }
@@ -41,9 +40,9 @@ namespace MerriamWebster.NET.Tests.Parsing
         public void SenseParser_CanParse_Estar()
         {
             var defs = LoadDefinitions("estar");
-            var parseOptions = new ParseOptions();
 
-            foreach (var senseParser in defs.Select(definition => new SenseParser(definition, parseOptions)))
+            // ACT
+            foreach (var senseParser in defs.Select(definition => new SenseParser(definition, ParseOptions.Default)))
             {
                 _ = senseParser.Parse();
             }
@@ -53,9 +52,9 @@ namespace MerriamWebster.NET.Tests.Parsing
         public void SenseParser_CanParse_House()
         {
             var defs = LoadDefinitions("house");
-            var parseOptions = new ParseOptions();
 
-            foreach (var senseParser in defs.Select(definition => new SenseParser(definition, parseOptions)))
+            // ACT
+            foreach (var senseParser in defs.Select(definition => new SenseParser(definition, ParseOptions.Default)))
             {
                 _ = senseParser.Parse();
             }
@@ -65,9 +64,9 @@ namespace MerriamWebster.NET.Tests.Parsing
         public void SenseParser_CanParse_Pueblo()
         {
             var defs = LoadDefinitions("pueblo");
-            var parseOptions = new ParseOptions();
 
-            foreach (var senseParser in defs.Select(definition => new SenseParser(definition, parseOptions)))
+            // ACT
+            foreach (var senseParser in defs.Select(definition => new SenseParser(definition, ParseOptions.Default)))
             {
                 _ = senseParser.Parse();
             }
@@ -77,9 +76,9 @@ namespace MerriamWebster.NET.Tests.Parsing
         public void SenseParser_CanParse_Quedar()
         {
             var defs = LoadDefinitions("quedar");
-            var parseOptions = new ParseOptions();
 
-            foreach (var senseParser in defs.Select(definition => new SenseParser(definition, parseOptions)))
+            // ACT
+            foreach (var senseParser in defs.Select(definition => new SenseParser(definition, ParseOptions.Default)))
             {
                 _ = senseParser.Parse();
             }
@@ -89,12 +88,28 @@ namespace MerriamWebster.NET.Tests.Parsing
         public void SenseParser_CanParse_Abarrotado()
         {
             var defs = LoadDefinitions("abarrotado");
-            var parseOptions = new ParseOptions();
 
-            foreach (var senseParser in defs.Select(definition => new SenseParser(definition, parseOptions)))
+            // ACT
+            foreach (var senseParser in defs.Select(definition => new SenseParser(definition, ParseOptions.Default)))
             {
                 _ = senseParser.Parse();
             }
+        }
+
+        [TestMethod]
+        public void SenseParser_CanParseSense_Above()
+        {
+            var content = TestHelper.LoadResponseFromFile("sense_above");
+            var def = JsonConvert.DeserializeObject<Definition>(content, Converter.Settings);
+            var senseParser = new SenseParser(def, ParseOptions.Default);
+
+            // ACT
+            var result = senseParser.Parse();
+
+            // ASSERT
+            result.Count.ShouldBe(4);
+            result.Select(s=>s.Text).ShouldAllBe(t=> !t.Contains("{wi}"));
+            result.SelectMany(s => s.Examples).ShouldAllBe(e => !e.Sentence.Contains("{wi}"));
         }
 
         private IEnumerable<Definition> LoadDefinitions(string fileName)

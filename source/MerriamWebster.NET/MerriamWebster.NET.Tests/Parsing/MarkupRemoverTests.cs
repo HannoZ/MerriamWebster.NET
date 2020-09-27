@@ -44,6 +44,18 @@ namespace MerriamWebster.NET.Tests.Parsing
         }
 
         [TestMethod]
+        public void MarkupRemover_Remove_Wi()
+        {
+            string input = "A sergeant is {wi}above{/wi} a corporal.";
+
+            // ACT
+            var output = MarkupRemover.RemoveMarkupFromString(input);
+
+            // ASSERT
+            output.ShouldBe("A sergeant is above a corporal.");
+        }
+
+        [TestMethod]
         public void MarkupRemover_Remove_Sc()
         {
             string input = "This is {sc}some{/sc} text";
