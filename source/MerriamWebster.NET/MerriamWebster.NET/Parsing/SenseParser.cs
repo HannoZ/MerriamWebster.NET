@@ -42,9 +42,15 @@ namespace MerriamWebster.NET.Parsing
 
                         sense.Synonyms = SynonymsParser.ExtractSynonyms(definitionText);
                         sense.RawText = definitionText;
+                        foreach (var synonym in sense.Synonyms)
+                        {
+                            definitionText = definitionText.Replace(synonym, "");
+                        }
+
                         sense.Text = _parseOptions.RemoveMarkup
                             ? MarkupRemover.RemoveMarkupFromString(definitionText)
                             : definitionText;
+                        
                     }
 
                     // the vis (verbal illustrations) element contains examples 

@@ -209,7 +209,7 @@
             "hilas",
             "hila",
             "hilamos",
-            "hil·is",
+            "hil√°is",
             "hilan"
           ]
         },
@@ -219,7 +219,7 @@
             "hilaba",
             "hilabas",
             "hilaba",
-            "hil·bamos",
+            "hil√°bamos",
             "hilabais",
             "hilaban"
           ]
@@ -227,9 +227,9 @@
         {
           "cjid": "pprf",
           "cjfs": [
-            "hilÈ",
+            "hil√©",
             "hilaste",
-            "hilÛ",
+            "hil√≥
             "hilamos",
             "hilasteis",
             "hilaron"
@@ -238,23 +238,23 @@
         {
           "cjid": "futr",
           "cjfs": [
-            "hilarÈ",
-            "hilar·s",
-            "hilar·",
+            "hilar√©",
+            "hilar√°s",
+            "hilar√°",
             "hilaremos",
-            "hilarÈis",
-            "hilar·n"
+            "hilar√©is",
+            "hilar√°n"
           ]
         },
         {
           "cjid": "cond",
           "cjfs": [
-            "hilarÌa",
-            "hilarÌas",
-            "hilarÌa",
-            "hilarÌamos",
-            "hilarÌais",
-            "hilarÌan"
+            "hilar√≠a",
+            "hilar√≠as",
+            "hilar√≠a",
+            "hilar√≠amos",
+            "hilar√≠ais",
+            "hilar√≠an"
           ]
         },
         {
@@ -264,7 +264,7 @@
             "hiles",
             "hile",
             "hilemos",
-            "hilÈis",
+            "hil√©is",
             "hilen"
           ]
         },
@@ -274,7 +274,7 @@
             "hilara",
             "hilaras",
             "hilara",
-            "hil·ramos",
+            "hil√°ramos",
             "hilarais",
             "hilaran"
           ]
@@ -285,7 +285,7 @@
             "hilase",
             "hilases",
             "hilase",
-            "hil·semos",
+            "hil√°semos",
             "hilaseis",
             "hilasen"
           ]
@@ -296,7 +296,7 @@
             "hilare",
             "hilares",
             "hilare",
-            "hil·remos",
+            "hil√°remos",
             "hilareis",
             "hilaren"
           ]
@@ -308,19 +308,19 @@
             "has hilado",
             "ha hilado",
             "hemos hilado",
-            "habÈis hilado",
+            "hab√©is hilado",
             "han hilado"
           ]
         },
         {
           "cjid": "ppsi",
           "cjfs": [
-            "habÌa hilado",
-            "habÌas hilado",
-            "habÌa hilado",
-            "habÌamos hilado",
-            "habÌais hilado",
-            "habÌan hilado"
+            "hab√≠a hilado",
+            "hab√≠as hilado",
+            "hab√≠a hilado",
+            "hab√≠amos hilado",
+            "hab√≠ais hilado",
+            "hab√≠an hilado"
           ]
         },
         {
@@ -337,23 +337,23 @@
         {
           "cjid": "fpin",
           "cjfs": [
-            "habrÈ hilado",
-            "habr·s hilado",
-            "habr· hilado",
+            "habr√© hilado",
+            "habr√°s hilado",
+            "habr√° hilado",
             "habremos hilado",
-            "habrÈis hilado",
-            "habr·n hilado"
+            "habr√°is hilado",
+            "habr√°n hilado"
           ]
         },
         {
           "cjid": "cpef",
           "cjfs": [
-            "habrÌa hilado",
-            "habrÌas hilado",
-            "habrÌa hilado",
-            "habrÌamos hilado",
-            "habrÌais hilado",
-            "habrÌan hilado"
+            "habr√≠a hilado",
+            "habr√≠as hilado",
+            "habr√≠a hilado",
+            "habr√≠amos hilado",
+            "habr√≠ais hilado",
+            "habr√≠an hilado"
           ]
         },
         {
@@ -363,7 +363,7 @@
             "hayas hilado",
             "haya hilado",
             "hayamos hilado",
-            "hay·is hilado",
+            "hay√°is hilado",
             "hayan hilado"
           ]
         },
@@ -373,7 +373,7 @@
             "hubiera hilado",
             "hubieras hilado",
             "hubiera hilado",
-            "hubiÈramos hilado",
+            "hubi√©ramos hilado",
             "hubierais hilado",
             "hubieran hilado"
           ]
@@ -384,7 +384,7 @@
             "hubiese hilado",
             "hubieses hilado",
             "hubiese hilado",
-            "hubiÈsemos hilado",
+            "hubi√©semos hilado",
             "hubieseis hilado",
             "hubiesen hilado"
           ]
@@ -395,7 +395,7 @@
             "hubiere hilado",
             "hubieres hilado",
             "hubiere hilado",
-            "hubiÈremos hilado",
+            "hubi√©remos hilado",
             "hubiereis hilado",
             "hubieren hilado"
           ]

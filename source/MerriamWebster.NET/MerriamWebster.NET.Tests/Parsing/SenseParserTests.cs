@@ -112,6 +112,19 @@ namespace MerriamWebster.NET.Tests.Parsing
             result.SelectMany(s => s.Examples).ShouldAllBe(e => !e.Sentence.Contains("{wi}"));
         }
 
+        [TestMethod]
+        public void SenseParser_SynonymsNotInText()
+        {
+            var defs = LoadDefinitions("pueblo");
+
+            // ACT
+            foreach (var senseParser in defs.Select(definition => new SenseParser(definition, ParseOptions.Default)))
+            {
+                var senses = senseParser.Parse();
+                senses.ShouldAllBe(s=> !s.Text.Contains(":"));
+            }
+        }
+
         private IEnumerable<Definition> LoadDefinitions(string fileName)
         {
             var content = TestHelper.LoadResponseFromFile(fileName);
