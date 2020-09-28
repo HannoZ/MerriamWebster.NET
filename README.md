@@ -1,4 +1,4 @@
-![Build & Test](https://github.com/HannoZ/MerriamWebster.NET/workflows/Build%20&%20Test/badge.svg)
+![Build Test Package](https://github.com/HannoZ/MerriamWebster.NET/workflows/Build%20Test%20Package/badge.svg)
 
 # MerriamWebster.NET
 A .NET client wrapper and object parser for Merriam-Webster's APIs. Only tested with the Spanish-English dictionary, but it should also work for the other APIs that are available. 
