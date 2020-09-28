@@ -13,7 +13,7 @@
     <RepositoryType>Public</RepositoryType>
     <PackageTags>Merriam-Webster dictionary thesaurus</PackageTags>
     <PackageReleaseNotes>See project readme for further details.</PackageReleaseNotes>
-    <Version>1.1</Version>
+    <Version>1.1.1</Version>
     <AssemblyVersion>1.1.1.0</AssemblyVersion>
     <FileVersion>1.1.1.0</FileVersion>
   </PropertyGroup>
