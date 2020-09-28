@@ -12,10 +12,10 @@
     <RepositoryUrl>https://github.com/HannoZ/MerriamWebster.NET</RepositoryUrl>
     <RepositoryType>Public</RepositoryType>
     <PackageTags>Merriam-Webster dictionary thesaurus</PackageTags>
-    <PackageReleaseNotes>Initial version. See project readme for further details.</PackageReleaseNotes>
+    <PackageReleaseNotes>See project readme for further details.</PackageReleaseNotes>
     <Version>1.1</Version>
-    <AssemblyVersion>1.1.0.0</AssemblyVersion>
-    <FileVersion>1.1.0.0</FileVersion>
+    <AssemblyVersion>1.1.1.0</AssemblyVersion>
+    <FileVersion>1.1.1.0</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>
