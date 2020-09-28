@@ -4,7 +4,7 @@ using MerriamWebster.NET.Dto;
 
 namespace MerriamWebster.NET.Parsing
 {
-    public class SummaryHelper
+    public static class SummaryHelper
     {
         public static string CreateSummary(string searchText, ICollection<Entry> results)
         {

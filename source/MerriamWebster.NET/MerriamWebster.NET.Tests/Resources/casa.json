@@ -9,7 +9,7 @@
       "stems": [
         "casa",
         "casa de cambio",
-        "casa de empeños",
+        "casa de empeÃ±os",
         "casa de (altos) estudios",
         "casa de salud",
         "casa matriz",
@@ -173,7 +173,7 @@
                 "sn": "7",
                 "vrs": [
                   {
-                    "va": "casa de empeños"
+                    "va": "casa de empeÃ±os"
                   }
                 ],
                 "dt": [
@@ -408,8 +408,8 @@
         "gastos de seguro",
         "gastos de la casa",
         "gastos de viaje",
-        "gastos de envío",
-        "gasto público"
+        "gastos de envÃ­o",
+        "gasto pÃºblico"
       ],
       "offensive": false
     },
@@ -557,7 +557,7 @@
                 "sn": "8",
                 "vrs": [
                   {
-                    "va": "gastos de envío"
+                    "va": "gastos de envÃ­o"
                   }
                 ],
                 "dt": [
@@ -576,7 +576,7 @@
                 "sn": "9",
                 "vrs": [
                   {
-                    "va": "gasto público"
+                    "va": "gasto pÃºblico"
                   }
                 ],
                 "dt": [
