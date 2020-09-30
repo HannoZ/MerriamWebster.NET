@@ -1,3 +1,5 @@
+1.1.1 - Fix for synonyms, they are now removed from text
+
 1.1 - Contains breaking changes: Renamed some properties: 
 
 - `Dto.Sense.RawTranslation` -> `Dto.Sense.RawText`
