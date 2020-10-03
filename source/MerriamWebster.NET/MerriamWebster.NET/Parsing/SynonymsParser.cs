@@ -21,7 +21,7 @@ namespace MerriamWebster.NET.Parsing
                 throw new ArgumentNullException(nameof(input));
             }
 
-            List<string> results = new List<string>();
+            var results = new List<string>();
             var matches = SynonymsRegex.Matches(input);
             foreach (Match match in matches)
             {

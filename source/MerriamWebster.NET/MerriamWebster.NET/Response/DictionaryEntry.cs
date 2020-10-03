@@ -45,7 +45,8 @@ namespace MerriamWebster.NET.Response
 
         [JsonProperty("ins", NullValueHandling = NullValueHandling.Ignore)]
         public Inflection[] Inflections { get; set; }
+
         [JsonProperty("xrs", NullValueHandling = NullValueHandling.Ignore)]
-        public CrossReference[][] CrossReferences { get; set; }
+        public CrossReference[][] CrossReferences { get; set; } = { };
     }
 }

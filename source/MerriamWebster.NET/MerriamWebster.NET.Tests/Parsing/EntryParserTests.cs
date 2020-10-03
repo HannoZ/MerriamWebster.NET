@@ -7,6 +7,7 @@ using Moq.AutoMock;
 using Newtonsoft.Json;
 using Shouldly;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace MerriamWebster.NET.Tests.Parsing
@@ -73,6 +74,38 @@ namespace MerriamWebster.NET.Tests.Parsing
         }
 
         [TestMethod]
+        public async Task EntryParser_CanParse_Hilar()
+        {
+            var data = LoadData("hilar");
+
+            _mocker.GetMock<IMerriamWebsterClient>()
+                .Setup(m => m.GetDictionaryEntry(It.IsAny<string>(), It.IsAny<string>()))
+                .ReturnsAsync(data);
+
+            // ACT 
+            var result = await _entryParser.GetAndParseAsync("api", "hilar");
+
+            // ASSERT
+            result.Entries.Count.ShouldBe(2);
+        }
+
+        [TestMethod]
+        public async Task EntryParser_CanParse_Robot()
+        {
+            var data = LoadData("robot");
+
+            _mocker.GetMock<IMerriamWebsterClient>()
+                .Setup(m => m.GetDictionaryEntry(It.IsAny<string>(), It.IsAny<string>()))
+                .ReturnsAsync(data);
+
+            // ACT 
+            var result = await _entryParser.GetAndParseAsync("api", "robot");
+
+            // ASSERT
+            result.Entries.ShouldNotBeEmpty();
+        }
+
+        [TestMethod]
         public async Task EntryParser_CanParse_Estar()
         {
             var data = LoadData("estar");
@@ -86,6 +119,7 @@ namespace MerriamWebster.NET.Tests.Parsing
 
             // ASSERT
             result.Entries.ShouldNotBeEmpty();
+            result.AdditionalResults.ShouldNotBeEmpty();
         }
 
         [TestMethod]
@@ -151,6 +185,7 @@ namespace MerriamWebster.NET.Tests.Parsing
 
             // ASSERT
             result.Entries.ShouldNotBeEmpty();
+            result.AdditionalResults.ShouldNotBeEmpty();
         }
 
         [TestMethod]
@@ -167,6 +202,8 @@ namespace MerriamWebster.NET.Tests.Parsing
 
             // ASSERT
             result.Entries.Count.ShouldBe(2);
+            result.Entries.ShouldContain(e=>e.CrossReferences.Any());
+
         }
 
         private static IEnumerable<DictionaryEntry> LoadData(string fileName)

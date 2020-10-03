@@ -1,16 +1,15 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using MerriamWebster.NET.Dto;
-using MerriamWebster.NET.Response;
 
 namespace MerriamWebster.NET.Parsing
 {
     public class SenseParser
     {
-        private readonly Definition _def;
+        private readonly Response.Definition _def;
         private readonly ParseOptions _parseOptions;
         
-        public SenseParser(Definition def, ParseOptions parseOptions)
+        public SenseParser(Response.Definition def, ParseOptions parseOptions)
         {
             _def = def;
             _parseOptions = parseOptions;
@@ -40,7 +39,7 @@ namespace MerriamWebster.NET.Parsing
                         var definition = definingTextObjects.FirstOrDefault(d => d.TypeOrText != "text");
                         string definitionText = definition.TypeOrText;
 
-                        sense.Synonyms = SynonymsParser.ExtractSynonyms(definitionText);
+                        sense.Synonyms = SynonymsParser.ExtractSynonyms(definitionText).ToList();
                         sense.RawText = definitionText;
                         foreach (var synonym in sense.Synonyms)
                         {
@@ -50,7 +49,6 @@ namespace MerriamWebster.NET.Parsing
                         sense.Text = _parseOptions.RemoveMarkup
                             ? MarkupRemover.RemoveMarkupFromString(definitionText)
                             : definitionText;
-                        
                     }
 
                     // the vis (verbal illustrations) element contains examples 
@@ -72,7 +70,8 @@ namespace MerriamWebster.NET.Parsing
                     }
                 }
 
-                if (sourceSence.Variants?.Any() == true)
+                // variants contain an alternative spelling or different way of using the sense and can be treated as examples
+                if (sourceSence.Variants.Any())
                 {
                     foreach (var variant in sourceSence.Variants)
                     {
@@ -80,6 +79,18 @@ namespace MerriamWebster.NET.Parsing
                         {
                             RawSentence = variant.Text,
                             Sentence = _parseOptions.RemoveMarkup ? MarkupRemover.RemoveMarkupFromString(variant.Text) : variant.Text
+                        });
+                    }
+                }
+
+                if (sourceSence.CrossReferences.Any())
+                {
+                    foreach (var crossReference in sourceSence.CrossReferences.SelectMany(cr=> cr))
+                    {
+                        sense.CrossReferences.Add(new CrossReference
+                        {
+                            Target = crossReference.Target,
+                            Text = crossReference.Text
                         });
                     }
                 }

@@ -14,6 +14,7 @@ namespace MerriamWebster.NET.Dto
         /// </summary>
         public string Text { get; set; }
         public ICollection<Example> Examples { get; set; } = new List<Example>();
-        public IEnumerable<string> Synonyms { get; set; } = new List<string>(); 
+        public ICollection<string> Synonyms { get; set; } = new List<string>(); 
+        public ICollection<CrossReference> CrossReferences { get; set; } = new List<CrossReference>();
     }
 }

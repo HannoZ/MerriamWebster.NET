@@ -20,8 +20,7 @@ namespace MerriamWebster.NET.Response
         [JsonProperty("section")]
         public string Section { get; set; }
 
-        [JsonProperty("stems")]
-        public string[] Stems { get; set; }
+        [JsonProperty("stems")] public string[] Stems { get; set; } = { };
 
         [JsonProperty("offensive")]
         public bool Offensive { get; set; }
