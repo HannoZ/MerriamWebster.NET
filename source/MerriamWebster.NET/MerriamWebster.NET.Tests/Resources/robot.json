@@ -1,0 +1,129 @@
+[
+  {
+    "meta": {
+      "id": "robot",
+      "uuid": "9975899c-2713-40b1-b8f8-317e43cd3215",
+      "lang": "en",
+      "src": "spanish",
+      "section": "alpha",
+      "stems": [
+        "robot",
+        "robots",
+        "robotism",
+        "robotisms",
+        "robotic"
+      ],
+      "offensive": false
+    },
+    "hwi": {
+      "hw": "robot",
+      "prs": [
+        {
+          "mw": "ˈroːˌbɑt",
+          "sound": {
+            "audio": "robot001"
+          }
+        },
+        {
+          "mw": "-bət"
+        }
+      ]
+    },
+    "fl": "noun",
+    "def": [
+      {
+        "sseq": [
+          [
+            [
+              "sense",
+              {
+                "dt": [
+                  [
+                    "text",
+                    "{bc}robot "
+                  ],
+                  [
+                    "gl",
+                    "masculine"
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      }
+    ],
+    "uros": [
+      {
+        "ure": "robotic",
+        "prs": [
+          {
+            "mw": "roˈbɑ̬ɪk"
+          }
+        ],
+        "fl": "adjective"
+      }
+    ],
+    "shortdef": [
+      "robot"
+    ]
+  },
+  {
+    "meta": {
+      "id": "robot",
+      "uuid": "41ce4292-79e2-4eca-82a3-9bb909168f92",
+      "lang": "es",
+      "src": "spanish",
+      "section": "alpha",
+      "stems": [
+        "robot",
+        "robots",
+        "robótico",
+        "robótica"
+      ],
+      "offensive": false
+    },
+    "hwi": {
+      "hw": "robot"
+    },
+    "fl": "masculine noun",
+    "ins": [
+      {
+        "il": "plural",
+        "if": "robots"
+      }
+    ],
+    "def": [
+      {
+        "sseq": [
+          [
+            [
+              "sense",
+              {
+                "dt": [
+                  [
+                    "text",
+                    "{bc}robot"
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      }
+    ],
+    "uros": [
+      {
+        "ure": "robótico",
+        "aure": {
+          "urec": "-ca",
+          "ure": "robótica"
+        },
+        "fl": "adjective"
+      }
+    ],
+    "shortdef": [
+      "robot"
+    ]
+  }
+]

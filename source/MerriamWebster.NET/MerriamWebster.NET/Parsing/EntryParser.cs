@@ -1,9 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using MerriamWebster.NET.Dto;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using MerriamWebster.NET.Dto;
 using MerriamWebster.NET.Response;
 using Conjugation = MerriamWebster.NET.Dto.Conjugation;
+using CrossReference = MerriamWebster.NET.Dto.CrossReference;
 using Pronunciation = MerriamWebster.NET.Dto.Pronunciation;
 
 namespace MerriamWebster.NET.Parsing
@@ -11,7 +12,7 @@ namespace MerriamWebster.NET.Parsing
     public class EntryParser : IEntryParser
     {
         private readonly IMerriamWebsterClient _client;
-        
+
         public EntryParser(IMerriamWebsterClient client)
         {
             _client = client;
@@ -38,61 +39,96 @@ namespace MerriamWebster.NET.Parsing
                     continue;
                 }
 
-                var searchResult = new Entry
-                {
-                    Id = result.Metadata.Id,
-                    Text = result.HeadwordInformation.Headword,
-                    Pos = result.FunctionalLabel ?? string.Empty
-                };
-                
+                var searchResult = CreateSearchResult(options, result);
+
+                // parse definitions
                 foreach (var def in result.Definitions)
                 {
-                    foreach (var pronunciation in result.HeadwordInformation.Pronunciations)
-                    {
-                        var pron = new Pronunciation
-                        {
-                            WrittenPronunciation = pronunciation.WrittenPronunciation,
-                            AudioLink = AudioLinkCreator.CreateLink(result.Metadata.Lang, pronunciation.Sound, options.AudioFormat)
-                        };
-                        searchResult.Pronunciations.Add(pron);
-                    }
-
                     if (def.VerbDivider != null)
                     {
-                        searchResult.Pos = def.VerbDivider;
-                    }
+                        // verb divider indicates an entry that we should treat separately
+                        var extraResult = CreateSearchResult(options, result);
+                        extraResult.Pos = def.VerbDivider;
+                        var senseParser = new SenseParser(def, options);
+                        var senses = senseParser.Parse();
+                        extraResult.Senses = new List<Sense>(senses);
 
-                    if (searchResult.Pos.StartsWith("feminine"))
+                        resultModel.Entries.Add(extraResult);
+                    }
+                    else
                     {
-                        searchResult.Gender = "feminine";
-                        searchResult.Pos = searchResult.Pos.Replace("feminine", "").TrimStart();
+                        var senseParser = new SenseParser(def, options);
+                        var senses = senseParser.Parse();
+                        searchResult.Senses = new List<Sense>(senses);
                     }
-                    else if (searchResult.Pos.StartsWith("masculine"))
-                    {
-                        searchResult.Gender = "masculine";
-                        searchResult.Pos = searchResult.Pos.Replace("masculine", "").TrimStart();
-                    }
-
-                    searchResult.Stems = result.Metadata.Stems;
-
-                    var senseParser = new SenseParser(def, options);
-                    var senses = senseParser.Parse();
-                    searchResult.Senses = new List<Sense>(senses);
-
-                    var conjugation = ParseConjugations(result.Supplemental);
-                    searchResult.Conjugations = conjugation;
                 }
 
+                // we're done with this search result, add to collection
                 resultModel.Entries.Add(searchResult);
 
+                // parse and add any additional results (they appear in the 'DefinedRunOns' ('dro') property)
                 var additionalResults = ParseDros(result.DefinedRunOns, options);
                 foreach (var additionalResult in additionalResults)
                 {
-                    resultModel.Entries.Add(additionalResult);
+                    resultModel.AdditionalResults.Add(additionalResult);
                 }
             }
-            
+
             return resultModel;
+        }
+
+        private static Entry CreateSearchResult(ParseOptions options, DictionaryEntry result)
+        {
+            var searchResult = new Entry
+            {
+                Id = result.Metadata.Id,
+                Text = result.HeadwordInformation.Headword,
+                Pos = result.FunctionalLabel ?? string.Empty,
+                Stems = result.Metadata.Stems
+            };
+
+            ParseBasicStuff(options, result, searchResult);
+
+            searchResult.Conjugations = ParseConjugations(result.Supplemental);
+            searchResult.CrossReferences = ParseCrossReferences(result).ToList();
+
+            return searchResult;
+        }
+
+        private static void ParseBasicStuff(ParseOptions options, DictionaryEntry result, Entry searchResult)
+        {
+            foreach (var pronunciation in result.HeadwordInformation.Pronunciations)
+            {
+                var pron = new Pronunciation
+                {
+                    WrittenPronunciation = pronunciation.WrittenPronunciation,
+                    AudioLink = AudioLinkCreator.CreateLink(result.Metadata.Lang, pronunciation.Sound, options.AudioFormat)
+                };
+                searchResult.Pronunciations.Add(pron);
+            }
+
+            if (searchResult.Pos.StartsWith("feminine"))
+            {
+                searchResult.Gender = "feminine";
+                searchResult.Pos = searchResult.Pos.Replace("feminine", "").TrimStart();
+            }
+            else if (searchResult.Pos.StartsWith("masculine"))
+            {
+                searchResult.Gender = "masculine";
+                searchResult.Pos = searchResult.Pos.Replace("masculine", "").TrimStart();
+            }
+        }
+
+        private static IEnumerable<CrossReference> ParseCrossReferences(DictionaryEntry result)
+        {
+            foreach (var crossReference in result.CrossReferences.SelectMany(cr => cr))
+            {
+                yield return new CrossReference
+                {
+                    Target = crossReference.Target,
+                    Text = crossReference.Text
+                };
+            }
         }
 
         private static IEnumerable<Entry> ParseDros(DefinedRunOn[] dros, ParseOptions parseOptions)
@@ -105,7 +141,7 @@ namespace MerriamWebster.NET.Parsing
 
             foreach (var dro in dros)
             {
-                var searchResult = new Entry {Text = dro.Drp, Pos = dro.Fl};
+                var searchResult = new Entry { Text = dro.Drp, Pos = dro.Fl };
 
                 foreach (var droDef in dro.Def)
                 {
@@ -120,7 +156,7 @@ namespace MerriamWebster.NET.Parsing
             return searchResults;
         }
 
-        private static Conjugations ParseConjugations(Supplemental supplemental)
+        private static Conjugations ParseConjugations(Response.Supplemental supplemental)
         {
             if (supplemental == null)
             {

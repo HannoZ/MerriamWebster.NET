@@ -14,6 +14,7 @@ namespace MerriamWebster.NET.Dto
         public string Gender { get; set; }
         public ICollection<Sense> Senses { get; set; } = new List<Sense>();
         public Conjugations Conjugations { get; set; }
+        public ICollection<CrossReference> CrossReferences { get; set; } = new List<CrossReference>();
         public string Summary => string.Join(", ", Senses.Select(s => s.Text));
     }
 }

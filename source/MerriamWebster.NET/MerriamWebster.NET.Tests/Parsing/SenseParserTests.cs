@@ -109,6 +109,30 @@ namespace MerriamWebster.NET.Tests.Parsing
         }
 
         [TestMethod]
+        public void SenseParser_CanParse_Hilar()
+        {
+            var defs = LoadDefinitions("hilar");
+
+            // ACT
+            foreach (var senseParser in defs.Select(definition => new SenseParser(definition, ParseOptions.Default)))
+            {
+                _ = senseParser.Parse();
+            }
+        }
+
+        [TestMethod]
+        public void SenseParser_CanParse_Robot()
+        {
+            var defs = LoadDefinitions("robot");
+
+            // ACT
+            foreach (var senseParser in defs.Select(definition => new SenseParser(definition, ParseOptions.Default)))
+            {
+                _ = senseParser.Parse();
+            }
+        }
+
+        [TestMethod]
         public void SenseParser_CanParseSense_Above()
         {
             var content = TestHelper.LoadResponseFromFile("sense_above");

@@ -11,14 +11,18 @@
     <None Remove="Resources\casa.json" />
     <None Remove="Resources\delgado.json" />
     <None Remove="Resources\estar.json" />
+    <None Remove="Resources\hilar.json" />
     <None Remove="Resources\house.json" />
     <None Remove="Resources\pueblo.json" />
     <None Remove="Resources\quedar.json" />
+    <None Remove="Resources\robot.json" />
     <None Remove="Resources\sense_above.json" />
     <None Remove="Resources\sierra.json" />
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Resources\robot.json" />
+    <EmbeddedResource Include="Resources\hilar.json" />
     <EmbeddedResource Include="Resources\sierra.json" />
     <EmbeddedResource Include="Resources\abarrotado.json" />
     <EmbeddedResource Include="Resources\casa.json" />

@@ -7,6 +7,7 @@ namespace MerriamWebster.NET.Dto
     {
         public string SearchText { get; set; }
         public ICollection<Entry> Entries { get; set; } = new List<Entry>();
+        public ICollection<Entry> AdditionalResults { get; set; } = new List<Entry>();
         public string Summary => SummaryHelper.CreateSummary(SearchText, Entries);
     }
 }
