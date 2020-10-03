@@ -1,8 +1,6 @@
 name: Build & Test
 
 on:
-  push:
-    branches: [ master ]    
   pull_request:
     branches: [ master ]
 
@@ -23,9 +21,3 @@ jobs:
       run: dotnet build ./source/MerriamWebster.NET/MerriamWebster.NET.sln --configuration Release --no-restore
     - name: Test
       run: dotnet test ./source/MerriamWebster.NET/MerriamWebster.NET.sln --no-restore --verbosity normal
-    - name: Publish to Nuget
-      uses: brandedoutcast/publish-nuget@v2.5.2
-      with: 
-          PROJECT_FILE_PATH: ./source/MerriamWebster.NET/MerriamWebster.NET/MerriamWebster.NET.csproj
-          NUGET_KEY: ${{secrets.NUGET_API_KEY}}
-    
