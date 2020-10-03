@@ -153,6 +153,22 @@ namespace MerriamWebster.NET.Tests.Parsing
             result.Entries.ShouldNotBeEmpty();
         }
 
+        [TestMethod]
+        public async Task EntryParser_CanParse_Sierra()
+        {
+            var data = LoadData("sierra");
+
+            _mocker.GetMock<IMerriamWebsterClient>()
+                .Setup(m => m.GetDictionaryEntry(It.IsAny<string>(), It.IsAny<string>()))
+                .ReturnsAsync(data);
+
+            // ACT 
+            var result = await _entryParser.GetAndParseAsync("api", "sierra");
+
+            // ASSERT
+            result.Entries.Count.ShouldBe(2);
+        }
+
         private static IEnumerable<DictionaryEntry> LoadData(string fileName)
         {
             var response = TestHelper.LoadResponseFromFile(fileName);
