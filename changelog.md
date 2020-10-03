@@ -1,3 +1,5 @@
+1.1.2 - Fix a nullreference exception that occurred when a DictionaryEntry didn't contain any definitions
+
 1.1.1 - Fix for synonyms, they are now removed from text
 
 1.1 - Contains breaking changes: Renamed some properties: 
