@@ -37,15 +37,16 @@ namespace MerriamWebster.NET.Parsing
                 {
                     continue;
                 }
+
+                var searchResult = new Entry
+                {
+                    Id = result.Metadata.Id,
+                    Text = result.HeadwordInformation.Headword,
+                    Pos = result.FunctionalLabel ?? string.Empty
+                };
+                
                 foreach (var def in result.Definitions)
                 {
-                    var searchResult = new Entry
-                    {
-                        Id = result.Metadata.Id,
-                        Text = result.HeadwordInformation.Headword,
-                        Pos = result.FunctionalLabel ?? string.Empty
-                    };
-
                     foreach (var pronunciation in result.HeadwordInformation.Pronunciations)
                     {
                         var pron = new Pronunciation
@@ -80,14 +81,14 @@ namespace MerriamWebster.NET.Parsing
 
                     var conjugation = ParseConjugations(result.Supplemental);
                     searchResult.Conjugations = conjugation;
-
-                    resultModel.Entries.Add(searchResult);
                 }
 
+                resultModel.Entries.Add(searchResult);
+
                 var additionalResults = ParseDros(result.DefinedRunOns, options);
-                foreach (var searchResult in additionalResults)
+                foreach (var additionalResult in additionalResults)
                 {
-                    resultModel.Entries.Add(searchResult);
+                    resultModel.Entries.Add(additionalResult);
                 }
             }
             

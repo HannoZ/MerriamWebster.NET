@@ -14,7 +14,7 @@ namespace MerriamWebster.NET.Response
         public string FunctionalLabel { get; set; }
 
         [JsonProperty("def")]
-        public Definition[] Definitions { get; set; }
+        public Definition[] Definitions { get; set; } = { };
 
         [JsonProperty("dros", NullValueHandling = NullValueHandling.Ignore)]
         public DefinedRunOn[] DefinedRunOns { get; set; }
@@ -45,5 +45,7 @@ namespace MerriamWebster.NET.Response
 
         [JsonProperty("ins", NullValueHandling = NullValueHandling.Ignore)]
         public Inflection[] Inflections { get; set; }
+        [JsonProperty("xrs", NullValueHandling = NullValueHandling.Ignore)]
+        public CrossReference[][] CrossReferences { get; set; }
     }
 }

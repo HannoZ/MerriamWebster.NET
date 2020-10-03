@@ -97,6 +97,18 @@ namespace MerriamWebster.NET.Tests.Parsing
         }
 
         [TestMethod]
+        public void SenseParser_CanParse_Sierra()
+        {
+            var defs = LoadDefinitions("sierra");
+
+            // ACT
+            foreach (var senseParser in defs.Select(definition => new SenseParser(definition, ParseOptions.Default)))
+            {
+                _ = senseParser.Parse();
+            }
+        }
+
+        [TestMethod]
         public void SenseParser_CanParseSense_Above()
         {
             var content = TestHelper.LoadResponseFromFile("sense_above");
@@ -125,7 +137,7 @@ namespace MerriamWebster.NET.Tests.Parsing
             }
         }
 
-        private IEnumerable<Definition> LoadDefinitions(string fileName)
+        private static IEnumerable<Definition> LoadDefinitions(string fileName)
         {
             var content = TestHelper.LoadResponseFromFile(fileName);
            

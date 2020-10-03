@@ -15,9 +15,11 @@
     <None Remove="Resources\pueblo.json" />
     <None Remove="Resources\quedar.json" />
     <None Remove="Resources\sense_above.json" />
+    <None Remove="Resources\sierra.json" />
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Resources\sierra.json" />
     <EmbeddedResource Include="Resources\abarrotado.json" />
     <EmbeddedResource Include="Resources\casa.json" />
     <EmbeddedResource Include="Resources\delgado.json" />
