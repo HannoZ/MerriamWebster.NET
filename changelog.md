@@ -1,7 +1,10 @@
-1.2 This version contains some improvements to parsing as well as some small optimizations
+1.2.1 This version contains some improvements to parsing as well as some small optimizations
 - CrossReferences are now parsed (on Entry and Sense). A cross reference points to a different entry that contains more detailed information
 - Additional results ('defined run-ons') are now placed in a separate collection, instead of being added to the Entries collection
 - A definition for a verb that contains a 'verb divider' (eg. 'transitive verb') is now added as a separate Entry to the Entries collection
+- 'Undefined run-ons' are now deserialized and parsed. They are added to a new property `EntryModel.UndefinedResults`
+- Language is added to the Entry class (only applies to the Spanish-English dictionary) 
+- Several properties in response classes have been renamed to a more appropriate name
 
 1.1.2 - Fix a nullreference exception that occurred when a DictionaryEntry didn't contain any definitions
 
