@@ -7,6 +7,7 @@ namespace MerriamWebster.NET.Dto
     {
         public string Id { get; set; }
         public string Text { get; set; }
+        public Language Language { get; set; }
         public string Pos { get; set; }
         public string SubCategory { get; set; }
         public ICollection<Pronunciation> Pronunciations { get; set; } = new List<Pronunciation>();

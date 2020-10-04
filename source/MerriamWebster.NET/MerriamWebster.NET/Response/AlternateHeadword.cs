@@ -12,5 +12,9 @@ namespace MerriamWebster.NET.Response
 
         [JsonProperty("hwc", NullValueHandling = NullValueHandling.Ignore)]
         public string HeadwordCutback { get; set; }
+
+        [JsonProperty("prs", NullValueHandling = NullValueHandling.Ignore)]
+        public Pronunciation[] Pronunciations { get; set; } = { };
+
     }
 }

@@ -7,6 +7,9 @@ namespace MerriamWebster.NET.Response
         [JsonProperty("il")]
         public string Label { get; set; }
 
+        [JsonProperty("prs", NullValueHandling = NullValueHandling.Ignore)]
+        public Pronunciation[] Pronunciations { get; set; } = { };
+
         [JsonProperty("ifc")]
         public string Cutback { get; set; }
 

@@ -16,6 +16,9 @@ namespace MerriamWebster.NET.Response
         [JsonProperty("va")]
         public string Text { get; set; }
 
+        [JsonProperty("prs", NullValueHandling = NullValueHandling.Ignore)]
+        public Pronunciation[] Pronunciations { get; set; } = { };
+
         /// <summary>
         /// Contains a cutback form of the preceding variant
         /// </summary>

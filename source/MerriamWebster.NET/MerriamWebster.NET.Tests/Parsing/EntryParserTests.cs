@@ -1,4 +1,5 @@
-﻿using MerriamWebster.NET.Parsing;
+﻿using MerriamWebster.NET.Dto;
+using MerriamWebster.NET.Parsing;
 using MerriamWebster.NET.Response;
 using MerriamWebster.NET.Response.JsonConverters;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -103,6 +104,11 @@ namespace MerriamWebster.NET.Tests.Parsing
 
             // ASSERT
             result.Entries.ShouldNotBeEmpty();
+            result.Entries.ShouldContain(e=>e.Language == Language.En);
+            result.Entries.ShouldContain(e => e.Language == Language.Es);
+
+            result.UndefinedResults.ShouldContain(e => e.Language == Language.En);
+            result.UndefinedResults.ShouldContain(e => e.Language == Language.Es);
         }
 
         [TestMethod]
@@ -149,6 +155,22 @@ namespace MerriamWebster.NET.Tests.Parsing
 
             // ACT 
             var result = await _entryParser.GetAndParseAsync("api", "pueblo");
+
+            // ASSERT
+            result.Entries.ShouldNotBeEmpty();
+        }
+
+        [TestMethod]
+        public async Task EntryParser_CanParse_Abeja()
+        {
+            var data = LoadData("abeja");
+
+            _mocker.GetMock<IMerriamWebsterClient>()
+                .Setup(m => m.GetDictionaryEntry(It.IsAny<string>(), It.IsAny<string>()))
+                .ReturnsAsync(data);
+
+            // ACT 
+            var result = await _entryParser.GetAndParseAsync("api", "abeja");
 
             // ASSERT
             result.Entries.ShouldNotBeEmpty();

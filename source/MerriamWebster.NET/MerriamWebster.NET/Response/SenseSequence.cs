@@ -14,8 +14,11 @@ namespace MerriamWebster.NET.Response
 
         [JsonProperty("xrs", NullValueHandling = NullValueHandling.Ignore)]
         public CrossReference[][] CrossReferences { get; set; } = { };
+        /// <summary>
+        /// A subject/status label describes the subject area (eg, "computing") or regional/usage status (eg, "British", "formal", "slang") of a headword or a particular sense of a headword.
+        /// </summary>
         [JsonProperty("sls", NullValueHandling = NullValueHandling.Ignore)]
-        public string[] StatusLabels { get; set; }
+        public string[] SubjectStatusLabels { get; set; } = { };
 
         [JsonProperty("ins", NullValueHandling = NullValueHandling.Ignore)]
         public Inflection[] Inflections { get; set; } = { };
