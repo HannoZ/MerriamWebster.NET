@@ -6,5 +6,7 @@ namespace MerriamWebster.NET.Response
     {
         [JsonProperty("audio")]
         public string Audio { get; set; }
+
+        // note: "ref" and "stat" members can be ignored
     }
 }

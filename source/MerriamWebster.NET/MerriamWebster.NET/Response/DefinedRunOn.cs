@@ -5,12 +5,15 @@ namespace MerriamWebster.NET.Response
     public class DefinedRunOn
     {
         [JsonProperty("drp")]
-        public string Drp { get; set; }
+        public string Phrase { get; set; }
 
         [JsonProperty("fl")]
-        public string Fl { get; set; }
+        public string FunctionalLabel { get; set; }
+
+        [JsonProperty("prs", NullValueHandling = NullValueHandling.Ignore)]
+        public Pronunciation[] Pronunciations { get; set; } = { };
 
         [JsonProperty("def")]
-        public Definition[] Def { get; set; }
+        public Definition[] Definitions { get; set; }
     }
 }

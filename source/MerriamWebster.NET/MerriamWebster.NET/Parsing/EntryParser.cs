@@ -2,10 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using MerriamWebster.NET.Response;
-using Conjugation = MerriamWebster.NET.Dto.Conjugation;
-using CrossReference = MerriamWebster.NET.Dto.CrossReference;
-using Pronunciation = MerriamWebster.NET.Dto.Pronunciation;
 
 namespace MerriamWebster.NET.Parsing
 {
@@ -72,19 +68,28 @@ namespace MerriamWebster.NET.Parsing
                 {
                     resultModel.AdditionalResults.Add(additionalResult);
                 }
+
+                // parse and add any 'undefined run-ons'
+                var undefinedResults = ParseUros(result, options);
+                foreach (var entry in undefinedResults)
+                {
+                    resultModel.UndefinedResults.Add(entry);
+                }
+
             }
 
             return resultModel;
         }
 
-        private static Entry CreateSearchResult(ParseOptions options, DictionaryEntry result)
+        private static Entry CreateSearchResult(ParseOptions options, Response.DictionaryEntry result)
         {
             var searchResult = new Entry
             {
                 Id = result.Metadata.Id,
                 Text = result.HeadwordInformation.Headword,
                 Pos = result.FunctionalLabel ?? string.Empty,
-                Stems = result.Metadata.Stems
+                Stems = result.Metadata.Stems,
+                Language = (Language)result.Metadata.Lang
             };
 
             ParseBasicStuff(options, result, searchResult);
@@ -95,7 +100,7 @@ namespace MerriamWebster.NET.Parsing
             return searchResult;
         }
 
-        private static void ParseBasicStuff(ParseOptions options, DictionaryEntry result, Entry searchResult)
+        private static void ParseBasicStuff(ParseOptions options, Response.DictionaryEntry result, Entry searchResult)
         {
             foreach (var pronunciation in result.HeadwordInformation.Pronunciations)
             {
@@ -119,7 +124,7 @@ namespace MerriamWebster.NET.Parsing
             }
         }
 
-        private static IEnumerable<CrossReference> ParseCrossReferences(DictionaryEntry result)
+        private static IEnumerable<CrossReference> ParseCrossReferences(Response.DictionaryEntry result)
         {
             foreach (var crossReference in result.CrossReferences.SelectMany(cr => cr))
             {
@@ -131,7 +136,7 @@ namespace MerriamWebster.NET.Parsing
             }
         }
 
-        private static IEnumerable<Entry> ParseDros(DefinedRunOn[] dros, ParseOptions parseOptions)
+        private static IEnumerable<Entry> ParseDros(Response.DefinedRunOn[] dros, ParseOptions parseOptions)
         {
             var searchResults = new List<Entry>();
             if (dros == null)
@@ -141,14 +146,50 @@ namespace MerriamWebster.NET.Parsing
 
             foreach (var dro in dros)
             {
-                var searchResult = new Entry { Text = dro.Drp, Pos = dro.Fl };
+                var searchResult = new Entry { Text = dro.Phrase, Pos = dro.FunctionalLabel };
 
-                foreach (var droDef in dro.Def)
+                foreach (var droDef in dro.Definitions)
                 {
                     var senseParser = new SenseParser(droDef, parseOptions);
                     var senses = senseParser.Parse();
                     searchResult.Senses = new List<Sense>(senses);
                 }
+
+                searchResults.Add(searchResult);
+            }
+
+            return searchResults;
+        }
+
+        private static IEnumerable<Entry> ParseUros(Response.DictionaryEntry entry, ParseOptions options)
+        {
+            var searchResults = new List<Entry>();
+
+            foreach (var uro in entry.UndefinedRunOns)
+            {
+                var searchResult = new Entry
+                {
+                    Text = uro.Ure,
+                    Pos = uro.FunctionalLabel,
+                    Language = (Language)entry.Metadata.Lang
+                };
+                searchResult.Stems.Add(uro.Ure);
+                if (uro.AlternateEntry?.Ure != null)
+                {
+                    searchResult.Stems.Add(uro.AlternateEntry.Ure);
+                }
+
+                foreach (var pronunciation in uro.Pronunciations)
+                {
+                    var pron = new Pronunciation
+                    {
+                        WrittenPronunciation = pronunciation.WrittenPronunciation,
+                        AudioLink = AudioLinkCreator.CreateLink(entry.Metadata.Lang, pronunciation.Sound, options.AudioFormat)
+                    };
+                    searchResult.Pronunciations.Add(pron);
+                }
+
+               
 
                 searchResults.Add(searchResult);
             }

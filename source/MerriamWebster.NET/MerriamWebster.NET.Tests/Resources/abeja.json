@@ -1,0 +1,48 @@
+[
+  {
+    "meta": {
+      "id": "abeja",
+      "uuid": "47203e2b-7fe8-44e7-bb59-c65e8d06f059",
+      "lang": "es",
+      "src": "spanish",
+      "section": "alpha",
+      "stems": [
+        "abeja"
+      ],
+      "offensive": false
+    },
+    "hwi": {
+      "hw": "abeja",
+      "prs": [
+        {
+          "sound": {
+            "audio": "abeja01sp"
+          }
+        }
+      ]
+    },
+    "fl": "feminine noun",
+    "def": [
+      {
+        "sseq": [
+          [
+            [
+              "sense",
+              {
+                "dt": [
+                  [
+                    "text",
+                    "{bc}{a_link|bee}"
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      }
+    ],
+    "shortdef": [
+      "bee"
+    ]
+  }
+]
