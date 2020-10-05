@@ -1,0 +1,75 @@
+[
+  {
+    "meta": {
+      "id": "dragon",
+      "uuid": "a3698d6d-b599-46b5-b267-b934a0d92cc1",
+      "src": "int_dict",
+      "section": "alpha",
+      "stems": [
+        "dragon",
+        "dragonish",
+        "dragons"
+      ],
+      "offensive": false
+    },
+    "hwi": {
+      "hw": "drag*on",
+      "prs": [
+        {
+          "mw": "ˈdrag-ən",
+          "sound": {
+            "audio": "dragon01"
+          }
+        }
+      ]
+    },
+    "fl": "noun",
+    "def": [
+      {
+        "sseq": [
+          [
+            [
+              "sense",
+              {
+                "sn": "1",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}an imaginary animal usually pictured as a huge serpent or lizard with wings and large claws"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "2",
+                "lbs": [
+                  "capitalized"
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}{sx|draco||}"
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      }
+    ],
+    "et": [
+      [
+        "text",
+        "Middle English {it}dragon{/it} {ldquo}dragon,{rdquo} from early French {it}dragun{/it} (same meaning), from Latin {it}dracon-, draco{/it} {ldquo}serpent, dragon,{rdquo} from Greek {it}drakōn{/it} {ldquo}serpent{rdquo} {dx_ety}related to {dxt|rankle||}{/dx_ety}"
+      ]
+    ],
+    "shortdef": [
+      "an imaginary animal usually pictured as a huge serpent or lizard with wings and large claws",
+      "draco"
+    ]
+  }
+]

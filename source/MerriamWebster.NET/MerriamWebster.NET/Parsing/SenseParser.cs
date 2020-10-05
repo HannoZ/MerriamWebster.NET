@@ -21,15 +21,15 @@ namespace MerriamWebster.NET.Parsing
 
             // this is where the magic happens. The actual senses are hidden deep inside a complex structure of multiple nested arrays.
             // code below extracts the data from there
-            var sourceSenses = _def.SenseSequenceObjects.SelectMany(ssObjs => ssObjs.Select(ssObjArray => ssObjArray))
-                .SelectMany(ssObjArray => ssObjArray)
-                .Where(sso => sso.SenseSequence != null)
-                .OrderBy(sso => sso.SenseSequence.SenseNumber)
-                .Select(sso => sso.SenseSequence)
-                .Where(ss => ss.DefiningTexts != null)
+            var sourceSenses = _def.SenseSequences.SelectMany(sseqs => sseqs.Select(sseq => sseq))
+                .SelectMany(sseqs => sseqs)
+                .Where(sseq => sseq.Sense != null)
+                .OrderBy(sseq => sseq.Sense.SenseNumber)
+                .Select(sseq => sseq.Sense)
+                .Where(s => s.DefiningTexts != null)
                 .ToList();
 
-            foreach (var sourceSence in sourceSenses.Where(ss => ss != null))
+            foreach (var sourceSence in sourceSenses.Where(s => s != null))
             {
                 var sense = new Sense();
                 foreach (var definingTextObjects in sourceSence.DefiningTexts)
@@ -49,22 +49,43 @@ namespace MerriamWebster.NET.Parsing
                         sense.Text = _parseOptions.RemoveMarkup
                             ? MarkupRemover.RemoveMarkupFromString(definitionText)
                             : definitionText;
+
+                        if (sourceSence.DividedSense != null)
+                        {
+                            foreach (var sdDefiningTextObject in sourceSence.DividedSense.DefiningTexts)
+                            {
+                                if (sdDefiningTextObject.Any(d => d.TypeOrText == "text"))
+                                {
+                                    var sdDef = sdDefiningTextObject.FirstOrDefault(d => d.TypeOrText != "text");
+                                    string sdText = $"{sourceSence.DividedSense.SenseDivider}: {sdDef.TypeOrText}" ;
+
+                                    sense.RawText += $"; {sdText}";
+                                    var text = _parseOptions.RemoveMarkup
+                                        ? MarkupRemover.RemoveMarkupFromString(sdText)
+                                        : sdText;
+                                    sense.Text += $"; {text}";
+                                }
+                            }
+                        }
                     }
 
                     // the vis (verbal illustrations) element contains examples 
                     if (definingTextObjects.Any(d => d.TypeOrText == "vis"))
                     {
-                        foreach (var dto in definingTextObjects.Where(to => to.DefiningTextArray != null))
+                        foreach (var dtWrapper in definingTextObjects.Where(to => to.DefiningTextArray != null))
                         {
-                            foreach (var definingText in dto.DefiningTextArray)
+                            foreach (var dto in dtWrapper.DefiningTextArray)
                             {
-                                var example = new Example
+                                if (dto.DefiningText != null)
                                 {
-                                    RawSentence = definingText.Text,
-                                    Sentence = _parseOptions.RemoveMarkup ? MarkupRemover.RemoveMarkupFromString(definingText.Text) : definingText.Text,
-                                    Translation = definingText.Translation
-                                };
-                                sense.Examples.Add(example);
+                                    var example = new Example
+                                    {
+                                        RawSentence = dto.DefiningText.Text,
+                                        Sentence = _parseOptions.RemoveMarkup ? MarkupRemover.RemoveMarkupFromString(dto.DefiningText.Text) : dto.DefiningText.Text,
+                                        Translation = dto.DefiningText.Translation
+                                    };
+                                    sense.Examples.Add(example);
+                                }
                             }
                         }
                     }

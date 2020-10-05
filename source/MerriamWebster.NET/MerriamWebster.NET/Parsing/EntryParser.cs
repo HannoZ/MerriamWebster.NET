@@ -89,7 +89,10 @@ namespace MerriamWebster.NET.Parsing
                 Text = result.HeadwordInformation.Headword,
                 Pos = result.FunctionalLabel ?? string.Empty,
                 Stems = result.Metadata.Stems,
-                Language = (Language)result.Metadata.Lang
+                Language = (Language) result.Metadata.Lang,
+                ShortDefs = result.Shortdefs,
+                Synonyms = result.Metadata.Synonyms.SelectMany(s => s).ToList(),
+                Antonyms = result.Metadata.Antonyms.SelectMany(s => s).ToList()
             };
 
             ParseBasicStuff(options, result, searchResult);
@@ -169,14 +172,14 @@ namespace MerriamWebster.NET.Parsing
             {
                 var searchResult = new Entry
                 {
-                    Text = uro.Ure,
+                    Text = uro.EntryWord,
                     Pos = uro.FunctionalLabel,
                     Language = (Language)entry.Metadata.Lang
                 };
-                searchResult.Stems.Add(uro.Ure);
-                if (uro.AlternateEntry?.Ure != null)
+                searchResult.Stems.Add(uro.EntryWord);
+                if (uro.AlternateEntry?.Text != null)
                 {
-                    searchResult.Stems.Add(uro.AlternateEntry.Ure);
+                    searchResult.Stems.Add(uro.AlternateEntry.Text);
                 }
 
                 foreach (var pronunciation in uro.Pronunciations)
@@ -199,7 +202,7 @@ namespace MerriamWebster.NET.Parsing
 
         private static Conjugations ParseConjugations(Response.Supplemental supplemental)
         {
-            if (supplemental == null)
+            if (supplemental?.Conjugations.Any() != true)
             {
                 return null;
             }

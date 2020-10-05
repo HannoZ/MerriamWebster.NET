@@ -54,6 +54,23 @@ namespace MerriamWebster.NET.Tests.Parsing
         }
 
         [TestMethod]
+        public void AudioLinkCreator_Undefined_DefaultSubdir_Mp3()
+        {
+            var sound = new Sound
+            {
+                Audio = "hello001"
+            };
+
+            // ACT
+            var link = AudioLinkCreator.CreateLink(Lang.Undefined, sound, AudioFormat.Mp3);
+
+            // ASSERT
+            var expected = new Uri(Configuration.MediaBaseAddres, "en/us/mp3/h/hello001.mp3");
+
+            link.ShouldBe(expected);
+        }
+
+        [TestMethod]
         public void AudioLinkCreator_Es_Bix_Mp3()
         {
             var sound = new Sound

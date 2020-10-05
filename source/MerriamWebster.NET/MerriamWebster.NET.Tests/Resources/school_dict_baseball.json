@@ -1,0 +1,58 @@
+﻿[
+  {
+    "meta": {
+      "id": "baseball",
+      "uuid": "5baf923f-d3d2-4f89-b222-379abca062ea",
+      "src": "sch_dict",
+      "section": "alpha",
+      "stems": [
+        "baseball",
+        "baseballs"
+      ],
+      "offensive": false
+    },
+    "hwi": {
+      "hw": "base*ball",
+      "prs": [
+        {
+          "mw": "ˈbās-ˌbȯl",
+          "sound": {
+            "audio": "baseba01"
+          }
+        }
+      ]
+    },
+    "fl": "noun",
+    "def": [
+      {
+        "sseq": [
+          [
+            [
+              "sense",
+              {
+                "dt": [
+                  [
+                    "text",
+                    "{bc}a game played with a bat and ball between two teams of nine players each on a field with four bases that mark the course a runner must take to score"
+                  ]
+                ],
+                "sdsense": {
+                  "sd": "also",
+                  "dt": [
+                    [
+                      "text",
+                      "{bc}the ball used in this game"
+                    ]
+                  ]
+                }
+              }
+            ]
+          ]
+        ]
+      }
+    ],
+    "shortdef": [
+      "a game played with a bat and ball between two teams of nine players each on a field with four bases that mark the course a runner must take to score; also : the ball used in this game"
+    ]
+  }
+]

@@ -10,21 +10,43 @@
     <None Remove="Resources\abarrotado.json" />
     <None Remove="Resources\abeja.json" />
     <None Remove="Resources\casa.json" />
+    <None Remove="Resources\coll_dict_voluminous.json" />
+    <None Remove="Resources\coll_thes_above_meta.json" />
+    <None Remove="Resources\coll_thes_umpire.json" />
     <None Remove="Resources\delgado.json" />
+    <None Remove="Resources\elem_dict_school.json" />
     <None Remove="Resources\estar.json" />
     <None Remove="Resources\hilar.json" />
     <None Remove="Resources\house.json" />
+    <None Remove="Resources\inter_dict_dragon.json" />
+    <None Remove="Resources\inter_thes_umpire.json" />
+    <None Remove="Resources\learn_apple.json" />
+    <None Remove="Resources\med_doctor.json" />
     <None Remove="Resources\pueblo.json" />
     <None Remove="Resources\quedar.json" />
     <None Remove="Resources\robot.json" />
+    <None Remove="Resources\school_dict_baseball.json" />
     <None Remove="Resources\sense_above.json" />
+    <None Remove="Resources\sense_learn_apple.json" />
+    <None Remove="Resources\sense_med_doctor.json" />
     <None Remove="Resources\sierra.json" />
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Resources\school_dict_baseball.json" />
+    <EmbeddedResource Include="Resources\inter_thes_umpire.json" />
+    <EmbeddedResource Include="Resources\inter_dict_dragon.json" />
+    <EmbeddedResource Include="Resources\learn_apple.json" />
+    <EmbeddedResource Include="Resources\med_doctor.json" />
+    <EmbeddedResource Include="Resources\coll_thes_above_meta.json" />
+    <EmbeddedResource Include="Resources\coll_thes_umpire.json" />
+    <EmbeddedResource Include="Resources\coll_dict_voluminous.json" />
     <EmbeddedResource Include="Resources\abeja.json" />
+    <EmbeddedResource Include="Resources\elem_dict_school.json" />
     <EmbeddedResource Include="Resources\robot.json" />
     <EmbeddedResource Include="Resources\hilar.json" />
+    <EmbeddedResource Include="Resources\sense_learn_apple.json" />
+    <EmbeddedResource Include="Resources\sense_med_doctor.json" />
     <EmbeddedResource Include="Resources\sierra.json" />
     <EmbeddedResource Include="Resources\abarrotado.json" />
     <EmbeddedResource Include="Resources\casa.json" />

@@ -15,6 +15,9 @@ namespace MerriamWebster.NET.Response.JsonConverters
                 DtUnionConverter.Singleton,
                 LangConverter.Singleton,
                 SseqConverter.Singleton,
+                DefiningTextComplexTypeConverter.Singleton,
+                DefiningTextComplexTypeWrapperConverter.Singleton,
+                DefiningTextObjectConverter.Singleton,
                 new IsoDateTimeConverter { DateTimeStyles = DateTimeStyles.AssumeUniversal }
             },
         };

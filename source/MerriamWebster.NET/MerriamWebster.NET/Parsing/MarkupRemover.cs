@@ -14,7 +14,7 @@ namespace MerriamWebster.NET.Parsing
             input = input.Replace("{bc}", "")
                 .Replace("{dx_def}", "(")
                 .Replace("{/dx_def}", ")")
-                .Replace("{dxt|", "") // TODO not correct
+                //.Replace("{dxt|", "") // TODO not correct
                 .Replace("{sx|", "").Replace("||", "");
             input = input.RemoveOpenCloseTag("b");
             input = input.RemoveOpenCloseTag("it");
@@ -24,10 +24,10 @@ namespace MerriamWebster.NET.Parsing
             input = input.RemoveOpenCloseTag("wi")
 
                 .Replace("{a_link|", "")
-                .Replace("{d_link||", "") // TODO not correct
-                .Replace("{i_link||", "") // TODO not correct
-                .Replace("{et_link||", "") // TODO not correct
-                .Replace("{mat||", "") // TODO not correct
+                //.Replace("{d_link||", "") // TODO not correct
+                //.Replace("{i_link||", "") // TODO not correct
+                //.Replace("{et_link||", "") // TODO not correct
+                //.Replace("{mat||", "") // TODO not correct
                 .Replace("}", ""); // replace any trailing } characters
 
             return input.Trim();

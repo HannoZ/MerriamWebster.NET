@@ -1,26 +1,14 @@
-﻿using Newtonsoft.Json;
-
-namespace MerriamWebster.NET.Response
+﻿namespace MerriamWebster.NET.Response
 {
-    public class SenseSequence
+    /// <summary>
+    /// The sense sequence contains a series of senses and subsenses, ordered by sense numbers beginning at Arabic numeral "1".
+    /// </summary>
+    public struct SenseSequence
     {
-        [JsonProperty("sn", NullValueHandling = NullValueHandling.Ignore)]
-        public string SenseNumber { get; set; }
+        public Sense Sense;
+        public string Name;
 
-        [JsonProperty("dt")] public DefiningTextObject[][] DefiningTexts { get; set; } = { };
-
-        [JsonProperty("vrs", NullValueHandling = NullValueHandling.Ignore)]
-        public Variant[] Variants { get; set; } = { };
-
-        [JsonProperty("xrs", NullValueHandling = NullValueHandling.Ignore)]
-        public CrossReference[][] CrossReferences { get; set; } = { };
-        /// <summary>
-        /// A subject/status label describes the subject area (eg, "computing") or regional/usage status (eg, "British", "formal", "slang") of a headword or a particular sense of a headword.
-        /// </summary>
-        [JsonProperty("sls", NullValueHandling = NullValueHandling.Ignore)]
-        public string[] SubjectStatusLabels { get; set; } = { };
-
-        [JsonProperty("ins", NullValueHandling = NullValueHandling.Ignore)]
-        public Inflection[] Inflections { get; set; } = { };
+        public static implicit operator SenseSequence(Sense sense) => new SenseSequence { Sense = sense };
+        public static implicit operator SenseSequence(string name) => new SenseSequence { Name = name };
     }
 }

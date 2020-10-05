@@ -1,0 +1,93 @@
+﻿[
+  {
+    "meta": {
+      "id": "doctor:1",
+      "uuid": "71fc55e0-49b2-4152-a80a-ad23895c12a6",
+      "src": "medical",
+      "section": "alpha",
+      "stems": [
+        "doctor",
+        "doctor of the church",
+        "doctoral",
+        "doctorless",
+        "doctors",
+        "doctorship",
+        "doctorships"
+      ],
+      "offensive": false
+    },
+    "hom": 1,
+    "hwi": {
+      "hw": "doc*tor",
+      "prs": [
+        {
+          "mw": "ˈdäk-tər",
+          "sound": {
+            "audio": "doctor01"
+          }
+        }
+      ]
+    },
+    "fl": "noun",
+    "def": [
+      {
+        "sseq": [
+          [
+            [
+              "sense",
+              {
+                "sn": "1 a",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}a person who has earned one of the highest academic degrees (as a PhD) conferred by a university"
+                  ]
+                ]
+              }
+            ],
+            [
+              "sense",
+              {
+                "sn": "b",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}a person awarded an honorary {a_link|doctorate} by a college or university"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "2",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}a person skilled or specializing in healing arts"
+                  ]
+                ],
+                "sdsense": {
+                  "sd": "especially",
+                  "dt": [
+                    [
+                      "text",
+                      "{bc}one (as a physician, dentist, or veterinarian) who holds an advanced degree and is licensed to practice"
+                    ]
+                  ]
+                }
+              }
+            ]
+          ]
+        ]
+      }
+    ],
+    "shortdef": [
+      "a person who has earned one of the highest academic degrees (as a PhD) conferred by a university",
+      "a person awarded an honorary doctorate by a college or university",
+      "a person skilled or specializing in healing arts; especially : one (as a physician, dentist, or veterinarian) who holds an advanced degree and is licensed to practice"
+    ]
+  }
+]
