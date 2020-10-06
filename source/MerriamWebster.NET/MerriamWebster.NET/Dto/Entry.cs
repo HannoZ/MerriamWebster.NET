@@ -16,6 +16,10 @@ namespace MerriamWebster.NET.Dto
         public ICollection<Sense> Senses { get; set; } = new List<Sense>();
         public Conjugations Conjugations { get; set; }
         public ICollection<CrossReference> CrossReferences { get; set; } = new List<CrossReference>();
-        public string Summary => string.Join(", ", Senses.Select(s => s.Text));
+        public ICollection<string> ShortDefs { get; set; } = new List<string>();
+        public ICollection<string> Synonyms { get; set; } = new List<string>();
+        public ICollection<string> Antonyms { get; set; } = new List<string>();
+
+        public string Summary => string.Join(", ", Senses.Where(s => !string.IsNullOrEmpty(s.Text)).Select(s => s.Text));
     }
 }

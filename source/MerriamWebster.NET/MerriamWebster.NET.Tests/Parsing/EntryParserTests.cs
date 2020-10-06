@@ -88,6 +88,7 @@ namespace MerriamWebster.NET.Tests.Parsing
 
             // ASSERT
             result.Entries.Count.ShouldBe(2);
+            result.Entries.ShouldContain(e => e.Conjugations != null);
         }
 
         [TestMethod]
@@ -126,6 +127,7 @@ namespace MerriamWebster.NET.Tests.Parsing
             // ASSERT
             result.Entries.ShouldNotBeEmpty();
             result.AdditionalResults.ShouldNotBeEmpty();
+            result.Entries.ShouldContain(e=>e.Conjugations != null);
         }
 
         [TestMethod]
@@ -176,6 +178,154 @@ namespace MerriamWebster.NET.Tests.Parsing
             result.Entries.ShouldNotBeEmpty();
         }
 
+        [TestMethod]
+        public async Task EntryParser_CanParse_CollegiateDict_Voluminous()
+        {
+            var data = LoadData("coll_dict_voluminous");
+
+            _mocker.GetMock<IMerriamWebsterClient>()
+                .Setup(m => m.GetDictionaryEntry(It.IsAny<string>(), It.IsAny<string>()))
+                .ReturnsAsync(data);
+
+            // ACT 
+            var result = await _entryParser.GetAndParseAsync("api", "voluminous");
+
+            // ASSERT
+            result.Entries.ShouldNotBeEmpty();
+        }
+
+        [TestMethod]
+        public async Task EntryParser_CanParse_CollegiateThes_Umpire()
+        {
+            var data = LoadData("coll_thes_umpire");
+
+            _mocker.GetMock<IMerriamWebsterClient>()
+                .Setup(m => m.GetDictionaryEntry(It.IsAny<string>(), It.IsAny<string>()))
+                .ReturnsAsync(data);
+
+            // ACT 
+            var result = await _entryParser.GetAndParseAsync("api", "umpire");
+
+            // ASSERT
+            result.Entries.ShouldNotBeEmpty();
+        }
+
+
+        [TestMethod]
+        public async Task EntryParser_CanParse_CollegiateThes_Above_Metadata()
+        {
+            var data = LoadData("coll_thes_above_meta");
+
+            _mocker.GetMock<IMerriamWebsterClient>()
+                .Setup(m => m.GetDictionaryEntry(It.IsAny<string>(), It.IsAny<string>()))
+                .ReturnsAsync(data);
+
+            // ACT 
+            var result = await _entryParser.GetAndParseAsync("api", "above");
+
+            // ASSERT
+            var entry = result.Entries.First();
+            entry.Synonyms.ShouldNotBeEmpty();
+            entry.Antonyms.ShouldNotBeEmpty();
+        }
+
+
+        [TestMethod]
+        public async Task EntryParser_CanParse_Medical_Doctor()
+        {
+            var data = LoadData("med_doctor");
+
+            _mocker.GetMock<IMerriamWebsterClient>()
+                .Setup(m => m.GetDictionaryEntry(It.IsAny<string>(), It.IsAny<string>()))
+                .ReturnsAsync(data);
+
+            // ACT 
+            var result = await _entryParser.GetAndParseAsync("api", "doctor");
+
+            // ASSERT
+            result.Entries.ShouldNotBeEmpty();
+        }
+
+        [TestMethod]
+        public async Task EntryParser_CanParse_Learners_Apple()
+        {
+            var data = LoadData("learn_apple");
+
+            _mocker.GetMock<IMerriamWebsterClient>()
+                .Setup(m => m.GetDictionaryEntry(It.IsAny<string>(), It.IsAny<string>()))
+                .ReturnsAsync(data);
+
+            // ACT 
+            var result = await _entryParser.GetAndParseAsync("api", "apple");
+
+            // ASSERT
+            result.Entries.ShouldNotBeEmpty();
+        }
+
+        [TestMethod]
+        public async Task EntryParser_CanParse_ElementaryDictionary_School()
+        {
+            var data = LoadData("elem_dict_school");
+
+            _mocker.GetMock<IMerriamWebsterClient>()
+                .Setup(m => m.GetDictionaryEntry(It.IsAny<string>(), It.IsAny<string>()))
+                .ReturnsAsync(data);
+
+            // ACT 
+            var result = await _entryParser.GetAndParseAsync("api", "school");
+
+            // ASSERT
+            result.Entries.ShouldNotBeEmpty();
+        }
+
+
+        [TestMethod]
+        public async Task EntryParser_CanParse_IntermediateDictionary_Dragon()
+        {
+            var data = LoadData("inter_dict_dragon");
+
+            _mocker.GetMock<IMerriamWebsterClient>()
+                .Setup(m => m.GetDictionaryEntry(It.IsAny<string>(), It.IsAny<string>()))
+                .ReturnsAsync(data);
+
+            // ACT 
+            var result = await _entryParser.GetAndParseAsync("api", "dragon");
+
+            // ASSERT
+            result.Entries.ShouldNotBeEmpty();
+        }
+
+        [TestMethod]
+        public async Task EntryParser_CanParse_IntermediateThesaurus_Umpire()
+        {
+            var data = LoadData("inter_thes_umpire");
+
+            _mocker.GetMock<IMerriamWebsterClient>()
+                .Setup(m => m.GetDictionaryEntry(It.IsAny<string>(), It.IsAny<string>()))
+                .ReturnsAsync(data);
+
+            // ACT 
+            var result = await _entryParser.GetAndParseAsync("api", "umpire");
+
+            // ASSERT
+            result.Entries.ShouldNotBeEmpty();
+        }
+
+        [TestMethod]
+        public async Task EntryParser_CanParse_SchoolDictionary_Baseball()
+        {
+            var data = LoadData("school_dict_baseball");
+
+            _mocker.GetMock<IMerriamWebsterClient>()
+                .Setup(m => m.GetDictionaryEntry(It.IsAny<string>(), It.IsAny<string>()))
+                .ReturnsAsync(data);
+
+            // ACT 
+            var result = await _entryParser.GetAndParseAsync("api", "baseball");
+
+            // ASSERT
+            result.Entries.ShouldNotBeEmpty();
+        }
 
         [TestMethod]
         public async Task EntryParser_SynonymsNotInSummary()
@@ -208,6 +358,7 @@ namespace MerriamWebster.NET.Tests.Parsing
             // ASSERT
             result.Entries.ShouldNotBeEmpty();
             result.AdditionalResults.ShouldNotBeEmpty();
+            result.Entries.ShouldContain(e => e.Conjugations != null);
         }
 
         [TestMethod]

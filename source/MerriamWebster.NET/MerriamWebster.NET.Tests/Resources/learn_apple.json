@@ -1,0 +1,228 @@
+﻿[
+  {
+    "meta": {
+      "id": "apple",
+      "uuid": "e3bcad1b-e6cc-4e94-98d2-0efa435d84ed",
+      "src": "learners",
+      "section": "alpha",
+      "target": {
+        "tuuid": "44e59f49-db3f-4db0-9639-788033a87df7",
+        "tsrc": "collegiate"
+      },
+      "highlight": "yes",
+      "stems": [
+        "apple",
+        "apples",
+        "compare apples to apples/oranges",
+        "compare apples to apples",
+        "compare apples to oranges",
+        "the apple of someone's eye",
+        "the apple of someones eye",
+        "upset the apple cart",
+        "bad apple",
+        "rotten apple"
+      ],
+      "app-shortdef": {
+        "hw": "apple",
+        "fl": "noun",
+        "def": [
+          "{bc} a round fruit with red, yellow, or green skin and firm white flesh"
+        ]
+      },
+      "offensive": false
+    },
+    "hwi": {
+      "hw": "ap*ple",
+      "prs": [
+        {
+          "ipa": "ˈæpəl",
+          "sound": {
+            "audio": "apple001"
+          }
+        }
+      ]
+    },
+    "fl": "noun",
+    "ins": [
+      {
+        "il": "plural",
+        "if": "ap*ples"
+      }
+    ],
+    "def": [
+      {
+        "sseq": [
+          [
+            [
+              "sense",
+              {
+                "dt": [
+                  [
+                    "text",
+                    "{bc}a round fruit with red, yellow, or green skin and firm white flesh "
+                  ],
+                  [
+                    "wsgram",
+                    "count"
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "crisp juicy {it}apples{/it}"
+                      },
+                      {
+                        "t": "a bad/rotten {it}apple{/it} [=an apple that has rotted and cannot be eaten]"
+                      }
+                    ]
+                  ],
+                  [
+                    "wsgram",
+                    "noncount"
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "a piece of {it}apple{/it}"
+                      }
+                    ]
+                  ],
+                  [
+                    "uns",
+                    [
+                      [
+                        [
+                          "text",
+                          "often used before another noun "
+                        ],
+                        [
+                          "vis",
+                          [
+                            {
+                              "t": "{it}apple{/it} pie"
+                            },
+                            {
+                              "t": "{it}apple{/it} juice"
+                            },
+                            {
+                              "t": "{it}apple{/it} trees"
+                            }
+                          ]
+                        ]
+                      ]
+                    ]
+                  ],
+                  [
+                    "text",
+                    "{p_only}{dx}see color picture on page C5{/dx}{/p_only} "
+                  ],
+                  [
+                    "snote",
+                    [
+                      [
+                        "t",
+                        "\"In figurative use, a {phrase}bad apple{/phrase} or {phrase}rotten apple{/phrase} is a bad member of a group who causes problems for the rest of the \"vis\",",
+                        [
+                          {
+                            "t": "A few {it}bad apples{/it} cheated on the test, and now everyone has to take the test again."
+                          },
+                          {
+                            "t": "One {it}rotten apple{/it} ruined the day for the rest of us."
+                          }
+                        ]
+                      ]
+                    ]
+                  ],
+                  [
+                    "text",
+                    "{dx}see also {dxt|adam's apple||} {dxt|crab apple||}{/dx}"
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      }
+    ],
+    "dros": [
+      {
+        "drp": "compare apples to apples/oranges",
+        "def": [
+          {
+            "sseq": [
+              [
+                [
+                  "sense",
+                  {
+                    "dt": [
+                      [
+                        "text",
+                        "{dx}see {dxt|compare:1||}{/dx}"
+                      ]
+                    ]
+                  }
+                ]
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "drp": "the apple of someone's eye",
+        "def": [
+          {
+            "sseq": [
+              [
+                [
+                  "sense",
+                  {
+                    "dt": [
+                      [
+                        "text",
+                        "{bc}a person or thing that someone loves very much "
+                      ],
+                      [
+                        "vis",
+                        [
+                          {
+                            "t": "His daughter is {it}the apple of his eye{/it}."
+                          }
+                        ]
+                      ]
+                    ]
+                  }
+                ]
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "drp": "upset the apple cart",
+        "def": [
+          {
+            "sseq": [
+              [
+                [
+                  "sense",
+                  {
+                    "dt": [
+                      [
+                        "text",
+                        "{dx}see {dxt|upset:2||}{/dx}"
+                      ]
+                    ]
+                  }
+                ]
+              ]
+            ]
+          }
+        ]
+      }
+    ],
+    "shortdef": [
+      "a round fruit with red, yellow, or green skin and firm white flesh —often used before another noun"
+    ]
+  }
+]

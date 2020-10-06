@@ -13,12 +13,12 @@ namespace MerriamWebster.NET.Response
         /// Text of undefined entry word cutback form
         /// </summary>
         [JsonProperty("urec")]
-        public string Urec { get; set; }
+        public string TextCutback { get; set; }
 
         /// <summary>
         /// Text of undefined entry word spelled-out form
         /// </summary>
         [JsonProperty("ure")]
-        public string Ure { get; set; }
+        public string Text { get; set; }
     }
 }

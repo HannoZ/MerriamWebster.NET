@@ -27,7 +27,7 @@ namespace MerriamWebster.NET.Parsing
                 subDir = "number";
             }
 
-            string relative = $"{language}/{(language == Lang.Es ? "me" : "us")}/{format}/{subDir}/{sound.Audio}.{format}".ToLower();
+            string relative = $"{(language == Lang.Es ? "es" : "en")}/{(language == Lang.Es ? "me" : "us")}/{format}/{subDir}/{sound.Audio}.{format}".ToLower();
 
             return new Uri(baseAddress, relative);
         }

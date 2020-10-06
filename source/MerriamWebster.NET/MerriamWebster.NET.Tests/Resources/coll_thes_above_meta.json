@@ -1,0 +1,35 @@
+[
+  {
+    "meta": {
+      "id": "above",
+      "uuid": "6d8ecefc-cc33-4411-9e0a-69e23522a8ee",
+
+
+      "src": "coll_thes",
+      "section": "alpha",
+      "target": {
+        "tuuid": "487427fe-b68d-444f-a539-619a029b4878",
+        "tsrc": "collegiate"
+      },
+      "stems": [ "above" ],
+      "syns": [
+        [
+          "aloft",
+          "over",
+          "overhead"
+        ]
+      ],
+      "ants": [
+        [
+          "below",
+          "beneath",
+          "under"
+        ]
+      ],
+      "offensive": false
+    },
+    "hwi": {
+      "hw": "above"
+    }
+  }
+]

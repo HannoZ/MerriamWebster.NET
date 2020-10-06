@@ -3,7 +3,7 @@
 namespace MerriamWebster.NET.Response
 {
     /// <summary>
-    /// A variant is a different spelling or styling of a headword, defined run-on phrase, or undefined entry word. A set of one or more variants is contained in a vrs.
+    /// A variant is a different spelling or styling of a headword, defined run-on phrase, or undefined entry word.
     /// </summary>
     public class Variant
     {

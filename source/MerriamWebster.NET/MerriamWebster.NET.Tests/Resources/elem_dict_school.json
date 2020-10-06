@@ -1,0 +1,145 @@
+[
+  {
+    "meta": {
+      "id": "school:1",
+      "uuid": "35f9e493-c896-4bd6-803b-417e4f915938",
+      "src": "sd2",
+      "section": "alpha",
+      "stems": [
+        "school",
+        "schools"
+      ],
+      "offensive": false
+    },
+    "hom": 1,
+    "hwi": {
+      "hw": "school",
+      "prs": [
+        {
+          "mw": "ˈskül",
+          "sound": {
+            "audio": "school01"
+          }
+        }
+      ]
+    },
+    "fl": "noun",
+    "def": [
+      {
+        "sseq": [
+          [
+            [
+              "sense",
+              {
+                "sn": "1",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}a place for teaching and learning"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "2",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}a session of teaching and learning "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "night {it}school{/it}"
+                      },
+                      {
+                        "t": "You'll be late for {it}school{/it}."
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "3",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}{sx|schoolhouse||}"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "4",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}the teachers and pupils of a school "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "The entire {it}school{/it} was at the rally."
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "5",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}a group of persons who share the same opinions and beliefs "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "a new {it}school{/it} of philosophy"
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      }
+    ],
+    "history": {
+      "pl": "Word History",
+      "pt": [
+        [
+          "text",
+          "You may not think of your education as relaxation, but, believe it or not, the word {it}school{/it} can be traced back to a Greek word meaning “leisure.” Ancient Greek {it}scholē{/it}, “rest, leisure,” came to be applied to the philosophical discussions in which the best of Greek society spent their free time (of which they had a great deal, since slaves did most of the real work). The meaning of {it}scholē{/it} was extended to the groups who listened to a particular philosopher, and later to the set of beliefs held by such a group. When Latin {it}schola{/it} was borrowed from Greek, the emphasis fell more on the place where a philosopher spoke, and it is the sense “place of instruction” that was ultimately passed to English."
+        ]
+      ]
+    },
+    "shortdef": [
+      "a place for teaching and learning",
+      "a session of teaching and learning",
+      "schoolhouse"
+    ]
+  }
+]
