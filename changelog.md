@@ -1,3 +1,7 @@
+1.3 A major update, may break existing code (renamed some existing properties). Many response classes and properties were added, based on available documentation. Some of those new items are also parsed and returned on the DTO classes, but most are only deserialized but not parsed (so you won't see them on DTO classes). 
+A new data structure for _DefiningText_ ('dt') elements was discovered in the JSON example for the Learner's Dictionary, which caused deserializing to fail. This structure has been applied to the response classes so deserialization succeeds again. 
+Documentation has been added to many response classes.
+
 1.2.1 This version contains some improvements to parsing as well as some small optimizations
 - CrossReferences are now parsed (on Entry and Sense). A cross reference points to a different entry that contains more detailed information
 - Additional results ('defined run-ons') are now placed in a separate collection, instead of being added to the Entries collection
