@@ -1,3 +1,5 @@
+1.4 Updated .NET Core Nuget packages to version 3.1.9
+
 1.3 A major update, may break existing code (renamed some existing properties). Many response classes and properties were added, based on available documentation. Some of those new items are also parsed and returned on the DTO classes, but most are only deserialized but not parsed (so you won't see them on DTO classes). 
 A new data structure for _DefiningText_ ('dt') elements was discovered in the JSON example for the Learner's Dictionary, which caused deserializing to fail. This structure has been applied to the response classes so deserialization succeeds again. 
 Documentation has been added to many response classes.
