@@ -3,7 +3,9 @@ using System.Text.RegularExpressions;
 
 namespace MerriamWebster.NET.Parsing
 {
-    public static string RemoveMarkupFromString(string input)
+    public static class MarkupRemover
+    {
+        public static string RemoveMarkupFromString(string input)
         {
             input = input.Replace("{bc}", "")
                 .Replace("{dx_def}", "(")
@@ -95,13 +97,13 @@ namespace MerriamWebster.NET.Parsing
 
             foreach (Match match in matches)
             {
-                var  target = match.Groups[1];
+                var target = match.Groups[1];
 
                 var index = input.IndexOf("[x]", StringComparison.OrdinalIgnoreCase);
                 string first = input.Substring(0, index);
                 string last = input.Substring(index + 3);
 
-                input = first +  target + last;
+                input = first + target + last;
             }
 
             return input;
