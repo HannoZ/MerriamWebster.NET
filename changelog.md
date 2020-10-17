@@ -1,3 +1,5 @@
+1.4.1 Improved markup removal, dx_def, dx, dx_ety, ma/mat, sx, d_link, i_link, et_link are now all removed properly
+
 1.4 Updated .NET Core Nuget packages to version 3.1.9
 
 1.3 A major update, may break existing code (renamed some existing properties). Many response classes and properties were added, based on available documentation. Some of those new items are also parsed and returned on the DTO classes, but most are only deserialized but not parsed (so you won't see them on DTO classes). 
