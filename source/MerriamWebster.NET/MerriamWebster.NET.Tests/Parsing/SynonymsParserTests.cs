@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using MerriamWebster.NET.Parsing;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -64,8 +64,7 @@ namespace MerriamWebster.NET.Tests.Parsing
             // ASSERT
             result.Count().ShouldBe(3);
         }
-
-        [TestMethod]
+      
         public void SynonymsParser_MultipleSynonyms2()
         {
             string input = "{bc}{sx|sly||}, {sx|treacherous||}";
@@ -76,5 +75,19 @@ namespace MerriamWebster.NET.Tests.Parsing
             // ASSERT
             result.Count().ShouldBe(2);
         }
+
+        [TestMethod]
+        public void SynonymsParser_Multi_WordSynonyms()
+        {
+            string input = "{sx|aldea pequeña||} {sx|poblado largo||}";
+          
+            // ACT
+            var result = SynonymsParser.ExtractSynonyms(input);
+
+            // ASSERT
+            result.Count().ShouldBe(2);
+        }
+  
+       
     }
 }
