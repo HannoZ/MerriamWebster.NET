@@ -1,3 +1,5 @@
+1.4.2 Fix issue in removing markup when a link target contains a special character (eg. {a_link|worn-out}) 
+
 1.4.1 Improved markup removal, dx_def, dx, dx_ety, ma/mat, sx, d_link, i_link, et_link are now all removed properly
 
 1.4 Updated .NET Core Nuget packages to version 3.1.9
