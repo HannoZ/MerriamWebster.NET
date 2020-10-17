@@ -70,8 +70,8 @@ namespace MerriamWebster.NET.Tests.Parsing
         [TestMethod]
         public void MarkupRemover_Remove_DxDef()
         {
-            string input = "{bc}any of several domesticated {dx_def}see {dxt|domesticate:1||2}{/dx_def} or wild {d_link|gallinaceous|gallinaceous} birds {dx}compare {dxt|guinea fowl||}, {dxt|jungle fowl||}{/dx}";
-            string expected = "any of several domesticated (see domesticate) or wild gallinaceous birds — compare guinea fowl, jungle fowl";
+            string input = "{bc}any of several domesticated {dx_def}see {dxt|domesticate:1||2}{/dx_def} or wild {d_link|gallinaceous|gallinaceous} birds {dx}compare {dxt|guinea-fowl||}, {dxt|jungle fowl||}{/dx}";
+            string expected = "any of several domesticated (see domesticate) or wild gallinaceous birds — compare guinea-fowl, jungle fowl";
 
             // ACT
             var output = MarkupRemover.RemoveMarkupFromString(input);
@@ -222,6 +222,20 @@ namespace MerriamWebster.NET.Tests.Parsing
 
             // ASSERT
             output.ShouldBe(expected);
+        }
+
+        [TestMethod]
+        public void MarkupRemover_ALinkWithDash()
+        {
+            string input = "{sx|fatigado||} {bc}{a_link|worn-out}, {a_link|tired}";
+            string expected = "fatigado worn-out, tired";
+
+            // ACT
+            var output = MarkupRemover.RemoveMarkupFromString(input);
+
+            // ASSERT
+            output.ShouldBe(expected);
+
         }
     }
 }

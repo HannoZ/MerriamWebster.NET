@@ -22,7 +22,6 @@ namespace MerriamWebster.NET.Parsing
             input = input.RemoveOpenCloseTag("sup");
             input = input.RemoveOpenCloseTag("sc");
             input = input.RemoveOpenCloseTag("wi");
-            input = input.ReplaceCrossReferenceTarget();
             input = input.ReplaceAuto_Link();
             input = input.ReplaceDirect_Link();
             input = input.ReplaceItalic_Link();
@@ -30,6 +29,9 @@ namespace MerriamWebster.NET.Parsing
             input = input.ReplaceMoreAtTarget();
             input = input.ReplaceSynonymLink();
 
+            // always keep this one as last! 
+            input = input.ReplaceCrossReferenceTarget();
+            
             return input;
         }
 
@@ -41,14 +43,19 @@ namespace MerriamWebster.NET.Parsing
 
         private static string ReplaceCrossReferenceTarget(this string input)
         {
-            var regex = new Regex(@"{dxt\|([\p{L}]*\s?[\p{L}]*?):?\d?\|*\d?}");
+            var regex = new Regex(@"{dxt\|(\w*\s?\w*?):?\d?\|*\d?}");
 
-            return RegexReplace(input, regex);
+            // because this element can also contain :, we can't use \S for any non-whitespace character
+            // which is a problem if we have a word like worn-out
+
+            return RegexReplace(input, regex)
+                .Replace("{dxt|", "")
+                .Replace("||}", "");
         }
 
         private static string ReplaceAuto_Link(this string input)
         {
-            var regex = new Regex(@"{a_link\|([\p{L}]*)}");
+            var regex = new Regex(@"{a_link\|(\S*)}");
 
             return RegexReplace(input, regex);
         }
@@ -56,35 +63,35 @@ namespace MerriamWebster.NET.Parsing
 
         private static string ReplaceDirect_Link(this string input)
         {
-            var regex = new Regex(@"{d_link\|([\p{L}]*)\|[\p{L}]*}");
+            var regex = new Regex(@"{d_link\|(\S*)\|\S*}");
 
             return RegexReplace(input, regex);
         }
 
         private static string ReplaceItalic_Link(this string input)
         {
-            var regex = new Regex(@"{i_link\|([\p{L}]*)\|[\p{L}]*}");
+            var regex = new Regex(@"{i_link\|(\S*)\|\S*}");
 
             return RegexReplace(input, regex);
         }
 
         private static string ReplaceEtymology_Link(this string input)
         {
-            var regex = new Regex(@"{et_link\|([\p{L}]*)\|[\p{L}]*}");
+            var regex = new Regex(@"{et_link\|(\S*)\|\S*}");
 
             return RegexReplace(input, regex);
         }
 
         private static string ReplaceMoreAtTarget(this string input)
         {
-            var regex = new Regex(@"{mat\|([\p{L}]*)\|[\p{L}]*}");
+            var regex = new Regex(@"{mat\|(\S*)\|\S*}");
 
             return RegexReplace(input, regex);
         }
 
         private static string ReplaceSynonymLink(this string input)
         {
-            var regex = new Regex(@"{sx\|([\p{L}]*\s?[\p{L}]*?)\|.*?\|.*?}");
+            var regex = new Regex(@"{sx\|(\S*\s?\S*?)\|.*?\|.*?}");
 
             return RegexReplace(input, regex);
         }
