@@ -65,6 +65,7 @@ namespace MerriamWebster.NET.Tests.Parsing
             result.Count().ShouldBe(3);
         }
       
+        [TestMethod]
         public void SynonymsParser_MultipleSynonyms2()
         {
             string input = "{bc}{sx|sly||}, {sx|treacherous||}";
