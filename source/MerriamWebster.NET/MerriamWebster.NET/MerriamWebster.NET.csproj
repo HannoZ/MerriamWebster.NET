@@ -5,20 +5,21 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>Hanno Zwikstra</Authors>
     <Company>Hanno Zwikstra</Company>
-    <Description>A .NET client for the Merriam-Webster api's.</Description>
+    <Description>A .NET client wrapper and object parser for Merriam-Webster's APIs.</Description>
     <Copyright>MIT</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/HannoZ/MerriamWebster.NET</PackageProjectUrl>
     <RepositoryUrl>https://github.com/HannoZ/MerriamWebster.NET</RepositoryUrl>
     <RepositoryType>Public</RepositoryType>
-    <PackageTags>Merriam-Webster dictionary</PackageTags>
-    <PackageReleaseNotes>Initial version. See project readme for further details.</PackageReleaseNotes>
-    <Version>1.0</Version>
+    <PackageTags>Merriam-Webster dictionary thesaurus</PackageTags>
+    <PackageReleaseNotes>See project readme for further details.</PackageReleaseNotes>
+    <Version>1.4</Version>
+    <AssemblyVersion>1.4.0</AssemblyVersion>
+    <FileVersion>1.4.0</FileVersion>
   </PropertyGroup>
-
   <ItemGroup>
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.1.8" />
-    <PackageReference Include="Microsoft.Extensions.Http" Version="3.1.8" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.1.9" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="3.1.9" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
   </ItemGroup>
 

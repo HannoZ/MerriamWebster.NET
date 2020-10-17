@@ -1,0 +1,120 @@
+[
+  {
+    "meta": {
+      "id": "umpire",
+      "uuid": "95702747-e10f-4738-895c-c04301c0799b",
+      "src": "int_thes",
+      "section": "alpha",
+      "target": {
+        "tuuid": "897edcad-2e88-4ab7-b81b-170ddf8eb4ec",
+        "tsrc": "collegiate"
+      },
+      "stems": [
+        "umpire",
+        "umpires"
+      ],
+      "syns": [
+        [
+          "arbiter",
+          "arbitrator",
+          "judge",
+          "referee"
+        ]
+      ],
+      "ants": [
+
+      ],
+      "offensive": false
+    },
+    "hwi": {
+      "hw": "umpire"
+    },
+    "fl": "noun",
+    "def": [
+      {
+        "sseq": [
+          [
+            [
+              "sense",
+              {
+                "dt": [
+                  [
+                    "text",
+                    "a person who impartially decides or resolves a dispute or controversy "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "Mom usually acts as {it}umpire{/it} in our frequent squabbles over the sailboat."
+                      }
+                    ]
+                  ]
+                ],
+                "syn_list": [
+                  [
+                    {
+                      "wd": "arbiter"
+                    },
+                    {
+                      "wd": "arbitrator"
+                    },
+                    {
+                      "wd": "judge"
+                    },
+                    {
+                      "wd": "referee"
+                    }
+                  ]
+                ],
+                "rel_list": [
+                  [
+                    {
+                      "wd": "justice"
+                    },
+                    {
+                      "wd": "magistrate"
+                    }
+                  ],
+                  [
+                    {
+                      "wd": "intermediary"
+                    },
+                    {
+                      "wd": "mediator"
+                    },
+                    {
+                      "wd": "negotiator"
+                    }
+                  ],
+                  [
+                    {
+                      "wd": "conciliator"
+                    },
+                    {
+                      "wd": "go-between"
+                    },
+                    {
+                      "wd": "peacemaker"
+                    },
+                    {
+                      "wd": "reconciler"
+                    }
+                  ],
+                  [
+                    {
+                      "wd": "decider"
+                    }
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      }
+    ],
+    "shortdef": [
+      "a person who impartially decides or resolves a dispute or controversy"
+    ]
+  }
+]

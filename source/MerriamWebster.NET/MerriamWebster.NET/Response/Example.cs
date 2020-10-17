@@ -2,12 +2,9 @@
 
 namespace MerriamWebster.NET.Response
 {
-    public class TranslationClass
+    public class Example
     {
         [JsonProperty("t")]
         public string Text { get; set; }
-
-        [JsonProperty("tr")]
-        public string Translation { get; set; }
     }
 }

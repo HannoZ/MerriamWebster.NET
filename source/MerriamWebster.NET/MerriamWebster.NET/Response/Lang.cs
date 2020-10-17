@@ -1,4 +1,4 @@
 ﻿namespace MerriamWebster.NET.Response
 {
-    public enum Lang { En, Es };
+    public enum Lang {Undefined, En, Es };
 }

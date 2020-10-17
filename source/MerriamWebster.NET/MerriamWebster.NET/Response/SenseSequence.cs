@@ -1,20 +1,14 @@
-﻿using Newtonsoft.Json;
-
-namespace MerriamWebster.NET.Response
+﻿namespace MerriamWebster.NET.Response
 {
-    public class SenseSequence
+    /// <summary>
+    /// The sense sequence contains a series of senses and subsenses, ordered by sense numbers beginning at Arabic numeral "1".
+    /// </summary>
+    public struct SenseSequence
     {
-        [JsonProperty("sn", NullValueHandling = NullValueHandling.Ignore)]
-        public string SenseNumber { get; set; }
-        [JsonProperty("dt")]
-        public TranslationObject[][] Definitions { get; set; }
-        [JsonProperty("vrs", NullValueHandling = NullValueHandling.Ignore)]
-        public Variant[] Variants { get; set; }
-        [JsonProperty("xrs", NullValueHandling = NullValueHandling.Ignore)]
-        public CrossReference[][] CrossReferences { get; set; }
-        [JsonProperty("sls", NullValueHandling = NullValueHandling.Ignore)]
-        public string[] StatusLabels { get; set; }
-        [JsonProperty("ins", NullValueHandling = NullValueHandling.Ignore)]
-        public Inflection[] Inflections { get; set; }
+        public Sense Sense;
+        public string Name;
+
+        public static implicit operator SenseSequence(Sense sense) => new SenseSequence { Sense = sense };
+        public static implicit operator SenseSequence(string name) => new SenseSequence { Name = name };
     }
 }

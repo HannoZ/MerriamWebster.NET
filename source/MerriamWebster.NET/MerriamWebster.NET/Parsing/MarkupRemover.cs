@@ -1,11 +1,9 @@
-﻿using System;
+using System;
 using System.Text.RegularExpressions;
 
 namespace MerriamWebster.NET.Parsing
 {
-    public static class MarkupRemover
-    {
-        public static string RemoveMarkupFromString(string input)
+    public static string RemoveMarkupFromString(string input)
         {
             input = input.Replace("{bc}", "")
                 .Replace("{dx_def}", "(")

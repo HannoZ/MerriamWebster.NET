@@ -5,7 +5,7 @@ namespace MerriamWebster.NET.Response.JsonConverters
 {
     internal class SseqConverter : JsonConverter
     {
-        public override bool CanConvert(Type t) => t == typeof(SenseSequenceObject) || t == typeof(SenseSequenceObject?);
+        public override bool CanConvert(Type t) => t == typeof(SenseSequence) || t == typeof(SenseSequence?);
 
         public override object ReadJson(JsonReader reader, Type t, object existingValue, JsonSerializer serializer)
         {
@@ -14,24 +14,24 @@ namespace MerriamWebster.NET.Response.JsonConverters
                 case JsonToken.String:
                 case JsonToken.Date:
                     var stringValue = serializer.Deserialize<string>(reader);
-                    return new SenseSequenceObject { Name = stringValue };
+                    return new SenseSequence { Name = stringValue };
                 case JsonToken.StartObject:
-                    var objectValue = serializer.Deserialize<SenseSequence>(reader);
-                    return new SenseSequenceObject { SenseSequence = objectValue };
+                    var objectValue = serializer.Deserialize<Sense>(reader);
+                    return new SenseSequence { Sense = objectValue };
             }
-            throw new Exception("Cannot unmarshal type SenseSequence");
+            throw new Exception("Cannot unmarshal type Sense");
         }
 
         public override void WriteJson(JsonWriter writer, object untypedValue, JsonSerializer serializer)
         {
-            var value = (SenseSequenceObject)untypedValue;
+            var value = (SenseSequence)untypedValue;
 
-            if (value.SenseSequence != null)
+            if (value.Sense != null)
             {
-                serializer.Serialize(writer, value.SenseSequence);
+                serializer.Serialize(writer, value.Sense);
                 return;
             }
-            throw new Exception("Cannot marshal type SenseSequence");
+            throw new Exception("Cannot marshal type Sense");
         }
 
         public static readonly SseqConverter Singleton = new SseqConverter();

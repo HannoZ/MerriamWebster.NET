@@ -5,7 +5,7 @@ namespace MerriamWebster.NET.Response.JsonConverters
 {
     internal class DtUnionConverter : JsonConverter
     {
-        public override bool CanConvert(Type t) => t == typeof(TranslationObject) || t == typeof(TranslationObject?);
+        public override bool CanConvert(Type t) => t == typeof(DefiningTextObjectWrapper) || t == typeof(DefiningTextObjectWrapper?);
 
         public override object ReadJson(JsonReader reader, Type t, object existingValue, JsonSerializer serializer)
         {
@@ -14,28 +14,28 @@ namespace MerriamWebster.NET.Response.JsonConverters
                 case JsonToken.String:
                 case JsonToken.Date:
                     var stringValue = serializer.Deserialize<string>(reader);
-                    return new TranslationObject { String = stringValue };
+                    return new DefiningTextObjectWrapper { TypeOrText = stringValue };
                 case JsonToken.StartArray:
-                    var arrayValue = serializer.Deserialize<TranslationClass[]>(reader);
-                    return new TranslationObject { TranslationClassArray = arrayValue };
+                    var arrayValue = serializer.Deserialize<DefiningTextObject[]>(reader);
+                    return new DefiningTextObjectWrapper { DefiningTextArray = arrayValue };
             }
-            throw new Exception("Cannot unmarshal type TranslationObject");
+            throw new Exception("Cannot unmarshal type DefiningTextObjectWrapper");
         }
 
         public override void WriteJson(JsonWriter writer, object untypedValue, JsonSerializer serializer)
         {
-            var value = (TranslationObject)untypedValue;
-            if (value.String != null)
+            var value = (DefiningTextObjectWrapper)untypedValue;
+            if (value.TypeOrText != null)
             {
-                serializer.Serialize(writer, value.String);
+                serializer.Serialize(writer, value.TypeOrText);
                 return;
             }
-            if (value.TranslationClassArray != null)
+            if (value.DefiningTextArray != null)
             {
-                serializer.Serialize(writer, value.TranslationClassArray);
+                serializer.Serialize(writer, value.DefiningTextArray);
                 return;
             }
-            throw new Exception("Cannot marshal type TranslationObject");
+            throw new Exception("Cannot marshal type DefiningTextObjectWrapper");
         }
 
         public static readonly DtUnionConverter Singleton = new DtUnionConverter();

@@ -1,0 +1,215 @@
+[
+  {
+    "meta": {
+      "id": "sierra:1",
+      "uuid": "57775e10-01ae-40f5-8355-346e92bba121",
+      "lang": "es",
+      "src": "spanish",
+      "section": "alpha",
+      "stems": [
+        "sierra",
+        "etc."
+      ],
+      "offensive": false
+    },
+    "hom": 1,
+    "hwi": {
+      "hw": "sierra",
+      "prs": [
+        {
+          "sound": {
+            "audio": "sierr01sp"
+          }
+        }
+      ]
+    },
+    "ahws": [
+      {
+        "hw": "etc."
+      }
+    ],
+    "xrs": [
+      [
+        {
+          "xrt": "serrar",
+          "xref": "serrar"
+        }
+      ]
+    ],
+    "shortdef": []
+  },
+  {
+    "meta": {
+      "id": "sierra:2",
+      "uuid": "48a823b1-4452-460a-9d46-f647aa3fe544",
+      "lang": "es",
+      "src": "spanish",
+      "section": "alpha",
+      "stems": [
+        "sierra"
+      ],
+      "offensive": false
+    },
+    "hom": 2,
+    "hwi": {
+      "hw": "sierra",
+      "prs": [
+        {
+          "sound": {
+            "audio": "sierr02sp"
+          }
+        }
+      ]
+    },
+    "fl": "feminine noun",
+    "def": [
+      {
+        "sseq": [
+          [
+            [
+              "sense",
+              {
+                "sn": "1",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}{a_link|saw} "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "sierra de vaivén",
+                        "tr": "jigsaw"
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "2",
+                "dt": [
+                  [
+                    "text",
+                    "{sx|cordillera||} {bc}mountain range"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "3",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}mountains {it}plural{/it} "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "viven en la sierra",
+                        "tr": "they live in the mountains"
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      }
+    ],
+    "shortdef": [
+      "saw",
+      "cordillera : mountain range",
+      "mountains plural"
+    ]
+  },
+  {
+    "meta": {
+      "id": "Sierra Leone:g",
+      "uuid": "014ad74b-43d4-4c5b-b342-ae516d90df24",
+      "lang": "en",
+      "src": "spanish",
+      "section": "geog",
+      "stems": [
+        "sierra leone"
+      ],
+      "offensive": false
+    },
+    "hwi": {
+      "hw": "Sierra Leone"
+    },
+    "fl": "geographical name",
+    "def": [
+      {
+        "sseq": [
+          [
+            [
+              "sense",
+              {
+                "dt": [
+                  [
+                    "text",
+                    "{bc}{a_link|Sierra Leona}"
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      }
+    ],
+    "shortdef": [
+      "Sierra Leona"
+    ]
+  },
+  {
+    "meta": {
+      "id": "Sierra Leona:g",
+      "uuid": "662e808f-56e6-433a-a382-a53412fa959f",
+      "lang": "es",
+      "src": "spanish",
+      "section": "geog",
+      "stems": [
+        "sierra leona"
+      ],
+      "offensive": false
+    },
+    "hwi": {
+      "hw": "Sierra Leona"
+    },
+    "fl": "geographical name",
+    "def": [
+      {
+        "sseq": [
+          [
+            [
+              "sense",
+              {
+                "dt": [
+                  [
+                    "text",
+                    "{bc}{a_link|Sierra Leone}"
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      }
+    ],
+    "shortdef": [
+      "Sierra Leone"
+    ]
+  }
+]

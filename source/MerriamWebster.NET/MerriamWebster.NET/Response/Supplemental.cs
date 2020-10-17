@@ -11,6 +11,11 @@ namespace MerriamWebster.NET.Response
         /// Array  of one or more <see cref="Conjugation"/> objects.
         /// </summary>
         [JsonProperty("cjts")]
-        public Conjugation[] Conjugations { get; set; }
+        public Conjugation[] Conjugations { get; set; } = { };
+
+        [JsonProperty("examples")] public Example[] Examples { get; set; } = { };
+
+        [JsonProperty("ldq")]
+        public Ldq Ldq { get; set; }
     }
 }

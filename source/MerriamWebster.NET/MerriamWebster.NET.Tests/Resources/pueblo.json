@@ -8,7 +8,7 @@
       "section": "alpha",
       "stems": [
         "pueblo",
-        "pueblo j髒en"
+        "pueblo j贸ven"
       ],
       "offensive": false
     },
@@ -34,7 +34,7 @@
                 "dt": [
                   [
                     "text",
-                    "{sx|naci髇||} {bc}{a_link|people}"
+                    "{sx|naci贸n||} {bc}{a_link|people}"
                   ]
                 ]
               }
@@ -75,7 +75,7 @@
                 "sn": "4",
                 "vrs": [
                   {
-                    "va": "pueblo j髒en"
+                    "va": "pueblo j贸ven"
                   }
                 ],
                 "sls": [
@@ -94,7 +94,7 @@
       }
     ],
     "shortdef": [
-      "naci髇 : people",
+      "naci贸n : people",
       "common people",
       "aldea poblado : town, village"
     ]

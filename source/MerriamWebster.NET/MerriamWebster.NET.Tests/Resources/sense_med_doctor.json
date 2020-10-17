@@ -1,0 +1,53 @@
+{
+  "sseq": [
+    [
+      [
+        "sense",
+        {
+          "sn": "1 a",
+          "dt": [
+            [
+              "text",
+              "{bc}a person who has earned one of the highest academic degrees (as a PhD) conferred by a university"
+            ]
+          ]
+        }
+      ],
+      [
+        "sense",
+        {
+          "sn": "b",
+          "dt": [
+            [
+              "text",
+              "{bc}a person awarded an honorary {a_link|doctorate} by a college or university"
+            ]
+          ]
+        }
+      ]
+    ],
+    [
+      [
+        "sense",
+        {
+          "sn": "2",
+          "dt": [
+            [
+              "text",
+              "{bc}a person skilled or specializing in healing arts"
+            ]
+          ],
+          "sdsense": {
+            "sd": "especially",
+            "dt": [
+              [
+                "text",
+                "{bc}one (as a physician, dentist, or veterinarian) who holds an advanced degree and is licensed to practice"
+              ]
+            ]
+          }
+        }
+      ]
+    ]
+  ]
+}

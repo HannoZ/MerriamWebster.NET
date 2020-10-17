@@ -17,8 +17,9 @@ namespace MerriamWebster.NET.Response.JsonConverters
                     return Lang.En;
                 case "es":
                     return Lang.Es;
+                default: 
+                    return Lang.Undefined;
             }
-            throw new Exception("Cannot unmarshal type Lang");
         }
 
         public override void WriteJson(JsonWriter writer, object untypedValue, JsonSerializer serializer)
@@ -37,7 +38,10 @@ namespace MerriamWebster.NET.Response.JsonConverters
                 case Lang.Es:
                     serializer.Serialize(writer, "es");
                     return;
+                case Lang.Undefined:
+                    return;
             }
+
             throw new Exception("Cannot marshal type Lang");
         }
 

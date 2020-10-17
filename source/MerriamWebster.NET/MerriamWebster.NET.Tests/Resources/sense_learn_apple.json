@@ -1,0 +1,95 @@
+{
+  "sseq": [
+    [
+      [
+        "sense",
+        {
+          "dt": [
+            [
+              "text",
+              "{bc}a round fruit with red, yellow, or green skin and firm white flesh "
+            ],
+            [
+              "wsgram",
+              "count"
+            ],
+            [
+              "vis",
+              [
+                {
+                  "t": "crisp juicy {it}apples{/it}"
+                },
+                {
+                  "t": "a bad/rotten {it}apple{/it} [=an apple that has rotted and cannot be eaten]"
+                }
+              ]
+            ],
+            [
+              "wsgram",
+              "noncount"
+            ],
+            [
+              "vis",
+              [
+                {
+                  "t": "a piece of {it}apple{/it}"
+                }
+              ]
+            ],
+            [
+              "uns",
+              [
+                [
+                  [
+                    "text",
+                    "often used before another noun "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "{it}apple{/it} pie"
+                      },
+                      {
+                        "t": "{it}apple{/it} juice"
+                      },
+                      {
+                        "t": "{it}apple{/it} trees"
+                      }
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "text",
+              "{p_only}{dx}see color picture on page C5{/dx}{/p_only} "
+            ],
+            [
+              "snote",
+              [
+                [
+                  "t",
+                  "\"In figurative use, a {phrase}bad apple{/phrase} or {phrase}rotten apple{/phrase} is a bad member of a group who causes problems for the rest of the \"vis\",",
+                  [
+                    {
+                      "t": "A few {it}bad apples{/it} cheated on the test, and now everyone has to take the test again."
+                    },
+                    {
+                      "t": "One {it}rotten apple{/it} ruined the day for the rest of us."
+                    }
+                  ]
+                ]
+              ]
+            ],
+            [
+              "text",
+              "{dx}see also {dxt|adam's apple||} {dxt|crab apple||}{/dx}"
+            ]
+          ]
+        }
+      ]
+    ]
+  ]
+
+}
