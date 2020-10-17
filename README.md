@@ -10,7 +10,7 @@ Requests to the Merriam-Webster APIs are very simple, there is only one GET meth
 
 Api requests are executed by the MerriamWebsterClient class. However, given the complex structure of the api response, it is highly recommended to use the EntryParser class instead and not use the MerriamWebsterClient directly. The EntryParser modifies the response into a format that is much easier to process further. EntryParser also contains one method: `GetAndParseAsync` which - surprise! - gets a result and parses it. The GetAndParseAsync method takes two parameters: the api name (all api's are available in the `Configuration` class) and the entry to get. 
 
-## Usage
+## Usage (.NET Core) 
 ```JSON
 /* appsettings.json */
 {
