@@ -6,7 +6,7 @@ namespace MerriamWebster.NET.Parsing
 {
     public class SynonymsParser
     {
-        private static readonly Regex SynonymsRegex = new Regex(@"{sx\|([\p{L}]*)\|\|}", RegexOptions.Compiled);
+        private static readonly Regex SynonymsRegex = new Regex(@"{sx\|([\p{L}]*\s?[\p{L}]*?)\|\|}", RegexOptions.Compiled);
 
         /// <summary>
         /// Find any synonymns (recognizable by {sx} markup) in the provided input string.

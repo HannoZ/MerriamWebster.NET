@@ -64,5 +64,17 @@ namespace MerriamWebster.NET.Tests.Parsing
             // ASSERT
             result.Count().ShouldBe(3);
         }
+
+        [TestMethod]
+        public void SynonymsParser_Multi_WordSynonyms()
+        {
+            string input = "{sx|aldea pequeña||} {sx|poblado largo||}";
+
+            // ACT
+            var result = SynonymsParser.ExtractSynonyms(input);
+
+            // ASSERT
+            result.Count().ShouldBe(2);
+        }
     }
 }
