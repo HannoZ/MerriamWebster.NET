@@ -15,7 +15,8 @@ namespace MerriamWebster.NET.Parsing
                 .Replace("{dx_ety}", "— ")
                 .Replace("{/dx_ety}", "")
                 .Replace("{ma}", "— more at ")
-                .Replace("{/ma}", "");
+                .Replace("{/ma}", "")
+                .Replace("{amp}", "&");
             input = input.RemoveOpenCloseTag("b");
             input = input.RemoveOpenCloseTag("it");
             input = input.RemoveOpenCloseTag("inf");

@@ -169,13 +169,12 @@ namespace MerriamWebster.NET.Tests.Parsing
 
             // ASSERT
             output.ShouldBe(expected);
-
         }
 
         [TestMethod]
         public void MarkupRemover_Remove_Mat()
         {
-            string input = @"Middle English {it}foul{/it}, from Old English {it}fugel{/it}; akin to Old High German {it}fogal{/it} bird, and probably to Old English {it}flēogan{/it} to fly {ma}{mat|fly|}{/ma}";
+            string input = "Middle English {it}foul{/it}, from Old English {it}fugel{/it}; akin to Old High German {it}fogal{/it} bird, and probably to Old English {it}flēogan{/it} to fly {ma}{mat|fly|}{/ma}";
             string expected = "Middle English foul, from Old English fugel; akin to Old High German fogal bird, and probably to Old English flēogan to fly — more at fly";
 
             // ACT
@@ -236,6 +235,19 @@ namespace MerriamWebster.NET.Tests.Parsing
             // ASSERT
             output.ShouldBe(expected);
 
+        } 
+
+        [TestMethod]
+        public void MarkupRemover_Remove_Amp()
+        {
+            string input = "Southern {amp} Midland";
+            string expected = "Southern & Midland";
+
+            // ACT
+            var output = MarkupRemover.RemoveMarkupFromString(input);
+
+            // ASSERT
+            output.ShouldBe(expected);
         }
     }
 }

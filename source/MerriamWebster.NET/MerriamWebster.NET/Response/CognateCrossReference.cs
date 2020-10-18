@@ -13,7 +13,7 @@ namespace MerriamWebster.NET.Response
         [JsonProperty("cxl")]
         public string Label { get; set; }
 
-        [JsonProperty("cxtis")]
-        public CrossReferenceTarget[] CrossReferenceTargets { get; set; }
+        [JsonProperty("cxtis")] 
+        public CrossReferenceTarget[] CrossReferenceTargets { get; set; } = { };
     }
 }
