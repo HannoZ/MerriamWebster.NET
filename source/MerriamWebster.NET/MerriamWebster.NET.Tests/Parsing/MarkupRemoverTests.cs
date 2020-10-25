@@ -159,6 +159,19 @@ namespace MerriamWebster.NET.Tests.Parsing
         }
 
         [TestMethod]
+        public void MarkupRemover_Remove_A_Link3()
+        {
+            string input = "{bc}{a_link|yesteryear}, {a_link|long ago}";
+            string expected = "yesteryear, long ago";
+
+            // ACT
+            var output = MarkupRemover.RemoveMarkupFromString(input);
+
+            // ASSERT
+            output.ShouldBe(expected);
+        }
+
+        [TestMethod]
         public void MarkupRemover_Remove_D_Link()
         {
             string input = "Manatees are {d_link|sirenians|sirenian} related to and resembling the {d_link|dugong|dugong} but differing most notably in the shape of the tail.";

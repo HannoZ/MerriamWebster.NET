@@ -56,7 +56,7 @@ namespace MerriamWebster.NET.Parsing
 
         private static string ReplaceAuto_Link(this string input)
         {
-            var regex = new Regex(@"{a_link\|(\S*)}");
+            var regex = new Regex(@"{a_link\|([^}]*)}");
 
             return RegexReplace(input, regex);
         }
@@ -64,35 +64,35 @@ namespace MerriamWebster.NET.Parsing
 
         private static string ReplaceDirect_Link(this string input)
         {
-            var regex = new Regex(@"{d_link\|(\S*)\|\S*}");
+            var regex = new Regex(@"{d_link\|([^}]*)\|[^}]*}");
 
             return RegexReplace(input, regex);
         }
 
         private static string ReplaceItalic_Link(this string input)
         {
-            var regex = new Regex(@"{i_link\|(\S*)\|\S*}");
+            var regex = new Regex(@"{i_link\|([^}]*)\|[^}]*}");
 
             return RegexReplace(input, regex);
         }
 
         private static string ReplaceEtymology_Link(this string input)
         {
-            var regex = new Regex(@"{et_link\|(\S*)\|\S*}");
+            var regex = new Regex(@"{et_link\|([^}]*)\|[^}]*}");
 
             return RegexReplace(input, regex);
         }
 
         private static string ReplaceMoreAtTarget(this string input)
         {
-            var regex = new Regex(@"{mat\|(\S*)\|\S*}");
+            var regex = new Regex(@"{mat\|([^}]*)\|[^}]*}");
 
             return RegexReplace(input, regex);
         }
 
         private static string ReplaceSynonymLink(this string input)
         {
-            var regex = new Regex(@"{sx\|(\S*\s?\S*?)\|.*?\|.*?}");
+            var regex = new Regex(@"{sx\|([^}]*)\|.*?\|.*?}");
 
             return RegexReplace(input, regex);
         }
