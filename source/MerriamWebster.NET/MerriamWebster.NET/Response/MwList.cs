@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 namespace MerriamWebster.NET.Response
 {
     /// <remarks>
-    /// Prefixed List with 'Mw' (Merriam-Webster) to avoid confusing with the BCL <see cref="List{T}"/> class.
+    /// Prefixed List with 'Mw' (Merriam-Webster) to avoid confusion with the BCL <see cref="List{T}"/> class.
     /// </remarks>
     public class MwList
     {

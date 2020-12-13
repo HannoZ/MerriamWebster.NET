@@ -13,12 +13,11 @@
     <RepositoryType>Public</RepositoryType>
     <PackageTags>Merriam-Webster dictionary thesaurus</PackageTags>
     <PackageReleaseNotes>See project readme for further details.</PackageReleaseNotes>
-    <Version>1.5</Version>
-    <AssemblyVersion>1.5.0</AssemblyVersion>
-    <FileVersion>1.5.0</FileVersion>
+    <Version>1.5.1</Version>
+    <AssemblyVersion>1.5.1</AssemblyVersion>
+    <FileVersion>1.5.1</FileVersion>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.0" />
     <PackageReference Include="Microsoft.Extensions.Http" Version="5.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
   </ItemGroup>
