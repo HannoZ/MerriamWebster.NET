@@ -1,4 +1,5 @@
 ﻿using MerriamWebster.NET.Parsing;
+using MerriamWebster.NET.Parsing.Markup;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Shouldly;
 
