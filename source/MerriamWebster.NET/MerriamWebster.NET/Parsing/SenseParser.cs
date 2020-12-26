@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using MerriamWebster.NET.Dto;
+using MerriamWebster.NET.Parsing.Markup;
 
 namespace MerriamWebster.NET.Parsing
 {
