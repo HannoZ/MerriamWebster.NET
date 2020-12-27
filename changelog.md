@@ -1,3 +1,9 @@
+1.5.2 Some internal changes in the way that markup is removed from text
+
+1.5.1 Removed dependency on Microsoft.Extensions.DependencyInjection package
+
+1.5.0 Updated dependencies to .NET 5
+
 1.4.3 Fix another issue in removing markup, that occurred when target contained multiple words (eg. {a_link|long ago}) 
 
 1.4.2 Fix issue in removing markup when a link target contains a special character (eg. {a_link|worn-out}) 
