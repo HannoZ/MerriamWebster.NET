@@ -19,7 +19,8 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DocumentationFile>Y:\github\MerriamWebster.NET\source\MerriamWebster.NET\MerriamWebster.NET\MerriamWebster.NET.xml</DocumentationFile>
+    <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\MerriamWebster.NET.xml</DocumentationFile>
+    <OutputPath></OutputPath>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Http" Version="5.0.0" />
