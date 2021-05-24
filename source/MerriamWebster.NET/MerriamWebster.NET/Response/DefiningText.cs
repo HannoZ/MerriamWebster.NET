@@ -7,14 +7,21 @@ namespace MerriamWebster.NET.Response
     /// </summary>
     public class DefiningText
     {
+        /// <summary>
+        /// Gets or sets the text.
+        /// </summary>
         [JsonProperty("t")]
         public string Text { get; set; }
 
+        /// <summary>
+        /// Gets or sets the translation.
+        /// </summary>
         [JsonProperty("tr")]
         public string Translation { get; set; }
     }
 
-    
+
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
     public struct DefiningTextComplexType
     {
         public DefiningText DefiningTextClass;
@@ -43,4 +50,6 @@ namespace MerriamWebster.NET.Response
         public static implicit operator DefiningTextObject(DefiningTextComplexTypeWrapper[] arr) => new DefiningTextObject { DefiningTextComplexTypeWrapperArray = arr };
         public static implicit operator DefiningTextObject(DefiningText dt) => new DefiningTextObject { DefiningText = dt };
     }
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
+
 }

@@ -1,5 +1,8 @@
 ﻿namespace MerriamWebster.NET.Parsing
 {
+    /// <summary>
+    /// Provides a few options that can be used to configure the way results are parsed.
+    /// </summary>
     public class ParseOptions
     {
         /// <summary>

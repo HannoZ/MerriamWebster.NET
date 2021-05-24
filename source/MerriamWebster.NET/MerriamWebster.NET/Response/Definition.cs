@@ -2,8 +2,14 @@
 
 namespace MerriamWebster.NET.Response
 {
+    /// <summary>
+    /// The definition section groups together all the sense sequences and verb dividers for a headword or defined run-on phrase
+    /// </summary>
     public class Definition
     {
+        /// <summary>
+        /// The sense sequence contains a series of senses and subsenses, ordered by sense numbers beginning at Arabic numeral "1".
+        /// </summary>
         [JsonProperty("sseq")]
         public SenseSequence[][][] SenseSequences { get; set; }
 

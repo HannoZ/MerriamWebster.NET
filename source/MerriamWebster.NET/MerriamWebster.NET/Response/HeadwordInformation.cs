@@ -7,9 +7,15 @@ namespace MerriamWebster.NET.Response
     /// </summary>
     public class HeadwordInformation
     {
+        /// <summary>
+        /// Gets or sets the headword.
+        /// </summary>
         [JsonProperty("hw")]
         public string Headword { get; set; }
 
+        /// <summary>
+        /// Gets or sets the pronunciations.
+        /// </summary>
         [JsonProperty("prs", NullValueHandling = NullValueHandling.Ignore)]
         public Pronunciation[] Pronunciations { get; set; } = { };
 

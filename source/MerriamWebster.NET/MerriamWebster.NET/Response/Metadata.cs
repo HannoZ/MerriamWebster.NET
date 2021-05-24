@@ -4,6 +4,9 @@ using Newtonsoft.Json;
 
 namespace MerriamWebster.NET.Response
 {
+    /// <summary>
+    /// Represents the metadata information.
+    /// </summary>
     public class Metadata
     {
         /// <summary>
@@ -13,6 +16,7 @@ namespace MerriamWebster.NET.Response
         public string Id { get; set; }
 
         [JsonProperty("uuid")]
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
         public Guid Uuid { get; set; }
 
         [JsonProperty("lang")]
@@ -42,15 +46,20 @@ namespace MerriamWebster.NET.Response
 
         [JsonProperty("offensive")]
         public bool Offensive { get; set; }
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
 
-        // highlight and AppShortdef are only used in the Learner's dictionary
         /// <summary>
         /// If text is "yes", the headword is a key part of English vocabulary that is highlighted in print.
         /// </summary>
+        /// <remarks>
+        /// highlight and AppShortdef are only used in the Learner's dictionary
+        /// </remarks>
         [JsonProperty("highlight")]
         public string Highlight { get; set; }
 
         [JsonProperty("app-shortdef")]
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
         public AppShortdef AppShortdef { get; set; }
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
     }
 }

@@ -1,7 +1,6 @@
-﻿using Newtonsoft.Json;
-
-namespace MerriamWebster.NET.Response
+﻿namespace MerriamWebster.NET.Response
 {
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
     public struct DefiningTextObjectWrapper
     {
         public DefiningTextObject[] DefiningTextArray;
@@ -19,4 +18,6 @@ namespace MerriamWebster.NET.Response
         public static implicit operator DefiningTextObjectWrapper(DefiningTextObject[] obj) => new DefiningTextObjectWrapper { DefiningTextArray = obj };
         public static implicit operator DefiningTextObjectWrapper(string s) => new DefiningTextObjectWrapper { TypeOrText = s };
     }
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
+
 }

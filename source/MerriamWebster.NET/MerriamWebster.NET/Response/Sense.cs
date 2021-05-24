@@ -30,12 +30,6 @@ namespace MerriamWebster.NET.Response
         [JsonProperty("sgram")]
         public string SenseSpecificGrammaticalLabel { get; set; }
 
-        [JsonProperty("dt")] 
-        public DefiningTextObjectWrapper[][] DefiningTexts { get; set; } = { };
-        
-        [JsonProperty("sdsense", NullValueHandling = NullValueHandling.Ignore)]
-        public DividedSense DividedSense { get; set; }
-
         /// <summary>
         /// An etymology is an explanation of the historical origin of a word.
         /// While the etymology contained in an et most typically relates to the headword, it may also explain the origin of a defined run-on phrase or a particular sense.
@@ -43,19 +37,11 @@ namespace MerriamWebster.NET.Response
         [JsonProperty("et", NullValueHandling = NullValueHandling.Ignore)]
         public string[][] Etymologies { get; set; } = { };
 
-        [JsonProperty("vrs", NullValueHandling = NullValueHandling.Ignore)]
-        public Variant[] Variants { get; set; } = { };
-
-        [JsonProperty("xrs", NullValueHandling = NullValueHandling.Ignore)]
-        public CrossReference[][] CrossReferences { get; set; } = { };
         /// <summary>
         /// A subject/status label describes the subject area (eg, "computing") or regional/usage status (eg, "British", "formal", "slang") of a headword or a particular sense of a headword.
         /// </summary>
         [JsonProperty("sls", NullValueHandling = NullValueHandling.Ignore)]
         public string[] SubjectStatusLabels { get; set; } = { };
-
-        [JsonProperty("ins", NullValueHandling = NullValueHandling.Ignore)]
-        public Inflection[] Inflections { get; set; } = { };
 
         /// <summary>
         /// A thesaurus entry typically contains a list of synonyms for the headword.
@@ -66,7 +52,7 @@ namespace MerriamWebster.NET.Response
         /// <summary>
         /// A thesaurus <see cref="DictionaryEntry"/> may contain a list of words related to the headword. A related word list is contained in <see cref="RelatedWords"/>.
         /// </summary>
-        [JsonProperty("rel_list")] 
+        [JsonProperty("rel_list")]
         public MwList[][] RelatedWords { get; set; } = { };
 
         /// <summary>
@@ -74,5 +60,24 @@ namespace MerriamWebster.NET.Response
         /// </summary>
         [JsonProperty("lbs", NullValueHandling = NullValueHandling.Ignore)]
         public string[] GeneralLabels { get; set; } = { };
+
+
+        [JsonProperty("dt")]
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
+        public DefiningTextObjectWrapper[][] DefiningTexts { get; set; } = { };
+
+        [JsonProperty("sdsense", NullValueHandling = NullValueHandling.Ignore)]
+        public DividedSense DividedSense { get; set; }
+
+
+        [JsonProperty("vrs", NullValueHandling = NullValueHandling.Ignore)]
+        public Variant[] Variants { get; set; } = { };
+
+        [JsonProperty("xrs", NullValueHandling = NullValueHandling.Ignore)]
+        public CrossReference[][] CrossReferences { get; set; } = { };
+
+        [JsonProperty("ins", NullValueHandling = NullValueHandling.Ignore)]
+        public Inflection[] Inflections { get; set; } = { };
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
     }
 }

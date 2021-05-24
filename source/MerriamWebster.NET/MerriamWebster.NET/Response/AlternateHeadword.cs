@@ -8,6 +8,7 @@ namespace MerriamWebster.NET.Response
     public class AlternateHeadword
     {
         [JsonProperty("hw")]
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
         public string Headword { get; set; }
 
         [JsonProperty("hwc", NullValueHandling = NullValueHandling.Ignore)]
@@ -15,6 +16,7 @@ namespace MerriamWebster.NET.Response
 
         [JsonProperty("prs", NullValueHandling = NullValueHandling.Ignore)]
         public Pronunciation[] Pronunciations { get; set; } = { };
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
 
         /// <summary>
         /// A parenthesized subject/status label describes the subject area or regional/usage status (eg, "British") of a headword or other defined term, and is displayed in parentheses.<br/>

@@ -1,7 +1,13 @@
 ﻿namespace MerriamWebster.NET.Dto
 {
+    /// <summary>
+    /// A supplemental verb conjugation section is included in some bilingual dictionary entries. 
+    /// </summary>
     public class Conjugation
     {
+        /// <summary>
+        /// Gets or sets the verb tense
+        /// </summary>
         public string Tense { get; set; }
         /// <summary>
         /// Singular, first person.

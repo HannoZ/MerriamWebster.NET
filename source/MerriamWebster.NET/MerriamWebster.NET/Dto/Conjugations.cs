@@ -1,22 +1,26 @@
 ﻿namespace MerriamWebster.NET.Dto
 {
+    /// <summary>
+    /// All conjugations of a verb. Appears in the Spanish-English dictionary for most verbs. 
+    /// </summary>
     public class Conjugations
     {
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
         public string PresentParticiple { get; set; }
         public string PastParticiple { get; set; }
         public Conjugation Present { get; set; }
-        /// <summary>
+        /// <remarks>
         /// Also Preterit past
-        /// </summary>
+        /// </remarks>
         public Conjugation IndefinitePast { get; set; }
         public Conjugation ImperfectPast { get; set; }
         public Conjugation Conditional { get; set; }
         public Conjugation Future { get; set; }
         public Conjugation Imperative { get; set; }
         public Conjugation PresentPerfect { get; set; }
-        /// <summary>
+        /// <remarks>
         /// Also Pluperfect.
-        /// </summary>
+        /// </remarks>
         public Conjugation PastPerfect { get; set; }
         public Conjugation PreteritePerfect { get; set; }
         public Conjugation ConditionalPerfect { get; set; }
@@ -25,10 +29,12 @@
         public Conjugation ImperfectSubjunctive { get; set; }
         public Conjugation FutureSubjunctive { get; set; }
         public Conjugation PresentPerfectSubjunctive { get; set; }
-        /// <summary>
+        /// <remarks>
         /// Also Pluperfect subjunctive
-        /// </summary>
+        /// </remarks>
         public Conjugation PastPerfectSubjunctive { get; set; } 
         public Conjugation FuturePerfectSubjunctive { get; set; }
     }
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
+
 }

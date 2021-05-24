@@ -5,6 +5,12 @@ using System.Text.RegularExpressions;
 
 namespace MerriamWebster.NET.Parsing.Markup
 {
+    /// <summary>
+    /// A helper class that removes markup from text. 
+    /// </summary>
+    /// <remarks>
+    /// This class loads all implementations of <see cref="IMarkupRemover"/> and contains some more specific implemenation.
+    /// </remarks>
     public class MarkupRemover
     {
         private static readonly List<IMarkupRemover> MarkupRemovers;
@@ -19,6 +25,11 @@ namespace MerriamWebster.NET.Parsing.Markup
             MarkupRemovers = new List<IMarkupRemover>(types.Select(type => (IMarkupRemover)Activator.CreateInstance(type)));
         }
 
+        /// <summary>
+        /// Removes markup, using all logic that is currently available.
+        /// </summary>
+        /// <param name="input">The input text.</param>
+        /// <returns>Output text without any markup</returns>
         public static string RemoveMarkupFromString(string input)
         {
 
@@ -53,7 +64,7 @@ namespace MerriamWebster.NET.Parsing.Markup
                 .Replace("||}", "");
         }
         
-        protected static string RegexReplace(string input, Regex regex)
+        internal static string RegexReplace(string input, Regex regex)
         {
             var matches = regex.Matches(input);
             input = Regex.Replace(input, regex.ToString(), "[x]");

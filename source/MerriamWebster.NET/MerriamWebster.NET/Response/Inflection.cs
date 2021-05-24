@@ -8,6 +8,7 @@ namespace MerriamWebster.NET.Response
     public class Inflection
     {
         [JsonProperty("il")]
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
         public string Label { get; set; }
 
         [JsonProperty("prs", NullValueHandling = NullValueHandling.Ignore)]
@@ -21,6 +22,7 @@ namespace MerriamWebster.NET.Response
 
         [JsonProperty("aif", NullValueHandling = NullValueHandling.Ignore)]
         public AlternateInflection Alternate { get; set; }
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
 
         /// <summary>
         /// This label provides information on the grammatical number (eg, singular, plural) of an inflection in a particular sense.<br/>

@@ -1,26 +1,53 @@
 ﻿using MerriamWebster.NET.Dto;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace MerriamWebster.NET.Parsing
 {
+    /// <summary>
+    /// The <see cref="EntryParser"/> class is used to get a result from the API and parse the raw data into an <see cref="EntryModel"/>.
+    /// </summary>
     public class EntryParser : IEntryParser
     {
         private readonly IMerriamWebsterClient _client;
+        private static readonly JsonSerializerSettings SerializerSettings = new JsonSerializerSettings
+        {
+            DefaultValueHandling = DefaultValueHandling.Ignore
+        };
 
+        /// <summary>
+        /// Initializes a new instances of the <see cref="EntryParser"/> class.
+        /// </summary>
+        /// <param name="client"></param>
+        /// <remarks>It's most convenient to register this class as implementation of the <see cref="IEntryParser"/> interface and inject the interface where it's needed.
+        /// This constructor should therefore not be called directly, new instances should be created by the current IoC framework.</remarks>
         public EntryParser(IMerriamWebsterClient client)
         {
             _client = client;
         }
 
+        /// <inheritdoc />
         public Task<EntryModel> GetAndParseAsync(string api, string searchTerm)
         {
             return GetAndParseAsync(api, searchTerm, ParseOptions.Default);
         }
 
+        /// <inheritdoc />
         public async Task<EntryModel> GetAndParseAsync(string api, string searchTerm, ParseOptions options)
         {
+            if (searchTerm == null)
+            {
+                throw new ArgumentNullException(nameof(searchTerm));
+            }
+
+            if (options == null)
+            {
+                options = ParseOptions.Default;
+            }
+
             var results = await _client.GetDictionaryEntry(api, searchTerm);
 
             var resultModel = new EntryModel
@@ -30,6 +57,8 @@ namespace MerriamWebster.NET.Parsing
 
             foreach (var result in results)
             {
+                resultModel.RawResponse = JsonConvert.SerializeObject(result, SerializerSettings);
+
                 if (!result.Metadata.Stems.Contains(searchTerm.ToLowerInvariant()))
                 {
                     continue;

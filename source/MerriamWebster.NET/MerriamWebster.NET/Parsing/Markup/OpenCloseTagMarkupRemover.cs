@@ -1,6 +1,6 @@
 namespace MerriamWebster.NET.Parsing.Markup
 {
-    public class OpenCloseTagMarkupRemover : IMarkupRemover
+    internal class OpenCloseTagMarkupRemover : IMarkupRemover
     {
         private readonly string[] _tags = new[] {"b", "it", "inf", "sup", "sc", "wi"};
 

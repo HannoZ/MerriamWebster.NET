@@ -2,15 +2,17 @@
 
 namespace MerriamWebster.NET.Response
 {
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
     public class Ldq
     {
         [JsonProperty("ldhw")]
-        public string Ldhw { get; set; }
+        public string Headword { get; set; }
 
         [JsonProperty("fl")]
-        public string Fl { get; set; }
+        public string FunctionalLabel { get; set; }
 
         [JsonProperty("def")]
-        public LdqDef[] Def { get; set; }
+        public LdqDef[] Definition { get; set; }
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
     }
 }

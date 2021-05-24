@@ -8,9 +8,11 @@ namespace MerriamWebster.NET.Response
     public class WordVariant
     {
         [JsonProperty("wvl")]
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
         public string Label { get; set; }
 
         [JsonProperty("wva")]
         public string Variant { get; set; }
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
     }
 }

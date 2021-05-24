@@ -8,27 +8,28 @@ namespace MerriamWebster.NET.Response
     /// </summary>
     public class DividedSense
     {
+        /// <summary>
+        /// Gets or sets the sense divider (eg. 'also', 'especially')
+        /// </summary>
         [JsonProperty("sd")]
         public string SenseDivider { get; set; }
-
-        [JsonProperty("dt")]
-        public DefiningTextObjectWrapper[][] DefiningTexts { get; set; } = { };
-       
+        
         /// <summary>
         /// An etymology is an explanation of the historical origin of a word.
         /// While the etymology contained in an et most typically relates to the headword, it may also explain the origin of a defined run-on phrase or a particular sense.
         /// </summary>
         [JsonProperty("et", NullValueHandling = NullValueHandling.Ignore)]
         public string[][] Etymologies { get; set; }
-
-        [JsonProperty("vrs", NullValueHandling = NullValueHandling.Ignore)]
-        public Variant[] Variants { get; set; } = { };
-
+        
         /// <summary>
         /// A subject/status label describes the subject area (eg, "computing") or regional/usage status (eg, "British", "formal", "slang") of a headword or a particular sense of a headword.
         /// </summary>
         [JsonProperty("sls", NullValueHandling = NullValueHandling.Ignore)]
         public string[] SubjectStatusLabels { get; set; } = { };
+
+        [JsonProperty("dt")]
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
+        public DefiningTextObjectWrapper[][] DefiningTexts { get; set; } = { };
 
         /// <summary>
         /// General labels provide information such as whether a headword is typically capitalized, used as an attributive noun, etc.
@@ -36,7 +37,12 @@ namespace MerriamWebster.NET.Response
         [JsonProperty("lbs", NullValueHandling = NullValueHandling.Ignore)]
         public string[] GeneralLabels { get; set; } = { };
 
+        [JsonProperty("vrs", NullValueHandling = NullValueHandling.Ignore)]
+        public Variant[] Variants { get; set; } = { };
+
+
         [JsonProperty("ins", NullValueHandling = NullValueHandling.Ignore)]
         public Inflection[] Inflections { get; set; } = { };
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
     }
 }

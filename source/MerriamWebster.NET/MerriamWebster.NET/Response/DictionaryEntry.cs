@@ -2,6 +2,7 @@
 
 namespace MerriamWebster.NET.Response
 {
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
     public class DictionaryEntry
     {
         [JsonProperty("meta")]
@@ -21,6 +22,32 @@ namespace MerriamWebster.NET.Response
 
         [JsonProperty("def")]
         public Definition[] Definitions { get; set; } = { };
+        
+        [JsonProperty("uros")]
+        public UndefinedRunOn[] UndefinedRunOns { get; set; } = { };
+
+        [JsonProperty("dros", NullValueHandling = NullValueHandling.Ignore)]
+        public DefinedRunOn[] DefinedRunOns { get; set; } = { };
+
+        [JsonProperty("ins", NullValueHandling = NullValueHandling.Ignore)]
+        public Inflection[] Inflections { get; set; } = { };
+
+        [JsonProperty("xrs", NullValueHandling = NullValueHandling.Ignore)]
+        public CrossReference[][] CrossReferences { get; set; } = { };
+
+        [JsonProperty("date")]
+        public string Date { get; set; }
+
+        [JsonProperty("suppl", NullValueHandling = NullValueHandling.Ignore)]
+        public Supplemental Supplemental { get; set; }
+
+        [JsonProperty("history")]
+        public History History { get; set; }
+
+        [JsonProperty("shortdef")]
+        public string[] Shortdefs { get; set; } = { };
+
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
 
         /// <summary>
         /// An etymology is an explanation of the historical origin of a word.
@@ -29,12 +56,7 @@ namespace MerriamWebster.NET.Response
         [JsonProperty("et", NullValueHandling = NullValueHandling.Ignore)]
         public string[][] Etymologies { get; set; }
 
-        [JsonProperty("uros")]
-        public UndefinedRunOn[] UndefinedRunOns { get; set; } = { };
 
-        [JsonProperty("dros", NullValueHandling = NullValueHandling.Ignore)]
-        public DefinedRunOn[] DefinedRunOns { get; set; } = { };
-        
         /// <summary>
         /// Array of one or more variant objects.
         /// </summary>
@@ -58,29 +80,11 @@ namespace MerriamWebster.NET.Response
         /// </summary>
         [JsonProperty("lbs", NullValueHandling = NullValueHandling.Ignore)]
         public string[] GeneralLabels { get; set; } = { };
-
-        [JsonProperty("ins", NullValueHandling = NullValueHandling.Ignore)]
-        public Inflection[] Inflections { get; set; } = { };
-
-        [JsonProperty("xrs", NullValueHandling = NullValueHandling.Ignore)]
-        public CrossReference[][] CrossReferences { get; set; } = { };
-
-        [JsonProperty("date")]
-        public string Date { get; set; }
-
+        
         /// <summary>
         /// Undocumented field.
         /// </summary>
         [JsonProperty("ld_link")]
         public LdLink LdLink { get; set; }
-
-        [JsonProperty("suppl", NullValueHandling = NullValueHandling.Ignore)]
-        public Supplemental Supplemental { get; set; }
-
-        [JsonProperty("history")]
-        public History History { get; set; }
-
-        [JsonProperty("shortdef")]
-        public string[] Shortdefs { get; set; } = { };
     }
 }

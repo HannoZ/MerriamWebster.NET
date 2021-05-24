@@ -5,17 +5,28 @@ using MerriamWebster.NET.Parsing.Markup;
 
 namespace MerriamWebster.NET.Parsing
 {
+    /// <summary>
+    /// The <see cref="SenseParser"/> class does the heavy-lifting of peeling the senses out of a <see cref="Response.Definition"/>.
+    /// </summary>
     public class SenseParser
     {
         private readonly Response.Definition _def;
         private readonly ParseOptions _parseOptions;
         
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SenseParser"/> class.
+        /// </summary>
+        /// <param name="def">The definition object to parse.</param>
+        /// <param name="parseOptions">The parse options.</param>
         public SenseParser(Response.Definition def, ParseOptions parseOptions)
         {
             _def = def;
             _parseOptions = parseOptions;
         }
 
+        /// <summary>
+        /// Parses the input definition into a collection of <see cref="Sense"/>s.
+        /// </summary>
         public ICollection<Sense> Parse()
         {
             var senses = new List<Sense>();

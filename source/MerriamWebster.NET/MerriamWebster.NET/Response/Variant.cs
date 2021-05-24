@@ -13,11 +13,13 @@ namespace MerriamWebster.NET.Response
         [JsonProperty("vl")]
         public string VariantLabel { get; set; }
 
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
         [JsonProperty("va")]
         public string Text { get; set; }
 
         [JsonProperty("prs", NullValueHandling = NullValueHandling.Ignore)]
         public Pronunciation[] Pronunciations { get; set; } = { };
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
 
         /// <summary>
         /// Contains a cutback form of the preceding variant

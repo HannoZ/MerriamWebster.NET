@@ -13,10 +13,15 @@ namespace MerriamWebster.NET.Response
         [JsonProperty("cjts")]
         public Conjugation[] Conjugations { get; set; } = { };
 
+        /// <summary>
+        /// Gets or sets examples.
+        /// </summary>
         [JsonProperty("examples")] 
         public Example[] Examples { get; set; } = { };
 
         [JsonProperty("ldq")]
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
         public Ldq Ldq { get; set; }
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
     }
 }

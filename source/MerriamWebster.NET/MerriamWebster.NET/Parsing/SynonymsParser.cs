@@ -4,6 +4,9 @@ using System.Text.RegularExpressions;
 
 namespace MerriamWebster.NET.Parsing
 {
+    /// <summary>
+    /// Contains logic to extract synonyms that may appear as links in senses.
+    /// </summary>
     public class SynonymsParser
     {
         private static readonly Regex SynonymsRegex = new Regex(@"{sx\|([\p{L}]*\s?[\p{L}]*?)\|\|}", RegexOptions.Compiled);

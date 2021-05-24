@@ -2,6 +2,9 @@
 
 namespace MerriamWebster.NET.Response
 {
+    /// <summary>
+    /// The <see cref="Pronunciation"/> class contains information about how to pronounce a word.
+    /// </summary>
     public class Pronunciation
     {
         /// <summary>

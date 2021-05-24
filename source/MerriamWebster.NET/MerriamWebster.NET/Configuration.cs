@@ -2,6 +2,7 @@
 
 namespace MerriamWebster.NET
 {
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
     public static class Configuration
     {
         public static readonly Uri ApiBaseAddress = new Uri("https://www.dictionaryapi.com/api/v3/references/");
@@ -19,3 +20,4 @@ namespace MerriamWebster.NET
         public static readonly string SpanishEnglishDictionary = "spanish";
     }
 }
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member

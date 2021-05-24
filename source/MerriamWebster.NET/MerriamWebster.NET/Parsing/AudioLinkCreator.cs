@@ -3,11 +3,21 @@ using MerriamWebster.NET.Response;
 
 namespace MerriamWebster.NET.Parsing
 {
+    /// <summary>
+    /// Can be used to generate a link to an audio file. 
+    /// </summary>
     public class AudioLinkCreator
     {
+        /// <summary>
+        /// Creates a link (<see cref="Uri"/>) to an audio file.
+        /// </summary>
+        /// <param name="language">The language. Only for Spanish-English dictionary.</param>
+        /// <param name="sound">The sound object.</param>
+        /// <param name="format">Specifies the audio format</param>
+        /// <returns>A <see cref="Uri"/> that points to the audio file, or <c>null</c> if no Audio string is provided.</returns>
         public static Uri CreateLink(Lang language, Sound sound, AudioFormat format)
         {
-            if (sound == null)
+            if (sound == null || string.IsNullOrEmpty(sound.Audio))
             {
                 return null;
             }

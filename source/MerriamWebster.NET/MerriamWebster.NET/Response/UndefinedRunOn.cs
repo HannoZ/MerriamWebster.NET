@@ -14,12 +14,21 @@ namespace MerriamWebster.NET.Response
         [JsonProperty("ure")]
         public string EntryWord { get; set; }
 
+        /// <summary>
+        /// Gets or sets the pronunciations.
+        /// </summary>
         [JsonProperty("prs", NullValueHandling = NullValueHandling.Ignore)]
         public Pronunciation[] Pronunciations { get; set; } = { };
 
+        /// <summary>
+        /// Gets or sets the functional label
+        /// </summary>
         [JsonProperty("fl")]
         public string FunctionalLabel { get; set; }
 
+        /// <summary>
+        /// Gets or sets an <see cref="AlternateUndefinedEntryWord"/>.
+        /// </summary>
         [JsonProperty("aure", NullValueHandling = NullValueHandling.Ignore)]
         public AlternateUndefinedEntryWord AlternateEntry { get; set; }
 

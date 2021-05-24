@@ -2,6 +2,7 @@
 
 namespace MerriamWebster.NET.Response
 {
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
     public class DefinedRunOn
     {
         [JsonProperty("drp")]
@@ -15,6 +16,7 @@ namespace MerriamWebster.NET.Response
 
         [JsonProperty("def")]
         public Definition[] Definitions { get; set; }
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
 
         /// <summary>
         /// A parenthesized subject/status label describes the subject area or regional/usage status (eg, "British") of a headword or other defined term, and is displayed in parentheses.<br/>

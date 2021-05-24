@@ -13,6 +13,9 @@ namespace MerriamWebster.NET.Response
         [JsonProperty("pl")]
         public string ParagraphLabel { get; set; }
 
+        /// <summary>
+        /// Gets or sets the paragraph text.
+        /// </summary>
         [JsonProperty("pt")] 
         public string[][] ParagraphText { get; set; } = { };
     }
