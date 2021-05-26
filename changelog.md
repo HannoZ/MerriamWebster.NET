@@ -1,3 +1,5 @@
+1.6.1 Extended XML documentation. Added a new property ``RawResponse`` to the ``EntryModel`` class that contains the raw API response.
+
 1.6 Enabled XML doc generation so existing documentation is actually visible
 
 1.5.2 Some internal changes in the way that markup is removed from text
