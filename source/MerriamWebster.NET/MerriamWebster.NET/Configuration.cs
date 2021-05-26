@@ -8,6 +8,9 @@ namespace MerriamWebster.NET
         public static readonly Uri ApiBaseAddress = new Uri("https://www.dictionaryapi.com/api/v3/references/");
         public static readonly Uri MediaBaseAddres = new Uri("https://media.merriam-webster.com/audio/prons/");
 
+        public static readonly string ArtworkHtmlPagePlaceholder = "https://www.merriam-webster.com/art/dict/{0}.htm";
+        public static readonly string ArtworkDirectLinkPlaceholder = "https://www.merriam-webster.com/assets/mw/static/art/dict/{0}.gif";
+
         // api paths
         public static readonly string CollegiateThesaurus = "thesaurus";
         public static readonly string CollegiateDictionary = "collegiate";

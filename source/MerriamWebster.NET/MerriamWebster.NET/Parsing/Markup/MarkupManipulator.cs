@@ -9,20 +9,20 @@ namespace MerriamWebster.NET.Parsing.Markup
     /// A helper class that removes markup from text. 
     /// </summary>
     /// <remarks>
-    /// This class loads all implementations of <see cref="IMarkupRemover"/> and contains some more specific implemenation.
+    /// This class loads all implementations of <see cref="IMarkupManipulator"/> and contains some more specific implemenation.
     /// </remarks>
-    public class MarkupRemover
+    public class MarkupManipulator
     {
-        private static readonly List<IMarkupRemover> MarkupRemovers;
+        private static readonly List<IMarkupManipulator> MarkupManipulators;
 
-        static MarkupRemover()
+        static MarkupManipulator()
         {
             var types = System.Reflection.Assembly.GetExecutingAssembly()
                 .GetTypes()
-                .Where(type => typeof(IMarkupRemover).IsAssignableFrom(type) && !type.IsInterface)
+                .Where(type => typeof(IMarkupManipulator).IsAssignableFrom(type) && !type.IsInterface)
                 .ToList();
 
-            MarkupRemovers = new List<IMarkupRemover>(types.Select(type => (IMarkupRemover)Activator.CreateInstance(type)));
+            MarkupManipulators = new List<IMarkupManipulator>(types.Select(type => (IMarkupManipulator)Activator.CreateInstance(type)));
         }
 
         /// <summary>
@@ -44,11 +44,27 @@ namespace MerriamWebster.NET.Parsing.Markup
                 .Replace("{/ma}", "")
                 .Replace("{amp}", "&");
 
-            input = MarkupRemovers.Aggregate(input, (current, markupRemover) => markupRemover.RemoveMarkup(current));
+            input = MarkupManipulators.Aggregate(input, (current, markupRemover) => markupRemover.RemoveMarkup(current));
 
             // always keep this one as last! 
             input = ReplaceCrossReferenceTarget(input);
-            
+
+            return input;
+        }
+
+        /// <summary>
+        /// Replaces MW markup with HTML markup, using all logic that is currently available.
+        /// </summary>
+        /// <param name="input">The input text.</param>
+        /// <returns>Output text with HTML markup</returns>
+        public static string ReplaceMarkupInString(string input)
+        {
+            input = MarkupManipulators.Aggregate(input, (current, markupRemover) => markupRemover.ReplaceMarkup(current));
+            input = input.Replace("{bc}", "<b>:</b>");
+
+            // remove any MW markup that has not been replaced by HTML
+            input = RemoveMarkupFromString(input);
+
             return input;
         }
 
@@ -63,8 +79,8 @@ namespace MerriamWebster.NET.Parsing.Markup
                 .Replace("{dxt|", "")
                 .Replace("||}", "");
         }
-        
-        internal static string RegexReplace(string input, Regex regex)
+
+        internal static string RegexReplace(string input, Regex regex, string htmlTag = null, string @class = null, string style = null)
         {
             var matches = regex.Matches(input);
             input = Regex.Replace(input, regex.ToString(), "[x]");
@@ -77,7 +93,14 @@ namespace MerriamWebster.NET.Parsing.Markup
                 string first = input.Substring(0, index);
                 string last = input.Substring(index + 3);
 
-                input = first + target + last;
+                if (string.IsNullOrEmpty(htmlTag))
+                {
+                    input = first + target + last;
+                }
+                else
+                {
+                    input = $"{first}<{htmlTag} class=\"{@class}\">{target}</{htmlTag}>{last}";
+                }
             }
 
             return input;

@@ -59,7 +59,10 @@ namespace MerriamWebster.NET.Parsing
                         }
 
                         sense.Text = _parseOptions.RemoveMarkup
-                            ? MarkupRemover.RemoveMarkupFromString(definitionText)
+                            ? MarkupManipulator.RemoveMarkupFromString(definitionText)
+                            : definitionText;
+                        sense.HtmlText = _parseOptions.ReplaceMarkup
+                            ? MarkupManipulator.ReplaceMarkupInString(definitionText)
                             : definitionText;
 
                         if (sourceSence.DividedSense != null)
@@ -73,9 +76,14 @@ namespace MerriamWebster.NET.Parsing
 
                                     sense.RawText += $"; {sdText}";
                                     var text = _parseOptions.RemoveMarkup
-                                        ? MarkupRemover.RemoveMarkupFromString(sdText)
+                                        ? MarkupManipulator.RemoveMarkupFromString(sdText)
                                         : sdText;
                                     sense.Text += $"; {text}";
+
+                                    var htmlText = _parseOptions.ReplaceMarkup
+                                        ? MarkupManipulator.ReplaceMarkupInString(sdText)
+                                        : sdText;
+                                    sense.HtmlText += $"; {htmlText}";
                                 }
                             }
                         }
@@ -90,10 +98,12 @@ namespace MerriamWebster.NET.Parsing
                             {
                                 if (dto.DefiningText != null)
                                 {
+                                    var text = dto.DefiningText.Text;
                                     var example = new Example
                                     {
-                                        RawSentence = dto.DefiningText.Text,
-                                        Sentence = _parseOptions.RemoveMarkup ? MarkupRemover.RemoveMarkupFromString(dto.DefiningText.Text) : dto.DefiningText.Text,
+                                        RawSentence = text,
+                                        Sentence = _parseOptions.RemoveMarkup ? MarkupManipulator.RemoveMarkupFromString(text) : text,
+                                        HtmlSentence = _parseOptions.ReplaceMarkup ? MarkupManipulator.ReplaceMarkupInString(text) : text,
                                         Translation = dto.DefiningText.Translation
                                     };
                                     sense.Examples.Add(example);
@@ -111,7 +121,8 @@ namespace MerriamWebster.NET.Parsing
                         sense.Examples.Add(new Example
                         {
                             RawSentence = variant.Text,
-                            Sentence = _parseOptions.RemoveMarkup ? MarkupRemover.RemoveMarkupFromString(variant.Text) : variant.Text
+                            Sentence = _parseOptions.RemoveMarkup ? MarkupManipulator.RemoveMarkupFromString(variant.Text) : variant.Text,
+                            HtmlSentence = _parseOptions.RemoveMarkup ? MarkupManipulator.ReplaceMarkupInString(variant.Text) : variant.Text
                         });
                     }
                 }

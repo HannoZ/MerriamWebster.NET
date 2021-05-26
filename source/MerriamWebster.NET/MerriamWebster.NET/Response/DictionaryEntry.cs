@@ -86,5 +86,12 @@ namespace MerriamWebster.NET.Response
         /// </summary>
         [JsonProperty("ld_link")]
         public LdLink LdLink { get; set; }
+
+        /// <summary>
+        /// Gets or sets the artwork.
+        /// </summary>
+        [JsonProperty("art")]
+        public Artwork Artwork { get; set; }
+
     }
 }

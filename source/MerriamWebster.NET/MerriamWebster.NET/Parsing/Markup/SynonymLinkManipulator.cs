@@ -3,9 +3,9 @@ using System.Text.RegularExpressions;
 namespace MerriamWebster.NET.Parsing.Markup
 {
     /// <summary>
-    /// An <see cref="IMarkupRemover"/> implementation for synonym links (sx).
+    /// An <see cref="IMarkupManipulator"/> implementation for synonym links (sx).
     /// </summary>
-    public class SynonymLinkRemover : MarkupRemover, IMarkupRemover
+    public class SynonymLinkManipulator : MarkupManipulator, IMarkupManipulator
     {
         /// <inheritdoc />
         public string RemoveMarkup(string input)
@@ -13,6 +13,12 @@ namespace MerriamWebster.NET.Parsing.Markup
             var regex = new Regex(@"{sx\|([^}]*)\|.*?\|.*?}");
 
             return RegexReplace(input, regex);
+        }
+
+        /// <inheritdoc />
+        public string ReplaceMarkup(string input)
+        {
+            return input;
         }
     }
 }

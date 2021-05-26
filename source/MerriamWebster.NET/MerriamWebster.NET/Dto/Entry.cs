@@ -68,6 +68,10 @@ namespace MerriamWebster.NET.Dto
         /// Gets or sets a collection of antonyms.
         /// </summary>
         public ICollection<string> Antonyms { get; set; } = new List<string>();
+        /// <summary>
+        /// Gets or sets the artwork.
+        /// </summary>
+        public Artwork Artwork { get; set; }
 
         /// <summary>
         /// The summary is the content of all <see cref="Senses"/> with non-empty Text properties.

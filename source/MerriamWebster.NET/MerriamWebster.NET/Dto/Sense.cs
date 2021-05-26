@@ -18,7 +18,14 @@ namespace MerriamWebster.NET.Dto
         /// </summary>
         public string Text { get; set; }
         /// <summary>
+        /// If <see cref="ParseOptions"/> is configured to replace markup, this contains the text with MW-specific markup replace by HTML markup. The <see cref="RawText"/> still contains the unformmated text. 
+        /// </summary>
+        public string HtmlText { get; set; }
+
+        /// <summary>
         /// A collection of <see cref="Example"/>s. Optional.
+        /// If <see cref="ParseOptions"/> is configured to replace markup, this contains the formatted text with markup being replaced by HTML tags.
+        /// The <see cref="RawText"/> still contains the unformmated text. 
         /// </summary>
         public ICollection<Example> Examples { get; set; } = new List<Example>();
         /// <summary>

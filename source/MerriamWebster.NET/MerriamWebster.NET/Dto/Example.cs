@@ -19,6 +19,10 @@
         /// <remarks>By default the markup is removed from the text.</remarks>
         public string Sentence { get; set; }
         /// <summary>
+        /// Gets or sets the sentence where MW markup is replaced by HTML markup.
+        /// </summary>
+        public string HtmlSentence { get; set; }
+        /// <summary>
         /// Gets or sets the translation.
         /// </summary>
         /// <remarks>Spanish-English only.</remarks>

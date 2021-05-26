@@ -154,6 +154,16 @@ namespace MerriamWebster.NET.Parsing
                 searchResult.Gender = "masculine";
                 searchResult.Pos = searchResult.Pos.Replace("masculine", "").TrimStart();
             }
+
+            if (result.Artwork != null)
+            {
+                searchResult.Artwork = new Artwork
+                {
+                    Caption = result.Artwork.Caption,
+                    HtmlLocation = ArtworkLinkCreator.CreatePageLink(result.Artwork),
+                    ImageLocation = ArtworkLinkCreator.CreateDirectLink(result.Artwork)
+                };
+            }
         }
 
         private static IEnumerable<CrossReference> ParseCrossReferences(Response.DictionaryEntry result)

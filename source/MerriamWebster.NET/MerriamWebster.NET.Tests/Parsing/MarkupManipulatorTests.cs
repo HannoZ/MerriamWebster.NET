@@ -1,0 +1,292 @@
+﻿using MerriamWebster.NET.Parsing;
+using MerriamWebster.NET.Parsing.Markup;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Shouldly;
+
+namespace MerriamWebster.NET.Tests.Parsing
+{
+    [TestClass]
+    public class MarkupManipulatorTests
+    {
+        [TestMethod]
+        public void MarkupManipulator_Remove_B()
+        {
+            string input = "Some {b}bold{/b} text";
+
+            // ACT
+            var output = MarkupManipulator.RemoveMarkupFromString(input);
+
+            // ASSERT
+            output.ShouldBe("Some bold text");
+        }
+
+        [TestMethod]
+        public void MarkupManipulator_Replace_B()
+        {
+            string input = "Some {b}bold{/b} text";
+
+            // ACT
+            var output = MarkupManipulator.ReplaceMarkupInString(input);
+
+            // ASSERT
+            output.ShouldBe("Some <b>bold</b> text");
+        }
+
+        [TestMethod]
+        public void MarkupManipulator_Remove_It()
+        {
+            string input = "This is {it}some{/it} text";
+
+            // ACT
+            var output = MarkupManipulator.RemoveMarkupFromString(input);
+
+            // ASSERT
+            output.ShouldBe("This is some text");
+        }
+
+        [TestMethod]
+        public void MarkupManipulator_Replace_It()
+        {
+            string input = "This is {it}some{/it} text";
+
+            // ACT
+            var output = MarkupManipulator.ReplaceMarkupInString(input);
+
+            // ASSERT
+            output.ShouldBe("This is <i>some</i> text");
+        }
+
+        [TestMethod]
+        public void MarkupManipulator_Remove_Bc()
+        {
+            string input = "This is{bc} some text";
+
+            // ACT
+            var output = MarkupManipulator.RemoveMarkupFromString(input);
+
+            // ASSERT
+            output.ShouldBe("This is some text");
+        }
+
+        [TestMethod]
+        public void MarkupManipulator_Replace_Bc()
+        {
+            string input = "This is{bc} some text";
+
+            // ACT
+            var output = MarkupManipulator.ReplaceMarkupInString(input);
+
+            // ASSERT
+            output.ShouldBe("This is<b>:</b> some text");
+        }
+
+        [TestMethod]
+        public void MarkupManipulator_Remove_Wi()
+        {
+            string input = "A sergeant is {wi}above{/wi} a corporal.";
+
+            // ACT
+            var output = MarkupManipulator.RemoveMarkupFromString(input);
+
+            // ASSERT
+            output.ShouldBe("A sergeant is above a corporal.");
+        }
+
+        [TestMethod]
+        public void MarkupManipulator_Remove_Sc()
+        {
+            string input = "This is {sc}some{/sc} text";
+
+            // ACT
+            var output = MarkupManipulator.RemoveMarkupFromString(input);
+
+            // ASSERT
+            output.ShouldBe("This is some text");
+        }
+
+        [TestMethod]
+        public void MarkupManipulator_Remove_DxDef()
+        {
+            string input =
+                "{bc}any of several domesticated {dx_def}see {dxt|domesticate:1||2}{/dx_def} or wild {d_link|gallinaceous|gallinaceous} birds {dx}compare {dxt|guinea-fowl||}, {dxt|jungle fowl||}{/dx}";
+            string expected =
+                "any of several domesticated (see domesticate) or wild gallinaceous birds — compare guinea-fowl, jungle fowl";
+
+            // ACT
+            var output = MarkupManipulator.RemoveMarkupFromString(input);
+
+            // ASSERT
+            output.ShouldBe(expected);
+        }
+
+        [TestMethod]
+        public void MarkupManipulator_Remove_Dxt_Test1()
+        {
+            string input = "{bc}a bird of any kind {dx}compare {dxt|waterfowl||}, {dxt|wildfowl||}";
+            string expected = "a bird of any kind — compare waterfowl, wildfowl";
+
+            // ACT
+            var output = MarkupManipulator.RemoveMarkupFromString(input);
+
+            // ASSERT
+            output.ShouldBe(expected);
+        }
+
+        [TestMethod]
+        public void MarkupManipulator_Remove_Dxt_Test2()
+        {
+            string input = "{dx}compare {dxt|guinea fowl||}, {dxt|jungle fowl||}{/dx}";
+            string expected = "— compare guinea fowl, jungle fowl";
+
+            // ACT
+            var output = MarkupManipulator.RemoveMarkupFromString(input);
+
+            // ASSERT
+            output.ShouldBe(expected);
+        }
+
+        [TestMethod]
+        public void MarkupManipulator_Remove_Dxt_Test3()
+        {
+            string input = "{dxt|domesticate:1||2}";
+            string expected = "domesticate";
+
+            // ACT
+            var output = MarkupManipulator.RemoveMarkupFromString(input);
+
+            // ASSERT
+            output.ShouldBe(expected);
+        }
+
+        [TestMethod]
+        public void MarkupManipulator_Remove_Dxef_Dx()
+        {
+            string input =
+                "{bc}a small modern warship with shallow draft {dx_def}see {dxt|draft:1||8}{/dx_def} for coastal bombardment";
+            string expected = "a small modern warship with shallow draft (see draft) for coastal bombardment";
+
+            // ACT
+            var output = MarkupManipulator.RemoveMarkupFromString(input);
+
+            // ASSERT
+            output.ShouldBe(expected);
+        }
+
+        [TestMethod]
+        public void MarkupManipulator_Remove_Mat()
+        {
+            string input =
+                "Middle English {it}foul{/it}, from Old English {it}fugel{/it}; akin to Old High German {it}fogal{/it} bird, and probably to Old English {it}flēogan{/it} to fly {ma}{mat|fly|}{/ma}";
+            string expected =
+                "Middle English foul, from Old English fugel; akin to Old High German fogal bird, and probably to Old English flēogan to fly — more at fly";
+
+            // ACT
+            var output = MarkupManipulator.RemoveMarkupFromString(input);
+
+            // ASSERT
+            output.ShouldBe(expected);
+        }
+
+        [TestMethod]
+        public void MarkupManipulator_Remove_Sx1()
+        {
+            string input = "a piece of {sx|araña deco||} text";
+            string expected = "a piece of araña deco text";
+
+            // ACT
+            var output = MarkupManipulator.RemoveMarkupFromString(input);
+
+            // ASSERT
+            output.ShouldBe(expected);
+        }
+
+        [TestMethod]
+        public void MarkupManipulator_Remove_Sx2()
+        {
+            string input = "a piece of {sx|foo|bar|} text";
+            string expected = "a piece of foo text";
+
+            // ACT
+            var output = MarkupManipulator.RemoveMarkupFromString(input);
+
+            // ASSERT
+            output.ShouldBe(expected);
+        }
+
+        [TestMethod]
+        public void MarkupManipulator_Remove_Sx3()
+        {
+            string input = "a piece of {sx|foo|bar|baz} text";
+            string expected = "a piece of foo text";
+
+            // ACT
+            var output = MarkupManipulator.RemoveMarkupFromString(input);
+
+            // ASSERT
+            output.ShouldBe(expected);
+        }
+
+        [TestMethod]
+        public void MarkupManipulator_ALinkWithDash()
+        {
+            string input = "{sx|fatigado||} {bc}{a_link|worn-out}, {a_link|tired}";
+            string expected = "fatigado worn-out, tired";
+
+            // ACT
+            var output = MarkupManipulator.RemoveMarkupFromString(input);
+
+            // ASSERT
+            output.ShouldBe(expected);
+
+        }
+
+        [TestMethod]
+        public void MarkupManipulator_Remove_Amp()
+        {
+            string input = "Southern {amp} Midland";
+            string expected = "Southern & Midland";
+
+            // ACT
+            var output = MarkupManipulator.RemoveMarkupFromString(input);
+
+            // ASSERT
+            output.ShouldBe(expected);
+        }
+
+        [TestMethod]
+        public void MarkupManipulator_Remove_Gloss()
+        {
+            string input = "an {wi}absence{/wi} {gloss}=lack{/gloss} of detail";
+            string expected = "an absence [=lack] of detail";
+
+            var output = MarkupManipulator.RemoveMarkupFromString(input);
+
+            // ASSERT
+            output.ShouldBe(expected);
+        }
+
+        [TestMethod]
+        public void MarkupManipulator_Remove_Phrase()
+        {
+            string input = "{phrase}In the absence of{/phrase} reform {gloss}= without reform{/gloss}, progress will be slow.";
+            string expected = "In the absence of reform [= without reform], progress will be slow.";
+
+            var output = MarkupManipulator.RemoveMarkupFromString(input);
+
+            // ASSERT
+            output.ShouldBe(expected);
+        }
+
+        [TestMethod]
+        public void MarkupManipulator_Replace_Phrase()
+        {
+            string input = "{phrase}In the absence of{/phrase} reform {gloss}= without reform{/gloss}, progress will be slow.";
+            string expected = "<span class=\"mw-phrase\"><b><i>In the absence of</b></i></span> reform [= without reform], progress will be slow.";
+
+            var output = MarkupManipulator.ReplaceMarkupInString(input);
+
+            // ASSERT
+            output.ShouldBe(expected);
+        }
+    }
+}
