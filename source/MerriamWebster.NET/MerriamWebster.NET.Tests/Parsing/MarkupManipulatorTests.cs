@@ -29,7 +29,7 @@ namespace MerriamWebster.NET.Tests.Parsing
             var output = MarkupManipulator.ReplaceMarkupInString(input);
 
             // ASSERT
-            output.ShouldBe("Some <b>bold</b> text");
+            output.ShouldBe("Some <b class=\"mw-b\">bold</b> text");
         }
 
         [TestMethod]
@@ -53,7 +53,7 @@ namespace MerriamWebster.NET.Tests.Parsing
             var output = MarkupManipulator.ReplaceMarkupInString(input);
 
             // ASSERT
-            output.ShouldBe("This is <i>some</i> text");
+            output.ShouldBe("This is <i class=\"mw-it\">some</i> text");
         }
 
         [TestMethod]
@@ -77,7 +77,7 @@ namespace MerriamWebster.NET.Tests.Parsing
             var output = MarkupManipulator.ReplaceMarkupInString(input);
 
             // ASSERT
-            output.ShouldBe("This is<b>:</b> some text");
+            output.ShouldBe("This is<b class=\"mw-bc\">:</b> some text");
         }
 
         [TestMethod]
@@ -282,6 +282,54 @@ namespace MerriamWebster.NET.Tests.Parsing
         {
             string input = "{phrase}In the absence of{/phrase} reform {gloss}= without reform{/gloss}, progress will be slow.";
             string expected = "<span class=\"mw-phrase\"><b><i>In the absence of</b></i></span> reform [= without reform], progress will be slow.";
+
+            var output = MarkupManipulator.ReplaceMarkupInString(input);
+
+            // ASSERT
+            output.ShouldBe(expected);
+        }
+
+        [TestMethod]
+        public void MarkupManipulator_Remove_Qword()
+        {
+            string input = "Only five to six inches long and weighing less than two ounces, the elf owl is the smallest bird of prey in the world. Its bobbed tail, white \u0022eyebrows,\u0022 and {qword}absence{/qword} of ear tufts give this tiny mothlike predator its impish appearance.";
+            string expected = "Only five to six inches long and weighing less than two ounces, the elf owl is the smallest bird of prey in the world. Its bobbed tail, white \u0022eyebrows,\u0022 and absence of ear tufts give this tiny mothlike predator its impish appearance.";
+
+            var output = MarkupManipulator.RemoveMarkupFromString(input);
+
+            // ASSERT
+            output.ShouldBe(expected);
+        }
+
+        [TestMethod]
+        public void MarkupManipulator_Replace_Qword()
+        {
+            string input = "Only five to six inches long and weighing less than two ounces, the elf owl is the smallest bird of prey in the world. Its bobbed tail, white \u0022eyebrows,\u0022 and {qword}absence{/qword} of ear tufts give this tiny mothlike predator its impish appearance.";
+            string expected = "Only five to six inches long and weighing less than two ounces, the elf owl is the smallest bird of prey in the world. Its bobbed tail, white \u0022eyebrows,\u0022 and <i class=\"mw-qword\">absence</i> of ear tufts give this tiny mothlike predator its impish appearance.";
+
+            var output = MarkupManipulator.ReplaceMarkupInString(input);
+
+            // ASSERT
+            output.ShouldBe(expected);
+        }
+
+        [TestMethod]
+        public void MarkupManipulator_Remove_Parahw()
+        {
+            string input = "Using {parahw}above{/parahw} as an Adjective or Noun";
+            string expected = "Using above as an Adjective or Noun";
+
+            var output = MarkupManipulator.RemoveMarkupFromString(input);
+
+            // ASSERT
+            output.ShouldBe(expected);
+        }
+
+        [TestMethod]
+        public void MarkupManipulator_Replace_Parahw()
+        {
+            string input = "Using {parahw}above{/parahw} as an Adjective or Noun";
+            string expected = "Using <i class=\"mw-parahw\">above</i> as an Adjective or Noun";
 
             var output = MarkupManipulator.ReplaceMarkupInString(input);
 
