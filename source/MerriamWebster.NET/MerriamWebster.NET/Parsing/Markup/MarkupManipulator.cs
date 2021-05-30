@@ -42,7 +42,10 @@ namespace MerriamWebster.NET.Parsing.Markup
                 .Replace("{/dx_ety}", "")
                 .Replace("{ma}", "— more at ")
                 .Replace("{/ma}", "")
-                .Replace("{amp}", "&");
+                .Replace("{amp}", "&")
+                .Replace("{ldquo}", "\u201C")
+                .Replace("{rdquo}", "\u201D")
+                ;
 
             input = MarkupManipulators.Aggregate(input, (current, markupRemover) => markupRemover.RemoveMarkup(current));
 

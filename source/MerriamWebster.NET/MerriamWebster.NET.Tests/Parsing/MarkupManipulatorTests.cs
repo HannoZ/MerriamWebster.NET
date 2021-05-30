@@ -266,6 +266,18 @@ namespace MerriamWebster.NET.Tests.Parsing
         }
 
         [TestMethod]
+        public void MarkupManipulator_Replace_Gloss()
+        {
+            string input = "an {wi}absence{/wi} {gloss}=lack{/gloss} of detail";
+            string expected = "an absence <span class=\"mw-gloss\">[=lack]</span> of detail";
+
+            var output = MarkupManipulator.ReplaceMarkupInString(input);
+
+            // ASSERT
+            output.ShouldBe(expected);
+        }
+
+        [TestMethod]
         public void MarkupManipulator_Remove_Phrase()
         {
             string input = "{phrase}In the absence of{/phrase} reform {gloss}= without reform{/gloss}, progress will be slow.";
@@ -281,7 +293,7 @@ namespace MerriamWebster.NET.Tests.Parsing
         public void MarkupManipulator_Replace_Phrase()
         {
             string input = "{phrase}In the absence of{/phrase} reform {gloss}= without reform{/gloss}, progress will be slow.";
-            string expected = "<span class=\"mw-phrase\"><b><i>In the absence of</b></i></span> reform [= without reform], progress will be slow.";
+            string expected = "<span class=\"mw-phrase\"><b><i>In the absence of</b></i></span> reform <span class=\"mw-gloss\">[= without reform]</span>, progress will be slow.";
 
             var output = MarkupManipulator.ReplaceMarkupInString(input);
 
@@ -330,6 +342,55 @@ namespace MerriamWebster.NET.Tests.Parsing
         {
             string input = "Using {parahw}above{/parahw} as an Adjective or Noun";
             string expected = "Using <i class=\"mw-parahw\">above</i> as an Adjective or Noun";
+
+            var output = MarkupManipulator.ReplaceMarkupInString(input);
+
+            // ASSERT
+            output.ShouldBe(expected);
+        }
+
+        [TestMethod]
+        public void MarkupManipulator_Remove_Inf_Sup()
+        {
+            string input = "{bc}an ion NH{inf}4{/inf}{sup}+{/sup} derived from {a_link|ammonia} by combination with a hydrogen ion and ...";
+            string expected = "an ion NH4+ derived from ammonia by combination with a hydrogen ion and ...";
+
+            var output = MarkupManipulator.RemoveMarkupFromString(input);
+
+            // ASSERT
+            output.ShouldBe(expected);
+        }
+
+
+        [TestMethod]
+        public void MarkupManipulator_Replace_Inf_Sup()
+        {
+            string input = "an ion NH{inf}4{/inf}{sup}+{/sup} derived from {a_link|ammonia} by combination with a hydrogen ion and ...";
+            string expected = "an ion NH<sub class=\"mw-inf\">4</sub><sup class=\"mw-sup\">+</sup> derived from <i class=\"mw-link mw-auto-link\">ammonia</i> by combination with a hydrogen ion and ...";
+
+            var output = MarkupManipulator.ReplaceMarkupInString(input);
+
+            // ASSERT
+            output.ShouldBe(expected);
+        }
+
+        [TestMethod]
+        public void MarkupManipulator_Remove_Ld_RdQuo()
+        {
+            string input = "{ldquo}Can I e-mail you?{rdquo} {ldquo}Sure. Our e-mail address is \u2018comments {it}at{/it} Merriam - Webster dot com.\u2019{rdquo}";
+            string expected = "“Can I e-mail you?” “Sure. Our e-mail address is \u2018comments at Merriam - Webster dot com.\u2019”";
+
+            var output = MarkupManipulator.RemoveMarkupFromString(input);
+
+            // ASSERT
+            output.ShouldBe(expected);
+        }
+
+        [TestMethod]
+        public void MarkupManipulator_Replace_Sc()
+        {
+            string input = "{sc}agree{/sc} {sc}concur{/sc} {sc}coincide{/sc} mean to come into or be in harmony regarding a matter of opinion.";
+            string expected = "<span class=\"mw-sc\" style=\"font-variant: small-caps\">agree</span> <span class=\"mw-sc\" style=\"font-variant: small-caps\">concur</span> <span class=\"mw-sc\" style=\"font-variant: small-caps\">coincide</span> mean to come into or be in harmony regarding a matter of opinion.";
 
             var output = MarkupManipulator.ReplaceMarkupInString(input);
 
