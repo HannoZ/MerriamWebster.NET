@@ -1,3 +1,5 @@
+1.7 New feature! Besides (improved) MW-specific markup removal, the markup is now also replaced with HTML markup. Implemented in Sense and Example objects. 
+
 1.6.1 Extended XML documentation. Added a new property ``RawResponse`` to the ``EntryModel`` class that contains the raw API response.
 
 1.6 Enabled XML doc generation so existing documentation is actually visible

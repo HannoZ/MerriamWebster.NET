@@ -42,7 +42,10 @@ namespace MerriamWebster.NET.Parsing.Markup
                 .Replace("{/dx_ety}", "")
                 .Replace("{ma}", "— more at ")
                 .Replace("{/ma}", "")
-                .Replace("{amp}", "&");
+                .Replace("{amp}", "&")
+                .Replace("{ldquo}", "\u201C")
+                .Replace("{rdquo}", "\u201D")
+                ;
 
             input = MarkupManipulators.Aggregate(input, (current, markupRemover) => markupRemover.RemoveMarkup(current));
 
@@ -60,7 +63,7 @@ namespace MerriamWebster.NET.Parsing.Markup
         public static string ReplaceMarkupInString(string input)
         {
             input = MarkupManipulators.Aggregate(input, (current, markupRemover) => markupRemover.ReplaceMarkup(current));
-            input = input.Replace("{bc}", "<b>:</b>");
+            input = input.Replace("{bc}", "<b class=\"mw-bc\">:</b>");
 
             // remove any MW markup that has not been replaced by HTML
             input = RemoveMarkupFromString(input);

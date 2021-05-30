@@ -2,7 +2,7 @@ namespace MerriamWebster.NET.Parsing.Markup
 {
     internal class OpenCloseTagMarkupManipulator : IMarkupManipulator
     {
-        private readonly string[] _tags = {"b", "it", "inf", "sup", "sc", "wi", "phrase"};
+        private readonly string[] _tags = {"b", "it", "inf", "sup", "sc", "wi", "phrase", "qword", "parahw" };
 
         public string RemoveMarkup(string input)
         {
@@ -30,6 +30,14 @@ namespace MerriamWebster.NET.Parsing.Markup
             input = ReplaceOpenCloseTag(input, "it", "i");
             input = input.Replace("{phrase}", "<span class=\"mw-phrase\"><b><i>")
                 .Replace("{/phrase}", "</b></i></span>");
+            input = ReplaceOpenCloseTag(input, "qword", "i");
+            input = ReplaceOpenCloseTag(input, "parahw", "i");
+            input = ReplaceOpenCloseTag(input, "inf", "sub");
+            input = ReplaceOpenCloseTag(input, "sup", "sup");
+            input = input.Replace("{sc}", "<span class=\"mw-sc\" style=\"font-variant: small-caps\">")
+                    .Replace("{/sc}", "</span>")
+                ;
+
 
             return input;
         }
@@ -42,7 +50,7 @@ namespace MerriamWebster.NET.Parsing.Markup
 
         private static string ReplaceOpenCloseTag(string input, string tag, string replacement)
         {
-            return input.Replace($"{{{tag}}}", $"<{replacement}>")
+            return input.Replace($"{{{tag}}}", $"<{replacement} class=\"mw-{tag}\">")
                 .Replace($"{{/{tag}}}", $"</{replacement}>");
         }
     }

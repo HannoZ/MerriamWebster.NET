@@ -17,6 +17,9 @@ namespace MerriamWebster.NET.Parsing.Markup
         /// <inheritdoc />
         public string ReplaceMarkup(string input)
         {
+            input = input.Replace("{gloss}", "<span class=\"mw-gloss\">[")
+                .Replace("{/gloss}", "]</span>");
+
             return RemoveMarkup(input);
         }
     }
