@@ -36,10 +36,26 @@ The HTML replacements follow the display guidelines that are found in the API do
 ```
 ``` C#
 // in Startup class
-var mwConfig = Configuration.GetSection("MerriamWebster").Get<MerriamWebsterConfig>();
-// this registers the HttpClient and IEntryParser
-services.RegisterMerriamWebster(mwConfig);
+using MerriamWebster.NET;
+..
 
-// use IEntryParser on Spanish-English Dictionary api
+public Startup(IConfiguration configuration, IWebHostEnvironment env)
+{
+    Configuration = configuration;
+    Env = env;
+}
+
+public IConfiguration Configuration { get; }
+..
+
+public void ConfigureServices(IServiceCollection services)
+{
+    ..
+    var mwConfig = Configuration.GetSection("MerriamWebster").Get<MerriamWebsterConfig>();
+    // this registers the HttpClient and IEntryParser
+    services.RegisterMerriamWebster(mwConfig);
+}
+
+// use an injected IEntryParser instance on Spanish-English Dictionary api
 var result = await entryParser.GetAndParseAsync(Configuration.SpanishEnglishDictionary, "ejemplo");
 ```
