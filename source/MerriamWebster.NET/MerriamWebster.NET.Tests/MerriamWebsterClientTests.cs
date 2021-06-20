@@ -154,6 +154,23 @@ namespace MerriamWebster.NET.Tests
             result.ShouldNotBeEmpty();
         }
 
+        [TestMethod]
+        public async Task MerriamWebsterClient_CanDeserialize_Jiron()
+        {
+            string response = await TestHelper.LoadResponseFromFileAsync("jirón");
+
+            _handlerMock.Protected()
+                .Setup<Task<HttpResponseMessage>>("SendAsync", ItExpr.IsAny<HttpRequestMessage>(),
+                    ItExpr.IsAny<CancellationToken>())
+                .ReturnsAsync(SetupOkResponseMessage(response));
+
+            // ACT
+            var result = await _client.GetDictionaryEntry("api", "entry");
+
+            // ASSERT
+            result.ShouldNotBeEmpty();
+        }
+
         private static HttpResponseMessage SetupOkResponseMessage(string content)
         {
             return new HttpResponseMessage(HttpStatusCode.OK)

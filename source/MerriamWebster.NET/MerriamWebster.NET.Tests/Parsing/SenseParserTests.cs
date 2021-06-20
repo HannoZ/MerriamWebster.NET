@@ -52,6 +52,30 @@ namespace MerriamWebster.NET.Tests.Parsing
         }
 
         [TestMethod]
+        public void SenseParser_CanParse_Jiron()
+        {
+            var defs = LoadDefinitions("jirón");
+            bool additionalInformationFound = false;
+
+            // ACT
+            foreach (var senseParser in defs.Select(definition => new SenseParser(definition, ParseOptions.Default)))
+            {
+                var result = senseParser.Parse();
+                result.ShouldNotBeEmpty();
+
+                foreach (var sense in result)
+                {
+                    if (sense.AdditionalInformation.Any())
+                    {
+                        additionalInformationFound = true;
+                    }
+                }
+            }
+
+            additionalInformationFound.ShouldBeTrue();
+        }
+
+        [TestMethod]
         public void SenseParser_CanParse_House()
         {
             var defs = LoadDefinitions("house");

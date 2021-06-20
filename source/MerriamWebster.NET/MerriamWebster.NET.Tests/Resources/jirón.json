@@ -1,0 +1,77 @@
+[
+    {
+        "meta": {
+            "id": "jiron",
+            "uuid": "31187a70-c051-448f-97dc-8d026ca509d9",
+            "lang": "es",
+            "sort": "2613235000",
+            "src": "spanish",
+            "section": "alpha",
+            "stems": [
+                "jirón",
+                "jirones"
+            ],
+            "offensive": false
+        },
+        "hwi": {
+            "hw": "jirón"
+        },
+        "fl": "masculine noun",
+        "ins": [
+            {
+                "il": "plural",
+                "if": "jirones"
+            }
+        ],
+        "def": [
+            {
+                "sseq": [
+                    [
+                        [
+                            "sense",
+                            {
+                                "sn": "1",
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}{a_link|shred}, {a_link|rag} "
+                                    ],
+                                    [
+                                        "vis",
+                                        [
+                                            {
+                                                "t": "hecho jirones",
+                                                "tr": "in tatters"
+                                            }
+                                        ]
+                                    ]
+                                ]
+                            }
+                        ]
+                    ],
+                    [
+                        [
+                            "sense",
+                            {
+                                "sn": "2",
+                                "sls": [
+                                    "Peru"
+                                ],
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}{a_link|street}"
+                                    ]
+                                ]
+                            }
+                        ]
+                    ]
+                ]
+            }
+        ],
+        "shortdef": [
+            "shred, rag",
+            "street"
+        ]
+    }
+]

@@ -39,5 +39,9 @@ namespace MerriamWebster.NET.Dto
         /// A collection of cross references.
         /// </summary>
         public ICollection<CrossReference> CrossReferences { get; set; } = new List<CrossReference>();
+        /// <summary>
+        /// This property contains additional information that describes the subject area (eg, "computing") or regional/usage status (eg, "British", "formal", "slang") of a headword or a particular sense of a headword.
+        /// </summary>
+        public ICollection<string> AdditionalInformation { get; set; } = new List<string>();
     }
 }

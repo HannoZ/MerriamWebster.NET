@@ -20,6 +20,7 @@
     <None Remove="Resources\house.json" />
     <None Remove="Resources\inter_dict_dragon.json" />
     <None Remove="Resources\inter_thes_umpire.json" />
+    <None Remove="Resources\jirón.json" />
     <None Remove="Resources\learn_apple.json" />
     <None Remove="Resources\med_doctor.json" />
     <None Remove="Resources\pueblo.json" />
@@ -33,6 +34,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Resources\jirón.json" />
     <EmbeddedResource Include="Resources\school_dict_baseball.json" />
     <EmbeddedResource Include="Resources\inter_thes_umpire.json" />
     <EmbeddedResource Include="Resources\inter_dict_dragon.json" />

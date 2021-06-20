@@ -139,6 +139,11 @@ namespace MerriamWebster.NET.Parsing
                     }
                 }
 
+                if (sourceSence.SubjectStatusLabels.Any())
+                {
+                    sense.AdditionalInformation = sourceSence.SubjectStatusLabels.ToList();
+                }
+
                 senses.Add(sense);
             }
 
