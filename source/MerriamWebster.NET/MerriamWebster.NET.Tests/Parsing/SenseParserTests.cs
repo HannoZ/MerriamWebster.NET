@@ -224,6 +224,33 @@ namespace MerriamWebster.NET.Tests.Parsing
             }
         }
 
+        [TestMethod]
+        public void SenseParser_AttributionOfQuote_Ginger()
+        {
+            var defs = LoadDefinitions("example_ginger");
+
+            // ACT
+            foreach (var senseParser in defs.Select(definition => new SenseParser(definition, ParseOptions.Default)))
+            {
+                var senses = senseParser.Parse();
+                var result = senses.First();
+                
+                // ASSERT
+                result.Examples.First().Quote.ShouldNotBeNull();
+            }
+        }
+
+        [TestMethod]
+        public void SenseParser_CanParseSense_Coll_Tedious()
+        {
+            var defs = LoadDefinitions("collegiate_tedious");
+            foreach (var senseParser in defs.Select(definition => new SenseParser(definition, ParseOptions.Default)))
+            {
+                var result = senseParser.Parse();
+                result.ShouldNotBeEmpty();
+            }
+        }
+
         private static IEnumerable<Definition> LoadDefinitions(string fileName)
         {
             var content = TestHelper.LoadResponseFromFile(fileName);

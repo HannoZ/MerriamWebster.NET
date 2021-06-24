@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using MerriamWebster.NET.Parsing.Markup;
 
 namespace MerriamWebster.NET.Parsing
 {
@@ -105,6 +106,12 @@ namespace MerriamWebster.NET.Parsing
                     resultModel.UndefinedResults.Add(entry);
                 }
 
+                // parse and add any quotes
+                var quotes = ParseQuotes(result, options);
+                foreach (var quote in quotes)
+                {
+                    resultModel.Quotes.Add(quote);
+                }
             }
 
             return resultModel;
@@ -291,6 +298,34 @@ namespace MerriamWebster.NET.Parsing
 
 
             return conjugations;
+        }
+
+        private static IEnumerable<Quote> ParseQuotes(Response.DictionaryEntry entry, ParseOptions options)
+        {
+            foreach (var sourceQuote in entry.Quotes.Where(q=>q.Aq != null))
+            {
+                var aq = sourceQuote.Aq;
+                var quote = new Quote
+                {
+                    RawText = sourceQuote.Text,
+                    Text = options.RemoveMarkup ? MarkupManipulator.RemoveMarkupFromString(sourceQuote.Text) : sourceQuote.Text,
+                    HtmlText = options.RemoveMarkup ? MarkupManipulator.ReplaceMarkupInString(sourceQuote.Text) : sourceQuote.Text,
+                    Author = aq.Author,
+                    PublicationDate = aq.PublicationDate,
+                    Source = MarkupManipulator.RemoveMarkupFromString(aq.Source)
+                };
+
+                if (aq.Subsource != null)
+                {
+                    quote.Subsource = new SubSource
+                    {
+                        PublicationDate = aq.Subsource.PublicationDate,
+                        Source = MarkupManipulator.RemoveMarkupFromString(aq.Subsource.Source)
+                    };
+                }
+
+                yield return quote;
+            }
         }
     }
 }

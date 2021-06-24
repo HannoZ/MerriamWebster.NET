@@ -4,6 +4,7 @@
     public struct DefiningTextObjectWrapper
     {
         public DefiningTextObject[] DefiningTextArray;
+        public CalledAlso CalledAlso;
 
         /// <summary>
         /// The definition type, or definition text. 
@@ -17,6 +18,7 @@
 
         public static implicit operator DefiningTextObjectWrapper(DefiningTextObject[] obj) => new DefiningTextObjectWrapper { DefiningTextArray = obj };
         public static implicit operator DefiningTextObjectWrapper(string s) => new DefiningTextObjectWrapper { TypeOrText = s };
+        public static implicit operator DefiningTextObjectWrapper(CalledAlso ca) => new DefiningTextObjectWrapper{CalledAlso = ca};
     }
 #pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
 

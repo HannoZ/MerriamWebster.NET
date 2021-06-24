@@ -1,0 +1,108 @@
+[
+    {
+        "meta": {
+            "id": "tedious",
+            "uuid": "88192c49-7c3e-4013-8ceb-92dd0b8c8cc5",
+            "sort": "200076700",
+            "src": "collegiate",
+            "section": "alpha",
+            "stems": [
+                "tedious",
+                "tediously",
+                "tediousness",
+                "tediousnesses"
+            ],
+            "offensive": false
+        },
+        "hwi": {
+            "hw": "te*dious",
+            "prs": [
+                {
+                    "mw": "ˈtē-dē-əs",
+                    "sound": {
+                        "audio": "tediou01",
+                        "ref": "c",
+                        "stat": "1"
+                    }
+                },
+                {
+                    "mw": "ˈtē-jəs"
+                }
+            ]
+        },
+        "fl": "adjective",
+        "def": [
+            {
+                "sseq": [
+                    [
+                        [
+                            "sense",
+                            {
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}{d_link|tiresome|tiresome} because of length or dullness {bc}{sx|boring||} "
+                                    ],
+                                    [
+                                        "vis",
+                                        [
+                                            {
+                                                "t": "a {wi}tedious{/wi} public ceremony"
+                                            }
+                                        ]
+                                    ]
+                                ]
+                            }
+                        ]
+                    ]
+                ]
+            }
+        ],
+        "uros": [
+            {
+                "ure": "te*dious*ly",
+                "fl": "adverb"
+            },
+            {
+                "ure": "te*dious*ness",
+                "fl": "noun"
+            }
+        ],
+        "quotes": [
+            {
+                "t": "Another of their assignments was to slow-fly any plane that had a new engine to break it in; that meant flying the aircraft for a {qword}tedious{/qword} hour-and-a-half as slowly as it would possibly go without falling out of the sky.",
+                "aq": {
+                    "auth": "Doris Weatherford",
+                    "source": "{it}American Women and World War II{/it}",
+                    "aqdate": "1990"
+                }
+            },
+            {
+                "t": "Writing a new spreadsheet or word-processing program these days is a {qword}tedious{/qword} process, like building a skyscraper out of toothpicks.",
+                "aq": {
+                    "auth": "Jeff Goodell",
+                    "source": "{it}Rolling Stone{/it}",
+                    "aqdate": "16 June 1994"
+                }
+            },
+            {
+                "t": "From there, it became clear that the deposition was going to be neither as undramatic nor as quotidian, and even {qword}tedious{/qword}, as it at first appeared.",
+                "aq": {
+                    "auth": "Renata Adler",
+                    "source": "{it}New Yorker{/it}",
+                    "aqdate": "June 23, 1986"
+                }
+            }
+        ],
+        "et": [
+            [
+                "text",
+                "Middle English, from Late Latin {it}taediosus{/it}, from Latin {it}taedium{/it} {dx_ety}see {dxt|tedium||}{/dx_ety}"
+            ]
+        ],
+        "date": "15th century",
+        "shortdef": [
+            "tiresome because of length or dullness : boring"
+        ]
+    }
+]

@@ -1,0 +1,62 @@
+[
+  {
+    "meta": {
+      "id": "ginger",
+      "uuid": "a3698d6d-b599-46b5-b267-b934a0d92cc1",
+      "src": "int_dict",
+      "section": "alpha",
+      "stems": [
+        "ginger"
+      ],
+      "offensive": false
+    },
+    "hwi": {
+      "hw": "drag*on",
+      "prs": [
+        {
+          "mw": "ˈdrag-ən",
+          "sound": {
+            "audio": "dragon01"
+          }
+        }
+      ]
+    },
+    "fl": "noun",
+    "def": [
+      {
+        "sseq": [
+          [
+            [
+              "sense",
+              {
+                "sn": "b",
+                "sls": [
+                  "chiefly British",
+                  "sometimes offensive"
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}a person with red hair {bc}{sx|redhead||1} "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "The Breda Redhead Days festival\u2014which grew out of a photo shoot by Dutch artist Bart Rouwenhorst\u2014now attracts five or six thousand {wi}gingers{/wi} from around the world.",
+                        "aq": { "auth": "Bruce Ingram" }
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      }
+    ],
+    "shortdef": [
+      "a person with red hair"
+    ]
+  }
+]

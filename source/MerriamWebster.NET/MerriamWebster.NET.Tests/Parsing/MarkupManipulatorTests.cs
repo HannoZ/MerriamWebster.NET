@@ -226,6 +226,8 @@ namespace MerriamWebster.NET.Tests.Parsing
             output.ShouldBe(expected);
         }
 
+        
+
         [TestMethod]
         public void MarkupManipulator_ALinkWithDash()
         {
@@ -269,7 +271,7 @@ namespace MerriamWebster.NET.Tests.Parsing
         public void MarkupManipulator_Replace_Gloss()
         {
             string input = "an {wi}absence{/wi} {gloss}=lack{/gloss} of detail";
-            string expected = "an absence <span class=\"mw-gloss\">[=lack]</span> of detail";
+            string expected = "an <i class=\"mw-wi\">absence</i> <span class=\"mw-gloss\">[=lack]</span> of detail";
 
             var output = MarkupManipulator.ReplaceMarkupInString(input);
 

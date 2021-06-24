@@ -18,6 +18,10 @@ namespace MerriamWebster.NET.Response.JsonConverters
                 case JsonToken.StartArray:
                     var arrayValue = serializer.Deserialize<DefiningTextObject[]>(reader);
                     return new DefiningTextObjectWrapper { DefiningTextArray = arrayValue };
+                case JsonToken.StartObject:
+                    var objectValue = serializer.Deserialize<CalledAlso>(reader);
+                    return new DefiningTextObjectWrapper {CalledAlso = objectValue};
+
             }
             throw new Exception("Cannot unmarshal type DefiningTextObjectWrapper");
         }

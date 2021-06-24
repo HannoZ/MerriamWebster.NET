@@ -93,5 +93,10 @@ namespace MerriamWebster.NET.Response
         [JsonProperty("art")]
         public Artwork Artwork { get; set; }
 
+        /// <summary>
+        /// Gets or sets the quotes.
+        /// </summary>
+        [JsonProperty("quotes")]
+        public Quote[] Quotes { get; set; } = { };
     }
 }

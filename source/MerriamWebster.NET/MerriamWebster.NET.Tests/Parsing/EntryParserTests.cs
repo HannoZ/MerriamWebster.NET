@@ -379,6 +379,56 @@ namespace MerriamWebster.NET.Tests.Parsing
 
         }
 
+        [TestMethod]
+        public async Task EntryParser_CanParse_Tedious()
+        {
+            var data = LoadData("collegiate_tedious");
+
+            _mocker.GetMock<IMerriamWebsterClient>()
+                .Setup(m => m.GetDictionaryEntry(It.IsAny<string>(), It.IsAny<string>()))
+                .ReturnsAsync(data);
+
+            // ACT 
+            var result = await _entryParser.GetAndParseAsync("api", "tedious");
+
+            // ASSERT
+            result.Entries.Count.ShouldBe(1);
+            result.Quotes.Count.ShouldBe(3);
+        }
+
+        [TestMethod]
+        public async Task EntryParser_CanParse_Knee()
+        {
+            var data = LoadData("med_knee");
+
+            _mocker.GetMock<IMerriamWebsterClient>()
+                .Setup(m => m.GetDictionaryEntry(It.IsAny<string>(), It.IsAny<string>()))
+                .ReturnsAsync(data);
+
+            // ACT 
+            var result = await _entryParser.GetAndParseAsync("api", "knee");
+
+            // ASSERT
+            result.Entries.Count.ShouldBe(1);
+        }
+
+        [TestMethod]
+        public async Task EntryParser_CanParse_Pelvis()
+        {
+            var data = LoadData("med_pelvis");
+
+            _mocker.GetMock<IMerriamWebsterClient>()
+                .Setup(m => m.GetDictionaryEntry(It.IsAny<string>(), It.IsAny<string>()))
+                .ReturnsAsync(data);
+
+            // ACT 
+            var result = await _entryParser.GetAndParseAsync("api", "pelvis");
+
+            // ASSERT
+            result.Entries.Count.ShouldBe(1);
+
+        }
+
         private static IEnumerable<DictionaryEntry> LoadData(string fileName)
         {
             var response = TestHelper.LoadResponseFromFile(fileName);

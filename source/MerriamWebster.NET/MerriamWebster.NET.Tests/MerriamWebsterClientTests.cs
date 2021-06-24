@@ -171,6 +171,57 @@ namespace MerriamWebster.NET.Tests
             result.ShouldNotBeEmpty();
         }
 
+        [TestMethod]
+        public async Task MerriamWebsterClient_CanDeserialize_Tedious()
+        {
+            string response = await TestHelper.LoadResponseFromFileAsync("collegiate_tedious");
+
+            _handlerMock.Protected()
+                .Setup<Task<HttpResponseMessage>>("SendAsync", ItExpr.IsAny<HttpRequestMessage>(),
+                    ItExpr.IsAny<CancellationToken>())
+                .ReturnsAsync(SetupOkResponseMessage(response));
+
+            // ACT
+            var result = await _client.GetDictionaryEntry("api", "entry");
+
+            // ASSERT
+            result.ShouldNotBeEmpty();
+        }
+
+        [TestMethod]
+        public async Task MerriamWebsterClient_CanDeserialize_Med_Pelvis()
+        {
+            string response = await TestHelper.LoadResponseFromFileAsync("med_pelvis");
+
+            _handlerMock.Protected()
+                .Setup<Task<HttpResponseMessage>>("SendAsync", ItExpr.IsAny<HttpRequestMessage>(),
+                    ItExpr.IsAny<CancellationToken>())
+                .ReturnsAsync(SetupOkResponseMessage(response));
+
+            // ACT
+            var result = await _client.GetDictionaryEntry("api", "entry");
+
+            // ASSERT
+            result.ShouldNotBeEmpty();
+        }
+
+        [TestMethod]
+        public async Task MerriamWebsterClient_CanDeserialize_Med_Knee()
+        {
+            string response = await TestHelper.LoadResponseFromFileAsync("med_knee");
+
+            _handlerMock.Protected()
+                .Setup<Task<HttpResponseMessage>>("SendAsync", ItExpr.IsAny<HttpRequestMessage>(),
+                    ItExpr.IsAny<CancellationToken>())
+                .ReturnsAsync(SetupOkResponseMessage(response));
+
+            // ACT
+            var result = await _client.GetDictionaryEntry("api", "entry");
+
+            // ASSERT
+            result.ShouldNotBeEmpty();
+        }
+
         private static HttpResponseMessage SetupOkResponseMessage(string content)
         {
             return new HttpResponseMessage(HttpStatusCode.OK)
