@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Newtonsoft.Json;
 
 namespace MerriamWebster.NET.Response.JsonConverters
@@ -19,11 +20,19 @@ namespace MerriamWebster.NET.Response.JsonConverters
                     var arrayValue = serializer.Deserialize<DefiningTextObject[]>(reader);
                     return new DefiningTextObjectWrapper { DefiningTextArray = arrayValue };
                 case JsonToken.StartObject:
-                    var objectValue = serializer.Deserialize<CalledAlso>(reader);
-                    return new DefiningTextObjectWrapper {CalledAlso = objectValue};
+                    var obj = serializer.Deserialize(reader).ToString();
+                    var canObj = JsonConvert.DeserializeObject<CalledAlsoNote>(obj);
+                    if (canObj != null && !string.IsNullOrEmpty(canObj.Intro) && canObj.Targets.Any())
+                    {
+                        return new DefiningTextObjectWrapper { CalledAlso = canObj };
+                    }
+
+                    var bnwObj = JsonConvert.DeserializeObject<BiographicalNameWrap>(obj);
+                    return new DefiningTextObjectWrapper {BiographicalNameWrap = bnwObj};
+                    
 
             }
-            throw new Exception("Cannot unmarshal type DefiningTextObjectWrapper");
+            throw new NotImplementedException($"Cannot unmarshal type DefiningTextObjectWrapper. Path: {reader.Path}, TokenType: {reader.TokenType}");
         }
 
         public override void WriteJson(JsonWriter writer, object untypedValue, JsonSerializer serializer)
@@ -39,7 +48,7 @@ namespace MerriamWebster.NET.Response.JsonConverters
                 serializer.Serialize(writer, value.DefiningTextArray);
                 return;
             }
-            throw new Exception("Cannot marshal type DefiningTextObjectWrapper");
+            throw new NotImplementedException("Cannot marshal type DefiningTextObjectWrapper");
         }
 
         public static readonly DtUnionConverter Singleton = new DtUnionConverter();

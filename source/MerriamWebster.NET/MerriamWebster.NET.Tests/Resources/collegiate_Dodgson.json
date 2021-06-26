@@ -1,0 +1,97 @@
+[
+  {
+    "meta": {
+      "id": "Dodgson:b",
+      "uuid": "abd8ac72-b735-4e52-a77c-7f0441370594",
+      "sort": "301613000",
+      "src": "collegiate",
+      "section": "biog",
+      "stems": [
+        "Charles Dodgson",
+        "Charles L. Dodgson",
+        "Charles Lutwidge Dodgson",
+        "Dodgson",
+        "Lewis Carroll"
+      ],
+      "offensive": false
+    },
+    "hwi": {
+      "hw": "Dodg*son",
+      "prs": [
+        {
+          "mw": "ˈdäd-sən",
+          "sound": {
+            "audio": "bixdod03",
+            "ref": "c",
+            "stat": "1"
+          }
+        },
+        {
+          "mw": "ˈdäj-"
+        }
+      ]
+    },
+    "fl": "biographical name",
+    "def": [
+      {
+        "sseq": [
+          [
+            [
+              "sense",
+              {
+                "dt": [
+                  [
+                    "bnw",
+                    {
+                      "pname": "Charles Lut*widge",
+                      "prs": [
+                        {
+                          "mw": "ˈlət-wij",
+                          "sound": {
+                            "audio": "bixdod04",
+                            "ref": "c",
+                            "stat": "1"
+                          }
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    "text",
+                    "1832–1898 pseudonym"
+                  ],
+                  [
+                    "bnw",
+                    {
+                      "altname": "Lewis Car*roll",
+                      "prs": [
+                        {
+                          "mw": "ˈker-əl",
+                          "sound": {
+                            "audio": "bixdod05",
+                            "ref": "c",
+                            "stat": "1"
+                          }
+                        },
+                        {
+                          "mw": "ˈka-rəl"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    "text",
+                    " English mathematician and writer"
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      }
+    ],
+    "shortdef": [
+      "Charles Lutwidge1832—1898 pseudonymLewis Carroll English mathematician and writer"
+    ]
+  }
+]

@@ -1,5 +1,8 @@
 ﻿namespace MerriamWebster.NET.Dto
 {
+    /// <summary>
+    /// Contains further detail on quote source (eg, name of larger work in which an essay is found).
+    /// </summary>
     public class SubSource
     {
         /// <summary>

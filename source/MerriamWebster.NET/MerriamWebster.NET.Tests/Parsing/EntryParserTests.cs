@@ -374,7 +374,7 @@ namespace MerriamWebster.NET.Tests.Parsing
             var result = await _entryParser.GetAndParseAsync("api", "sierra");
 
             // ASSERT
-            result.Entries.Count.ShouldBe(2);
+            result.Entries.Count.ShouldBe(4);
             result.Entries.ShouldContain(e=>e.CrossReferences.Any());
 
         }
@@ -409,11 +409,11 @@ namespace MerriamWebster.NET.Tests.Parsing
             var result = await _entryParser.GetAndParseAsync("api", "knee");
 
             // ASSERT
-            result.Entries.Count.ShouldBe(1);
+            result.Entries.Count.ShouldBe(10);
         }
 
         [TestMethod]
-        public async Task EntryParser_CanParse_Pelvis()
+        public async Task EntryParser_CanParse_Med_Pelvis()
         {
             var data = LoadData("med_pelvis");
 
@@ -425,7 +425,24 @@ namespace MerriamWebster.NET.Tests.Parsing
             var result = await _entryParser.GetAndParseAsync("api", "pelvis");
 
             // ASSERT
-            result.Entries.Count.ShouldBe(1);
+            result.Entries.Count.ShouldBe(7);
+
+        }
+
+        [TestMethod]
+        public async Task EntryParser_CanParse_Collegiate_Pelvis()
+        {
+            var data = LoadData("collegiate_pelvis");
+
+            _mocker.GetMock<IMerriamWebsterClient>()
+                .Setup(m => m.GetDictionaryEntry(It.IsAny<string>(), It.IsAny<string>()))
+                .ReturnsAsync(data);
+
+            // ACT 
+            var result = await _entryParser.GetAndParseAsync("api", "pelvis");
+
+            // ASSERT
+            result.Entries.Count.ShouldBe(2);
 
         }
 

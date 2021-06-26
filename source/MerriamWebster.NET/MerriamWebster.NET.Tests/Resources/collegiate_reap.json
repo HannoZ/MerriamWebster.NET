@@ -1,0 +1,306 @@
+[
+  {
+    "meta": {
+      "id": "reap",
+      "uuid": "95d9b385-01d9-4c1b-933e-4e615aca4dd4",
+      "sort": "180784000",
+      "src": "collegiate",
+      "section": "alpha",
+      "stems": [
+        "reap",
+        "reaped",
+        "reaping",
+        "reaps"
+      ],
+      "offensive": false
+    },
+    "hwi": {
+      "hw": "reap",
+      "prs": [
+        {
+          "mw": "ˈrēp",
+          "sound": {
+            "audio": "reap0001",
+            "ref": "c",
+            "stat": "1"
+          }
+        }
+      ]
+    },
+    "fl": "verb",
+    "ins": [
+      {
+        "if": "reaped"
+      },
+      {
+        "if": "reap*ing"
+      },
+      {
+        "if": "reaps"
+      }
+    ],
+    "def": [
+      {
+        "vd": "transitive verb",
+        "sseq": [
+          [
+            [
+              "pseq",
+              [
+                [
+                  "sense",
+                  {
+                    "sn": "1 a (1)",
+                    "dt": [
+                      [
+                        "text",
+                        "{bc}to cut with a sickle, scythe, or {a_link|reaping} machine"
+                      ]
+                    ]
+                  }
+                ],
+                [
+                  "sense",
+                  {
+                    "sn": "(2)",
+                    "dt": [
+                      [
+                        "text",
+                        "{bc}to clear of a crop by reaping"
+                      ]
+                    ]
+                  }
+                ]
+              ]
+            ],
+            [
+              "sense",
+              {
+                "sn": "b",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}to gather by reaping {bc}{sx|harvest||}"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "2",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}{sx|obtain||}, {sx|win||}"
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      },
+      {
+        "vd": "intransitive verb",
+        "sseq": [
+          [
+            [
+              "sense",
+              {
+                "dt": [
+                  [
+                    "text",
+                    "{bc}to reap something"
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      }
+    ],
+    "et": [
+      [
+        "text",
+        "Middle English {it}repen{/it}, from Old English {it}reopan{/it}"
+      ]
+    ],
+    "date": "before 12th century{ds|t|1|a|1}",
+    "shortdef": [
+      "to cut with a sickle, scythe, or reaping machine",
+      "to clear of a crop by reaping",
+      "to gather by reaping : harvest"
+    ]
+  },
+  {
+    "meta": {
+      "id": "reap the rewards",
+      "uuid": "75ec4f87-b754-4074-b71c-df36ee001668",
+      "sort": "3015946000",
+      "src": "ld",
+      "section": "idioms",
+      "stems": [
+        "reap the rewards"
+      ],
+      "offensive": false
+    },
+    "hwi": {
+      "hw": "reap the rewards"
+    },
+    "fl": "idiom",
+    "def": [
+      {
+        "sseq": [
+          [
+            [
+              "sense",
+              {
+                "dt": [
+                  [
+                    "text",
+                    "{bc}to get all the good things that come with something "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "She is {it}reaping the rewards{/it} of success."
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      }
+    ],
+    "shortdef": [
+      "to get all the good things that come with something"
+    ]
+  },
+  {
+    "meta": {
+      "id": "reap what one sows",
+      "uuid": "721d6e43-7c04-4267-9038-c34dc128258a",
+      "sort": "3015947000",
+      "src": "ld",
+      "section": "idioms",
+      "stems": [
+        "reap what one sows"
+      ],
+      "offensive": false
+    },
+    "hwi": {
+      "hw": "reap what one sows"
+    },
+    "fl": "idiom",
+    "def": [
+      {
+        "sseq": [
+          [
+            [
+              "sense",
+              {
+                "dt": [
+                  [
+                    "text",
+                    "{bc}to experience the same kind of things that one has caused other people to experience "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "If you're rude to everyone, you'll {it}reap what you sow{/it}."
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      }
+    ],
+    "shortdef": [
+      "to experience the same kind of things that one has caused other people to experience"
+    ]
+  },
+  {
+    "meta": {
+      "id": "Siem Reap:g",
+      "uuid": "c4a6f296-b530-404d-951b-b1faf90ffce3",
+      "sort": "282905000",
+      "src": "collegiate",
+      "section": "geog",
+      "stems": [
+        "Siem Reap",
+        "Siemreab"
+      ],
+      "offensive": false
+    },
+    "hwi": {
+      "hw": "Si*em Re*ap",
+      "prs": [
+        {
+          "mw": "ˌsē-əm-ˈrē-əp",
+          "sound": {
+            "audio": "ggsiemreap_1",
+            "ref": "u",
+            "stat": "1"
+          }
+        }
+      ]
+    },
+    "vrs": [
+      {
+        "vl": "or",
+        "va": "Si*ĕm*ré*ab",
+        "prs": [
+          {
+            "mw": "ˌsē-əm-ˈrē-əb",
+            "sound": {
+              "audio": "ggsiemreab_1",
+              "ref": "u",
+              "stat": "1"
+            }
+          }
+        ]
+      }
+    ],
+    "fl": "geographical name",
+    "def": [
+      {
+        "sseq": [
+          [
+            [
+              "sense",
+              {
+                "dt": [
+                  [
+                    "text",
+                    "town just north of the northwestern end of {d_link|Tonle Sap|Tonle Sap:g} in northwestern Cambodia {it}population{/it} 169,000 "
+                  ],
+                  [
+                    "snote",
+                    [
+                      [
+                        "t",
+                        "Siem Reap is the gateway for visitors to {d_link|Angkor|Angkor:g}."
+                      ]
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      }
+    ],
+    "shortdef": [
+      "town just north of the northwestern end of Tonle Sap in northwestern Cambodia population 169,000"
+    ]
+  }
+]

@@ -1,0 +1,203 @@
+[
+  {
+    "meta": {
+      "id": "pelvis",
+      "uuid": "9b9646b2-79f9-4ffe-8c12-0b072d3672a6",
+      "sort": "160153900",
+      "src": "collegiate",
+      "section": "alpha",
+      "stems": [
+        "pelves",
+        "pelvis",
+        "pelvises"
+      ],
+      "offensive": false
+    },
+    "hwi": {
+      "hw": "pel*vis",
+      "prs": [
+        {
+          "mw": "ˈpel-vəs",
+          "sound": {
+            "audio": "pelvis01",
+            "ref": "c",
+            "stat": "1"
+          }
+        }
+      ]
+    },
+    "fl": "noun",
+    "ins": [
+      {
+        "il": "plural",
+        "if": "pel*vis*es",
+        "prs": [
+          {
+            "mw": "ˈpel-və-səz",
+            "sound": {
+              "audio": "pelvis02",
+              "ref": "c",
+              "stat": "1"
+            }
+          }
+        ]
+      },
+      {
+        "il": "or",
+        "if": "pel*ves",
+        "prs": [
+          {
+            "mw": "ˈpel-ˌvēz",
+            "sound": {
+              "audio": "pelvis03",
+              "ref": "c",
+              "stat": "1"
+            }
+          }
+        ]
+      }
+    ],
+    "def": [
+      {
+        "sseq": [
+          [
+            [
+              "sense",
+              {
+                "sn": "1",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}a basin-shaped structure in the skeleton of many vertebrates that is formed by the {d_link|pelvic girdle|pelvic girdle} and adjoining bones of the spine "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "During puberty, the shape of the {wi}pelvis{/wi} begins to take on distinctly male or female features …",
+                        "aq": {
+                          "auth": "Christopher Joyce and Eric Stover"
+                        }
+                      },
+                      {
+                        "t": "Dysfunction can occur with uneven distribution of weight on the {wi}pelvis{/wi}, a common and usually benign condition that can be exacerbated by running.",
+                        "aq": {
+                          "auth": "Carol Potera"
+                        }
+                      }
+                    ]
+                  ]
+                ],
+                "sdsense": {
+                  "sd": "also",
+                  "dt": [
+                    [
+                      "text",
+                      "{bc}{sx|pelvic cavity||} "
+                    ],
+                    [
+                      "vis",
+                      [
+                        {
+                          "t": "Endometriosis is the presence of functioning endometrial tissue outside the endometrial cavity, but usually confined to the {wi}pelvis{/wi} …",
+                          "aq": {
+                            "auth": "Daniel W. Cramer et al."
+                          }
+                        }
+                      ]
+                    ]
+                  ]
+                }
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "2",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}the cavity of the pelvis"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "3",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}{sx|renal pelvis||}"
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      }
+    ],
+    "et": [
+      [
+        "text",
+        "New Latin, from Latin, basin; perhaps akin to Old English & Old Norse {it}full{/it} cup"
+      ]
+    ],
+    "date": "1615{ds||1||}",
+    "shortdef": [
+      "a basin-shaped structure in the skeleton of many vertebrates that is formed by the pelvic girdle and adjoining bones of the spine; also : pelvic cavity",
+      "the cavity of the pelvis",
+      "renal pelvis"
+    ]
+  },
+  {
+    "meta": {
+      "id": "renal pelvis",
+      "uuid": "8a74d3c6-b886-4ae1-8b8a-2425486f4b4a",
+      "sort": "182032000",
+      "src": "collegiate",
+      "section": "alpha",
+      "stems": [
+        "renal pelves",
+        "renal pelvis",
+        "renal pelvises"
+      ],
+      "offensive": false
+    },
+    "hwi": {
+      "hw": "renal pelvis"
+    },
+    "fl": "noun",
+    "def": [
+      {
+        "sls": [
+          "anatomy"
+        ],
+        "sseq": [
+          [
+            [
+              "sense",
+              {
+                "dt": [
+                  [
+                    "text",
+                    "{bc}a funnel-shaped structure in each {d_link|kidney|kidney} that receives urine from the {d_link|collecting duct|collecting duct} for passage into the ureter and that is formed at one end by the expanded upper portion of the ureter and at the other end by the union of two or more calyxes {dx_def}see {dxt|calyx||2}{/dx_def} of the kidney"
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      }
+    ],
+    "date": "1757",
+    "shortdef": [
+      "a funnel-shaped structure in each kidney that receives urine from the collecting duct for passage into the ureter and that is formed at one end by the expanded upper portion of the ureter and at the other end by the union of two or more calyxes of the kidney"
+    ]
+  }
+]

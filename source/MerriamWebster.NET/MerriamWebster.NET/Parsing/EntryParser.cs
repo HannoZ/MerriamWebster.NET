@@ -59,12 +59,7 @@ namespace MerriamWebster.NET.Parsing
             foreach (var result in results)
             {
                 resultModel.RawResponse = JsonConvert.SerializeObject(result, SerializerSettings);
-
-                if (!result.Metadata.Stems.Contains(searchTerm.ToLowerInvariant()))
-                {
-                    continue;
-                }
-
+                
                 var searchResult = CreateSearchResult(options, result);
 
                 // parse definitions

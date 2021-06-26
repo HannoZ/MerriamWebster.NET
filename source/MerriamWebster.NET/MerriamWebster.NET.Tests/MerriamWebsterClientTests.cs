@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Reflection;
@@ -199,10 +200,22 @@ namespace MerriamWebster.NET.Tests
                 .ReturnsAsync(SetupOkResponseMessage(response));
 
             // ACT
-            var result = await _client.GetDictionaryEntry("api", "entry");
+            var result = (await _client.GetDictionaryEntry("api", "entry")).ToList();
 
             // ASSERT
             result.ShouldNotBeEmpty();
+
+            // test for CalledAlsoNote specifically
+            var ca = result.SelectMany(r => r.Definitions.SelectMany(d => d.SenseSequences).SelectMany(sss => sss))
+                .SelectMany(ss => ss)
+                .Select(s => s.Sense)
+                .Where(s => s?.DefiningTexts != null)
+                .SelectMany(s => s.DefiningTexts)
+                .SelectMany(dtWrapper => dtWrapper)
+                .Where(dt => dt.CalledAlso != null)
+                .Select(dt => dt.CalledAlso);
+
+            ca.ShouldNotBeEmpty();
         }
 
         [TestMethod]
@@ -221,6 +234,54 @@ namespace MerriamWebster.NET.Tests
             // ASSERT
             result.ShouldNotBeEmpty();
         }
+
+        [TestMethod]
+        public async Task MerriamWebsterClient_CanDeserialize_Dodgson()
+        {
+
+
+            string response = await TestHelper.LoadResponseFromFileAsync("collegiate_Dodgson");
+
+            _handlerMock.Protected()
+                .Setup<Task<HttpResponseMessage>>("SendAsync", ItExpr.IsAny<HttpRequestMessage>(),
+                    ItExpr.IsAny<CancellationToken>())
+                .ReturnsAsync(SetupOkResponseMessage(response));
+
+            // ACT
+            var result = (await _client.GetDictionaryEntry("api", "entry")).ToList();
+
+            // ASSERT
+            result.ShouldNotBeEmpty();
+
+            // test for BiographicalNameWrap specifically
+            var bnw = result.SelectMany(r => r.Definitions.SelectMany(d => d.SenseSequences).SelectMany(sss => sss))
+                .SelectMany(ss => ss)
+                .Select(s => s.Sense)
+                .Where(s=>s?.DefiningTexts != null)
+                .SelectMany(s => s.DefiningTexts)
+                .SelectMany(dtWrapper => dtWrapper)
+                .Where(dt=>dt.BiographicalNameWrap != null)
+                .Select(dt => dt.BiographicalNameWrap);
+
+            bnw.ShouldNotBeEmpty();
+        }
+
+        //[TestMethod]
+        //public async Task MerriamWebsterClient_CanDeserialize_Reap()
+        //{
+        //    string response = await TestHelper.LoadResponseFromFileAsync("collegiate_reap");
+
+        //    _handlerMock.Protected()
+        //        .Setup<Task<HttpResponseMessage>>("SendAsync", ItExpr.IsAny<HttpRequestMessage>(),
+        //            ItExpr.IsAny<CancellationToken>())
+        //        .ReturnsAsync(SetupOkResponseMessage(response));
+
+        //    // ACT
+        //    var result = (await _client.GetDictionaryEntry("api", "entry")).ToList();
+
+        //    // ASSERT
+        //    result.ShouldNotBeEmpty();
+        //}
 
         private static HttpResponseMessage SetupOkResponseMessage(string content)
         {

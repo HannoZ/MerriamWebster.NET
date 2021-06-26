@@ -18,7 +18,7 @@ namespace MerriamWebster.NET.Response.JsonConverters
                     var arrayValue = serializer.Deserialize<DefiningTextComplexTypeWrapper[]>(reader);
                     return new DefiningTextObject { DefiningTextComplexTypeWrapperArray = arrayValue };
             }
-            throw new Exception("Cannot unmarshal type DefiningTextObject");
+            throw new NotImplementedException($"Cannot unmarshal type DefiningTextObject. Path: {reader.Path}, TokenType: {reader.TokenType}");
         }
 
         public override void WriteJson(JsonWriter writer, object untypedValue, JsonSerializer serializer)
@@ -34,7 +34,7 @@ namespace MerriamWebster.NET.Response.JsonConverters
                 serializer.Serialize(writer, value.DefiningText);
                 return;
             }
-            throw new Exception("Cannot marshal type DefiningTextObject");
+            throw new NotImplementedException("Cannot marshal type DefiningTextObject");
         }
 
         public static readonly DefiningTextObjectConverter Singleton = new DefiningTextObjectConverter();

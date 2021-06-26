@@ -7,26 +7,38 @@ namespace MerriamWebster.NET.Response
     /// </summary>
     public class Inflection
     {
+        /// <summary>
+        /// Gets or sets the inflection label
+        /// </summary>
         [JsonProperty("il")]
-#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
         public string Label { get; set; }
 
+        /// <summary>
+        /// Gets or sets the pronunciations.
+        /// </summary>
         [JsonProperty("prs", NullValueHandling = NullValueHandling.Ignore)]
         public Pronunciation[] Pronunciations { get; set; } = { };
 
+        /// <summary>
+        /// Gets or sets the inflection cutback.
+        /// </summary>
         [JsonProperty("ifc")]
         public string Cutback { get; set; }
 
+        /// <summary>
+        /// Gets or sets the inflection value.
+        /// </summary>
         [JsonProperty("if")]
         public string Value { get; set; }
 
+        /// <summary>
+        /// Gets or sets the <see cref="AlternateInflection"/>.
+        /// </summary>
         [JsonProperty("aif", NullValueHandling = NullValueHandling.Ignore)]
         public AlternateInflection Alternate { get; set; }
-#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
 
         /// <summary>
-        /// This label provides information on the grammatical number (eg, singular, plural) of an inflection in a particular sense.<br/>
-        /// A sense-specific inflection plural label is contained in an <see cref="SenseSpecificInflectionPluralLabel"/>.
+        /// This label provides information on the grammatical number (eg, singular, plural) of an inflection in a particular sense.
         /// </summary>
         [JsonProperty("spl")]
         public string SenseSpecificInflectionPluralLabel { get; set; }
