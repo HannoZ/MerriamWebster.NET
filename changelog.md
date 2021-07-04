@@ -1,3 +1,12 @@
+1.8 This release contains a number of improvements
+- Removed filter on search term in entry parser, all results will now be returned. filtering can be applied on the result model by the caller
+- Added parsing of quotes
+- Fixed deserialization of entries that contain a 'ca' structure inside the 'dt' structure (which occurs frequently in the medical api)
+- Implemented deserialization of BiographicalNameWrap (bnw)
+- Improved exception handling when deserialization fails due to missing implementation
+- Added parsing of Date property
+- Added some missing XML documentation
+
 1.7.1 Added new property ``AdditionalInformation`` to the Sense dto class. This property will contain the content of the 'sls' property of the sense response object. See chapter 2.7.3 SUBJECT/STATUS LABELS of the official documentation for further info. 
 
 1.7 New feature! Besides (improved) MW-specific markup removal, the markup is now also replaced with HTML markup. Implemented in Sense and Example objects. 
