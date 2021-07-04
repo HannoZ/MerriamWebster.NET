@@ -18,6 +18,9 @@ namespace MerriamWebster.NET.Response.JsonConverters
                 case JsonToken.StartObject:
                     var objectValue = serializer.Deserialize<Sense>(reader);
                     return new SenseSequence { Sense = objectValue };
+                case JsonToken.StartArray:
+                    var arrayValue = serializer.Deserialize<SenseSequence[][]>(reader);
+                    return new SenseSequence { SenseSequences = arrayValue };
             }
             throw new NotImplementedException($"Cannot unmarshal type Sense. Path: {reader.Path}, TokenType: {reader.TokenType}");
         }

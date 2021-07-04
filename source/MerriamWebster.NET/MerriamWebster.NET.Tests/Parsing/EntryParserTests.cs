@@ -446,6 +446,23 @@ namespace MerriamWebster.NET.Tests.Parsing
 
         }
 
+        [TestMethod]
+        public async Task EntryParser_CanParse_Collegiate_Reap()
+        {
+            var data = LoadData("collegiate_reap");
+
+            _mocker.GetMock<IMerriamWebsterClient>()
+                .Setup(m => m.GetDictionaryEntry(It.IsAny<string>(), It.IsAny<string>()))
+                .ReturnsAsync(data);
+
+            // ACT 
+            var result = await _entryParser.GetAndParseAsync("api", "reap");
+
+            // ASSERT
+            result.Entries.Count.ShouldBe(6);
+
+        }
+
         private static IEnumerable<DictionaryEntry> LoadData(string fileName)
         {
             var response = TestHelper.LoadResponseFromFile(fileName);

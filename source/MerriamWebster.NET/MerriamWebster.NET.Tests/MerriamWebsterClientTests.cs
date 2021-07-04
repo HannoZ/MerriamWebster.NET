@@ -266,22 +266,26 @@ namespace MerriamWebster.NET.Tests
             bnw.ShouldNotBeEmpty();
         }
 
-        //[TestMethod]
-        //public async Task MerriamWebsterClient_CanDeserialize_Reap()
-        //{
-        //    string response = await TestHelper.LoadResponseFromFileAsync("collegiate_reap");
+        [TestMethod]
+        public async Task MerriamWebsterClient_CanDeserialize_Reap()
+        {
+            string response = await TestHelper.LoadResponseFromFileAsync("collegiate_reap");
 
-        //    _handlerMock.Protected()
-        //        .Setup<Task<HttpResponseMessage>>("SendAsync", ItExpr.IsAny<HttpRequestMessage>(),
-        //            ItExpr.IsAny<CancellationToken>())
-        //        .ReturnsAsync(SetupOkResponseMessage(response));
+            _handlerMock.Protected()
+                .Setup<Task<HttpResponseMessage>>("SendAsync", ItExpr.IsAny<HttpRequestMessage>(),
+                    ItExpr.IsAny<CancellationToken>())
+                .ReturnsAsync(SetupOkResponseMessage(response));
 
-        //    // ACT
-        //    var result = (await _client.GetDictionaryEntry("api", "entry")).ToList();
+            // ACT
+            var result = (await _client.GetDictionaryEntry("api", "entry")).ToList();
 
-        //    // ASSERT
-        //    result.ShouldNotBeEmpty();
-        //}
+            // TODO parse Date {ds} token
+
+            // TODO verify content pseq/sseq
+
+            // ASSERT
+            result.ShouldNotBeEmpty();
+        }
 
         private static HttpResponseMessage SetupOkResponseMessage(string content)
         {

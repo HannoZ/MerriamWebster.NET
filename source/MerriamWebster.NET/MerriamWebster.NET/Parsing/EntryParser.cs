@@ -166,6 +166,11 @@ namespace MerriamWebster.NET.Parsing
                     ImageLocation = ArtworkLinkCreator.CreateDirectLink(result.Artwork)
                 };
             }
+
+            if (!string.IsNullOrEmpty(result.Date))
+            {
+                searchResult.Date = MarkupManipulator.RemoveMarkupFromString(result.Date);
+            }
         }
 
         private static IEnumerable<CrossReference> ParseCrossReferences(Response.DictionaryEntry result)

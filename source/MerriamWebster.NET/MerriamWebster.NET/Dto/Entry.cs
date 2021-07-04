@@ -57,7 +57,8 @@ namespace MerriamWebster.NET.Dto
         /// </summary>
         public ICollection<CrossReference> CrossReferences { get; set; } = new List<CrossReference>();
         /// <summary>
-        /// Gets or sets a collection of short definitions.
+        /// A short definition provides a highly abridged version of the main definition section, consisting of just the definition text for the first three senses.
+        /// It is not meant to be displayed along with the full entry, but instead as an alternative, shortened preview of the entry content.
         /// </summary>
         public ICollection<string> ShortDefs { get; set; } = new List<string>();
         /// <summary>
@@ -72,7 +73,10 @@ namespace MerriamWebster.NET.Dto
         /// Gets or sets the artwork.
         /// </summary>
         public Artwork Artwork { get; set; }
-
+        /// <summary>
+        /// The date of the earliest recorded use of a headword in English.
+        /// </summary>
+        public string Date { get; set; }
         /// <summary>
         /// The summary is the content of all <see cref="Senses"/> with non-empty Text properties.
         /// </summary>
