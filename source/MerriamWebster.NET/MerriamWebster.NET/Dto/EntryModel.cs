@@ -36,5 +36,9 @@ namespace MerriamWebster.NET.Dto
         /// <remarks>The raw response can be used to get data that is not parsed by the <see cref="IEntryParser"/>.<br/>
         /// Use <see cref="JsonConvert"/> to deserialize this string into a <see cref="Response.DictionaryEntry"/>.</remarks>
         public string  RawResponse { get; set; }
+        /// <summary>
+        /// A collection of zero or more <see cref="Quote"/>s. 
+        /// </summary>
+        public ICollection<Quote> Quotes { get; set; } = new List<Quote>();
     }
 }

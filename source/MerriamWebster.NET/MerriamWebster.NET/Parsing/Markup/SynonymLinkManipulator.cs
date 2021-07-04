@@ -7,12 +7,12 @@ namespace MerriamWebster.NET.Parsing.Markup
     /// </summary>
     public class SynonymLinkManipulator : MarkupManipulator, IMarkupManipulator
     {
+        private static readonly Regex Pattern = new Regex(@"{sx\|([^}]*)\|.*?\|.*?}", RegexOptions.Compiled);
+        
         /// <inheritdoc />
         public string RemoveMarkup(string input)
         {
-            var regex = new Regex(@"{sx\|([^}]*)\|.*?\|.*?}");
-
-            return RegexReplace(input, regex);
+            return RegexReplace(input, Pattern);
         }
 
         /// <inheritdoc />

@@ -32,6 +32,7 @@ namespace MerriamWebster.NET.Parsing.Markup
                 .Replace("{/phrase}", "</b></i></span>");
             input = ReplaceOpenCloseTag(input, "qword", "i");
             input = ReplaceOpenCloseTag(input, "parahw", "i");
+            input = ReplaceOpenCloseTag(input, "wi", "i");
             input = ReplaceOpenCloseTag(input, "inf", "sub");
             input = ReplaceOpenCloseTag(input, "sup", "sup");
             input = input.Replace("{sc}", "<span class=\"mw-sc\" style=\"font-variant: small-caps\">")

@@ -5,7 +5,9 @@
     /// </summary>
     /// <remarks>
     /// In the Spanish-English dictionary, examples are short sentences that illustrate the use of the headword.<br/>
-    /// For other dictionaries, so called 'variants' are returned as example. In that case the <see cref="Translation"/> property will always be null.
+    /// For other dictionaries, so called 'variants' or other text that further illustrates the definition are returned as example.
+    /// In that case the <see cref="Translation"/> property will always be null.
+    /// Sometimes a <see cref="Quote"/> may also be present if the text was cited from some source.
     /// </remarks>
     public class Example
     {
@@ -27,5 +29,9 @@
         /// </summary>
         /// <remarks>Spanish-English only.</remarks>
         public string Translation { get; set; }
+        /// <summary>
+        /// Gets or sets the quote information.
+        /// </summary>
+        public Quote Quote { get; set; }
     }
 }

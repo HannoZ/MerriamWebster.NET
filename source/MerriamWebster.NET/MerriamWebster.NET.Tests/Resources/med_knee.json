@@ -1,0 +1,598 @@
+[
+  {
+    "meta": {
+      "id": "knee",
+      "uuid": "fedb45e5-c5ed-40f1-8d7d-353d08230b8a",
+      "sort": "160279000",
+      "src": "medical",
+      "section": "alpha",
+      "stems": [
+        "knee",
+        "knee joint",
+        "kneed",
+        "knees",
+        "to one's knees"
+      ],
+      "offensive": false
+    },
+    "hwi": {
+      "hw": "knee",
+      "prs": [
+        {
+          "mw": "ˈnē",
+          "sound": {
+            "audio": "knee0001"
+          }
+        }
+      ]
+    },
+    "fl": "noun",
+    "def": [
+      {
+        "sseq": [
+          [
+            [
+              "sense",
+              {
+                "sn": "1 a",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}a joint in the middle part of the human leg that is the articulation between the femur, tibia, and patella "
+                  ],
+                  [
+                    "ca",
+                    {
+                      "intro": "called also",
+                      "cats": [
+                        {
+                          "cat": "knee joint"
+                        }
+                      ]
+                    }
+                  ]
+                ]
+              }
+            ],
+            [
+              "sense",
+              {
+                "sn": "b",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}the part of the leg that includes this joint"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "2 a",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}the joint in the hind leg of a 4-footed vertebrate that corresponds to the human knee"
+                  ]
+                ]
+              }
+            ],
+            [
+              "sense",
+              {
+                "sn": "b",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}the carpal joint of the foreleg of a 4-footed vertebrate"
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      }
+    ],
+    "uros": [
+      {
+        "ure": "kneed",
+        "prs": [
+          {
+            "mw": "ˈnēd",
+            "sound": {
+              "audio": "kneed001"
+            }
+          }
+        ],
+        "fl": "adjective"
+      }
+    ],
+    "shortdef": [
+      "a joint in the middle part of the human leg that is the articulation between the femur, tibia, and patella —called also knee joint",
+      "the part of the leg that includes this joint",
+      "the joint in the hind leg of a 4-footed vertebrate that corresponds to the human knee"
+    ]
+  },
+  {
+    "meta": {
+      "id": "knee jerk",
+      "uuid": "8a71f508-232e-438a-9f06-64f32be6474f",
+      "sort": "160281000",
+      "src": "medical",
+      "section": "alpha",
+      "stems": [
+        "knee jerk",
+        "knee jerks",
+        "patellar reflex"
+      ],
+      "offensive": false
+    },
+    "hwi": {
+      "hw": "knee jerk"
+    },
+    "fl": "noun",
+    "def": [
+      {
+        "sseq": [
+          [
+            [
+              "sense",
+              {
+                "dt": [
+                  [
+                    "text",
+                    "{bc}an involuntary forward jerk or kick produced by a light blow or sudden strain upon the patellar tendon of the knee that causes a reflex contraction of the quadriceps muscle "
+                  ],
+                  [
+                    "ca",
+                    {
+                      "intro": "called also",
+                      "cats": [
+                        {
+                          "cat": "patellar reflex"
+                        }
+                      ]
+                    }
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      }
+    ],
+    "shortdef": [
+      "an involuntary forward jerk or kick produced by a light blow or sudden strain upon the patellar tendon of the knee that causes a reflex contraction of the quadriceps muscle —called also patellar reflex"
+    ]
+  },
+  {
+    "meta": {
+      "id": "knee joint",
+      "uuid": "0d720ae8-5a78-4435-ade6-847728010100",
+      "sort": "160282000",
+      "src": "medical",
+      "section": "alpha",
+      "stems": [
+        "knee joint",
+        "knee joints"
+      ],
+      "offensive": false
+    },
+    "hwi": {
+      "hw": "knee joint"
+    },
+    "fl": "noun",
+    "def": [
+      {
+        "sseq": [
+          [
+            [
+              "sense",
+              {
+                "dt": [
+                  [
+                    "text",
+                    "{bc}{sx|knee|knee|1a}"
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      }
+    ],
+    "shortdef": [
+      "knee"
+    ]
+  },
+  {
+    "meta": {
+      "id": "knee-sprung",
+      "uuid": "962d5db2-375c-4d02-ba20-5323cdf20050",
+      "sort": "160284000",
+      "src": "medical",
+      "section": "alpha",
+      "stems": [
+        "knee-sprung"
+      ],
+      "offensive": false
+    },
+    "hwi": {
+      "hw": "knee-sprung",
+      "prs": [
+        {
+          "mw": "ˈnē-ˌsprəŋ",
+          "sound": {
+            "audio": "knees01m"
+          }
+        }
+      ]
+    },
+    "fl": "adjective",
+    "def": [
+      {
+        "sls": [
+          "of a horse"
+        ],
+        "sseq": [
+          [
+            [
+              "sense",
+              {
+                "dt": [
+                  [
+                    "text",
+                    "{bc}having the knees bent when they should normally be straight"
+                  ]
+                ],
+                "sdsense": {
+                  "sd": "especially",
+                  "dt": [
+                    [
+                      "text",
+                      "{bc}having the knees protruding too far forward"
+                    ]
+                  ]
+                }
+              }
+            ]
+          ]
+        ]
+      }
+    ],
+    "shortdef": [
+      "having the knees bent when they should normally be straight; especially : having the knees protruding too far forward"
+    ]
+  },
+  {
+    "meta": {
+      "id": "housemaid's knee",
+      "uuid": "ae0e54bc-5266-43a3-a84f-bb6a9242ec7d",
+      "sort": "161230000",
+      "src": "medical",
+      "section": "alpha",
+      "stems": [
+        "housemaid's knee",
+        "housemaid's knees"
+      ],
+      "offensive": false
+    },
+    "hwi": {
+      "hw": "house*maid's knee",
+      "prs": [
+        {
+          "mw": "ˈhau̇-ˌsmādz-",
+          "sound": {
+            "audio": "house03m"
+          }
+        }
+      ]
+    },
+    "fl": "noun",
+    "def": [
+      {
+        "sseq": [
+          [
+            [
+              "sense",
+              {
+                "dt": [
+                  [
+                    "text",
+                    "{bc}a swelling over the knee due to an enlargement of the bursa in the front of the patella"
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      }
+    ],
+    "shortdef": [
+      "a swelling over the knee due to an enlargement of the bursa in the front of the patella"
+    ]
+  },
+  {
+    "meta": {
+      "id": "jumper's knee",
+      "uuid": "a00b1cdc-d876-42e9-bce6-7b7f4bbfe6e2",
+      "sort": "160117000",
+      "src": "medical",
+      "section": "alpha",
+      "stems": [
+        "jumper's knee"
+      ],
+      "offensive": false
+    },
+    "hwi": {
+      "hw": "jumper's knee"
+    },
+    "fl": "noun",
+    "def": [
+      {
+        "sseq": [
+          [
+            [
+              "sense",
+              {
+                "dt": [
+                  [
+                    "text",
+                    "{bc}{sx|patellar tendinitis|patellar tendinitis|} "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "Concerns about {it}jumper's knee{/it} can prompt basketball players to change practice routines.",
+                        "aq": {
+                          "source": "Kelly Bothum, {it}The News Journal{/it} (Wilmington, Delaware)",
+                          "aqdate": "16 Mar. 2010"
+                        }
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      }
+    ],
+    "shortdef": [
+      "patellar tendinitis"
+    ]
+  },
+  {
+    "meta": {
+      "id": "knock-knee",
+      "uuid": "f09d82dd-2988-4e96-abd0-c55ffd2f5a74",
+      "sort": "160290000",
+      "src": "medical",
+      "section": "alpha",
+      "stems": [
+        "genu valgum",
+        "knock-knee",
+        "knock-kneed",
+        "knock-knees"
+      ],
+      "offensive": false
+    },
+    "hwi": {
+      "hw": "knock-knee",
+      "prs": [
+        {
+          "mw": "ˈnäk-ˈnē, -ˌnē",
+          "sound": {
+            "audio": "knock01w"
+          }
+        }
+      ]
+    },
+    "fl": "noun",
+    "def": [
+      {
+        "sseq": [
+          [
+            [
+              "sense",
+              {
+                "dt": [
+                  [
+                    "text",
+                    "{bc}a condition in which the legs curve inward at the knees "
+                  ],
+                  [
+                    "ca",
+                    {
+                      "intro": "called also",
+                      "cats": [
+                        {
+                          "cat": "genu valgum"
+                        }
+                      ]
+                    }
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      }
+    ],
+    "uros": [
+      {
+        "ure": "knock-kneed",
+        "prs": [
+          {
+            "mw": "-ˈnēd",
+            "sound": {
+              "audio": "knock02w"
+            }
+          }
+        ],
+        "fl": "adjective"
+      }
+    ],
+    "shortdef": [
+      "a condition in which the legs curve inward at the knees —called also genu valgum"
+    ]
+  },
+  {
+    "meta": {
+      "id": "runner's knee",
+      "uuid": "61971aa1-7b33-4bed-a3be-2cb693ac9982",
+      "sort": "161471000",
+      "src": "medical",
+      "section": "alpha",
+      "stems": [
+        "runner's knee"
+      ],
+      "offensive": false
+    },
+    "hwi": {
+      "hw": "runner's knee"
+    },
+    "fl": "noun",
+    "def": [
+      {
+        "sseq": [
+          [
+            [
+              "sense",
+              {
+                "dt": [
+                  [
+                    "text",
+                    "{bc}pain in the region of the knee especially when related to running that may have a simple anatomical basis (as tightness of a muscle) or may be a symptom of {d_link|iliotibial band syndrome|iliotibial band syndrome} or an indication of {d_link|chondromalacia patellae|chondromalacia patellae}"
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      }
+    ],
+    "shortdef": [
+      "pain in the region of the knee especially when related to running that may have a simple anatomical basis (as tightness of a muscle) or may be a symptom of iliotibial band syndrome or an indication of chondromalacia patellae"
+    ]
+  },
+  {
+    "meta": {
+      "id": "water on the knee",
+      "uuid": "378076a9-3231-45fd-8085-20123c1c9eaa",
+      "sort": "160083000",
+      "src": "medical",
+      "section": "alpha",
+      "stems": [
+        "water on the knee"
+      ],
+      "offensive": false
+    },
+    "hwi": {
+      "hw": "water on the knee"
+    },
+    "fl": "noun",
+    "def": [
+      {
+        "sseq": [
+          [
+            [
+              "sense",
+              {
+                "dt": [
+                  [
+                    "text",
+                    "{bc}an accumulation of synovial fluid in the knee joint (as from injury or disease) marked especially by swelling"
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      }
+    ],
+    "shortdef": [
+      "an accumulation of synovial fluid in the knee joint (as from injury or disease) marked especially by swelling"
+    ]
+  },
+  {
+    "meta": {
+      "id": "patellar tendinitis",
+      "uuid": "1ed7a844-d558-40a9-a9dc-d0d44f2701ad",
+      "sort": "160697000",
+      "src": "medical",
+      "section": "alpha",
+      "stems": [
+        "apicitis",
+        "jumper's knee",
+        "patellar tendinitis",
+        "patellar tendinopathy",
+        "patellar tendonitis"
+      ],
+      "offensive": false
+    },
+    "hwi": {
+      "hw": "patellar tendinitis"
+    },
+    "vrs": [
+      {
+        "vl": "also",
+        "va": "patellar tendonitis"
+      },
+      {
+        "vl": "or",
+        "va": "patellar tendinopathy"
+      }
+    ],
+    "fl": "noun",
+    "def": [
+      {
+        "sseq": [
+          [
+            [
+              "sense",
+              {
+                "dt": [
+                  [
+                    "text",
+                    "{bc}injury to the {d_link|patellar tendon|patellar tendon} that is marked especially by pain or tenderness in the area immediately below the front of the knee and that typically involves microscopic tearing of the patellar tendon often accompanied by inflammation or tissue degeneration "
+                  ],
+                  [
+                    "snote",
+                    [
+                      [
+                        "t",
+                        "Patellar tendinitis chiefly affects individuals regularly participating in sports (such as basketball, volleyball, or soccer) that involve repeated jumping, stops and starts, or direction changes."
+                      ]
+                    ]
+                  ],
+                  [
+                    "ca",
+                    {
+                      "intro": "called also",
+                      "cats": [
+                        {
+                          "cat": "apicitis"
+                        },
+                        {
+                          "cat": "jumper's knee"
+                        }
+                      ]
+                    }
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      }
+    ],
+    "shortdef": [
+      "injury to the patellar tendon that is marked especially by pain or tenderness in the area immediately below the front of the knee and that typically involves microscopic tearing of the patellar tendon often accompanied by inflammation or tissue degeneration —called also apicitis, jumper's knee"
+    ]
+  }
+]

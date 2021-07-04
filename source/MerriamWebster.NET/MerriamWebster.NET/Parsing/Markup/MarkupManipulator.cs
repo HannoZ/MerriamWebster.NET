@@ -52,7 +52,7 @@ namespace MerriamWebster.NET.Parsing.Markup
             // always keep this one as last! 
             input = ReplaceCrossReferenceTarget(input);
 
-            return input;
+            return input.Trim();
         }
 
         /// <summary>

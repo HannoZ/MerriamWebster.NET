@@ -18,8 +18,11 @@ namespace MerriamWebster.NET.Response.JsonConverters
                 case JsonToken.StartObject:
                     var objectValue = serializer.Deserialize<Sense>(reader);
                     return new SenseSequence { Sense = objectValue };
+                case JsonToken.StartArray:
+                    var arrayValue = serializer.Deserialize<SenseSequence[][]>(reader);
+                    return new SenseSequence { SenseSequences = arrayValue };
             }
-            throw new Exception("Cannot unmarshal type Sense");
+            throw new NotImplementedException($"Cannot unmarshal type Sense. Path: {reader.Path}, TokenType: {reader.TokenType}");
         }
 
         public override void WriteJson(JsonWriter writer, object untypedValue, JsonSerializer serializer)
@@ -31,7 +34,7 @@ namespace MerriamWebster.NET.Response.JsonConverters
                 serializer.Serialize(writer, value.Sense);
                 return;
             }
-            throw new Exception("Cannot marshal type Sense");
+            throw new NotImplementedException("Cannot marshal type Sense");
         }
 
         public static readonly SseqConverter Singleton = new SseqConverter();

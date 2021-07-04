@@ -53,9 +53,24 @@ namespace MerriamWebster.NET.Parsing
 
                         sense.Synonyms = SynonymsParser.ExtractSynonyms(definitionText).ToList();
                         sense.RawText = definitionText;
-                        foreach (var synonym in sense.Synonyms)
+                        if (sense.Synonyms.Any())
                         {
-                            definitionText = definitionText.Replace(synonym, "");
+                            // not very robust, but until now I only found sx links at the beginning of a string in the spanish-english dictionary
+                            // in that case the synonyms should be removed from the text, in other cases we keep them between square brackets
+                            if (sense.RawText.StartsWith("{sx"))
+                            {
+                                foreach (var synonym in sense.Synonyms)
+                                {
+                                    definitionText = definitionText.Replace(synonym, "");
+                                }
+                            }
+                            else
+                            {
+                                foreach (var synonym in sense.Synonyms)
+                                {
+                                    definitionText = definitionText.Replace(synonym, $"[{synonym}]");
+                                }
+                            }
                         }
 
                         sense.Text = _parseOptions.RemoveMarkup
@@ -89,7 +104,7 @@ namespace MerriamWebster.NET.Parsing
                         }
                     }
 
-                    // the vis (verbal illustrations) element contains examples 
+                    // the vis (verbal illustrations) element contains examples or other text that furhter illustrates the definition
                     if (definingTextObjects.Any(d => d.TypeOrText == "vis"))
                     {
                         foreach (var dtWrapper in definingTextObjects.Where(to => to.DefiningTextArray != null))
@@ -106,6 +121,25 @@ namespace MerriamWebster.NET.Parsing
                                         HtmlSentence = _parseOptions.ReplaceMarkup ? MarkupManipulator.ReplaceMarkupInString(text) : text,
                                         Translation = dto.DefiningText.Translation
                                     };
+                                    var aq = dto.DefiningText.Quote;
+                                    if (aq != null)
+                                    {
+                                        var quote = new Quote
+                                        {
+                                            Author = aq.Author,
+                                            PublicationDate = aq.PublicationDate,
+                                            Source = aq.Source
+                                        };
+                                        if (aq.Subsource != null)
+                                        {
+                                            quote.Subsource = new SubSource
+                                            {
+                                                PublicationDate = aq.Subsource.PublicationDate,
+                                                Source = aq.Subsource.Source
+                                            };
+                                        }
+                                        example.Quote = quote;
+                                    }
                                     sense.Examples.Add(example);
                                 }
                             }

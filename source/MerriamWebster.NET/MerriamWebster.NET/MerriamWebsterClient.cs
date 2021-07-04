@@ -42,6 +42,10 @@ namespace MerriamWebster.NET
                 var results = JsonConvert.DeserializeObject<DictionaryEntry[]>(responseString, Converter.Settings);
                 return results;
             }
+            catch (NotImplementedException)
+            {
+                throw;
+            }
             catch
             {
                 var response = JsonConvert.DeserializeObject<string[]>(responseString);

@@ -1,0 +1,398 @@
+[
+  {
+    "meta": {
+      "id": "pelvis",
+      "uuid": "1c328b54-6ea9-4824-9d67-dda891db7f88",
+      "sort": "160924000",
+      "src": "medical",
+      "section": "alpha",
+      "stems": [
+        "pelves",
+        "pelvis",
+        "pelvises"
+      ],
+      "offensive": false
+    },
+    "hwi": {
+      "hw": "pel*vis",
+      "prs": [
+        {
+          "mw": "ˈpel-vəs",
+          "sound": {
+            "audio": "pelvis01"
+          }
+        }
+      ]
+    },
+    "fl": "noun",
+    "ins": [
+      {
+        "il": "plural",
+        "if": "pel*vis*es",
+        "prs": [
+          {
+            "mw": "-və-səz",
+            "sound": {
+              "audio": "pelvis02"
+            }
+          }
+        ]
+      },
+      {
+        "il": "or",
+        "if": "pel*ves",
+        "prs": [
+          {
+            "mw": "-ˌvēz",
+            "sound": {
+              "audio": "pelvis03"
+            }
+          }
+        ]
+      }
+    ],
+    "def": [
+      {
+        "sseq": [
+          [
+            [
+              "sense",
+              {
+                "sn": "1",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}a basin-shaped structure in the skeleton of many vertebrates that is formed by the {a_link|pelvic} girdle together with the sacrum and often various coccygeal and caudal vertebrae and that in humans is composed of the two hip bones bounding it on each side and in front while the sacrum and coccyx complete it behind"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "2",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}{sx|pelvic cavity|pelvic cavity|}"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "3",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}{sx|renal pelvis|renal pelvis|}"
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      }
+    ],
+    "art": {
+      "artid": "pelvis",
+      "capt": "pelvis 1 (human): {it}A{/it} female, {it}B{/it} male, {it}C{/it} right hip bone, {it}D{/it} lateral view, {it}E{/it} medial view; {it}1{/it} sacrum, {it}2{/it} coccyx, {it}3{/it} symphysis, {it}4{/it} ilium, {it}5{/it} pubis, {it}6{/it} ischium, {it}7{/it} acetabulum, {it}8{/it} sacral foramen, {it}9{/it} ischial tuberosity, {it}10{/it} lesser sciatic notch, {it}11{/it} ischial spine, {it}12{/it} greater sciatic notch, {it}13{/it} posterior inferior iliac spine, {it}14{/it} posterior superior iliac spine, {it}15{/it} iliac crest, {it}16{/it} anterior superior iliac spine, {it}17{/it} anterior inferior iliac spine, {it}18{/it} acetabular notch, {it}19{/it} superior ramus of pubis, {it}20{/it} pubic tubercle, {it}21{/it} pubic crest, {it}22{/it} obturator foramen, {it}23{/it} inferior ramus of pubis, {it}24{/it} inferior ramus of ischium, {it}25{/it} iliac fossa, {it}26{/it} articular surface for sacrum, {it}27{/it} sacroiliac joint, {it}28{/it} sacral promontory"
+    },
+    "shortdef": [
+      "a basin-shaped structure in the skeleton of many vertebrates that is formed by the pelvic girdle together with the sacrum and often various coccygeal and caudal vertebrae and that in humans is composed of the two hip bones bounding it on each side and in front while the sacrum and coccyx complete it behind",
+      "pelvic cavity",
+      "renal pelvis"
+    ]
+  },
+  {
+    "meta": {
+      "id": "contracted pelvis",
+      "uuid": "d3e5619d-6b3d-496a-9f5f-f22f8726731c",
+      "sort": "162805000",
+      "src": "medical",
+      "section": "alpha",
+      "stems": [
+        "contracted pelvis",
+        "contracted pelvises"
+      ],
+      "offensive": false
+    },
+    "hwi": {
+      "hw": "contracted pelvis"
+    },
+    "fl": "noun",
+    "def": [
+      {
+        "sseq": [
+          [
+            [
+              "sense",
+              {
+                "dt": [
+                  [
+                    "text",
+                    "{bc}a pelvis that is abnormally small in one or more principal diameters and that consequently interferes with normal childbirth"
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      }
+    ],
+    "shortdef": [
+      "a pelvis that is abnormally small in one or more principal diameters and that consequently interferes with normal childbirth"
+    ]
+  },
+  {
+    "meta": {
+      "id": "false pelvis",
+      "uuid": "6e7b437d-8498-484a-a13c-c1b5ef89a04d",
+      "sort": "160095000",
+      "src": "medical",
+      "section": "alpha",
+      "stems": [
+        "false pelvic cavity",
+        "false pelvis",
+        "false pelvises"
+      ],
+      "offensive": false
+    },
+    "hwi": {
+      "hw": "false pelvis"
+    },
+    "fl": "noun",
+    "def": [
+      {
+        "sseq": [
+          [
+            [
+              "sense",
+              {
+                "dt": [
+                  [
+                    "text",
+                    "{bc}the upper broader portion of the pelvic cavity "
+                  ],
+                  [
+                    "ca",
+                    {
+                      "intro": "called also",
+                      "cats": [
+                        {
+                          "cat": "false pelvic cavity"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    "text",
+                    " {dx}compare {dxt|true pelvis|true pelvis|}{/dx}"
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      }
+    ],
+    "shortdef": [
+      "the upper broader portion of the pelvic cavity —called also false pelvic cavity"
+    ]
+  },
+  {
+    "meta": {
+      "id": "outlet of the pelvis",
+      "uuid": "0440ce34-63b6-4330-b84c-b2aa1e3768c3",
+      "sort": "161023000",
+      "src": "medical",
+      "section": "alpha",
+      "stems": [
+        "outlet of the pelvis"
+      ],
+      "offensive": false
+    },
+    "hwi": {
+      "hw": "outlet of the pelvis"
+    },
+    "fl": "noun",
+    "def": [
+      {
+        "sseq": [
+          [
+            [
+              "sense",
+              {
+                "dt": [
+                  [
+                    "text",
+                    "{bc}{sx|pelvic outlet|pelvic outlet|}"
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      }
+    ],
+    "shortdef": [
+      "pelvic outlet"
+    ]
+  },
+  {
+    "meta": {
+      "id": "renal pelvis",
+      "uuid": "3df45cb0-ff93-402e-827d-fecb619a88c1",
+      "sort": "160675000",
+      "src": "medical",
+      "section": "alpha",
+      "stems": [
+        "renal pelvis"
+      ],
+      "offensive": false
+    },
+    "hwi": {
+      "hw": "renal pelvis"
+    },
+    "fl": "noun",
+    "def": [
+      {
+        "sseq": [
+          [
+            [
+              "sense",
+              {
+                "dt": [
+                  [
+                    "text",
+                    "{bc}a funnel-shaped structure in each kidney that is formed at one end by the expanded upper portion of the ureter lying in the renal sinus and at the other end by the union of the calyxes of the kidney"
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      }
+    ],
+    "art": {
+      "artid": "kidney",
+      "capt": "kidney 1: {it}A{/it} longitudinal section, {it}B{/it} nephron and adjacent blood vessels; {it}1{/it} renal papilla, {it}2{/it} renal column, {it}3{/it} capsule, {it}4{/it} renal pyramid, {it}5{/it} calyx, {it}6{/it} ureter, {it}7{/it} renal pelvis, {it}8{/it} renal vein, {it}9{/it} renal artery, {it}10{/it} interlobar artery, {it}11{/it} arcuate artery, {it}12{/it} interlobular artery, {it}13{/it} interlobar vein, {it}14{/it} cortex, {it}15{/it} interlobular vein, {it}16{/it} renal sinus, {it}17{/it} arcuate vein, {it}18{/it} medulla, {it}19{/it} vasa recta, {it}20{/it} loop of Henle, {it}21{/it} collecting duct, {it}22{/it} arcuate vein, {it}23{/it} arcuate artery, {it}24{/it} proximal convoluted tubule, {it}25{/it} glomerulus, {it}26{/it} Bowman's capsule, {it}27{/it} distal convoluted tubule"
+    },
+    "shortdef": [
+      "a funnel-shaped structure in each kidney that is formed at one end by the expanded upper portion of the ureter lying in the renal sinus and at the other end by the union of the calyxes of the kidney"
+    ]
+  },
+  {
+    "meta": {
+      "id": "true pelvis",
+      "uuid": "482946d5-f175-4f49-87ca-02fab37c3879",
+      "sort": "161855000",
+      "src": "medical",
+      "section": "alpha",
+      "stems": [
+        "true pelvic cavity",
+        "true pelvis",
+        "true pelvises"
+      ],
+      "offensive": false
+    },
+    "hwi": {
+      "hw": "true pelvis"
+    },
+    "fl": "noun",
+    "def": [
+      {
+        "sseq": [
+          [
+            [
+              "sense",
+              {
+                "dt": [
+                  [
+                    "text",
+                    "{bc}the lower more contracted part of the pelvic cavity "
+                  ],
+                  [
+                    "ca",
+                    {
+                      "intro": "called also",
+                      "cats": [
+                        {
+                          "cat": "true pelvic cavity"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    "text",
+                    " {dx}compare {dxt|false pelvis|false pelvis|}{/dx}"
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      }
+    ],
+    "shortdef": [
+      "the lower more contracted part of the pelvic cavity —called also true pelvic cavity"
+    ]
+  },
+  {
+    "meta": {
+      "id": "pelvic outlet",
+      "uuid": "356270dc-705f-41d9-992c-c2cea288666a",
+      "sort": "160916000",
+      "src": "medical",
+      "section": "alpha",
+      "stems": [
+        "outlet of the pelvis",
+        "pelvic outlet",
+        "pelvic outlets"
+      ],
+      "offensive": false
+    },
+    "hwi": {
+      "hw": "pelvic outlet"
+    },
+    "fl": "noun",
+    "def": [
+      {
+        "sseq": [
+          [
+            [
+              "sense",
+              {
+                "dt": [
+                  [
+                    "text",
+                    "{bc}the irregular bony opening bounded by the lower border of the pelvis and closed by muscle and other soft tissues through which the terminal parts of the excretory, reproductive, and digestive systems pass to communicate with the surface of the body "
+                  ],
+                  [
+                    "ca",
+                    {
+                      "intro": "called also",
+                      "cats": [
+                        {
+                          "cat": "outlet of the pelvis"
+                        }
+                      ]
+                    }
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      }
+    ],
+    "shortdef": [
+      "the irregular bony opening bounded by the lower border of the pelvis and closed by muscle and other soft tissues through which the terminal parts of the excretory, reproductive, and digestive systems pass to communicate with the surface of the body —called also outlet of the pelvis"
+    ]
+  }
+]
