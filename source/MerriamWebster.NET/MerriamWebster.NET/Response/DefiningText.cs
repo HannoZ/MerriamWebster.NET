@@ -24,19 +24,55 @@ namespace MerriamWebster.NET.Response
         /// </summary>
         [JsonProperty("aq")]
         public AtributionOfQuote Quote { get; set; }
-    }
 
-    /// <summary>
-    /// A run-in entry word is a defined word that occurs in the running text of an entry.
-    /// The run-in ri groups together one or more run-in entry words rie and any accompanying pronunciations or variants.
-    /// Run-ins occur most frequently in geographical entries.
-    /// </summary>
-    public class RunInWrap
-    {
         /// <summary>
-        /// Run-in entry word
+        /// Text of gender word cutback form.
         /// </summary>
-        [JsonProperty("rie")]
-        public string Rie { get; set; }
+        /// <remarks>Spanish-English dict only</remarks>
+        [JsonProperty("gwc", NullValueHandling = NullValueHandling.Ignore)]
+        public string GenderWordCutback { get; set; }
+
+        /// <summary>
+        /// Text of gender word spelled-out form
+        /// </summary>
+        /// <remarks>Spanish-English dict only</remarks>
+        [JsonProperty("gwd", NullValueHandling = NullValueHandling.Ignore)]
+        public string GenderWordSpelledOut { get; set; }
+
+        /// <summary>
+        /// Contains introductory text "called also"
+        /// </summary>
+        [JsonProperty("intro", NullValueHandling = NullValueHandling.Ignore)]
+        public string Intro { get; set; }
+
+        /// <summary>
+        /// One or more called-also targets
+        /// </summary>
+        /// [JsonProperty("cats", NullValueHandling = NullValueHandling.Ignore)]
+        public CalledAlsoTarget[] Cats { get; set; }
+
+        /// <summary>
+        /// Gets or sets the personal or first name.
+        /// </summary>
+        [JsonProperty("pname", NullValueHandling = NullValueHandling.Ignore)]
+        public string Pname { get; set; }
+
+        /// <summary>
+        /// Gets or sets the surname.
+        /// </summary>
+        [JsonProperty("sname", NullValueHandling = NullValueHandling.Ignore)]
+        public string Surname { get; set; }
+
+        /// <summary>
+        /// Gets or sets the <see cref="Pronunciation"/>s.
+        /// </summary>
+        [JsonProperty("prs")]
+        public Pronunciation[] Pronunciations { get; set; } = { };
+
+        /// <summary>
+        /// Gets or sets an alternate name such as pen name, nickname, title, etc.
+        /// </summary>
+        [JsonProperty("altname", NullValueHandling = NullValueHandling.Ignore)]
+        public string Altname { get; set; }
     }
 }

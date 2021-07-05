@@ -1,0 +1,83 @@
+[
+    {
+        "meta": {
+            "id": "manatee",
+            "uuid": "1439eba2-0d9a-4f01-9aab-d52e918f6b8d",
+            "sort": "130602000",
+            "src": "collegiate",
+            "section": "alpha",
+            "stems": [
+                "manatee",
+                "manatees"
+            ],
+            "offensive": false
+        },
+        "hwi": {
+            "hw": "man*a*tee",
+            "prs": [
+                {
+                    "mw": "ˈma-nə-ˌtē",
+                    "sound": {
+                        "audio": "manate01",
+                        "ref": "c",
+                        "stat": "1"
+                    }
+                }
+            ]
+        },
+        "fl": "noun",
+        "def": [
+            {
+                "sseq": [
+                    [
+                        [
+                            "sense",
+                            {
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}any of a genus ({it}Trichechus{/it} of the family Trichechidae) of large, herbivorous, aquatic mammals that inhabit warm coastal and inland waters of the southeastern U.S., West Indies, northern South America, and West Africa and have a rounded body, a small head with a squarish snout, paddle-shaped flippers usually with vestigial nails, and a flattened, rounded tail used for propulsion "
+                                    ],
+                                    [
+                                        "snote",
+                                        [
+                                            [
+                                                "t",
+                                                "Manatees are {d_link|sirenians|sirenian} related to and resembling the {d_link|dugong|dugong} but differing most notably in the shape of the tail."
+                                            ]
+                                        ]
+                                    ],
+                                    [
+                                        "vis",
+                                        [
+                                            {
+                                                "t": "An aquatic relative of the elephant, {wi}manatees{/wi} grow up to nine feet long and can weigh 1,000 pounds.",
+                                                "aq": {
+                                                    "auth": "Felicity Barringer"
+                                                }
+                                            }
+                                        ]
+                                    ]
+                                ]
+                            }
+                        ]
+                    ]
+                ]
+            }
+        ],
+        "art": {
+            "artid": "manatee",
+            "capt": "manatee"
+        },
+        "et": [
+            [
+                "text",
+                "Spanish {it}manatí{/it}, probably of Carib origin; akin to Antillean Carib {it}manattoüi{/it} manatee"
+            ]
+        ],
+        "date": "1555",
+        "shortdef": [
+            "any of a genus (Trichechus of the family Trichechidae) of large, herbivorous, aquatic mammals that inhabit warm coastal and inland waters of the southeastern U.S., West Indies, northern South America, and West Africa and have a rounded body, a small head with a squarish snout, paddle-shaped flippers usually with vestigial nails, and a flattened, rounded tail used for propulsion"
+        ]
+    }
+]

@@ -50,5 +50,23 @@ namespace MerriamWebster.NET.Response
         /// </summary>
         [JsonProperty("sls", NullValueHandling = NullValueHandling.Ignore)]
         public string[] Sls { get; set; }
+
+        /// <summary>
+        /// Undefined run-on text section containing vis and/or uns elements
+        /// </summary>
+        [JsonProperty("utxt", NullValueHandling = NullValueHandling.Ignore)]
+        public DefiningTextComplexTypeWrapper[][] TextSection { get; set; }
+
+        /// <summary>
+        /// Gets or sets variants (optional).
+        /// </summary>
+        [JsonProperty("vrs", NullValueHandling = NullValueHandling.Ignore)]
+        public Variant[] Vrs { get; set; } = { };
+
+        /// <summary>
+        /// Gets or sets inflections.
+        /// </summary>
+        [JsonProperty("ins", NullValueHandling = NullValueHandling.Ignore)]
+        public Inflection[] Inflections { get; set; } = { };
     }
 }

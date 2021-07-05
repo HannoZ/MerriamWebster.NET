@@ -1,0 +1,106 @@
+[
+    {
+        "meta": {
+            "id": "alliteration",
+            "uuid": "580fe9c0-117f-4c1a-9bb4-c8794d5f1e0b",
+            "sort": "011961000",
+            "src": "collegiate",
+            "section": "alpha",
+            "stems": [
+                "alliteration",
+                "alliterations",
+                "head rhyme",
+                "initial rhyme"
+            ],
+            "offensive": false
+        },
+        "hwi": {
+            "hw": "al*lit*er*a*tion",
+            "prs": [
+                {
+                    "mw": "ə-ˌli-tə-ˈrā-shən",
+                    "sound": {
+                        "audio": "allite02",
+                        "ref": "c",
+                        "stat": "1"
+                    }
+                }
+            ]
+        },
+        "fl": "noun",
+        "def": [
+            {
+                "sseq": [
+                    [
+                        [
+                            "sense",
+                            {
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}the repetition of usually initial {d_link|consonant|consonant:2} sounds in two or more neighboring words or syllables (such as {it}w{/it}ild and {it}w{/it}oolly, {it}thr{/it}eatening {it}thr{/it}ongs) "
+                                    ],
+                                    [
+                                        "ca",
+                                        {
+                                            "intro": "called also",
+                                            "cats": [
+                                                {
+                                                    "cat": "head rhyme"
+                                                },
+                                                {
+                                                    "cat": "initial rhyme"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                ]
+                            }
+                        ]
+                    ]
+                ]
+            }
+        ],
+        "quotes": [
+            {
+                "t": "More specifically, how are actual events deformed by the application to them of metaphor, rhetorical comparison, prose rhythm, assonance, {qword}alliteration{/qword}, allusion, and sentence structures and connectives implying clear causality?",
+                "aq": {
+                    "auth": "Paul Fussel",
+                    "source": "{it}The Great War and Modern Memory{/it}",
+                    "aqdate": "1975"
+                }
+            },
+            {
+                "t": "As far as sound repetition goes, I don't have any principles. I try to stay away from heavy {qword}alliteration{/qword} and other pyrotechnics because I think they detract from the sense of the poem and blur the imagery.",
+                "aq": {
+                    "auth": "Maxine Kumin",
+                    "source": "\"A Questionnaire\"",
+                    "aqdate": "1977",
+                    "subsource": {
+                        "source": "in {it}To Make a Prairie{/it}",
+                        "aqdate": "1979"
+                    }
+                }
+            }
+        ],
+        "et": [
+            [
+                "text",
+                "borrowed from New Latin {it}allīterātiōn-, allīterātiō,{/it} from Latin {it}ad-{/it} {et_link|ad-|ad-} + {it}lītera{/it} \"letter\" + {it}-ātiōn-, -ātiō{/it} {et_link|-ation|-ation} {ma}{mat|letter:1|}{/ma}"
+            ],
+            [
+                "et_snote",
+                [
+                    [
+                        "t",
+                        "Word apparently coined by the Italian humanist Giovanni Pontano (ca. 1426-1503) in the dialogue {it}Actius{/it} (written 1495-99, first printed 1507)."
+                    ]
+                ]
+            ]
+        ],
+        "date": "circa 1624",
+        "shortdef": [
+            "the repetition of usually initial consonant sounds in two or more neighboring words or syllables (such as wild and woolly, threatening throngs) —called also head rhyme, initial rhyme"
+        ]
+    }
+]

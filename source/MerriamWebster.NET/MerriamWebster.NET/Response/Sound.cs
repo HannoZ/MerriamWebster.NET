@@ -6,7 +6,7 @@ namespace MerriamWebster.NET.Response
     /// Contains audio playback information.
     /// </summary>
     /// <remarks>
-    /// Note: according to documentation "ref" and "stat" members can be ignored and are therefore not deserialized.
+    /// Note: according to documentation "ref" and "stat" members can be ignored. 
     /// </remarks>
     public class Sound
     {
@@ -15,5 +15,17 @@ namespace MerriamWebster.NET.Response
         /// </summary>
         [JsonProperty("audio")]
         public string Audio { get; set; }
+
+        /// <summary>
+        /// Can be ignored.
+        /// </summary>
+        [JsonProperty("ref", NullValueHandling = NullValueHandling.Ignore)]
+        public Ref? Ref { get; set; }
+
+        /// <summary>
+        /// Can be ignored.
+        /// </summary>
+        [JsonProperty("stat", NullValueHandling = NullValueHandling.Ignore)]
+        public string Stat { get; set; }
     }
 }

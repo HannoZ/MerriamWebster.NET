@@ -1,0 +1,1043 @@
+[
+    {
+        "meta": {
+            "id": "heart:1",
+            "uuid": "f0b7bdb0-3194-4621-8410-992ac81192f1",
+            "sort": "080102700",
+            "src": "collegiate",
+            "section": "alpha",
+            "stems": [
+                "at heart",
+                "by heart",
+                "heart",
+                "hearts",
+                "to heart"
+            ],
+            "offensive": false
+        },
+        "hom": 1,
+        "hwi": {
+            "hw": "heart",
+            "prs": [
+                {
+                    "mw": "ˈhärt",
+                    "sound": {
+                        "audio": "heart001",
+                        "ref": "c",
+                        "stat": "1"
+                    }
+                }
+            ]
+        },
+        "fl": "noun",
+        "ins": [
+            {
+                "il": "plural",
+                "if": "hearts"
+            }
+        ],
+        "def": [
+            {
+                "sseq": [
+                    [
+                        [
+                            "sense",
+                            {
+                                "sn": "1 a",
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}a hollow muscular organ of {d_link|vertebrate|vertebrate:2} animals that by its rhythmic contraction acts as a {d_link|force pump|force pump} maintaining the circulation of the blood "
+                                    ],
+                                    [
+                                        "vis",
+                                        [
+                                            {
+                                                "t": "could feel her {wi}heart{/wi} pounding"
+                                            }
+                                        ]
+                                    ]
+                                ]
+                            }
+                        ],
+                        [
+                            "sense",
+                            {
+                                "sn": "b",
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}a structure in an {d_link|invertebrate|invertebrate} animal functionally analogous to the vertebrate heart"
+                                    ]
+                                ]
+                            }
+                        ],
+                        [
+                            "sense",
+                            {
+                                "sn": "c",
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}{sx|breast||}, {sx|bosom||} "
+                                    ],
+                                    [
+                                        "vis",
+                                        [
+                                            {
+                                                "t": "placed his hand on his {wi}heart{/wi}"
+                                            }
+                                        ]
+                                    ]
+                                ]
+                            }
+                        ],
+                        [
+                            "sense",
+                            {
+                                "sn": "d",
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}something resembling a heart in shape"
+                                    ]
+                                ],
+                                "sdsense": {
+                                    "sd": "specifically",
+                                    "dt": [
+                                        [
+                                            "text",
+                                            "{bc}a stylized representation of a heart "
+                                        ],
+                                        [
+                                            "vis",
+                                            [
+                                                {
+                                                    "t": "a card decorated with {wi}hearts{/wi} and flowers"
+                                                }
+                                            ]
+                                        ]
+                                    ]
+                                }
+                            }
+                        ]
+                    ],
+                    [
+                        [
+                            "sense",
+                            {
+                                "sn": "2 a",
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}a playing card marked with a stylized figure of a red heart"
+                                    ]
+                                ]
+                            }
+                        ],
+                        [
+                            "sense",
+                            {
+                                "sn": "b",
+                                "ins": [
+                                    {
+                                        "if": "hearts",
+                                        "spl": "plural"
+                                    }
+                                ],
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}the suit comprising cards marked with hearts "
+                                    ],
+                                    [
+                                        "vis",
+                                        [
+                                            {
+                                                "t": "the five of {wi}hearts{/wi}"
+                                            }
+                                        ]
+                                    ]
+                                ]
+                            }
+                        ],
+                        [
+                            "sense",
+                            {
+                                "sn": "c",
+                                "ins": [
+                                    {
+                                        "if": "hearts",
+                                        "spl": "plural in form but singular or plural in construction"
+                                    }
+                                ],
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}a game in which the object is to avoid taking tricks {dx_def}see {dxt|trick:1||4}{/dx_def} containing hearts"
+                                    ]
+                                ]
+                            }
+                        ]
+                    ],
+                    [
+                        [
+                            "sense",
+                            {
+                                "sn": "3 a",
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}{sx|personality||}, {sx|disposition||} "
+                                    ],
+                                    [
+                                        "vis",
+                                        [
+                                            {
+                                                "t": "a cold {wi}heart{/wi}"
+                                            }
+                                        ]
+                                    ]
+                                ]
+                            }
+                        ],
+                        [
+                            "sense",
+                            {
+                                "sn": "b",
+                                "sls": [
+                                    "obsolete"
+                                ],
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}{sx|intellect||}"
+                                    ]
+                                ]
+                            }
+                        ]
+                    ],
+                    [
+                        [
+                            "bs",
+                            {
+                                "sense": {
+                                    "sn": "4",
+                                    "dt": [
+                                        [
+                                            "text",
+                                            "{bc}the emotional or moral nature as distinguished from the intellectual nature: such as"
+                                        ]
+                                    ]
+                                }
+                            }
+                        ],
+                        [
+                            "sense",
+                            {
+                                "sn": "a",
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}generous disposition {bc}{sx|compassion||} "
+                                    ],
+                                    [
+                                        "vis",
+                                        [
+                                            {
+                                                "t": "a leader with {wi}heart{/wi}"
+                                            }
+                                        ]
+                                    ]
+                                ]
+                            }
+                        ],
+                        [
+                            "sense",
+                            {
+                                "sn": "b",
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}{sx|love||}, {sx|affection||} "
+                                    ],
+                                    [
+                                        "vis",
+                                        [
+                                            {
+                                                "t": "won her {wi}heart{/wi}"
+                                            }
+                                        ]
+                                    ]
+                                ]
+                            }
+                        ],
+                        [
+                            "sense",
+                            {
+                                "sn": "c",
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}courage or enthusiasm especially when maintained during a difficult situation "
+                                    ],
+                                    [
+                                        "vis",
+                                        [
+                                            {
+                                                "t": "never lost {wi}heart{/wi}"
+                                            }
+                                        ]
+                                    ],
+                                    [
+                                        "text",
+                                        " {dx}see also {dxt|take heart||}{/dx}"
+                                    ]
+                                ]
+                            }
+                        ]
+                    ],
+                    [
+                        [
+                            "sense",
+                            {
+                                "sn": "5",
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}one's innermost character, feelings, or inclinations "
+                                    ],
+                                    [
+                                        "vis",
+                                        [
+                                            {
+                                                "t": "knew it in his {wi}heart{/wi}"
+                                            },
+                                            {
+                                                "t": "a man after my own {wi}heart{/wi}"
+                                            }
+                                        ]
+                                    ]
+                                ]
+                            }
+                        ]
+                    ],
+                    [
+                        [
+                            "sense",
+                            {
+                                "sn": "6 a",
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}the central or innermost part {bc}{sx|center||} "
+                                    ],
+                                    [
+                                        "vis",
+                                        [
+                                            {
+                                                "t": "a cabin in the {wi}heart{/wi} of the forest"
+                                            }
+                                        ]
+                                    ]
+                                ]
+                            }
+                        ],
+                        [
+                            "sense",
+                            {
+                                "sn": "b",
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}the essential or most vital part of something "
+                                    ],
+                                    [
+                                        "vis",
+                                        [
+                                            {
+                                                "t": "the {wi}heart{/wi} of the city"
+                                            },
+                                            {
+                                                "t": "get to the {wi}heart{/wi} of the matter"
+                                            }
+                                        ]
+                                    ]
+                                ]
+                            }
+                        ],
+                        [
+                            "sense",
+                            {
+                                "sn": "c",
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}the younger central compact part of a leafy {d_link|rosette|rosette} (such as a head of lettuce or stalk of celery)"
+                                    ]
+                                ]
+                            }
+                        ]
+                    ]
+                ]
+            }
+        ],
+        "dros": [
+            {
+                "drp": "at heart",
+                "def": [
+                    {
+                        "sseq": [
+                            [
+                                [
+                                    "sense",
+                                    {
+                                        "dt": [
+                                            [
+                                                "text",
+                                                "{bc}in essence {bc}{sx|basically||}, {sx|essentially||} "
+                                            ],
+                                            [
+                                                "vis",
+                                                [
+                                                    {
+                                                        "t": "a romantic {it}at heart{/it}"
+                                                    }
+                                                ]
+                                            ]
+                                        ]
+                                    }
+                                ]
+                            ]
+                        ]
+                    }
+                ]
+            },
+            {
+                "drp": "by heart",
+                "def": [
+                    {
+                        "sseq": [
+                            [
+                                [
+                                    "sense",
+                                    {
+                                        "dt": [
+                                            [
+                                                "text",
+                                                "{bc}by rote or from memory "
+                                            ],
+                                            [
+                                                "vis",
+                                                [
+                                                    {
+                                                        "t": "knows the poem {it}by heart{/it}"
+                                                    }
+                                                ]
+                                            ]
+                                        ]
+                                    }
+                                ]
+                            ]
+                        ]
+                    }
+                ]
+            },
+            {
+                "drp": "to heart",
+                "def": [
+                    {
+                        "sseq": [
+                            [
+                                [
+                                    "sense",
+                                    {
+                                        "dt": [
+                                            [
+                                                "text",
+                                                "{bc}with deep concern "
+                                            ],
+                                            [
+                                                "vis",
+                                                [
+                                                    {
+                                                        "t": "took the criticism {it}to heart{/it}"
+                                                    }
+                                                ]
+                                            ]
+                                        ]
+                                    }
+                                ]
+                            ]
+                        ]
+                    }
+                ]
+            }
+        ],
+        "art": {
+            "artid": "heart",
+            "capt": "heart 1a: {it}1{/it} aorta, {it}2{/it} pulmonary artery, {it}3{/it} left atrium, {it}4{/it} left ventricle, {it}5{/it} right ventricle, {it}6{/it} right atrium"
+        },
+        "et": [
+            [
+                "text",
+                "Middle English {it}hert{/it}, from Old English {it}heorte{/it}; akin to Old High German {it}herza{/it} heart, Latin {it}cord-, cor{/it}, Greek {it}kardia{/it}"
+            ]
+        ],
+        "date": "before 12th century{ds||1|a|}",
+        "shortdef": [
+            "a hollow muscular organ of vertebrate animals that by its rhythmic contraction acts as a force pump maintaining the circulation of the blood",
+            "a structure in an invertebrate animal functionally analogous to the vertebrate heart",
+            "breast, bosom"
+        ]
+    },
+    {
+        "meta": {
+            "id": "heart:2",
+            "uuid": "0a4e128b-2ecc-4633-99f2-3066ca9ba48e",
+            "sort": "080102800",
+            "src": "collegiate",
+            "section": "alpha",
+            "stems": [
+                "heart",
+                "hearted",
+                "hearting",
+                "hearts"
+            ],
+            "offensive": false
+        },
+        "hom": 2,
+        "hwi": {
+            "hw": "heart"
+        },
+        "fl": "verb",
+        "ins": [
+            {
+                "if": "heart*ed"
+            },
+            {
+                "if": "heart*ing"
+            },
+            {
+                "if": "hearts"
+            }
+        ],
+        "def": [
+            {
+                "vd": "transitive verb",
+                "sseq": [
+                    [
+                        [
+                            "sen",
+                            {
+                                "sn": "1",
+                                "sls": [
+                                    "informal"
+                                ]
+                            }
+                        ],
+                        [
+                            "sense",
+                            {
+                                "sn": "a",
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}{sx|love:2|love:2|} "
+                                    ],
+                                    [
+                                        "vis",
+                                        [
+                                            {
+                                                "t": "Jane {wi}hearts{/wi} John."
+                                            },
+                                            {
+                                                "t": "I loathe beer. But I {wi}heart{/wi} beer commercials …",
+                                                "aq": {
+                                                    "auth": "Rochell D. Thomas"
+                                                }
+                                            }
+                                        ]
+                                    ]
+                                ]
+                            }
+                        ],
+                        [
+                            "sense",
+                            {
+                                "sn": "b",
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}to like {dx_def}see {dxt|like:1|like:1|4}{/dx_def} an online post, comment, etc., especially by clicking or tapping a heart-shaped symbol "
+                                    ],
+                                    [
+                                        "vis",
+                                        [
+                                            {
+                                                "t": "The tweet still hits home so much, not just for us, but for the 2.6 million that {wi}hearted{/wi} her tweet too.",
+                                                "aq": {
+                                                    "source": "{it}The Edge{/it} (Auckland, New Zealand)"
+                                                }
+                                            }
+                                        ]
+                                    ]
+                                ]
+                            }
+                        ]
+                    ],
+                    [
+                        [
+                            "sense",
+                            {
+                                "sn": "2",
+                                "sls": [
+                                    "archaic"
+                                ],
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}{sx|hearten||}"
+                                    ]
+                                ]
+                            }
+                        ]
+                    ],
+                    [
+                        [
+                            "sense",
+                            {
+                                "sn": "3",
+                                "sls": [
+                                    "archaic"
+                                ],
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}to fix in the heart"
+                                    ]
+                                ]
+                            }
+                        ]
+                    ]
+                ]
+            }
+        ],
+        "et": [
+            [
+                "text",
+                "{dx_ety}see {dxt|heart:1||}{/dx_ety}"
+            ]
+        ],
+        "date": "before 12th century{ds||2||}",
+        "shortdef": [
+            "love",
+            "to like an online post, comment, etc., especially by clicking or tapping a heart-shaped symbol",
+            "hearten"
+        ]
+    },
+    {
+        "meta": {
+            "id": "Heart:g",
+            "uuid": "2d93a577-e48b-46d9-ab53-2a6d717f3ffe",
+            "sort": "273354000",
+            "src": "collegiate",
+            "section": "geog",
+            "stems": [
+                "Heart"
+            ],
+            "offensive": false
+        },
+        "hwi": {
+            "hw": "Heart",
+            "prs": [
+                {
+                    "mw": "ˈhärt",
+                    "sound": {
+                        "audio": "heart001",
+                        "ref": "c",
+                        "stat": "1"
+                    }
+                }
+            ]
+        },
+        "fl": "geographical name",
+        "def": [
+            {
+                "sseq": [
+                    [
+                        [
+                            "sense",
+                            {
+                                "dt": [
+                                    [
+                                        "text",
+                                        "river in southwestern North Dakota flowing 200 miles (320 kilometers) east into the Missouri River opposite Bismarck"
+                                    ]
+                                ]
+                            }
+                        ]
+                    ]
+                ]
+            }
+        ],
+        "shortdef": [
+            "river in southwestern North Dakota flowing 200 miles (320 kilometers) east into the Missouri River opposite Bismarck"
+        ]
+    },
+    {
+        "meta": {
+            "id": "heart attack",
+            "uuid": "73f780c0-3094-4b7e-bf73-8c97547629fc",
+            "sort": "080103000",
+            "src": "collegiate",
+            "section": "alpha",
+            "stems": [
+                "heart attack",
+                "heart attacks",
+                "myocardial infarction"
+            ],
+            "offensive": false
+        },
+        "hwi": {
+            "hw": "heart attack"
+        },
+        "fl": "noun",
+        "def": [
+            {
+                "sseq": [
+                    [
+                        [
+                            "sense",
+                            {
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}an acute episode of {d_link|coronary heart disease|coronary heart disease} marked by the death or damage of heart muscle due to insufficient blood supply to the heart usually as a result of a coronary artery becoming blocked by a blood clot formed in response to a ruptured or torn fatty arterial deposit "
+                                    ],
+                                    [
+                                        "snote",
+                                        [
+                                            [
+                                                "t",
+                                                "Symptoms of heart attack include discomfort or pain in the chest, shoulder, arm, back, neck, or jaw, shortness of breath, dizziness or light-headedness, heartburn, nausea, excessive sweating, and extreme fatigue."
+                                            ]
+                                        ]
+                                    ],
+                                    [
+                                        "ca",
+                                        {
+                                            "intro": "called also",
+                                            "cats": [
+                                                {
+                                                    "cat": "myocardial infarction"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                ]
+                            }
+                        ]
+                    ]
+                ]
+            }
+        ],
+        "date": "1836",
+        "shortdef": [
+            "an acute episode of coronary heart disease marked by the death or damage of heart muscle due to insufficient blood supply to the heart usually as a result of a coronary artery becoming blocked by a blood clot formed in response to a ruptured or torn fatty arterial deposit —called also myocardial infarction"
+        ]
+    },
+    {
+        "meta": {
+            "id": "heart block",
+            "uuid": "d7947c52-7862-401b-945c-5f3da7deb78b",
+            "sort": "080103200",
+            "src": "collegiate",
+            "section": "alpha",
+            "stems": [
+                "heart block",
+                "heart blocks"
+            ],
+            "offensive": false
+        },
+        "hwi": {
+            "hw": "heart block"
+        },
+        "fl": "noun",
+        "def": [
+            {
+                "sseq": [
+                    [
+                        [
+                            "sense",
+                            {
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}incoordination of the heartbeat in which the atria and ventricles beat independently and which is marked by decreased cardiac output"
+                                    ]
+                                ]
+                            }
+                        ]
+                    ]
+                ]
+            }
+        ],
+        "date": "1903",
+        "shortdef": [
+            "incoordination of the heartbeat in which the atria and ventricles beat independently and which is marked by decreased cardiac output"
+        ]
+    },
+    {
+        "meta": {
+            "id": "heart disease",
+            "uuid": "8e11a660-b660-457d-bbd3-bbe1679cb502",
+            "sort": "080103900",
+            "src": "collegiate",
+            "section": "alpha",
+            "stems": [
+                "heart disease",
+                "heart diseases"
+            ],
+            "offensive": false
+        },
+        "hwi": {
+            "hw": "heart disease"
+        },
+        "fl": "noun",
+        "def": [
+            {
+                "sseq": [
+                    [
+                        [
+                            "sense",
+                            {
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}an abnormal condition of the heart or of the heart and circulation (such as coronary heart disease, arrhythmia, or heart-valve defect)"
+                                    ]
+                                ]
+                            }
+                        ]
+                    ]
+                ]
+            }
+        ],
+        "date": "1830",
+        "shortdef": [
+            "an abnormal condition of the heart or of the heart and circulation (such as coronary heart disease, arrhythmia, or heart-valve defect)"
+        ]
+    },
+    {
+        "meta": {
+            "id": "heart failure",
+            "uuid": "e2b02f4e-09bd-4e8e-968c-9d0aa143576b",
+            "sort": "080104200",
+            "src": "collegiate",
+            "section": "alpha",
+            "stems": [
+                "heart failure",
+                "heart failures"
+            ],
+            "offensive": false
+        },
+        "hwi": {
+            "hw": "heart failure"
+        },
+        "fl": "noun",
+        "def": [
+            {
+                "sseq": [
+                    [
+                        [
+                            "sense",
+                            {
+                                "sn": "1",
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}a condition in which the heart is unable to pump blood at an adequate rate or in adequate volume"
+                                    ]
+                                ]
+                            }
+                        ]
+                    ],
+                    [
+                        [
+                            "sense",
+                            {
+                                "sn": "2",
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}cessation of heartbeat {bc}{sx|death||}"
+                                    ]
+                                ]
+                            }
+                        ]
+                    ]
+                ]
+            }
+        ],
+        "date": "1574{ds||1||}",
+        "shortdef": [
+            "a condition in which the heart is unable to pump blood at an adequate rate or in adequate volume",
+            "cessation of heartbeat : death"
+        ]
+    },
+    {
+        "meta": {
+            "id": "heart-free",
+            "uuid": "d1af8d89-e8e2-4263-bc19-7bb3b59a96c7",
+            "sort": "080104400",
+            "src": "collegiate",
+            "section": "alpha",
+            "stems": [
+                "heart-free"
+            ],
+            "offensive": false
+        },
+        "hwi": {
+            "hw": "heart-free",
+            "prs": [
+                {
+                    "mw": "ˈhärt-ˌfrē",
+                    "sound": {
+                        "audio": "heartf02",
+                        "ref": "c",
+                        "stat": "1"
+                    }
+                }
+            ]
+        },
+        "fl": "adjective",
+        "def": [
+            {
+                "sseq": [
+                    [
+                        [
+                            "sense",
+                            {
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}not in love"
+                                    ]
+                                ]
+                            }
+                        ]
+                    ]
+                ]
+            }
+        ],
+        "date": "1610",
+        "shortdef": [
+            "not in love"
+        ]
+    },
+    {
+        "meta": {
+            "id": "heart-healthy",
+            "uuid": "46efd099-6a3e-4795-80da-d4d10c8b3300",
+            "sort": "080104600",
+            "src": "collegiate",
+            "section": "alpha",
+            "stems": [
+                "heart-healthier",
+                "heart-healthiest",
+                "heart-healthy"
+            ],
+            "offensive": false
+        },
+        "hwi": {
+            "hw": "heart-healthy",
+            "prs": [
+                {
+                    "mw": "ˈhärt-ˌhel-thē",
+                    "sound": {
+                        "audio": "heart01v",
+                        "ref": "c",
+                        "stat": "1"
+                    }
+                }
+            ]
+        },
+        "fl": "adjective",
+        "def": [
+            {
+                "sseq": [
+                    [
+                        [
+                            "sense",
+                            {
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}conducive to a healthy heart and circulatory system "
+                                    ],
+                                    [
+                                        "vis",
+                                        [
+                                            {
+                                                "t": "{wi}heart-healthy{/wi} exercise"
+                                            },
+                                            {
+                                                "t": "a {wi}heart-healthy{/wi} diet"
+                                            }
+                                        ]
+                                    ]
+                                ]
+                            }
+                        ]
+                    ]
+                ]
+            }
+        ],
+        "date": "1980",
+        "shortdef": [
+            "conducive to a healthy heart and circulatory system"
+        ]
+    },
+    {
+        "meta": {
+            "id": "heart-lung machine",
+            "uuid": "e7167521-baec-415c-a951-7d0e80ed1a70",
+            "sort": "080105100",
+            "src": "collegiate",
+            "section": "alpha",
+            "stems": [
+                "heart-lung machine",
+                "heart-lung machines"
+            ],
+            "offensive": false
+        },
+        "hwi": {
+            "hw": "heart-lung machine"
+        },
+        "fl": "noun",
+        "def": [
+            {
+                "sseq": [
+                    [
+                        [
+                            "sense",
+                            {
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}a mechanical pump that maintains circulation during heart surgery by shunting blood away from the heart, oxygenating it, and returning it to the body"
+                                    ]
+                                ]
+                            }
+                        ]
+                    ]
+                ]
+            }
+        ],
+        "date": "1953",
+        "shortdef": [
+            "a mechanical pump that maintains circulation during heart surgery by shunting blood away from the heart, oxygenating it, and returning it to the body"
+        ]
+    }
+]

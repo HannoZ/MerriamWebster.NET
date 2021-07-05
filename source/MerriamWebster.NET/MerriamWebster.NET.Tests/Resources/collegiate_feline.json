@@ -1,30 +1,160 @@
 [
     {
         "meta": {
-            "id": "Abaco:g",
-            "uuid": "f203449d-4099-49f3-aec0-301f938f69bb",
-            "sort": "270007000",
+            "id": "feline",
+            "uuid": "e82c6957-4bbc-47c0-b2fa-156825a1700e",
+            "sort": "060757000",
             "src": "collegiate",
-            "section": "geog",
+            "section": "alpha",
             "stems": [
-                "Abaco"
+                "feline",
+                "felinely",
+                "felines",
+                "felinities",
+                "felinity"
             ],
             "offensive": false
         },
         "hwi": {
-            "hw": "Ab*a*co",
+            "hw": "fe*line",
             "prs": [
                 {
-                    "mw": "ˈa-bə-ˌkō",
+                    "mw": "ˈfē-ˌlīn",
                     "sound": {
-                        "audio": "ggabac01",
+                        "audio": "feline01",
                         "ref": "c",
                         "stat": "1"
                     }
                 }
             ]
         },
-        "fl": "geographical name",
+        "fl": "adjective",
+        "def": [
+            {
+                "sseq": [
+                    [
+                        [
+                            "sense",
+                            {
+                                "sn": "1",
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}of, relating to, or affecting cats or the cat family"
+                                    ]
+                                ]
+                            }
+                        ]
+                    ],
+                    [
+                        [
+                            "bs",
+                            {
+                                "sense": {
+                                    "sn": "2",
+                                    "dt": [
+                                        [
+                                            "text",
+                                            "{bc}resembling a cat: such as"
+                                        ]
+                                    ]
+                                }
+                            }
+                        ],
+                        [
+                            "sense",
+                            {
+                                "sn": "a",
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}sleekly graceful"
+                                    ]
+                                ]
+                            }
+                        ],
+                        [
+                            "sense",
+                            {
+                                "sn": "b",
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}{sx|sly||}, {sx|treacherous||}"
+                                    ]
+                                ]
+                            }
+                        ],
+                        [
+                            "sense",
+                            {
+                                "sn": "c",
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}{sx|stealthy||}"
+                                    ]
+                                ]
+                            }
+                        ]
+                    ]
+                ]
+            }
+        ],
+        "uros": [
+            {
+                "ure": "feline",
+                "fl": "noun"
+            },
+            {
+                "ure": "fe*line*ly",
+                "fl": "adverb"
+            },
+            {
+                "ure": "fe*lin*i*ty",
+                "prs": [
+                    {
+                        "mw": "fē-ˈli-nə-tē",
+                        "sound": {
+                            "audio": "feline02",
+                            "ref": "c",
+                            "stat": "1"
+                        }
+                    }
+                ],
+                "fl": "noun"
+            }
+        ],
+        "et": [
+            [
+                "text",
+                "Latin {it}felinus{/it}, from {it}felis{/it}"
+            ]
+        ],
+        "date": "1681{ds||1||}",
+        "shortdef": [
+            "of, relating to, or affecting cats or the cat family",
+            "resembling a cat: such as",
+            "sleekly graceful"
+        ]
+    },
+    {
+        "meta": {
+            "id": "feline distemper",
+            "uuid": "5b9496ab-b949-4f7d-8f4e-c01ada9ea2f3",
+            "sort": "060758000",
+            "src": "collegiate",
+            "section": "alpha",
+            "stems": [
+                "feline distemper",
+                "feline distempers"
+            ],
+            "offensive": false
+        },
+        "hwi": {
+            "hw": "feline distemper"
+        },
+        "fl": "noun",
         "def": [
             {
                 "sseq": [
@@ -35,32 +165,7 @@
                                 "dt": [
                                     [
                                         "text",
-                                        "two islands of the Bahamas ("
-                                    ],
-                                    [
-                                        "ri",
-                                        [
-                                            [
-                                                "riw",
-                                                {
-                                                    "rie": "Great Abaco"
-                                                }
-                                            ],
-                                            [
-                                                "text",
-                                                " and "
-                                            ],
-                                            [
-                                                "riw",
-                                                {
-                                                    "rie": "Little Abaco"
-                                                }
-                                            ]
-                                        ]
-                                    ],
-                                    [
-                                        "text",
-                                        " ) north of New Providence Island {it}area{/it} 776 square miles (2018 square kilometers), {it}population{/it} 13,170"
+                                        "{bc}{sx|panleukopenia||}"
                                     ]
                                 ]
                             }
@@ -69,8 +174,49 @@
                 ]
             }
         ],
+        "date": "1942",
         "shortdef": [
-            "two islands of the Bahamas (Great Abaco and Little Abaco ) north of New Providence Island area 776 square miles (2018 square kilometers), population 13,170"
+            "panleukopenia"
+        ]
+    },
+    {
+        "meta": {
+            "id": "feline panleukopenia",
+            "uuid": "eb0a2e5b-94ab-465e-acef-6ec043016271",
+            "sort": "060759000",
+            "src": "collegiate",
+            "section": "alpha",
+            "stems": [
+                "feline panleukopenia"
+            ],
+            "offensive": false
+        },
+        "hwi": {
+            "hw": "feline panleukopenia"
+        },
+        "fl": "noun",
+        "def": [
+            {
+                "sseq": [
+                    [
+                        [
+                            "sense",
+                            {
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}{sx|panleukopenia||}"
+                                    ]
+                                ]
+                            }
+                        ]
+                    ]
+                ]
+            }
+        ],
+        "date": "circa 1943",
+        "shortdef": [
+            "panleukopenia"
         ]
     }
 ]

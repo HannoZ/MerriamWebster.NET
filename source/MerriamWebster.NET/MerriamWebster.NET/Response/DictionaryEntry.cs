@@ -38,9 +38,16 @@ namespace MerriamWebster.NET.Response
         /// </summary>
         [JsonProperty("def")]
         public Definition[] Definitions { get; set; } = { };
-        
+
         [JsonProperty("uros")]
         public UndefinedRunOn[] UndefinedRunOns { get; set; } = { };
+
+        /// <summary>
+        /// Gets or sets the biographical notes.
+        /// </summary>
+        /// <remarks>Medical only</remarks>
+        [JsonProperty("bios", NullValueHandling = NullValueHandling.Ignore)]
+        public BioElement[][][] Bios { get; set; } = { };
 
         [JsonProperty("dros", NullValueHandling = NullValueHandling.Ignore)]
         public DefinedRunOn[] DefinedRunOns { get; set; } = { };
@@ -70,7 +77,7 @@ namespace MerriamWebster.NET.Response
         /// While the etymology contained in an et most typically relates to the headword, it may also explain the origin of a defined run-on phrase or a particular sense.
         /// </summary>
         [JsonProperty("et", NullValueHandling = NullValueHandling.Ignore)]
-        public string[][] Etymologies { get; set; }
+        public Etymology[][] Et { get; set; } = { };
 
 
         /// <summary>
@@ -96,7 +103,7 @@ namespace MerriamWebster.NET.Response
         /// </summary>
         [JsonProperty("lbs", NullValueHandling = NullValueHandling.Ignore)]
         public string[] GeneralLabels { get; set; } = { };
-        
+
         /// <summary>
         /// Undocumented field.
         /// </summary>
@@ -114,5 +121,28 @@ namespace MerriamWebster.NET.Response
         /// </summary>
         [JsonProperty("quotes")]
         public Quote[] Quotes { get; set; } = { };
+
+        /// <summary>
+        /// Gets or sets the table.
+        /// </summary>
+        [JsonProperty("table", NullValueHandling = NullValueHandling.Ignore)]
+        public Table Table { get; set; }
+
+        /// <summary>
+        /// Gets or sets synonyms.
+        /// </summary>
+        [JsonProperty("syns", NullValueHandling = NullValueHandling.Ignore)]
+        public Synonym[] Synonyms { get; set; } = { };
+
+        /// <summary>
+        /// Gets or sets the usages.
+        /// </summary>
+        [JsonProperty("usages", NullValueHandling = NullValueHandling.Ignore)]
+        public Usage[] Usages { get; set; } = { };
+        /// <summary>
+        /// Gets or sets Directional cross-references
+        /// </summary>
+        [JsonProperty("dxnls", NullValueHandling = NullValueHandling.Ignore)]
+        public string[] DirectionalCrossReferences { get; set; } = { };
     }
 }

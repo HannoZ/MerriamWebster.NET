@@ -35,7 +35,7 @@ namespace MerriamWebster.NET.Response
         /// While the etymology contained in an et most typically relates to the headword, it may also explain the origin of a defined run-on phrase or a particular sense.
         /// </summary>
         [JsonProperty("et", NullValueHandling = NullValueHandling.Ignore)]
-        public string[][] Etymologies { get; set; } = { };
+        public Etymology[][] Etymologies { get; set; } = { };
 
         /// <summary>
         /// A subject/status label describes the subject area (eg, "computing") or regional/usage status (eg, "British", "formal", "slang") of a headword or a particular sense of a headword.
@@ -61,6 +61,11 @@ namespace MerriamWebster.NET.Response
         [JsonProperty("lbs", NullValueHandling = NullValueHandling.Ignore)]
         public string[] GeneralLabels { get; set; } = { };
 
+        /// <summary>
+        /// Gets or sets pronunciations (optional).
+        /// </summary>
+        [JsonProperty("prs", NullValueHandling = NullValueHandling.Ignore)]
+        public Pronunciation[] Pronunciations { get; set; } = { };
 
         [JsonProperty("dt")]
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
@@ -68,8 +73,7 @@ namespace MerriamWebster.NET.Response
 
         [JsonProperty("sdsense", NullValueHandling = NullValueHandling.Ignore)]
         public DividedSense DividedSense { get; set; }
-
-
+        
         [JsonProperty("vrs", NullValueHandling = NullValueHandling.Ignore)]
         public Variant[] Variants { get; set; } = { };
 
@@ -78,6 +82,10 @@ namespace MerriamWebster.NET.Response
 
         [JsonProperty("ins", NullValueHandling = NullValueHandling.Ignore)]
         public Inflection[] Inflections { get; set; } = { };
+
+        [JsonProperty("sense", NullValueHandling = NullValueHandling.Ignore)]
+        public Sense SubSense { get; set; }
+
 #pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
     }
 }

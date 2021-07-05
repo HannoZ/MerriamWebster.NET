@@ -1,0 +1,498 @@
+[
+    {
+        "meta": {
+            "id": "alphabet",
+            "uuid": "62ec0487-7606-4a8c-b49d-dcf0c8ff9b94",
+            "sort": "012090000",
+            "src": "collegiate",
+            "section": "alpha",
+            "stems": [
+                "alphabet",
+                "alphabets"
+            ],
+            "offensive": false
+        },
+        "hwi": {
+            "hw": "al*pha*bet",
+            "prs": [
+                {
+                    "mw": "ˈal-fə-ˌbet",
+                    "sound": {
+                        "audio": "alphab01",
+                        "ref": "c",
+                        "stat": "1"
+                    }
+                },
+                {
+                    "mw": "-bət"
+                }
+            ]
+        },
+        "fl": "noun",
+        "def": [
+            {
+                "sseq": [
+                    [
+                        [
+                            "sense",
+                            {
+                                "sn": "1 a",
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}a set of letters or other characters with which one or more languages are written especially if arranged in a customary order"
+                                    ]
+                                ]
+                            }
+                        ],
+                        [
+                            "sense",
+                            {
+                                "sn": "b",
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}a system of signs or signals that serve as equivalents for letters"
+                                    ]
+                                ]
+                            }
+                        ]
+                    ],
+                    [
+                        [
+                            "sense",
+                            {
+                                "sn": "2",
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}{sx|rudiments||}, {sx|elements||}"
+                                    ]
+                                ]
+                            }
+                        ]
+                    ]
+                ]
+            }
+        ],
+        "table": {
+            "tableid": "alphabet",
+            "displayname": "Alphabet Table"
+        },
+        "et": [
+            [
+                "text",
+                "Middle English {it}alphabete{/it}, from Late Latin {it}alphabetum{/it}, from Greek {it}alphabētos{/it}, from {it}alpha{/it} + {it}bēta{/it} beta"
+            ]
+        ],
+        "date": "15th century{ds||1|a|}",
+        "shortdef": [
+            "a set of letters or other characters with which one or more languages are written especially if arranged in a customary order",
+            "a system of signs or signals that serve as equivalents for letters",
+            "rudiments, elements"
+        ]
+    },
+    {
+        "meta": {
+            "id": "alphabet soup",
+            "uuid": "0094c385-f1e9-48e8-b55e-cefd0e508dc8",
+            "sort": "012094000",
+            "src": "collegiate",
+            "section": "alpha",
+            "stems": [
+                "alphabet soup",
+                "alphabet soups"
+            ],
+            "offensive": false
+        },
+        "hwi": {
+            "hw": "alphabet soup"
+        },
+        "fl": "noun",
+        "def": [
+            {
+                "sseq": [
+                    [
+                        [
+                            "sense",
+                            {
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}a hodgepodge especially of initials (as of the names of organizations)"
+                                    ]
+                                ]
+                            }
+                        ]
+                    ]
+                ]
+            }
+        ],
+        "date": "1884",
+        "shortdef": [
+            "a hodgepodge especially of initials (as of the names of organizations)"
+        ]
+    },
+    {
+        "meta": {
+            "id": "Arabic alphabet",
+            "uuid": "e1dacb0b-0ce9-4444-b5d9-8096404d9188",
+            "sort": "013622000",
+            "src": "collegiate",
+            "section": "alpha",
+            "stems": [
+                "Arabic alphabet",
+                "Arabic alphabets"
+            ],
+            "offensive": false
+        },
+        "hwi": {
+            "hw": "Arabic alphabet"
+        },
+        "fl": "noun",
+        "def": [
+            {
+                "sseq": [
+                    [
+                        [
+                            "sense",
+                            {
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}an alphabet of 28 letters derived from the Aramaic alphabet which is used for writing Arabic and also with adaptations for other languages of the Islamic world"
+                                    ]
+                                ]
+                            }
+                        ]
+                    ]
+                ]
+            }
+        ],
+        "date": "1732",
+        "shortdef": [
+            "an alphabet of 28 letters derived from the Aramaic alphabet which is used for writing Arabic and also with adaptations for other languages of the Islamic world"
+        ]
+    },
+    {
+        "meta": {
+            "id": "Aramaic alphabet",
+            "uuid": "f5ef4517-8803-45f2-b5cd-497f926d4072",
+            "sort": "013646000",
+            "src": "collegiate",
+            "section": "alpha",
+            "stems": [
+                "Aramaic alphabet",
+                "Aramaic alphabets"
+            ],
+            "offensive": false
+        },
+        "hwi": {
+            "hw": "Aramaic alphabet"
+        },
+        "fl": "noun",
+        "def": [
+            {
+                "sseq": [
+                    [
+                        [
+                            "sense",
+                            {
+                                "sn": "1",
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}an extinct North Semitic alphabet dating from the ninth century {sc}b.c.{/sc} which was for several centuries the commercial alphabet of southwest Asia and the parent of other alphabets (such as Syriac and Arabic)"
+                                    ]
+                                ]
+                            }
+                        ]
+                    ],
+                    [
+                        [
+                            "sense",
+                            {
+                                "sn": "2",
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}the square Hebrew alphabet as distinguished from the early Hebrew alphabet"
+                                    ]
+                                ]
+                            }
+                        ]
+                    ]
+                ]
+            }
+        ],
+        "date": "1835{ds||1||}",
+        "shortdef": [
+            "an extinct North Semitic alphabet dating from the ninth century b.c. which was for several centuries the commercial alphabet of southwest Asia and the parent of other alphabets (such as Syriac and Arabic)",
+            "the square Hebrew alphabet as distinguished from the early Hebrew alphabet"
+        ]
+    },
+    {
+        "meta": {
+            "id": "International Phonetic Alphabet",
+            "uuid": "000c3f1d-69c1-40a1-9870-569371258b90",
+            "sort": "092328000",
+            "src": "collegiate",
+            "section": "alpha",
+            "stems": [
+                "International Phonetic Alphabet",
+                "International Phonetic Alphabets"
+            ],
+            "offensive": false
+        },
+        "hwi": {
+            "hw": "International Phonetic Alphabet"
+        },
+        "fl": "noun",
+        "def": [
+            {
+                "sseq": [
+                    [
+                        [
+                            "sense",
+                            {
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}{sx|ipa||}"
+                                    ]
+                                ]
+                            }
+                        ]
+                    ]
+                ]
+            }
+        ],
+        "date": "1894",
+        "shortdef": [
+            "ipa"
+        ]
+    },
+    {
+        "meta": {
+            "id": "Latin alphabet",
+            "uuid": "fd0766da-6d86-4b40-9d52-457ef72806ad",
+            "sort": "120058900",
+            "src": "collegiate",
+            "section": "alpha",
+            "stems": [
+                "Latin alphabet",
+                "Latin alphabets"
+            ],
+            "offensive": false
+        },
+        "hwi": {
+            "hw": "Latin alphabet"
+        },
+        "fl": "noun",
+        "def": [
+            {
+                "sseq": [
+                    [
+                        [
+                            "sense",
+                            {
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}an alphabet that was used for writing Latin and that has been modified for writing many modern languages"
+                                    ]
+                                ]
+                            }
+                        ]
+                    ]
+                ]
+            }
+        ],
+        "date": "1823",
+        "shortdef": [
+            "an alphabet that was used for writing Latin and that has been modified for writing many modern languages"
+        ]
+    },
+    {
+        "meta": {
+            "id": "manual alphabet",
+            "uuid": "93025b57-1906-4474-a1fc-cc652de38296",
+            "sort": "130792000",
+            "src": "collegiate",
+            "section": "alpha",
+            "stems": [
+                "manual alphabet",
+                "manual alphabets"
+            ],
+            "offensive": false
+        },
+        "hwi": {
+            "hw": "manual alphabet"
+        },
+        "fl": "noun",
+        "def": [
+            {
+                "sseq": [
+                    [
+                        [
+                            "sense",
+                            {
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}an alphabet especially for the deaf in which the letters are represented by finger positions"
+                                    ]
+                                ]
+                            }
+                        ]
+                    ]
+                ]
+            }
+        ],
+        "art": {
+            "artid": "manualal",
+            "capt": "manual alphabet"
+        },
+        "date": "circa 1864",
+        "shortdef": [
+            "an alphabet especially for the deaf in which the letters are represented by finger positions"
+        ]
+    },
+    {
+        "meta": {
+            "id": "mixed alphabet",
+            "uuid": "82f1752e-9c97-413a-b672-a508cc09cded",
+            "sort": "133382000",
+            "src": "collegiate",
+            "section": "alpha",
+            "stems": [
+                "mixed alphabet",
+                "mixed alphabets"
+            ],
+            "offensive": false
+        },
+        "hwi": {
+            "hw": "mixed alphabet"
+        },
+        "fl": "noun",
+        "def": [
+            {
+                "sseq": [
+                    [
+                        [
+                            "sense",
+                            {
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}an alphabet (as in a cryptographic system) that has been rearranged or disordered systematically or randomly"
+                                    ]
+                                ]
+                            }
+                        ]
+                    ]
+                ]
+            }
+        ],
+        "date": "1931",
+        "shortdef": [
+            "an alphabet (as in a cryptographic system) that has been rearranged or disordered systematically or randomly"
+        ]
+    },
+    {
+        "meta": {
+            "id": "phonetic alphabet",
+            "uuid": "426113d5-5a2e-421e-969b-b7e423938ffa",
+            "sort": "160246700",
+            "src": "collegiate",
+            "section": "alpha",
+            "stems": [
+                "phonetic alphabet",
+                "phonetic alphabets"
+            ],
+            "offensive": false
+        },
+        "hwi": {
+            "hw": "phonetic alphabet"
+        },
+        "fl": "noun",
+        "def": [
+            {
+                "sseq": [
+                    [
+                        [
+                            "sense",
+                            {
+                                "sn": "1",
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}a set of symbols (such as the IPA) used for phonetic transcription"
+                                    ]
+                                ]
+                            }
+                        ]
+                    ],
+                    [
+                        [
+                            "sense",
+                            {
+                                "sn": "2",
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}any of various systems of identifying letters of the alphabet by means of code words in voice communication"
+                                    ]
+                                ]
+                            }
+                        ]
+                    ]
+                ]
+            }
+        ],
+        "date": "1848{ds||1||}",
+        "shortdef": [
+            "a set of symbols (such as the IPA) used for phonetic transcription",
+            "any of various systems of identifying letters of the alphabet by means of code words in voice communication"
+        ]
+    },
+    {
+        "meta": {
+            "id": "the Roman alphabet",
+            "uuid": "adb7869d-8df5-4922-aa21-e1d466ffe245",
+            "sort": "3020503000",
+            "src": "ld",
+            "section": "idioms",
+            "stems": [
+                "the roman alphabet"
+            ],
+            "offensive": false
+        },
+        "hwi": {
+            "hw": "the Roman alphabet"
+        },
+        "fl": "noun",
+        "def": [
+            {
+                "sseq": [
+                    [
+                        [
+                            "sense",
+                            {
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}the alphabet that was used for writing Latin and that is now used for writing English and many other European languages"
+                                    ]
+                                ]
+                            }
+                        ]
+                    ]
+                ]
+            }
+        ],
+        "shortdef": [
+            "the alphabet that was used for writing Latin and that is now used for writing English and many other European languages"
+        ]
+    }
+]

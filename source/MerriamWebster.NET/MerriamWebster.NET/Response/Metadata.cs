@@ -23,14 +23,14 @@ namespace MerriamWebster.NET.Response
         public Lang Lang { get; set; }
 
         [JsonProperty("src")]
-        public string Src { get; set; }
+        public Source Source { get; set; }
 
         [JsonProperty("sort")]
         [JsonConverter(typeof(StringLongConverter))]
         public long Sort { get; set; }
 
         [JsonProperty("section")]
-        public string Section { get; set; }
+        public Section Section { get; set; }
 
         [JsonProperty("target")]
         public Target Target { get; set; }

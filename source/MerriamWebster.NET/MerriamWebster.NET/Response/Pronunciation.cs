@@ -31,5 +31,22 @@ namespace MerriamWebster.NET.Response
         /// </summary>
         [JsonProperty("mw", NullValueHandling = NullValueHandling.Ignore)]
         public string WrittenPronunciation { get; set; }
+
+        /// <summary>
+        /// pronunciation label <i>before</i> pronunciation
+        /// </summary>
+        [JsonProperty("l", NullValueHandling = NullValueHandling.Ignore)]
+        public string LabelBeforePronunciation { get; set; }
+
+        /// <summary>
+        /// pronunciation label <i>after</i> pronunciation
+        /// </summary>
+        [JsonProperty("l2", NullValueHandling = NullValueHandling.Ignore)]
+        public string LabelAfterPronunciation { get; set; }
+        /// <summary>
+        /// punctuation to separate pronunciation objects.
+        /// </summary>
+        [JsonProperty("pun", NullValueHandling = NullValueHandling.Ignore)]
+        public string Punctuation { get; set; }
     }
 }

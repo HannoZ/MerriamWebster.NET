@@ -1,0 +1,44 @@
+[
+    {
+        "meta": {
+            "id": "banadera",
+            "uuid": "07306e7a-497b-45b0-85b4-87f5268219d0",
+            "lang": "es",
+            "sort": "2602751000",
+            "src": "spanish",
+            "section": "alpha",
+            "stems": [
+                "bañadera"
+            ],
+            "offensive": false
+        },
+        "hwi": {
+            "hw": "bañadera"
+        },
+        "def": [
+            {
+                "sls": [
+                    "Argentina, Uruguay"
+                ],
+                "sseq": [
+                    [
+                        [
+                            "sen",
+                            {
+                                "xrs": [
+                                    [
+                                        {
+                                            "xrt": "bañera",
+                                            "xref": "ban~era"
+                                        }
+                                    ]
+                                ]
+                            }
+                        ]
+                    ]
+                ]
+            }
+        ],
+        "shortdef": []
+    }
+]

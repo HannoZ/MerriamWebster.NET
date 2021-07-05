@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 
 namespace MerriamWebster.NET.Response.JsonConverters
 {
-    internal class DtUnionConverter : JsonConverter
+    internal class DefiningTextObjectWrapperConverter : JsonConverter
     {
         public override bool CanConvert(Type t) => t == typeof(DefiningTextObjectWrapper) || t == typeof(DefiningTextObjectWrapper?);
 
@@ -16,21 +16,12 @@ namespace MerriamWebster.NET.Response.JsonConverters
                 case JsonToken.Date:
                     var stringValue = serializer.Deserialize<string>(reader);
                     return new DefiningTextObjectWrapper { TypeOrText = stringValue };
+                case JsonToken.StartObject:
+                    var objectValue = serializer.Deserialize<DefiningText>(reader);
+                    return new DefiningTextObjectWrapper { DefiningText = objectValue };
                 case JsonToken.StartArray:
                     var arrayValue = serializer.Deserialize<DefiningTextObject[]>(reader);
                     return new DefiningTextObjectWrapper { DefiningTextArray = arrayValue };
-                case JsonToken.StartObject:
-                    var obj = serializer.Deserialize(reader).ToString();
-                    var canObj = JsonConvert.DeserializeObject<CalledAlsoNote>(obj);
-                    if (canObj != null && !string.IsNullOrEmpty(canObj.Intro) && canObj.Targets.Any())
-                    {
-                        return new DefiningTextObjectWrapper { CalledAlso = canObj };
-                    }
-
-                    var bnwObj = JsonConvert.DeserializeObject<BiographicalNameWrap>(obj);
-                    return new DefiningTextObjectWrapper {BiographicalNameWrap = bnwObj};
-                    
-
             }
             throw new NotImplementedException($"Cannot unmarshal type DefiningTextObjectWrapper. Path: {reader.Path}, TokenType: {reader.TokenType}");
         }
@@ -48,9 +39,15 @@ namespace MerriamWebster.NET.Response.JsonConverters
                 serializer.Serialize(writer, value.DefiningTextArray);
                 return;
             }
+            if (value.DefiningText != null)
+            {
+                serializer.Serialize(writer, value.DefiningText);
+                return;
+            }
+
             throw new NotImplementedException("Cannot marshal type DefiningTextObjectWrapper");
         }
 
-        public static readonly DtUnionConverter Singleton = new DtUnionConverter();
+        public static readonly DefiningTextObjectWrapperConverter Singleton = new DefiningTextObjectWrapperConverter();
     }
 }

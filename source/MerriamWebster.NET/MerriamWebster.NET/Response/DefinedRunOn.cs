@@ -43,5 +43,17 @@ namespace MerriamWebster.NET.Response
         /// </summary>
         [JsonProperty("sls", NullValueHandling = NullValueHandling.Ignore)]
         public string[] Sls { get; set; }
+
+        /// <summary>
+        /// Gets or sets variants.
+        /// </summary>
+        [JsonProperty("vrs", NullValueHandling = NullValueHandling.Ignore)]
+        public Variant[] Vrs { get; set; } = { };
+
+        /// <summary>
+        /// Gets or sets etymologies.
+        /// </summary>
+        [JsonProperty("et", NullValueHandling = NullValueHandling.Ignore)]
+        public Etymology[][] Et { get; set; } = { };
     }
 }

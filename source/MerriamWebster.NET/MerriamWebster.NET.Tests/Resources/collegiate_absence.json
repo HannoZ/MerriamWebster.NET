@@ -1,0 +1,370 @@
+[
+    {
+        "meta": {
+            "id": "absence",
+            "uuid": "4840a66e-883b-4686-b462-513874862caa",
+            "sort": "010231000",
+            "src": "collegiate",
+            "section": "alpha",
+            "stems": [
+                "absence",
+                "absence of mind",
+                "absences",
+                "conspicuous by their absence",
+                "in the absence of"
+            ],
+            "offensive": false
+        },
+        "hwi": {
+            "hw": "ab*sence",
+            "prs": [
+                {
+                    "mw": "ˈab-sən(t)s",
+                    "sound": {
+                        "audio": "absenc01",
+                        "ref": "c",
+                        "stat": "1"
+                    }
+                }
+            ]
+        },
+        "fl": "noun",
+        "def": [
+            {
+                "sseq": [
+                    [
+                        [
+                            "sense",
+                            {
+                                "sn": "1",
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}a state or condition in which something expected, wanted, or looked for is not present or does not exist {bc}a state or condition in which something is {d_link|absent|absent:1} "
+                                    ],
+                                    [
+                                        "vis",
+                                        [
+                                            {
+                                                "t": "an {wi}absence{/wi} {gloss}=lack{/gloss} of detail"
+                                            },
+                                            {
+                                                "t": "{phrase}In the absence of{/phrase} reform {gloss}=without reform{/gloss}, progress will be slow."
+                                            }
+                                        ]
+                                    ]
+                                ]
+                            }
+                        ]
+                    ],
+                    [
+                        [
+                            "sense",
+                            {
+                                "sn": "2 a",
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}a failure to be present at a usual or expected place {bc}the state of being {d_link|absent|absent:1} "
+                                    ],
+                                    [
+                                        "vis",
+                                        [
+                                            {
+                                                "t": "an unexplained {wi}absence{/wi} from work"
+                                            },
+                                            {
+                                                "t": "His {wi}absence{/wi} was noted by the teacher."
+                                            },
+                                            {
+                                                "t": "The meeting continued in his {wi}absence{/wi}. {gloss}=without him being present{/gloss}"
+                                            },
+                                            {
+                                                "t": "They were {phrase}conspicuous by their absence{/phrase}. {gloss}=it was very noticeable that they were not present{/gloss}"
+                                            }
+                                        ]
+                                    ]
+                                ]
+                            }
+                        ],
+                        [
+                            "sense",
+                            {
+                                "sn": "b",
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}the period of time that one is absent "
+                                    ],
+                                    [
+                                        "vis",
+                                        [
+                                            {
+                                                "t": "She recently returned to work after a long {wi}absence{/wi}."
+                                            }
+                                        ]
+                                    ]
+                                ]
+                            }
+                        ]
+                    ],
+                    [
+                        [
+                            "sense",
+                            {
+                                "sn": "3",
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}inattention to present surroundings or occurrences "
+                                    ],
+                                    [
+                                        "uns",
+                                        [
+                                            [
+                                                [
+                                                    "text",
+                                                    "usually used in the phrase {phrase}absence of mind{/phrase} "
+                                                ],
+                                                [
+                                                    "vis",
+                                                    [
+                                                        {
+                                                            "t": "blamed the error on {wi}absence of mind{/wi}"
+                                                        }
+                                                    ]
+                                                ]
+                                            ]
+                                        ]
+                                    ]
+                                ]
+                            }
+                        ]
+                    ]
+                ]
+            }
+        ],
+        "quotes": [
+            {
+                "t": "Only five to six inches long and weighing less than two ounces, the elf owl is the smallest bird of prey in the world. Its bobbed tail, white \"eyebrows,\" and {qword}absence{/qword} of ear tufts give this tiny mothlike predator its impish appearance.",
+                "aq": {
+                    "auth": "Ken Lamerton",
+                    "source": "{it}Bird Watcher's Digest{/it}",
+                    "aqdate": "May/June 1996"
+                }
+            },
+            {
+                "t": "Called the Galápagos of the East, the Seychelles Islands, in the Indian Ocean, have been inhabited for only the past 200 years. In humanity's {qword}absence{/qword}, nature ran wild: Tens of thousands of giant tortoises still lumber along the beaches, and a palm forest shelters … rare black parrots.",
+                "aq": {
+                    "source": "{it}Audubon{/it}",
+                    "aqdate": "September-October 1998"
+                }
+            },
+            {
+                "t": "Moreover, he has this field pretty much to himself, for while there are many popular writers on science, there are few on engineering, an {qword}absence{/qword} that is all the more remarkable since without engineering our technological world could not function.",
+                "aq": {
+                    "auth": "Witold Rybczynski",
+                    "source": "{it}New York Review of Books{/it}",
+                    "aqdate": "9 June 2005"
+                }
+            },
+            {
+                "t": "The 1990 census revealed that 21 percent of 25-year-olds were living with one or both parents, up from 15 percent in 1970. Some young people are not moving out at all before their mid-20s, but many more are doing an extra rotation through the family home after a temporary or lengthy {qword}absence{/qword}.",
+                "aq": {
+                    "auth": "Paul McFedries",
+                    "source": "{it}Word Spy{/it}",
+                    "aqdate": "2004"
+                }
+            }
+        ],
+        "et": [
+            [
+                "text",
+                "Middle English, borrowed from Anglo-French, borrowed from Latin {it}absentia{/it}, noun derivative of {it}absent-, absens{/it} {et_link|absent:1|absent:1}"
+            ]
+        ],
+        "date": "14th century{ds||2|a|}",
+        "shortdef": [
+            "a state or condition in which something expected, wanted, or looked for is not present or does not exist : a state or condition in which something is absent",
+            "a failure to be present at a usual or expected place : the state of being absent",
+            "the period of time that one is absent"
+        ]
+    },
+    {
+        "meta": {
+            "id": "leave of absence",
+            "uuid": "edefc3cf-b08c-4f85-93db-68b63f7e2c93",
+            "sort": "120093300",
+            "src": "collegiate",
+            "section": "alpha",
+            "stems": [
+                "leave of absence",
+                "leaves of absence"
+            ],
+            "offensive": false
+        },
+        "hwi": {
+            "hw": "leave of absence"
+        },
+        "fl": "noun phrase",
+        "def": [
+            {
+                "sseq": [
+                    [
+                        [
+                            "sense",
+                            {
+                                "sn": "1",
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}permission to be absent from duty or employment"
+                                    ]
+                                ]
+                            }
+                        ]
+                    ],
+                    [
+                        [
+                            "sense",
+                            {
+                                "sn": "2",
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}{sx|leave||1b}"
+                                    ]
+                                ]
+                            }
+                        ]
+                    ]
+                ]
+            }
+        ],
+        "date": "1756{ds||1||}",
+        "shortdef": [
+            "permission to be absent from duty or employment",
+            "leave"
+        ]
+    },
+    {
+        "meta": {
+            "id": "in someone's absence",
+            "uuid": "b9b5e24b-e063-497e-8e72-34052730a1a1",
+            "sort": "3009794000",
+            "src": "ld",
+            "section": "idioms",
+            "stems": [
+                "in someone's absence"
+            ],
+            "offensive": false
+        },
+        "hwi": {
+            "hw": "in someone's absence"
+        },
+        "fl": "idiom",
+        "def": [
+            {
+                "sseq": [
+                    [
+                        [
+                            "sense",
+                            {
+                                "sn": "1",
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}while someone is away "
+                                    ],
+                                    [
+                                        "vis",
+                                        [
+                                            {
+                                                "t": "The study was completed {it}in her absence{/it}."
+                                            }
+                                        ]
+                                    ]
+                                ]
+                            }
+                        ]
+                    ],
+                    [
+                        [
+                            "sense",
+                            {
+                                "sn": "2",
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}in the place of someone who is not present "
+                                    ],
+                                    [
+                                        "vis",
+                                        [
+                                            {
+                                                "t": "He was asked to speak {it}in his brother's absence{/it}."
+                                            }
+                                        ]
+                                    ]
+                                ]
+                            }
+                        ]
+                    ]
+                ]
+            }
+        ],
+        "shortdef": [
+            "while someone is away",
+            "in the place of someone who is not present"
+        ]
+    },
+    {
+        "meta": {
+            "id": "with the (continued) absence of",
+            "uuid": "b258861c-8b2d-442d-b543-7f6684e7d6e2",
+            "sort": "3022852000",
+            "src": "ld",
+            "section": "idioms",
+            "stems": [
+                "with the (continued) absence of",
+                "with the absence of",
+                "with the continued absence of"
+            ],
+            "offensive": false
+        },
+        "hwi": {
+            "hw": "with the (continued) absence of"
+        },
+        "fl": "idiom",
+        "def": [
+            {
+                "sseq": [
+                    [
+                        [
+                            "sense",
+                            {
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}because of the lack of "
+                                    ],
+                                    [
+                                        "vis",
+                                        [
+                                            {
+                                                "t": "{it}With the (continued) absence of{/it} rain, crops have begun to dry up."
+                                            }
+                                        ]
+                                    ]
+                                ]
+                            }
+                        ]
+                    ]
+                ]
+            }
+        ],
+        "shortdef": [
+            "because of the lack of"
+        ]
+    }
+]

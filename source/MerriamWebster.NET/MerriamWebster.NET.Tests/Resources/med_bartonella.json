@@ -1,0 +1,102 @@
+[
+    {
+        "meta": {
+            "id": "bartonella",
+            "uuid": "e212ec40-6785-41d1-a9ca-05ed02139d36",
+            "sort": "160207000",
+            "src": "medical",
+            "section": "alpha",
+            "stems": [
+                "Barton",
+                "bartonella",
+                "bartonellas"
+            ],
+            "offensive": false
+        },
+        "hwi": {
+            "hw": "bar*ton*el*la",
+            "prs": [
+                {
+                    "mw": "ˌbärt-ᵊn-ˈel-ə",
+                    "sound": {
+                        "audio": "barto02m"
+                    }
+                }
+            ]
+        },
+        "fl": "noun",
+        "def": [
+            {
+                "sseq": [
+                    [
+                        [
+                            "sense",
+                            {
+                                "sn": "1",
+                                "lbs": [
+                                    "capitalized"
+                                ],
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}a genus of gram-negative bacteria that is the type genus of the family Bartonellaceae and includes one ({it}B. bacilliformis{/it}) causing {a_link|bartonellosis} transmitted by sand flies and another ({it}B. henselae{/it} synonym {it}Rochalimaea henselae{/it}) causing cat scratch disease"
+                                    ]
+                                ]
+                            }
+                        ]
+                    ],
+                    [
+                        [
+                            "sense",
+                            {
+                                "sn": "2",
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}any bacterium of the genus {it}Bartonella{/it}"
+                                    ]
+                                ]
+                            }
+                        ]
+                    ]
+                ]
+            }
+        ],
+        "bios": [
+            [
+                [
+                    "bionw",
+                    {
+                        "biosname": "Bar*ton",
+                        "prs": [
+                            {
+                                "mw": "ˈbär-ˌtōn",
+                                "sound": {
+                                    "audio": "barto01m"
+                                }
+                            }
+                        ]
+                    }
+                ],
+                [
+                    "bionw",
+                    {
+                        "biopname": "Alberto L."
+                    }
+                ],
+                [
+                    "biodate",
+                    "(1874–1950)"
+                ],
+                [
+                    "biotx",
+                    "Peruvian physician. In 1909 Barton published an article on elements found in the red blood cells of patients with Oroya fever. In this article he identified the blood parasite ({it}Bartonella bacilliformis{/it}) that is the causative agent of Oroya fever and verruga peruana. The organism is now placed in the genus {it}Bartonella,{/it} which was named after him in 1915."
+                ]
+            ]
+        ],
+        "shortdef": [
+            "a genus of gram-negative bacteria that is the type genus of the family Bartonellaceae and includes one (B. bacilliformis) causing bartonellosis transmitted by sand flies and another (B. henselae synonym Rochalimaea henselae) causing cat scratch disease",
+            "any bacterium of the genus Bartonella"
+        ]
+    }
+]

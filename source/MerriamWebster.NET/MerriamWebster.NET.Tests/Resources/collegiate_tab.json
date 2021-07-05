@@ -1,0 +1,672 @@
+[
+    {
+        "meta": {
+            "id": "tab:1",
+            "uuid": "807675d4-f7b0-4101-b7e9-2758390ad4e3",
+            "sort": "200000800",
+            "src": "collegiate",
+            "section": "alpha",
+            "stems": [
+                "tab",
+                "tabs"
+            ],
+            "offensive": false
+        },
+        "hom": 1,
+        "hwi": {
+            "hw": "tab",
+            "prs": [
+                {
+                    "mw": "ˈtab",
+                    "sound": {
+                        "audio": "tab00001",
+                        "ref": "c",
+                        "stat": "1"
+                    }
+                }
+            ]
+        },
+        "fl": "noun",
+        "lbs": [
+            "often attributive"
+        ],
+        "def": [
+            {
+                "sseq": [
+                    [
+                        [
+                            "pseq",
+                            [
+                                [
+                                    "bs",
+                                    {
+                                        "sense": {
+                                            "sn": "1 a",
+                                            "dt": [
+                                                [
+                                                    "text",
+                                                    "{bc}a short projecting device: such as"
+                                                ]
+                                            ]
+                                        }
+                                    }
+                                ],
+                                [
+                                    "sense",
+                                    {
+                                        "sn": "(1)",
+                                        "dt": [
+                                            [
+                                                "text",
+                                                "{bc}a small flap or loop by which something may be grasped or pulled"
+                                            ]
+                                        ]
+                                    }
+                                ],
+                                [
+                                    "sense",
+                                    {
+                                        "sn": "(2)",
+                                        "dt": [
+                                            [
+                                                "text",
+                                                "{bc}a projection from a card used as an aid in filing"
+                                            ]
+                                        ]
+                                    }
+                                ]
+                            ]
+                        ],
+                        [
+                            "sense",
+                            {
+                                "sn": "b",
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}a small insert, addition, or remnant"
+                                    ]
+                                ]
+                            }
+                        ],
+                        [
+                            "sense",
+                            {
+                                "sn": "c",
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}{sx|appendage||}, {sx|extension||}"
+                                    ]
+                                ],
+                                "sdsense": {
+                                    "sd": "especially",
+                                    "dt": [
+                                        [
+                                            "text",
+                                            "{bc}one of a series of small pendants forming a decorative border or edge of a garment"
+                                        ]
+                                    ]
+                                }
+                            }
+                        ],
+                        [
+                            "sense",
+                            {
+                                "sn": "d",
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}a small auxiliary airfoil hinged to a control surface (such as a trailing edge) to help stabilize an airplane in flight {dx}see {dxt|airplane|airplane|illustration}{/dx}"
+                                    ]
+                                ]
+                            }
+                        ]
+                    ],
+                    [
+                        [
+                            "sen",
+                            {
+                                "sn": "2",
+                                "et": [
+                                    [
+                                        "text",
+                                        "partly short for {et_link|table:1|table:1}; partly from sense 1"
+                                    ]
+                                ]
+                            }
+                        ],
+                        [
+                            "sense",
+                            {
+                                "sn": "a",
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}close surveillance {bc}{sx|watch||} "
+                                    ],
+                                    [
+                                        "vis",
+                                        [
+                                            {
+                                                "t": "keep {wi}tabs{/wi} on trends"
+                                            }
+                                        ]
+                                    ]
+                                ]
+                            }
+                        ],
+                        [
+                            "sense",
+                            {
+                                "sn": "b",
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}a creditor's statement {bc}{sx|bill||}, {sx|check||}"
+                                    ]
+                                ]
+                            }
+                        ],
+                        [
+                            "sense",
+                            {
+                                "sn": "c",
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}{sx|cost||} "
+                                    ],
+                                    [
+                                        "vis",
+                                        [
+                                            {
+                                                "t": "the {wi}tab{/wi} for the new program"
+                                            }
+                                        ]
+                                    ]
+                                ]
+                            }
+                        ]
+                    ],
+                    [
+                        [
+                            "sense",
+                            {
+                                "sn": "3",
+                                "et": [
+                                    [
+                                        "text",
+                                        "short for {it}tabulator{/it}"
+                                    ]
+                                ],
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}a key on a keyboard that {d_link|indents|indent:1} text by a preset amount"
+                                    ]
+                                ]
+                            }
+                        ]
+                    ],
+                    [
+                        [
+                            "sen",
+                            {
+                                "sn": "4",
+                                "et": [
+                                    [
+                                        "text",
+                                        "by shortening"
+                                    ]
+                                ]
+                            }
+                        ],
+                        [
+                            "sense",
+                            {
+                                "sn": "a",
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}{sx|tablet||}"
+                                    ]
+                                ]
+                            }
+                        ],
+                        [
+                            "sense",
+                            {
+                                "sn": "b",
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}{sx|tabloid||}"
+                                    ]
+                                ]
+                            }
+                        ]
+                    ]
+                ]
+            }
+        ],
+        "et": [
+            [
+                "text",
+                "origin unknown"
+            ]
+        ],
+        "date": "1607{ds||1|a|}",
+        "shortdef": [
+            "a short projecting device: such as",
+            "a small flap or loop by which something may be grasped or pulled",
+            "a projection from a card used as an aid in filing"
+        ]
+    },
+    {
+        "meta": {
+            "id": "tab:2",
+            "uuid": "52d28928-10e0-4f3d-b8c2-d335193ea637",
+            "sort": "200000900",
+            "src": "collegiate",
+            "section": "alpha",
+            "stems": [
+                "tab",
+                "tabbed",
+                "tabbing",
+                "tabs"
+            ],
+            "offensive": false
+        },
+        "hom": 2,
+        "hwi": {
+            "hw": "tab"
+        },
+        "fl": "verb",
+        "ins": [
+            {
+                "if": "tabbed"
+            },
+            {
+                "if": "tab*bing"
+            }
+        ],
+        "def": [
+            {
+                "vd": "transitive verb",
+                "sseq": [
+                    [
+                        [
+                            "sense",
+                            {
+                                "sn": "1",
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}to furnish or ornament with tabs"
+                                    ]
+                                ]
+                            }
+                        ]
+                    ],
+                    [
+                        [
+                            "sense",
+                            {
+                                "sn": "2",
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}to single out {bc}{sx|designate||}"
+                                    ]
+                                ]
+                            }
+                        ]
+                    ],
+                    [
+                        [
+                            "sense",
+                            {
+                                "sn": "3",
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}{sx|tabulate||}"
+                                    ]
+                                ]
+                            }
+                        ]
+                    ]
+                ]
+            }
+        ],
+        "date": "1872{ds||1||}",
+        "shortdef": [
+            "to furnish or ornament with tabs",
+            "to single out : designate",
+            "tabulate"
+        ]
+    },
+    {
+        "meta": {
+            "id": "tableau",
+            "uuid": "c979e2f4-a811-43a3-a217-627ee178f398",
+            "sort": "200002600",
+            "src": "collegiate",
+            "section": "alpha",
+            "stems": [
+                "tab",
+                "tableau",
+                "tableaus",
+                "tableaux"
+            ],
+            "offensive": false
+        },
+        "hwi": {
+            "hw": "tab*leau",
+            "prs": [
+                {
+                    "mw": "ˈta-ˌblō",
+                    "sound": {
+                        "audio": "tablea01",
+                        "ref": "c",
+                        "stat": "1"
+                    }
+                },
+                {
+                    "mw": "ta-ˈblō",
+                    "sound": {
+                        "audio": "tablea02",
+                        "ref": "c",
+                        "stat": "1"
+                    }
+                }
+            ]
+        },
+        "fl": "noun",
+        "ins": [
+            {
+                "il": "plural",
+                "if": "tab*leaux",
+                "prs": [
+                    {
+                        "mw": "ˈta-ˌblōz",
+                        "sound": {
+                            "audio": "tablea03",
+                            "ref": "c",
+                            "stat": "1"
+                        }
+                    },
+                    {
+                        "mw": "ta-ˈblōz"
+                    }
+                ]
+            },
+            {
+                "il": "also",
+                "if": "tab*leaus"
+            }
+        ],
+        "def": [
+            {
+                "sseq": [
+                    [
+                        [
+                            "sense",
+                            {
+                                "sn": "1",
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}a graphic description or representation {bc}{sx|picture||} "
+                                    ],
+                                    [
+                                        "vis",
+                                        [
+                                            {
+                                                "t": "winsome {it}tableaux{/it} of old-fashioned literary days",
+                                                "aq": {
+                                                    "auth": "J. D. Hart"
+                                                }
+                                            }
+                                        ]
+                                    ]
+                                ]
+                            }
+                        ]
+                    ],
+                    [
+                        [
+                            "sense",
+                            {
+                                "sn": "2",
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}a striking or artistic grouping {bc}{sx|arrangement||}, {sx|scene||}"
+                                    ]
+                                ]
+                            }
+                        ]
+                    ],
+                    [
+                        [
+                            "sense",
+                            {
+                                "sn": "3",
+                                "et": [
+                                    [
+                                        "text",
+                                        "short for {it}tableau vivant{/it} (from French, literally, living picture)"
+                                    ]
+                                ],
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}a depiction of a scene usually presented on a stage by silent and motionless costumed participants"
+                                    ]
+                                ]
+                            }
+                        ]
+                    ]
+                ]
+            }
+        ],
+        "et": [
+            [
+                "text",
+                "French, from Middle French {it}tablel{/it}, diminutive of {it}table{/it}, from Old French"
+            ]
+        ],
+        "date": "1660{ds||1||}",
+        "shortdef": [
+            "a graphic description or representation : picture",
+            "a striking or artistic grouping : arrangement, scene",
+            "a depiction of a scene usually presented on a stage by silent and motionless costumed participants"
+        ]
+    },
+    {
+        "meta": {
+            "id": "tab key",
+            "uuid": "3873b433-380e-43f0-b0c0-6e445396d1f3",
+            "sort": "3019147000",
+            "src": "ld",
+            "section": "idioms",
+            "stems": [
+                "tab key"
+            ],
+            "offensive": false
+        },
+        "hwi": {
+            "hw": "tab key"
+        },
+        "fl": "noun",
+        "def": [
+            {
+                "sseq": [
+                    [
+                        [
+                            "sense",
+                            {
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}a key on the keyboard of a typewriter or computer that is used to move several spaces at a time or to move to a particular position in a document"
+                                    ]
+                                ]
+                            }
+                        ]
+                    ]
+                ]
+            }
+        ],
+        "shortdef": [
+            "a key on the keyboard of a typewriter or computer that is used to move several spaces at a time or to move to a particular position in a document"
+        ]
+    },
+    {
+        "meta": {
+            "id": "pull tab",
+            "uuid": "73b06a1d-c435-4a16-b211-d4817418ebcc",
+            "sort": "168631000",
+            "src": "collegiate",
+            "section": "alpha",
+            "stems": [
+                "pull strap",
+                "pull tab",
+                "pull tabs"
+            ],
+            "offensive": false
+        },
+        "hwi": {
+            "hw": "pull tab"
+        },
+        "fl": "noun",
+        "def": [
+            {
+                "sseq": [
+                    [
+                        [
+                            "sense",
+                            {
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}a metal tab (as on a can) pulled to open the container"
+                                    ]
+                                ]
+                            }
+                        ]
+                    ]
+                ]
+            }
+        ],
+        "date": "1963",
+        "shortdef": [
+            "a metal tab (as on a can) pulled to open the container"
+        ]
+    },
+    {
+        "meta": {
+            "id": "pick up the tab",
+            "uuid": "988a01d0-1851-41f7-a88b-d4c5ef994b48",
+            "sort": "3014699000",
+            "src": "ld",
+            "section": "idioms",
+            "stems": [
+                "pick up the tab"
+            ],
+            "offensive": false
+        },
+        "hwi": {
+            "hw": "pick up the tab"
+        },
+        "fl": "idiom",
+        "def": [
+            {
+                "sls": [
+                    "US, informal"
+                ],
+                "sseq": [
+                    [
+                        [
+                            "sense",
+                            {
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}to pay a bill (such as for a meal or drinks at a bar) "
+                                    ],
+                                    [
+                                        "vis",
+                                        [
+                                            {
+                                                "t": "She offered to {it}pick up the tab{/it} for the meal."
+                                            }
+                                        ]
+                                    ]
+                                ]
+                            }
+                        ]
+                    ]
+                ]
+            }
+        ],
+        "shortdef": [
+            "to pay a bill (such as for a meal or drinks at a bar)"
+        ]
+    },
+    {
+        "meta": {
+            "id": "pick up the tab/bill/check",
+            "uuid": "1197527a-d74b-4a0a-873e-d7ff14003514",
+            "sort": "3014698000",
+            "src": "ld",
+            "section": "idioms",
+            "stems": [
+                "pick up the bill",
+                "pick up the check",
+                "pick up the tab",
+                "pick up the tab/bill/check"
+            ],
+            "offensive": false
+        },
+        "hwi": {
+            "hw": "pick up the tab/bill/check"
+        },
+        "fl": "idiom",
+        "def": [
+            {
+                "sseq": [
+                    [
+                        [
+                            "sense",
+                            {
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}to pay the money that is owed for something "
+                                    ],
+                                    [
+                                        "vis",
+                                        [
+                                            {
+                                                "t": "The company {it}picked up the{/it} entire {it}tab{/it} for my trip."
+                                            },
+                                            {
+                                                "t": "They offered to {it}pick up the check{/it} for dinner."
+                                            }
+                                        ]
+                                    ]
+                                ]
+                            }
+                        ]
+                    ]
+                ]
+            }
+        ],
+        "shortdef": [
+            "to pay the money that is owed for something"
+        ]
+    }
+]

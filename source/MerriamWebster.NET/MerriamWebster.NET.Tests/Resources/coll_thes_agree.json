@@ -1,0 +1,502 @@
+[
+    {
+        "meta": {
+            "id": "agree",
+            "uuid": "0ed33209-29e5-4cee-9962-7c308a216137",
+            "sort": "011494000",
+            "src": "collegiate",
+            "section": "alpha",
+            "stems": [
+                "agree",
+                "agreed",
+                "agreeing",
+                "agrees"
+            ],
+            "offensive": false
+        },
+        "hwi": {
+            "hw": "agree",
+            "prs": [
+                {
+                    "mw": "ə-ˈgrē",
+                    "sound": {
+                        "audio": "agree001",
+                        "ref": "c",
+                        "stat": "1"
+                    }
+                }
+            ]
+        },
+        "fl": "verb",
+        "ins": [
+            {
+                "if": "agreed"
+            },
+            {
+                "if": "agree*ing"
+            }
+        ],
+        "def": [
+            {
+                "vd": "transitive verb",
+                "sseq": [
+                    [
+                        [
+                            "sense",
+                            {
+                                "sn": "1 a",
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}to {d_link|concur|concur} in (something, such as an opinion) {bc}{sx|admit||}, {sx|concede||} "
+                                    ],
+                                    [
+                                        "vis",
+                                        [
+                                            {
+                                                "t": "They {wi}agreed{/wi} that he was right."
+                                            }
+                                        ]
+                                    ]
+                                ]
+                            }
+                        ],
+                        [
+                            "sense",
+                            {
+                                "sn": "b",
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}to consent to as a course of action "
+                                    ],
+                                    [
+                                        "vis",
+                                        [
+                                            {
+                                                "t": "She {it}agreed{/it} to sell him the house."
+                                            }
+                                        ]
+                                    ]
+                                ]
+                            }
+                        ]
+                    ],
+                    [
+                        [
+                            "sense",
+                            {
+                                "sn": "2",
+                                "sls": [
+                                    "chiefly British"
+                                ],
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}to settle on by common consent {bc}{sx|arrange||} "
+                                    ],
+                                    [
+                                        "vis",
+                                        [
+                                            {
+                                                "t": "… I {it}agreed{/it} rental terms with him …",
+                                                "aq": {
+                                                    "auth": "Eric Bennett"
+                                                }
+                                            }
+                                        ]
+                                    ]
+                                ]
+                            }
+                        ]
+                    ]
+                ]
+            },
+            {
+                "vd": "intransitive verb",
+                "sseq": [
+                    [
+                        [
+                            "sense",
+                            {
+                                "sn": "1",
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}to accept or concede something (such as the views or wishes of another) "
+                                    ],
+                                    [
+                                        "vis",
+                                        [
+                                            {
+                                                "t": "{wi}agree{/wi} to a plan"
+                                            }
+                                        ]
+                                    ]
+                                ]
+                            }
+                        ]
+                    ],
+                    [
+                        [
+                            "sense",
+                            {
+                                "sn": "2 a",
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}to achieve or be in harmony (as of opinion, feeling, or purpose) "
+                                    ],
+                                    [
+                                        "vis",
+                                        [
+                                            {
+                                                "t": "We {wi}agree{/wi} in our taste in music."
+                                            }
+                                        ]
+                                    ]
+                                ]
+                            }
+                        ],
+                        [
+                            "sense",
+                            {
+                                "sn": "b",
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}to get along together"
+                                    ]
+                                ]
+                            }
+                        ],
+                        [
+                            "sense",
+                            {
+                                "sn": "c",
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}to come to terms "
+                                    ],
+                                    [
+                                        "vis",
+                                        [
+                                            {
+                                                "t": "{wi}agree{/wi} on a fair division of profits"
+                                            }
+                                        ]
+                                    ]
+                                ]
+                            }
+                        ]
+                    ],
+                    [
+                        [
+                            "sense",
+                            {
+                                "sn": "3 a",
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}to be similar {bc}{sx|correspond||} "
+                                    ],
+                                    [
+                                        "vis",
+                                        [
+                                            {
+                                                "t": "Both copies {wi}agree{/wi}."
+                                            }
+                                        ]
+                                    ]
+                                ]
+                            }
+                        ],
+                        [
+                            "sense",
+                            {
+                                "sn": "b",
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}to be consistent "
+                                    ],
+                                    [
+                                        "vis",
+                                        [
+                                            {
+                                                "t": "The story {wi}agrees{/wi} with the facts."
+                                            }
+                                        ]
+                                    ]
+                                ]
+                            }
+                        ]
+                    ],
+                    [
+                        [
+                            "sense",
+                            {
+                                "sn": "4",
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}to be fitting, pleasing, or healthful {bc}{sx|suit||} "
+                                    ],
+                                    [
+                                        "vis",
+                                        [
+                                            {
+                                                "t": "This climate {wi}agrees{/wi} with him."
+                                            }
+                                        ]
+                                    ]
+                                ]
+                            }
+                        ]
+                    ],
+                    [
+                        [
+                            "sense",
+                            {
+                                "sn": "5",
+                                "sls": [
+                                    "grammar"
+                                ],
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}to have an inflectional form denoting identity or other regular correspondence in a grammatical category (such as gender, number, case, or person)"
+                                    ]
+                                ]
+                            }
+                        ]
+                    ]
+                ]
+            }
+        ],
+        "syns": [
+            {
+                "pl": "synonyms",
+                "pt": [
+                    [
+                        "text",
+                        "{sc}agree{/sc} {sc}concur{/sc} {sc}coincide{/sc} mean to come into or be in harmony regarding a matter of opinion. {sc}agree{/sc} implies complete accord usually attained by discussion and adjustment of differences. "
+                    ],
+                    [
+                        "vis",
+                        [
+                            {
+                                "t": "on some points we all can {it}agree{/it}"
+                            }
+                        ]
+                    ],
+                    [
+                        "text",
+                        " {sc}concur{/sc} often implies approval of someone else's statement or decision. "
+                    ],
+                    [
+                        "vis",
+                        [
+                            {
+                                "t": "if my wife {it}concurs{/it}, it's a deal"
+                            }
+                        ]
+                    ],
+                    [
+                        "text",
+                        " {sc}coincide{/sc}, used more often of opinions, judgments, wishes, or interests than of people, implies total agreement. "
+                    ],
+                    [
+                        "vis",
+                        [
+                            {
+                                "t": "their wishes {it}coincide{/it} exactly with my desire"
+                            }
+                        ]
+                    ]
+                ],
+                "sarefs": [
+                    "assent"
+                ]
+            }
+        ],
+        "et": [
+            [
+                "text",
+                "Middle English {it}agreen{/it} \"to please, gratify, consent, concur,\" borrowed from Anglo-French {it}agreer,{/it} from {it}a-,{/it} verb-forming prefix (going back to Latin {it}ad-{/it} {et_link|ad-|ad-}) + {it}-greer,{/it} verbal derivative of {it}gré{/it} \"gratitude, satisfaction, liking, pleasure, assent,\" going back to Latin {it}grātum,{/it} neuter of {it}grātus{/it} \"thankful, received with gratitude, welcome, pleasant\" {ma}{mat|grace:1|}{/ma}"
+            ]
+        ],
+        "date": "15th century{ds|t|1|a|}",
+        "shortdef": [
+            "to concur in (something, such as an opinion) : admit, concede",
+            "to consent to as a course of action",
+            "to settle on by common consent : arrange"
+        ]
+    },
+    {
+        "meta": {
+            "id": "agree in number",
+            "uuid": "61109c46-e026-4667-9803-c5bc2ff1784e",
+            "sort": "3000266000",
+            "src": "ld",
+            "section": "idioms",
+            "stems": [
+                "agree in number"
+            ],
+            "offensive": false
+        },
+        "hwi": {
+            "hw": "agree in number"
+        },
+        "fl": "idiom",
+        "def": [
+            {
+                "sls": [
+                    "grammar"
+                ],
+                "sseq": [
+                    [
+                        [
+                            "sense",
+                            {
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}to be alike in the form that shows whether a word is singular or plural "
+                                    ],
+                                    [
+                                        "vis",
+                                        [
+                                            {
+                                                "t": "A verb and its subject must {it}agree in number{/it}."
+                                            }
+                                        ]
+                                    ]
+                                ]
+                            }
+                        ]
+                    ]
+                ]
+            }
+        ],
+        "shortdef": [
+            "to be alike in the form that shows whether a word is singular or plural"
+        ]
+    },
+    {
+        "meta": {
+            "id": "agree to disagree",
+            "uuid": "0d5016ce-afe0-483d-942b-2c2c19a285e8",
+            "sort": "3000267000",
+            "src": "ld",
+            "section": "idioms",
+            "stems": [
+                "agree to differ",
+                "agree to disagree"
+            ],
+            "offensive": false
+        },
+        "hwi": {
+            "hw": "agree to disagree"
+        },
+        "vrs": [
+            {
+                "vl": "or chiefly British",
+                "va": "agree to differ"
+            }
+        ],
+        "fl": "idiom",
+        "def": [
+            {
+                "sseq": [
+                    [
+                        [
+                            "sense",
+                            {
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}to agree not to argue anymore about a difference of opinion "
+                                    ],
+                                    [
+                                        "vis",
+                                        [
+                                            {
+                                                "t": "He likes golf and his wife likes tennis, so when it comes to sports, they have {it}agreed to disagree{/it}."
+                                            }
+                                        ]
+                                    ]
+                                ]
+                            }
+                        ]
+                    ]
+                ]
+            }
+        ],
+        "shortdef": [
+            "to agree not to argue anymore about a difference of opinion"
+        ]
+    },
+    {
+        "meta": {
+            "id": "agree with",
+            "uuid": "1b1d97d5-f072-4e86-982d-d3943a6061c2",
+            "sort": "3000268000",
+            "src": "ld",
+            "section": "idioms",
+            "stems": [
+                "agree with",
+                "agreed with",
+                "agreeing with",
+                "agrees with"
+            ],
+            "offensive": false
+        },
+        "hwi": {
+            "hw": "agree with"
+        },
+        "fl": "phrasal verb",
+        "ins": [
+            {
+                "if": "agreed with"
+            },
+            {
+                "if": "agree*ing with"
+            },
+            {
+                "if": "agrees with"
+            }
+        ],
+        "def": [
+            {
+                "sseq": [
+                    [
+                        [
+                            "sense",
+                            {
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}to regard (something) with approval "
+                                    ],
+                                    [
+                                        "vis",
+                                        [
+                                            {
+                                                "t": "Do you {it}agree with{/it} capital punishment?"
+                                            }
+                                        ]
+                                    ]
+                                ]
+                            }
+                        ]
+                    ]
+                ]
+            }
+        ],
+        "shortdef": [
+            "to regard (something) with approval"
+        ]
+    }
+]

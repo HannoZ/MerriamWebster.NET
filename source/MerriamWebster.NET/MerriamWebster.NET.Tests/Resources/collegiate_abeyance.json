@@ -1,0 +1,126 @@
+[
+    {
+        "meta": {
+            "id": "abeyance",
+            "uuid": "f996d888-d21d-486c-8096-36ddb0f1adee",
+            "sort": "010107000",
+            "src": "collegiate",
+            "section": "alpha",
+            "stems": [
+                "abeyance",
+                "abeyances",
+                "abeyant",
+                "in abeyance"
+            ],
+            "offensive": false
+        },
+        "hwi": {
+            "hw": "abey*ance",
+            "prs": [
+                {
+                    "mw": "ə-ˈbā-ən(t)s",
+                    "sound": {
+                        "audio": "abeyan01",
+                        "ref": "c",
+                        "stat": "1"
+                    }
+                }
+            ]
+        },
+        "fl": "noun",
+        "def": [
+            {
+                "sseq": [
+                    [
+                        [
+                            "sense",
+                            {
+                                "sn": "1",
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}a state of temporary inactivity {bc}{sx|suspension||} "
+                                    ],
+                                    [
+                                        "uns",
+                                        [
+                                            [
+                                                [
+                                                    "text",
+                                                    "used chiefly in the phrase {phrase}in abeyance{/phrase} "
+                                                ],
+                                                [
+                                                    "vis",
+                                                    [
+                                                        {
+                                                            "t": "… new contracts on all but one existing mine … are {wi}in abeyance{/wi} pending the outcome of a government inquiry to be carried out into Australia's role in the nuclear fuel cycle.",
+                                                            "aq": {
+                                                                "auth": "Vimala Sarma"
+                                                            }
+                                                        },
+                                                        {
+                                                            "t": "a plan that is currently being held {wi}in abeyance{/wi}"
+                                                        }
+                                                    ]
+                                                ]
+                                            ]
+                                        ]
+                                    ]
+                                ]
+                            }
+                        ]
+                    ],
+                    [
+                        [
+                            "sense",
+                            {
+                                "sn": "2",
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}a lapse in succession during which there is no person in whom a title is vested "
+                                    ],
+                                    [
+                                        "vis",
+                                        [
+                                            {
+                                                "t": "an estate in {wi}abeyance{/wi}"
+                                            }
+                                        ]
+                                    ]
+                                ]
+                            }
+                        ]
+                    ]
+                ]
+            }
+        ],
+        "uros": [
+            {
+                "ure": "abey*ant",
+                "prs": [
+                    {
+                        "mw": "ə-ˈbā-ənt",
+                        "sound": {
+                            "audio": "abeyan02",
+                            "ref": "c",
+                            "stat": "1"
+                        }
+                    }
+                ],
+                "fl": "adjective"
+            }
+        ],
+        "et": [
+            [
+                "text",
+                "borrowed from Anglo-French {it}abeyaunce{/it} \"absence of a claimant or owner, lapse in succession,\" from {it}abaer, abair{/it} \"to open wide\" (from {it}a-{/it}, prefix in transitive verbs—from Latin {it}ad-{/it} {et_link|ad-|ad-} — + {it}baer, baier{/it} \"to have the mouth wide open, gape, pant,\" from Vulgar Latin {it}*batāre{/it}, perhaps of imitative origin) + {it}-ance{/it} {et_link|-ance|-ance}"
+            ]
+        ],
+        "date": "circa 1530{ds||2||}",
+        "shortdef": [
+            "a state of temporary inactivity : suspension —used chiefly in the phrase in abeyance",
+            "a lapse in succession during which there is no person in whom a title is vested"
+        ]
+    }
+]
