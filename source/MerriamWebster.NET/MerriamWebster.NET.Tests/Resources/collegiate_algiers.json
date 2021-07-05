@@ -1,0 +1,103 @@
+[
+  {
+    "meta": {
+      "id": "Algiers:g",
+      "uuid": "562a9b57-e3f0-40c0-a319-36eff97b6bac",
+      "sort": "270185000",
+      "src": "collegiate",
+      "section": "geog",
+      "stems": [
+        "Algerine",
+        "Algiers"
+      ],
+      "offensive": false
+    },
+    "hwi": {
+      "hw": "Al*giers",
+      "prs": [
+        {
+          "mw": "al-ˈjirz",
+          "sound": {
+            "audio": "ggalgi01",
+            "ref": "c",
+            "stat": "1"
+          }
+        }
+      ]
+    },
+    "fl": "geographical name",
+    "def": [
+      {
+        "sseq": [
+          [
+            [
+              "sense",
+              {
+                "sn": "1",
+                "dt": [
+                  [
+                    "text",
+                    "former {d_link|Barbary State|Barbary Coast:g} in northern Africa that is now Algeria"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "2",
+                "dt": [
+                  [
+                    "text",
+                    "city, port on the "
+                  ],
+                  [
+                    "ri",
+                    [
+                      [
+                        "riw",
+                        {
+                          "rie": "Bay of Algiers"
+                        }
+                      ],
+                      [
+                        "text",
+                        " (an inlet of Mediterranean Sea)"
+                      ]
+                    ]
+                  ],
+                  [
+                    "text",
+                    ", and capital of Algeria {it}population{/it} 1,365,400"
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      }
+    ],
+    "uros": [
+      {
+        "ure": "Al*ge*rine",
+        "prs": [
+          {
+            "mw": "ˌal-jə-ˈrēn",
+            "sound": {
+              "audio": "ggalgi02",
+              "ref": "c",
+              "stat": "1"
+            }
+          }
+        ],
+        "fl": "adjective or noun"
+      }
+    ],
+    "shortdef": [
+      "former Barbary State in northern Africa that is now Algeria",
+      "city, port on the Bay of Algiers (an inlet of Mediterranean Sea), and capital of Algeria population 1,365,400"
+    ]
+  }
+]

@@ -3,7 +3,8 @@
 namespace MerriamWebster.NET.Response
 {
     /// <summary>
-    /// An alternate headword is a regional or less common spelling of a headword. 
+    /// A regional or less common spelling of a headword, typically found in a short cross-reference entry that links to the entry defining the principal spelling.<br/>
+    ///  In a bilingual dictionary, an alternate headword is typically a form of the headword in a different gender or number, presented immediately following the main headword.
     /// </summary>
     public class AlternateHeadword
     {

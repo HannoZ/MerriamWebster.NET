@@ -1,0 +1,76 @@
+[
+    {
+        "meta": {
+            "id": "Abaco:g",
+            "uuid": "f203449d-4099-49f3-aec0-301f938f69bb",
+            "sort": "270007000",
+            "src": "collegiate",
+            "section": "geog",
+            "stems": [
+                "Abaco"
+            ],
+            "offensive": false
+        },
+        "hwi": {
+            "hw": "Ab*a*co",
+            "prs": [
+                {
+                    "mw": "ˈa-bə-ˌkō",
+                    "sound": {
+                        "audio": "ggabac01",
+                        "ref": "c",
+                        "stat": "1"
+                    }
+                }
+            ]
+        },
+        "fl": "geographical name",
+        "def": [
+            {
+                "sseq": [
+                    [
+                        [
+                            "sense",
+                            {
+                                "dt": [
+                                    [
+                                        "text",
+                                        "two islands of the Bahamas ("
+                                    ],
+                                    [
+                                        "ri",
+                                        [
+                                            [
+                                                "riw",
+                                                {
+                                                    "rie": "Great Abaco"
+                                                }
+                                            ],
+                                            [
+                                                "text",
+                                                " and "
+                                            ],
+                                            [
+                                                "riw",
+                                                {
+                                                    "rie": "Little Abaco"
+                                                }
+                                            ]
+                                        ]
+                                    ],
+                                    [
+                                        "text",
+                                        " ) north of New Providence Island {it}area{/it} 776 square miles (2018 square kilometers), {it}population{/it} 13,170"
+                                    ]
+                                ]
+                            }
+                        ]
+                    ]
+                ]
+            }
+        ],
+        "shortdef": [
+            "two islands of the Bahamas (Great Abaco and Little Abaco ) north of New Providence Island area 776 square miles (2018 square kilometers), population 13,170"
+        ]
+    }
+]

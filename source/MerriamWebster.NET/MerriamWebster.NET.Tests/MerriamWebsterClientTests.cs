@@ -279,12 +279,28 @@ namespace MerriamWebster.NET.Tests
             // ACT
             var result = (await _client.GetDictionaryEntry("api", "entry")).ToList();
 
-            // TODO parse Date {ds} token
-
             // TODO verify content pseq/sseq
 
             // ASSERT
             result.ShouldNotBeEmpty();
+        }
+
+        [TestMethod]
+        public async Task MerriamWebsterClient_CanDeserialize_Reboot()
+        {
+            string response = await TestHelper.LoadResponseFromFileAsync("collegiate_reboot");
+
+            _handlerMock.Protected()
+                .Setup<Task<HttpResponseMessage>>("SendAsync", ItExpr.IsAny<HttpRequestMessage>(),
+                    ItExpr.IsAny<CancellationToken>())
+                .ReturnsAsync(SetupOkResponseMessage(response));
+
+            // ACT
+            var result = (await _client.GetDictionaryEntry("api", "entry")).ToList();
+
+
+            // ASSERT
+            result.Count.ShouldBe(2);
         }
 
         private static HttpResponseMessage SetupOkResponseMessage(string content)

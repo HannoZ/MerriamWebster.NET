@@ -10,9 +10,11 @@
     <None Remove="Resources\abarrotado.json" />
     <None Remove="Resources\abeja.json" />
     <None Remove="Resources\casa.json" />
+    <None Remove="Resources\collegiate_algiers.json" />
     <None Remove="Resources\collegiate_Dodgson.json" />
     <None Remove="Resources\collegiate_pelvis.json" />
     <None Remove="Resources\collegiate_reap.json" />
+    <None Remove="Resources\collegiate_reboot.json" />
     <None Remove="Resources\collegiate_tedious.json" />
     <None Remove="Resources\coll_dict_voluminous.json" />
     <None Remove="Resources\coll_thes_above_meta.json" />
@@ -44,6 +46,8 @@
     <EmbeddedResource Include="Resources\collegiate_Dodgson.json" />
     <EmbeddedResource Include="Resources\collegiate_pelvis.json" />
     <EmbeddedResource Include="Resources\collegiate_reap.json" />
+    <EmbeddedResource Include="Resources\collegiate_reboot.json" />
+    <EmbeddedResource Include="Resources\collegiate_algiers.json" />
     <EmbeddedResource Include="Resources\collegiate_tedious.json" />
     <EmbeddedResource Include="Resources\example_ginger.json" />
     <EmbeddedResource Include="Resources\jirón.json" />

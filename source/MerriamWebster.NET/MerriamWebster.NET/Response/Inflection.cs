@@ -3,7 +3,8 @@
 namespace MerriamWebster.NET.Response
 {
     /// <summary>
-    /// Inflection is the change of form that words undergo in different grammatical contexts, such as tense or number.
+    /// Inflection is the change of form that words undergo to mark such distinctions as case, gender, number, tense, person, mood, or voice.
+    /// For instance, the past tense "ran" and present participle "running" are both inflections of the verb "run".
     /// </summary>
     public class Inflection
     {

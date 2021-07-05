@@ -1,0 +1,259 @@
+[
+  {
+    "meta": {
+      "id": "reboot:1",
+      "uuid": "299c6962-091f-4c74-9bb6-c06ca0aa7477",
+      "sort": "180882000",
+      "src": "collegiate",
+      "section": "alpha",
+      "stems": [
+        "reboot",
+        "rebooted",
+        "rebooting",
+        "reboots"
+      ],
+      "offensive": false
+    },
+    "hom": 1,
+    "hwi": {
+      "hw": "re*boot",
+      "prs": [
+        {
+          "mw": "(ˌ)rē-ˈbüt",
+          "sound": {
+            "audio": "reboo01ld",
+            "ref": "ld",
+            "stat": "1"
+          }
+        }
+      ]
+    },
+    "fl": "verb",
+    "ins": [
+      {
+        "if": "rebooted"
+      },
+      {
+        "if": "rebooting"
+      },
+      {
+        "if": "reboots"
+      }
+    ],
+    "def": [
+      {
+        "vd": "transitive + intransitive",
+        "sseq": [
+          [
+            [
+              "sense",
+              {
+                "sn": "1 a",
+                "sgram": "T/I",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}to shut down and restart (a computer or program) "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "… the annoyance of having to {wi}reboot{/wi} the computer to switch operating systems …",
+                        "aq": {
+                          "auth": "Robert Weston"
+                        }
+                      },
+                      {
+                        "t": "If anything ever happens to the original drive, you can {wi}reboot{/wi} using the cloned drive and be up and running in minutes.",
+                        "aq": {
+                          "auth": "Dan Frakes"
+                        }
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ],
+            [
+              "sense",
+              {
+                "sn": "b",
+                "sgram": "I",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}to start up again after closing or shutting down {bc}to boot up again "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "waiting for a computer/program to {wi}reboot{/wi}"
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "2 a",
+                "sgram": "T",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}to start (something) anew {bc}to refresh (something) by making a new start or creating a new version "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "It's probably not an overstatement to say Sandberg is embarking on the most ambitious mission to {wi}reboot{/wi} feminism and reframe discussions of gender since the launch of Ms. magazine in 1971.",
+                        "aq": {
+                          "auth": "Belinda Luscombe"
+                        }
+                      },
+                      {
+                        "t": "{wi}reboot{/wi} an old TV series"
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ],
+            [
+              "sense",
+              {
+                "sn": "b",
+                "sgram": "I",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}to start anew {bc}to make a fresh start "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "The interior designer's heart was telling her to {wi}reboot{/wi} and downsize …",
+                        "aq": {
+                          "auth": "Susan Heeger"
+                        }
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      }
+    ],
+    "date": "1971{ds||1|a|}",
+    "shortdef": [
+      "to shut down and restart (a computer or program)",
+      "to start up again after closing or shutting down : to boot up again",
+      "to start (something) anew : to refresh (something) by making a new start or creating a new version"
+    ]
+  },
+  {
+    "meta": {
+      "id": "reboot:2",
+      "uuid": "e6cf01fa-a2f1-46f7-8d17-7bf111b2b066",
+      "sort": "180883000",
+      "src": "collegiate",
+      "section": "alpha",
+      "stems": [
+        "reboot",
+        "reboots"
+      ],
+      "offensive": false
+    },
+    "hom": 2,
+    "hwi": {
+      "hw": "re*boot",
+      "prs": [
+        {
+          "mw": "ˈrē-ˌbüt",
+          "sound": {
+            "audio": "reboot_1",
+            "ref": "owl",
+            "stat": "1"
+          }
+        }
+      ]
+    },
+    "fl": "noun",
+    "ins": [
+      {
+        "il": "plural",
+        "if": "reboots"
+      }
+    ],
+    "def": [
+      {
+        "sseq": [
+          [
+            [
+              "sense",
+              {
+                "sn": "1",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}the act or an instance of shutting down and restarting something (such as a computer or program) "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "In a few cases, errors cause a headlong exit to DOS or the software ceases to operate, requiring a {wi}reboot{/wi}.",
+                        "aq": {
+                          "auth": "George F. Hepner"
+                        }
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "2",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}the act or an instance of starting (something) anew or making a fresh start "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "In a massive {wi}reboot{/wi} last fall, all 200 rooms were done up in geometric rugs and curvy leather headboards.",
+                        "aq": {
+                          "auth": "Jen Murphy"
+                        }
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      }
+    ],
+    "date": "1980{ds||1||}",
+    "shortdef": [
+      "the act or an instance of shutting down and restarting something (such as a computer or program)",
+      "the act or an instance of starting (something) anew or making a fresh start"
+    ]
+  }
+]

@@ -25,4 +25,18 @@ namespace MerriamWebster.NET.Response
         [JsonProperty("aq")]
         public AtributionOfQuote Quote { get; set; }
     }
+
+    /// <summary>
+    /// A run-in entry word is a defined word that occurs in the running text of an entry.
+    /// The run-in ri groups together one or more run-in entry words rie and any accompanying pronunciations or variants.
+    /// Run-ins occur most frequently in geographical entries.
+    /// </summary>
+    public class RunInWrap
+    {
+        /// <summary>
+        /// Run-in entry word
+        /// </summary>
+        [JsonProperty("rie")]
+        public string Rie { get; set; }
+    }
 }

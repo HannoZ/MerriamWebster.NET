@@ -3,7 +3,8 @@
 namespace MerriamWebster.NET.Response
 {
     /// <summary>
-    /// The <see cref="Pronunciation"/> class contains information about how to pronounce a word.
+    /// A pronunciation specifies how a written word is pronounced aloud.
+    /// It can contain a written representation of the word's pronunciation, sound file information for audio playback, and various labels and punctuation.
     /// </summary>
     public class Pronunciation
     {

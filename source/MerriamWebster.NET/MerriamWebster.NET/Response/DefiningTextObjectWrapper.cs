@@ -7,6 +7,7 @@
         public CalledAlsoNote CalledAlso;
         public BiographicalNameWrap BiographicalNameWrap;
 
+
         /// <summary>
         /// The definition type, or definition text. 
         /// </summary>

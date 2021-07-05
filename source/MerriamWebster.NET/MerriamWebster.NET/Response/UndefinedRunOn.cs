@@ -45,5 +45,10 @@ namespace MerriamWebster.NET.Response
         [JsonProperty("lbs", NullValueHandling = NullValueHandling.Ignore)]
         public string[] GeneralLabels { get; set; } = { };
 
+        /// <summary>
+        /// Gets or sets the subject/status labels.
+        /// </summary>
+        [JsonProperty("sls", NullValueHandling = NullValueHandling.Ignore)]
+        public string[] Sls { get; set; }
     }
 }

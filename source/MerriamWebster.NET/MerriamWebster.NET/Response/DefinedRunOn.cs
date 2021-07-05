@@ -3,8 +3,15 @@
 namespace MerriamWebster.NET.Response
 {
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
+    /// <summary>
+    /// A defined run-on consists of a defined run-on phrase, a definition section, and optional other information such as pronunciations, labels, variants, and an etymology.
+    /// A set of defined run-ons can follow (or "run on" from) the entry's main definition section.
+    /// </summary>
     public class DefinedRunOn
     {
+        /// <summary>
+        /// A defined run-on phrase is an expression or phrasal verb that is formed from the entry's headword and has its own definition section.
+        /// </summary>
         [JsonProperty("drp")]
         public string Phrase { get; set; }
 
@@ -31,6 +38,10 @@ namespace MerriamWebster.NET.Response
         [JsonProperty("lbs", NullValueHandling = NullValueHandling.Ignore)]
         public string[] GeneralLabels { get; set; } = { };
 
-
+        /// <summary>
+        /// Gets or sets the subject/status labels.
+        /// </summary>
+        [JsonProperty("sls", NullValueHandling = NullValueHandling.Ignore)]
+        public string[] Sls { get; set; }
     }
 }

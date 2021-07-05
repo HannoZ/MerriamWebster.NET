@@ -3,23 +3,39 @@
 namespace MerriamWebster.NET.Response
 {
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
+    /// <summary>
+    /// The organizational unit of a dictionary. An entry consists of at minimum a headword, along with content defining or translating the headword.
+    /// </summary>
     public class DictionaryEntry
     {
         [JsonProperty("meta")]
         public Metadata Metadata { get; set; }
 
+        /// <summary>
+        /// Homographs are headwords with identical spellings but distinct meanings and origins. For example, the noun "wind" (natural movement of air), verb "wind" (make short of breath), and verb "wind" (tighten the spring of a clock) are all homographs, each with its own dictionary entry.
+        /// </summary>
         [JsonProperty("hom", NullValueHandling = NullValueHandling.Ignore)]
         public int? Homograph { get; set; }
 
+        /// <summary>
+        /// The word being defined or translated in an entry. It serves as the main organizing principle of the dictionary: the headword is presented prominently at the start of its entry, and the rest of the entry content describes its meanings, usage, etymology, etc.
+        /// </summary>
         [JsonProperty("hwi")]
         public HeadwordInformation HeadwordInformation { get; set; }
 
+        /// <summary>
+        /// Describes the grammatical function of a headword or undefined entry word. It indicates the role the word plays in a sentence, such as "noun", "verb", "adjective", etc.<br/>
+        /// It may also categorize the word in other ways, such as "trademark" or "abbreviation". Also called: part of speech.
+        /// </summary>
         [JsonProperty("fl")]
         public string FunctionalLabel { get; set; }
 
         [JsonProperty("cxs", NullValueHandling = NullValueHandling.Ignore)]
         public CognateCrossReference[] CognateCrossReferences { get; set; } = { };
 
+        /// <summary>
+        /// The definition section groups together all sense sequences and verb dividers for a headword or defined run-on phrase.
+        /// </summary>
         [JsonProperty("def")]
         public Definition[] Definitions { get; set; } = { };
         
@@ -50,7 +66,7 @@ namespace MerriamWebster.NET.Response
 #pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
 
         /// <summary>
-        /// An etymology is an explanation of the historical origin of a word.
+        /// An etymology is an explanation of the historical origin of a word. An etymology might supply, for instance, the French origin of a headword, then further give the Latin origin of that French word. Also called: word origin.<br/>
         /// While the etymology contained in an et most typically relates to the headword, it may also explain the origin of a defined run-on phrase or a particular sense.
         /// </summary>
         [JsonProperty("et", NullValueHandling = NullValueHandling.Ignore)]
