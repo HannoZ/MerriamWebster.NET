@@ -1,0 +1,442 @@
+[
+    {
+        "meta": {
+            "id": "abide",
+            "uuid": "14e7a484-faea-4ef9-80f5-38ccbb28d687",
+            "sort": "010114000",
+            "src": "collegiate",
+            "section": "alpha",
+            "stems": [
+                "abide",
+                "abide by",
+                "abided",
+                "abided by",
+                "abider",
+                "abiders",
+                "abides",
+                "abides by",
+                "abiding",
+                "abiding by",
+                "abode",
+                "abode by"
+            ],
+            "offensive": false
+        },
+        "hwi": {
+            "hw": "abide",
+            "prs": [
+                {
+                    "mw": "ə-ˈbīd",
+                    "sound": {
+                        "audio": "abide001",
+                        "ref": "c",
+                        "stat": "1"
+                    }
+                }
+            ]
+        },
+        "fl": "verb",
+        "ins": [
+            {
+                "if": "abid*ed"
+            },
+            {
+                "il": "also",
+                "if": "abode",
+                "prs": [
+                    {
+                        "mw": "ə-ˈbōd",
+                        "sound": {
+                            "audio": "abode001",
+                            "ref": "c",
+                            "stat": "1"
+                        }
+                    }
+                ]
+            },
+            {
+                "if": "abid*ing"
+            }
+        ],
+        "def": [
+            {
+                "vd": "transitive verb",
+                "sseq": [
+                    [
+                        [
+                            "sense",
+                            {
+                                "sn": "1 a",
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}to bear patiently {bc}{sx|tolerate||} "
+                                    ],
+                                    [
+                                        "vis",
+                                        [
+                                            {
+                                                "t": "cannot {wi}abide{/wi} such bigots"
+                                            }
+                                        ]
+                                    ]
+                                ]
+                            }
+                        ],
+                        [
+                            "sense",
+                            {
+                                "sn": "b",
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}to endure without yielding {bc}{sx|withstand||} "
+                                    ],
+                                    [
+                                        "vis",
+                                        [
+                                            {
+                                                "t": "{wi}abide{/wi} the onrush of the enemy"
+                                            }
+                                        ]
+                                    ]
+                                ]
+                            }
+                        ]
+                    ],
+                    [
+                        [
+                            "sense",
+                            {
+                                "sn": "2",
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}to wait for {bc}{sx|await||} "
+                                    ],
+                                    [
+                                        "vis",
+                                        [
+                                            {
+                                                "t": "I will {wi}abide{/wi} the coming of my lord.",
+                                                "aq": {
+                                                    "auth": "Alfred Tennyson"
+                                                }
+                                            }
+                                        ]
+                                    ]
+                                ]
+                            }
+                        ]
+                    ],
+                    [
+                        [
+                            "sense",
+                            {
+                                "sn": "3",
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}to accept without objection "
+                                    ],
+                                    [
+                                        "vis",
+                                        [
+                                            {
+                                                "t": "will {wi}abide{/wi} your decision"
+                                            }
+                                        ]
+                                    ]
+                                ]
+                            }
+                        ]
+                    ]
+                ]
+            },
+            {
+                "vd": "intransitive verb",
+                "sseq": [
+                    [
+                        [
+                            "sense",
+                            {
+                                "sn": "1",
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}to remain stable or fixed in a state "
+                                    ],
+                                    [
+                                        "vis",
+                                        [
+                                            {
+                                                "t": "a love that {it}abided{/it} with him all his days"
+                                            }
+                                        ]
+                                    ]
+                                ]
+                            }
+                        ]
+                    ],
+                    [
+                        [
+                            "sense",
+                            {
+                                "sn": "2",
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}to continue in a place {bc}{sx|sojourn||} "
+                                    ],
+                                    [
+                                        "vis",
+                                        [
+                                            {
+                                                "t": "will {wi}abide{/wi} in the house of the Lord"
+                                            }
+                                        ]
+                                    ]
+                                ]
+                            }
+                        ]
+                    ]
+                ]
+            }
+        ],
+        "uros": [
+            {
+                "ure": "abid*er",
+                "fl": "noun"
+            }
+        ],
+        "dros": [
+            {
+                "drp": "abide by",
+                "def": [
+                    {
+                        "sseq": [
+                            [
+                                [
+                                    "sense",
+                                    {
+                                        "sn": "1",
+                                        "dt": [
+                                            [
+                                                "text",
+                                                "{bc}to conform to "
+                                            ],
+                                            [
+                                                "vis",
+                                                [
+                                                    {
+                                                        "t": "{it}abide by{/it} the rules"
+                                                    }
+                                                ]
+                                            ]
+                                        ]
+                                    }
+                                ]
+                            ],
+                            [
+                                [
+                                    "sense",
+                                    {
+                                        "sn": "2",
+                                        "dt": [
+                                            [
+                                                "text",
+                                                "{bc}to accept without objection {bc}to {d_link|acquiesce|acquiesce} in "
+                                            ],
+                                            [
+                                                "vis",
+                                                [
+                                                    {
+                                                        "t": "will {it}abide by{/it} your decision"
+                                                    }
+                                                ]
+                                            ]
+                                        ]
+                                    }
+                                ]
+                            ]
+                        ]
+                    }
+                ]
+            }
+        ],
+        "syns": [
+            {
+                "pl": "synonyms",
+                "pt": [
+                    [
+                        "text",
+                        "{sc}bear{/sc} {sc}suffer{/sc} {sc}endure{/sc} {sc}abide{/sc} {sc}tolerate{/sc} {sc}stand{/sc} mean to put up with something trying or painful. {sc}bear{/sc} usually implies the power to sustain without flinching or breaking. "
+                    ],
+                    [
+                        "vis",
+                        [
+                            {
+                                "t": "forced to {it}bear{/it} a tragic loss"
+                            }
+                        ]
+                    ],
+                    [
+                        "text",
+                        " {sc}suffer{/sc} often suggests acceptance or passivity rather than courage or patience in bearing. "
+                    ],
+                    [
+                        "vis",
+                        [
+                            {
+                                "t": "{it}suffering{/it} many insults"
+                            }
+                        ]
+                    ],
+                    [
+                        "text",
+                        " {sc}endure{/sc} implies continuing firm or resolute through trials and difficulties. "
+                    ],
+                    [
+                        "vis",
+                        [
+                            {
+                                "t": "{it}endured{/it} years of rejection"
+                            }
+                        ]
+                    ],
+                    [
+                        "text",
+                        " {sc}abide{/sc} suggests acceptance without resistance or protest. "
+                    ],
+                    [
+                        "vis",
+                        [
+                            {
+                                "t": "cannot {it}abide{/it} their rudeness"
+                            }
+                        ]
+                    ],
+                    [
+                        "text",
+                        " {sc}tolerate{/sc} suggests overcoming or successfully controlling an impulse to resist, avoid, or resent something injurious or distasteful. "
+                    ],
+                    [
+                        "vis",
+                        [
+                            {
+                                "t": "refused to {it}tolerate{/it} such treatment"
+                            }
+                        ]
+                    ],
+                    [
+                        "text",
+                        " {sc}stand{/sc} emphasizes even more strongly the ability to bear without discomposure or flinching. "
+                    ],
+                    [
+                        "vis",
+                        [
+                            {
+                                "t": "unable to {it}stand{/it} teasing"
+                            }
+                        ]
+                    ]
+                ]
+            },
+            {
+                "pl": "synonyms",
+                "pt": [
+                    [
+                        "text",
+                        "{sc}continue{/sc} {sc}last{/sc} {sc}endure{/sc} {sc}abide{/sc} {sc}persist{/sc} mean to exist over a period of time or indefinitely. {sc}continue{/sc} applies to a process going on without ending. "
+                    ],
+                    [
+                        "vis",
+                        [
+                            {
+                                "t": "the search for peace will {it}continue{/it}"
+                            }
+                        ]
+                    ],
+                    [
+                        "text",
+                        " {sc}last{/sc}, especially when unqualified, may stress existing beyond what is normal or expected. "
+                    ],
+                    [
+                        "vis",
+                        [
+                            {
+                                "t": "buy shoes that will {it}last{/it}"
+                            }
+                        ]
+                    ],
+                    [
+                        "text",
+                        " {sc}endure{/sc} adds an implication of resisting destructive forces or agencies. "
+                    ],
+                    [
+                        "vis",
+                        [
+                            {
+                                "t": "in spite of everything, her faith {it}endured{/it}"
+                            }
+                        ]
+                    ],
+                    [
+                        "text",
+                        " {sc}abide{/sc} implies stable and constant existing especially as opposed to mutability. "
+                    ],
+                    [
+                        "vis",
+                        [
+                            {
+                                "t": "a love that {it}abides{/it} through 40 years of marriage"
+                            }
+                        ]
+                    ],
+                    [
+                        "text",
+                        " {sc}persist{/sc} suggests outlasting the normal or appointed time and often connotes obstinacy or doggedness. "
+                    ],
+                    [
+                        "vis",
+                        [
+                            {
+                                "t": "the sense of guilt {it}persisted{/it}"
+                            }
+                        ]
+                    ]
+                ]
+            }
+        ],
+        "quotes": [
+            {
+                "t": "A former party functionary, Yeltsin replaced Communist ideology with a supremely simplified vision of democracy, which boiled down to two tenets: He could not {qword}abide{/qword} Communists, and he supported freedom of the press.",
+                "aq": {
+                    "auth": "Masha Gessen",
+                    "source": "{it}New Republic{/it}",
+                    "aqdate": "5 June 2000"
+                }
+            },
+            {
+                "t": "Now his anger had poisoned all relationships, no one could be put in the two empty beds in the room, and not even his long-suffering sister could {qword}abide{/qword} him in her house.",
+                "aq": {
+                    "auth": "Peter Pouncey",
+                    "source": "{it}Rules for Old Men Waiting{/it}",
+                    "aqdate": "2005"
+                }
+            }
+        ],
+        "et": [
+            [
+                "text",
+                "Middle English {it}abiden{/it}, going back to Old English {it}abīdan{/it}, from {it}a-{/it}, perfective prefix + {it}bīdan{/it} \"to bide, wait\"; {it}a-{/it} (also {it}ā-, ǣ-{/it} under stress in nominal derivatives) akin to Old Frisian {it}a-{/it}, perfective prefix, Old Saxon {it}ā-, ō-{/it} (unstressed {it}a-{/it}) and probably to Old English {it}or-{/it} \"outward, extreme, lacking (in nominal compounds),\" Old Frisian & Old Saxon {it}ur-, or-{/it}, Old High German {it}ar-, ir-, er-{/it} unstressed inchoative verb prefix, {it}ur{/it} \"out of, away from,\" Old Norse {it}ūr-, ör-{/it}, \"out of, from,\" {it}ør-{/it}, privative prefix, Gothic {it}us-{/it} \"out of,\" {it}us-{/it}, privative and perfective prefix; if from pre-Germanic {it}*ud-s-{/it} akin to Old English {it}ūt{/it} \"out\" {ma}{mat|out:1|}, {mat|bide|}{/ma}"
+            ]
+        ],
+        "date": "before 12th century{ds|t|2||}",
+        "shortdef": [
+            "to bear patiently : tolerate",
+            "to endure without yielding : withstand",
+            "to wait for : await"
+        ]
+    }
+]

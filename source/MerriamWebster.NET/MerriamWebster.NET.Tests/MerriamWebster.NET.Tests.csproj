@@ -8,18 +8,35 @@
 
   <ItemGroup>
     <None Remove="Resources\abarrotado.json" />
+    <None Remove="Resources\abbey.json" />
     <None Remove="Resources\abeja.json" />
+    <None Remove="Resources\banadera.json" />
     <None Remove="Resources\casa.json" />
+    <None Remove="Resources\collegiate_abaco.json" />
+    <None Remove="Resources\collegiate_abeyance.json" />
+    <None Remove="Resources\collegiate_abide.json" />
+    <None Remove="Resources\collegiate_above.json" />
+    <None Remove="Resources\collegiate_absence.json" />
+    <None Remove="Resources\collegiate_Acadia.json" />
     <None Remove="Resources\collegiate_algiers.json" />
+    <None Remove="Resources\collegiate_alliteration.json" />
+    <None Remove="Resources\collegiate_alphabet.json" />
     <None Remove="Resources\collegiate_Dodgson.json" />
+    <None Remove="Resources\collegiate_feline.json" />
+    <None Remove="Resources\collegiate_heart.json" />
+    <None Remove="Resources\collegiate_manatee.json" />
     <None Remove="Resources\collegiate_pelvis.json" />
     <None Remove="Resources\collegiate_reap.json" />
     <None Remove="Resources\collegiate_reboot.json" />
+    <None Remove="Resources\collegiate_tab.json" />
     <None Remove="Resources\collegiate_tedious.json" />
+    <None Remove="Resources\collegiate_threatening.json" />
     <None Remove="Resources\coll_dict_voluminous.json" />
     <None Remove="Resources\coll_thes_above_meta.json" />
+    <None Remove="Resources\coll_thes_agree.json" />
     <None Remove="Resources\coll_thes_umpire.json" />
     <None Remove="Resources\delgado.json" />
+    <None Remove="Resources\distinto.json" />
     <None Remove="Resources\elem_dict_school.json" />
     <None Remove="Resources\estar.json" />
     <None Remove="Resources\example_ginger.json" />
@@ -29,6 +46,7 @@
     <None Remove="Resources\inter_thes_umpire.json" />
     <None Remove="Resources\jirón.json" />
     <None Remove="Resources\learn_apple.json" />
+    <None Remove="Resources\med_bartonella.json" />
     <None Remove="Resources\med_doctor.json" />
     <None Remove="Resources\med_knee.json" />
     <None Remove="Resources\med_pelvis.json" />
@@ -40,17 +58,36 @@
     <None Remove="Resources\sense_learn_apple.json" />
     <None Remove="Resources\sense_med_doctor.json" />
     <None Remove="Resources\sierra.json" />
+    <None Remove="Resources\youngster.json" />
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Resources\abbey.json" />
+    <EmbeddedResource Include="Resources\banadera.json" />
+    <EmbeddedResource Include="Resources\collegiate_abaco.json" />
+    <EmbeddedResource Include="Resources\collegiate_abeyance.json" />
+    <EmbeddedResource Include="Resources\collegiate_abide.json" />
+    <EmbeddedResource Include="Resources\collegiate_above.json" />
+    <EmbeddedResource Include="Resources\collegiate_absence.json" />
+    <EmbeddedResource Include="Resources\collegiate_Acadia.json" />
+    <EmbeddedResource Include="Resources\collegiate_alliteration.json" />
+    <EmbeddedResource Include="Resources\collegiate_alphabet.json" />
     <EmbeddedResource Include="Resources\collegiate_Dodgson.json" />
+    <EmbeddedResource Include="Resources\collegiate_feline.json" />
+    <EmbeddedResource Include="Resources\collegiate_heart.json" />
+    <EmbeddedResource Include="Resources\collegiate_manatee.json" />
     <EmbeddedResource Include="Resources\collegiate_pelvis.json" />
     <EmbeddedResource Include="Resources\collegiate_reap.json" />
     <EmbeddedResource Include="Resources\collegiate_reboot.json" />
     <EmbeddedResource Include="Resources\collegiate_algiers.json" />
+    <EmbeddedResource Include="Resources\collegiate_tab.json" />
     <EmbeddedResource Include="Resources\collegiate_tedious.json" />
+    <EmbeddedResource Include="Resources\collegiate_threatening.json" />
+    <EmbeddedResource Include="Resources\coll_thes_agree.json" />
+    <EmbeddedResource Include="Resources\distinto.json" />
     <EmbeddedResource Include="Resources\example_ginger.json" />
     <EmbeddedResource Include="Resources\jirón.json" />
+    <EmbeddedResource Include="Resources\med_bartonella.json" />
     <EmbeddedResource Include="Resources\med_pelvis.json" />
     <EmbeddedResource Include="Resources\med_knee.json" />
     <EmbeddedResource Include="Resources\school_dict_baseball.json" />
@@ -76,6 +113,7 @@
     <EmbeddedResource Include="Resources\pueblo.json" />
     <EmbeddedResource Include="Resources\quedar.json" />
     <EmbeddedResource Include="Resources\sense_above.json" />
+    <EmbeddedResource Include="Resources\youngster.json" />
   </ItemGroup>
 
   <ItemGroup>

@@ -15,6 +15,9 @@ namespace MerriamWebster.NET.Response.JsonConverters
                 case JsonToken.Date:
                     var stringValue = serializer.Deserialize<string>(reader);
                     return new DefiningTextComplexTypeWrapper { TypeOrLabel = stringValue };
+                case JsonToken.StartObject:
+                    var objectValue = serializer.Deserialize<RunInWrap>(reader);
+                    return new DefiningTextComplexTypeWrapper { RunInWrap = objectValue };
                 case JsonToken.StartArray:
                     var arrayValue = serializer.Deserialize<DefiningTextComplexType[]>(reader);
                     return new DefiningTextComplexTypeWrapper { DefiningTextComplexTypeArray = arrayValue };

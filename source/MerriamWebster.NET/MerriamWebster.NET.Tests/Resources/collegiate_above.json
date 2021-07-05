@@ -1,0 +1,889 @@
+[
+    {
+        "meta": {
+            "id": "above:1",
+            "uuid": "487427fe-b68d-444f-a539-619a029b4878",
+            "sort": "010192000",
+            "src": "collegiate",
+            "section": "alpha",
+            "stems": [
+                "above"
+            ],
+            "offensive": false
+        },
+        "hom": 1,
+        "hwi": {
+            "hw": "above",
+            "prs": [
+                {
+                    "mw": "ə-ˈbəv",
+                    "sound": {
+                        "audio": "above001",
+                        "ref": "c",
+                        "stat": "1"
+                    }
+                }
+            ]
+        },
+        "fl": "adverb",
+        "def": [
+            {
+                "sseq": [
+                    [
+                        [
+                            "sense",
+                            {
+                                "sn": "1 a",
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}in the sky {bc}{sx|overhead||} "
+                                    ],
+                                    [
+                                        "vis",
+                                        [
+                                            {
+                                                "t": "the clouds {wi}above{/wi}"
+                                            }
+                                        ]
+                                    ]
+                                ]
+                            }
+                        ],
+                        [
+                            "sense",
+                            {
+                                "sn": "b",
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}in or to heaven"
+                                    ]
+                                ]
+                            }
+                        ]
+                    ],
+                    [
+                        [
+                            "sense",
+                            {
+                                "sn": "2 a",
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}in or to a higher place"
+                                    ]
+                                ]
+                            }
+                        ],
+                        [
+                            "sense",
+                            {
+                                "sn": "b",
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}higher on the same page or on a preceding page "
+                                    ],
+                                    [
+                                        "vis",
+                                        [
+                                            {
+                                                "t": "except as stated {wi}above{/wi}"
+                                            }
+                                        ]
+                                    ]
+                                ]
+                            }
+                        ],
+                        [
+                            "sense",
+                            {
+                                "sn": "c",
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}{sx|upstairs||}"
+                                    ]
+                                ]
+                            }
+                        ],
+                        [
+                            "sense",
+                            {
+                                "sn": "d",
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}above zero "
+                                    ],
+                                    [
+                                        "vis",
+                                        [
+                                            {
+                                                "t": "10 degrees {wi}above{/wi}"
+                                            }
+                                        ]
+                                    ]
+                                ]
+                            }
+                        ]
+                    ],
+                    [
+                        [
+                            "sense",
+                            {
+                                "sn": "3",
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}in or to a higher rank or number "
+                                    ],
+                                    [
+                                        "vis",
+                                        [
+                                            {
+                                                "t": "30 and {wi}above{/wi}"
+                                            }
+                                        ]
+                                    ]
+                                ]
+                            }
+                        ]
+                    ],
+                    [
+                        [
+                            "sense",
+                            {
+                                "sn": "4",
+                                "sls": [
+                                    "archaic"
+                                ],
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}in addition {bc}{sx|besides||}"
+                                    ]
+                                ]
+                            }
+                        ]
+                    ],
+                    [
+                        [
+                            "sense",
+                            {
+                                "sn": "5",
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}{sx|upstage||}"
+                                    ]
+                                ]
+                            }
+                        ]
+                    ]
+                ]
+            }
+        ],
+        "et": [
+            [
+                "text",
+                "Middle English {it}above, aboven{/it}, going back to Old English {it}abufan{/it}, from {it}a-{/it} {et_link|a-:1|a-:1} + {it}bufan{/it} \"above\" (akin to Old Saxon {it}bi-oƀan{/it}, Middle Dutch {it}bōven{/it}, Old Frisian {it}bova{/it}, Middle High German {it}bobene{/it}), from {it}be-{/it} {et_link|be-|be-} + {it}ufan{/it} \"above, from above,\" going back to Germanic {it}*uban-{/it} (whence Old Saxon {it}oƀana{/it} \"from above,\" Old High German {it}obana{/it}), from {it}*ub-{/it} \"above, on\" + {it}*-an-{/it}, adverbial suffix {ma}{mat|over:1|}{/ma}"
+            ]
+        ],
+        "date": "before 12th century{ds||1|a|}",
+        "shortdef": [
+            "in the sky : overhead",
+            "in or to heaven",
+            "in or to a higher place"
+        ]
+    },
+    {
+        "meta": {
+            "id": "above:2",
+            "uuid": "5779dc2e-a391-4f61-8ef0-541c4ff39077",
+            "sort": "010193000",
+            "src": "collegiate",
+            "section": "alpha",
+            "stems": [
+                "above"
+            ],
+            "offensive": false
+        },
+        "hom": 2,
+        "hwi": {
+            "hw": "above"
+        },
+        "fl": "preposition",
+        "def": [
+            {
+                "sseq": [
+                    [
+                        [
+                            "sense",
+                            {
+                                "sn": "1 a",
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}in or to a higher place than {bc}{sx|over||} "
+                                    ],
+                                    [
+                                        "vis",
+                                        [
+                                            {
+                                                "t": "a room {wi}above{/wi} the store"
+                                            }
+                                        ]
+                                    ]
+                                ]
+                            }
+                        ],
+                        [
+                            "sense",
+                            {
+                                "sn": "b",
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}upriver of "
+                                    ],
+                                    [
+                                        "vis",
+                                        [
+                                            {
+                                                "t": "anchored about 10 miles {wi}above{/wi} the city"
+                                            }
+                                        ]
+                                    ]
+                                ]
+                            }
+                        ]
+                    ],
+                    [
+                        [
+                            "sense",
+                            {
+                                "sn": "2 a",
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}superior to (as in rank, quality, or degree) "
+                                    ],
+                                    [
+                                        "vis",
+                                        [
+                                            {
+                                                "t": "A sergeant is {wi}above{/wi} a corporal."
+                                            }
+                                        ]
+                                    ]
+                                ]
+                            }
+                        ],
+                        [
+                            "sense",
+                            {
+                                "sn": "b",
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}out of reach of "
+                                    ],
+                                    [
+                                        "vis",
+                                        [
+                                            {
+                                                "t": "{wi}above{/wi} suspicion"
+                                            }
+                                        ]
+                                    ]
+                                ]
+                            }
+                        ],
+                        [
+                            "sense",
+                            {
+                                "sn": "c",
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}in preference to "
+                                    ],
+                                    [
+                                        "vis",
+                                        [
+                                            {
+                                                "t": "puts his child's needs {wi}above{/wi} his own needs"
+                                            }
+                                        ]
+                                    ]
+                                ]
+                            }
+                        ],
+                        [
+                            "sense",
+                            {
+                                "sn": "d",
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}too proud or honorable to stoop to "
+                                    ],
+                                    [
+                                        "vis",
+                                        [
+                                            {
+                                                "t": "not {wi}above{/wi} taking undue credit"
+                                            }
+                                        ]
+                                    ]
+                                ]
+                            }
+                        ]
+                    ],
+                    [
+                        [
+                            "sense",
+                            {
+                                "sn": "3",
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}exceeding in number, quantity, or size {bc}more than "
+                                    ],
+                                    [
+                                        "vis",
+                                        [
+                                            {
+                                                "t": "men {wi}above{/wi} 50 years old"
+                                            }
+                                        ]
+                                    ]
+                                ]
+                            }
+                        ]
+                    ],
+                    [
+                        [
+                            "sense",
+                            {
+                                "sn": "4",
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}as distinct from and in addition to "
+                                    ],
+                                    [
+                                        "vis",
+                                        [
+                                            {
+                                                "t": "heard the whistle {wi}above{/wi} the roar of the crowd"
+                                            }
+                                        ]
+                                    ]
+                                ]
+                            }
+                        ]
+                    ]
+                ]
+            }
+        ],
+        "et": [
+            [
+                "text",
+                "Middle English {it}above, aboven{/it}, derivative of {it}above, aboven{/it} {et_link|above:1|above:1}"
+            ]
+        ],
+        "date": "13th century{ds||1|a|}",
+        "shortdef": [
+            "in or to a higher place than : over",
+            "upriver of",
+            "superior to (as in rank, quality, or degree)"
+        ]
+    },
+    {
+        "meta": {
+            "id": "above:3",
+            "uuid": "dac81e37-e4df-4785-ac60-5f6bde917f38",
+            "sort": "010194000",
+            "src": "collegiate",
+            "section": "alpha",
+            "stems": [
+                "above",
+                "aboves"
+            ],
+            "offensive": false
+        },
+        "hom": 3,
+        "hwi": {
+            "hw": "above"
+        },
+        "fl": "noun",
+        "ins": [
+            {
+                "il": "plural",
+                "if": "above"
+            }
+        ],
+        "def": [
+            {
+                "sseq": [
+                    [
+                        [
+                            "sense",
+                            {
+                                "sn": "1 a",
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}something that is above "
+                                    ],
+                                    [
+                                        "vis",
+                                        [
+                                            {
+                                                "t": "Select one of the {wi}above{/wi}."
+                                            }
+                                        ]
+                                    ]
+                                ]
+                            }
+                        ],
+                        [
+                            "sense",
+                            {
+                                "sn": "b",
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}a person whose name is written above "
+                                    ],
+                                    [
+                                        "vis",
+                                        [
+                                            {
+                                                "t": "Contact any of the {wi}above{/wi} for more information."
+                                            }
+                                        ]
+                                    ]
+                                ]
+                            }
+                        ]
+                    ],
+                    [
+                        [
+                            "sense",
+                            {
+                                "sn": "2 a",
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}a higher authority"
+                                    ]
+                                ]
+                            }
+                        ],
+                        [
+                            "sense",
+                            {
+                                "sn": "b",
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}{sx|heaven||}"
+                                    ]
+                                ]
+                            }
+                        ]
+                    ]
+                ]
+            }
+        ],
+        "usages": [
+            {
+                "pl": "Using {parahw}above{/parahw} as an Adjective or Noun",
+                "pt": [
+                    [
+                        "text",
+                        "Although still objected to by some, the use of {it}above{/it} as a noun to mean \"something that is above\" "
+                    ],
+                    [
+                        "vis",
+                        [
+                            {
+                                "t": "none of the {it}above{/it}"
+                            },
+                            {
+                                "t": "the {it}above{/it} is Theseus's opinion",
+                                "aq": {
+                                    "auth": "William Blake"
+                                }
+                            }
+                        ]
+                    ],
+                    [
+                        "text",
+                        " and as an adjective "
+                    ],
+                    [
+                        "vis",
+                        [
+                            {
+                                "t": "without the {it}above{/it} reserve",
+                                "aq": {
+                                    "auth": "O. W. Holmes †1935"
+                                }
+                            },
+                            {
+                                "t": "I was brought up on the {it}above{/it} words",
+                                "aq": {
+                                    "auth": "Viscount Montgomery"
+                                }
+                            }
+                        ]
+                    ],
+                    [
+                        "text",
+                        " has been long established as standard."
+                    ]
+                ]
+            }
+        ],
+        "et": [
+            [
+                "text",
+                "Middle English {it}above{/it} \"a higher position,\" derivative of {it}above, aboven{/it} {et_link|above:1|above:1}"
+            ]
+        ],
+        "date": "1691{ds||1|b|}",
+        "shortdef": [
+            "something that is above",
+            "a person whose name is written above",
+            "a higher authority"
+        ]
+    },
+    {
+        "meta": {
+            "id": "above:4",
+            "uuid": "2573d3ef-4499-491c-a484-4e36746c65b4",
+            "sort": "010195000",
+            "src": "collegiate",
+            "section": "alpha",
+            "stems": [
+                "above"
+            ],
+            "offensive": false
+        },
+        "hom": 4,
+        "hwi": {
+            "hw": "above"
+        },
+        "fl": "adjective",
+        "def": [
+            {
+                "sseq": [
+                    [
+                        [
+                            "sense",
+                            {
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}written or discussed higher on the same page or on a preceding page "
+                                    ],
+                                    [
+                                        "vis",
+                                        [
+                                            {
+                                                "t": "Contact me at the {wi}above{/wi} address."
+                                            }
+                                        ]
+                                    ]
+                                ]
+                            }
+                        ]
+                    ]
+                ]
+            }
+        ],
+        "et": [
+            [
+                "text",
+                "derivative of {et_link|above:1|above:1}"
+            ]
+        ],
+        "date": "circa 1515",
+        "shortdef": [
+            "written or discussed higher on the same page or on a preceding page"
+        ]
+    },
+    {
+        "meta": {
+            "id": "above all",
+            "uuid": "91e85471-bb9d-4769-9461-fc647abb1f9a",
+            "sort": "010196000",
+            "src": "collegiate",
+            "section": "alpha",
+            "stems": [
+                "above all"
+            ],
+            "offensive": false
+        },
+        "hwi": {
+            "hw": "above all"
+        },
+        "fl": "adverb",
+        "def": [
+            {
+                "sseq": [
+                    [
+                        [
+                            "sense",
+                            {
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}before every other consideration {bc}{sx|especially||}"
+                                    ]
+                                ]
+                            }
+                        ]
+                    ]
+                ]
+            }
+        ],
+        "date": "14th century",
+        "shortdef": [
+            "before every other consideration : especially"
+        ]
+    },
+    {
+        "meta": {
+            "id": "above and beyond",
+            "uuid": "12a757ca-841b-4d03-ad99-c29bbd54b89b",
+            "sort": "3000031000",
+            "src": "ld",
+            "section": "idioms",
+            "stems": [
+                "above and beyond"
+            ],
+            "offensive": false
+        },
+        "hwi": {
+            "hw": "above and beyond"
+        },
+        "fl": "idiom",
+        "def": [
+            {
+                "sseq": [
+                    [
+                        [
+                            "sense",
+                            {
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}far beyond what is required by (something, such as a duty) "
+                                    ],
+                                    [
+                                        "vis",
+                                        [
+                                            {
+                                                "t": "He went {it}above and beyond{/it} the call of duty."
+                                            }
+                                        ]
+                                    ]
+                                ]
+                            }
+                        ]
+                    ]
+                ]
+            }
+        ],
+        "shortdef": [
+            "far beyond what is required by (something, such as a duty)"
+        ]
+    },
+    {
+        "meta": {
+            "id": "above par",
+            "uuid": "48988391-c9eb-4ae6-8acb-213a96e099a3",
+            "sort": "3000035000",
+            "src": "ld",
+            "section": "idioms",
+            "stems": [
+                "above par"
+            ],
+            "offensive": false
+        },
+        "hwi": {
+            "hw": "above par"
+        },
+        "fl": "idiom",
+        "def": [
+            {
+                "sseq": [
+                    [
+                        [
+                            "sense",
+                            {
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}better than normal or expected {bc}very good "
+                                    ],
+                                    [
+                                        "vis",
+                                        [
+                                            {
+                                                "t": "The performance was {it}above par{/it}."
+                                            }
+                                        ]
+                                    ]
+                                ]
+                            }
+                        ]
+                    ]
+                ]
+            }
+        ],
+        "shortdef": [
+            "better than normal or expected : very good"
+        ]
+    },
+    {
+        "meta": {
+            "id": "above the fray",
+            "uuid": "f404099f-85b2-4560-9e5e-2d84760011a9",
+            "sort": "3000036000",
+            "src": "ld",
+            "section": "idioms",
+            "stems": [
+                "above the fray"
+            ],
+            "offensive": false
+        },
+        "hwi": {
+            "hw": "above the fray"
+        },
+        "fl": "idiom",
+        "def": [
+            {
+                "sseq": [
+                    [
+                        [
+                            "sense",
+                            {
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}not directly involved in an angry or difficult struggle or disagreement "
+                                    ],
+                                    [
+                                        "vis",
+                                        [
+                                            {
+                                                "t": "His political aides handled the controversy while he remained {it}above the fray{/it}."
+                                            }
+                                        ]
+                                    ]
+                                ]
+                            }
+                        ]
+                    ]
+                ]
+            }
+        ],
+        "shortdef": [
+            "not directly involved in an angry or difficult struggle or disagreement"
+        ]
+    },
+    {
+        "meta": {
+            "id": "above the law",
+            "uuid": "feabb0ef-e566-49a2-ad3e-8309e0004ee0",
+            "sort": "3000037000",
+            "src": "ld",
+            "section": "idioms",
+            "stems": [
+                "above the law"
+            ],
+            "offensive": false
+        },
+        "hwi": {
+            "hw": "above the law"
+        },
+        "fl": "idiom",
+        "def": [
+            {
+                "sseq": [
+                    [
+                        [
+                            "sense",
+                            {
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}not required to obey the law "
+                                    ],
+                                    [
+                                        "vis",
+                                        [
+                                            {
+                                                "t": "No one is {it}above the law{/it}."
+                                            }
+                                        ]
+                                    ]
+                                ]
+                            }
+                        ]
+                    ]
+                ]
+            }
+        ],
+        "shortdef": [
+            "not required to obey the law"
+        ]
+    },
+    {
+        "meta": {
+            "id": "over and above",
+            "uuid": "6c13e810-a7dd-42fb-a530-175a8947e313",
+            "sort": "151854000",
+            "src": "collegiate",
+            "section": "alpha",
+            "stems": [
+                "over and above"
+            ],
+            "offensive": false
+        },
+        "hwi": {
+            "hw": "over and above"
+        },
+        "fl": "preposition",
+        "def": [
+            {
+                "sseq": [
+                    [
+                        [
+                            "sense",
+                            {
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}in addition to {bc}{sx|besides||}"
+                                    ]
+                                ]
+                            }
+                        ]
+                    ]
+                ]
+            }
+        ],
+        "date": "15th century",
+        "shortdef": [
+            "in addition to : besides"
+        ]
+    }
+]

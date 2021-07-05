@@ -6,10 +6,13 @@ using System.Net.Http;
 using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
+using MerriamWebster.NET.Response;
+using MerriamWebster.NET.Response.JsonConverters;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using Moq.AutoMock;
 using Moq.Protected;
+using Newtonsoft.Json;
 using Shouldly;
 
 namespace MerriamWebster.NET.Tests
@@ -35,7 +38,36 @@ namespace MerriamWebster.NET.Tests
 
             _client = mocker.CreateInstance<MerriamWebsterClient>();
         }
-        
+
+        [TestMethod]
+        public async Task MerriamWebsterClient_DeserializeAll()
+        {
+            string[] exclusions = { "coll_thes_above_meta.json", "sense_learn_apple.json", "sense_above.json", "sense_med_doctor.json" };
+            var asm = Assembly.GetExecutingAssembly();
+            var resources = asm.GetManifestResourceNames();
+            foreach (var resource in resources)
+            {
+                if (exclusions.Any(e => resource.EndsWith(e)))
+                {
+                    continue;
+                }
+
+                await using var resourceStream = asm.GetManifestResourceStream(resource);
+                
+                using var reader = new StreamReader(resourceStream);
+                string content = await reader.ReadToEndAsync();
+
+                try
+                {
+                    var result = JsonConvert.DeserializeObject<DictionaryEntry[]>(content, Converter.Settings);
+                }
+                catch (Exception ex)
+                {
+                    throw new NotImplementedException(resource, ex);
+                }
+            }
+        }
+
         [TestMethod]
         public async Task MerriamWebsterClient_CanDeserialize_Casa()
         {
@@ -204,18 +236,6 @@ namespace MerriamWebster.NET.Tests
 
             // ASSERT
             result.ShouldNotBeEmpty();
-
-            // test for CalledAlsoNote specifically
-            var ca = result.SelectMany(r => r.Definitions.SelectMany(d => d.SenseSequences).SelectMany(sss => sss))
-                .SelectMany(ss => ss)
-                .Select(s => s.Sense)
-                .Where(s => s?.DefiningTexts != null)
-                .SelectMany(s => s.DefiningTexts)
-                .SelectMany(dtWrapper => dtWrapper)
-                .Where(dt => dt.CalledAlso != null)
-                .Select(dt => dt.CalledAlso);
-
-            ca.ShouldNotBeEmpty();
         }
 
         [TestMethod]
@@ -252,18 +272,6 @@ namespace MerriamWebster.NET.Tests
 
             // ASSERT
             result.ShouldNotBeEmpty();
-
-            // test for BiographicalNameWrap specifically
-            var bnw = result.SelectMany(r => r.Definitions.SelectMany(d => d.SenseSequences).SelectMany(sss => sss))
-                .SelectMany(ss => ss)
-                .Select(s => s.Sense)
-                .Where(s=>s?.DefiningTexts != null)
-                .SelectMany(s => s.DefiningTexts)
-                .SelectMany(dtWrapper => dtWrapper)
-                .Where(dt=>dt.BiographicalNameWrap != null)
-                .Select(dt => dt.BiographicalNameWrap);
-
-            bnw.ShouldNotBeEmpty();
         }
 
         [TestMethod]
@@ -278,9 +286,7 @@ namespace MerriamWebster.NET.Tests
 
             // ACT
             var result = (await _client.GetDictionaryEntry("api", "entry")).ToList();
-
-            // TODO verify content pseq/sseq
-
+            
             // ASSERT
             result.ShouldNotBeEmpty();
         }
@@ -303,6 +309,24 @@ namespace MerriamWebster.NET.Tests
             result.Count.ShouldBe(2);
         }
 
+        [TestMethod]
+        public async Task MerriamWebsterClient_CanDeserialize_Agree()
+        {
+            string response = await TestHelper.LoadResponseFromFileAsync("coll_thes_agree");
+
+            _handlerMock.Protected()
+                .Setup<Task<HttpResponseMessage>>("SendAsync", ItExpr.IsAny<HttpRequestMessage>(),
+                    ItExpr.IsAny<CancellationToken>())
+                .ReturnsAsync(SetupOkResponseMessage(response));
+
+            // ACT
+            var result = (await _client.GetDictionaryEntry("api", "entry")).ToList();
+
+
+            // ASSERT
+            result.Count.ShouldBe(4);
+        }
+
         private static HttpResponseMessage SetupOkResponseMessage(string content)
         {
             return new HttpResponseMessage(HttpStatusCode.OK)
@@ -311,6 +335,6 @@ namespace MerriamWebster.NET.Tests
             };
         }
 
-       
+
     }
 }

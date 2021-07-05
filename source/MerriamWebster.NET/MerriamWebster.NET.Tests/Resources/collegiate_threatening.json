@@ -1,0 +1,391 @@
+[
+    {
+        "meta": {
+            "id": "threatening",
+            "uuid": "25828202-6184-4b36-b9e5-6dd09d9b5c9a",
+            "sort": "200183950",
+            "src": "collegiate",
+            "section": "alpha",
+            "stems": [
+                "threatening",
+                "threateningly"
+            ],
+            "offensive": false
+        },
+        "hwi": {
+            "hw": "threat*en*ing",
+            "prs": [
+                {
+                    "mw": "ˈthret-niŋ",
+                    "sound": {
+                        "audio": "threat03",
+                        "ref": "c",
+                        "stat": "1"
+                    }
+                },
+                {
+                    "mw": "ˈthre-tᵊn-iŋ"
+                }
+            ]
+        },
+        "fl": "adjective",
+        "def": [
+            {
+                "sseq": [
+                    [
+                        [
+                            "sense",
+                            {
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}expressing or suggesting a {a_link|threat} of harm, danger, etc. "
+                                    ],
+                                    [
+                                        "vis",
+                                        [
+                                            {
+                                                "t": "received a {wi}threatening{/wi} message"
+                                            },
+                                            {
+                                                "t": "a {wi}threatening{/wi} manner"
+                                            }
+                                        ]
+                                    ],
+                                    [
+                                        "text",
+                                        " {bc}indicating or suggesting the approach of possible trouble or danger "
+                                    ],
+                                    [
+                                        "vis",
+                                        [
+                                            {
+                                                "t": "saw {wi}threatening{/wi} clouds on the horizon"
+                                            }
+                                        ]
+                                    ]
+                                ]
+                            }
+                        ]
+                    ]
+                ]
+            }
+        ],
+        "uros": [
+            {
+                "ure": "threat*en*ing*ly",
+                "prs": [
+                    {
+                        "mw": "ˈthret-niŋ-lē",
+                        "sound": {
+                            "audio": "threat05",
+                            "ref": "c",
+                            "stat": "1"
+                        }
+                    },
+                    {
+                        "mw": "ˈthre-tᵊn-iŋ-"
+                    }
+                ],
+                "fl": "adverb",
+                "utxt": [
+                    [
+                        "vis",
+                        [
+                            {
+                                "t": "gestured {wi}threateningly{/wi}"
+                            }
+                        ]
+                    ]
+                ]
+            }
+        ],
+        "date": "1530",
+        "shortdef": [
+            "expressing or suggesting a threat of harm, danger, etc. : indicating or suggesting the approach of possible trouble or danger"
+        ]
+    },
+    {
+        "meta": {
+            "id": "threaten",
+            "uuid": "ac5d898d-969b-48a8-a0d9-f8b88333f7e2",
+            "sort": "200183800",
+            "src": "collegiate",
+            "section": "alpha",
+            "stems": [
+                "threaten",
+                "threatened",
+                "threatener",
+                "threateners",
+                "threatening",
+                "threateningly",
+                "threatens"
+            ],
+            "offensive": false
+        },
+        "hwi": {
+            "hw": "threat*en",
+            "prs": [
+                {
+                    "mw": "ˈthre-tᵊn",
+                    "sound": {
+                        "audio": "threat02",
+                        "ref": "c",
+                        "stat": "1"
+                    }
+                }
+            ]
+        },
+        "fl": "verb",
+        "ins": [
+            {
+                "if": "threat*ened"
+            },
+            {
+                "if": "threat*en*ing",
+                "prs": [
+                    {
+                        "mw": "ˈthret-niŋ",
+                        "sound": {
+                            "audio": "threat03",
+                            "ref": "c",
+                            "stat": "1"
+                        }
+                    },
+                    {
+                        "mw": "ˈthre-tᵊn-iŋ"
+                    }
+                ]
+            }
+        ],
+        "def": [
+            {
+                "vd": "transitive verb",
+                "sseq": [
+                    [
+                        [
+                            "sense",
+                            {
+                                "sn": "1",
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}to utter {a_link|threats} against"
+                                    ]
+                                ]
+                            }
+                        ]
+                    ],
+                    [
+                        [
+                            "sense",
+                            {
+                                "sn": "2 a",
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}to give signs or warning of {bc}{sx|portend||} "
+                                    ],
+                                    [
+                                        "vis",
+                                        [
+                                            {
+                                                "t": "the clouds {wi}threatened{/wi} rain"
+                                            }
+                                        ]
+                                    ]
+                                ]
+                            }
+                        ],
+                        [
+                            "sense",
+                            {
+                                "sn": "b",
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}to hang over dangerously {bc}{sx|menace||} "
+                                    ],
+                                    [
+                                        "vis",
+                                        [
+                                            {
+                                                "t": "famine {wi}threatens{/wi} the city"
+                                            }
+                                        ]
+                                    ]
+                                ]
+                            }
+                        ]
+                    ],
+                    [
+                        [
+                            "sense",
+                            {
+                                "sn": "3",
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}to announce as intended or possible "
+                                    ],
+                                    [
+                                        "vis",
+                                        [
+                                            {
+                                                "t": "the workers {wi}threatened{/wi} a strike"
+                                            }
+                                        ]
+                                    ]
+                                ]
+                            }
+                        ]
+                    ],
+                    [
+                        [
+                            "sense",
+                            {
+                                "sn": "4",
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}to cause to feel insecure or anxious "
+                                    ],
+                                    [
+                                        "vis",
+                                        [
+                                            {
+                                                "t": "felt {wi}threatened{/wi} by his brother's success"
+                                            }
+                                        ]
+                                    ]
+                                ]
+                            }
+                        ]
+                    ]
+                ]
+            },
+            {
+                "vd": "intransitive verb",
+                "sseq": [
+                    [
+                        [
+                            "sense",
+                            {
+                                "sn": "1",
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}to utter threats"
+                                    ]
+                                ]
+                            }
+                        ]
+                    ],
+                    [
+                        [
+                            "sense",
+                            {
+                                "sn": "2",
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}to portend evil"
+                                    ]
+                                ]
+                            }
+                        ]
+                    ]
+                ]
+            }
+        ],
+        "uros": [
+            {
+                "ure": "threat*en*er",
+                "prs": [
+                    {
+                        "mw": "ˈthret-nər",
+                        "sound": {
+                            "audio": "threat04",
+                            "ref": "c",
+                            "stat": "1"
+                        }
+                    },
+                    {
+                        "mw": "ˈthre-tᵊn-ər"
+                    }
+                ],
+                "fl": "noun"
+            }
+        ],
+        "date": "13th century{ds|t|1||}",
+        "shortdef": [
+            "to utter threats against",
+            "to give signs or warning of : portend",
+            "to hang over dangerously : menace"
+        ]
+    },
+    {
+        "meta": {
+            "id": "life-threatening",
+            "uuid": "9e20a553-ac4d-4741-b36a-58ce5339727e",
+            "sort": "120150650",
+            "src": "collegiate",
+            "section": "alpha",
+            "stems": [
+                "life-threatening"
+            ],
+            "offensive": false
+        },
+        "hwi": {
+            "hw": "life-threat*en*ing",
+            "prs": [
+                {
+                    "mw": "ˈlīf-ˌthret-niŋ",
+                    "sound": {
+                        "audio": "lifet01ld",
+                        "ref": "ld",
+                        "stat": "1"
+                    }
+                },
+                {
+                    "mw": "-ˌthre-tᵊn-iŋ"
+                }
+            ]
+        },
+        "fl": "adjective",
+        "def": [
+            {
+                "sseq": [
+                    [
+                        [
+                            "sense",
+                            {
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}capable of causing death {bc}potentially fatal "
+                                    ],
+                                    [
+                                        "vis",
+                                        [
+                                            {
+                                                "t": "a {wi}life-threatening{/wi} disease/condition"
+                                            },
+                                            {
+                                                "t": "The injuries are serious but not {wi}life-threatening{/wi}."
+                                            }
+                                        ]
+                                    ]
+                                ]
+                            }
+                        ]
+                    ]
+                ]
+            }
+        ],
+        "date": "1759",
+        "shortdef": [
+            "capable of causing death : potentially fatal"
+        ]
+    }
+]

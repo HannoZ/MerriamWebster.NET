@@ -13,12 +13,18 @@ namespace MerriamWebster.NET.Response.JsonConverters
             DateParseHandling = DateParseHandling.None,
             Converters =
             {
-                DtUnionConverter.Singleton,
+                BioElementConverter.Singleton,
+                SseqEnumConverter.Singleton,
+                DefiningTextObjectWrapperConverter.Singleton,
                 LangConverter.Singleton,
-                SseqConverter.Singleton,
+                SenseSequenceConverter.Singleton,
                 DefiningTextComplexTypeConverter.Singleton,
                 DefiningTextComplexTypeWrapperConverter.Singleton,
                 DefiningTextObjectConverter.Singleton,
+                RefConverter.Singleton,
+                EtConverter.Singleton,
+                SectionConverter.Singleton,
+                SrcConverter.Singleton,
                 new IsoDateTimeConverter { DateTimeStyles = DateTimeStyles.AssumeUniversal }
             },
         };

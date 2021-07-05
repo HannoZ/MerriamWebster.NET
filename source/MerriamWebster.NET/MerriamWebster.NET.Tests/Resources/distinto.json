@@ -1,0 +1,108 @@
+[
+    {
+        "meta": {
+            "id": "distinto",
+            "uuid": "98ceb84c-dddc-4f5e-bf70-ee318e928c47",
+            "lang": "es",
+            "sort": "2607773000",
+            "src": "spanish",
+            "section": "alpha",
+            "stems": [
+                "distinto",
+                "distinta",
+                "distintos",
+                "distintas"
+            ],
+            "offensive": false
+        },
+        "hwi": {
+            "hw": "distinto",
+            "prs": [
+                {
+                    "sound": {
+                        "audio": "disti03sp"
+                    }
+                }
+            ]
+        },
+        "ahws": [
+            {
+                "hw": "distinta",
+                "hwc": "-ta"
+            }
+        ],
+        "fl": "adjective",
+        "def": [
+            {
+                "sseq": [
+                    [
+                        [
+                            "sense",
+                            {
+                                "sn": "1",
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{sx|diferente||} {bc}{a_link|different} "
+                                    ],
+                                    [
+                                        "vis",
+                                        [
+                                            {
+                                                "t": "distinto de/a",
+                                                "tr": "different from/than"
+                                            }
+                                        ]
+                                    ]
+                                ]
+                            }
+                        ]
+                    ],
+                    [
+                        [
+                            "sense",
+                            {
+                                "sn": "2",
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{sx|claro||} {bc}{a_link|distinct}, {a_link|clear}, {a_link|evident}"
+                                    ]
+                                ]
+                            }
+                        ]
+                    ],
+                    [
+                        [
+                            "sense",
+                            {
+                                "sn": "3",
+                                "ins": [
+                                    {
+                                        "if": "distintos",
+                                        "aif": {
+                                            "ifc": "-tas",
+                                            "if": "distintas"
+                                        },
+                                        "spl": "plural"
+                                    }
+                                ],
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}{a_link|various}"
+                                    ]
+                                ]
+                            }
+                        ]
+                    ]
+                ]
+            }
+        ],
+        "shortdef": [
+            "diferente : different",
+            "claro : distinct, clear, evident",
+            "various"
+        ]
+    }
+]

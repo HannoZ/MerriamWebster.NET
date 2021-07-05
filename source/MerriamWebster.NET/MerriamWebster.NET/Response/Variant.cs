@@ -13,14 +13,12 @@ namespace MerriamWebster.NET.Response
         [JsonProperty("vl")]
         public string VariantLabel { get; set; }
 
-#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
+        /// <summary>
+        /// Gets or sets the variant text.
+        /// </summary>
         [JsonProperty("va")]
         public string Text { get; set; }
-
-        [JsonProperty("prs", NullValueHandling = NullValueHandling.Ignore)]
-        public Pronunciation[] Pronunciations { get; set; } = { };
-#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
-
+        
         /// <summary>
         /// Contains a cutback form of the preceding variant
         /// </summary>
@@ -29,5 +27,17 @@ namespace MerriamWebster.NET.Response
         /// </remarks>
         [JsonProperty("vac", NullValueHandling = NullValueHandling.Ignore)]
         public string Cutback { get; set; }
+        
+        /// <summary>
+        /// Gets or sets pronunciations (optional).
+        /// </summary>
+        [JsonProperty("prs", NullValueHandling = NullValueHandling.Ignore)]
+        public Pronunciation[] Pronunciations { get; set; } = { };
+
+        /// <summary>
+        /// This label provides information on the grammatical number (eg, singular, plural) of an inflection in a particular sense.
+        /// </summary>
+        [JsonProperty("spl")]
+        public string SenseSpecificInflectionPluralLabel { get; set; }
     }
 }

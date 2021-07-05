@@ -1,0 +1,121 @@
+[
+    {
+        "meta": {
+            "id": "Acadia:g",
+            "uuid": "9292411b-b49f-40ac-8619-ffa76c38e2f1",
+            "sort": "270034000",
+            "src": "collegiate",
+            "section": "geog",
+            "stems": [
+                "Acadia",
+                "Acadie"
+            ],
+            "offensive": false
+        },
+        "hwi": {
+            "hw": "Aca*dia",
+            "prs": [
+                {
+                    "mw": "ə-ˈkā-dē-ə",
+                    "sound": {
+                        "audio": "ggacad01",
+                        "ref": "c",
+                        "stat": "1"
+                    }
+                }
+            ]
+        },
+        "vrs": [
+            {
+                "vl": "or French",
+                "va": "Aca*die",
+                "prs": [
+                    {
+                        "mw": "ä-kä-ˈdē",
+                        "sound": {
+                            "audio": "ggacad02",
+                            "ref": "c",
+                            "stat": "1"
+                        }
+                    }
+                ]
+            }
+        ],
+        "fl": "geographical name",
+        "def": [
+            {
+                "sseq": [
+                    [
+                        [
+                            "sense",
+                            {
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{sx|nova scotia||} "
+                                    ],
+                                    [
+                                        "uns",
+                                        [
+                                            [
+                                                [
+                                                    "text",
+                                                    "an early name"
+                                                ]
+                                            ]
+                                        ]
+                                    ]
+                                ]
+                            }
+                        ]
+                    ]
+                ]
+            }
+        ],
+        "dxnls": [
+            "see also {dxt|acadian|Acadian|}"
+        ],
+        "shortdef": [
+            "nova scotia —an early name"
+        ]
+    },
+    {
+        "meta": {
+            "id": "Acadia National Park:g",
+            "uuid": "2e8e5105-20cb-4351-9111-76156a6a1ecd",
+            "sort": "270035000",
+            "src": "collegiate",
+            "section": "geog",
+            "stems": [
+                "Acadia National Park"
+            ],
+            "offensive": false
+        },
+        "hwi": {
+            "hw": "Acadia National Park"
+        },
+        "fl": "geographical name",
+        "def": [
+            {
+                "sseq": [
+                    [
+                        [
+                            "sense",
+                            {
+                                "dt": [
+                                    [
+                                        "text",
+                                        "section of the coast of Maine including chiefly mountainous areas on Mount Desert Island and Isle au Haut"
+                                    ]
+                                ]
+                            }
+                        ]
+                    ]
+                ]
+            }
+        ],
+        "shortdef": [
+            "section of the coast of Maine including chiefly mountainous areas on Mount Desert Island and Isle au Haut"
+        ]
+    }
+]

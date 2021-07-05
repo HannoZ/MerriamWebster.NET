@@ -1,0 +1,121 @@
+[
+    {
+        "meta": {
+            "id": "youngster",
+            "uuid": "6536c496-2af7-4830-9d2f-7a9d91de0044",
+            "lang": "en",
+            "sort": "2627225000",
+            "src": "spanish",
+            "section": "alpha",
+            "stems": [
+                "youngster",
+                "youngsters"
+            ],
+            "offensive": false
+        },
+        "hwi": {
+            "hw": "youngster",
+            "prs": [
+                {
+                    "mw": "ˈjʌŋ{it}k{/it}stər",
+                    "sound": {
+                        "audio": "youngs01"
+                    }
+                }
+            ]
+        },
+        "fl": "noun",
+        "def": [
+            {
+                "sseq": [
+                    [
+                        [
+                            "sense",
+                            {
+                                "sn": "1",
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{sx|youth||} {bc}{a_link|joven} "
+                                    ],
+                                    [
+                                        "gl",
+                                        "masculine or feminine"
+                                    ]
+                                ]
+                            }
+                        ]
+                    ],
+                    [
+                        [
+                            "sense",
+                            {
+                                "sn": "2",
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{sx|child||} {bc}{a_link|chico} "
+                                    ],
+                                    [
+                                        "gl",
+                                        "masculine"
+                                    ],
+                                    [
+                                        "text",
+                                        ", "
+                                    ],
+                                    [
+                                        "gwds",
+                                        {
+                                            "gwc": "-ca",
+                                            "gwd": "chica"
+                                        }
+                                    ],
+                                    [
+                                        "text",
+                                        " "
+                                    ],
+                                    [
+                                        "gl",
+                                        "feminine"
+                                    ],
+                                    [
+                                        "text",
+                                        "; niño "
+                                    ],
+                                    [
+                                        "gl",
+                                        "masculine"
+                                    ],
+                                    [
+                                        "text",
+                                        ", "
+                                    ],
+                                    [
+                                        "gwds",
+                                        {
+                                            "gwc": "-ña",
+                                            "gwd": "niña"
+                                        }
+                                    ],
+                                    [
+                                        "text",
+                                        " "
+                                    ],
+                                    [
+                                        "gl",
+                                        "feminine"
+                                    ]
+                                ]
+                            }
+                        ]
+                    ]
+                ]
+            }
+        ],
+        "shortdef": [
+            "youth : joven",
+            "child : chico, chica; niño, niña"
+        ]
+    }
+]

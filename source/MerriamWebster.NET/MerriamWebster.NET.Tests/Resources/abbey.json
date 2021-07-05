@@ -1,0 +1,62 @@
+[
+    {
+        "meta": {
+            "id": "abbey",
+            "uuid": "40ba8a80-bb4f-4ea6-9523-ef9eeaeb05c4",
+            "lang": "en",
+            "sort": "2600018000",
+            "src": "spanish",
+            "section": "alpha",
+            "stems": [
+                "abbey",
+                "abbeys"
+            ],
+            "offensive": false
+        },
+        "hwi": {
+            "hw": "abbey",
+            "prs": [
+                {
+                    "mw": "ˈæbi",
+                    "sound": {
+                        "audio": "abbey001"
+                    }
+                }
+            ]
+        },
+        "fl": "noun",
+        "ins": [
+            {
+                "il": "plural",
+                "ifc": "-beys",
+                "if": "abbeys"
+            }
+        ],
+        "def": [
+            {
+                "sseq": [
+                    [
+                        [
+                            "sense",
+                            {
+                                "dt": [
+                                    [
+                                        "text",
+                                        "{bc}{a_link|abadía} "
+                                    ],
+                                    [
+                                        "gl",
+                                        "feminine"
+                                    ]
+                                ]
+                            }
+                        ]
+                    ]
+                ]
+            }
+        ],
+        "shortdef": [
+            "abadía"
+        ]
+    }
+]
