@@ -1,3 +1,6 @@
+1.9 Huge serialization update, all documented structures that may appear in the collegiate dictionary should now be deserialized properly. ``BiographicalNameWrap`` and ``CalledAlsoNote`` are removed, they are now deserialized as ``DefiningText``.
+The next step will be to extend the parser to make all information available on the parsed result classes. 
+
 1.8 This release contains a number of improvements
 - Removed filter on search term in entry parser, all results will now be returned. filtering can be applied on the result model by the caller
 - Added parsing of quotes
