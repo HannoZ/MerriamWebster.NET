@@ -17,7 +17,7 @@ namespace MerriamWebster.NET.Parsing
         /// <param name="api"></param>
         /// <param name="searchTerm"></param>
         /// <returns></returns>
-        Task<EntryModel> GetAndParseAsync(string api, string searchTerm);
+        Task<ResultModel> GetAndParseAsync(string api, string searchTerm);
         /// <summary>
         /// Executes a request and returns the parsed result using specific parse options.
         /// </summary>
@@ -25,6 +25,6 @@ namespace MerriamWebster.NET.Parsing
         /// <param name="searchTerm"></param>
         /// <param name="options"></param>
         /// <returns></returns>
-        Task<EntryModel> GetAndParseAsync(string api, string searchTerm, ParseOptions options);
+        Task<ResultModel> GetAndParseAsync(string api, string searchTerm, ParseOptions options);
     }
 }

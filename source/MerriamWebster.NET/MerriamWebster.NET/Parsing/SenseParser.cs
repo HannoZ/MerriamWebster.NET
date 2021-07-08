@@ -44,6 +44,16 @@ namespace MerriamWebster.NET.Parsing
             foreach (var sourceSence in sourceSenses.Where(s => s != null))
             {
                 var sense = new Sense();
+
+                if (sourceSence.SubjectStatusLabels.Any())
+                {
+                    sense.SubjectStatusLabels = new List<Label>();
+                    foreach (var subjectStatusLabel in sourceSence.SubjectStatusLabels)
+                    {
+                        sense.SubjectStatusLabels.Add(subjectStatusLabel);
+                    }
+                }
+
                 foreach (var definingTextObjects in sourceSence.DefiningTexts)
                 {
                     if (definingTextObjects.Any(d => d.TypeOrText == "text"))
@@ -114,7 +124,7 @@ namespace MerriamWebster.NET.Parsing
                                 if (dto.DefiningText != null)
                                 {
                                     var text = dto.DefiningText.Text;
-                                    var example = new Example
+                                    var example = new VerbalIllustration
                                     {
                                         RawSentence = text,
                                         Sentence = _parseOptions.RemoveMarkup ? MarkupManipulator.RemoveMarkupFromString(text) : text,
@@ -124,21 +134,21 @@ namespace MerriamWebster.NET.Parsing
                                     var aq = dto.DefiningText.Quote;
                                     if (aq != null)
                                     {
-                                        var quote = new Quote
+                                        example.AttributionOfQuote = new AttributionOfQuote
                                         {
                                             Author = aq.Author,
                                             PublicationDate = aq.PublicationDate,
                                             Source = aq.Source
                                         };
+
                                         if (aq.Subsource != null)
                                         {
-                                            quote.Subsource = new SubSource
+                                            example.AttributionOfQuote.Subsource = new SubSource
                                             {
                                                 PublicationDate = aq.Subsource.PublicationDate,
                                                 Source = aq.Subsource.Source
                                             };
                                         }
-                                        example.Quote = quote;
                                     }
                                     sense.Examples.Add(example);
                                 }
@@ -152,7 +162,7 @@ namespace MerriamWebster.NET.Parsing
                 {
                     foreach (var variant in sourceSence.Variants)
                     {
-                        sense.Examples.Add(new Example
+                        sense.Examples.Add(new VerbalIllustration
                         {
                             RawSentence = variant.Text,
                             Sentence = _parseOptions.RemoveMarkup ? MarkupManipulator.RemoveMarkupFromString(variant.Text) : variant.Text,

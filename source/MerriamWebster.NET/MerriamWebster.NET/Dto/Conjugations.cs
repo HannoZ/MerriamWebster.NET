@@ -3,6 +3,16 @@
     /// <summary>
     /// All conjugations of a verb. Appears in the Spanish-English dictionary for most verbs. 
     /// </summary>
+    /// <remarks>
+    /// <b>Display Guidance:</b>
+    /// <para>
+    /// Typically displayed as a table, with rows organized by person/number, and each column containing data from a particular object in the conjugations class.
+    /// </para>
+    /// <para>
+    /// The <see cref="Conjugation.Tense"/> identifies the tense; the tense name is typically displayed in bold as a column heading.
+    /// The properties of the <see cref="Conjugation"/> populate the column, and are typically displayed in normal font.
+    /// </para>
+    /// </remarks>
     public class Conjugations
     {
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
@@ -10,7 +20,7 @@
         public string PastParticiple { get; set; }
         public Conjugation Present { get; set; }
         /// <remarks>
-        /// Also Preterit past
+        /// Also called Preterit past
         /// </remarks>
         public Conjugation IndefinitePast { get; set; }
         public Conjugation ImperfectPast { get; set; }
@@ -30,7 +40,7 @@
         public Conjugation FutureSubjunctive { get; set; }
         public Conjugation PresentPerfectSubjunctive { get; set; }
         /// <remarks>
-        /// Also Pluperfect subjunctive
+        /// Also called Pluperfect subjunctive
         /// </remarks>
         public Conjugation PastPerfectSubjunctive { get; set; } 
         public Conjugation FuturePerfectSubjunctive { get; set; }

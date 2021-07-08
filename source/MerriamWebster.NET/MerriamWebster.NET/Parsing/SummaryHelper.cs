@@ -9,15 +9,16 @@ namespace MerriamWebster.NET.Parsing
         public static string CreateSummary(string searchText, ICollection<Entry> results)
         {
             string summary = string.Empty;
-            foreach (var searchResult in results.Where(r=> !string.IsNullOrWhiteSpace(r.Summary)))
+
+            foreach (var entry in results.Where(e => e.ShortDefs.Any()))
             {
-                if (searchResult.Text == searchText)
+                if (entry.Metadata.Id == searchText)
                 {
-                    summary += searchResult.Summary + " | ";
+                    summary += entry.Summary + " | ";
                 }
                 else
                 {
-                    summary += $"{searchResult.Text}: {searchResult.Summary} | ";
+                    summary += $"{entry.Metadata.Id}: {entry.Summary} | ";
                 }
             }
 

@@ -9,7 +9,7 @@ using MerriamWebster.NET.Parsing.Markup;
 namespace MerriamWebster.NET.Parsing
 {
     /// <summary>
-    /// The <see cref="EntryParser"/> class is used to get a result from the API and parse the raw data into an <see cref="EntryModel"/>.
+    /// Contains methods to get a result from the API and parse the raw data into an <see cref="ResultModel"/>.
     /// </summary>
     public class EntryParser : IEntryParser
     {
@@ -31,13 +31,13 @@ namespace MerriamWebster.NET.Parsing
         }
 
         /// <inheritdoc />
-        public Task<EntryModel> GetAndParseAsync(string api, string searchTerm)
+        public Task<ResultModel> GetAndParseAsync(string api, string searchTerm)
         {
             return GetAndParseAsync(api, searchTerm, ParseOptions.Default);
         }
 
         /// <inheritdoc />
-        public async Task<EntryModel> GetAndParseAsync(string api, string searchTerm, ParseOptions options)
+        public async Task<ResultModel> GetAndParseAsync(string api, string searchTerm, ParseOptions options)
         {
             if (searchTerm == null)
             {
@@ -51,85 +51,123 @@ namespace MerriamWebster.NET.Parsing
 
             var results = await _client.GetDictionaryEntry(api, searchTerm);
 
-            var resultModel = new EntryModel
+            var resultModel = new ResultModel
             {
-                SearchText = searchTerm.ToLowerInvariant()
+                SearchText = searchTerm.ToLowerInvariant(),
+                RawResponse = JsonConvert.SerializeObject(results, SerializerSettings)
             };
 
             foreach (var result in results)
             {
-                resultModel.RawResponse = JsonConvert.SerializeObject(result, SerializerSettings);
-                
-                var searchResult = CreateSearchResult(options, result);
+                var searchResult = CreateSearchResult(result, options);
 
                 // parse definitions
                 foreach (var def in result.Definitions)
                 {
-                    if (def.VerbDivider != null)
-                    {
-                        // verb divider indicates an entry that we should treat separately
-                        var extraResult = CreateSearchResult(options, result);
-                        extraResult.Pos = def.VerbDivider;
-                        var senseParser = new SenseParser(def, options);
-                        var senses = senseParser.Parse();
-                        extraResult.Senses = new List<Sense>(senses);
+                    //if (def.VerbDivider != null)
+                    //{
+                    //    // verb divider indicates an entry that we should treat separately
+                    //    var extraResult = CreateSearchResult(options, result);
+                    //    extraResult.Pos = def.VerbDivider;
+                    //    var senseParser = new SenseParser(def, options);
+                    //    var senses = senseParser.Parse();
+                    //    extraResult.Senses = new List<Sense>(senses);
 
-                        resultModel.Entries.Add(extraResult);
-                    }
-                    else
+                    //    resultModel.Entries.Add(extraResult);
+                    //}
+                    //else
                     {
+
+                        var definition = new Definition
+                        {
+                            VerbDivider = def.VerbDivider
+
+                        };
+
                         var senseParser = new SenseParser(def, options);
                         var senses = senseParser.Parse();
-                        searchResult.Senses = new List<Sense>(senses);
+                        definition.SenseSequence = new List<Sense>(senses);
+
+                        if (def.Sls.Any())
+                        {
+                            definition.SubjectStatusLabels = new List<Label>();
+                            foreach (var label in def.Sls)
+                            {
+                                definition.SubjectStatusLabels.Add(label);
+                            }
+                        }
+
+                        searchResult.Definitions.Add(definition);
                     }
+
                 }
 
                 // we're done with this search result, add to collection
                 resultModel.Entries.Add(searchResult);
 
                 // parse and add any additional results (they appear in the 'DefinedRunOns' ('dro') property)
-                var additionalResults = ParseDros(result.DefinedRunOns, options);
-                foreach (var additionalResult in additionalResults)
-                {
-                    resultModel.AdditionalResults.Add(additionalResult);
-                }
-
+                searchResult.DefinedRunOns = ParseDros(result.DefinedRunOns, options).ToList();
+                
                 // parse and add any 'undefined run-ons'
-                var undefinedResults = ParseUros(result, options);
-                foreach (var entry in undefinedResults)
-                {
-                    resultModel.UndefinedResults.Add(entry);
-                }
+                searchResult.UndefinedRunOns = ParseUros(result, options).ToList();
 
-                // parse and add any quotes
-                var quotes = ParseQuotes(result, options);
-                foreach (var quote in quotes)
-                {
-                    resultModel.Quotes.Add(quote);
+                if (result.Quotes.Any())
+                {                   
+                    // parse and add any quotes
+                    searchResult.Quotes = new List<Quote>();
+                    
+                    foreach (var sourceQuote in result.Quotes)
+                    {
+                        var quote = QuoteHelper.Parse(sourceQuote, options);
+                        searchResult.Quotes.Add(quote);
+                    }
                 }
             }
 
             return resultModel;
         }
 
-        private static Entry CreateSearchResult(ParseOptions options, Response.DictionaryEntry result)
+        private static Entry CreateSearchResult(Response.DictionaryEntry result, ParseOptions options)
         {
             var searchResult = new Entry
             {
-                Id = result.Metadata.Id,
-                Text = result.HeadwordInformation.Headword,
-                Pos = result.FunctionalLabel ?? string.Empty,
-                Stems = result.Metadata.Stems,
-                Language = (Language) result.Metadata.Lang,
-                ShortDefs = result.Shortdefs,
-                Synonyms = result.Metadata.Synonyms.SelectMany(s => s).ToList(),
-                Antonyms = result.Metadata.Antonyms.SelectMany(s => s).ToList()
+                Metadata = MetadataHelper.Parse(result),
+                //Text = result.HeadwordInformation.Headword,
+                PartOfSpeech = result.FunctionalLabel ?? string.Empty,
+                ShortDefs = result.Shortdefs
+                //ShortDefs = result.Shortdefs,
+                //Synonyms = result.Metadata.Synonyms.SelectMany(s => s).ToList(),
+                //Antonyms = result.Metadata.Antonyms.SelectMany(s => s).ToList()
             };
+
+            if (!string.IsNullOrEmpty(result.FunctionalLabel))
+            {
+                searchResult.PartOfSpeech = result.FunctionalLabel;
+            }
+
+            if (result.GeneralLabels.Any())
+            {
+                searchResult.GeneralLabels = new List<Label>();
+                foreach (var generalLabel in result.GeneralLabels)
+                {
+                    searchResult.GeneralLabels.Add(generalLabel);
+                }
+            }
+
+            if (result.SubjectStatusLabels.Any())
+            {
+                searchResult.SubjectStatusLabels = new List<Label>();
+                foreach (var subjectStatusLabel in result.SubjectStatusLabels)
+                {
+                    searchResult.SubjectStatusLabels.Add(subjectStatusLabel);
+                }
+            }
 
             ParseBasicStuff(options, result, searchResult);
 
             searchResult.Conjugations = ParseConjugations(result.Supplemental);
-            searchResult.CrossReferences = ParseCrossReferences(result).ToList();
+            searchResult.CrossReferences = CrossReferenceHelper.Parse(result.CrossReferences).ToList();
+            searchResult.CognateCrossReferences = CognateCrossReferenceHelper.Parse(result.CognateCrossReferences).ToList();
 
             return searchResult;
         }
@@ -138,23 +176,8 @@ namespace MerriamWebster.NET.Parsing
         {
             foreach (var pronunciation in result.HeadwordInformation.Pronunciations)
             {
-                var pron = new Pronunciation
-                {
-                    WrittenPronunciation = pronunciation.WrittenPronunciation,
-                    AudioLink = AudioLinkCreator.CreateLink(result.Metadata.Lang, pronunciation.Sound, options.AudioFormat)
-                };
-                searchResult.Pronunciations.Add(pron);
-            }
-
-            if (searchResult.Pos.StartsWith("feminine"))
-            {
-                searchResult.Gender = "feminine";
-                searchResult.Pos = searchResult.Pos.Replace("feminine", "").TrimStart();
-            }
-            else if (searchResult.Pos.StartsWith("masculine"))
-            {
-                searchResult.Gender = "masculine";
-                searchResult.Pos = searchResult.Pos.Replace("masculine", "").TrimStart();
+                var pron = PronunciationHelper.Parse(pronunciation, searchResult.Metadata.Language, options.AudioFormat);
+                searchResult.Headword.Pronunciations.Add(pron);
             }
 
             if (result.Artwork != null)
@@ -172,22 +195,10 @@ namespace MerriamWebster.NET.Parsing
                 searchResult.Date = MarkupManipulator.RemoveMarkupFromString(result.Date);
             }
         }
-
-        private static IEnumerable<CrossReference> ParseCrossReferences(Response.DictionaryEntry result)
+        
+        private static IEnumerable<DefinedRunOn> ParseDros(Response.DefinedRunOn[] dros, ParseOptions parseOptions)
         {
-            foreach (var crossReference in result.CrossReferences.SelectMany(cr => cr))
-            {
-                yield return new CrossReference
-                {
-                    Target = crossReference.Target,
-                    Text = crossReference.Text
-                };
-            }
-        }
-
-        private static IEnumerable<Entry> ParseDros(Response.DefinedRunOn[] dros, ParseOptions parseOptions)
-        {
-            var searchResults = new List<Entry>();
+            var searchResults = new List<DefinedRunOn>();
             if (dros == null)
             {
                 return searchResults;
@@ -195,13 +206,17 @@ namespace MerriamWebster.NET.Parsing
 
             foreach (var dro in dros)
             {
-                var searchResult = new Entry { Text = dro.Phrase, Pos = dro.FunctionalLabel };
+                var searchResult = new DefinedRunOn
+                {
+                    Phrase = dro.Phrase
+                };
 
                 foreach (var droDef in dro.Definitions)
                 {
                     var senseParser = new SenseParser(droDef, parseOptions);
                     var senses = senseParser.Parse();
-                    searchResult.Senses = new List<Sense>(senses);
+
+                    //searchResult.Definitions = new List<Sense>(senses);
                 }
 
                 searchResults.Add(searchResult);
@@ -210,35 +225,35 @@ namespace MerriamWebster.NET.Parsing
             return searchResults;
         }
 
-        private static IEnumerable<Entry> ParseUros(Response.DictionaryEntry entry, ParseOptions options)
+        private static IEnumerable<UndefinedRunOn> ParseUros(Response.DictionaryEntry entry, ParseOptions options)
         {
-            var searchResults = new List<Entry>();
+            var searchResults = new List<UndefinedRunOn>();
 
             foreach (var uro in entry.UndefinedRunOns)
             {
-                var searchResult = new Entry
+                var searchResult = new UndefinedRunOn
                 {
-                    Text = uro.EntryWord,
-                    Pos = uro.FunctionalLabel,
-                    Language = (Language)entry.Metadata.Lang
+                    EntryWord = uro.EntryWord,
+                    PartOfSpeech = uro.FunctionalLabel,
+                   // TODO Language = (Language)entry.Metadata.Lang
                 };
-                searchResult.Stems.Add(uro.EntryWord);
-                if (uro.AlternateEntry?.Text != null)
-                {
-                    searchResult.Stems.Add(uro.AlternateEntry.Text);
-                }
-
-                foreach (var pronunciation in uro.Pronunciations)
-                {
-                    var pron = new Pronunciation
-                    {
-                        WrittenPronunciation = pronunciation.WrittenPronunciation,
-                        AudioLink = AudioLinkCreator.CreateLink(entry.Metadata.Lang, pronunciation.Sound, options.AudioFormat)
-                    };
-                    searchResult.Pronunciations.Add(pron);
-                }
-
                
+                //searchResult.Stems.Add(uro.EntryWord);
+                //if (uro.AlternateEntry?.Text != null)
+                //{
+                //    searchResult.Stems.Add(uro.AlternateEntry.Text);
+                //}
+
+                if (uro.Pronunciations.Any())
+                {
+                    searchResult.Pronunciations = new List<Pronunciation>();
+                    foreach (var pronunciation in uro.Pronunciations)
+                    {
+                        var pron = PronunciationHelper.Parse(pronunciation, (Language) entry.Metadata.Lang,
+                            options.AudioFormat);
+                        searchResult.Pronunciations.Add(pron);
+                    }
+                }
 
                 searchResults.Add(searchResult);
             }
@@ -300,32 +315,6 @@ namespace MerriamWebster.NET.Parsing
             return conjugations;
         }
 
-        private static IEnumerable<Quote> ParseQuotes(Response.DictionaryEntry entry, ParseOptions options)
-        {
-            foreach (var sourceQuote in entry.Quotes.Where(q=>q.Aq != null))
-            {
-                var aq = sourceQuote.Aq;
-                var quote = new Quote
-                {
-                    RawText = sourceQuote.Text,
-                    Text = options.RemoveMarkup ? MarkupManipulator.RemoveMarkupFromString(sourceQuote.Text) : sourceQuote.Text,
-                    HtmlText = options.RemoveMarkup ? MarkupManipulator.ReplaceMarkupInString(sourceQuote.Text) : sourceQuote.Text,
-                    Author = aq.Author,
-                    PublicationDate = aq.PublicationDate,
-                    Source = MarkupManipulator.RemoveMarkupFromString(aq.Source)
-                };
-
-                if (aq.Subsource != null)
-                {
-                    quote.Subsource = new SubSource
-                    {
-                        PublicationDate = aq.Subsource.PublicationDate,
-                        Source = MarkupManipulator.RemoveMarkupFromString(aq.Subsource.Source)
-                    };
-                }
-
-                yield return quote;
-            }
-        }
+        
     }
 }

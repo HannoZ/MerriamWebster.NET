@@ -1,7 +1,7 @@
 ﻿namespace MerriamWebster.NET.Dto
 {
     /// <summary>
-    /// Direct quotes are used in both verbal illustrations and end-of-entry quotation sections.
+    /// In addition to the verbal illustrations provided throughout the entry, a larger section of quotations from cited sources is sometimes included. 
     /// </summary>
     public class Quote
     {
@@ -20,21 +20,10 @@
         /// Gets or sets the raw quote text (with 
         /// </summary>
         public string RawText { get; set; }
+
         /// <summary>
-        /// Name of author.
+        /// Gets or sets the attribution of quote information.
         /// </summary>
-        public string Author { get; set; }
-        /// <summary>
-        /// Source work for quote.
-        /// </summary>
-        public string Source { get; set; }
-        /// <summary>
-        /// Publication date of quote.
-        /// </summary>
-        public string PublicationDate { get; set; }
-        /// <summary>
-        /// Gets or sets the <see cref="Subsource"/>.
-        /// </summary>
-        public SubSource Subsource { get; set; }
+        public AttributionOfQuote AttributionOfQuote { get; set; }
     }
 }
