@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 
 namespace MerriamWebster.NET.Dto
 {
@@ -11,7 +10,8 @@ namespace MerriamWebster.NET.Dto
     /// <b>Display Guidance:</b>
     /// <para>
     /// Typically displayed in a new paragraph.
-    /// </para> 
+    /// </para>
+    /// </remarks>
     public class Definition
     {
         /// <summary>
@@ -24,37 +24,21 @@ namespace MerriamWebster.NET.Dto
         public string VerbDivider { get; set; }
 
         /// <summary>
-        /// Gets or sets the senses.
+        /// Gets or sets the sense sequences.
         /// </summary>
-        public ICollection<Sense> SenseSequence { get; set; } = new List<Sense>();
+        public ICollection<SenseSequence> SenseSequence { get; set; } = new List<SenseSequence>();
+        
+        /// <summary>
+        /// <i>Optional.</i> Gets or sets a collection of synonyms.
+        /// </summary>
+        public ICollection<string> Synonyms { get; set; }
+        /// <summary>
+        /// <i>Optional.</i> Gets or sets a collection of antonyms.
+        /// </summary>
+        public ICollection<string> Antonyms { get; set; }
 
         /// <summary>
-        /// The parenthesized sense sequence groups together senses whose sense numbers form a sequence of parenthesized numbers.
-        /// </summary>
-        /// <remarks>
-        /// <b>Display Guidance:</b>
-        /// <para>
-        /// If you are generating sense numbers for sense elements in a sense sequence, put parentheses around the number.
-        /// For example, the second sense in a sequence should have "(2)" as its sense number.
-        /// </para>
-        /// <para>
-        /// f you are instead using the <see cref="Sense.SenseNumber"/> to display the sense number, it will already contain the parentheses.
-        /// </para>
-        /// </remarks>
-        public ICollection<Sense> ParenthesizedSenseSequence { get; set; }
-
-        /// <summary>
-        /// Gets or sets a collection of synonyms.
-        /// </summary>
-        public ICollection<string> Synonyms { get; set; } = new List<string>();
-        /// <summary>
-        /// Gets or sets a collection of antonyms.
-        /// </summary>
-        public ICollection<string> Antonyms { get; set; } = new List<string>();
-
-
-        /// <summary>
-        /// A subject/status label describes the subject area (eg, "computing") or regional/usage status (eg, "British", "formal", "slang") of a headword or a particular sense of a headword.
+        /// <i>Optional.</i>  A subject/status label describes the subject area (eg, "computing") or regional/usage status (eg, "British", "formal", "slang") of a headword or a particular sense of a headword.
         /// </summary>
         /// <remarks>
         /// <b>Display Guidance:</b>

@@ -1,5 +1,4 @@
-﻿using MerriamWebster.NET.Dto;
-using MerriamWebster.NET.Parsing;
+﻿using MerriamWebster.NET.Parsing;
 using MerriamWebster.NET.Response;
 using MerriamWebster.NET.Response.JsonConverters;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -7,9 +6,13 @@ using Moq;
 using Moq.AutoMock;
 using Newtonsoft.Json;
 using Shouldly;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
+using MerriamWebster.NET.Dto;
 
 namespace MerriamWebster.NET.Tests.Parsing
 {
@@ -24,6 +27,47 @@ namespace MerriamWebster.NET.Tests.Parsing
         public void Initialize()
         {
             _entryParser = _mocker.CreateInstance<EntryParser>();
+        }
+
+
+        [TestMethod]
+        public async Task EntryParser_CanParse_All()
+        {
+            string[] exclusions = { "coll_thes_above_meta.json", "sense_learn_apple.json", "sense_above.json", "sense_med_doctor.json" };
+            var asm = Assembly.GetExecutingAssembly();
+            var resources = asm.GetManifestResourceNames();
+            foreach (var resource in resources)
+            {
+                if (exclusions.Any(e => resource.EndsWith(e)))
+                {
+                    continue;
+                }
+
+                await using var resourceStream = asm.GetManifestResourceStream(resource);
+
+                using var reader = new StreamReader(resourceStream);
+                string content = await reader.ReadToEndAsync();
+
+                try
+                {
+                    var data = JsonConvert.DeserializeObject<DictionaryEntry[]>(content, Converter.Settings);
+
+                    _mocker.GetMock<IMerriamWebsterClient>()
+                        .Setup(m => m.GetDictionaryEntry(It.IsAny<string>(), It.IsAny<string>()))
+                        .ReturnsAsync(data);
+
+                    // ACT
+                    var result = await _entryParser.GetAndParseAsync("api", "search");
+
+                    // ASSERT
+                    result.Entries.ShouldNotBeEmpty();
+
+                }
+                catch (Exception ex)
+                {
+                    throw new NotImplementedException(resource, ex);
+                }
+            }
         }
 
         [TestMethod]
@@ -55,7 +99,7 @@ namespace MerriamWebster.NET.Tests.Parsing
             var result = await _entryParser.GetAndParseAsync("api", "casa");
 
             // ASSERT
-            result.Entries.ShouldNotBeEmpty();
+            result.Entries.Count.ShouldBe(4);
         }
 
         [TestMethod]
@@ -72,6 +116,27 @@ namespace MerriamWebster.NET.Tests.Parsing
 
             // ASSERT
             result.Entries.ShouldNotBeEmpty();
+        }
+
+        [TestMethod]
+        public async Task EntryParser_CanParse_Distinto()
+        {
+            var data = LoadData("distinto");
+
+            _mocker.GetMock<IMerriamWebsterClient>()
+                .Setup(m => m.GetDictionaryEntry(It.IsAny<string>(), It.IsAny<string>()))
+                .ReturnsAsync(data);
+
+            // ACT 
+            var result = await _entryParser.GetAndParseAsync("api", "distinto");
+
+            // ASSERT
+            result.Entries.ShouldNotBeEmpty();
+            result.Entries.SelectMany(e=>e.Definitions)
+                .SelectMany(d=>d.SenseSequence)
+                .SelectMany(ss=>ss.Senses)
+                .Where(s => s.Inflections != null)
+                .ShouldContain(s=>s.Inflections.Any(i=>i.Alternate != null));
         }
 
         [TestMethod]
@@ -106,12 +171,10 @@ namespace MerriamWebster.NET.Tests.Parsing
             // ASSERT
             result.Entries.ShouldNotBeEmpty();
 
-            // TODO
-            //result.Entries.ShouldContain(e=>e.Language == Language.En);
-            //result.Entries.ShouldContain(e => e.Language == Language.Es);
-
-            //result.UndefinedResults.ShouldContain(e => e.Language == Language.En);
-            //result.UndefinedResults.ShouldContain(e => e.Language == Language.Es);
+            result.Entries.ShouldContain(e=>e.Metadata.Language == Language.En);
+            result.Entries.ShouldContain(e => e.Metadata.Language == Language.Es);
+           
+            result.Entries.ShouldContain(e=>e.UndefinedRunOns.Any(uro=>uro.AlternateEntry != null));
         }
 
         [TestMethod]
@@ -234,6 +297,7 @@ namespace MerriamWebster.NET.Tests.Parsing
         }
 
 
+
         [TestMethod]
         public async Task EntryParser_CanParse_Medical_Doctor()
         {
@@ -344,7 +408,7 @@ namespace MerriamWebster.NET.Tests.Parsing
             var result = await _entryParser.GetAndParseAsync("api", "pueblo");
 
             // ASSERT
-         // TODO   result.Entries.ShouldAllBe(e=> !e.Summary.Contains(":"));
+           result.Entries.ShouldNotBeEmpty();
         }
 
         [TestMethod]
@@ -361,7 +425,6 @@ namespace MerriamWebster.NET.Tests.Parsing
 
             // ASSERT
             result.Entries.ShouldNotBeEmpty();
-          // TODO  result.AdditionalResults.ShouldNotBeEmpty();
             result.Entries.ShouldContain(e => e.Conjugations != null);
         }
 
@@ -397,7 +460,7 @@ namespace MerriamWebster.NET.Tests.Parsing
 
             // ASSERT
             result.Entries.Count.ShouldBe(1);
-           // TODO result.Quotes.Count.ShouldBe(3);
+            result.Entries.First().Quotes.Count.ShouldBe(3);
         }
 
         [TestMethod]
@@ -464,7 +527,10 @@ namespace MerriamWebster.NET.Tests.Parsing
 
             // ASSERT
             result.Entries.Count.ShouldBe(10);
-            result.Entries.SelectMany(e => e.Definitions).SelectMany(d=>d.SenseSequence).ShouldContain(s => s.SubjectStatusLabels != null);
+            result.Entries.SelectMany(e => e.Definitions)
+                .SelectMany(d=>d.SenseSequence)
+                .SelectMany(ss => ss.Senses)
+                .ShouldContain(s => s.SubjectStatusLabels != null);
         }
 
         [TestMethod]
@@ -485,6 +551,28 @@ namespace MerriamWebster.NET.Tests.Parsing
         }
 
         [TestMethod]
+        public async Task EntryParser_CanParse_Collegiate_Feline()
+        {
+            var data = LoadData("collegiate_feline");
+
+            _mocker.GetMock<IMerriamWebsterClient>()
+                .Setup(m => m.GetDictionaryEntry(It.IsAny<string>(), It.IsAny<string>()))
+                .ReturnsAsync(data);
+
+            // ACT 
+            var result = await _entryParser.GetAndParseAsync("api", "feline");
+
+            // ASSERT
+            result.Entries.Count.ShouldBe(3);
+
+            result.Entries
+                .SelectMany(e=>e.Definitions)
+                .SelectMany(d=>d.SenseSequence)
+                .SelectMany(ss=>ss.Senses)
+                .ShouldContain(s=>s.SenseNumber == "2"); // to verify that the "bs" element was processed correctly
+        }
+
+        [TestMethod]
         public async Task EntryParser_CanParse_Collegiate_Tab()
         {
             var data = LoadData("collegiate_tab");
@@ -499,6 +587,10 @@ namespace MerriamWebster.NET.Tests.Parsing
             // ASSERT
             result.Entries.Count.ShouldBe(7);
             result.Entries.ShouldContain(e=>e.GeneralLabels != null);
+
+            var firstDef = result.Entries.First().Definitions.First();
+            firstDef.SenseSequence.Count.ShouldBe(4);
+            firstDef.SenseSequence.First().ParenthesizedSenseSequence.ShouldNotBeEmpty();
 
         }
 

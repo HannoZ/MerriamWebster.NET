@@ -5,7 +5,9 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Linq;
+using MerriamWebster.NET.Dto;
 using Shouldly;
+using Definition = MerriamWebster.NET.Response.Definition;
 
 namespace MerriamWebster.NET.Tests.Parsing
 {
@@ -18,10 +20,11 @@ namespace MerriamWebster.NET.Tests.Parsing
             var defs = LoadDefinitions("casa");
 
             // ACT
-            foreach (var senseParser in defs.Select(definition => new SenseParser(definition, ParseOptions.Default)))
+            foreach (var senseParser in defs.Select(definition => new SenseParser(definition, Language.Es, ParseOptions.Default)))
             {
-                var result =  senseParser.Parse();
-                result.ShouldNotBeEmpty();
+                var def = new Dto.Definition();
+                senseParser.Parse(def);
+                def.SenseSequence.ShouldNotBeEmpty();
             }
         }
 
@@ -31,10 +34,11 @@ namespace MerriamWebster.NET.Tests.Parsing
             var defs = LoadDefinitions("delgado");
 
             // ACT
-            foreach (var senseParser in defs.Select(definition => new SenseParser(definition, ParseOptions.Default)))
+            foreach (var senseParser in defs.Select(definition => new SenseParser(definition, Language.Es, ParseOptions.Default)))
             {
-                var result =  senseParser.Parse();
-                result.ShouldNotBeEmpty();
+                var def = new Dto.Definition();
+                senseParser.Parse(def);
+                def.SenseSequence.ShouldNotBeEmpty();
             }
         }
 
@@ -44,10 +48,11 @@ namespace MerriamWebster.NET.Tests.Parsing
             var defs = LoadDefinitions("estar");
 
             // ACT
-            foreach (var senseParser in defs.Select(definition => new SenseParser(definition, ParseOptions.Default)))
+            foreach (var senseParser in defs.Select(definition => new SenseParser(definition, Language.Es, ParseOptions.Default)))
             {
-                var result =  senseParser.Parse();
-                result.ShouldNotBeEmpty();
+                var def = new Dto.Definition();
+                senseParser.Parse(def);
+                def.SenseSequence.ShouldNotBeEmpty();
             }
         }
 
@@ -58,14 +63,15 @@ namespace MerriamWebster.NET.Tests.Parsing
             bool additionalInformationFound = false;
 
             // ACT
-            foreach (var senseParser in defs.Select(definition => new SenseParser(definition, ParseOptions.Default)))
+            foreach (var senseParser in defs.Select(definition => new SenseParser(definition, Language.Es, ParseOptions.Default)))
             {
-                var result = senseParser.Parse();
-                result.ShouldNotBeEmpty();
+                var def = new Dto.Definition();
+                senseParser.Parse(def);
+                def.SenseSequence.ShouldNotBeEmpty();
 
-                foreach (var sense in result)
+                foreach (var sense in def.SenseSequence)
                 {
-                    if (sense.AdditionalInformation.Any())
+                    if (sense.Senses.Where(ss=>ss.SubjectStatusLabels != null).SelectMany(ss => ss.SubjectStatusLabels).Any())
                     {
                         additionalInformationFound = true;
                     }
@@ -81,10 +87,11 @@ namespace MerriamWebster.NET.Tests.Parsing
             var defs = LoadDefinitions("house");
 
             // ACT
-            foreach (var senseParser in defs.Select(definition => new SenseParser(definition, ParseOptions.Default)))
+            foreach (var senseParser in defs.Select(definition => new SenseParser(definition, Language.Es, ParseOptions.Default)))
             {
-                var result =  senseParser.Parse();
-                result.ShouldNotBeEmpty();
+                var def = new Dto.Definition();
+                senseParser.Parse(def);
+                def.SenseSequence.ShouldNotBeEmpty();
             }
         }
 
@@ -94,10 +101,11 @@ namespace MerriamWebster.NET.Tests.Parsing
             var defs = LoadDefinitions("pueblo");
 
             // ACT
-            foreach (var senseParser in defs.Select(definition => new SenseParser(definition, ParseOptions.Default)))
+            foreach (var senseParser in defs.Select(definition => new SenseParser(definition, Language.Es, ParseOptions.Default)))
             {
-                var result =  senseParser.Parse();
-                result.ShouldNotBeEmpty();
+                var def = new Dto.Definition();
+                senseParser.Parse(def);
+                def.SenseSequence.ShouldNotBeEmpty();
             }
         }
 
@@ -107,10 +115,11 @@ namespace MerriamWebster.NET.Tests.Parsing
             var defs = LoadDefinitions("quedar");
 
             // ACT
-            foreach (var senseParser in defs.Select(definition => new SenseParser(definition, ParseOptions.Default)))
+            foreach (var senseParser in defs.Select(definition => new SenseParser(definition, Language.Es, ParseOptions.Default)))
             {
-                var result =  senseParser.Parse();
-                result.ShouldNotBeEmpty();
+                var def = new Dto.Definition();
+                senseParser.Parse(def);
+                def.SenseSequence.ShouldNotBeEmpty();
             }
         }
 
@@ -120,10 +129,11 @@ namespace MerriamWebster.NET.Tests.Parsing
             var defs = LoadDefinitions("abarrotado");
 
             // ACT
-            foreach (var senseParser in defs.Select(definition => new SenseParser(definition, ParseOptions.Default)))
+            foreach (var senseParser in defs.Select(definition => new SenseParser(definition, Language.Es, ParseOptions.Default)))
             {
-                var result =  senseParser.Parse();
-                result.ShouldNotBeEmpty();
+                var def = new Dto.Definition();
+                senseParser.Parse(def);
+                def.SenseSequence.ShouldNotBeEmpty();
             }
         }
 
@@ -133,10 +143,11 @@ namespace MerriamWebster.NET.Tests.Parsing
             var defs = LoadDefinitions("sierra");
 
             // ACT
-            foreach (var senseParser in defs.Select(definition => new SenseParser(definition, ParseOptions.Default)))
+            foreach (var senseParser in defs.Select(definition => new SenseParser(definition, Language.Es, ParseOptions.Default)))
             {
-                var result =  senseParser.Parse();
-                result.ShouldNotBeEmpty();
+                var def = new Dto.Definition();
+                senseParser.Parse(def);
+                def.SenseSequence.ShouldNotBeEmpty();
             }
         }
 
@@ -146,10 +157,11 @@ namespace MerriamWebster.NET.Tests.Parsing
             var defs = LoadDefinitions("hilar");
 
             // ACT
-            foreach (var senseParser in defs.Select(definition => new SenseParser(definition, ParseOptions.Default)))
+            foreach (var senseParser in defs.Select(definition => new SenseParser(definition, Language.Es, ParseOptions.Default)))
             {
-                var result =  senseParser.Parse();
-                result.ShouldNotBeEmpty();
+                var def = new Dto.Definition();
+                senseParser.Parse(def);
+                def.SenseSequence.ShouldNotBeEmpty();
             }
         }
 
@@ -159,10 +171,11 @@ namespace MerriamWebster.NET.Tests.Parsing
             var defs = LoadDefinitions("robot");
 
             // ACT
-            foreach (var senseParser in defs.Select(definition => new SenseParser(definition, ParseOptions.Default)))
+            foreach (var senseParser in defs.Select(definition => new SenseParser(definition, Language.En, ParseOptions.Default)))
             {
-                var result =  senseParser.Parse();
-                result.ShouldNotBeEmpty();
+                var def = new Dto.Definition();
+                senseParser.Parse(def);
+                def.SenseSequence.ShouldNotBeEmpty();
             }
         }
 
@@ -170,42 +183,49 @@ namespace MerriamWebster.NET.Tests.Parsing
         public void SenseParser_CanParseSense_Above()
         {
             var content = TestHelper.LoadResponseFromFile("sense_above");
-            var def = JsonConvert.DeserializeObject<Definition>(content, Converter.Settings);
-            var senseParser = new SenseParser(def, ParseOptions.Default);
+            var definition = JsonConvert.DeserializeObject<Definition>(content, Converter.Settings);
+            var senseParser = new SenseParser(definition, Language.NotApplicable, ParseOptions.Default);
 
             // ACT
-            var result = senseParser.Parse();
+            var def = new Dto.Definition();
+            senseParser.Parse(def);
 
             // ASSERT
-            result.Count.ShouldBe(4);
-            result.Select(s => s.Text).ShouldAllBe(t => !t.Contains("{wi}"));
-            result.SelectMany(s => s.Examples).ShouldAllBe(e => !e.Sentence.Contains("{wi}"));
+            def.SenseSequence.Count.ShouldBe(1);
+            def.SenseSequence.First().Senses.Count.ShouldBe(4);
+            def.SenseSequence.SelectMany(ss=>ss.Senses).Select(s => s.Text).ShouldAllBe(t => !t.Contains("{wi}"));
+            def.SenseSequence.SelectMany(ss => ss.Senses).SelectMany(s => s.VerbalIllustrations).ShouldAllBe(e => !e.Sentence.Contains("{wi}"));
         }
 
         [TestMethod]
         public void SenseParser_CanParseSense_Medical_Doctor()
         {
             var content = TestHelper.LoadResponseFromFile("sense_med_doctor");
-            var def = JsonConvert.DeserializeObject<Definition>(content, Converter.Settings);
-            var senseParser = new SenseParser(def, ParseOptions.Default);
+            var definition = JsonConvert.DeserializeObject<Definition>(content, Converter.Settings);
+            var senseParser = new SenseParser(definition, Language.NotApplicable, ParseOptions.Default);
 
             // ACT
-            var result = senseParser.Parse();
+            var def = new Dto.Definition();
+            senseParser.Parse(def);
 
             // ASSERT
             // verify that the divided sense has been parsed 
-            result.ShouldContain(s => s.Text.Contains("; especially: "));
+            def.SenseSequence
+                .SelectMany(ss => ss.Senses)
+                .Where(s=>s.DividedSense != null)
+                .ShouldNotBeEmpty();
         }
 
         [TestMethod]
         public void SenseParser_CanParseSense_Learner_Apple()
         {
             var content = TestHelper.LoadResponseFromFile("sense_learn_apple");
-            var def = JsonConvert.DeserializeObject<Definition>(content, Converter.Settings);
-            var senseParser = new SenseParser(def, ParseOptions.Default);
+            var definition = JsonConvert.DeserializeObject<Definition>(content, Converter.Settings);
+            var senseParser = new SenseParser(definition, Language.NotApplicable, ParseOptions.Default);
 
             // ACT
-            var result = senseParser.Parse();
+            var def = new Dto.Definition();
+            senseParser.Parse(def);
 
             // ASSERT
 
@@ -217,10 +237,12 @@ namespace MerriamWebster.NET.Tests.Parsing
             var defs = LoadDefinitions("pueblo");
 
             // ACT
-            foreach (var senseParser in defs.Select(definition => new SenseParser(definition, ParseOptions.Default)))
+            foreach (var senseParser in defs.Select(definition => new SenseParser(definition, Language.En, ParseOptions.Default)))
             {
-                var senses = senseParser.Parse();
-                senses.ShouldAllBe(s => !s.Text.Contains(":"));
+                var def = new Dto.Definition();
+                senseParser.Parse(def);
+
+                def.SenseSequence.SelectMany(ss => ss.Senses).ShouldAllBe(s => !s.Text.Contains(":"));
             }
         }
 
@@ -230,13 +252,13 @@ namespace MerriamWebster.NET.Tests.Parsing
             var defs = LoadDefinitions("example_ginger");
 
             // ACT
-            foreach (var senseParser in defs.Select(definition => new SenseParser(definition, ParseOptions.Default)))
+            foreach (var senseParser in defs.Select(definition => new SenseParser(definition, Language.NotApplicable, ParseOptions.Default)))
             {
-                var senses = senseParser.Parse();
-                var result = senses.First();
-                
+                var def = new Dto.Definition();
+                senseParser.Parse(def);
+
                 // ASSERT
-               // TODO result.Examples.First().Quote.ShouldNotBeNull();
+                // TODO result.Examples.First().Quote.ShouldNotBeNull();
             }
         }
 
@@ -244,10 +266,10 @@ namespace MerriamWebster.NET.Tests.Parsing
         public void SenseParser_CanParseSense_Coll_Tedious()
         {
             var defs = LoadDefinitions("collegiate_tedious");
-            foreach (var senseParser in defs.Select(definition => new SenseParser(definition, ParseOptions.Default)))
-            {
-                var result = senseParser.Parse();
-                result.ShouldNotBeEmpty();
+            foreach (var senseParser in defs.Select(definition => new SenseParser(definition, Language.NotApplicable, ParseOptions.Default)))
+            {var def = new Dto.Definition();
+                senseParser.Parse(def);
+                def.SenseSequence.ShouldNotBeEmpty();
             }
         }
 

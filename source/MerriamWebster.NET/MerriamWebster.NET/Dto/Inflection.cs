@@ -35,10 +35,10 @@ namespace MerriamWebster.NET.Dto
         /// </summary>
         public string Value { get; set; }
 
-        ///// <summary>
-        ///// Gets or sets the <see cref="AlternateInflection"/>.
-        ///// </summary>
-        //  public AlternateInflection Alternate { get; set; }
+        /// <summary>
+        ///  <i>Optional, Spanish-English only.</i> Gets or sets the alternate inflection.
+        /// </summary>
+        public AlternateInflection Alternate { get; set; }
 
         /// <summary>
         /// <i>Optional.</i> Gets or sets pronunciations.

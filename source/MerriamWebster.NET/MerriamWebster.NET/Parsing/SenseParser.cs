@@ -11,58 +11,229 @@ namespace MerriamWebster.NET.Parsing
     public class SenseParser
     {
         private readonly Response.Definition _def;
+        private readonly Language _language;
         private readonly ParseOptions _parseOptions;
-        
+
         /// <summary>
         /// Initializes a new instance of the <see cref="SenseParser"/> class.
         /// </summary>
         /// <param name="def">The definition object to parse.</param>
+        /// <param name="language">The language from metadata</param>
         /// <param name="parseOptions">The parse options.</param>
-        public SenseParser(Response.Definition def, ParseOptions parseOptions)
+        public SenseParser(Response.Definition def, Language language, ParseOptions parseOptions)
         {
             _def = def;
+            _language = language;
             _parseOptions = parseOptions;
         }
 
         /// <summary>
-        /// Parses the input definition into a collection of <see cref="Sense"/>s.
+        /// Parses the input definition into a collection of <see cref="Dto.Sense"/>s.
         /// </summary>
-        public ICollection<Sense> Parse()
+        public void Parse(Definition definition)
         {
-            var senses = new List<Sense>();
-
-            // this is where the magic happens. The actual senses are hidden deep inside a complex structure of multiple nested arrays.
-            // code below extracts the data from there
-            var sourceSenses = _def.SenseSequences.SelectMany(sseqs => sseqs.Select(sseq => sseq))
-                .SelectMany(sseqs => sseqs)
-                .Where(sseq => sseq.Sense != null)
-                .OrderBy(sseq => sseq.Sense.SenseNumber)
-                .Select(sseq => sseq.Sense)
-                .Where(s => s.DefiningTexts != null)
-                .ToList();
-
-            foreach (var sourceSence in sourceSenses.Where(s => s != null))
+            if (definition == null)
             {
-                var sense = new Sense();
+                return;
+            }
 
-                if (sourceSence.SubjectStatusLabels.Any())
+            foreach (var sourceSseqs in _def.SenseSequences)
+            {
+                var senseSequence = new SenseSequence();
+
+                foreach (var sourceSseq in sourceSseqs)
                 {
-                    sense.SubjectStatusLabels = new List<Label>();
-                    foreach (var subjectStatusLabel in sourceSence.SubjectStatusLabels)
+                    // sourceSseq comes in pairs: a string that defines the object ("sense", "sen", "pseq", etc.) , followed by the actual object
+                    if (sourceSseq.Length == 2)
                     {
-                        sense.SubjectStatusLabels.Add(subjectStatusLabel);
+                        if (sourceSseq[0].Name == Response.SseqEnum.Bs)
+                        {
+                            var sourceSense = sourceSseq[1].Sense;
+
+                            // a binding substitute (bs) should always contain a nested sense object  
+                            if (sourceSense?.SubSense != null)
+                            {
+                                var sense = ParseGeneralSenseProperties<Sense>(sourceSense.SubSense);
+                                sense.SenseNumber = sourceSense.SubSense.SenseNumber;
+                                ParseSpecificSenseProperties(sourceSense.SubSense, sense);
+                                sense.IsBindingSubstitute = true;
+
+                                senseSequence.Senses.Add(sense);
+                            }
+                        }
+
+                        if (sourceSseq[0].Name == Response.SseqEnum.Sense)
+                        {
+                            var sourceSense = sourceSseq[1].Sense;
+                            if (sourceSense != null)
+                            {
+
+                                var sense = ParseGeneralSenseProperties<Sense>(sourceSense);
+                                sense.SenseNumber = sourceSense.SenseNumber;
+                                ParseSpecificSenseProperties(sourceSense, sense);
+                                
+                                senseSequence.Senses.Add(sense);
+                            }
+                        }
+                        else if (sourceSseq[0].Name == Response.SseqEnum.Sen)
+                        {
+                            var sourceSense = sourceSseq[1].Sense;
+                            if (sourceSense != null)
+                            {
+                                var sense = ParseGeneralSenseProperties<Sense>(sourceSense);
+                                sense.SenseNumber = sourceSense.SenseNumber;
+                                sense.IsTruncatedSense = true;
+
+                                senseSequence.Senses.Add(sense);
+                            }
+                        }
+                        else if (sourceSseq[0].Name == Response.SseqEnum.Pseq && sourceSseq[1].SenseSequences != null)
+                        {
+                            var pseq = new SenseSequence();
+                            if (senseSequence.ParenthesizedSenseSequence == null)
+                            {
+                                senseSequence.ParenthesizedSenseSequence = new List<SenseSequence>();
+                            }
+                            foreach (var sourceSequence in sourceSseq[1].SenseSequences)
+                            {
+                                if (sourceSequence[0].Name == Response.SseqEnum.Bs)
+                                {
+                                    var sourceSense = sourceSequence[1].Sense;
+
+                                    // a binding substitute (bs) should always contain a nested sense object  
+                                    if (sourceSense?.SubSense != null)
+                                    {
+                                        var sense = ParseGeneralSenseProperties<Sense>(sourceSense.SubSense);
+                                        sense.SenseNumber = sourceSense.SubSense.SenseNumber;
+                                        ParseSpecificSenseProperties(sourceSense.SubSense, sense);
+                                        sense.IsBindingSubstitute = true;
+
+                                        pseq.Senses.Add(sense);
+                                    }
+                                }
+
+                                if (sourceSequence[0].Name == Response.SseqEnum.Sense)
+                                {
+                                    var sourceSense = sourceSequence[1].Sense;
+                                    if (sourceSense != null)
+                                    {
+                                        var sense = ParseGeneralSenseProperties<Sense>(sourceSense);
+                                        sense.SenseNumber = sourceSense.SenseNumber;
+                                        ParseSpecificSenseProperties(sourceSense, sense);
+                                        
+                                        pseq.Senses.Add(sense);
+                                    }
+                                }
+
+                            }
+
+                            senseSequence.ParenthesizedSenseSequence.Add(pseq);
+                        }
+
+
                     }
+                    // else? 
+                    //sourceSseq.Length != 2, should not occur
                 }
 
-                foreach (var definingTextObjects in sourceSence.DefiningTexts)
-                {
-                    if (definingTextObjects.Any(d => d.TypeOrText == "text"))
-                    {
-                        var definition = definingTextObjects.FirstOrDefault(d => d.TypeOrText != "text");
-                        string definitionText = definition.TypeOrText;
+                definition.SenseSequence.Add(senseSequence);
+            }
+        }
 
+        /// <summary>
+        /// Creates a new sense instance from a source sense with properties that occur on all sense types.
+        /// </summary>
+        private T ParseGeneralSenseProperties<T>(Response.SenseBase sourceSense)
+            where T : SenseBase, new()
+        {
+            var sense = new T();
+
+            if (sourceSense.GeneralLabels.Any())
+            {
+                sense.GeneralLabels = new List<Label>();
+                foreach (var generalLabel in sourceSense.GeneralLabels)
+                {
+                    sense.GeneralLabels.Add(generalLabel);
+                }
+            }
+
+            if (sourceSense.SubjectStatusLabels.Any())
+            {
+                sense.SubjectStatusLabels = new List<Label>();
+                foreach (var subjectStatusLabel in sourceSense.SubjectStatusLabels)
+                {
+                    sense.SubjectStatusLabels.Add(subjectStatusLabel);
+                }
+            }
+
+            if (sourceSense.Variants.Any())
+            {
+                sense.Variants = new List<Variant>();
+
+                foreach (var sourceVar in sourceSense.Variants)
+                {
+                    //sense.VerbalIllustrations.Add(new VerbalIllustration
+                    //{
+                    //    RawSentence = variant.Text,
+                    //    Sentence = _parseOptions.RemoveMarkup ? MarkupManipulator.RemoveMarkupFromString(variant.Text) : variant.Text,
+                    //    HtmlSentence = _parseOptions.RemoveMarkup ? MarkupManipulator.ReplaceMarkupInString(variant.Text) : variant.Text
+                    //});
+
+                    var variant = new Variant
+                    {
+                        Cutback = sourceVar.Cutback,
+                        Text = sourceVar.Text,
+                        Label = sourceVar.VariantLabel,
+                        SenseSpecificInflectionPluralLabel = sourceVar.SenseSpecificInflectionPluralLabel
+                    };
+
+                    if (sourceVar.Pronunciations.Any())
+                    {
+                        variant.Pronunciations = new List<Pronunciation>();
+                        foreach (var pronunciation in sourceVar.Pronunciations)
+                        {
+                            variant.Pronunciations.Add(PronunciationHelper.Parse(pronunciation, _language, _parseOptions.AudioFormat));
+                        }
+                    }
+
+                    sense.Variants.Add(variant);
+                }
+            }
+
+            if (sourceSense.Pronunciations.Any())
+            {
+                sense.Pronunciations = new List<Pronunciation>();
+                foreach (var pronunciation in sourceSense.Pronunciations)
+                {
+                    sense.Pronunciations.Add(PronunciationHelper.Parse(pronunciation, _language, _parseOptions.AudioFormat));
+                }
+            }
+
+            if (sourceSense.Inflections.Any())
+            {
+                sense.Inflections = InflectionHelper.Parse(sourceSense.Inflections, _language, _parseOptions.AudioFormat).ToList();
+            }
+
+            // todo et, sgram
+
+
+            return sense;
+        }
+
+        public void ParseSpecificSenseProperties(Response.SenseBase sourceSense, SenseBase targetSense)
+        {
+            foreach (var definingTextObjects in sourceSense.DefiningTexts)
+            {
+                if (definingTextObjects.Any(d => d.TypeOrText == "text"))
+                {
+                    var definition = definingTextObjects.FirstOrDefault(d => d.TypeOrText != "text");
+                    string definitionText = definition.TypeOrText;
+
+                    if (targetSense is Sense sense)
+                    {
                         sense.Synonyms = SynonymsParser.ExtractSynonyms(definitionText).ToList();
-                        sense.RawText = definitionText;
+
+                        targetSense.RawText = definitionText;
                         if (sense.Synonyms.Any())
                         {
                             // not very robust, but until now I only found sx links at the beginning of a string in the spanish-english dictionary
@@ -82,116 +253,79 @@ namespace MerriamWebster.NET.Parsing
                                 }
                             }
                         }
-
-                        sense.Text = _parseOptions.RemoveMarkup
-                            ? MarkupManipulator.RemoveMarkupFromString(definitionText)
-                            : definitionText;
-                        sense.HtmlText = _parseOptions.ReplaceMarkup
-                            ? MarkupManipulator.ReplaceMarkupInString(definitionText)
-                            : definitionText;
-
-                        if (sourceSence.DividedSense != null)
-                        {
-                            foreach (var sdDefiningTextObject in sourceSence.DividedSense.DefiningTexts)
-                            {
-                                if (sdDefiningTextObject.Any(d => d.TypeOrText == "text"))
-                                {
-                                    var sdDef = sdDefiningTextObject.FirstOrDefault(d => d.TypeOrText != "text");
-                                    string sdText = $"{sourceSence.DividedSense.SenseDivider}: {sdDef.TypeOrText}" ;
-
-                                    sense.RawText += $"; {sdText}";
-                                    var text = _parseOptions.RemoveMarkup
-                                        ? MarkupManipulator.RemoveMarkupFromString(sdText)
-                                        : sdText;
-                                    sense.Text += $"; {text}";
-
-                                    var htmlText = _parseOptions.ReplaceMarkup
-                                        ? MarkupManipulator.ReplaceMarkupInString(sdText)
-                                        : sdText;
-                                    sense.HtmlText += $"; {htmlText}";
-                                }
-                            }
-                        }
+                    }
+                    else
+                    {
+                        targetSense.RawText = definitionText;
                     }
 
-                    // the vis (verbal illustrations) element contains examples or other text that furhter illustrates the definition
-                    if (definingTextObjects.Any(d => d.TypeOrText == "vis"))
+
+                    targetSense.Text = _parseOptions.RemoveMarkup
+                        ? MarkupManipulator.RemoveMarkupFromString(definitionText)
+                        : definitionText;
+                    targetSense.HtmlText = _parseOptions.ReplaceMarkup
+                        ? MarkupManipulator.ReplaceMarkupInString(definitionText)
+                        : definitionText;
+                }
+
+                // the vis (verbal illustrations) element contains examples or other text that furhter illustrates the definition
+                if (definingTextObjects.Any(d => d.TypeOrText == "vis"))
+                {
+                    if (targetSense.VerbalIllustrations == null)
                     {
-                        foreach (var dtWrapper in definingTextObjects.Where(to => to.DefiningTextArray != null))
+                        targetSense.VerbalIllustrations = new List<VerbalIllustration>();
+                    }
+
+                    foreach (var dtWrapper in definingTextObjects.Where(to => to.DefiningTextArray != null))
+                    {
+                        foreach (var dto in dtWrapper.DefiningTextArray)
                         {
-                            foreach (var dto in dtWrapper.DefiningTextArray)
+                            if (dto.DefiningText != null)
                             {
-                                if (dto.DefiningText != null)
+                                var text = dto.DefiningText.Text;
+                                var example = new VerbalIllustration
                                 {
-                                    var text = dto.DefiningText.Text;
-                                    var example = new VerbalIllustration
+                                    RawSentence = text,
+                                    Sentence = _parseOptions.RemoveMarkup ? MarkupManipulator.RemoveMarkupFromString(text) : text,
+                                    HtmlSentence = _parseOptions.ReplaceMarkup ? MarkupManipulator.ReplaceMarkupInString(text) : text,
+                                    Translation = dto.DefiningText.Translation
+                                };
+                                var aq = dto.DefiningText.Quote;
+                                if (aq != null)
+                                {
+                                    example.AttributionOfQuote = new AttributionOfQuote
                                     {
-                                        RawSentence = text,
-                                        Sentence = _parseOptions.RemoveMarkup ? MarkupManipulator.RemoveMarkupFromString(text) : text,
-                                        HtmlSentence = _parseOptions.ReplaceMarkup ? MarkupManipulator.ReplaceMarkupInString(text) : text,
-                                        Translation = dto.DefiningText.Translation
+                                        Author = aq.Author,
+                                        PublicationDate = aq.PublicationDate,
+                                        Source = aq.Source
                                     };
-                                    var aq = dto.DefiningText.Quote;
-                                    if (aq != null)
-                                    {
-                                        example.AttributionOfQuote = new AttributionOfQuote
-                                        {
-                                            Author = aq.Author,
-                                            PublicationDate = aq.PublicationDate,
-                                            Source = aq.Source
-                                        };
 
-                                        if (aq.Subsource != null)
+                                    if (aq.Subsource != null)
+                                    {
+                                        example.AttributionOfQuote.Subsource = new SubSource
                                         {
-                                            example.AttributionOfQuote.Subsource = new SubSource
-                                            {
-                                                PublicationDate = aq.Subsource.PublicationDate,
-                                                Source = aq.Subsource.Source
-                                            };
-                                        }
+                                            PublicationDate = aq.Subsource.PublicationDate,
+                                            Source = aq.Subsource.Source
+                                        };
                                     }
-                                    sense.Examples.Add(example);
                                 }
+
+                                targetSense.VerbalIllustrations.Add(example);
                             }
                         }
                     }
                 }
-
-                // variants contain an alternative spelling or different way of using the sense and can be treated as examples
-                if (sourceSence.Variants.Any())
-                {
-                    foreach (var variant in sourceSence.Variants)
-                    {
-                        sense.Examples.Add(new VerbalIllustration
-                        {
-                            RawSentence = variant.Text,
-                            Sentence = _parseOptions.RemoveMarkup ? MarkupManipulator.RemoveMarkupFromString(variant.Text) : variant.Text,
-                            HtmlSentence = _parseOptions.RemoveMarkup ? MarkupManipulator.ReplaceMarkupInString(variant.Text) : variant.Text
-                        });
-                    }
-                }
-
-                if (sourceSence.CrossReferences.Any())
-                {
-                    foreach (var crossReference in sourceSence.CrossReferences.SelectMany(cr=> cr))
-                    {
-                        sense.CrossReferences.Add(new CrossReference
-                        {
-                            Target = crossReference.Target,
-                            Text = crossReference.Text
-                        });
-                    }
-                }
-
-                if (sourceSence.SubjectStatusLabels.Any())
-                {
-                    sense.AdditionalInformation = sourceSence.SubjectStatusLabels.ToList();
-                }
-
-                senses.Add(sense);
             }
 
-            return senses;
+            // sdsense
+            if (sourceSense is Response.Sense s && s.DividedSense != null)
+            {
+                var dSense = ParseGeneralSenseProperties<DividedSense>(s.DividedSense);
+                ParseSpecificSenseProperties(s.DividedSense, dSense);
+                dSense.SenseDivider = s.DividedSense.SenseDivider;
+
+                ((Sense)targetSense).DividedSense = dSense;
+            }
         }
     }
 }

@@ -9,10 +9,10 @@ namespace MerriamWebster.NET.Parsing
     public class CognateCrossReferenceHelper
     {
         /// <summary>
-        /// 
+        /// Converts <see cref="Response.CognateCrossReference"/> to <see cref="CognateCrossReference"/>
         /// </summary>
-        /// <param name="sources"></param>
-        /// <returns></returns>
+        /// <param name="sources">The source cognate references</param>
+        /// <returns>A new <see cref="CognateCrossReference"/> object for each source reference</returns>
         public static IEnumerable<CognateCrossReference> Parse(Response.CognateCrossReference[] sources)
         {
             foreach (var source in sources)

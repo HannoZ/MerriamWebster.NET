@@ -14,7 +14,7 @@ namespace MerriamWebster.NET.Response
     /// A <see cref="SenseSequence"/>s groups together the numbered senses (<i>sense</i> and <i>sen</i>) defining particular meanings of the headword.
     /// Finally, more complex sense structures are represented by <i>pseq</i>, <i>sdsense</i>, and <i>bs</i>.
     /// </remarks>
-    public class Sense
+    public class Sense : SenseBase
     {
         /// <summary>
         /// The sense number identifies a sense or subsense within the entry.
@@ -23,25 +23,6 @@ namespace MerriamWebster.NET.Response
         [JsonProperty("sn", NullValueHandling = NullValueHandling.Ignore)]
         public string SenseNumber { get; set; }
 
-        /// <summary>
-        /// This label notes whether a particular sense of a verb is transitive (T) or intransitive (I).<br/>
-        /// The sense-specific grammatical label is contained in an <see cref="SenseSpecificGrammaticalLabel"/>.
-        /// </summary>
-        [JsonProperty("sgram")]
-        public string SenseSpecificGrammaticalLabel { get; set; }
-
-        /// <summary>
-        /// An etymology is an explanation of the historical origin of a word.
-        /// While the etymology contained in an et most typically relates to the headword, it may also explain the origin of a defined run-on phrase or a particular sense.
-        /// </summary>
-        [JsonProperty("et", NullValueHandling = NullValueHandling.Ignore)]
-        public Etymology[][] Etymologies { get; set; } = { };
-
-        /// <summary>
-        /// A subject/status label describes the subject area (eg, "computing") or regional/usage status (eg, "British", "formal", "slang") of a headword or a particular sense of a headword.
-        /// </summary>
-        [JsonProperty("sls", NullValueHandling = NullValueHandling.Ignore)]
-        public string[] SubjectStatusLabels { get; set; } = { };
 
         /// <summary>
         /// A thesaurus entry typically contains a list of synonyms for the headword.
@@ -55,33 +36,17 @@ namespace MerriamWebster.NET.Response
         [JsonProperty("rel_list")]
         public MwList[][] RelatedWords { get; set; } = { };
 
-        /// <summary>
-        /// General labels provide information such as whether a headword is typically capitalized, used as an attributive noun, etc.
-        /// </summary>
-        [JsonProperty("lbs", NullValueHandling = NullValueHandling.Ignore)]
-        public string[] GeneralLabels { get; set; } = { };
 
-        /// <summary>
-        /// Gets or sets pronunciations (optional).
-        /// </summary>
-        [JsonProperty("prs", NullValueHandling = NullValueHandling.Ignore)]
-        public Pronunciation[] Pronunciations { get; set; } = { };
-
-        [JsonProperty("dt")]
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
-        public DefiningTextObjectWrapper[][] DefiningTexts { get; set; } = { };
 
         [JsonProperty("sdsense", NullValueHandling = NullValueHandling.Ignore)]
         public DividedSense DividedSense { get; set; }
         
-        [JsonProperty("vrs", NullValueHandling = NullValueHandling.Ignore)]
-        public Variant[] Variants { get; set; } = { };
 
         [JsonProperty("xrs", NullValueHandling = NullValueHandling.Ignore)]
         public CrossReference[][] CrossReferences { get; set; } = { };
 
-        [JsonProperty("ins", NullValueHandling = NullValueHandling.Ignore)]
-        public Inflection[] Inflections { get; set; } = { };
+
 
         [JsonProperty("sense", NullValueHandling = NullValueHandling.Ignore)]
         public Sense SubSense { get; set; }

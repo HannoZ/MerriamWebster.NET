@@ -64,58 +64,46 @@ namespace MerriamWebster.NET.Parsing
                 // parse definitions
                 foreach (var def in result.Definitions)
                 {
-                    //if (def.VerbDivider != null)
-                    //{
-                    //    // verb divider indicates an entry that we should treat separately
-                    //    var extraResult = CreateSearchResult(options, result);
-                    //    extraResult.Pos = def.VerbDivider;
-                    //    var senseParser = new SenseParser(def, options);
-                    //    var senses = senseParser.Parse();
-                    //    extraResult.Senses = new List<Sense>(senses);
-
-                    //    resultModel.Entries.Add(extraResult);
-                    //}
-                    //else
+                    var definition = new Definition
                     {
+                        VerbDivider = def.VerbDivider
+                    };
 
-                        var definition = new Definition
+                    var senseParser = new SenseParser(def, searchResult.Metadata.Language, options);
+                    senseParser.Parse(definition);
+
+                    if (def.Sls.Any())
+                    {
+                        definition.SubjectStatusLabels = new List<Label>();
+                        foreach (var label in def.Sls)
                         {
-                            VerbDivider = def.VerbDivider
-
-                        };
-
-                        var senseParser = new SenseParser(def, options);
-                        var senses = senseParser.Parse();
-                        definition.SenseSequence = new List<Sense>(senses);
-
-                        if (def.Sls.Any())
-                        {
-                            definition.SubjectStatusLabels = new List<Label>();
-                            foreach (var label in def.Sls)
-                            {
-                                definition.SubjectStatusLabels.Add(label);
-                            }
+                            definition.SubjectStatusLabels.Add(label);
                         }
-
-                        searchResult.Definitions.Add(definition);
                     }
 
+                    searchResult.Definitions.Add(definition);
                 }
 
                 // we're done with this search result, add to collection
                 resultModel.Entries.Add(searchResult);
 
                 // parse and add any additional results (they appear in the 'DefinedRunOns' ('dro') property)
-                searchResult.DefinedRunOns = ParseDros(result.DefinedRunOns, options).ToList();
-                
+                if (result.DefinedRunOns.Any())
+                {
+                     ParseDros(searchResult, result.DefinedRunOns, options);
+                }
+
                 // parse and add any 'undefined run-ons'
-                searchResult.UndefinedRunOns = ParseUros(result, options).ToList();
+                if (result.UndefinedRunOns.Any())
+                {
+                    searchResult.UndefinedRunOns = ParseUros(result, options).ToList();
+                }
 
                 if (result.Quotes.Any())
-                {                   
+                {
                     // parse and add any quotes
                     searchResult.Quotes = new List<Quote>();
-                    
+
                     foreach (var sourceQuote in result.Quotes)
                     {
                         var quote = QuoteHelper.Parse(sourceQuote, options);
@@ -132,10 +120,10 @@ namespace MerriamWebster.NET.Parsing
             var searchResult = new Entry
             {
                 Metadata = MetadataHelper.Parse(result),
-                //Text = result.HeadwordInformation.Headword,
                 PartOfSpeech = result.FunctionalLabel ?? string.Empty,
-                ShortDefs = result.Shortdefs
-                //ShortDefs = result.Shortdefs,
+                ShortDefs = result.Shortdefs,
+                Homograph = result.Homograph.GetValueOrDefault()
+                // TODO
                 //Synonyms = result.Metadata.Synonyms.SelectMany(s => s).ToList(),
                 //Antonyms = result.Metadata.Antonyms.SelectMany(s => s).ToList()
             };
@@ -166,8 +154,20 @@ namespace MerriamWebster.NET.Parsing
             ParseBasicStuff(options, result, searchResult);
 
             searchResult.Conjugations = ParseConjugations(result.Supplemental);
-            searchResult.CrossReferences = CrossReferenceHelper.Parse(result.CrossReferences).ToList();
-            searchResult.CognateCrossReferences = CognateCrossReferenceHelper.Parse(result.CognateCrossReferences).ToList();
+            if (result.CrossReferences.Any())
+            {
+                searchResult.CrossReferences = CrossReferenceHelper.Parse(result.CrossReferences).ToList();
+            }
+
+            if (result.CognateCrossReferences.Any())
+            {
+                searchResult.CognateCrossReferences = CognateCrossReferenceHelper.Parse(result.CognateCrossReferences).ToList();
+            }
+
+            if (result.Inflections.Any())
+            {
+                searchResult.Inflections = InflectionHelper.Parse(result.Inflections, searchResult.Metadata.Language, options.AudioFormat).ToList();
+            }
 
             return searchResult;
         }
@@ -194,14 +194,19 @@ namespace MerriamWebster.NET.Parsing
             {
                 searchResult.Date = MarkupManipulator.RemoveMarkupFromString(result.Date);
             }
+
+            if (result.HeadwordInformation != null)
+            {
+                // TODO
+            }
         }
-        
-        private static IEnumerable<DefinedRunOn> ParseDros(Response.DefinedRunOn[] dros, ParseOptions parseOptions)
+
+        private static void ParseDros(Entry result, Response.DefinedRunOn[] dros, ParseOptions parseOptions)
         {
             var searchResults = new List<DefinedRunOn>();
             if (dros == null)
             {
-                return searchResults;
+                return;
             }
 
             foreach (var dro in dros)
@@ -213,16 +218,17 @@ namespace MerriamWebster.NET.Parsing
 
                 foreach (var droDef in dro.Definitions)
                 {
-                    var senseParser = new SenseParser(droDef, parseOptions);
-                    var senses = senseParser.Parse();
+                    var senseParser = new SenseParser(droDef, result.Metadata.Language, parseOptions);
+                    var def = new Definition();
+                    senseParser.Parse(def);
 
-                    //searchResult.Definitions = new List<Sense>(senses);
+                    searchResult.Definitions.Add(def);
                 }
 
                 searchResults.Add(searchResult);
             }
 
-            return searchResults;
+            result.DefinedRunOns = searchResults;
         }
 
         private static IEnumerable<UndefinedRunOn> ParseUros(Response.DictionaryEntry entry, ParseOptions options)
@@ -234,25 +240,27 @@ namespace MerriamWebster.NET.Parsing
                 var searchResult = new UndefinedRunOn
                 {
                     EntryWord = uro.EntryWord,
-                    PartOfSpeech = uro.FunctionalLabel,
-                   // TODO Language = (Language)entry.Metadata.Lang
+                    PartOfSpeech = uro.FunctionalLabel
                 };
-               
-                //searchResult.Stems.Add(uro.EntryWord);
-                //if (uro.AlternateEntry?.Text != null)
-                //{
-                //    searchResult.Stems.Add(uro.AlternateEntry.Text);
-                //}
 
                 if (uro.Pronunciations.Any())
                 {
                     searchResult.Pronunciations = new List<Pronunciation>();
                     foreach (var pronunciation in uro.Pronunciations)
                     {
-                        var pron = PronunciationHelper.Parse(pronunciation, (Language) entry.Metadata.Lang,
+                        var pron = PronunciationHelper.Parse(pronunciation, (Language)entry.Metadata.Lang,
                             options.AudioFormat);
                         searchResult.Pronunciations.Add(pron);
                     }
+                }
+
+                if (uro.AlternateEntry != null)
+                {
+                    searchResult.AlternateEntry = new AlternateUndefinedEntryWord
+                    {
+                        Text = uro.AlternateEntry.Text,
+                        TextCutback = uro.AlternateEntry.TextCutback
+                    };
                 }
 
                 searchResults.Add(searchResult);
@@ -315,6 +323,6 @@ namespace MerriamWebster.NET.Parsing
             return conjugations;
         }
 
-        
+
     }
 }
