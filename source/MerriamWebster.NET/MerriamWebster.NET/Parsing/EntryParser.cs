@@ -1,10 +1,9 @@
 ﻿using MerriamWebster.NET.Dto;
+using MerriamWebster.NET.Parsing.Markup;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using MerriamWebster.NET.Parsing.Markup;
 
 namespace MerriamWebster.NET.Parsing
 {
@@ -13,31 +12,19 @@ namespace MerriamWebster.NET.Parsing
     /// </summary>
     public class EntryParser : IEntryParser
     {
-        private readonly IMerriamWebsterClient _client;
         private static readonly JsonSerializerSettings SerializerSettings = new JsonSerializerSettings
         {
             DefaultValueHandling = DefaultValueHandling.Ignore
         };
-
-        /// <summary>
-        /// Initializes a new instances of the <see cref="EntryParser"/> class.
-        /// </summary>
-        /// <param name="client"></param>
-        /// <remarks>It's most convenient to register this class as implementation of the <see cref="IEntryParser"/> interface and inject the interface where it's needed.
-        /// This constructor should therefore not be called directly, new instances should be created by the current IoC framework.</remarks>
-        public EntryParser(IMerriamWebsterClient client)
+        
+        /// <inheritdoc />
+        public ResultModel Parse(string searchTerm, IEnumerable<Response.DictionaryEntry> results)
         {
-            _client = client;
+            return Parse(searchTerm, results, ParseOptions.Default);
         }
 
         /// <inheritdoc />
-        public Task<ResultModel> GetAndParseAsync(string api, string searchTerm)
-        {
-            return GetAndParseAsync(api, searchTerm, ParseOptions.Default);
-        }
-
-        /// <inheritdoc />
-        public async Task<ResultModel> GetAndParseAsync(string api, string searchTerm, ParseOptions options)
+        public ResultModel Parse(string searchTerm, IEnumerable<Response.DictionaryEntry> results, ParseOptions options)
         {
             if (searchTerm == null)
             {
@@ -48,8 +35,6 @@ namespace MerriamWebster.NET.Parsing
             {
                 options = ParseOptions.Default;
             }
-
-            var results = await _client.GetDictionaryEntry(api, searchTerm);
 
             var resultModel = new ResultModel
             {
@@ -109,6 +94,11 @@ namespace MerriamWebster.NET.Parsing
                         var quote = QuoteHelper.Parse(sourceQuote, options);
                         searchResult.Quotes.Add(quote);
                     }
+                }
+
+                if (result.Et.Any())
+                {
+                    searchResult.Etymology = EtymologyHelper.Parse(result.Et, options);
                 }
             }
 
@@ -174,12 +164,6 @@ namespace MerriamWebster.NET.Parsing
 
         private static void ParseBasicStuff(ParseOptions options, Response.DictionaryEntry result, Entry searchResult)
         {
-            foreach (var pronunciation in result.HeadwordInformation.Pronunciations)
-            {
-                var pron = PronunciationHelper.Parse(pronunciation, searchResult.Metadata.Language, options.AudioFormat);
-                searchResult.Headword.Pronunciations.Add(pron);
-            }
-
             if (result.Artwork != null)
             {
                 searchResult.Artwork = new Artwork
@@ -197,7 +181,38 @@ namespace MerriamWebster.NET.Parsing
 
             if (result.HeadwordInformation != null)
             {
-                // TODO
+                foreach (var pronunciation in result.HeadwordInformation.Pronunciations)
+                {
+                    var pron = PronunciationHelper.Parse(pronunciation, searchResult.Metadata.Language, options.AudioFormat);
+                    searchResult.Headword.Pronunciations.Add(pron);
+                }
+
+                searchResult.Headword.Text = result.HeadwordInformation.Headword;
+            }
+
+            if (result.AlternateHeadwords.Any())
+            {
+                searchResult.AlternateHeadwords = new List<AlternateHeadwordInformation>();
+                foreach (var alternateHeadword in result.AlternateHeadwords)
+                {
+                    var alternateHeadwordInformation = new AlternateHeadwordInformation
+                    {
+                        HeadwordCutback = alternateHeadword.HeadwordCutback,
+                        ParenthesizedSubjectStatusLabel = alternateHeadword.ParenthesizedSubjectStatusLabel,
+                        Text = alternateHeadword.Headword
+                    };
+
+                    if (alternateHeadword.Pronunciations.Any())
+                    {
+                        alternateHeadwordInformation.Pronunciations = new List<Pronunciation>();
+                        foreach (var pronunciation in alternateHeadword.Pronunciations)
+                        {
+                            alternateHeadwordInformation.Pronunciations.Add(PronunciationHelper.Parse(pronunciation, searchResult.Metadata.Language, options.AudioFormat));
+                        }
+                    }
+
+                    searchResult.AlternateHeadwords.Add(alternateHeadwordInformation);
+                }
             }
         }
 
@@ -223,6 +238,11 @@ namespace MerriamWebster.NET.Parsing
                     senseParser.Parse(def);
 
                     searchResult.Definitions.Add(def);
+                }
+
+                if (dro.Et.Any())
+                {
+                    searchResult.Etymology = EtymologyHelper.Parse(dro.Et, parseOptions);
                 }
 
                 searchResults.Add(searchResult);

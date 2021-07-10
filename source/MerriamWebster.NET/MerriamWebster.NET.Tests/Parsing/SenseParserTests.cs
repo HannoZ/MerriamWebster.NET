@@ -193,8 +193,8 @@ namespace MerriamWebster.NET.Tests.Parsing
             // ASSERT
             def.SenseSequence.Count.ShouldBe(1);
             def.SenseSequence.First().Senses.Count.ShouldBe(4);
-            def.SenseSequence.SelectMany(ss=>ss.Senses).Select(s => s.Text).ShouldAllBe(t => !t.Contains("{wi}"));
-            def.SenseSequence.SelectMany(ss => ss.Senses).SelectMany(s => s.VerbalIllustrations).ShouldAllBe(e => !e.Sentence.Contains("{wi}"));
+            def.SenseSequence.SelectMany(ss=>ss.Senses).Select(s => s.DefiningText).ShouldAllBe(t => !t.Text.Contains("{wi}"));
+            def.SenseSequence.SelectMany(ss => ss.Senses).SelectMany(s => s.VerbalIllustrations).ShouldAllBe(e => !e.Sentence.Text.Contains("{wi}"));
         }
 
         [TestMethod]
@@ -242,7 +242,7 @@ namespace MerriamWebster.NET.Tests.Parsing
                 var def = new Dto.Definition();
                 senseParser.Parse(def);
 
-                def.SenseSequence.SelectMany(ss => ss.Senses).ShouldAllBe(s => !s.Text.Contains(":"));
+                def.SenseSequence.SelectMany(ss => ss.Senses).ShouldAllBe(s => !s.DefiningText.Text.Contains(":"));
             }
         }
 

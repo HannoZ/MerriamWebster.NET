@@ -23,12 +23,12 @@ namespace MerriamWebster.NET.Dto
         /// Gets or sets the definitions.
         /// </summary>
         public ICollection<Definition> Definitions { get; set; } = new List<Definition>();
-        
 
-        ///// <summary>
-        ///// <i>Optional.</i>  Gets or sets etymologies.
-        ///// </summary>
-        //public Etymology[][] Et { get; set; } = { };
+
+        /// <summary>
+        /// <i>Optional.</i> Gets or sets the etymology.
+        /// </summary>
+        public Etymology Etymology { get; set; }
     }
 
 

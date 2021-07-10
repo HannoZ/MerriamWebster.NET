@@ -23,11 +23,11 @@ namespace MerriamWebster.NET.Dto
         public string SenseNumber { get; set; }
         
         /// <summary>
-        /// <i>Optional.</i> The divided sense contains at least a new <see cref="SenseBase.Text"/> but can also contain other properties that can also be present on regular senses.
+        /// <i>Optional.</i> The divided sense contains at least a new <see cref="SenseBase.DefiningText"/> but can also contain other properties that can also be present on regular senses.
         /// </summary>
         /// <remarks>
         /// <b>Display Guidance:</b>
-        /// The divided sense should be inline with the preceding <see cref="SenseBase.Text"/>.
+        /// The divided sense should be inline with the preceding <see cref="SenseBase.DefiningText"/>.
         /// The <see cref="DividedSense.SenseDivider"/> is displayed in italics, preceded by a semicolon and space, and followed by a space.
         /// </remarks>
         public DividedSense DividedSense { get; set; }

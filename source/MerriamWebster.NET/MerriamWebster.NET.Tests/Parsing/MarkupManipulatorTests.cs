@@ -159,6 +159,28 @@ namespace MerriamWebster.NET.Tests.Parsing
         }
 
         [TestMethod]
+        public void MarkupManipulator_Remove_Et_link()
+        {
+            string input = "borrowed from New Latin {it}allīterātiōn-, allīterātiō,{/it} from Latin {it}ad-{/it} {et_link|ad-|ad-} + {it}lītera{/it} \"letter\" + {it}-ātiōn-, -ātiō{/it} {et_link|-ation|-ation} {ma}{mat|letter:1|}{/ma}";
+
+            // ACT
+            var output = MarkupManipulator.RemoveMarkupFromString(input);
+
+            output.ShouldNotContain("et_link");
+        }
+
+        [TestMethod]
+        public void MarkupManipulator_Replace_Et_link()
+        {
+            string input = "borrowed from New Latin {it}allīterātiōn-, allīterātiō,{/it} from Latin {it}ad-{/it} {et_link|ad-|ad-} + {it}lītera{/it} \"letter\" + {it}-ātiōn-, -ātiō{/it} {et_link|-ation|-ation} {ma}{mat|letter:1|}{/ma}";
+
+            // ACT
+            var output = MarkupManipulator.ReplaceMarkupInString(input);
+
+            output.ShouldContain("mw-et-link");
+        }
+
+        [TestMethod]
         public void MarkupManipulator_Remove_Dxef_Dx()
         {
             string input =

@@ -1,4 +1,4 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using MerriamWebster.NET.Dto;
 
 namespace MerriamWebster.NET.Parsing
@@ -12,19 +12,13 @@ namespace MerriamWebster.NET.Parsing
     public interface IEntryParser
     {
         /// <summary>
-        /// Executes a request and returns the parsed result.
+        /// Parses the result of an api request.
         /// </summary>
-        /// <param name="api"></param>
-        /// <param name="searchTerm"></param>
-        /// <returns></returns>
-        Task<ResultModel> GetAndParseAsync(string api, string searchTerm);
+        ResultModel Parse(string searchTerm, IEnumerable<Response.DictionaryEntry> results);
+
         /// <summary>
-        /// Executes a request and returns the parsed result using specific parse options.
+        /// Parses the result of an api request and returns the result using specific parse options.
         /// </summary>
-        /// <param name="api"></param>
-        /// <param name="searchTerm"></param>
-        /// <param name="options"></param>
-        /// <returns></returns>
-        Task<ResultModel> GetAndParseAsync(string api, string searchTerm, ParseOptions options);
+        ResultModel Parse(string searchTerm, IEnumerable<Response.DictionaryEntry> results, ParseOptions options);
     }
 }

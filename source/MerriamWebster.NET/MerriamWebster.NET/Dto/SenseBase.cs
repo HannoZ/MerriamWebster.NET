@@ -9,10 +9,6 @@ namespace MerriamWebster.NET.Dto
     public class SenseBase
     {
         /// <summary>
-        /// The text as it comes from the source.
-        /// </summary>
-        public string RawText { get; set; }
-        /// <summary>
         /// The defining text is the text of the definition or translation for a particular sense.
         /// </summary>
         /// <remarks>
@@ -20,15 +16,8 @@ namespace MerriamWebster.NET.Dto
         /// <b>Display Guidance:</b>
         /// Inline in normal font
         /// </para>
-        /// <para>
-        /// If <see cref="ParseOptions"/> is configured to remove markup, this contains the formatted text. The <see cref="RawText"/> still contains the unformatted text. 
-        /// </para>
         /// </remarks>
-        public string Text { get; set; }
-        /// <summary>
-        /// If <see cref="ParseOptions"/> is configured to replace markup, this contains the text with MW-specific markup replace by HTML markup. The <see cref="RawText"/> still contains the unformmated text. 
-        /// </summary>
-        public string HtmlText { get; set; }
+        public FormattedText DefiningText { get; set; } = new FormattedText();
         
         /// <summary>
         /// <i>Optional.</i> Gets or sets pronunciations.
@@ -69,5 +58,10 @@ namespace MerriamWebster.NET.Dto
         /// The <see cref="SenseBase.RawText"/> still contains the unformatted text. 
         /// </summary>
         public ICollection<VerbalIllustration> VerbalIllustrations { get; set; }
+
+        /// <summary>
+        /// <i>Optional.</i> Gets or sets the etymology.
+        /// </summary>
+        public Etymology Etymology { get; set; }
     }
 }

@@ -214,7 +214,12 @@ namespace MerriamWebster.NET.Parsing
                 sense.Inflections = InflectionHelper.Parse(sourceSense.Inflections, _language, _parseOptions.AudioFormat).ToList();
             }
 
-            // todo et, sgram
+            if (sourceSense.Etymologies.Any())
+            {
+                sense.Etymology = EtymologyHelper.Parse(sourceSense.Etymologies, _parseOptions);
+            }
+
+            // todo  sgram
 
 
             return sense;
@@ -233,12 +238,12 @@ namespace MerriamWebster.NET.Parsing
                     {
                         sense.Synonyms = SynonymsParser.ExtractSynonyms(definitionText).ToList();
 
-                        targetSense.RawText = definitionText;
+                        targetSense.DefiningText = new FormattedText(definitionText, _parseOptions);
                         if (sense.Synonyms.Any())
                         {
                             // not very robust, but until now I only found sx links at the beginning of a string in the spanish-english dictionary
                             // in that case the synonyms should be removed from the text, in other cases we keep them between square brackets
-                            if (sense.RawText.StartsWith("{sx"))
+                            if (sense.DefiningText.RawText.StartsWith("{sx"))
                             {
                                 foreach (var synonym in sense.Synonyms)
                                 {
@@ -256,16 +261,8 @@ namespace MerriamWebster.NET.Parsing
                     }
                     else
                     {
-                        targetSense.RawText = definitionText;
+                        targetSense.DefiningText = new FormattedText(definitionText, _parseOptions);
                     }
-
-
-                    targetSense.Text = _parseOptions.RemoveMarkup
-                        ? MarkupManipulator.RemoveMarkupFromString(definitionText)
-                        : definitionText;
-                    targetSense.HtmlText = _parseOptions.ReplaceMarkup
-                        ? MarkupManipulator.ReplaceMarkupInString(definitionText)
-                        : definitionText;
                 }
 
                 // the vis (verbal illustrations) element contains examples or other text that furhter illustrates the definition
@@ -285,11 +282,9 @@ namespace MerriamWebster.NET.Parsing
                                 var text = dto.DefiningText.Text;
                                 var example = new VerbalIllustration
                                 {
-                                    RawSentence = text,
-                                    Sentence = _parseOptions.RemoveMarkup ? MarkupManipulator.RemoveMarkupFromString(text) : text,
-                                    HtmlSentence = _parseOptions.ReplaceMarkup ? MarkupManipulator.ReplaceMarkupInString(text) : text,
-                                    Translation = dto.DefiningText.Translation
+                                    Sentence = new FormattedText(text, _parseOptions)
                                 };
+
                                 var aq = dto.DefiningText.Quote;
                                 if (aq != null)
                                 {

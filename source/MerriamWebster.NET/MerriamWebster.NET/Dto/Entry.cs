@@ -48,7 +48,7 @@ namespace MerriamWebster.NET.Dto
         /// <summary>
         /// <i>Optional.</i> An alternate headword is a regional or less common spelling of a headword.
         /// </summary>
-        public AlternateHeadwordInformation AlternateHeadword { get; set; }
+        public ICollection<AlternateHeadwordInformation> AlternateHeadwords { get; set; }
 
         /// <summary>
         /// <i>Optional.</i> Gets or sets undefined run-ons.
@@ -127,6 +127,11 @@ namespace MerriamWebster.NET.Dto
         /// <i>Optional.</i> Gets or sets the quotes.
         /// /// </summary>
         public ICollection<Quote> Quotes { get; set; }
+        
+        /// <summary>
+        /// <i>Optional.</i> Gets or sets the etymology.
+        /// </summary>
+        public Etymology Etymology { get; set; }
 
         /// <summary>
         /// <i>Optional.</i> Gets or sets the artwork.

@@ -51,13 +51,9 @@ namespace MerriamWebster.NET.Tests.Parsing
                 try
                 {
                     var data = JsonConvert.DeserializeObject<DictionaryEntry[]>(content, Converter.Settings);
-
-                    _mocker.GetMock<IMerriamWebsterClient>()
-                        .Setup(m => m.GetDictionaryEntry(It.IsAny<string>(), It.IsAny<string>()))
-                        .ReturnsAsync(data);
-
+                    
                     // ACT
-                    var result = await _entryParser.GetAndParseAsync("api", "search");
+                    var result = _entryParser.Parse("api", data);
 
                     // ASSERT
                     result.Entries.ShouldNotBeEmpty();
@@ -71,64 +67,48 @@ namespace MerriamWebster.NET.Tests.Parsing
         }
 
         [TestMethod]
-        public async Task EntryParser_CanParse_Abarrotado()
+        public void EntryParser_CanParse_Abarrotado()
         {
             var data = LoadData("abarrotado");
 
-            _mocker.GetMock<IMerriamWebsterClient>()
-                .Setup(m => m.GetDictionaryEntry(It.IsAny<string>(), It.IsAny<string>()))
-                .ReturnsAsync(data);
-
-            // ACT 
-            var result = await _entryParser.GetAndParseAsync("api", "abarrotado");
+            // ACT
+            var result = _entryParser.Parse("abarrotado", data);
 
             // ASSERT
             result.Entries.ShouldNotBeEmpty();
         }
 
         [TestMethod]
-        public async Task EntryParser_CanParse_Casa()
+        public void EntryParser_CanParse_Casa()
         {
             var data = LoadData("casa");
 
-            _mocker.GetMock<IMerriamWebsterClient>()
-                .Setup(m => m.GetDictionaryEntry(It.IsAny<string>(), It.IsAny<string>()))
-                .ReturnsAsync(data);
-
-            // ACT 
-            var result = await _entryParser.GetAndParseAsync("api", "casa");
+            // ACT
+            var result = _entryParser.Parse("casa", data);
 
             // ASSERT
             result.Entries.Count.ShouldBe(4);
         }
 
         [TestMethod]
-        public async Task EntryParser_CanParse_Delgado()
+        public void EntryParser_CanParse_Delgado()
         {
             var data = LoadData("delgado");
-
-            _mocker.GetMock<IMerriamWebsterClient>()
-                .Setup(m => m.GetDictionaryEntry(It.IsAny<string>(), It.IsAny<string>()))
-                .ReturnsAsync(data);
-
+            
             // ACT 
-            var result = await _entryParser.GetAndParseAsync("api", "delgado");
+            var result = _entryParser.Parse("delgado", data);
 
             // ASSERT
             result.Entries.ShouldNotBeEmpty();
         }
 
         [TestMethod]
-        public async Task EntryParser_CanParse_Distinto()
+        public void EntryParser_CanParse_Distinto()
         {
             var data = LoadData("distinto");
 
-            _mocker.GetMock<IMerriamWebsterClient>()
-                .Setup(m => m.GetDictionaryEntry(It.IsAny<string>(), It.IsAny<string>()))
-                .ReturnsAsync(data);
-
             // ACT 
-            var result = await _entryParser.GetAndParseAsync("api", "distinto");
+            var result = _entryParser.Parse("distinto", data);
 
             // ASSERT
             result.Entries.ShouldNotBeEmpty();
@@ -140,33 +120,24 @@ namespace MerriamWebster.NET.Tests.Parsing
         }
 
         [TestMethod]
-        public async Task EntryParser_CanParse_Hilar()
+        public void EntryParser_CanParse_Hilar()
         {
             var data = LoadData("hilar");
 
-            _mocker.GetMock<IMerriamWebsterClient>()
-                .Setup(m => m.GetDictionaryEntry(It.IsAny<string>(), It.IsAny<string>()))
-                .ReturnsAsync(data);
-
-            // ACT 
-            var result = await _entryParser.GetAndParseAsync("api", "hilar");
-
+            // ACT
+            var result = _entryParser.Parse("hilar", data);
+            
             // ASSERT
             result.Entries.Count.ShouldBe(1);
             result.Entries.ShouldContain(e => e.Conjugations != null);
         }
 
         [TestMethod]
-        public async Task EntryParser_CanParse_Robot()
+        public void EntryParser_CanParse_Robot()
         {
             var data = LoadData("robot");
 
-            _mocker.GetMock<IMerriamWebsterClient>()
-                .Setup(m => m.GetDictionaryEntry(It.IsAny<string>(), It.IsAny<string>()))
-                .ReturnsAsync(data);
-
-            // ACT 
-            var result = await _entryParser.GetAndParseAsync("api", "robot");
+            var result = _entryParser.Parse("robot", data);
 
             // ASSERT
             result.Entries.ShouldNotBeEmpty();
@@ -178,17 +149,13 @@ namespace MerriamWebster.NET.Tests.Parsing
         }
 
         [TestMethod]
-        public async Task EntryParser_CanParse_Estar()
+        public void EntryParser_CanParse_Estar()
         {
             var data = LoadData("estar");
-
-            _mocker.GetMock<IMerriamWebsterClient>()
-                .Setup(m => m.GetDictionaryEntry(It.IsAny<string>(), It.IsAny<string>()))
-                .ReturnsAsync(data);
-
-            // ACT 
-            var result = await _entryParser.GetAndParseAsync("api", "estar");
-
+    
+            // ACT
+            var result = _entryParser.Parse("estar", data);
+            
             // ASSERT
             result.Entries.ShouldNotBeEmpty();
            // TODO
@@ -197,80 +164,60 @@ namespace MerriamWebster.NET.Tests.Parsing
         }
 
         [TestMethod]
-        public async Task EntryParser_CanParse_House()
+        public void EntryParser_CanParse_House()
         {
             var data = LoadData("house");
 
-            _mocker.GetMock<IMerriamWebsterClient>()
-                .Setup(m => m.GetDictionaryEntry(It.IsAny<string>(), It.IsAny<string>()))
-                .ReturnsAsync(data);
-
-            // ACT 
-            var result = await _entryParser.GetAndParseAsync("api", "house");
+            // ACT
+            var result = _entryParser.Parse("house", data);
 
             // ASSERT
             result.Entries.ShouldNotBeEmpty();
         }
 
         [TestMethod]
-        public async Task EntryParser_CanParse_Pueblo()
+        public void EntryParser_CanParse_Pueblo()
         {
             var data = LoadData("pueblo");
 
-            _mocker.GetMock<IMerriamWebsterClient>()
-                .Setup(m => m.GetDictionaryEntry(It.IsAny<string>(), It.IsAny<string>()))
-                .ReturnsAsync(data);
-
-            // ACT 
-            var result = await _entryParser.GetAndParseAsync("api", "pueblo");
+            // ACT
+            var result = _entryParser.Parse("pueblo", data);
 
             // ASSERT
             result.Entries.ShouldNotBeEmpty();
         }
 
         [TestMethod]
-        public async Task EntryParser_CanParse_Abeja()
+        public void EntryParser_CanParse_Abeja()
         {
             var data = LoadData("abeja");
 
-            _mocker.GetMock<IMerriamWebsterClient>()
-                .Setup(m => m.GetDictionaryEntry(It.IsAny<string>(), It.IsAny<string>()))
-                .ReturnsAsync(data);
-
-            // ACT 
-            var result = await _entryParser.GetAndParseAsync("api", "abeja");
+            // ACT
+            var result = _entryParser.Parse("abeja", data);
 
             // ASSERT
             result.Entries.ShouldNotBeEmpty();
         }
 
         [TestMethod]
-        public async Task EntryParser_CanParse_CollegiateDict_Voluminous()
+        public void EntryParser_CanParse_CollegiateDict_Voluminous()
         {
             var data = LoadData("coll_dict_voluminous");
 
-            _mocker.GetMock<IMerriamWebsterClient>()
-                .Setup(m => m.GetDictionaryEntry(It.IsAny<string>(), It.IsAny<string>()))
-                .ReturnsAsync(data);
-
-            // ACT 
-            var result = await _entryParser.GetAndParseAsync("api", "voluminous");
-
+            // ACT
+            var result = _entryParser.Parse("voluminous", data);
+            
             // ASSERT
             result.Entries.ShouldNotBeEmpty();
         }
 
         [TestMethod]
-        public async Task EntryParser_CanParse_CollegiateThes_Umpire()
+        public void EntryParser_CanParse_CollegiateThes_Umpire()
         {
             var data = LoadData("coll_thes_umpire");
-
-            _mocker.GetMock<IMerriamWebsterClient>()
-                .Setup(m => m.GetDictionaryEntry(It.IsAny<string>(), It.IsAny<string>()))
-                .ReturnsAsync(data);
-
-            // ACT 
-            var result = await _entryParser.GetAndParseAsync("api", "umpire");
+         
+            // ACT
+            var result = _entryParser.Parse("umpire", data);
 
             // ASSERT
             result.Entries.ShouldNotBeEmpty();
@@ -278,16 +225,12 @@ namespace MerriamWebster.NET.Tests.Parsing
 
 
         [TestMethod]
-        public async Task EntryParser_CanParse_CollegiateThes_Above_Metadata()
+        public void EntryParser_CanParse_CollegiateThes_Above_Metadata()
         {
             var data = LoadData("coll_thes_above_meta");
 
-            _mocker.GetMock<IMerriamWebsterClient>()
-                .Setup(m => m.GetDictionaryEntry(It.IsAny<string>(), It.IsAny<string>()))
-                .ReturnsAsync(data);
-
-            // ACT 
-            var result = await _entryParser.GetAndParseAsync("api", "above");
+            // ACT
+            var result = _entryParser.Parse("above", data);
 
             // ASSERT
             var entry = result.Entries.First();
@@ -299,48 +242,35 @@ namespace MerriamWebster.NET.Tests.Parsing
 
 
         [TestMethod]
-        public async Task EntryParser_CanParse_Medical_Doctor()
+        public void EntryParser_CanParse_Medical_Doctor()
         {
             var data = LoadData("med_doctor");
 
-            _mocker.GetMock<IMerriamWebsterClient>()
-                .Setup(m => m.GetDictionaryEntry(It.IsAny<string>(), It.IsAny<string>()))
-                .ReturnsAsync(data);
-
-            // ACT 
-            var result = await _entryParser.GetAndParseAsync("api", "doctor");
+            // ACT
+            var result = _entryParser.Parse("doctor", data);
 
             // ASSERT
             result.Entries.ShouldNotBeEmpty();
         }
 
         [TestMethod]
-        public async Task EntryParser_CanParse_Learners_Apple()
+        public void EntryParser_CanParse_Learners_Apple()
         {
             var data = LoadData("learn_apple");
-
-            _mocker.GetMock<IMerriamWebsterClient>()
-                .Setup(m => m.GetDictionaryEntry(It.IsAny<string>(), It.IsAny<string>()))
-                .ReturnsAsync(data);
-
-            // ACT 
-            var result = await _entryParser.GetAndParseAsync("api", "apple");
+            // ACT
+            var result = _entryParser.Parse("apple", data);
 
             // ASSERT
             result.Entries.ShouldNotBeEmpty();
         }
 
         [TestMethod]
-        public async Task EntryParser_CanParse_ElementaryDictionary_School()
+        public void EntryParser_CanParse_ElementaryDictionary_School()
         {
             var data = LoadData("elem_dict_school");
 
-            _mocker.GetMock<IMerriamWebsterClient>()
-                .Setup(m => m.GetDictionaryEntry(It.IsAny<string>(), It.IsAny<string>()))
-                .ReturnsAsync(data);
-
-            // ACT 
-            var result = await _entryParser.GetAndParseAsync("api", "school");
+            // ACT
+            var result = _entryParser.Parse("school", data);
 
             // ASSERT
             result.Entries.ShouldNotBeEmpty();
@@ -348,80 +278,60 @@ namespace MerriamWebster.NET.Tests.Parsing
 
 
         [TestMethod]
-        public async Task EntryParser_CanParse_IntermediateDictionary_Dragon()
+        public void EntryParser_CanParse_IntermediateDictionary_Dragon()
         {
             var data = LoadData("inter_dict_dragon");
 
-            _mocker.GetMock<IMerriamWebsterClient>()
-                .Setup(m => m.GetDictionaryEntry(It.IsAny<string>(), It.IsAny<string>()))
-                .ReturnsAsync(data);
-
-            // ACT 
-            var result = await _entryParser.GetAndParseAsync("api", "dragon");
+            // ACT
+            var result = _entryParser.Parse("dragon", data);
 
             // ASSERT
             result.Entries.ShouldNotBeEmpty();
         }
 
         [TestMethod]
-        public async Task EntryParser_CanParse_IntermediateThesaurus_Umpire()
+        public void EntryParser_CanParse_IntermediateThesaurus_Umpire()
         {
             var data = LoadData("inter_thes_umpire");
 
-            _mocker.GetMock<IMerriamWebsterClient>()
-                .Setup(m => m.GetDictionaryEntry(It.IsAny<string>(), It.IsAny<string>()))
-                .ReturnsAsync(data);
-
-            // ACT 
-            var result = await _entryParser.GetAndParseAsync("api", "umpire");
+            // ACT
+            var result = _entryParser.Parse("umpire", data);
 
             // ASSERT
             result.Entries.ShouldNotBeEmpty();
         }
 
         [TestMethod]
-        public async Task EntryParser_CanParse_SchoolDictionary_Baseball()
+        public void EntryParser_CanParse_SchoolDictionary_Baseball()
         {
             var data = LoadData("school_dict_baseball");
 
-            _mocker.GetMock<IMerriamWebsterClient>()
-                .Setup(m => m.GetDictionaryEntry(It.IsAny<string>(), It.IsAny<string>()))
-                .ReturnsAsync(data);
-
-            // ACT 
-            var result = await _entryParser.GetAndParseAsync("api", "baseball");
+            // ACT
+            var result = _entryParser.Parse("baseball", data);
 
             // ASSERT
             result.Entries.ShouldNotBeEmpty();
         }
 
         [TestMethod]
-        public async Task EntryParser_SynonymsNotInSummary()
+        public void EntryParser_SynonymsNotInSummary()
         {
             var data = LoadData("pueblo");
 
-            _mocker.GetMock<IMerriamWebsterClient>()
-                .Setup(m => m.GetDictionaryEntry(It.IsAny<string>(), It.IsAny<string>()))
-                .ReturnsAsync(data);
-
-            // ACT 
-            var result = await _entryParser.GetAndParseAsync("api", "pueblo");
+            // ACT
+            var result = _entryParser.Parse("pueblo", data);
 
             // ASSERT
-           result.Entries.ShouldNotBeEmpty();
+            result.Entries.ShouldNotBeEmpty();
         }
 
         [TestMethod]
-        public async Task EntryParser_CanParse_Quedar()
+        public void EntryParser_CanParse_Quedar()
         {
             var data = LoadData("quedar");
 
-            _mocker.GetMock<IMerriamWebsterClient>()
-                .Setup(m => m.GetDictionaryEntry(It.IsAny<string>(), It.IsAny<string>()))
-                .ReturnsAsync(data);
-
-            // ACT 
-            var result = await _entryParser.GetAndParseAsync("api", "quedar");
+            // ACT
+            var result = _entryParser.Parse("quedar", data);
 
             // ASSERT
             result.Entries.ShouldNotBeEmpty();
@@ -429,16 +339,12 @@ namespace MerriamWebster.NET.Tests.Parsing
         }
 
         [TestMethod]
-        public async Task EntryParser_CanParse_Sierra()
+        public void EntryParser_CanParse_Sierra()
         {
             var data = LoadData("sierra");
 
-            _mocker.GetMock<IMerriamWebsterClient>()
-                .Setup(m => m.GetDictionaryEntry(It.IsAny<string>(), It.IsAny<string>()))
-                .ReturnsAsync(data);
-
-            // ACT 
-            var result = await _entryParser.GetAndParseAsync("api", "sierra");
+            // ACT
+            var result = _entryParser.Parse("sierra", data);
 
             // ASSERT
             result.Entries.Count.ShouldBe(4);
@@ -447,16 +353,12 @@ namespace MerriamWebster.NET.Tests.Parsing
         }
 
         [TestMethod]
-        public async Task EntryParser_CanParse_Tedious()
+        public void EntryParser_CanParse_Tedious()
         {
             var data = LoadData("collegiate_tedious");
 
-            _mocker.GetMock<IMerriamWebsterClient>()
-                .Setup(m => m.GetDictionaryEntry(It.IsAny<string>(), It.IsAny<string>()))
-                .ReturnsAsync(data);
-
-            // ACT 
-            var result = await _entryParser.GetAndParseAsync("api", "tedious");
+            // ACT
+            var result = _entryParser.Parse("tedious", data);
 
             // ASSERT
             result.Entries.Count.ShouldBe(1);
@@ -464,32 +366,24 @@ namespace MerriamWebster.NET.Tests.Parsing
         }
 
         [TestMethod]
-        public async Task EntryParser_CanParse_Knee()
+        public void EntryParser_CanParse_Knee()
         {
             var data = LoadData("med_knee");
 
-            _mocker.GetMock<IMerriamWebsterClient>()
-                .Setup(m => m.GetDictionaryEntry(It.IsAny<string>(), It.IsAny<string>()))
-                .ReturnsAsync(data);
-
-            // ACT 
-            var result = await _entryParser.GetAndParseAsync("api", "knee");
+            // ACT
+            var result = _entryParser.Parse("knee", data);
 
             // ASSERT
             result.Entries.Count.ShouldBe(10);
         }
 
         [TestMethod]
-        public async Task EntryParser_CanParse_Med_Pelvis()
+        public void EntryParser_CanParse_Med_Pelvis()
         {
             var data = LoadData("med_pelvis");
 
-            _mocker.GetMock<IMerriamWebsterClient>()
-                .Setup(m => m.GetDictionaryEntry(It.IsAny<string>(), It.IsAny<string>()))
-                .ReturnsAsync(data);
-
-            // ACT 
-            var result = await _entryParser.GetAndParseAsync("api", "pelvis");
+            // ACT
+            var result = _entryParser.Parse("pelvis", data);
 
             // ASSERT
             result.Entries.Count.ShouldBe(7);
@@ -497,16 +391,12 @@ namespace MerriamWebster.NET.Tests.Parsing
         }
 
         [TestMethod]
-        public async Task EntryParser_CanParse_Collegiate_Pelvis()
+        public void EntryParser_CanParse_Collegiate_Pelvis()
         {
             var data = LoadData("collegiate_pelvis");
 
-            _mocker.GetMock<IMerriamWebsterClient>()
-                .Setup(m => m.GetDictionaryEntry(It.IsAny<string>(), It.IsAny<string>()))
-                .ReturnsAsync(data);
-
-            // ACT 
-            var result = await _entryParser.GetAndParseAsync("api", "pelvis");
+            // ACT
+            var result = _entryParser.Parse("pelvis", data);
 
             // ASSERT
             result.Entries.Count.ShouldBe(2);
@@ -514,16 +404,12 @@ namespace MerriamWebster.NET.Tests.Parsing
         }
 
         [TestMethod]
-        public async Task EntryParser_CanParse_Collegiate_Heart()
+        public void EntryParser_CanParse_Collegiate_Heart()
         {
             var data = LoadData("collegiate_heart");
 
-            _mocker.GetMock<IMerriamWebsterClient>()
-                .Setup(m => m.GetDictionaryEntry(It.IsAny<string>(), It.IsAny<string>()))
-                .ReturnsAsync(data);
-
-            // ACT 
-            var result = await _entryParser.GetAndParseAsync("api", "heart");
+            // ACT
+            var result = _entryParser.Parse("heart", data);
 
             // ASSERT
             result.Entries.Count.ShouldBe(10);
@@ -534,16 +420,12 @@ namespace MerriamWebster.NET.Tests.Parsing
         }
 
         [TestMethod]
-        public async Task EntryParser_CanParse_Collegiate_Reap()
+        public void EntryParser_CanParse_Collegiate_Reap()
         {
             var data = LoadData("collegiate_reap");
 
-            _mocker.GetMock<IMerriamWebsterClient>()
-                .Setup(m => m.GetDictionaryEntry(It.IsAny<string>(), It.IsAny<string>()))
-                .ReturnsAsync(data);
-
-            // ACT 
-            var result = await _entryParser.GetAndParseAsync("api", "reap");
+            // ACT
+            var result = _entryParser.Parse("reap", data);
 
             // ASSERT
             result.Entries.Count.ShouldBe(4);
@@ -551,16 +433,12 @@ namespace MerriamWebster.NET.Tests.Parsing
         }
 
         [TestMethod]
-        public async Task EntryParser_CanParse_Collegiate_Feline()
+        public void EntryParser_CanParse_Collegiate_Feline()
         {
             var data = LoadData("collegiate_feline");
 
-            _mocker.GetMock<IMerriamWebsterClient>()
-                .Setup(m => m.GetDictionaryEntry(It.IsAny<string>(), It.IsAny<string>()))
-                .ReturnsAsync(data);
-
-            // ACT 
-            var result = await _entryParser.GetAndParseAsync("api", "feline");
+            // ACT
+            var result = _entryParser.Parse("feline", data);
 
             // ASSERT
             result.Entries.Count.ShouldBe(3);
@@ -573,16 +451,12 @@ namespace MerriamWebster.NET.Tests.Parsing
         }
 
         [TestMethod]
-        public async Task EntryParser_CanParse_Collegiate_Tab()
+        public void EntryParser_CanParse_Collegiate_Tab()
         {
             var data = LoadData("collegiate_tab");
 
-            _mocker.GetMock<IMerriamWebsterClient>()
-                .Setup(m => m.GetDictionaryEntry(It.IsAny<string>(), It.IsAny<string>()))
-                .ReturnsAsync(data);
-
-            // ACT 
-            var result = await _entryParser.GetAndParseAsync("api", "tab");
+            // ACT
+            var result = _entryParser.Parse("tab", data);
 
             // ASSERT
             result.Entries.Count.ShouldBe(7);
@@ -595,20 +469,30 @@ namespace MerriamWebster.NET.Tests.Parsing
         }
 
         [TestMethod]
-        public async Task EntryParser_CanParse_Collegiate_Abeyance()
+        public void EntryParser_CanParse_Collegiate_Abeyance()
         {
             var data = LoadData("collegiate_abeyance");
 
-            _mocker.GetMock<IMerriamWebsterClient>()
-                .Setup(m => m.GetDictionaryEntry(It.IsAny<string>(), It.IsAny<string>()))
-                .ReturnsAsync(data);
-
-            // ACT 
-            var result = await _entryParser.GetAndParseAsync("api", "abeyance");
+            // ACT
+            var result = _entryParser.Parse("abeyance", data);
 
             // ASSERT
             result.Entries.Count.ShouldBe(1);
 
+        }
+
+        [TestMethod]
+        public void EntryParser_CanParse_Collegiate_Alliteration()
+        {
+            var data = LoadData("collegiate_alliteration");
+
+            // ACT
+            var result = _entryParser.Parse("alliteration", data);
+
+            // ASSERT
+            result.Entries.Count.ShouldBe(1);
+            result.Entries.First().Etymology.Note.Text.ShouldNotBeNull();
+            result.Entries.First().Etymology.Text.Text.ShouldNotBeNull();
         }
 
         private static IEnumerable<Response.DictionaryEntry> LoadData(string fileName)

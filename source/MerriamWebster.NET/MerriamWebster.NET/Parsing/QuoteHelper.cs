@@ -20,9 +20,7 @@ namespace MerriamWebster.NET.Parsing
         {
             var quote = new Quote
             {
-                RawText = source.Text,
-                Text = options.RemoveMarkup ? MarkupManipulator.RemoveMarkupFromString(source.Text) : source.Text,
-                HtmlText = options.RemoveMarkup ? MarkupManipulator.ReplaceMarkupInString(source.Text) : source.Text
+                Text = new FormattedText(source.Text, options)
             };
 
             var aq = source.Aq;

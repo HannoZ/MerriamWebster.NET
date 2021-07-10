@@ -19,18 +19,10 @@
     public class VerbalIllustration
     {
         /// <summary>
-        /// Gets or sets the raw sentence, ie. the text as it is returned from the API.
+        /// Gets or sets the sentence.
         /// </summary>
-        public string RawSentence { get; set; }
-        /// <summary>
-        /// Gets or sets the parsed sentence (depending on parse options).
-        /// </summary>
-        /// <remarks>By default the markup is removed from the text.</remarks>
-        public string Sentence { get; set; }
-        /// <summary>
-        /// Gets or sets the sentence where MW markup is replaced by HTML markup.
-        /// </summary>
-        public string HtmlSentence { get; set; }
+        public FormattedText Sentence { get; set; } = new FormattedText();
+
         /// <summary>
         /// <i>Only used in Spanish-English dictionary.</i>
         /// The translation of the <see cref="Sentence"/>.
