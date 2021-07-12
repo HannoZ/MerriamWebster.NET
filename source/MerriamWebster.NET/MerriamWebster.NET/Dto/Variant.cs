@@ -39,6 +39,6 @@ namespace MerriamWebster.NET.Dto
         /// <summary>
         /// <i>Optional.</i> This label provides information on the grammatical number (eg, singular, plural) of an inflection in a particular sense.
         /// </summary>
-        public string SenseSpecificInflectionPluralLabel { get; set; }
+        public Label SenseSpecificInflectionPluralLabel { get; set; }
     }
 }

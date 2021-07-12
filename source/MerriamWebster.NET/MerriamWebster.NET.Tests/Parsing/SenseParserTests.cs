@@ -7,7 +7,9 @@ using System.Collections.Generic;
 using System.Linq;
 using MerriamWebster.NET.Dto;
 using Shouldly;
+using DefiningText = MerriamWebster.NET.Dto.DefiningText;
 using Definition = MerriamWebster.NET.Response.Definition;
+using SenseBase = MerriamWebster.NET.Dto.SenseBase;
 
 namespace MerriamWebster.NET.Tests.Parsing
 {
@@ -71,7 +73,7 @@ namespace MerriamWebster.NET.Tests.Parsing
 
                 foreach (var sense in def.SenseSequence)
                 {
-                    if (sense.Senses.Where(ss=>ss.SubjectStatusLabels != null).SelectMany(ss => ss.SubjectStatusLabels).Any())
+                    if (sense.Senses.Where(ss => ss.SubjectStatusLabels != null).SelectMany(ss => ss.SubjectStatusLabels).Any())
                     {
                         additionalInformationFound = true;
                     }
@@ -124,6 +126,52 @@ namespace MerriamWebster.NET.Tests.Parsing
         }
 
         [TestMethod]
+        public void SenseParser_CanParse_Abaco()
+        {
+            var defs = LoadDefinitions("collegiate_abaco");
+            List<Dto.Definition> definitions = new List<Dto.Definition>();
+
+            // ACT
+            foreach (var senseParser in defs.Select(definition => new SenseParser(definition, Language.NotApplicable, ParseOptions.Default)))
+            {
+                var def = new Dto.Definition();
+                senseParser.Parse(def);
+                def.SenseSequence.ShouldNotBeEmpty();
+
+                definitions.Add(def);
+            }
+
+            var dts = GetDefiningTexts(definitions)
+               .ToList();
+
+            dts.Count.ShouldBe(5);
+            dts.OfType<RunInWord>().Count().ShouldBe(2);
+        }
+
+        [TestMethod]
+        public void SenseParser_CanParse_Algiers()
+        {
+            var defs = LoadDefinitions("collegiate_algiers");
+            List<Dto.Definition> definitions = new List<Dto.Definition>();
+
+            // ACT
+            foreach (var senseParser in defs.Select(definition => new SenseParser(definition, Language.NotApplicable, ParseOptions.Default)))
+            {
+                var def = new Dto.Definition();
+                senseParser.Parse(def);
+                def.SenseSequence.ShouldNotBeEmpty();
+
+                definitions.Add(def);
+            }
+
+            var dts = GetDefiningTexts(definitions)
+                .ToList();
+
+            dts.Count.ShouldBe(5);
+            dts.OfType<RunInWord>().Count().ShouldBe(1);
+        }
+
+        [TestMethod]
         public void SenseParser_CanParse_Abarrotado()
         {
             var defs = LoadDefinitions("abarrotado");
@@ -135,6 +183,49 @@ namespace MerriamWebster.NET.Tests.Parsing
                 senseParser.Parse(def);
                 def.SenseSequence.ShouldNotBeEmpty();
             }
+        }
+
+        [TestMethod]
+        public void SenseParser_CanParse_Abbey()
+        {
+            var defs = LoadDefinitions("abbey");
+            List<Dto.Definition> definitions = new List<Dto.Definition>();
+
+            // ACT
+            foreach (var senseParser in defs.Select(definition => new SenseParser(definition, Language.Es, ParseOptions.Default)))
+            {
+                var def = new Dto.Definition();
+                senseParser.Parse(def);
+                def.SenseSequence.ShouldNotBeEmpty();
+
+                definitions.Add(def);
+            }
+
+            var gls = GetDefiningTexts(definitions)
+                .OfType<GenderLabel>().ToList();
+
+            gls.ShouldNotBeEmpty();
+            gls.ShouldContain(g=>g.Label == "feminine");
+        }
+
+        [TestMethod]
+        public void SenseParser_CanParse_Alliteration()
+        {
+            var defs = LoadDefinitions("collegiate_alliteration");
+            List<Dto.Definition> definitions = new List<Dto.Definition>();
+
+            // ACT
+            foreach (var senseParser in defs.Select(definition => new SenseParser(definition, Language.NotApplicable, ParseOptions.Default)))
+            {
+                var def = new Dto.Definition();
+                senseParser.Parse(def);
+                def.SenseSequence.ShouldNotBeEmpty();
+
+                definitions.Add(def);
+            }
+
+            var dts = GetDefiningTexts(definitions);
+            dts.OfType<CalledAlsoNote>().ShouldNotBeNull();
         }
 
         [TestMethod]
@@ -166,6 +257,29 @@ namespace MerriamWebster.NET.Tests.Parsing
         }
 
         [TestMethod]
+        public void SenseParser_CanParse_Reboot()
+        {
+            var defs = LoadDefinitions("collegiate_reboot");
+
+            List<Dto.Definition> definitions = new List<Dto.Definition>();
+
+            // ACT
+            foreach (var senseParser in defs.Select(definition => new SenseParser(definition, Language.NotApplicable, ParseOptions.Default)))
+            {
+                var def = new Dto.Definition();
+                senseParser.Parse(def);
+                def.SenseSequence.ShouldNotBeEmpty();
+
+                definitions.Add(def);
+            }
+
+            var senses = definitions.SelectMany(d => d.SenseSequence)
+                .SelectMany(ss => ss.Senses).ToList();
+            senses.ShouldContain(s => s.SenseSpecificGrammaticalLabel != null);
+            senses.ShouldContain(s => s.SenseSpecificGrammaticalLabel == null);
+        }
+
+        [TestMethod]
         public void SenseParser_CanParse_Robot()
         {
             var defs = LoadDefinitions("robot");
@@ -193,8 +307,10 @@ namespace MerriamWebster.NET.Tests.Parsing
             // ASSERT
             def.SenseSequence.Count.ShouldBe(1);
             def.SenseSequence.First().Senses.Count.ShouldBe(4);
-            def.SenseSequence.SelectMany(ss=>ss.Senses).Select(s => s.DefiningText).ShouldAllBe(t => !t.Text.Contains("{wi}"));
-            def.SenseSequence.SelectMany(ss => ss.Senses).SelectMany(s => s.VerbalIllustrations).ShouldAllBe(e => !e.Sentence.Text.Contains("{wi}"));
+
+            var dts = GetDefiningTexts(new[] {def});
+            dts.OfType<DefiningText>().ShouldAllBe(t=> !t.Text.Text.Contains("{wi}"));
+            dts.OfType<VerbalIllustration>().ShouldAllBe(vis => !vis.Sentence.Text.Contains("{wi}"));
         }
 
         [TestMethod]
@@ -212,7 +328,7 @@ namespace MerriamWebster.NET.Tests.Parsing
             // verify that the divided sense has been parsed 
             def.SenseSequence
                 .SelectMany(ss => ss.Senses)
-                .Where(s=>s.DividedSense != null)
+                .Where(s => s.DividedSense != null)
                 .ShouldNotBeEmpty();
         }
 
@@ -228,13 +344,15 @@ namespace MerriamWebster.NET.Tests.Parsing
             senseParser.Parse(def);
 
             // ASSERT
-
+            var dts = GetDefiningTexts(new[] {def});
+            dts.OfType<SupplementalInformationNote>().ShouldNotBeEmpty();
         }
 
         [TestMethod]
         public void SenseParser_SynonymsNotInText()
         {
             var defs = LoadDefinitions("pueblo");
+            var definitions = new List<Dto.Definition>();
 
             // ACT
             foreach (var senseParser in defs.Select(definition => new SenseParser(definition, Language.En, ParseOptions.Default)))
@@ -242,8 +360,11 @@ namespace MerriamWebster.NET.Tests.Parsing
                 var def = new Dto.Definition();
                 senseParser.Parse(def);
 
-                def.SenseSequence.SelectMany(ss => ss.Senses).ShouldAllBe(s => !s.DefiningText.Text.Contains(":"));
+                definitions.Add(def);
             }
+
+            var dts = GetDefiningTexts(definitions);
+            dts.OfType<DefiningText>().ShouldAllBe(t=> !t.Text.Text.Contains(":"));
         }
 
         [TestMethod]
@@ -267,10 +388,29 @@ namespace MerriamWebster.NET.Tests.Parsing
         {
             var defs = LoadDefinitions("collegiate_tedious");
             foreach (var senseParser in defs.Select(definition => new SenseParser(definition, Language.NotApplicable, ParseOptions.Default)))
-            {var def = new Dto.Definition();
+            {
+                var def = new Dto.Definition();
                 senseParser.Parse(def);
                 def.SenseSequence.ShouldNotBeEmpty();
             }
+        }
+        [TestMethod]
+        public void SenseParser_CanParseSense_Coll_Dodgson()
+        {
+            var defs = LoadDefinitions("collegiate_Dodgson");
+            List<Dto.Definition> definitions = new List<Dto.Definition>();
+
+            foreach (var senseParser in defs.Select(definition => new SenseParser(definition, Language.NotApplicable, ParseOptions.Default)))
+            {
+                var def = new Dto.Definition();
+                senseParser.Parse(def);
+                def.SenseSequence.ShouldNotBeEmpty();
+
+                definitions.Add(def);
+            }
+
+            var dts = GetDefiningTexts(definitions);
+            dts.OfType<BiographicalNameWrap>().Count().ShouldBe(2);
         }
 
         private static IEnumerable<Definition> LoadDefinitions(string fileName)
@@ -280,5 +420,15 @@ namespace MerriamWebster.NET.Tests.Parsing
             var entries = JsonConvert.DeserializeObject<DictionaryEntry[]>(content, Converter.Settings);
             return entries.SelectMany(e => e.Definitions);
         }
+
+        private IEnumerable<SenseBase> GetSenses(IEnumerable<Dto.Definition> definitions)
+            => definitions.SelectMany(d => d.SenseSequence)
+                .SelectMany(ss => ss.Senses);
+
+        private IEnumerable<IDefiningText> GetDefiningTexts(IEnumerable<Dto.Definition> definitions) =>
+            GetSenses(definitions)
+                .SelectMany(s => s.DefiningTexts)
+                .ToList();
+
     }
 }

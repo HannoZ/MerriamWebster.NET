@@ -14,13 +14,13 @@ namespace MerriamWebster.NET.Response.JsonConverters
                 case JsonToken.String:
                 case JsonToken.Date:
                     var stringValue = serializer.Deserialize<string>(reader);
-                    return new DefiningTextComplexTypeWrapper { TypeOrLabel = stringValue };
+                    return new DefiningTextComplexTypeWrapper { TypeLabelOrText = stringValue };
                 case JsonToken.StartObject:
                     var objectValue = serializer.Deserialize<RunInWrap>(reader);
                     return new DefiningTextComplexTypeWrapper { RunInWrap = objectValue };
                 case JsonToken.StartArray:
                     var arrayValue = serializer.Deserialize<DefiningTextComplexType[]>(reader);
-                    return new DefiningTextComplexTypeWrapper { DefiningTextComplexTypeArray = arrayValue };
+                    return new DefiningTextComplexTypeWrapper { DefiningTextComplexTypes = arrayValue };
             }
             throw new NotImplementedException($"Cannot unmarshal type DefiningTextComplexTypeWrapper. Path: {reader.Path}, TokenType: {reader.TokenType}");
         }
@@ -28,14 +28,14 @@ namespace MerriamWebster.NET.Response.JsonConverters
         public override void WriteJson(JsonWriter writer, object untypedValue, JsonSerializer serializer)
         {
             var value = (DefiningTextComplexTypeWrapper)untypedValue;
-            if (value.TypeOrLabel != null)
+            if (value.TypeLabelOrText != null)
             {
-                serializer.Serialize(writer, value.TypeOrLabel);
+                serializer.Serialize(writer, value.TypeLabelOrText);
                 return;
             }
-            if (value.DefiningTextComplexTypeArray != null)
+            if (value.DefiningTextComplexTypes != null)
             {
-                serializer.Serialize(writer, value.DefiningTextComplexTypeArray);
+                serializer.Serialize(writer, value.DefiningTextComplexTypes);
                 return;
             }
             throw new NotImplementedException("Cannot marshal type DefiningTextComplexTypeWrapper");

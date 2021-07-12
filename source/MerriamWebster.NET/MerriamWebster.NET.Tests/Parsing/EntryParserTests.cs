@@ -13,6 +13,7 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using MerriamWebster.NET.Dto;
+using SenseBase = MerriamWebster.NET.Dto.SenseBase;
 
 namespace MerriamWebster.NET.Tests.Parsing
 {
@@ -51,7 +52,7 @@ namespace MerriamWebster.NET.Tests.Parsing
                 try
                 {
                     var data = JsonConvert.DeserializeObject<DictionaryEntry[]>(content, Converter.Settings);
-                    
+
                     // ACT
                     var result = _entryParser.Parse("api", data);
 
@@ -94,7 +95,7 @@ namespace MerriamWebster.NET.Tests.Parsing
         public void EntryParser_CanParse_Delgado()
         {
             var data = LoadData("delgado");
-            
+
             // ACT 
             var result = _entryParser.Parse("delgado", data);
 
@@ -112,11 +113,11 @@ namespace MerriamWebster.NET.Tests.Parsing
 
             // ASSERT
             result.Entries.ShouldNotBeEmpty();
-            result.Entries.SelectMany(e=>e.Definitions)
-                .SelectMany(d=>d.SenseSequence)
-                .SelectMany(ss=>ss.Senses)
+            result.Entries.SelectMany(e => e.Definitions)
+                .SelectMany(d => d.SenseSequence)
+                .SelectMany(ss => ss.Senses)
                 .Where(s => s.Inflections != null)
-                .ShouldContain(s=>s.Inflections.Any(i=>i.Alternate != null));
+                .ShouldContain(s => s.Inflections.Any(i => i.Alternate != null));
         }
 
         [TestMethod]
@@ -126,7 +127,7 @@ namespace MerriamWebster.NET.Tests.Parsing
 
             // ACT
             var result = _entryParser.Parse("hilar", data);
-            
+
             // ASSERT
             result.Entries.Count.ShouldBe(1);
             result.Entries.ShouldContain(e => e.Conjugations != null);
@@ -142,23 +143,23 @@ namespace MerriamWebster.NET.Tests.Parsing
             // ASSERT
             result.Entries.ShouldNotBeEmpty();
 
-            result.Entries.ShouldContain(e=>e.Metadata.Language == Language.En);
+            result.Entries.ShouldContain(e => e.Metadata.Language == Language.En);
             result.Entries.ShouldContain(e => e.Metadata.Language == Language.Es);
-           
-            result.Entries.ShouldContain(e=>e.UndefinedRunOns.Any(uro=>uro.AlternateEntry != null));
+
+            result.Entries.ShouldContain(e => e.UndefinedRunOns.Any(uro => uro.AlternateEntry != null));
         }
 
         [TestMethod]
         public void EntryParser_CanParse_Estar()
         {
             var data = LoadData("estar");
-    
+
             // ACT
             var result = _entryParser.Parse("estar", data);
-            
+
             // ASSERT
             result.Entries.ShouldNotBeEmpty();
-           // TODO
+            // TODO
             //result.AdditionalResults.ShouldNotBeEmpty();
             //result.Entries.ShouldContain(e=>e.Conjugations != null);
         }
@@ -206,7 +207,7 @@ namespace MerriamWebster.NET.Tests.Parsing
 
             // ACT
             var result = _entryParser.Parse("voluminous", data);
-            
+
             // ASSERT
             result.Entries.ShouldNotBeEmpty();
         }
@@ -215,7 +216,7 @@ namespace MerriamWebster.NET.Tests.Parsing
         public void EntryParser_CanParse_CollegiateThes_Umpire()
         {
             var data = LoadData("coll_thes_umpire");
-         
+
             // ACT
             var result = _entryParser.Parse("umpire", data);
 
@@ -261,7 +262,9 @@ namespace MerriamWebster.NET.Tests.Parsing
             var result = _entryParser.Parse("apple", data);
 
             // ASSERT
-            result.Entries.ShouldNotBeEmpty();
+            var definingTexts = GetDefiningTexts(result.Entries);
+
+            definingTexts.OfType<SupplementalInformationNote>().ShouldNotBeEmpty();
         }
 
         [TestMethod]
@@ -348,7 +351,7 @@ namespace MerriamWebster.NET.Tests.Parsing
 
             // ASSERT
             result.Entries.Count.ShouldBe(4);
-            result.Entries.ShouldContain(e=>e.CrossReferences.Any());
+            result.Entries.ShouldContain(e => e.CrossReferences.Any());
 
         }
 
@@ -400,7 +403,7 @@ namespace MerriamWebster.NET.Tests.Parsing
 
             // ASSERT
             result.Entries.Count.ShouldBe(2);
-            result.Entries.SelectMany(e=>e.Definitions).ShouldContain(d=>d.SubjectStatusLabels != null);
+            result.Entries.SelectMany(e => e.Definitions).ShouldContain(d => d.SubjectStatusLabels != null);
         }
 
         [TestMethod]
@@ -413,10 +416,13 @@ namespace MerriamWebster.NET.Tests.Parsing
 
             // ASSERT
             result.Entries.Count.ShouldBe(10);
-            result.Entries.SelectMany(e => e.Definitions)
-                .SelectMany(d=>d.SenseSequence)
-                .SelectMany(ss => ss.Senses)
-                .ShouldContain(s => s.SubjectStatusLabels != null);
+            var senses = GetSenses(result.Entries);
+            senses.ShouldContain(s => s.SubjectStatusLabels != null);
+
+            var definingTexts = GetDefiningTexts(result.Entries).ToList();
+
+            definingTexts.OfType<SupplementalInformationNote>().ShouldNotBeEmpty();
+            definingTexts.OfType<CalledAlsoNote>().ShouldNotBeEmpty();
         }
 
         [TestMethod]
@@ -443,11 +449,9 @@ namespace MerriamWebster.NET.Tests.Parsing
             // ASSERT
             result.Entries.Count.ShouldBe(3);
 
-            result.Entries
-                .SelectMany(e=>e.Definitions)
-                .SelectMany(d=>d.SenseSequence)
-                .SelectMany(ss=>ss.Senses)
-                .ShouldContain(s=>s.SenseNumber == "2"); // to verify that the "bs" element was processed correctly
+            GetSenses(result.Entries)
+                .OfType<Dto.Sense>()
+                 .ShouldContain(s => s.SenseNumber == "2"); // to verify that the "bs" element was processed correctly
         }
 
         [TestMethod]
@@ -460,12 +464,11 @@ namespace MerriamWebster.NET.Tests.Parsing
 
             // ASSERT
             result.Entries.Count.ShouldBe(7);
-            result.Entries.ShouldContain(e=>e.GeneralLabels != null);
+            result.Entries.ShouldContain(e => e.GeneralLabels != null);
 
             var firstDef = result.Entries.First().Definitions.First();
             firstDef.SenseSequence.Count.ShouldBe(4);
             firstDef.SenseSequence.First().ParenthesizedSenseSequence.ShouldNotBeEmpty();
-
         }
 
         [TestMethod]
@@ -479,6 +482,10 @@ namespace MerriamWebster.NET.Tests.Parsing
             // ASSERT
             result.Entries.Count.ShouldBe(1);
 
+            var defs = GetDefiningTexts(result.Entries);
+            var un = defs.OfType<UsageNote>().ToList();
+            un.ShouldNotBeEmpty();
+            un.First().VerbalIllustrations.Count.ShouldBe(2);
         }
 
         [TestMethod]
@@ -500,5 +507,14 @@ namespace MerriamWebster.NET.Tests.Parsing
             var response = TestHelper.LoadResponseFromFile(fileName);
             return JsonConvert.DeserializeObject<Response.DictionaryEntry[]>(response, Converter.Settings);
         }
+
+        private IEnumerable<SenseBase> GetSenses(IEnumerable<Entry> entries) =>
+            entries.SelectMany(e => e.Definitions)
+                .SelectMany(d => d.SenseSequence)
+                .SelectMany(ss => ss.Senses);
+
+        private IEnumerable<IDefiningText> GetDefiningTexts(IEnumerable<Entry> entries) =>
+                 GetSenses(entries)
+                .SelectMany(s => s.DefiningTexts).ToList();
     }
 }

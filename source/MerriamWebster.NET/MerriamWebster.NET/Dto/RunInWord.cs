@@ -11,7 +11,7 @@ namespace MerriamWebster.NET.Dto
     /// <b>Display Guidance:</b>
     /// Inline in normal font, except for <see cref="RunInEntry"/> which is typically displayed in bold.
     /// </remarks>
-    public class RunInWord
+    public class RunInWord : IDefiningText
     {
         /// <summary>
         /// run-in entry word

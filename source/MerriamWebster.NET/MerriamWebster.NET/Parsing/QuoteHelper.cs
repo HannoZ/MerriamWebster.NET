@@ -20,7 +20,7 @@ namespace MerriamWebster.NET.Parsing
         {
             var quote = new Quote
             {
-                Text = new FormattedText(source.Text, options)
+                Text = source.Text
             };
 
             var aq = source.Aq;

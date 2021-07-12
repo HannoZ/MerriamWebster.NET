@@ -44,5 +44,11 @@
         {
             return label.Text;
         }
+
+        /// <inheritdoc />
+        public override string ToString()
+        {
+            return Text;
+        }
     }
 }

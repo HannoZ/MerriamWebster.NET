@@ -20,12 +20,11 @@ namespace MerriamWebster.NET.Dto
         /// Creates a new instance of the <see cref="FormattedText"/> class.
         /// </summary>
         /// <param name="text">The text.</param>
-        /// <param name="options">The parse options.</param>
-        public FormattedText(string text, ParseOptions options)
+        public FormattedText(string text)
         {
             RawText = text;
-            Text = options.RemoveMarkup ? MarkupManipulator.RemoveMarkupFromString(text) : text;
-            HtmlText = options.ReplaceMarkup ? MarkupManipulator.ReplaceMarkupInString(text) : text;
+            Text = MarkupManipulator.RemoveMarkupFromString(text);
+            HtmlText = MarkupManipulator.ReplaceMarkupInString(text);
         }
 
         /// <summary>
@@ -49,6 +48,12 @@ namespace MerriamWebster.NET.Dto
         /// </summary>
         public string HtmlText { get;  }
 
+        public static implicit operator FormattedText(string text)
+        {
+            return new FormattedText(text);
+        }
+
+        /// <inheritdoc />
         public override string ToString()
         {
             return Text;

@@ -72,6 +72,11 @@ namespace MerriamWebster.NET.Parsing
                 // we're done with this search result, add to collection
                 resultModel.Entries.Add(searchResult);
 
+                if (result.Variants.Any())
+                {
+                    searchResult.Variants = VariantHelper.Parse(result.Variants, searchResult.Metadata.Language, options.AudioFormat).ToList();
+                }
+
                 // parse and add any additional results (they appear in the 'DefinedRunOns' ('dro') property)
                 if (result.DefinedRunOns.Any())
                 {
@@ -98,7 +103,7 @@ namespace MerriamWebster.NET.Parsing
 
                 if (result.Et.Any())
                 {
-                    searchResult.Etymology = EtymologyHelper.Parse(result.Et, options);
+                    searchResult.Etymology = result.Et.ParseEtymology();
                 }
             }
 
@@ -242,7 +247,7 @@ namespace MerriamWebster.NET.Parsing
 
                 if (dro.Et.Any())
                 {
-                    searchResult.Etymology = EtymologyHelper.Parse(dro.Et, parseOptions);
+                    searchResult.Etymology = dro.Et.ParseEtymology();
                 }
 
                 searchResults.Add(searchResult);

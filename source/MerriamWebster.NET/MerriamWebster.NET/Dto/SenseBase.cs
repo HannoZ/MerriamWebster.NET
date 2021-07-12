@@ -9,16 +9,10 @@ namespace MerriamWebster.NET.Dto
     public class SenseBase
     {
         /// <summary>
-        /// The defining text is the text of the definition or translation for a particular sense.
+        /// Gets or sets the defining texts.
         /// </summary>
-        /// <remarks>
-        /// <para>
-        /// <b>Display Guidance:</b>
-        /// Inline in normal font
-        /// </para>
-        /// </remarks>
-        public FormattedText DefiningText { get; set; } = new FormattedText();
-        
+        public ICollection<IDefiningText> DefiningTexts { get; set; } = new List<IDefiningText>();
+
         /// <summary>
         /// <i>Optional.</i> Gets or sets pronunciations.
         /// </summary>
@@ -51,17 +45,20 @@ namespace MerriamWebster.NET.Dto
         /// Typically rendered in italics. If there is a more than one element in the array, separate them with a comma and space.
         /// </remarks>
         public ICollection<Label> SubjectStatusLabels { get; set; }
-        
-        /// <summary>
-        /// <i>Optional.</i>A collection of verbal illustrations (examples).
-        /// If <see cref="ParseOptions"/> is configured to replace markup, this contains the formatted text with markup being replaced by HTML tags.
-        /// The <see cref="SenseBase.RawText"/> still contains the unformatted text. 
-        /// </summary>
-        public ICollection<VerbalIllustration> VerbalIllustrations { get; set; }
 
+        /// <summary>
+        /// <i>Optional.</i> This label notes whether a particular sense of a verb is transitive (T) or intransitive (I). 
+        /// </summary>
+        /// <remarks>
+        /// <b>Display Guidance:</b>
+        /// Typically displayed within square brackets and in italics.
+        /// </remarks>
+        public Label SenseSpecificGrammaticalLabel { get; set; }
+        
         /// <summary>
         /// <i>Optional.</i> Gets or sets the etymology.
         /// </summary>
         public Etymology Etymology { get; set; }
+
     }
 }

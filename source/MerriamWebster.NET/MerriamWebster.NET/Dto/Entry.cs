@@ -71,7 +71,7 @@ namespace MerriamWebster.NET.Dto
         public ICollection<Inflection> Inflections { get; set; }
 
         /// <summary>
-        /// Gets or sets the cross-references.
+        /// <i>Optional, Spanish-English only.</i> Gets or sets the cross-references.
         /// </summary>
         /// <remarks>
         /// <b>Display Guidance:</b>

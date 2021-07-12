@@ -16,7 +16,7 @@
     /// In that case the <see cref="Translation"/> property will always be null.
     /// Sometimes a <see cref="Quote"/> may also be present if the text was cited from some source.
     /// </remarks>
-    public class VerbalIllustration
+    public class VerbalIllustration : IDefiningText
     {
         /// <summary>
         /// Gets or sets the sentence.

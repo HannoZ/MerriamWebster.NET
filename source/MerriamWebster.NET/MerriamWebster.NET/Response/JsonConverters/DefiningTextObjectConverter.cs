@@ -16,7 +16,7 @@ namespace MerriamWebster.NET.Response.JsonConverters
                     return new DefiningTextObject { DefiningText = objectValue };
                 case JsonToken.StartArray:
                     var arrayValue = serializer.Deserialize<DefiningTextComplexTypeWrapper[]>(reader);
-                    return new DefiningTextObject { DefiningTextComplexTypeWrapperArray = arrayValue };
+                    return new DefiningTextObject { DefiningTextComplexTypeWrappers = arrayValue };
             }
             throw new NotImplementedException($"Cannot unmarshal type DefiningTextObject. Path: {reader.Path}, TokenType: {reader.TokenType}");
         }
@@ -24,9 +24,9 @@ namespace MerriamWebster.NET.Response.JsonConverters
         public override void WriteJson(JsonWriter writer, object untypedValue, JsonSerializer serializer)
         {
             var value = (DefiningTextObject)untypedValue;
-            if (value.DefiningTextComplexTypeWrapperArray != null)
+            if (value.DefiningTextComplexTypeWrappers != null)
             {
-                serializer.Serialize(writer, value.DefiningTextComplexTypeWrapperArray);
+                serializer.Serialize(writer, value.DefiningTextComplexTypeWrappers);
                 return;
             }
             if (value.DefiningText != null)
