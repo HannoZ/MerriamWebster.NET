@@ -1,4 +1,6 @@
-﻿namespace MerriamWebster.NET.Dto
+﻿using System.Collections.Generic;
+
+namespace MerriamWebster.NET.Dto
 {
     public class CalledAlsoTarget
     {
@@ -15,6 +17,20 @@
         /// </summary>
         public string ParenthesizedNumber { get; set; }
 
-        // todo  prs, psl
+        /// <summary>
+        /// <i>Optional.</i> Gets or sets a collection of pronunciations.
+        /// </summary>
+        /// <remarks>Usually there is only 1 pronunciation</remarks>
+        public ICollection<Pronunciation> Pronunciations { get; set; }
+
+        /// <summary>
+        /// <i>Optional.</i> A parenthesized subject/status label describes the subject area or regional/usage status (eg, "British") of a headword or other defined term, and is displayed in parentheses.<br/>
+        /// The parenthesized subject/status label is contained in a <see cref="ParenthesizedSubjectStatusLabel"/>.
+        /// </summary>
+        /// <remarks>
+        /// <b>Display Guidance:</b>
+        /// Display within parentheses and in italics.
+        /// </remarks>
+        public Label ParenthesizedSubjectStatusLabel { get; set; }
     }
 }

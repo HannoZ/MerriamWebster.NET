@@ -159,9 +159,11 @@ namespace MerriamWebster.NET.Tests.Parsing
 
             // ASSERT
             result.Entries.ShouldNotBeEmpty();
-            // TODO
-            //result.AdditionalResults.ShouldNotBeEmpty();
-            //result.Entries.ShouldContain(e=>e.Conjugations != null);
+
+            var senses = GetSenses(result.Entries);
+
+            result.Entries.ShouldContain(e=>e.Conjugations != null);
+            senses.Where(s => s.Variants != null).ShouldNotBeNull();
         }
 
         [TestMethod]
@@ -235,6 +237,7 @@ namespace MerriamWebster.NET.Tests.Parsing
 
             // ASSERT
             var entry = result.Entries.First();
+            
             // TODO
             //entry.Synonyms.ShouldNotBeEmpty();
             //entry.Antonyms.ShouldNotBeEmpty();
@@ -500,6 +503,48 @@ namespace MerriamWebster.NET.Tests.Parsing
             result.Entries.Count.ShouldBe(1);
             result.Entries.First().Etymology.Note.Text.ShouldNotBeNull();
             result.Entries.First().Etymology.Text.Text.ShouldNotBeNull();
+        }
+
+        [TestMethod]
+        public void EntryParser_CanParse_Collegiate_Agree()
+        {
+            var data = LoadData("collegiate_agree");
+
+            // ACT
+            var result = _entryParser.Parse("agree", data);
+
+            // ASSERT
+            result.Entries.ShouldNotBeEmpty();
+            result.Entries.ShouldContain(e=>e.Synonyms != null && e.Synonyms.Any());
+        }
+
+        [TestMethod]
+        public void EntryParser_CanParse_Collegiate_Abide()
+        {
+            var data = LoadData("collegiate_abide");
+
+            // ACT
+            var result = _entryParser.Parse("abide", data);
+
+            // ASSERT
+            result.Entries.ShouldNotBeEmpty();
+            result.Entries.ShouldContain(e => e.Synonyms != null && e.Synonyms.Any());
+
+            var dts = GetDefiningTexts(result.Entries);
+            dts.ShouldNotBeEmpty();
+        }
+
+        [TestMethod]
+        public void EntryParser_CanParse_Collegiate_Acadia()
+        {
+            var data = LoadData("collegiate_Acadia");
+
+            // ACT
+            var result = _entryParser.Parse("acadia", data);
+
+            // ASSERT
+            result.Entries.First().DirectionalCrossReferences.ShouldNotBeEmpty();
+            
         }
 
         private static IEnumerable<Response.DictionaryEntry> LoadData(string fileName)

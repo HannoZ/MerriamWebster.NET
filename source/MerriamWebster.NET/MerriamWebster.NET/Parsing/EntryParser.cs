@@ -114,7 +114,7 @@ namespace MerriamWebster.NET.Parsing
         {
             var searchResult = new Entry
             {
-                Metadata = MetadataHelper.Parse(result),
+                Metadata = result.ParseMetadata(),
                 PartOfSpeech = result.FunctionalLabel ?? string.Empty,
                 ShortDefs = result.Shortdefs,
                 Homograph = result.Homograph.GetValueOrDefault()
@@ -162,6 +162,20 @@ namespace MerriamWebster.NET.Parsing
             if (result.Inflections.Any())
             {
                 searchResult.Inflections = InflectionHelper.Parse(result.Inflections, searchResult.Metadata.Language, options.AudioFormat).ToList();
+            }
+
+            if (result.Synonyms.Any())
+            {
+                searchResult.Synonyms = ParseSynonyms(result.Synonyms).ToList();
+            }
+
+            if (result.DirectionalCrossReferences.Any())
+            {
+                searchResult.DirectionalCrossReferences = new List<FormattedText>();
+                foreach (var crossReference in result.DirectionalCrossReferences)
+                {
+                    searchResult.DirectionalCrossReferences.Add(new FormattedText(crossReference));
+                }
             }
 
             return searchResult;
@@ -348,6 +362,37 @@ namespace MerriamWebster.NET.Parsing
             return conjugations;
         }
 
+        private static IEnumerable<Synonym> ParseSynonyms(Response.Synonym[] sources)
+        {
+            foreach (var source in sources)
+            {
+                var synonym = new Synonym
+                {
+                    ParagraphLabel = source.Pl
+                };
 
+                if (source.Sarefs?.Any() == true)
+                {
+                    synonym.SeeInAdditionReference = new List<string>(source.Sarefs);
+                }
+
+                foreach (var dt in source.Pt)
+                {
+                    if (dt[0].TypeLabelOrText == DefiningTextTypes.Text)
+                    {
+                        synonym.DefiningTexts.Add(new DefiningText(dt[1].TypeLabelOrText));
+                    }
+                    else if (dt[0].TypeLabelOrText == DefiningTextTypes.VerbalIllustration)
+                    {
+                        foreach (var dtc in dt[1].DefiningTextComplexTypes)
+                        {
+                            synonym.DefiningTexts.Add(VisHelper.Parse(dtc.DefiningText));
+                        }
+                    }
+                }
+
+                yield return synonym;
+            }
+        }
     }
 }

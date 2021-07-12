@@ -59,7 +59,7 @@ namespace MerriamWebster.NET.Parsing
                     }
                 }
                 
-                if (definitionType == DefiningTextTypes.VerbalIllustration)
+                else if (definitionType == DefiningTextTypes.VerbalIllustration)
                 {
                     foreach (var dto in definingTextObjects[1].DefiningTextObjects)
                     {
@@ -71,7 +71,7 @@ namespace MerriamWebster.NET.Parsing
                     }
                 }
 
-                if (definitionType == DefiningTextTypes.GenderLabel)
+                else if (definitionType == DefiningTextTypes.GenderLabel)
                 {
                     targetSense.DefiningTexts.Add(new GenderLabel(definingTextObjects[1].TypeOrText));
                 }
@@ -99,7 +99,7 @@ namespace MerriamWebster.NET.Parsing
                     targetSense.DefiningTexts.Add(biographicalNameWrap);
                 }
 
-                if (definitionType == DefiningTextTypes.CalledAlsoNote)
+                else if (definitionType == DefiningTextTypes.CalledAlsoNote)
                 {
                     var ca = definingTextObjects[1].DefiningText;
                     var calledAlsoNote = new CalledAlsoNote
@@ -109,18 +109,30 @@ namespace MerriamWebster.NET.Parsing
                     
                     foreach (var cat in ca.Cats)
                     {
-                        calledAlsoNote.Targets.Add(new CalledAlsoTarget
+                        var calledAlsoTarget = new CalledAlsoTarget
                         {
                             ParenthesizedNumber = cat.ParenthesizedNumber,
                             Reference = cat.Reference,
-                            TargetText = cat.Text
-                        });
+                            TargetText = cat.Text,
+                            ParenthesizedSubjectStatusLabel = cat.ParenthesizedSubjectStatusLabel
+                        };
+
+                        if (cat.Pronunciations.Any())
+                        {
+                            calledAlsoTarget.Pronunciations = new List<Pronunciation>();
+                            foreach (var pronunciation in cat.Pronunciations)
+                            {
+                                calledAlsoTarget.Pronunciations.Add(PronunciationHelper.Parse(pronunciation, language, audioFormat));
+                            }
+                        }
+
+                        calledAlsoNote.Targets.Add(calledAlsoTarget);
                     }
 
                     targetSense.DefiningTexts.Add(calledAlsoNote);
                 }
 
-                if (definitionType == DefiningTextTypes.RunIn)
+                else if (definitionType == DefiningTextTypes.RunIn)
                 {
                     var arr = definingTextObjects[1].DefiningTextObjects;
                     foreach (var definingTextObject in arr)
@@ -162,7 +174,7 @@ namespace MerriamWebster.NET.Parsing
                     }
                 }
 
-                if (definitionType == DefiningTextTypes.SupplementalNote)
+                else if (definitionType == DefiningTextTypes.SupplementalNote)
                 {
                     var arr = definingTextObjects[1].DefiningTextObjects[0].DefiningTextComplexTypeWrappers;
                     var supplementalInformationNote = new SupplementalInformationNote
@@ -175,7 +187,7 @@ namespace MerriamWebster.NET.Parsing
                     // todo nested ri, vis, requires sample json 
                 }
 
-                if (definitionType == DefiningTextTypes.UsageNote)
+                else if (definitionType == DefiningTextTypes.UsageNote)
                 {
                     var arr = definingTextObjects[1].DefiningTextObjects[0].DefiningTextComplexTypeWrappers;
                     if (arr == null){ continue;}
@@ -196,7 +208,7 @@ namespace MerriamWebster.NET.Parsing
                                 un.VerbalIllustrations = new List<VerbalIllustration>();
                             }
 
-                            foreach (var definingText in dtWrapper.DefiningTextComplexTypes[1].DtClassArray)
+                            foreach (var definingText in dtWrapper.DefiningTextComplexTypes[1].DefiningTexts)
                             {
                                 var vis = VisHelper.Parse(definingText);
                                 un.VerbalIllustrations.Add(vis);
@@ -208,7 +220,15 @@ namespace MerriamWebster.NET.Parsing
                     
                     targetSense.DefiningTexts.Add(un);
                 }
-
+                else if (definitionType == DefiningTextTypes.GenderForms)
+                {
+                    var dt = definingTextObjects[1].DefiningText;
+                    targetSense.DefiningTexts.Add(new GenderForms
+                    {
+                        GenderWordCutback = dt.GenderWordCutback,
+                        GenderWordSpelledOut = dt.GenderWordSpelledOut
+                    });
+                }
             }
 
         }

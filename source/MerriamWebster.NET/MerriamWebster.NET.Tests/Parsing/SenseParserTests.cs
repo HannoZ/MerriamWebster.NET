@@ -379,7 +379,10 @@ namespace MerriamWebster.NET.Tests.Parsing
                 senseParser.Parse(def);
 
                 // ASSERT
-                // TODO result.Examples.First().Quote.ShouldNotBeNull();
+                var vis = def.SenseSequence.SelectMany(ss => ss.Senses)
+                    .SelectMany(s => s.DefiningTexts)
+                    .OfType<VerbalIllustration>();
+                vis.ShouldContain(v=>v.AttributionOfQuote != null);
             }
         }
 
@@ -411,6 +414,48 @@ namespace MerriamWebster.NET.Tests.Parsing
 
             var dts = GetDefiningTexts(definitions);
             dts.OfType<BiographicalNameWrap>().Count().ShouldBe(2);
+        }
+
+        [TestMethod]
+        public void SenseParser_CanParse_Banadera()
+        {
+            var defs = LoadDefinitions("banadera");
+            List<Dto.Definition> definitions = new List<Dto.Definition>();
+
+            // ACT
+            foreach (var senseParser in defs.Select(definition => new SenseParser(definition, Language.Es, ParseOptions.Default)))
+            {
+                var def = new Dto.Definition();
+                senseParser.Parse(def);
+                def.SenseSequence.ShouldNotBeEmpty();
+
+                definitions.Add(def);
+            }
+
+            var senses = GetSenses(definitions);
+
+            senses.Cast<Dto.Sense>().ShouldContain(s=>s.CrossReferences != null && s.CrossReferences.Any());
+        }
+
+        [TestMethod]
+        public void SenseParser_CanParse_Youngster()
+        {
+            var defs = LoadDefinitions("youngster");
+            List<Dto.Definition> definitions = new List<Dto.Definition>();
+
+            // ACT
+            foreach (var senseParser in defs.Select(definition => new SenseParser(definition, Language.En, ParseOptions.Default)))
+            {
+                var def = new Dto.Definition();
+                senseParser.Parse(def);
+                def.SenseSequence.ShouldNotBeEmpty();
+
+                definitions.Add(def);
+            }
+
+            var dts = GetDefiningTexts(definitions);
+
+            dts.OfType<GenderForms>().ShouldNotBeEmpty();
         }
 
         private static IEnumerable<Definition> LoadDefinitions(string fileName)

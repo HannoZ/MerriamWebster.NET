@@ -71,6 +71,11 @@ namespace MerriamWebster.NET.Parsing
                                 sense.SenseNumber = sourceSense.SenseNumber;
                                 ParseSpecificSenseProperties(sourceSense, sense);
 
+                                if (sourceSense.CrossReferences.Any())
+                                {
+                                    sense.CrossReferences = CrossReferenceHelper.Parse(sourceSense.CrossReferences).ToList();
+                                }
+
                                 senseSequence.Senses.Add(sense);
                             }
                         }
@@ -82,6 +87,11 @@ namespace MerriamWebster.NET.Parsing
                                 var sense = ParseGeneralSenseProperties<Sense>(sourceSense);
                                 sense.SenseNumber = sourceSense.SenseNumber;
                                 sense.IsTruncatedSense = true;
+
+                                if (sourceSense.CrossReferences.Any())
+                                {
+                                    sense.CrossReferences = CrossReferenceHelper.Parse(sourceSense.CrossReferences).ToList();
+                                }
 
                                 senseSequence.Senses.Add(sense);
                             }
@@ -193,7 +203,7 @@ namespace MerriamWebster.NET.Parsing
             {
                 sense.Etymology = sourceSense.Etymologies.ParseEtymology();
             }
-
+            
             return sense;
         }
 

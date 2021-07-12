@@ -10,5 +10,9 @@
         public const string RunIn = "ri";
         public const string SupplementalNote = "snote";
         public const string UsageNote = "uns";
+        /// <remarks>
+        /// <i>spanish-english only</i>
+        /// </remarks>
+        public const string GenderForms = "gwds";
     }
 }

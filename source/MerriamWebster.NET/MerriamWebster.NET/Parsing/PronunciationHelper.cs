@@ -24,8 +24,12 @@ namespace MerriamWebster.NET.Parsing
             return new Pronunciation
             {
                 WrittenPronunciation = source.WrittenPronunciation,
-                AudioLink = AudioLinkCreator.CreateLink(language, source.Sound, audioFormat)
-                // Todo other properties
+                AudioLink = AudioLinkCreator.CreateLink(language, source.Sound, audioFormat),
+                Ipa = source.Ipa,
+                LabelAfterPronunciation = source.LabelAfterPronunciation,
+                LabelBeforePronunciation = source.LabelBeforePronunciation,
+                Punctuation = source.Punctuation,
+                Wod = source.Wod
             };
         }
     }

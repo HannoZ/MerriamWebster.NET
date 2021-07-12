@@ -17,10 +17,10 @@ namespace MerriamWebster.NET.Response.JsonConverters
                     return new DefiningTextComplexType { TypeOrLabel = stringValue };
                 case JsonToken.StartObject:
                     var objectValue = serializer.Deserialize<DefiningText>(reader);
-                    return new DefiningTextComplexType { DefiningTextClass = objectValue };
+                    return new DefiningTextComplexType { DefiningText = objectValue };
                 case JsonToken.StartArray:
                     var arrayValue = serializer.Deserialize<DefiningText[]>(reader);
-                    return new DefiningTextComplexType { DtClassArray = arrayValue };
+                    return new DefiningTextComplexType { DefiningTexts = arrayValue };
             }
             throw new NotImplementedException($"Cannot unmarshal type DefiningTextComplexType. Path: {reader.Path}, TokenType: {reader.TokenType}");
         }
@@ -33,14 +33,14 @@ namespace MerriamWebster.NET.Response.JsonConverters
                 serializer.Serialize(writer, value.TypeOrLabel);
                 return;
             }
-            if (value.DtClassArray != null)
+            if (value.DefiningTexts != null)
             {
-                serializer.Serialize(writer, value.DtClassArray);
+                serializer.Serialize(writer, value.DefiningTexts);
                 return;
             }
-            if (value.DefiningTextClass != null)
+            if (value.DefiningText != null)
             {
-                serializer.Serialize(writer, value.DefiningTextClass);
+                serializer.Serialize(writer, value.DefiningText);
                 return;
             }
             throw new NotImplementedException("Cannot marshal type DefiningTextComplexType");

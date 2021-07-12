@@ -18,6 +18,7 @@
     <None Remove="Resources\collegiate_above.json" />
     <None Remove="Resources\collegiate_absence.json" />
     <None Remove="Resources\collegiate_Acadia.json" />
+    <None Remove="Resources\collegiate_agree.json" />
     <None Remove="Resources\collegiate_algiers.json" />
     <None Remove="Resources\collegiate_alliteration.json" />
     <None Remove="Resources\collegiate_alphabet.json" />
@@ -83,6 +84,7 @@
     <EmbeddedResource Include="Resources\collegiate_tab.json" />
     <EmbeddedResource Include="Resources\collegiate_tedious.json" />
     <EmbeddedResource Include="Resources\collegiate_threatening.json" />
+    <EmbeddedResource Include="Resources\collegiate_agree.json" />
     <EmbeddedResource Include="Resources\coll_thes_agree.json" />
     <EmbeddedResource Include="Resources\distinto.json" />
     <EmbeddedResource Include="Resources\example_ginger.json" />

@@ -71,13 +71,8 @@ namespace MerriamWebster.NET.Dto
         public ICollection<Inflection> Inflections { get; set; }
 
         /// <summary>
-        /// <i>Optional, Spanish-English only.</i> Gets or sets the cross-references.
+        /// <i>Optional.</i> Gets or sets the cross-references.
         /// </summary>
-        /// <remarks>
-        /// <b>Display Guidance:</b>
-        /// The <see cref="CrossReference"/> is preceded by a right-pointing arrow.
-        /// If the collection has more than one element, separate them by a comma and space.
-        /// </remarks>
         public ICollection<CrossReference> CrossReferences { get; set; }
         
         /// <summary>
@@ -137,6 +132,20 @@ namespace MerriamWebster.NET.Dto
         /// <i>Optional.</i> Gets or sets the artwork.
         /// </summary>
         public Artwork Artwork { get; set; }
+
+        /// <summary>
+        /// <i>Optional.</i> Gets or sets synonyms.
+        /// </summary>
+        public ICollection<Synonym> Synonyms { get; set; }
+
+        /// <summary>
+        /// <i>Optional.</i> Directional cross-references to other entries may be presented after the main definition section.
+        /// </summary>
+        /// <remarks>
+        /// <b>Display Guidance:</b>
+        /// Display in a separate paragraph.
+        /// </remarks>
+        public ICollection<FormattedText> DirectionalCrossReferences { get; set; }
 
         /// <summary>
         /// A short definition provides a highly abridged version of the main definition section, consisting of just the definition text for the first three senses.
