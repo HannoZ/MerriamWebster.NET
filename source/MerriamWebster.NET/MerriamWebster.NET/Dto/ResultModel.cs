@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 namespace MerriamWebster.NET.Dto
 {
     /// <summary>
-    /// The <see cref="ResultModel"/> is the representation of a search query result.
+    /// The <see cref="ResultModel"/> contains the result of a search query (in the <see cref="Entries"/> collection),  plus some additional properties.
     /// </summary>
     public class ResultModel
     {

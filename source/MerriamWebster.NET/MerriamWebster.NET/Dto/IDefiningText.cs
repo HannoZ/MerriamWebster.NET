@@ -15,6 +15,9 @@
     /// </remarks>
     public interface IDefiningText
     {
-
+        /// <summary>
+        /// Gets the main defining text.
+        /// </summary>
+        FormattedText MainText { get; }
     }
 }

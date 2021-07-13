@@ -22,5 +22,8 @@
         /// text of gender word spelled-out form.
         /// </summary>
         public string GenderWordSpelledOut { get; set; }
+
+        /// <inheritdoc />
+        public FormattedText MainText => GenderWordSpelledOut;
     }
 }

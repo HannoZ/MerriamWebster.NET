@@ -48,6 +48,10 @@ namespace MerriamWebster.NET.Dto
         /// </summary>
         public string HtmlText { get;  }
 
+        /// <summary>
+        /// Creates a new <see cref="FormattedText"/> instance from the input string.
+        /// </summary>
+        /// <param name="text"></param>
         public static implicit operator FormattedText(string text)
         {
             return new FormattedText(text);

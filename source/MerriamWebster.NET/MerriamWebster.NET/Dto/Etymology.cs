@@ -17,13 +17,13 @@ namespace MerriamWebster.NET.Dto
     public class Etymology
     {
         /// <summary>
-        /// Contains the etymology content .
+        /// Contains the etymology content.
         /// </summary>
         public FormattedText Text { get; set; } = new FormattedText();
 
         /// <summary>
         /// <i>Optional.</i> Contains a supplemental information note for the etymology.
         /// </summary>
-        public FormattedText Note { get; set; } = new FormattedText();
+        public FormattedText Note { get; set; } 
     }
 }

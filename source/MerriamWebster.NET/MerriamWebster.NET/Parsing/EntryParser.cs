@@ -178,6 +178,49 @@ namespace MerriamWebster.NET.Parsing
                 }
             }
 
+            if (result.Usages.Any())
+            {
+                searchResult.Usages = new List<Usage>();
+                foreach (var srcUsage in result.Usages)
+                {
+                    var usage = new Usage
+                    {
+                        ParagraphLabel = srcUsage.ParagraphLabel
+                    };
+
+                    foreach (var complexTypeWrapper in srcUsage.ParagraphText)
+                    {
+                        var type = complexTypeWrapper[0].TypeLabelOrText;
+                        if (type == DefiningTextTypes.Text)
+                        {
+                            usage.ParagraphTexts.Add(new DefiningText(complexTypeWrapper[1].TypeLabelOrText));
+                        }
+                        else if (type == DefiningTextTypes.VerbalIllustration)
+                        {
+                            foreach (var dt in complexTypeWrapper[1].DefiningTextComplexTypes)
+                            {
+                                usage.ParagraphTexts.Add(VisHelper.Parse(dt.DefiningText));
+                            }
+                        }
+                        else if (type == DefiningTextTypes.InAdditionReference)
+                        {
+                            // TODO, requires sample json
+                        }
+                    }
+
+                    searchResult.Usages.Add(usage);
+                }
+            }
+
+            if (result.Table != null)
+            {
+                searchResult.Table = new Table
+                {
+                    Displayname = result.Table.Displayname,
+                    TableId = result.Table.Tableid
+                };
+            }
+
             return searchResult;
         }
 

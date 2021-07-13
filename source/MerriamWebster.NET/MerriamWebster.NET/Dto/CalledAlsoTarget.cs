@@ -2,6 +2,9 @@
 
 namespace MerriamWebster.NET.Dto
 {
+    /// <summary>
+    /// A called-also note target.
+    /// </summary>
     public class CalledAlsoTarget
     {
         /// <summary>

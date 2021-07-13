@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace MerriamWebster.NET.Dto
 {
@@ -34,5 +35,15 @@ namespace MerriamWebster.NET.Dto
         /// Gets or sets the called-also targets.
         /// </summary>
         public ICollection<CalledAlsoTarget> Targets { get; set; } = new List<CalledAlsoTarget>();
+
+
+        /// <inheritdoc />
+        public FormattedText MainText
+        {
+            get
+            {
+                return Targets.Aggregate(Intro, (current, calledAlsoTarget) => current + calledAlsoTarget.TargetText);
+            }
+        }
     }
 }

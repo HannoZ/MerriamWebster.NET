@@ -9,6 +9,9 @@ namespace MerriamWebster.NET.Parsing
     /// </summary>
     public class VariantHelper
     {
+        /// <summary>
+        /// Parses the source <see cref="Response.Variant"/> array to <see cref="Variant"/> objects.
+        /// </summary>
         public static IEnumerable<Variant> Parse(Response.Variant[] sources, Language language, AudioFormat audioFormat)
         {
             foreach (var source in sources)

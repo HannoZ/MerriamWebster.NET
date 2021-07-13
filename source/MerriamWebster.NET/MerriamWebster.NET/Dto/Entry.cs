@@ -163,6 +163,16 @@ namespace MerriamWebster.NET.Dto
         public ICollection<string> ShortDefs { get; set; } = new List<string>();
 
         /// <summary>
+        /// <i>Optional.</i> Gets or sets the usages. 
+        /// </summary>
+        public ICollection<Usage> Usages { get; set; }
+
+        /// <summary>
+        /// <i>Optional.</i> Gets or sets a table.
+        /// </summary>
+        public Table Table { get; set; }
+
+        /// <summary>
         /// Displays the contents of the <see cref="ShortDefs"/> collection, separated by commas. 
         /// </summary>
         public string Summary => string.Join(",", ShortDefs);

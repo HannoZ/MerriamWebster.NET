@@ -25,5 +25,8 @@ namespace MerriamWebster.NET.Dto
         /// <i>Optional.</i>A collection of verbal illustrations (examples).
         /// </summary>
         public ICollection<VerbalIllustration> VerbalIllustrations { get; set; }
+
+        /// <inheritdoc />
+        public FormattedText MainText => Text;
     }
 }

@@ -11,6 +11,9 @@ namespace MerriamWebster.NET.Dto
     /// </remarks>
     public class GenderLabel : IDefiningText
     {
+        /// <summary>
+        /// Creates a new instance of the <see cref="GenderLabel"/> class with specified label. 
+        /// </summary>
         public GenderLabel(string label)
         {
             Label = label ?? throw new ArgumentNullException(nameof(label));
@@ -19,6 +22,9 @@ namespace MerriamWebster.NET.Dto
         /// <summary>
         /// Gets or sets the label.
         /// </summary>
-        public Label Label { get; set; }
+        public Label Label { get; }
+
+        /// <inheritdoc />
+        public FormattedText MainText => Label.Text;
     }
 }

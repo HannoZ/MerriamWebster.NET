@@ -2,6 +2,9 @@
 
 namespace MerriamWebster.NET.Response
 {
+    /// <summary>
+    /// Class that contains properties that are shared between <see cref="Sense"/> and <see cref="DividedSense"/>.
+    /// </summary>
     public abstract class SenseBase
     {
         /// <summary>

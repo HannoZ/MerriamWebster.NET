@@ -60,5 +60,9 @@ namespace MerriamWebster.NET.Dto
         /// </summary>
         public Etymology Etymology { get; set; }
 
+        /// <summary>
+        /// Experimental feature! A summary of the <see cref="DefiningTexts"/> content.
+        /// </summary>
+        public FormattedText Summary => DefiningTexts.Build();
     }
 }

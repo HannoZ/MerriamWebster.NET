@@ -38,5 +38,8 @@ namespace MerriamWebster.NET.Dto
         /// <i>Optional.</i> Gets or sets pronunciations.
         /// </summary>
         public ICollection<Pronunciation> Pronunciations { get; set; }
+
+        /// <inheritdoc />
+        public FormattedText MainText => AlternateName ?? (FirstName + " " + Surname).Trim();
     }
 }

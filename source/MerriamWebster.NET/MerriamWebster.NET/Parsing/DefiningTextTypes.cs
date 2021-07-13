@@ -14,5 +14,9 @@
         /// <i>spanish-english only</i>
         /// </remarks>
         public const string GenderForms = "gwds";
+        /// <summary>
+        /// Not yet implemented! 
+        /// </summary>
+        public const string InAdditionReference = "uarefs";
     }
 }

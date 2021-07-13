@@ -35,5 +35,7 @@ namespace MerriamWebster.NET.Dto
         public ICollection<Variant> Variants { get; set; }
 
 
+        /// <inheritdoc />
+        public FormattedText MainText => Text;
     }
 }

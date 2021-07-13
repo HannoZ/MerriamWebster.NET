@@ -33,5 +33,8 @@
         /// Gets or sets the attribution of quote information.
         /// </summary>
         public AttributionOfQuote AttributionOfQuote { get; set; }
+
+        /// <inheritdoc />
+        public FormattedText MainText => Sentence;
     }
 }

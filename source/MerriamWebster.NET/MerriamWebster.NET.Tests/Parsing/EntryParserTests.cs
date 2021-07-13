@@ -13,6 +13,7 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using MerriamWebster.NET.Dto;
+using DefiningText = MerriamWebster.NET.Dto.DefiningText;
 using SenseBase = MerriamWebster.NET.Dto.SenseBase;
 
 namespace MerriamWebster.NET.Tests.Parsing
@@ -545,6 +546,38 @@ namespace MerriamWebster.NET.Tests.Parsing
             // ASSERT
             result.Entries.First().DirectionalCrossReferences.ShouldNotBeEmpty();
             
+        }
+
+        [TestMethod]
+        public void EntryParser_CanParse_Collegiate_Above()
+        {
+            var data = LoadData("collegiate_above");
+
+            // ACT
+            var result = _entryParser.Parse("above", data);
+
+            // ASSERT
+            result.Entries.Count.ShouldBe(10);
+            result.Entries.ShouldContain(e=>e.Usages != null && e.Usages.Any());
+            
+            var usageTexts = result.Entries.Where(e => e.Usages != null).SelectMany(e => e.Usages)
+                .SelectMany(u=>u.ParagraphTexts)
+                .ToList();
+            usageTexts.OfType<DefiningText>().ShouldNotBeEmpty();
+            usageTexts.OfType<VerbalIllustration>().ShouldNotBeEmpty();
+        }
+
+        [TestMethod]
+        public void EntryParser_CanParse_Alphabet()
+        {
+            var data = LoadData("collegiate_alphabet");
+
+            // ACT
+            var result = _entryParser.Parse("alphabet", data);
+
+            // ASSERT
+            result.Entries.Count.ShouldBe(10);
+            result.Entries.Count(e => e.Table != null).ShouldBe(1);
         }
 
         private static IEnumerable<Response.DictionaryEntry> LoadData(string fileName)
