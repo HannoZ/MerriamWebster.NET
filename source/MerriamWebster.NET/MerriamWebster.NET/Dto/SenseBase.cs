@@ -6,7 +6,7 @@ namespace MerriamWebster.NET.Dto
     /// <summary>
     /// Contains properties that both exist on <see cref="Sense"/> and <see cref="DividedSense"/>.
     /// </summary>
-    public class SenseBase
+    public class SenseBase : SenseSequenceSense
     {
         /// <summary>
         /// Gets or sets the defining texts.

@@ -9,6 +9,7 @@ using MerriamWebster.NET.Dto;
 using Shouldly;
 using DefiningText = MerriamWebster.NET.Dto.DefiningText;
 using Definition = MerriamWebster.NET.Response.Definition;
+using Sense = MerriamWebster.NET.Dto.Sense;
 using SenseBase = MerriamWebster.NET.Dto.SenseBase;
 
 namespace MerriamWebster.NET.Tests.Parsing
@@ -73,7 +74,7 @@ namespace MerriamWebster.NET.Tests.Parsing
 
                 foreach (var sense in def.SenseSequence)
                 {
-                    if (sense.Senses.Where(ss => ss.SubjectStatusLabels != null).SelectMany(ss => ss.SubjectStatusLabels).Any())
+                    if (sense.Senses.OfType<SenseBase>().Where(ss => ss.SubjectStatusLabels != null).SelectMany(ss => ss.SubjectStatusLabels).Any())
                     {
                         additionalInformationFound = true;
                     }
@@ -274,7 +275,8 @@ namespace MerriamWebster.NET.Tests.Parsing
             }
 
             var senses = definitions.SelectMany(d => d.SenseSequence)
-                .SelectMany(ss => ss.Senses).ToList();
+                .SelectMany(ss => ss.Senses)
+                .OfType<SenseBase>().ToList();
             senses.ShouldContain(s => s.SenseSpecificGrammaticalLabel != null);
             senses.ShouldContain(s => s.SenseSpecificGrammaticalLabel == null);
         }
@@ -308,7 +310,7 @@ namespace MerriamWebster.NET.Tests.Parsing
             def.SenseSequence.Count.ShouldBe(1);
             def.SenseSequence.First().Senses.Count.ShouldBe(4);
 
-            var dts = GetDefiningTexts(new[] {def});
+            var dts = GetDefiningTexts(new[] {def}).ToList();
             dts.OfType<DefiningText>().ShouldAllBe(t=> !t.Text.Text.Contains("{wi}"));
             dts.OfType<VerbalIllustration>().ShouldAllBe(vis => !vis.Sentence.Text.Contains("{wi}"));
         }
@@ -328,6 +330,7 @@ namespace MerriamWebster.NET.Tests.Parsing
             // verify that the divided sense has been parsed 
             def.SenseSequence
                 .SelectMany(ss => ss.Senses)
+                .Cast<Sense>()
                 .Where(s => s.DividedSense != null)
                 .ShouldNotBeEmpty();
         }
@@ -380,9 +383,10 @@ namespace MerriamWebster.NET.Tests.Parsing
 
                 // ASSERT
                 var vis = def.SenseSequence.SelectMany(ss => ss.Senses)
+                    .OfType<SenseBase>()
                     .SelectMany(s => s.DefiningTexts)
                     .OfType<VerbalIllustration>();
-                vis.ShouldContain(v=>v.AttributionOfQuote != null);
+                vis.ShouldContain(v => v.AttributionOfQuote != null);
             }
         }
 
@@ -468,7 +472,7 @@ namespace MerriamWebster.NET.Tests.Parsing
 
         private IEnumerable<SenseBase> GetSenses(IEnumerable<Dto.Definition> definitions)
             => definitions.SelectMany(d => d.SenseSequence)
-                .SelectMany(ss => ss.Senses);
+                .SelectMany(ss => ss.Senses).OfType<SenseBase>();
 
         private IEnumerable<IDefiningText> GetDefiningTexts(IEnumerable<Dto.Definition> definitions) =>
             GetSenses(definitions)

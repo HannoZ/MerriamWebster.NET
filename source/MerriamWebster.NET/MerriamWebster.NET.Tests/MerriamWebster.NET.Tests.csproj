@@ -22,6 +22,7 @@
     <None Remove="Resources\collegiate_algiers.json" />
     <None Remove="Resources\collegiate_alliteration.json" />
     <None Remove="Resources\collegiate_alphabet.json" />
+    <None Remove="Resources\collegiate_color.json" />
     <None Remove="Resources\collegiate_Dodgson.json" />
     <None Remove="Resources\collegiate_feline.json" />
     <None Remove="Resources\collegiate_heart.json" />
@@ -68,6 +69,7 @@
     <EmbeddedResource Include="Resources\collegiate_abaco.json" />
     <EmbeddedResource Include="Resources\collegiate_abeyance.json" />
     <EmbeddedResource Include="Resources\collegiate_abide.json" />
+    <EmbeddedResource Include="Resources\collegiate_color.json" />
     <EmbeddedResource Include="Resources\collegiate_above.json" />
     <EmbeddedResource Include="Resources\collegiate_absence.json" />
     <EmbeddedResource Include="Resources\collegiate_Acadia.json" />

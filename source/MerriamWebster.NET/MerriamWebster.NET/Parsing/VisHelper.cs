@@ -17,7 +17,8 @@ namespace MerriamWebster.NET.Parsing
             var text = source.Text;
             var vis = new VerbalIllustration
             {
-                Sentence = text
+                Sentence = text,
+                Translation = source.Translation
             };
 
             var aq = source.Quote;

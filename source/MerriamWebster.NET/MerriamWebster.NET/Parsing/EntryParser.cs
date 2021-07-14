@@ -250,6 +250,7 @@ namespace MerriamWebster.NET.Parsing
                 }
 
                 searchResult.Headword.Text = result.HeadwordInformation.Headword;
+                searchResult.Headword.ParenthesizedSubjectStatusLabel = result.HeadwordInformation.ParenthesizedSubjectStatusLabel;
             }
 
             if (result.AlternateHeadwords.Any())

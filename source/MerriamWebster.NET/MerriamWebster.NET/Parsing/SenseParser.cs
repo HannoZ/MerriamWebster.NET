@@ -98,11 +98,12 @@ namespace MerriamWebster.NET.Parsing
                         }
                         else if (sourceSseq[0].Name == Response.SseqEnum.Pseq && sourceSseq[1].SenseSequences != null)
                         {
-                            var pseq = new SenseSequence();
-                            if (senseSequence.ParenthesizedSenseSequence == null)
+                            var pseq = new SenseSequenceSense()
                             {
-                                senseSequence.ParenthesizedSenseSequence = new List<SenseSequence>();
-                            }
+                                IsParenthesizedSenseSequence = true,
+                                Senses = new List<SenseSequenceSense>()
+                            };
+
                             foreach (var sourceSequence in sourceSseq[1].SenseSequences)
                             {
                                 if (sourceSequence[0].Name == Response.SseqEnum.Bs)
@@ -136,7 +137,7 @@ namespace MerriamWebster.NET.Parsing
 
                             }
 
-                            senseSequence.ParenthesizedSenseSequence.Add(pseq);
+                            senseSequence.Senses.Add(pseq);
                         }
 
 

@@ -117,6 +117,7 @@ namespace MerriamWebster.NET.Tests.Parsing
             result.Entries.SelectMany(e => e.Definitions)
                 .SelectMany(d => d.SenseSequence)
                 .SelectMany(ss => ss.Senses)
+                .OfType<SenseBase>()
                 .Where(s => s.Inflections != null)
                 .ShouldContain(s => s.Inflections.Any(i => i.Alternate != null));
         }
@@ -160,10 +161,9 @@ namespace MerriamWebster.NET.Tests.Parsing
 
             // ASSERT
             result.Entries.ShouldNotBeEmpty();
+            result.Entries.ShouldContain(e => e.Conjugations != null);
 
-            var senses = GetSenses(result.Entries);
-
-            result.Entries.ShouldContain(e=>e.Conjugations != null);
+            var senses = GetSenses(result.Entries).OfType<SenseBase>();
             senses.Where(s => s.Variants != null).ShouldNotBeNull();
         }
 
@@ -243,8 +243,7 @@ namespace MerriamWebster.NET.Tests.Parsing
             //entry.Synonyms.ShouldNotBeEmpty();
             //entry.Antonyms.ShouldNotBeEmpty();
         }
-
-
+        
 
         [TestMethod]
         public void EntryParser_CanParse_Medical_Doctor()
@@ -420,7 +419,7 @@ namespace MerriamWebster.NET.Tests.Parsing
 
             // ASSERT
             result.Entries.Count.ShouldBe(10);
-            var senses = GetSenses(result.Entries);
+            var senses = GetSenses(result.Entries).OfType<SenseBase>();
             senses.ShouldContain(s => s.SubjectStatusLabels != null);
 
             var definingTexts = GetDefiningTexts(result.Entries).ToList();
@@ -472,7 +471,8 @@ namespace MerriamWebster.NET.Tests.Parsing
 
             var firstDef = result.Entries.First().Definitions.First();
             firstDef.SenseSequence.Count.ShouldBe(4);
-            firstDef.SenseSequence.First().ParenthesizedSenseSequence.ShouldNotBeEmpty();
+            firstDef.SenseSequence.SelectMany(ss=>ss.Senses)
+                .ShouldContain(s=>s.IsParenthesizedSenseSequence);
         }
 
         [TestMethod]
@@ -565,6 +565,7 @@ namespace MerriamWebster.NET.Tests.Parsing
                 .ToList();
             usageTexts.OfType<DefiningText>().ShouldNotBeEmpty();
             usageTexts.OfType<VerbalIllustration>().ShouldNotBeEmpty();
+
         }
 
         [TestMethod]
@@ -580,19 +581,41 @@ namespace MerriamWebster.NET.Tests.Parsing
             result.Entries.Count(e => e.Table != null).ShouldBe(1);
         }
 
+        [TestMethod]
+        public void EntryParser_CanParse_Color()
+        {
+            var data = LoadData("collegiate_color");
+
+            // ACT
+            var result = _entryParser.Parse("color", data);
+
+            // ASSERT
+            result.Entries.Count.ShouldBe(10);
+
+            var cognates = result.Entries.Where(e => e.CognateCrossReferences != null).Select(e => e.CognateCrossReferences);
+            cognates.ShouldNotBeEmpty();
+
+            var first = result.Entries.First();
+            var senses = first.Definitions.SelectMany(d => d.SenseSequence.SelectMany(ssq=>ssq.Senses)).ToList();
+            
+            senses.ShouldContain(s=>s.IsParenthesizedSenseSequence && s.Senses.Any());
+            senses.ShouldContain(s=>s.IsParenthesizedSenseSequence == false);
+        }
+
         private static IEnumerable<Response.DictionaryEntry> LoadData(string fileName)
         {
             var response = TestHelper.LoadResponseFromFile(fileName);
             return JsonConvert.DeserializeObject<Response.DictionaryEntry[]>(response, Converter.Settings);
         }
 
-        private IEnumerable<SenseBase> GetSenses(IEnumerable<Entry> entries) =>
+        private IEnumerable<SenseSequenceSense> GetSenses(IEnumerable<Entry> entries) =>
             entries.SelectMany(e => e.Definitions)
                 .SelectMany(d => d.SenseSequence)
                 .SelectMany(ss => ss.Senses);
 
         private IEnumerable<IDefiningText> GetDefiningTexts(IEnumerable<Entry> entries) =>
                  GetSenses(entries)
+                     .OfType<SenseBase>()
                 .SelectMany(s => s.DefiningTexts).ToList();
     }
 }
