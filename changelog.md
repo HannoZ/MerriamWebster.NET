@@ -1,3 +1,4 @@
+2.0 A new major version! The structure of the parsed objects has completely been changed and now follows the original structure. This had made those classes more complex but it's the only way to present all data as it was intended by the makers. More information can be found in the readme
 1.9 Huge serialization update, all documented structures that may appear in the collegiate dictionary should now be deserialized properly. ``BiographicalNameWrap`` and ``CalledAlsoNote`` are removed, they are now deserialized as ``DefiningText``.
 The next step will be to extend the parser to make all information available on the parsed result classes. 
 
