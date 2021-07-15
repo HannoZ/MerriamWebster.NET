@@ -12,6 +12,7 @@ Requests to the Merriam-Webster APIs are very simple, there is only one GET meth
 
 Api requests are executed by the MerriamWebsterClient class. To work with the response, it is highly recommended to use the ``EntryParser`` class. The EntryParser modifies the response into a format that is much easier to process further. 
 
+
 ***IMPORTANT*** 
 As of version 2 of this libary, output of the EntryParser follows the official documentation, instead of returning a simple interpretation of the results. With the simple interpretation used in version 1.x it was not possible to parse and present the response data properly. 
 
