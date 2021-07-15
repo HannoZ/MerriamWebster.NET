@@ -1,20 +1,31 @@
 ![Build Test Package](https://github.com/HannoZ/MerriamWebster.NET/workflows/Build%20Test%20Package/badge.svg)
 
 # MerriamWebster.NET
-A .NET client wrapper and object parser for Merriam-Webster's APIs. Tested with the Spanish-English dictionary and a little bit with the collegiate and medical dictionaries. It should work for all available APIs, though perhaps not all data will be deserialized properly. Response objects for those APIs are created based on documentation and some example json files. 
+A .NET client wrapper and object parser for Merriam-Webster's APIs. Tested with the Spanish-English and collegiate dictionaries and a little bit with the medical dictionary. It will also work for all available APIs, but data structures that are specific to those APIs will not be available in the parsed objects. Response objects for those APIs were created based on documentation and some example json files. 
 
 For a list of available APIs and in-depth documentation visit Merriam-Webster's [Developer Center](https://dictionaryapi.com/).
 
 Requests to the Merriam-Webster APIs are very simple, there is only one GET method, and all APIs use the same format: 
 > https://\<base address\>/_\<api name\>_/json/_\<entry\>_?key=myKey. 
+> 
+ (all api names are available in the `Configuration` class)
 
-Api requests are executed by the MerriamWebsterClient class. However, given the complex structure of the api response, it is highly recommended to use the EntryParser class instead and not use the MerriamWebsterClient directly. The EntryParser modifies the response into a format that is much easier to process further. EntryParser also contains one method: `GetAndParseAsync` which - surprise! - gets a result and parses it. The GetAndParseAsync method takes two parameters: the api name (all api's are available in the `Configuration` class) and the entry to get. 
+Api requests are executed by the MerriamWebsterClient class. To work with the response, it is highly recommended to use the ``EntryParser`` class. The EntryParser modifies the response into a format that is much easier to process further. 
 
-***Important*** 
-The EntryParser was developed primarily for the Spanish-English dictionary api, therefore not all available information is parsed. The ``RawResponse`` property on the ``EntryModel`` class contains the raw response from the API in case you need to get additional data from the response. You can also open an issue with a request for specific data.
+***IMPORTANT*** 
+As of version 2 of this libary, output of the EntryParser follows the official documentation, instead of returning a simple interpretation of the results. With the simple interpretation used in version 1.x it was not possible to parse and present the response data properly. 
 
-## Parsing of Merriam-Webster markup into HTML markup. 
-In version 1.7, a new property has been added to the Sense and Example dto classes: `HtmlText`. This property contains the original text, but with the MW-specific markup replaced by corresponding HTML markup. 
+## About the libary
+The library contains three folders: Dto, Parsing and Response. The response folder contains classes to deserialize the API response, the Parsing folder contains a number of (internal) classes to parse the result, the Dto folder contains all the objects that are returned by the EntryParser. All objects are documented with the texts from the official documentation, along with the display guidance notes from the documentation.
+
+The return type of the `EntryParser.Parse` method is a `ResultModel`. This model contains a collection of `Entry` objects. An entry is the central unit of a search result and contains a large number of properties that may, or may not, be present, depending on what was returned in the response. 
+Here is where things become difficult, even in the parsed objects: the actual defining texts are found as follows: Entry > Definitions > SenseSequences > Senses > DefiningTexts
+(see code sample below) 
+The structure for senses is as follows: SenseSequenceSense > SenseBase > Sense/DividedSense . This structure is necessary because a sense sequence can contain any order of regular senses (Sense), parenthesized senses (a structure that has it's own nested senses), divided senses, and a number of others. 
+Much more can be told about all the structures, but it's all explained very well in the offical documentation. 
+
+## Parsing of Merriam-Webster markup. 
+Many text properties can contain specific Merriam-Webster markup. Most of those properties are definied as `FormattedText`, a class that has three properties `RawText, Text, HtmlText`. The Text property has all markup removed, the HtmlText property has the markup replaced by HTML markup.
 For example this text: 
 > an ion NH{inf}4{/inf}{sup}+{/sup} derived from {a_link|ammonia} by combination with a hydrogen ion and ...
 
@@ -55,7 +66,59 @@ public void ConfigureServices(IServiceCollection services)
     // this registers the HttpClient and IEntryParser
     services.RegisterMerriamWebster(mwConfig);
 }
+```
+``` C#
+// A sample class that uses the IMerriamWebsterClient and IEntryParser
+public class MerriamWebsterSearch
+{
+    private readonly IMerriamWebsterClient _client;
+    private readonly IEntryParser _entryParser;
 
-// use an injected IEntryParser instance on Spanish-English Dictionary api
-var result = await entryParser.GetAndParseAsync(Configuration.SpanishEnglishDictionary, "ejemplo");
+    public MerriamWebsterSearch(IMerriamWebsterClient client, IEntryParser entryParser)
+    {
+        _client = client;
+        _entryParser = entryParser;
+    }
+
+    public async Task<ResultModel> SearchAsync(string searchTerm)
+    {
+        var results = await _client.GetDictionaryEntry(Configuration.SpanishEnglishDictionary, searchTerm);
+        
+        return _entryParser.Parse(searchTerm, results);
+    }
+}
+```
+``` C#
+public class Example
+{
+    private readonly MerriamWebsterSearch _search;
+
+    // .. 
+
+    public async Task GetResults(string searchTerm)
+    {
+        var result = await _search.SearchAsync(searchTerm);
+
+        // when looping through the results like this, 
+        // all senses with their defining texts appear in order 
+        foreach (var entry in result.Entries)            
+        {
+            foreach (var definition in entry.Definitions)
+            {
+                foreach (var senseSequence in definition.SenseSequence)  
+                {
+                    // this is a simplification, in real applications 
+                    // different types of sensens should be handled in different ways
+                    foreach (var sense in senseSequence.Senses.OfType<Sense>())
+                    {
+                        foreach (var definingText in sense.DefiningTexts)
+                        {
+                            string text = definingText.MainText;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
 ```
