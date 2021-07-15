@@ -1,10 +1,18 @@
 ﻿using System;
+using Newtonsoft.Json;
 
 namespace MerriamWebster.NET.Dto
 {
     /// <inheritdoc cref="IDefiningText"/>
     public class DefiningText : IDefiningText
     {
+        /// <summary>
+        /// Default constructor for deserializing
+        /// </summary>
+        public DefiningText()
+        {
+        }
+
         /// <summary>
         /// Creates a new instance of <see cref="DefiningText"/> with the specified text.
         /// </summary>
@@ -16,9 +24,10 @@ namespace MerriamWebster.NET.Dto
         /// <summary>
         /// The definition content
         /// </summary>
-        public FormattedText Text { get;  }
+        public FormattedText Text { get; set; }
 
         /// <inheritdoc />
+        [JsonIgnore]
         public FormattedText MainText => Text;
     }
 }

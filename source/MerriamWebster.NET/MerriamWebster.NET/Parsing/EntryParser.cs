@@ -96,7 +96,7 @@ namespace MerriamWebster.NET.Parsing
 
                     foreach (var sourceQuote in result.Quotes)
                     {
-                        var quote = QuoteHelper.Parse(sourceQuote, options);
+                        var quote = QuoteHelper.Parse(sourceQuote);
                         searchResult.Quotes.Add(quote);
                     }
                 }
@@ -238,7 +238,7 @@ namespace MerriamWebster.NET.Parsing
 
             if (!string.IsNullOrEmpty(result.Date))
             {
-                searchResult.Date = MarkupManipulator.RemoveMarkupFromString(result.Date);
+                searchResult.Date = result.Date;
             }
 
             if (result.HeadwordInformation != null)

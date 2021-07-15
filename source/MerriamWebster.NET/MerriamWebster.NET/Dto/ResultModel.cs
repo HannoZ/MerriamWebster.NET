@@ -21,6 +21,7 @@ namespace MerriamWebster.NET.Dto
         /// <summary>
         /// The summary combines all non-empty summaries of the entries in the <see cref="Entries"/> property.
         /// </summary>
+        [JsonIgnore]
         public string Summary => SummaryHelper.CreateSummary(SearchText, Entries);
         /// <summary>
         /// Gets or sets the raw response in JSON format. 

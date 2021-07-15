@@ -38,6 +38,14 @@ namespace MerriamWebster.NET.Tests.Parsing
             string[] exclusions = { "coll_thes_above_meta.json", "sense_learn_apple.json", "sense_above.json", "sense_med_doctor.json" };
             var asm = Assembly.GetExecutingAssembly();
             var resources = asm.GetManifestResourceNames();
+
+            var settings = new JsonSerializerSettings
+            {
+                TypeNameAssemblyFormatHandling = TypeNameAssemblyFormatHandling.Simple,
+                TypeNameHandling = TypeNameHandling.Objects,
+                NullValueHandling = NullValueHandling.Ignore
+            };
+
             foreach (var resource in resources)
             {
                 if (exclusions.Any(e => resource.EndsWith(e)))
@@ -60,6 +68,9 @@ namespace MerriamWebster.NET.Tests.Parsing
                     // ASSERT
                     result.Entries.ShouldNotBeEmpty();
 
+                    // verify serialization/deserialization
+                    var serialized = JsonConvert.SerializeObject(result, settings);
+                    var deserialized = JsonConvert.DeserializeObject<ResultModel>(serialized, settings);
                 }
                 catch (Exception ex)
                 {

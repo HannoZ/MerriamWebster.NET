@@ -4,18 +4,8 @@ using MerriamWebster.NET.Dto;
 
 namespace MerriamWebster.NET.Parsing
 {
-    /// <summary>
-    /// Helper class to parse the <see cref="Response.Inflection"/>
-    /// </summary>
-    public class InflectionHelper
+    internal class InflectionHelper
     {
-        /// <summary>
-        /// Converts <see cref="Response.Inflection"/> to <see cref="Inflection"/>
-        /// </summary>
-        /// <param name="sources">The source inflections</param>
-        /// <param name="language">Language is used to create an audio link.</param>
-        /// <param name="audioFormat">Specifies the audio format for the audio link.</param>
-        /// <returns>A new <see cref="Inflection"/> object for each source inflection</returns>
         public static IEnumerable<Inflection> Parse(Response.Inflection[] sources, Language language, AudioFormat audioFormat)
         {
             foreach (var source in sources)

@@ -1,4 +1,6 @@
-﻿namespace MerriamWebster.NET.Dto
+﻿using Newtonsoft.Json;
+
+namespace MerriamWebster.NET.Dto
 {
     /// <summary>
     /// A verbal illustration is an example sentence illustrating how a word is used in context.
@@ -35,6 +37,7 @@
         public AttributionOfQuote AttributionOfQuote { get; set; }
 
         /// <inheritdoc />
+        [JsonIgnore]
         public FormattedText MainText => Sentence;
     }
 }

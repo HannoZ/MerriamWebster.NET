@@ -1,5 +1,6 @@
 ﻿using MerriamWebster.NET.Parsing;
 using MerriamWebster.NET.Parsing.Markup;
+using Newtonsoft.Json;
 
 namespace MerriamWebster.NET.Dto
 {
@@ -9,8 +10,9 @@ namespace MerriamWebster.NET.Dto
     public class FormattedText
     {
         /// <summary>
-        /// Creates a default instance of the <see cref="FormattedText"/> class.
+        /// Creates a default instance of the <see cref="FormattedText"/> class. 
         /// </summary>
+        /// <remarks>Required for deserialization</remarks>
         public FormattedText()
         {
             
@@ -23,14 +25,12 @@ namespace MerriamWebster.NET.Dto
         public FormattedText(string text)
         {
             RawText = text;
-            Text = MarkupManipulator.RemoveMarkupFromString(text);
-            HtmlText = MarkupManipulator.ReplaceMarkupInString(text);
         }
 
         /// <summary>
         /// Contains the raw text (with MW-markup) as it comes from the source.
         /// </summary>
-        public string RawText { get;  }
+        public string RawText { get; set; }
 
         /// <summary>
         /// Contains the text.
@@ -40,21 +40,30 @@ namespace MerriamWebster.NET.Dto
         /// If <see cref="ParseOptions"/> is configured to remove markup, this contains the formatted text. The <see cref="RawText"/> still contains the unformatted text. 
         /// </para>
         /// </remarks>
-        public string Text { get;  }
+        [JsonIgnore]
+        public string Text => MarkupManipulator.RemoveMarkupFromString(RawText);
 
         /// <summary>
         /// If <see cref="ParseOptions"/> is configured to replace markup, this contains the text with MW-specific markup replaced by HTML markup.
         /// The <see cref="RawText"/> still contains the unformatted text. 
         /// </summary>
-        public string HtmlText { get;  }
+        [JsonIgnore]
+        public string HtmlText => MarkupManipulator.ReplaceMarkupInString(RawText);
 
         /// <summary>
         /// Creates a new <see cref="FormattedText"/> instance from the input string.
         /// </summary>
-        /// <param name="text"></param>
         public static implicit operator FormattedText(string text)
         {
             return new FormattedText(text);
+        }
+
+        /// <summary>
+        /// Takes a FormattedText object and returns the <see cref="RawText"/> value. 
+        /// </summary>
+        public static implicit operator string(FormattedText text)
+        {
+            return text.RawText;
         }
 
         /// <inheritdoc />

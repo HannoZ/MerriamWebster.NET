@@ -1,4 +1,5 @@
 ﻿using System;
+using Newtonsoft.Json;
 
 namespace MerriamWebster.NET.Dto
 {
@@ -12,6 +13,13 @@ namespace MerriamWebster.NET.Dto
     public class GenderLabel : IDefiningText
     {
         /// <summary>
+        /// Default constructor for deserializing
+        /// </summary>
+        public GenderLabel()
+        {
+        }
+
+        /// <summary>
         /// Creates a new instance of the <see cref="GenderLabel"/> class with specified label. 
         /// </summary>
         public GenderLabel(string label)
@@ -22,9 +30,10 @@ namespace MerriamWebster.NET.Dto
         /// <summary>
         /// Gets or sets the label.
         /// </summary>
-        public Label Label { get; }
+        public Label Label { get; set; }
 
         /// <inheritdoc />
+        [JsonIgnore]
         public FormattedText MainText => Label.Text;
     }
 }

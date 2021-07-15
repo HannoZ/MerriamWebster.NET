@@ -4,14 +4,8 @@ using MerriamWebster.NET.Dto;
 
 namespace MerriamWebster.NET.Parsing
 {
-    /// <summary>
-    /// Helper class to parse <see cref="Response.Variant"/>
-    /// </summary>
-    public class VariantHelper
+    internal class VariantHelper
     {
-        /// <summary>
-        /// Parses the source <see cref="Response.Variant"/> array to <see cref="Variant"/> objects.
-        /// </summary>
         public static IEnumerable<Variant> Parse(Response.Variant[] sources, Language language, AudioFormat audioFormat)
         {
             foreach (var source in sources)

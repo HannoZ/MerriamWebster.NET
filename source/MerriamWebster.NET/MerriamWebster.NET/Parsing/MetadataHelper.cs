@@ -6,10 +6,7 @@ using Section = MerriamWebster.NET.Dto.Section;
 
 namespace MerriamWebster.NET.Parsing
 {
-    /// <summary>
-    /// Helper class to parse the <see cref="Response.Metadata"/>
-    /// </summary>
-    public static class MetadataHelper
+    internal static class MetadataHelper
     {
         /// <summary>
         /// Converts <see cref="Response.Metadata"/> to <see cref="Metadata"/>

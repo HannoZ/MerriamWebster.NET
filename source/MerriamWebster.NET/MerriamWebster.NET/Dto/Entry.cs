@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace MerriamWebster.NET.Dto
 {
@@ -43,7 +44,7 @@ namespace MerriamWebster.NET.Dto
         /// <b>Display Guidance:</b>
         /// Typically displayed inline within parentheses or in its own block with a heading such as "First Known Use".
         /// </remarks>
-        public string Date { get; set; }
+        public FormattedText Date { get; set; }
 
         /// <summary>
         /// <i>Optional.</i> An alternate headword is a regional or less common spelling of a headword.
@@ -148,6 +149,16 @@ namespace MerriamWebster.NET.Dto
         public ICollection<FormattedText> DirectionalCrossReferences { get; set; }
 
         /// <summary>
+        /// <i>Optional.</i> Gets or sets the usages. 
+        /// </summary>
+        public ICollection<Usage> Usages { get; set; }
+
+        /// <summary>
+        /// <i>Optional.</i> Gets or sets a table.
+        /// </summary>
+        public Table Table { get; set; }
+
+        /// <summary>
         /// A short definition provides a highly abridged version of the main definition section, consisting of just the definition text for the first three senses.
         /// It is not meant to be displayed along with the full entry, but instead as an alternative, shortened preview of the entry content.
         /// </summary>
@@ -163,18 +174,9 @@ namespace MerriamWebster.NET.Dto
         public ICollection<string> ShortDefs { get; set; } = new List<string>();
 
         /// <summary>
-        /// <i>Optional.</i> Gets or sets the usages. 
-        /// </summary>
-        public ICollection<Usage> Usages { get; set; }
-
-        /// <summary>
-        /// <i>Optional.</i> Gets or sets a table.
-        /// </summary>
-        public Table Table { get; set; }
-
-        /// <summary>
         /// Displays the contents of the <see cref="ShortDefs"/> collection, separated by commas. 
         /// </summary>
+        [JsonIgnore]
         public string Summary => string.Join(",", ShortDefs);
     }
 }

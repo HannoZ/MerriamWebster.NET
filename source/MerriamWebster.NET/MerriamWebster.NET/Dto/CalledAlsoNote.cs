@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Newtonsoft.Json;
 
 namespace MerriamWebster.NET.Dto
 {
@@ -38,6 +39,7 @@ namespace MerriamWebster.NET.Dto
 
 
         /// <inheritdoc />
+        [JsonIgnore]
         public FormattedText MainText
         {
             get

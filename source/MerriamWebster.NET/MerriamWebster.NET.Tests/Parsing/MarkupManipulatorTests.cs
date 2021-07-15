@@ -105,12 +105,37 @@ namespace MerriamWebster.NET.Tests.Parsing
         }
 
         [TestMethod]
-        public void MarkupManipulator_Remove_DxDef()
+        public void MarkupManipulator_Remove_DxDef_Dx()
         {
-            string input =
-                "{bc}any of several domesticated {dx_def}see {dxt|domesticate:1||2}{/dx_def} or wild {d_link|gallinaceous|gallinaceous} birds {dx}compare {dxt|guinea-fowl||}, {dxt|jungle fowl||}{/dx}";
-            string expected =
-                "any of several domesticated (see domesticate) or wild gallinaceous birds — compare guinea-fowl, jungle fowl";
+            string input = "{bc}any of several domesticated {dx_def}see {dxt|domesticate:1||2}{/dx_def} or wild {d_link|gallinaceous|gallinaceous} birds {dx}compare {dxt|guinea-fowl||}, {dxt|jungle fowl||}{/dx}";
+            string expected = "any of several domesticated (see domesticate:1) or wild gallinaceous birds — compare guinea-fowl, jungle fowl";
+
+            // ACT
+            var output = MarkupManipulator.RemoveMarkupFromString(input);
+
+            // ASSERT
+            output.ShouldBe(expected);
+        }
+
+        [TestMethod]
+        public void MarkupManipulator_Remove_Dxt_Test4()
+        {
+            string input = "{bc}to like {dx_def}see {dxt|like:1|like:1|4}{/dx_def} an online post, comment, etc";
+            string expected = "to like (see like:1) an online post, comment, etc";
+
+            // ACT
+            var output = MarkupManipulator.RemoveMarkupFromString(input);
+
+            // ASSERT
+            output.ShouldBe(expected);
+        }
+
+        // .. light sources that may be described in terms of hue, lightness, and saturation {dx_def}see {dxt|saturation||4}{/dx_def} for objects 
+        [TestMethod]
+        public void MarkupManipulator_Remove_Dxt_Test5()
+        {
+            string input = ".. light sources that may be described in terms of hue, lightness, and saturation {dx_def}see {dxt|saturation||4}{/dx_def} for objects ";
+            string expected = ".. light sources that may be described in terms of hue, lightness, and saturation (see saturation) for objects";
 
             // ACT
             var output = MarkupManipulator.RemoveMarkupFromString(input);
@@ -149,7 +174,7 @@ namespace MerriamWebster.NET.Tests.Parsing
         public void MarkupManipulator_Remove_Dxt_Test3()
         {
             string input = "{dxt|domesticate:1||2}";
-            string expected = "domesticate";
+            string expected = "domesticate:1";
 
             // ACT
             var output = MarkupManipulator.RemoveMarkupFromString(input);
@@ -157,7 +182,7 @@ namespace MerriamWebster.NET.Tests.Parsing
             // ASSERT
             output.ShouldBe(expected);
         }
-
+        
         [TestMethod]
         public void MarkupManipulator_Remove_Et_link()
         {
@@ -185,7 +210,7 @@ namespace MerriamWebster.NET.Tests.Parsing
         {
             string input =
                 "{bc}a small modern warship with shallow draft {dx_def}see {dxt|draft:1||8}{/dx_def} for coastal bombardment";
-            string expected = "a small modern warship with shallow draft (see draft) for coastal bombardment";
+            string expected = "a small modern warship with shallow draft (see draft:1) for coastal bombardment";
 
             // ACT
             var output = MarkupManipulator.RemoveMarkupFromString(input);

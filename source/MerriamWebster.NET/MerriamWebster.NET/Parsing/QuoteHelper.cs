@@ -5,18 +5,9 @@ using Quote = MerriamWebster.NET.Dto.Quote;
 
 namespace MerriamWebster.NET.Parsing
 {
-    /// <summary>
-    /// Helper class to parse the <see cref="Response.Quote"/>
-    /// </summary>
-    public class QuoteHelper
+    internal class QuoteHelper
     {
-        /// <summary>
-        /// Converts <see cref="Response.Quote"/> to <see cref="Quote"/>
-        /// </summary>
-        /// <param name="source">The source quote</param>
-        /// <param name="options">The parse options.</param>
-        /// <returns>A new <see cref="Quote"/> object (empty if source was null).</returns>
-        public static Quote Parse(Response.Quote source, ParseOptions options)
+        public static Quote Parse(Response.Quote source)
         {
             var quote = new Quote
             {

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using MerriamWebster.NET.Parsing;
+using Newtonsoft.Json;
 
 namespace MerriamWebster.NET.Dto
 {
@@ -63,6 +64,7 @@ namespace MerriamWebster.NET.Dto
         /// <summary>
         /// Experimental feature! A summary of the <see cref="DefiningTexts"/> content.
         /// </summary>
+        [JsonIgnore]
         public FormattedText Summary => DefiningTexts.Build();
     }
 }

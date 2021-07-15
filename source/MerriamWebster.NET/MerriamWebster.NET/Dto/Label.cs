@@ -13,6 +13,7 @@
         /// <summary>
         /// Creates a new default instance of the <see cref="Label"/> class.
         /// </summary>
+        /// <remarks>Required for deserialization</remarks>
         public Label()
         {
         }

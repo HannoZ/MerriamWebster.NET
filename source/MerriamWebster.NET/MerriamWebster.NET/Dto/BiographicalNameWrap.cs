@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace MerriamWebster.NET.Dto
 {
@@ -40,6 +41,7 @@ namespace MerriamWebster.NET.Dto
         public ICollection<Pronunciation> Pronunciations { get; set; }
 
         /// <inheritdoc />
+        [JsonIgnore]
         public FormattedText MainText => AlternateName ?? (FirstName + " " + Surname).Trim();
     }
 }

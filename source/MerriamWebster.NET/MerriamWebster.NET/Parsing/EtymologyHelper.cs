@@ -2,10 +2,7 @@
 
 namespace MerriamWebster.NET.Parsing
 {
-    /// <summary>
-    /// Helper class to parse <see cref="Response.Etymology"/> 
-    /// </summary>
-    public static class EtymologyHelper
+    internal static class EtymologyHelper
     {
         /// <summary>
         /// Parses the source <see cref="Response.Etymology"/> array to an <see cref="Etymology"/> object
