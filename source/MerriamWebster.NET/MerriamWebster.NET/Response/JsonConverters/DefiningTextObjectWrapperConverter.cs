@@ -21,7 +21,7 @@ namespace MerriamWebster.NET.Response.JsonConverters
                     return new DefiningTextObjectWrapper { DefiningText = objectValue };
                 case JsonToken.StartArray:
                     var arrayValue = serializer.Deserialize<DefiningTextObject[]>(reader);
-                    return new DefiningTextObjectWrapper { DefiningTextArray = arrayValue };
+                    return new DefiningTextObjectWrapper { DefiningTextObjects = arrayValue };
             }
             throw new NotImplementedException($"Cannot unmarshal type DefiningTextObjectWrapper. Path: {reader.Path}, TokenType: {reader.TokenType}");
         }
@@ -34,9 +34,9 @@ namespace MerriamWebster.NET.Response.JsonConverters
                 serializer.Serialize(writer, value.TypeOrText);
                 return;
             }
-            if (value.DefiningTextArray != null)
+            if (value.DefiningTextObjects != null)
             {
-                serializer.Serialize(writer, value.DefiningTextArray);
+                serializer.Serialize(writer, value.DefiningTextObjects);
                 return;
             }
             if (value.DefiningText != null)

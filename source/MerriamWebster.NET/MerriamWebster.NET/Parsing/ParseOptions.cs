@@ -13,12 +13,10 @@
         /// <summary>
         /// Creates a new instance of the <see cref="ParseOptions"/> class with specified settings.
         /// </summary>
-        public ParseOptions(AudioFormat audioFormat = AudioFormat.Mp3, bool skipAdditionalStems = true, bool removeMarkup = true, bool replaceMarkup = true)
+        public ParseOptions(AudioFormat audioFormat = AudioFormat.Mp3, bool skipAdditionalStems = false)
         {
             AudioFormat = audioFormat;
             SkipAdditionalStems = skipAdditionalStems;
-            RemoveMarkup = removeMarkup;
-            ReplaceMarkup = replaceMarkup;
         }
 
         /// <summary>
@@ -27,9 +25,7 @@
         private ParseOptions()
         {
             AudioFormat = AudioFormat.Mp3;
-            SkipAdditionalStems = true;
-            RemoveMarkup = true;
-            ReplaceMarkup = true;
+            SkipAdditionalStems = false;
         }
 
         /// <summary>
@@ -45,20 +41,5 @@
         /// Set to <c>true</c> (this is the default), to have those entries filtered out. 
         /// </remarks>
         public bool SkipAdditionalStems { get; set; }
-
-        /// <summary>
-        /// Gets or sets whether to remove markup from translations.
-        /// </summary>
-        /// <remarks>
-        /// Translations are often in a pre-formatted formatting, using some specific markup tokens  (eg. "{bc}an ion NH{inf}4{\/inf}{sup}+{\/sup} derived from {a_link|ammonia}").
-        /// Set to <c>true</c> (this is the default) to remove the markup (raw value will still be returned as well).
-        /// </remarks>
-        public bool RemoveMarkup { get; set; }
-
-        /// <summary>
-        /// Gets or sets whether to remove markup from translations and replace it with HTML formatting.
-        /// </summary>
-        /// <remarks>This works similar to <see cref="ReplaceMarkup"/>, but instead of removing the markup tokens, they are replaced with HTML markup.</remarks>
-        public bool ReplaceMarkup { get; set; }
     }
 }

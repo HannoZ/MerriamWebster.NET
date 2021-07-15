@@ -26,8 +26,7 @@ namespace MerriamWebster.NET.Response
         public Source Source { get; set; }
 
         [JsonProperty("sort")]
-        [JsonConverter(typeof(StringLongConverter))]
-        public long Sort { get; set; }
+        public string Sort { get; set; }
 
         [JsonProperty("section")]
         public Section Section { get; set; }

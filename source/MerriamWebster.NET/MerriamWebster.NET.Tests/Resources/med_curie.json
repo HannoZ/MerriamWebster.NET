@@ -1,0 +1,110 @@
+[
+  {
+    "meta": {
+      "id": "curie",
+      "uuid": "16b9421e-3bc7-4e0e-a3c6-35ad00bcfba7",
+      "sort": "163608000",
+      "src": "medical",
+      "section": "alpha",
+      "stems": [
+        "Curie",
+        "curie",
+        "curies"
+      ],
+      "offensive": false
+    },
+    "hwi": {
+      "hw": "cu*rie",
+      "prs": [
+        {
+          "mw": "ˈkyu̇(ə)r-(ˌ)ē, kyu̇-ˈrē",
+          "sound": {
+            "audio": "curie001"
+          }
+        }
+      ]
+    },
+    "fl": "noun",
+    "def": [
+      {
+        "sseq": [
+          [
+            [
+              "sense",
+              {
+                "sn": "1",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}a unit quantity of any radioactive nuclide in which 3.7 × 10{sup}10{/sup} disintegrations occur per second"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "2",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}a unit of radioactivity equal to 3.7 × 10{sup}10{/sup} disintegrations per second"
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      }
+    ],
+    "bios": [
+      [
+        [
+          "bionw",
+          {
+            "biosname": "Cu*rie",
+            "prs": [
+              {
+                "mw": "kᵫ̅-rē"
+              }
+            ]
+          }
+        ],
+        [
+          "bionw",
+          {
+            "biopname": "Pierre"
+          }
+        ],
+        [
+          "biodate",
+          "(1859–1906)"
+        ],
+        [
+          "text",
+          " and "
+        ],
+        [
+          "bionw",
+          {
+            "biopname": "Marie Słodowska"
+          }
+        ],
+        [
+          "biodate",
+          "(1867–1934)"
+        ],
+        [
+          "biotx",
+          "French chemists and physicists. The Curies were two of the most important and influential figures in modern physics. Their major joint contributions include the discovery, with Henri Becquerel, of radioactivity, and the discovery and isolation of radium and polonium in 1898. In 1910 the first International Congress of Radiology honored the husband and wife team by establishing {it}curie{/it} as a term for a unit of measurement for radioactivity. The element curium was named in honor of the Curies in 1944 by its discoverers, a team of scientists at the University of Chicago. The Curies were awarded the Nobel Prize for Physics in 1903, and Marie Curie was awarded the Nobel Prize for Chemistry in 1911."
+        ]
+      ]
+    ],
+    "shortdef": [
+      "a unit quantity of any radioactive nuclide in which 3.7 × 1010 disintegrations occur per second",
+      "a unit of radioactivity equal to 3.7 × 1010 disintegrations per second"
+    ]
+  }
+]

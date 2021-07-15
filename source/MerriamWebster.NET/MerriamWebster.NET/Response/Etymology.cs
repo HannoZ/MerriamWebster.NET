@@ -9,7 +9,7 @@
         /// <summary>
         /// Possible values: "text" (required) or "et_snote"(optional)
         /// </summary>
-        public string Type;
+        public string TypeOrText;
         /// <summary>
         /// For text: contains the etymology content <br/>
         /// For et_snote: contains a supplemental information note for the etymology (optional)
@@ -17,7 +17,7 @@
         public string[][] Content;
 
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
-        public static implicit operator Etymology(string String) => new Etymology { Type = String };
+        public static implicit operator Etymology(string String) => new Etymology { TypeOrText = String };
         public static implicit operator Etymology(string[][] StringArrayArray) => new Etymology { Content = StringArrayArray };
 #pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
     }

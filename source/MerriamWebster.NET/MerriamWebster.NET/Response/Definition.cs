@@ -17,7 +17,7 @@ namespace MerriamWebster.NET.Response
         /// Gets or sets the subject/status labels.
         /// </summary>
         [JsonProperty("sls", NullValueHandling = NullValueHandling.Ignore)]
-        public string[] Sls { get; set; }
+        public string[] Sls { get; set; } = { };
 
         /// <summary>
         /// The verb divider acts as a functional label in verb entries, introducing the separate sense sequences for transitive and intransitive meanings of the verb.

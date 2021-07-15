@@ -24,8 +24,7 @@ namespace MerriamWebster.NET.Response
         public HeadwordInformation HeadwordInformation { get; set; }
 
         /// <summary>
-        /// Describes the grammatical function of a headword or undefined entry word. It indicates the role the word plays in a sentence, such as "noun", "verb", "adjective", etc.<br/>
-        /// It may also categorize the word in other ways, such as "trademark" or "abbreviation". Also called: part of speech.
+        /// The functional label describes the grammatical function of a headword or undefined entry word, such as "noun" or "adjective".
         /// </summary>
         [JsonProperty("fl")]
         public string FunctionalLabel { get; set; }

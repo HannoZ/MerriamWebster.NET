@@ -14,7 +14,7 @@ namespace MerriamWebster.NET.Response.JsonConverters
                 case JsonToken.String:
                 case JsonToken.Date:
                     var stringValue = serializer.Deserialize<string>(reader);
-                    return new Etymology { Type = stringValue };
+                    return new Etymology { TypeOrText = stringValue };
                 case JsonToken.StartArray:
                     var arrayValue = serializer.Deserialize<string[][]>(reader);
                     return new Etymology { Content = arrayValue };
@@ -25,9 +25,9 @@ namespace MerriamWebster.NET.Response.JsonConverters
         public override void WriteJson(JsonWriter writer, object untypedValue, JsonSerializer serializer)
         {
             var value = (Etymology)untypedValue;
-            if (value.Type != null)
+            if (value.TypeOrText != null)
             {
-                serializer.Serialize(writer, value.Type);
+                serializer.Serialize(writer, value.TypeOrText);
                 return;
             }
             if (value.Content != null)

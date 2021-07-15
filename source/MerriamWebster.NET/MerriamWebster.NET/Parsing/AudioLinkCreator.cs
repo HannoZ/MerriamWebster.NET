@@ -1,4 +1,5 @@
 ﻿using System;
+using MerriamWebster.NET.Dto;
 using MerriamWebster.NET.Response;
 
 namespace MerriamWebster.NET.Parsing
@@ -15,7 +16,7 @@ namespace MerriamWebster.NET.Parsing
         /// <param name="sound">The sound object.</param>
         /// <param name="format">Specifies the audio format</param>
         /// <returns>A <see cref="Uri"/> that points to the audio file, or <c>null</c> if no Audio string is provided.</returns>
-        public static Uri CreateLink(Lang language, Sound sound, AudioFormat format)
+        public static Uri CreateLink(Language language, Sound sound, AudioFormat format)
         {
             if (sound == null || string.IsNullOrEmpty(sound.Audio))
             {
@@ -37,7 +38,7 @@ namespace MerriamWebster.NET.Parsing
                 subDir = "number";
             }
 
-            string relative = $"{(language == Lang.Es ? "es" : "en")}/{(language == Lang.Es ? "me" : "us")}/{format}/{subDir}/{sound.Audio}.{format}".ToLower();
+            string relative = $"{(language == Language.Es ? "es" : "en")}/{(language == Language.Es ? "me" : "us")}/{format}/{subDir}/{sound.Audio}.{format}".ToLower();
 
             return new Uri(baseAddress, relative);
         }

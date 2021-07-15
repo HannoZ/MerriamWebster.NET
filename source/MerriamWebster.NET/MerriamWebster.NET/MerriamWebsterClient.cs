@@ -42,7 +42,7 @@ namespace MerriamWebster.NET
                 var results = JsonConvert.DeserializeObject<DictionaryEntry[]>(responseString, Converter.Settings);
                 return results;
             }
-            catch (NotImplementedException)
+            catch (NotImplementedException) // can occur in json converters when a structure is encountered that has not been implemented
             {
                 throw;
             }

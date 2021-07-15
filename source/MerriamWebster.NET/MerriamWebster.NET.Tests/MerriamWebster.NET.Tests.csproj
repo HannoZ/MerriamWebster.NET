@@ -18,9 +18,11 @@
     <None Remove="Resources\collegiate_above.json" />
     <None Remove="Resources\collegiate_absence.json" />
     <None Remove="Resources\collegiate_Acadia.json" />
+    <None Remove="Resources\collegiate_agree.json" />
     <None Remove="Resources\collegiate_algiers.json" />
     <None Remove="Resources\collegiate_alliteration.json" />
     <None Remove="Resources\collegiate_alphabet.json" />
+    <None Remove="Resources\collegiate_color.json" />
     <None Remove="Resources\collegiate_Dodgson.json" />
     <None Remove="Resources\collegiate_feline.json" />
     <None Remove="Resources\collegiate_heart.json" />
@@ -47,6 +49,7 @@
     <None Remove="Resources\jirón.json" />
     <None Remove="Resources\learn_apple.json" />
     <None Remove="Resources\med_bartonella.json" />
+    <None Remove="Resources\med_curie.json" />
     <None Remove="Resources\med_doctor.json" />
     <None Remove="Resources\med_knee.json" />
     <None Remove="Resources\med_pelvis.json" />
@@ -67,6 +70,7 @@
     <EmbeddedResource Include="Resources\collegiate_abaco.json" />
     <EmbeddedResource Include="Resources\collegiate_abeyance.json" />
     <EmbeddedResource Include="Resources\collegiate_abide.json" />
+    <EmbeddedResource Include="Resources\collegiate_color.json" />
     <EmbeddedResource Include="Resources\collegiate_above.json" />
     <EmbeddedResource Include="Resources\collegiate_absence.json" />
     <EmbeddedResource Include="Resources\collegiate_Acadia.json" />
@@ -83,10 +87,12 @@
     <EmbeddedResource Include="Resources\collegiate_tab.json" />
     <EmbeddedResource Include="Resources\collegiate_tedious.json" />
     <EmbeddedResource Include="Resources\collegiate_threatening.json" />
+    <EmbeddedResource Include="Resources\collegiate_agree.json" />
     <EmbeddedResource Include="Resources\coll_thes_agree.json" />
     <EmbeddedResource Include="Resources\distinto.json" />
     <EmbeddedResource Include="Resources\example_ginger.json" />
     <EmbeddedResource Include="Resources\jirón.json" />
+    <EmbeddedResource Include="Resources\med_curie.json" />
     <EmbeddedResource Include="Resources\med_bartonella.json" />
     <EmbeddedResource Include="Resources\med_pelvis.json" />
     <EmbeddedResource Include="Resources\med_knee.json" />

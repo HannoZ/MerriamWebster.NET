@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
@@ -11,11 +11,11 @@
     <PackageProjectUrl>https://github.com/HannoZ/MerriamWebster.NET</PackageProjectUrl>
     <RepositoryUrl>https://github.com/HannoZ/MerriamWebster.NET</RepositoryUrl>
     <RepositoryType>Public</RepositoryType>
-    <PackageTags>Merriam-Webster dictionary thesaurus</PackageTags>
+    <PackageTags>Merriam-Webster dictionary thesaurus Spanish-English</PackageTags>
     <PackageReleaseNotes>See project readme for further details.</PackageReleaseNotes>
-    <Version>1.9</Version>
-    <AssemblyVersion>1.9.0.0</AssemblyVersion>
-    <FileVersion>1.9.0.0</FileVersion>
+    <Version>2.0</Version>
+    <AssemblyVersion>2.0.0.0</AssemblyVersion>
+    <FileVersion>2.0.0.0</FileVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">

@@ -7,7 +7,7 @@ namespace MerriamWebster.NET.Parsing.Markup
     /// </summary>
     public class EtymologyLinkManipulator : MarkupManipulator, IMarkupManipulator
     {
-        private static readonly Regex Pattern = new Regex(@"{et_link\|([^}]*)\|[^}]*}}", RegexOptions.Compiled);
+        private static readonly Regex Pattern = new Regex(@"{et_link\|([^}]*)\|[^}]*}", RegexOptions.Compiled);
         
         /// <inheritdoc />
         public string RemoveMarkup(string input)

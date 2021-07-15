@@ -32,7 +32,6 @@ namespace MerriamWebster.NET.Parsing.Markup
         /// <returns>Output text without any markup</returns>
         public static string RemoveMarkupFromString(string input)
         {
-
             input = input.Replace("{bc}", "")
                 .Replace("{dx_def}", "(")
                 .Replace("{/dx_def}", ")")
@@ -47,10 +46,11 @@ namespace MerriamWebster.NET.Parsing.Markup
                 .Replace("{rdquo}", "\u201D")
                 ;
 
-            input = MarkupManipulators.Aggregate(input, (current, markupRemover) => markupRemover.RemoveMarkup(current));
+            input = MarkupManipulators.Aggregate(input, (current, markupRemover) =>
+                markupRemover.RemoveMarkup(current));
 
             // always keep this one as last! 
-            input = ReplaceCrossReferenceTarget(input);
+           // input = ReplaceCrossReferenceTarget(input);
 
             return input.Trim();
         }
@@ -71,17 +71,7 @@ namespace MerriamWebster.NET.Parsing.Markup
             return input;
         }
 
-        private static string ReplaceCrossReferenceTarget(string input)
-        {
-            var regex = new Regex(@"{dxt\|(\w*\s?\w*?):?\d?\|*\d?}");
-
-            // because this element can also contain :, we can't use \S for any non-whitespace character
-            // which is a problem if we have a word like 'worn-out'
-
-            return RegexReplace(input, regex)
-                .Replace("{dxt|", "")
-                .Replace("||}", "");
-        }
+       
 
         internal static string RegexReplace(string input, Regex regex, string htmlTag = null, string @class = null, string style = null)
         {
@@ -90,7 +80,7 @@ namespace MerriamWebster.NET.Parsing.Markup
 
             foreach (Match match in matches)
             {
-                var target = match.Groups[1];
+                var target = match.Groups[1].ToString().TrimEnd('|');
 
                 var index = input.IndexOf("[x]", StringComparison.OrdinalIgnoreCase);
                 string first = input.Substring(0, index);

@@ -14,7 +14,7 @@ namespace MerriamWebster.NET.Response.JsonConverters
                 case JsonToken.String:
                 case JsonToken.Date:
                     var stringValue = serializer.Deserialize<string>(reader);
-                    return new BioElement { Type = stringValue };
+                    return new BioElement { TypeOrText = stringValue };
                 case JsonToken.StartObject:
                     var objectValue = serializer.Deserialize<BiographicalNote>(reader);
                     return new BioElement { BiographicalNote = objectValue };
@@ -25,9 +25,9 @@ namespace MerriamWebster.NET.Response.JsonConverters
         public override void WriteJson(JsonWriter writer, object untypedValue, JsonSerializer serializer)
         {
             var value = (BioElement)untypedValue;
-            if (value.Type != null)
+            if (value.TypeOrText != null)
             {
-                serializer.Serialize(writer, value.Type);
+                serializer.Serialize(writer, value.TypeOrText);
                 return;
             }
             if (value.BiographicalNote != null)

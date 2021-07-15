@@ -25,13 +25,7 @@ namespace MerriamWebster.NET.Response
         /// </summary>
         [JsonProperty("fl")]
         public string FunctionalLabel { get; set; }
-
-        /// <summary>
-        /// Gets or sets an <see cref="AlternateUndefinedEntryWord"/>.
-        /// </summary>
-        [JsonProperty("aure", NullValueHandling = NullValueHandling.Ignore)]
-        public AlternateUndefinedEntryWord AlternateEntry { get; set; }
-
+        
         /// <summary>
         /// A parenthesized subject/status label describes the subject area or regional/usage status (eg, "British") of a headword or other defined term, and is displayed in parentheses.<br/>
         /// The parenthesized subject/status label is contained in a <see cref="ParenthesizedSubjectStatusLabel"/>.
@@ -68,5 +62,11 @@ namespace MerriamWebster.NET.Response
         /// </summary>
         [JsonProperty("ins", NullValueHandling = NullValueHandling.Ignore)]
         public Inflection[] Inflections { get; set; } = { };
+
+        /// <summary>
+        /// Gets or sets an <see cref="AlternateUndefinedEntryWord"/>.
+        /// </summary>
+        [JsonProperty("aure", NullValueHandling = NullValueHandling.Ignore)]
+        public AlternateUndefinedEntryWord AlternateEntry { get; set; }
     }
 }
