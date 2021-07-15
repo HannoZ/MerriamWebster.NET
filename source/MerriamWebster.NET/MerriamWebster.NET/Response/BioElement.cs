@@ -7,10 +7,10 @@
     public struct BioElement
     {
         public BiographicalNote BiographicalNote;
-        public string Type;
+        public string TypeOrText;
 
         public static implicit operator BioElement(BiographicalNote biographicalNote) => new BioElement { BiographicalNote = biographicalNote };
-        public static implicit operator BioElement(string String) => new BioElement { Type = String };
+        public static implicit operator BioElement(string s) => new BioElement { TypeOrText = s };
     }
 #pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
 }

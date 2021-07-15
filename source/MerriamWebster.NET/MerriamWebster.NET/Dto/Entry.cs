@@ -159,6 +159,11 @@ namespace MerriamWebster.NET.Dto
         public Table Table { get; set; }
 
         /// <summary>
+        /// <i>Optional, medical dictionary only.</i> Gets or sets biographical notes.
+        /// </summary>
+        public BiographicalNote BiographicalNote { get; set; }
+
+        /// <summary>
         /// A short definition provides a highly abridged version of the main definition section, consisting of just the definition text for the first three senses.
         /// It is not meant to be displayed along with the full entry, but instead as an alternative, shortened preview of the entry content.
         /// </summary>

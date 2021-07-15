@@ -613,6 +613,30 @@ namespace MerriamWebster.NET.Tests.Parsing
             senses.ShouldContain(s=>s.IsParenthesizedSenseSequence == false);
         }
 
+        [TestMethod]
+        public void EntryParser_CanParse_Bartonella()
+        {
+            var data = LoadData("med_bartonella");
+
+            // ACT
+            var result = _entryParser.Parse("bartonella", data);
+
+            // ASSERT
+            result.Entries.First().BiographicalNote.Contents.Count.ShouldBe(4);
+        }
+
+        [TestMethod]
+        public void EntryParser_CanParse_Curie()
+        {
+            var data = LoadData("med_curie");
+
+            // ACT
+            var result = _entryParser.Parse("curie", data);
+
+            // ASSERT
+            result.Entries.First().BiographicalNote.Contents.Count.ShouldBe(7);
+        }
+
         private static IEnumerable<Response.DictionaryEntry> LoadData(string fileName)
         {
             var response = TestHelper.LoadResponseFromFile(fileName);

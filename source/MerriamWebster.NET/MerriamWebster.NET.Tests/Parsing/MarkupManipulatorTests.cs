@@ -130,7 +130,6 @@ namespace MerriamWebster.NET.Tests.Parsing
             output.ShouldBe(expected);
         }
 
-        // .. light sources that may be described in terms of hue, lightness, and saturation {dx_def}see {dxt|saturation||4}{/dx_def} for objects 
         [TestMethod]
         public void MarkupManipulator_Remove_Dxt_Test5()
         {

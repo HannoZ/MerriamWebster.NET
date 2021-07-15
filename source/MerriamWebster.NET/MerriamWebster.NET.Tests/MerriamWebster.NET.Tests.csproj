@@ -49,6 +49,7 @@
     <None Remove="Resources\jirón.json" />
     <None Remove="Resources\learn_apple.json" />
     <None Remove="Resources\med_bartonella.json" />
+    <None Remove="Resources\med_curie.json" />
     <None Remove="Resources\med_doctor.json" />
     <None Remove="Resources\med_knee.json" />
     <None Remove="Resources\med_pelvis.json" />
@@ -91,6 +92,7 @@
     <EmbeddedResource Include="Resources\distinto.json" />
     <EmbeddedResource Include="Resources\example_ginger.json" />
     <EmbeddedResource Include="Resources\jirón.json" />
+    <EmbeddedResource Include="Resources\med_curie.json" />
     <EmbeddedResource Include="Resources\med_bartonella.json" />
     <EmbeddedResource Include="Resources\med_pelvis.json" />
     <EmbeddedResource Include="Resources\med_knee.json" />

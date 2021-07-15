@@ -221,6 +221,44 @@ namespace MerriamWebster.NET.Parsing
                 };
             }
 
+            if (result.Bios.Any())
+            {
+                searchResult.BiographicalNote = new BiographicalNote();
+                foreach (var bioElement in result.Bios)
+                {
+                    foreach (var element in bioElement)
+                    {
+                        var typeOrText = element[0].TypeOrText;
+                        if (typeOrText == "bionw")
+                        {
+                            var note = element[1].BiographicalNote;
+                            var content = new BiographicalNameWrap()
+                            {
+                                FirstName = note.Biopname,
+                                AlternateName = note.Bioname,
+                                Surname = note.Biosname
+                            };
+
+                            if (note.Prs.Any())
+                            {
+                                content.Pronunciations = new List<Pronunciation>();
+                                foreach (var pronunciation in note.Prs)
+                                {
+                                    content.Pronunciations.Add(PronunciationHelper.Parse(pronunciation, searchResult.Metadata.Language, options.AudioFormat));
+                                }
+                            }
+
+                            searchResult.BiographicalNote.Contents.Add(content);
+                        }
+
+                        else if (typeOrText == "biodate" || typeOrText == "text" || typeOrText == "biotx")
+                        {
+                            searchResult.BiographicalNote.Contents.Add(new DefiningText(element[1].TypeOrText));
+                        }
+                    }
+                }
+            }
+
             return searchResult;
         }
 
