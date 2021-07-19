@@ -123,3 +123,19 @@ public class Example
     }
 }
 ```
+
+## A note on serialization/deserialization
+Serialization and deserialization only works with the Json.NET library. The System.Text.Json classes don't support deserialization of interfaces (for example the DefiningTexts property on the SenseBase class is a collection of IDefiningText). 
+Serialization and deserialization has been tested with the following serializer settings: 
+``` C#
+private static readonly JsonSerializerSettings SerializerSettings = new JsonSerializerSettings()
+{
+    TypeNameAssemblyFormatHandling = TypeNameAssemblyFormatHandling.Simple,
+    TypeNameHandling = TypeNameHandling.Objects,
+    NullValueHandling = NullValueHandling.Ignore
+};
+
+// .. 
+string serialized = JsonConvert.SerializeObject(model, SerializerSettings);
+var deserialized = JsonConvert.DeserializeObject<ResultModel>(serialized, SerializerSettings);
+```
