@@ -14,6 +14,12 @@ namespace MerriamWebster.NET.Response
         /// </summary>
         [JsonProperty("drp")]
         public string Phrase { get; set; }
+
+        /// <summary>
+        /// Gets or sets the functional label
+        /// </summary>
+        [JsonProperty("fl")]
+        public string FunctionalLabel { get; set; }
         
         [JsonProperty("prs", NullValueHandling = NullValueHandling.Ignore)]
         public Pronunciation[] Pronunciations { get; set; } = { };
@@ -39,7 +45,7 @@ namespace MerriamWebster.NET.Response
         /// Gets or sets the subject/status labels.
         /// </summary>
         [JsonProperty("sls", NullValueHandling = NullValueHandling.Ignore)]
-        public string[] Sls { get; set; }
+        public string[] Sls { get; set; } = { };
 
         /// <summary>
         /// Gets or sets variants.

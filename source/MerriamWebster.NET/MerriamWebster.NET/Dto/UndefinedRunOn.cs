@@ -12,17 +12,6 @@ namespace MerriamWebster.NET.Dto
         /// Undefined entry word
         /// </summary>
         public string EntryWord { get; set; }
-
-        /// <summary>
-        /// Describes the grammatical function of a headword or undefined entry word. It indicates the role the word plays in a sentence, such as "noun", "verb", "adjective", etc.<br/>
-        /// It may also categorize the word in other ways, such as "trademark" or "abbreviation". 
-        /// </summary>
-        /// <remarks>
-        /// Also called 'functional label'.<br/>
-        /// <b>Display Guidance:</b>
-        /// Typically rendered in italics
-        /// </remarks>
-        public Label PartOfSpeech { get; set; }
         
         /// <summary>
         /// <i>Optional.</i> Gets or sets the inflections.

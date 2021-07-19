@@ -43,7 +43,7 @@ namespace MerriamWebster.NET.Response
         /// Gets or sets the subject/status labels.
         /// </summary>
         [JsonProperty("sls", NullValueHandling = NullValueHandling.Ignore)]
-        public string[] Sls { get; set; }
+        public string[] Sls { get; set; } = { };
 
         /// <summary>
         /// Undefined run-on text section containing vis and/or uns elements

@@ -11,7 +11,19 @@ namespace MerriamWebster.NET.Dto
         /// <i>Optional.</i> Gets or sets pronunciations.
         /// </summary>
         public ICollection<Pronunciation> Pronunciations { get; set; }
-        
+
+
+        /// <summary>
+        /// Describes the grammatical function of a headword or undefined entry word. It indicates the role the word plays in a sentence, such as "noun", "verb", "adjective", etc.<br/>
+        /// It may also categorize the word in other ways, such as "trademark" or "abbreviation". 
+        /// </summary>
+        /// <remarks>
+        /// Also called 'functional label'.<br/>
+        /// <b>Display Guidance:</b>
+        /// Typically rendered in italics
+        /// </remarks>
+        public Label PartOfSpeech { get; set; }
+
         /// <summary>
         /// <i>Optional.</i> A parenthesized subject/status label describes the subject area or regional/usage status (eg, "British") of a headword or other defined term, and is displayed in parentheses.<br/>
         /// The parenthesized subject/status label is contained in a <see cref="ParenthesizedSubjectStatusLabel"/>.

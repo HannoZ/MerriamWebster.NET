@@ -86,7 +86,7 @@ namespace MerriamWebster.NET.Parsing
                 // parse and add any 'undefined run-ons'
                 if (result.UndefinedRunOns.Any())
                 {
-                    searchResult.UndefinedRunOns = ParseUros(result, options).ToList();
+                    searchResult.UndefinedRunOns = ParseUros(searchResult, result.UndefinedRunOns, options).ToList();
                 }
 
                 if (result.Quotes.Any())
@@ -329,8 +329,28 @@ namespace MerriamWebster.NET.Parsing
             {
                 var searchResult = new DefinedRunOn
                 {
-                    Phrase = dro.Phrase
+                    Phrase = dro.Phrase,
+                    PartOfSpeech = dro.FunctionalLabel,
+                    ParenthesizedSubjectStatusLabel = dro.ParenthesizedSubjectStatusLabel,
                 };
+
+                if (dro.GeneralLabels.Any())
+                {
+                    searchResult.GeneralLabels = new List<Label>();
+                    foreach (var generalLabel in dro.GeneralLabels)
+                    {
+                        searchResult.GeneralLabels.Add(generalLabel);
+                    }
+                }
+
+                if (dro.Sls.Any())
+                {
+                    searchResult.SubjectStatusLabels = new List<Label>();
+                    foreach (var sls in searchResult.SubjectStatusLabels)
+                    {
+                        searchResult.SubjectStatusLabels.Add(sls);
+                    }
+                }
 
                 foreach (var droDef in dro.Definitions)
                 {
@@ -346,17 +366,22 @@ namespace MerriamWebster.NET.Parsing
                     searchResult.Etymology = dro.Et.ParseEtymology();
                 }
 
+                if (dro.Vrs.Any())
+                {
+                    searchResult.Variants = VariantHelper.Parse(dro.Vrs, result.Metadata.Language, parseOptions.AudioFormat).ToList();
+                }
+
                 searchResults.Add(searchResult);
             }
 
             result.DefinedRunOns = searchResults;
         }
 
-        private static IEnumerable<UndefinedRunOn> ParseUros(Response.DictionaryEntry entry, ParseOptions options)
+        private static IEnumerable<UndefinedRunOn> ParseUros(Entry result, Response.UndefinedRunOn [] uros, ParseOptions options)
         {
             var searchResults = new List<UndefinedRunOn>();
 
-            foreach (var uro in entry.UndefinedRunOns)
+            foreach (var uro in uros)
             {
                 var searchResult = new UndefinedRunOn
                 {
@@ -364,12 +389,30 @@ namespace MerriamWebster.NET.Parsing
                     PartOfSpeech = uro.FunctionalLabel
                 };
 
+                if (uro.GeneralLabels.Any())
+                {
+                    searchResult.GeneralLabels = new List<Label>();
+                    foreach (var generalLabel in uro.GeneralLabels)
+                    {
+                        searchResult.GeneralLabels.Add(generalLabel);
+                    }
+                }
+
+                if (uro.Sls.Any())
+                {
+                    searchResult.SubjectStatusLabels = new List<Label>();
+                    foreach (var sls in searchResult.SubjectStatusLabels)
+                    {
+                        searchResult.SubjectStatusLabels.Add(sls);
+                    }
+                }
+
                 if (uro.Pronunciations.Any())
                 {
                     searchResult.Pronunciations = new List<Pronunciation>();
                     foreach (var pronunciation in uro.Pronunciations)
                     {
-                        var pron = PronunciationHelper.Parse(pronunciation, (Language)entry.Metadata.Lang,
+                        var pron = PronunciationHelper.Parse(pronunciation, result.Metadata.Language,
                             options.AudioFormat);
                         searchResult.Pronunciations.Add(pron);
                     }
@@ -382,6 +425,16 @@ namespace MerriamWebster.NET.Parsing
                         Text = uro.AlternateEntry.Text,
                         TextCutback = uro.AlternateEntry.TextCutback
                     };
+                }
+
+                if (uro.Vrs.Any())
+                {
+                    searchResult.Variants = VariantHelper.Parse(uro.Vrs, result.Metadata.Language, options.AudioFormat).ToList();
+                }
+
+                if (uro.Inflections.Any())
+                {
+                    searchResult.Inflections = InflectionHelper.Parse(uro.Inflections, result.Metadata.Language, options.AudioFormat).ToList();
                 }
 
                 searchResults.Add(searchResult);
