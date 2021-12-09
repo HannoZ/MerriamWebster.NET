@@ -14,6 +14,9 @@ namespace MerriamWebster.NET.Dto
     /// </remarks>
     public class BiographicalNote
     {
-        public ICollection<IDefiningText> Contents { get; set; } = new List<IDefiningText>();
+        /// <summary>
+        /// Gets the contents.
+        /// </summary>
+        public ICollection<IDefiningText> Contents { get;  } = new List<IDefiningText>();
     }
 }
