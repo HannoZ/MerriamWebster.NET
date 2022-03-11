@@ -1,5 +1,7 @@
-﻿using MerriamWebster.NET.Parsing;
+﻿using System;
+using MerriamWebster.NET.Parsing;
 using Microsoft.Extensions.DependencyInjection;
+using Polly;
 
 namespace MerriamWebster.NET
 {
@@ -17,9 +19,11 @@ namespace MerriamWebster.NET
         {
             services.AddSingleton(config);
             services.AddHttpClient<IMerriamWebsterClient, MerriamWebsterClient>(client =>
-            {
-                client.BaseAddress = Configuration.ApiBaseAddress;
-            });
+                {
+                    client.BaseAddress = Configuration.ApiBaseAddress;
+                })
+                .AddTransientHttpErrorPolicy(builder => builder.RetryAsync(2));
+
 
             services.AddTransient<IEntryParser, EntryParser>();
 
