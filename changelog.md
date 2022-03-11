@@ -1,3 +1,5 @@
+2.0.2 Updated dependencies. This version is now compatible with .NET 6. 
+
 2.0.1 Some properties on (un)defined-run ons were not parsed yet, this has been corrected. Added a utility extension method for collections `HasValue` to safely check if a collection is not empty (because the default value for most collections is `null`) 
 
 2.0 A new major version! The structure of the parsed objects has completely been changed and now follows the original structure. This had made those classes more complex but it's the only way to present all data as it was intended by the makers. More information can be found in the readme
