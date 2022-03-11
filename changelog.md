@@ -1,3 +1,5 @@
+2.1.0 Add simple retry for transient http errors that may occur when calling the api. Makes use of the Polly library
+
 2.0.2 Updated dependencies. This version is now compatible with .NET 6. 
 
 2.0.1 Some properties on (un)defined-run ons were not parsed yet, this has been corrected. Added a utility extension method for collections `HasValue` to safely check if a collection is not empty (because the default value for most collections is `null`) 
