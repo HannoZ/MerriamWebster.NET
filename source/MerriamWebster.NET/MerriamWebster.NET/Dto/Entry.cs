@@ -14,7 +14,7 @@ namespace MerriamWebster.NET.Dto
         /// <summary>
         /// Gets or sets the metadata.
         /// </summary>
-        public Metadata Metadata { get; set; }
+        public Metadata Metadata { get; set; } = new();
 
         /// <summary>
         /// <i>Optional.</i> Homographs are headwords with identical spellings but distinct meanings and origins.

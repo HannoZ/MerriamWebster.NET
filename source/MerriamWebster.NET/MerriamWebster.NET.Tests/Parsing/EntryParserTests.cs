@@ -637,7 +637,33 @@ namespace MerriamWebster.NET.Tests.Parsing
             result.Entries.First().BiographicalNote.Contents.Count.ShouldBe(7);
         }
 
+        [TestMethod]
+        public void EntryParser_CanParse_Tejon()
+        {
+            var data = LoadData("tejón");
 
+            // ACT
+            var result = _entryParser.Parse("tejón", data);
+
+            // ASSERT
+            result.Entries.ShouldNotBeEmpty();
+
+            result.Summary.ShouldNotBeNull();
+        }
+
+        [TestMethod]
+        public void EntryParser_CanParse_Ver()
+        {
+            var data = LoadData("ver");
+
+            // ACT
+            var result = _entryParser.Parse("ver", data);
+
+            // ASSERT
+            result.Entries.ShouldNotBeEmpty();
+
+            result.Summary.ShouldNotBeNull();
+        }
 
         private static IEnumerable<Response.DictionaryEntry> LoadData(string fileName)
         {

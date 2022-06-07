@@ -10,7 +10,7 @@ namespace MerriamWebster.NET.Parsing
         {
             string summary = string.Empty;
 
-            foreach (var entry in results.Where(e => e.ShortDefs.Any()))
+            foreach (var entry in results.Where(e => e.ShortDefs?.Any() == true))
             {
                 if (entry.Metadata.Id == searchText)
                 {

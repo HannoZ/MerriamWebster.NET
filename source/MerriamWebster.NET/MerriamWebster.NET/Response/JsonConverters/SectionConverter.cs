@@ -21,8 +21,10 @@ namespace MerriamWebster.NET.Response.JsonConverters
                     return Section.Geog;
                 case "idioms":
                     return Section.Idioms;
+                case "abbr":
+                    return Section.Abbreviation;
             }
-            throw new Exception("Cannot unmarshal type Section");
+            throw new Exception($"Cannot unmarshal type Section: {value}");
         }
 
         public override void WriteJson(JsonWriter writer, object untypedValue, JsonSerializer serializer)
@@ -47,8 +49,11 @@ namespace MerriamWebster.NET.Response.JsonConverters
                 case Section.Idioms:
                     serializer.Serialize(writer, "idioms");
                     return;
+                case Section.Abbreviation:
+                    serializer.Serialize(writer, "abbr");
+                    return;
             }
-            throw new Exception("Cannot marshal type Section");
+            throw new Exception($"Cannot marshal type Section: {value}");
         }
 
         public static readonly SectionConverter Singleton = new SectionConverter();

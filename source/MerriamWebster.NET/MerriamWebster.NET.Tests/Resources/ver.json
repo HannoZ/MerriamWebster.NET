@@ -1,0 +1,1635 @@
+[
+  {
+    "meta": {
+      "id": "ver:1",
+      "uuid": "bd2f8acd-4170-453a-8f0d-1901ba06b70e",
+      "lang": "es",
+      "sort": "2622859000",
+      "src": "spanish",
+      "section": "alpha",
+      "stems": [
+        "ver",
+        "(vamos) a ver",
+        "verse"
+      ],
+      "offensive": false
+    },
+    "hom": 1,
+    "hwi": {
+      "hw": "ver",
+      "prs": [
+        {
+          "sound": {
+            "audio": "ver0001sp"
+          }
+        }
+      ]
+    },
+    "fl": "transitive verb",
+    "def": [
+      {
+        "sseq": [
+          [
+            [
+              "sense",
+              {
+                "sn": "1",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}to {a_link|see} "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "no veo nada",
+                        "tr": "I can't see anything"
+                      },
+                      {
+                        "t": "lo vi con mis propios ojos",
+                        "tr": "I saw it with my own eyes"
+                      },
+                      {
+                        "t": "vimos una película",
+                        "tr": "we saw a movie"
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "2",
+                "dt": [
+                  [
+                    "text",
+                    "{sx|entender||} {bc}to {a_link|understand}, to {a_link|see} "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "ya lo veo",
+                        "tr": "now I get it"
+                      },
+                      {
+                        "t": "no veo por qué",
+                        "tr": "I don't see why"
+                      },
+                      {
+                        "t": "¿ves lo que quiero decir?",
+                        "tr": "do you see what I mean?"
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "3",
+                "dt": [
+                  [
+                    "text",
+                    "{sx|examinar||} {bc}to {a_link|examine}, to {a_link|look into} "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "lo veré",
+                        "tr": "I'll take a look at it"
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "4",
+                "dt": [
+                  [
+                    "text",
+                    "{sx|juzgar||} {bc}to {a_link|see}, to {a_link|judge} "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "otra forma de verlo",
+                        "tr": "another way of looking at it"
+                      },
+                      {
+                        "t": "lo veo bien",
+                        "tr": "I think it's good/fine"
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "5",
+                "dt": [
+                  [
+                    "text",
+                    "{sx|visitar||} {bc}to {a_link|see}, to {a_link|meet}, to {a_link|visit} "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "vino a verte",
+                        "tr": "she came to see you"
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "6",
+                "dt": [
+                  [
+                    "text",
+                    "{sx|averiguar||} {bc}to {a_link|see}, to {a_link|find out} "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "vino a ver cómo estabas",
+                        "tr": "she came to see how you were"
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      },
+      {
+        "vd": "intransitive verb",
+        "sseq": [
+          [
+            [
+              "sense",
+              {
+                "sn": "1",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}to {a_link|see}"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "2",
+                "dt": [
+                  [
+                    "text",
+                    "{sx|enterarse||} {bc}to {a_link|learn}, to {a_link|find out}"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "3",
+                "dt": [
+                  [
+                    "text",
+                    "{sx|entender||} {bc}to {a_link|understand} "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "ya veo",
+                        "tr": "(so) I see"
+                      },
+                      {
+                        "t": "a mi modo de ver",
+                        "tr": "to my way of thinking, the way I see it"
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "4",
+                "vrs": [
+                  {
+                    "va": "(vamos) a ver"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}let's see"
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      }
+    ],
+    "dros": [
+      {
+        "drp": "verse",
+        "fl": "reflexive verb",
+        "def": [
+          {
+            "sseq": [
+              [
+                [
+                  "sense",
+                  {
+                    "sn": "1",
+                    "dt": [
+                      [
+                        "text",
+                        "{sx|hallarse||} {bc}to {a_link|find oneself}"
+                      ]
+                    ]
+                  }
+                ]
+              ],
+              [
+                [
+                  "sense",
+                  {
+                    "sn": "2",
+                    "dt": [
+                      [
+                        "text",
+                        "{sx|parecer||} {bc}to {a_link|look}, to {a_link|appear}"
+                      ]
+                    ]
+                  }
+                ]
+              ],
+              [
+                [
+                  "sense",
+                  {
+                    "sn": "3",
+                    "dt": [
+                      [
+                        "text",
+                        "{sx|encontrarse||} {bc}to see each other, to {a_link|meet}"
+                      ]
+                    ]
+                  }
+                ]
+              ]
+            ]
+          }
+        ]
+      }
+    ],
+    "suppl": {
+      "cjts": [
+        {
+          "cjid": "gppt",
+          "cjfs": [
+            "viendo",
+            "visto"
+          ]
+        },
+        {
+          "cjid": "pind",
+          "cjfs": [
+            "veo",
+            "ves",
+            "ve",
+            "vemos",
+            "veis",
+            "ven"
+          ]
+        },
+        {
+          "cjid": "pret",
+          "cjfs": [
+            "veía",
+            "veías",
+            "veía",
+            "veíamos",
+            "veíais",
+            "veían"
+          ]
+        },
+        {
+          "cjid": "pprf",
+          "cjfs": [
+            "vi",
+            "viste",
+            "vio",
+            "vimos",
+            "visteis",
+            "vieron"
+          ]
+        },
+        {
+          "cjid": "futr",
+          "cjfs": [
+            "veré",
+            "verás",
+            "verá",
+            "veremos",
+            "veréis",
+            "verán"
+          ]
+        },
+        {
+          "cjid": "cond",
+          "cjfs": [
+            "vería",
+            "verías",
+            "vería",
+            "veríamos",
+            "veríais",
+            "verían"
+          ]
+        },
+        {
+          "cjid": "psub",
+          "cjfs": [
+            "vea",
+            "veas",
+            "vea",
+            "veamos",
+            "veáis",
+            "vean"
+          ]
+        },
+        {
+          "cjid": "pisb1",
+          "cjfs": [
+            "viera",
+            "vieras",
+            "viera",
+            "viéramos",
+            "vierais",
+            "vieran"
+          ]
+        },
+        {
+          "cjid": "pisb2",
+          "cjfs": [
+            "viese",
+            "vieses",
+            "viese",
+            "viésemos",
+            "vieseis",
+            "viesen"
+          ]
+        },
+        {
+          "cjid": "fsub",
+          "cjfs": [
+            "viere",
+            "vieres",
+            "viere",
+            "viéremos",
+            "viereis",
+            "vieren"
+          ]
+        },
+        {
+          "cjid": "ppci",
+          "cjfs": [
+            "he visto",
+            "has visto",
+            "ha visto",
+            "hemos visto",
+            "habéis visto",
+            "han visto"
+          ]
+        },
+        {
+          "cjid": "ppsi",
+          "cjfs": [
+            "había visto",
+            "habías visto",
+            "había visto",
+            "habíamos visto",
+            "habíais visto",
+            "habían visto"
+          ]
+        },
+        {
+          "cjid": "pant",
+          "cjfs": [
+            "hube visto",
+            "hubiste visto",
+            "hubo visto",
+            "hubimos visto",
+            "hubisteis visto",
+            "hubieron visto"
+          ]
+        },
+        {
+          "cjid": "fpin",
+          "cjfs": [
+            "habré visto",
+            "habrás visto",
+            "habrá visto",
+            "habremos visto",
+            "habréis visto",
+            "habrán visto"
+          ]
+        },
+        {
+          "cjid": "cpef",
+          "cjfs": [
+            "habría visto",
+            "habrías visto",
+            "habría visto",
+            "habríamos visto",
+            "habríais visto",
+            "habrían visto"
+          ]
+        },
+        {
+          "cjid": "ppfs",
+          "cjfs": [
+            "haya visto",
+            "hayas visto",
+            "haya visto",
+            "hayamos visto",
+            "hayáis visto",
+            "hayan visto"
+          ]
+        },
+        {
+          "cjid": "ppss1",
+          "cjfs": [
+            "hubiera visto",
+            "hubieras visto",
+            "hubiera visto",
+            "hubiéramos visto",
+            "hubierais visto",
+            "hubieran visto"
+          ]
+        },
+        {
+          "cjid": "ppss2",
+          "cjfs": [
+            "hubiese visto",
+            "hubieses visto",
+            "hubiese visto",
+            "hubiésemos visto",
+            "hubieseis visto",
+            "hubiesen visto"
+          ]
+        },
+        {
+          "cjid": "fpsb",
+          "cjfs": [
+            "hubiere visto",
+            "hubieres visto",
+            "hubiere visto",
+            "hubiéremos visto",
+            "hubiereis visto",
+            "hubieren visto"
+          ]
+        },
+        {
+          "cjid": "impf",
+          "cjfs": [
+            "-",
+            "ve",
+            "vea",
+            "veamos",
+            "ved",
+            "vean"
+          ]
+        }
+      ]
+    },
+    "shortdef": [
+      "to see",
+      "entender : to understand, to see",
+      "examinar : to examine, to look into"
+    ]
+  },
+  {
+    "meta": {
+      "id": "ver:2",
+      "uuid": "b0ac1fc0-49d0-437b-a4c1-8675619f5683",
+      "lang": "es",
+      "sort": "2622860000",
+      "src": "spanish",
+      "section": "alpha",
+      "stems": [
+        "ver"
+      ],
+      "offensive": false
+    },
+    "hom": 2,
+    "hwi": {
+      "hw": "ver",
+      "prs": [
+        {
+          "sound": {
+            "audio": "ver0002sp"
+          }
+        }
+      ]
+    },
+    "fl": "masculine noun",
+    "def": [
+      {
+        "sseq": [
+          [
+            [
+              "sense",
+              {
+                "sn": "1",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}looks {it}plural{/it}, {a_link|appearance}"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "2",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}{a_link|opinion} "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "a mi ver",
+                        "tr": "in my view"
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      }
+    ],
+    "shortdef": [
+      "looks plural, appearance",
+      "opinion"
+    ]
+  },
+  {
+    "meta": {
+      "id": "v.:2",
+      "uuid": "dcec6cd5-5ff5-4289-ad31-24b4cae9a43a",
+      "lang": "en",
+      "src": "spanish",
+      "section": "abbr",
+      "stems": [
+        "v.",
+        "ver.",
+        "vs."
+      ],
+      "offensive": false
+    },
+    "hom": 2,
+    "hwi": {
+      "hw": "v."
+    },
+    "vrs": [
+      {
+        "vl": "or",
+        "va": "ver."
+      },
+      {
+        "vl": "or",
+        "va": "vs."
+      }
+    ],
+    "fl": "abbreviation",
+    "def": [
+      {
+        "sseq": [
+          [
+            [
+              "sense",
+              {
+                "dt": [
+                  [
+                    "text",
+                    "{bc}{a_link|v}, {a_link|verso}"
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      }
+    ],
+    "et": [
+      [
+        "text",
+        "(verse)"
+      ]
+    ],
+    "shortdef": [
+      "v, verso"
+    ]
+  },
+  {
+    "meta": {
+      "id": "ir",
+      "uuid": "3915a3ec-d2da-4de7-852c-b6cabe0d214b",
+      "lang": "es",
+      "sort": "2613033000",
+      "src": "spanish",
+      "section": "alpha",
+      "stems": [
+        "ir",
+        "ir a",
+        "ir con/en/de",
+        "ir con",
+        "ir de",
+        "ir en",
+        "ir para",
+        "ir por",
+        "dejarse ir",
+        "ir a parar",
+        "¡que va!",
+        "¡vamos!",
+        "vamos a ver",
+        "irse"
+      ],
+      "offensive": false
+    },
+    "hwi": {
+      "hw": "ir",
+      "prs": [
+        {
+          "sound": {
+            "audio": "ir00001sp"
+          }
+        }
+      ]
+    },
+    "fl": "intransitive verb",
+    "def": [
+      {
+        "sseq": [
+          [
+            [
+              "sense",
+              {
+                "sn": "1",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}to {a_link|go} "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "ir a pie",
+                        "tr": "to go on foot, to walk"
+                      },
+                      {
+                        "t": "ir a caballo",
+                        "tr": "to ride horseback"
+                      },
+                      {
+                        "t": "ir a casa",
+                        "tr": "to go home"
+                      },
+                      {
+                        "t": "ir por mar",
+                        "tr": "to go by sea"
+                      },
+                      {
+                        "t": "iba para el aeropuerto",
+                        "tr": "he was headed for the airport"
+                      },
+                      {
+                        "t": "fui a ver una película",
+                        "tr": "I went to see a movie"
+                      },
+                      {
+                        "t": "el ir y venir de la gente",
+                        "tr": "the comings and goings (of the people)"
+                      },
+                      {
+                        "t": "vamos",
+                        "tr": "let's go"
+                      },
+                      {
+                        "t": "¡voy!",
+                        "tr": "I'm coming!"
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "2",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}to {a_link|lead}, to {a_link|extend}, to {a_link|stretch} "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "el camino va de Cali a Bogotá",
+                        "tr": "the road goes from Cali to Bogotá"
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "3",
+                "dt": [
+                  [
+                    "text",
+                    "{sx|funcionar||} {bc}to {a_link|work}, to {a_link|function} "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "esta computadora ya no va",
+                        "tr": "this computer doesn't work anymore"
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "4",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}to {a_link|get on}, to {a_link|get along} "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "¿cómo te va?",
+                        "tr": "how are you?, how's it going?"
+                      },
+                      {
+                        "t": "el negocio no va bien",
+                        "tr": "the business isn't doing well"
+                      },
+                      {
+                        "t": "ir a mejor/peor",
+                        "tr": "to get better/worse"
+                      },
+                      {
+                        "t": "ir de mal en peor",
+                        "tr": "to go from bad to worse"
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "5",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}to {a_link|suit} "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "ese vestido te va bien",
+                        "tr": "that dress really suits you"
+                      },
+                      {
+                        "t": "el cambio te irá bien",
+                        "tr": "the change will do you good"
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "6",
+                "vrs": [
+                  {
+                    "va": "ir a",
+                    "vac": "~ a"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{sx|asistir||} {bc}to {a_link|go to}, to {a_link|attend}"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "7",
+                "vrs": [
+                  {
+                    "va": "ir con/en/de",
+                    "vac": "~ con/en/de"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}to {a_link|wear} "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "voy a ir con/en falda",
+                        "tr": "I'm going to wear a skirt"
+                      },
+                      {
+                        "t": "iba de azul",
+                        "tr": "she was wearing blue"
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "8",
+                "vrs": [
+                  {
+                    "va": "ir con",
+                    "vac": "~ con"
+                  }
+                ],
+                "sls": [
+                  "(with a noun)"
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}to {a_link|be} "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "ir con prisa",
+                        "tr": "to be in a hurry"
+                      },
+                      {
+                        "t": "ir con cuidado",
+                        "tr": "to be cautious"
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "9",
+                "vrs": [
+                  {
+                    "va": "ir con",
+                    "vac": "~ con"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}to {a_link|go with}, to {a_link|complement}"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "10",
+                "vrs": [
+                  {
+                    "va": "ir para",
+                    "vac": "~ para"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}to be studying to be "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "va para médico",
+                        "tr": "she's studying to be a doctor"
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "11",
+                "vrs": [
+                  {
+                    "va": "ir para",
+                    "vac": "~ para"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}to be going on, to {a_link|be close to} (an age)"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "12",
+                "vrs": [
+                  {
+                    "va": "ir por",
+                    "vac": "~ por"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}to {a_link|be aimed at} "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "también va por ti",
+                        "tr": "that goes for you, too"
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "13",
+                "vrs": [
+                  {
+                    "va": "ir por",
+                    "vac": "~ por"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}to {a_link|follow}, to {a_link|go along} "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "fueron por la costa",
+                        "tr": "they followed the shoreline"
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "14",
+                "vrs": [
+                  {
+                    "va": "ir por",
+                    "vac": "~ por"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}to {a_link|be up to} (a point or stage) "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "voy por la última página",
+                        "tr": "I'm on the last page"
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "15",
+                "vrs": [
+                  {
+                    "va": "ir por",
+                    "vac": "~ por"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}to {a_link|go} (and) {a_link|get}, to {a_link|fetch}"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "16",
+                "vrs": [
+                  {
+                    "va": "dejarse ir"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}to {a_link|let oneself go}"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "17",
+                "vrs": [
+                  {
+                    "va": "ir a parar"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}to end up"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "18",
+                "vrs": [
+                  {
+                    "va": "¡qué va!"
+                  }
+                ],
+                "sls": [
+                  "familiar"
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}hardly!"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "19",
+                "vrs": [
+                  {
+                    "va": "¡vamos!"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}{a_link|come on!}"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "20",
+                "vrs": [
+                  {
+                    "va": "vamos a ver"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}let's see"
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      },
+      {
+        "vd": "auxiliary verb",
+        "sseq": [
+          [
+            [
+              "sense",
+              {
+                "sn": "1",
+                "sls": [
+                  "(indicating manner)"
+                ],
+                "dt": [
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "ir caminando",
+                        "tr": "to walk, to go on foot"
+                      },
+                      {
+                        "t": "¡voy corriendo!",
+                        "tr": "I'll be right there!"
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "2",
+                "sls": [
+                  "(indicating a process)"
+                ],
+                "dt": [
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "va mejorando",
+                        "tr": "he's getting better"
+                      },
+                      {
+                        "t": "lo iremos haciendo poco a poco",
+                        "tr": "we'll do it little by little"
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "3",
+                "vrs": [
+                  {
+                    "va": "ir a",
+                    "vac": "~ a"
+                  }
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}to {a_link|be going to} "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "voy a hacerlo",
+                        "tr": "I'm going to do it"
+                      },
+                      {
+                        "t": "el avión va a despegar",
+                        "tr": "the plane is about to take off"
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      }
+    ],
+    "dros": [
+      {
+        "drp": "irse",
+        "fl": "reflexive verb",
+        "def": [
+          {
+            "sseq": [
+              [
+                [
+                  "sense",
+                  {
+                    "sn": "1",
+                    "dt": [
+                      [
+                        "text",
+                        "{bc}to {a_link|leave}, to {a_link|go} "
+                      ],
+                      [
+                        "vis",
+                        [
+                          {
+                            "t": "¡vámonos!",
+                            "tr": "let's go!"
+                          },
+                          {
+                            "t": "todo el mundo se fue",
+                            "tr": "everyone left"
+                          }
+                        ]
+                      ]
+                    ]
+                  }
+                ]
+              ],
+              [
+                [
+                  "sense",
+                  {
+                    "sn": "2",
+                    "dt": [
+                      [
+                        "text",
+                        "{sx|escaparse||} {bc}to {a_link|leak}"
+                      ]
+                    ]
+                  }
+                ]
+              ],
+              [
+                [
+                  "sense",
+                  {
+                    "sn": "3",
+                    "dt": [
+                      [
+                        "text",
+                        "{sx|gastarse||} {bc}to be used up, to be gone"
+                      ]
+                    ]
+                  }
+                ]
+              ]
+            ]
+          }
+        ]
+      }
+    ],
+    "suppl": {
+      "cjts": [
+        {
+          "cjid": "gppt",
+          "cjfs": [
+            "yendo",
+            "ido"
+          ]
+        },
+        {
+          "cjid": "pind",
+          "cjfs": [
+            "voy",
+            "vas",
+            "va",
+            "vamos",
+            "vais",
+            "van"
+          ]
+        },
+        {
+          "cjid": "pret",
+          "cjfs": [
+            "iba",
+            "ibas",
+            "iba",
+            "íbamos",
+            "ibais",
+            "iban"
+          ]
+        },
+        {
+          "cjid": "pprf",
+          "cjfs": [
+            "fui",
+            "fuiste",
+            "fue",
+            "fuimos",
+            "fuisteis",
+            "fueron"
+          ]
+        },
+        {
+          "cjid": "futr",
+          "cjfs": [
+            "iré",
+            "irás",
+            "irá",
+            "iremos",
+            "iréis",
+            "irán"
+          ]
+        },
+        {
+          "cjid": "cond",
+          "cjfs": [
+            "iría",
+            "irías",
+            "iría",
+            "iríamos",
+            "iríais",
+            "irían"
+          ]
+        },
+        {
+          "cjid": "psub",
+          "cjfs": [
+            "vaya",
+            "vayas",
+            "vaya",
+            "vayamos",
+            "vayáis",
+            "vayan"
+          ]
+        },
+        {
+          "cjid": "pisb1",
+          "cjfs": [
+            "fuera",
+            "fueras",
+            "fuera",
+            "fuéramos",
+            "fuerais",
+            "fueran"
+          ]
+        },
+        {
+          "cjid": "pisb2",
+          "cjfs": [
+            "fuese",
+            "fueses",
+            "fuese",
+            "fuésemos",
+            "fueseis",
+            "fuesen"
+          ]
+        },
+        {
+          "cjid": "fsub",
+          "cjfs": [
+            "fuere",
+            "fueres",
+            "fuere",
+            "fuéremos",
+            "fuereis",
+            "fueren"
+          ]
+        },
+        {
+          "cjid": "ppci",
+          "cjfs": [
+            "he ido",
+            "has ido",
+            "ha ido",
+            "hemos ido",
+            "habéis ido",
+            "han ido"
+          ]
+        },
+        {
+          "cjid": "ppsi",
+          "cjfs": [
+            "había ido",
+            "habías ido",
+            "había ido",
+            "habíamos ido",
+            "habíais ido",
+            "habían ido"
+          ]
+        },
+        {
+          "cjid": "pant",
+          "cjfs": [
+            "hube ido",
+            "hubiste ido",
+            "hubo ido",
+            "hubimos ido",
+            "hubisteis ido",
+            "hubieron ido"
+          ]
+        },
+        {
+          "cjid": "fpin",
+          "cjfs": [
+            "habré ido",
+            "habrás ido",
+            "habrá ido",
+            "habremos ido",
+            "habréis ido",
+            "habrán ido"
+          ]
+        },
+        {
+          "cjid": "cpef",
+          "cjfs": [
+            "habría ido",
+            "habrías ido",
+            "habría ido",
+            "habríamos ido",
+            "habríais ido",
+            "habrían ido"
+          ]
+        },
+        {
+          "cjid": "ppfs",
+          "cjfs": [
+            "haya ido",
+            "hayas ido",
+            "haya ido",
+            "hayamos ido",
+            "hayáis ido",
+            "hayan ido"
+          ]
+        },
+        {
+          "cjid": "ppss1",
+          "cjfs": [
+            "hubiera ido",
+            "hubieras ido",
+            "hubiera ido",
+            "hubiéramos ido",
+            "hubierais ido",
+            "hubieran ido"
+          ]
+        },
+        {
+          "cjid": "ppss2",
+          "cjfs": [
+            "hubiese ido",
+            "hubieses ido",
+            "hubiese ido",
+            "hubiésemos ido",
+            "hubieseis ido",
+            "hubiesen ido"
+          ]
+        },
+        {
+          "cjid": "fpsb",
+          "cjfs": [
+            "hubiere ido",
+            "hubieres ido",
+            "hubiere ido",
+            "hubiéremos ido",
+            "hubiereis ido",
+            "hubieren ido"
+          ]
+        },
+        {
+          "cjid": "impf",
+          "cjfs": [
+            "-",
+            "ve",
+            "vaya",
+            "vayamos",
+            "id",
+            "vayan"
+          ]
+        }
+      ]
+    },
+    "shortdef": [
+      "to go",
+      "to lead, to extend, to stretch",
+      "funcionar : to work, to function"
+    ]
+  }
+]

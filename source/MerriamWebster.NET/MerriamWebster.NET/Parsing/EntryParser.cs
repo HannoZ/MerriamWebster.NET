@@ -1,5 +1,4 @@
 ﻿using MerriamWebster.NET.Dto;
-using MerriamWebster.NET.Parsing.Markup;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;

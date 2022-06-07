@@ -1,0 +1,56 @@
+[
+  {
+    "meta": {
+      "id": "tejon",
+      "uuid": "15d174d0-4ec0-4444-a21c-f9f81563307a",
+      "lang": "es",
+      "sort": "2621566000",
+      "src": "spanish",
+      "section": "alpha",
+      "stems": [
+        "tej�n",
+        "tejones"
+      ],
+      "offensive": false
+    },
+    "hwi": {
+      "hw": "tejón",
+      "prs": [
+        {
+          "sound": {
+            "audio": "tejon01sp"
+          }
+        }
+      ]
+    },
+    "fl": "masculine noun",
+    "ins": [
+      {
+        "il": "plural",
+        "if": "tejones"
+      }
+    ],
+    "def": [
+      {
+        "sseq": [
+          [
+            [
+              "sense",
+              {
+                "dt": [
+                  [
+                    "text",
+                    "{bc}{a_link|badger}"
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      }
+    ],
+    "shortdef": [
+      "badger"
+    ]
+  }
+]

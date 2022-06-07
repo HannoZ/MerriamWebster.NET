@@ -327,6 +327,23 @@ namespace MerriamWebster.NET.Tests
             result.Count.ShouldBe(4);
         }
 
+        [TestMethod]
+        public async Task MerriamWebsterClient_CanDeserialize_Ver()
+        {
+            string response = await TestHelper.LoadResponseFromFileAsync("ver");
+
+            _handlerMock.Protected()
+                .Setup<Task<HttpResponseMessage>>("SendAsync", ItExpr.IsAny<HttpRequestMessage>(),
+                    ItExpr.IsAny<CancellationToken>())
+                .ReturnsAsync(SetupOkResponseMessage(response));
+
+            // ACT
+            var result = await _client.GetDictionaryEntry("api", "entry");
+
+            // ASSERT
+            result.ShouldNotBeEmpty();
+        }
+
         private static HttpResponseMessage SetupOkResponseMessage(string content)
         {
             return new HttpResponseMessage(HttpStatusCode.OK)
