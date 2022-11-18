@@ -1,3 +1,5 @@
+2.1.1 Fix potential null reference in SummaryHelper; Fix deserialization error for entries with section value 'abbr'; Updated dependencies
+
 2.1.0 Add simple retry for transient http errors that may occur when calling the api. Makes use of the Polly library
 
 2.0.2 Updated dependencies. This version is now compatible with .NET 6. 
