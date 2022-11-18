@@ -12,10 +12,14 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Setup .NET Core
+    - name: Setup .NET Core 6
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 6.0.x
+    - name: Setup .NET Core 7
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 7.0.x
     - name: Install dependencies
       run: dotnet restore ./source/MerriamWebster.NET/MerriamWebster.NET.sln
     - name: Build
@@ -23,7 +27,7 @@ jobs:
     - name: Test
       run: dotnet test ./source/MerriamWebster.NET/MerriamWebster.NET.sln --no-restore --verbosity normal
     - name: Publish to Nuget
-      uses: alirezanet/publish-nuget@v3
+      uses: alirezanet/publish-nuget@v3.0.0
       with: 
           PROJECT_FILE_PATH: ./source/MerriamWebster.NET/MerriamWebster.NET/MerriamWebster.NET.csproj
           NUGET_KEY: ${{secrets.NUGET_API_KEY}}
