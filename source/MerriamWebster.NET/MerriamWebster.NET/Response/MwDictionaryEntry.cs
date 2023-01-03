@@ -6,7 +6,10 @@ namespace MerriamWebster.NET.Response
     /// <summary>
     /// The organizational unit of a dictionary. An entry consists of at minimum a headword, along with content defining or translating the headword.
     /// </summary>
-    public class DictionaryEntry
+    /// <remarks>
+    /// Renamed to from DictionaryEntry to MwDictionaryEntry to avoid potential confusion with System.Collections.DictionaryEntry
+    /// </remarks>
+    public class MwDictionaryEntry
     {
         [JsonProperty("meta")]
         public Metadata Metadata { get; set; }
@@ -30,32 +33,32 @@ namespace MerriamWebster.NET.Response
         public string FunctionalLabel { get; set; }
 
         [JsonProperty("cxs", NullValueHandling = NullValueHandling.Ignore)]
-        public CognateCrossReference[] CognateCrossReferences { get; set; } = { };
+        public CognateCrossReference[] CognateCrossReferences { get; set; } = System.Array.Empty<CognateCrossReference>();
 
         /// <summary>
         /// The definition section groups together all sense sequences and verb dividers for a headword or defined run-on phrase.
         /// </summary>
         [JsonProperty("def")]
-        public Definition[] Definitions { get; set; } = { };
+        public Definition[] Definitions { get; set; } = System.Array.Empty<Definition>();
 
         [JsonProperty("uros")]
-        public UndefinedRunOn[] UndefinedRunOns { get; set; } = { };
+        public UndefinedRunOn[] UndefinedRunOns { get; set; } = System.Array.Empty<UndefinedRunOn>();
 
         /// <summary>
         /// Gets or sets the biographical notes.
         /// </summary>
         /// <remarks>Medical only</remarks>
         [JsonProperty("bios", NullValueHandling = NullValueHandling.Ignore)]
-        public BioElement[][][] Bios { get; set; } = { };
+        public BioElement[][][] Bios { get; set; } = System.Array.Empty<BioElement[][]>();
 
         [JsonProperty("dros", NullValueHandling = NullValueHandling.Ignore)]
-        public DefinedRunOn[] DefinedRunOns { get; set; } = { };
+        public DefinedRunOn[] DefinedRunOns { get; set; } = System.Array.Empty<DefinedRunOn>();
 
         [JsonProperty("ins", NullValueHandling = NullValueHandling.Ignore)]
-        public Inflection[] Inflections { get; set; } = { };
+        public Inflection[] Inflections { get; set; } = System.Array.Empty<Inflection>();
 
         [JsonProperty("xrs", NullValueHandling = NullValueHandling.Ignore)]
-        public CrossReference[][] CrossReferences { get; set; } = { };
+        public CrossReference[][] CrossReferences { get; set; } = System.Array.Empty<CrossReference[]>();
 
         [JsonProperty("date")]
         public string Date { get; set; }
@@ -67,7 +70,7 @@ namespace MerriamWebster.NET.Response
         public History History { get; set; }
 
         [JsonProperty("shortdef")]
-        public string[] Shortdefs { get; set; } = { };
+        public string[] Shortdefs { get; set; } = System.Array.Empty<string>();
 
 #pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
 
@@ -76,32 +79,32 @@ namespace MerriamWebster.NET.Response
         /// While the etymology contained in an et most typically relates to the headword, it may also explain the origin of a defined run-on phrase or a particular sense.
         /// </summary>
         [JsonProperty("et", NullValueHandling = NullValueHandling.Ignore)]
-        public Etymology[][] Et { get; set; } = { };
+        public Etymology[][] Et { get; set; } = System.Array.Empty<Etymology[]>();
 
 
         /// <summary>
         /// Array of one or more variant objects.
         /// </summary>
         [JsonProperty("vrs", NullValueHandling = NullValueHandling.Ignore)]
-        public Variant[] Variants { get; set; } = { };
+        public Variant[] Variants { get; set; } = System.Array.Empty<Variant>();
 
         /// <summary>
         /// Array of one or more alternate headword objects.
         /// </summary>
         [JsonProperty("ahws", NullValueHandling = NullValueHandling.Ignore)]
-        public AlternateHeadword[] AlternateHeadwords { get; set; } = { };
+        public AlternateHeadword[] AlternateHeadwords { get; set; } = System.Array.Empty<AlternateHeadword>();
 
         /// <summary>
         /// A subject/status label describes the subject area (eg, "computing") or regional/usage status (eg, "British", "formal", "slang") of a headword or a particular sense of a headword.
         /// </summary>
         [JsonProperty("sls", NullValueHandling = NullValueHandling.Ignore)]
-        public string[] SubjectStatusLabels { get; set; } = { };
+        public string[] SubjectStatusLabels { get; set; } = System.Array.Empty<string>();
 
         /// <summary>
         /// General labels provide information such as whether a headword is typically capitalized, used as an attributive noun, etc.
         /// </summary>
         [JsonProperty("lbs", NullValueHandling = NullValueHandling.Ignore)]
-        public string[] GeneralLabels { get; set; } = { };
+        public string[] GeneralLabels { get; set; } = System.Array.Empty<string>();
 
         /// <summary>
         /// Undocumented field.
@@ -119,7 +122,7 @@ namespace MerriamWebster.NET.Response
         /// Gets or sets the quotes.
         /// </summary>
         [JsonProperty("quotes")]
-        public Quote[] Quotes { get; set; } = { };
+        public Quote[] Quotes { get; set; } = System.Array.Empty<Quote>();
 
         /// <summary>
         /// Gets or sets the table.
@@ -131,17 +134,17 @@ namespace MerriamWebster.NET.Response
         /// Gets or sets synonyms.
         /// </summary>
         [JsonProperty("syns", NullValueHandling = NullValueHandling.Ignore)]
-        public Synonym[] Synonyms { get; set; } = { };
+        public Synonym[] Synonyms { get; set; } = System.Array.Empty<Synonym>();
 
         /// <summary>
         /// Gets or sets the usages.
         /// </summary>
         [JsonProperty("usages", NullValueHandling = NullValueHandling.Ignore)]
-        public Usage[] Usages { get; set; } = { };
+        public Usage[] Usages { get; set; } = System.Array.Empty<Usage>();
         /// <summary>
         /// Gets or sets Directional cross-references
         /// </summary>
         [JsonProperty("dxnls", NullValueHandling = NullValueHandling.Ignore)]
-        public string[] DirectionalCrossReferences { get; set; } = { };
+        public string[] DirectionalCrossReferences { get; set; } = System.Array.Empty<string>();
     }
 }

@@ -7,6 +7,7 @@ namespace MerriamWebster.NET.Dto
     /// A biographical name wrap groups together personal name, surname, and alternate name information within a biographical entry.
     /// </summary>
     /// <remarks>
+    /// <para><i>Medical dictionary only</i></para>
     /// <b>Display Guidance:</b>
     /// <para>
     /// A biographical name wrap is displayed inline and followed by a comma and space.
@@ -43,5 +44,11 @@ namespace MerriamWebster.NET.Dto
         /// <inheritdoc />
         [JsonIgnore]
         public FormattedText MainText => AlternateName ?? (FirstName + " " + Surname).Trim();
+
+        /// <inheritdoc />
+        public override string ToString()
+        {
+            return MainText == null ? base.ToString() : MainText.Text;
+        }
     }
 }

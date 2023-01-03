@@ -18,7 +18,7 @@ namespace MerriamWebster.NET.Response
         /// Gets or sets the pronunciations.
         /// </summary>
         [JsonProperty("prs", NullValueHandling = NullValueHandling.Ignore)]
-        public Pronunciation[] Pronunciations { get; set; } = { };
+        public Pronunciation[] Pronunciations { get; set; } = System.Array.Empty<Pronunciation>();
 
         /// <summary>
         /// Gets or sets the functional label
@@ -37,13 +37,13 @@ namespace MerriamWebster.NET.Response
         /// General labels provide information such as whether a headword is typically capitalized, used as an attributive noun, etc.
         /// </summary>
         [JsonProperty("lbs", NullValueHandling = NullValueHandling.Ignore)]
-        public string[] GeneralLabels { get; set; } = { };
+        public string[] GeneralLabels { get; set; } = System.Array.Empty<string>();
 
         /// <summary>
         /// Gets or sets the subject/status labels.
         /// </summary>
         [JsonProperty("sls", NullValueHandling = NullValueHandling.Ignore)]
-        public string[] Sls { get; set; } = { };
+        public string[] Sls { get; set; } = System.Array.Empty<string>();
 
         /// <summary>
         /// Undefined run-on text section containing vis and/or uns elements
@@ -55,13 +55,13 @@ namespace MerriamWebster.NET.Response
         /// Gets or sets variants (optional).
         /// </summary>
         [JsonProperty("vrs", NullValueHandling = NullValueHandling.Ignore)]
-        public Variant[] Vrs { get; set; } = { };
+        public Variant[] Vrs { get; set; } = System.Array.Empty<Variant>();
 
         /// <summary>
         /// Gets or sets inflections.
         /// </summary>
         [JsonProperty("ins", NullValueHandling = NullValueHandling.Ignore)]
-        public Inflection[] Inflections { get; set; } = { };
+        public Inflection[] Inflections { get; set; } = System.Array.Empty<Inflection>();
 
         /// <summary>
         /// Gets or sets an <see cref="AlternateUndefinedEntryWord"/>.

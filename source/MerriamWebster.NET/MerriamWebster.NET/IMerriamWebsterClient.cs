@@ -22,6 +22,6 @@ namespace MerriamWebster.NET
         /// The API returns a list of suggestions if there is no direct match.
         /// The <see cref="MerriamWebsterClient"/> implementation of this method logs these suggestions as warnings and returns an empty collection.
         /// </remarks>
-        Task<IEnumerable<DictionaryEntry>> GetDictionaryEntry(string api, string entry);
+        Task<IEnumerable<MwDictionaryEntry>> GetDictionaryEntry(string api, string entry);
     }
 }

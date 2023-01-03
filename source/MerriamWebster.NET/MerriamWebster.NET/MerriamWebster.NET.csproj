@@ -24,14 +24,18 @@
 		<OutputPath></OutputPath>
 	</PropertyGroup>
 
-	<ItemGroup Condition=" '$(TargetFramework)' == 'net7.0' " >
-		<PackageReference Include="Microsoft.Extensions.Http.Polly" Version="7.0.0" />
+	<ItemGroup Condition=" '$(TargetFramework)' == 'net7.0' ">
+		<PackageReference Include="Microsoft.Extensions.Http.Polly" Version="7.0.1" />
 	</ItemGroup>
 	<ItemGroup Condition=" '$(TargetFramework)' != 'net7.0' ">
-		<PackageReference Include="Microsoft.Extensions.Http.Polly" Version="6.0.11" />
+		<PackageReference Include="Microsoft.Extensions.Http.Polly" Version="6.0.12" />
 	</ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
 	</ItemGroup>
-
+	<ItemGroup>
+		<AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleToAttribute">
+			<_Parameter1>$(AssemblyName).Tests</_Parameter1> 
+		</AssemblyAttribute>
+	</ItemGroup>
 </Project>

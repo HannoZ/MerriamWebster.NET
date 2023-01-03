@@ -23,21 +23,21 @@ namespace MerriamWebster.NET.Response
         /// Gets or sets the pronunciations
         /// </summary>
         [JsonProperty("prs", NullValueHandling = NullValueHandling.Ignore)]
-        public Pronunciation[] Prs { get; set; } = { };
+        public Pronunciation[] Prs { get; set; } = System.Array.Empty<Pronunciation>();
         /// <summary>
         /// biographical personal or first name
         /// </summary>
         [JsonProperty("biopname", NullValueHandling = NullValueHandling.Ignore)]
         public string Biopname { get; set; }
-        /// <summary>
-        /// contains birth and death years
-        /// </summary>
-        [JsonProperty("biodate", NullValueHandling = NullValueHandling.Ignore)]
-        public string Biodate { get; set; }
-        /// <summary>
-        /// contains text of biographical note
-        /// </summary>
-        [JsonProperty("biotx", NullValueHandling = NullValueHandling.Ignore)]
-        public string Biotx { get; set; }
+        ///// <summary>
+        ///// contains birth and death years
+        ///// </summary>
+        //[JsonProperty("biodate", NullValueHandling = NullValueHandling.Ignore)]
+        //public string Biodate { get; set; }
+        ///// <summary>
+        ///// contains text of biographical note
+        ///// </summary>
+        //[JsonProperty("biotx", NullValueHandling = NullValueHandling.Ignore)]
+        //public string Biotx { get; set; }
     }
 }

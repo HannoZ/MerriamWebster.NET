@@ -33,13 +33,13 @@ namespace MerriamWebster.NET
         }
 
         /// <inheritdoc />
-        public async Task<IEnumerable<DictionaryEntry>> GetDictionaryEntry(string api, string entry)
+        public async Task<IEnumerable<MwDictionaryEntry>> GetDictionaryEntry(string api, string entry)
         {
             var responseString = await _client.GetStringAsync($"{api}/json/{entry?.ToLower()}?key={_apiKey}");
 
             try
             {
-                var results = JsonConvert.DeserializeObject<DictionaryEntry[]>(responseString, Converter.Settings);
+                var results = JsonConvert.DeserializeObject<MwDictionaryEntry[]>(responseString, Converter.Settings);
                 return results;
             }
             catch (NotImplementedException) // can occur in json converters when a structure is encountered that has not been implemented
@@ -52,7 +52,7 @@ namespace MerriamWebster.NET
                 _logger.LogWarning($"No matches found for {entry}. Suggestions: {string.Join(",", response)}");
             }
 
-            return Enumerable.Empty<DictionaryEntry>();
+            return Enumerable.Empty<MwDictionaryEntry>();
         }
 
 

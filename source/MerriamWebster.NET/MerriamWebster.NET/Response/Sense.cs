@@ -6,7 +6,7 @@ namespace MerriamWebster.NET.Response
     /// The sense gathers together all content relevant to a particular meaning of a headword or defined run-on phrase.
     /// </summary>
     /// <remarks>
-    /// The <see cref="Sense"/> is a key organizational unit of the <see cref="DictionaryEntry"/>, and gathers together all content relevant to a particular meaning of a headword.
+    /// The <see cref="Sense"/> is a key organizational unit of the <see cref="MwDictionaryEntry"/>, and gathers together all content relevant to a particular meaning of a headword.
     /// Senses are presented in a numbered series, with further divisions into subsenses identified by lowercase letters and parenthesized numbers.
     /// <see cref="SenseSequence"/>s are organized by part of speech for verb entries: if a verb can be both transitive and intransitive, there will be two verb dividers, one marking the sense sequence for the transitive verb and the other the sense sequence for the intransitive verb.
     /// <br/><br/>
@@ -28,13 +28,13 @@ namespace MerriamWebster.NET.Response
         /// A thesaurus entry typically contains a list of synonyms for the headword.
         /// </summary>
         [JsonProperty("syn_list")]
-        public MwList[][] Synonyms { get; set; } = { };
+        public MwList[][] Synonyms { get; set; } = System.Array.Empty<MwList[]>();
 
         /// <summary>
-        /// A thesaurus <see cref="DictionaryEntry"/> may contain a list of words related to the headword. A related word list is contained in <see cref="RelatedWords"/>.
+        /// A thesaurus <see cref="MwDictionaryEntry"/> may contain a list of words related to the headword. A related word list is contained in <see cref="RelatedWords"/>.
         /// </summary>
         [JsonProperty("rel_list")]
-        public MwList[][] RelatedWords { get; set; } = { };
+        public MwList[][] RelatedWords { get; set; } = System.Array.Empty<MwList[]>();
 
 
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
@@ -44,7 +44,7 @@ namespace MerriamWebster.NET.Response
         
 
         [JsonProperty("xrs", NullValueHandling = NullValueHandling.Ignore)]
-        public CrossReference[][] CrossReferences { get; set; } = { };
+        public CrossReference[][] CrossReferences { get; set; } = System.Array.Empty<CrossReference[]>();
 
 
 

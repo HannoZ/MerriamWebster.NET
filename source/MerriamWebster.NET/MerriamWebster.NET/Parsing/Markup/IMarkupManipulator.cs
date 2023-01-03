@@ -3,7 +3,7 @@ namespace MerriamWebster.NET.Parsing.Markup
     /// <summary>
     /// Defines methods for markup manipulation.
     /// </summary>
-    public interface IMarkupManipulator
+    internal interface IMarkupManipulator
     {
         /// <summary>
         /// Removes all MW-specific markup from the input string.

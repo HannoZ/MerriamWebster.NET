@@ -16,7 +16,7 @@ namespace MerriamWebster.NET.Response
         public string HeadwordCutback { get; set; }
 
         [JsonProperty("prs", NullValueHandling = NullValueHandling.Ignore)]
-        public Pronunciation[] Pronunciations { get; set; } = { };
+        public Pronunciation[] Pronunciations { get; set; } = System.Array.Empty<Pronunciation>();
 #pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
 
         /// <summary>

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using MerriamWebster.NET.Parsing;
+using MerriamWebster.NET.Response;
 using Newtonsoft.Json;
 
 namespace MerriamWebster.NET.Dto
@@ -27,7 +28,7 @@ namespace MerriamWebster.NET.Dto
         /// Gets or sets the raw response in JSON format. 
         /// </summary>
         /// <remarks>The raw response can be used to get data that is not parsed by the <see cref="IEntryParser"/>.<br/>
-        /// Use <see cref="JsonConvert"/> to deserialize this string into a <see cref="Response.DictionaryEntry"/>.</remarks>
+        /// Use <see cref="JsonConvert"/> to deserialize this string into a <see cref="MwDictionaryEntry"/>.</remarks>
         public string RawResponse { get; set; }
     }
 

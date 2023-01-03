@@ -17,7 +17,7 @@ namespace MerriamWebster.NET.Response
         /// Gets or sets the pronunciations.
         /// </summary>
         [JsonProperty("prs", NullValueHandling = NullValueHandling.Ignore)]
-        public Pronunciation[] Pronunciations { get; set; } = { };
+        public Pronunciation[] Pronunciations { get; set; } = System.Array.Empty<Pronunciation>();
 
         /// <summary>
         /// A parenthesized subject/status label describes the subject area or regional/usage status (eg, "British") of a headword or other defined term, and is displayed in parentheses.<br/>

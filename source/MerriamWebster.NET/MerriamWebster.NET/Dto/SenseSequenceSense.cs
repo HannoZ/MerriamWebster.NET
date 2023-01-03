@@ -9,7 +9,7 @@ namespace MerriamWebster.NET.Dto
     public class SenseSequenceSense
     {
         /// <summary>
-        /// Flag that indicates if this is a .parenthesized sense sequence
+        /// Flag that indicates if this is a parenthesized sense sequence
         /// </summary>
         public bool IsParenthesizedSenseSequence { get; set; }
 

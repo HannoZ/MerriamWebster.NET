@@ -29,5 +29,13 @@ namespace MerriamWebster.NET.Dto
         /// <inheritdoc />
         [JsonIgnore]
         public FormattedText MainText => Text;
+
+        public string Type { get; set; }
+
+        /// <inheritdoc />
+        public override string ToString()
+        {
+            return Text == null ? base.ToString() : Text.ToString();
+        }
     }
 }

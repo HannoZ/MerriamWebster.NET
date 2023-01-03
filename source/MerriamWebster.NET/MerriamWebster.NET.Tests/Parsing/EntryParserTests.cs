@@ -60,7 +60,7 @@ namespace MerriamWebster.NET.Tests.Parsing
 
                 try
                 {
-                    var data = JsonConvert.DeserializeObject<DictionaryEntry[]>(content, Converter.Settings);
+                    var data = JsonConvert.DeserializeObject<MwDictionaryEntry[]>(content, Converter.Settings);
 
                     // ACT
                     var result = _entryParser.Parse("api", data);
@@ -250,9 +250,8 @@ namespace MerriamWebster.NET.Tests.Parsing
             // ASSERT
             var entry = result.Entries.First();
             
-            // TODO
-            //entry.Synonyms.ShouldNotBeEmpty();
-            //entry.Antonyms.ShouldNotBeEmpty();
+            entry.Metadata.Synonyms.ShouldNotBeEmpty();
+            entry.Metadata.Antonyms.ShouldNotBeEmpty();
         }
         
 
@@ -665,18 +664,18 @@ namespace MerriamWebster.NET.Tests.Parsing
             result.Summary.ShouldNotBeNull();
         }
 
-        private static IEnumerable<Response.DictionaryEntry> LoadData(string fileName)
+        private static IEnumerable<Response.MwDictionaryEntry> LoadData(string fileName)
         {
             var response = TestHelper.LoadResponseFromFile(fileName);
-            return JsonConvert.DeserializeObject<Response.DictionaryEntry[]>(response, Converter.Settings);
+            return JsonConvert.DeserializeObject<Response.MwDictionaryEntry[]>(response, Converter.Settings);
         }
 
-        private IEnumerable<SenseSequenceSense> GetSenses(IEnumerable<Entry> entries) =>
+        private static IEnumerable<SenseSequenceSense> GetSenses(IEnumerable<Entry> entries) =>
             entries.SelectMany(e => e.Definitions)
                 .SelectMany(d => d.SenseSequence)
                 .SelectMany(ss => ss.Senses);
 
-        private IEnumerable<IDefiningText> GetDefiningTexts(IEnumerable<Entry> entries) =>
+        private static IEnumerable<IDefiningText> GetDefiningTexts(IEnumerable<Entry> entries) =>
                  GetSenses(entries)
                      .OfType<SenseBase>()
                 .SelectMany(s => s.DefiningTexts).ToList();

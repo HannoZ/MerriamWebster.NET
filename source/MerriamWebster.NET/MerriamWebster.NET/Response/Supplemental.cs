@@ -11,13 +11,13 @@ namespace MerriamWebster.NET.Response
         /// Array  of one or more <see cref="Conjugation"/> objects.
         /// </summary>
         [JsonProperty("cjts")]
-        public Conjugation[] Conjugations { get; set; } = { };
+        public Conjugation[] Conjugations { get; set; } = System.Array.Empty<Conjugation>();
 
         /// <summary>
         /// Gets or sets examples.
         /// </summary>
         [JsonProperty("examples")] 
-        public Example[] Examples { get; set; } = { };
+        public Example[] Examples { get; set; } = System.Array.Empty<Example>();
 
         [JsonProperty("ldq")]
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
