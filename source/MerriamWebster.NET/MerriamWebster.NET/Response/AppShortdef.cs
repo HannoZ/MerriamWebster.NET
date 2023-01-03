@@ -15,7 +15,7 @@ namespace MerriamWebster.NET.Response
         public string FunctionalLabel { get; set; }
 
         [JsonProperty("def")] 
-        public string[] Definitions { get; set; } = { };
+        public string[] Definitions { get; set; } = System.Array.Empty<string>();
     }
 #pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
 }

@@ -466,7 +466,7 @@ namespace MerriamWebster.NET.Tests.Parsing
         {
             var content = TestHelper.LoadResponseFromFile(fileName);
 
-            var entries = JsonConvert.DeserializeObject<DictionaryEntry[]>(content, Converter.Settings);
+            var entries = JsonConvert.DeserializeObject<MwDictionaryEntry[]>(content, Converter.Settings);
             return entries.SelectMany(e => e.Definitions);
         }
 

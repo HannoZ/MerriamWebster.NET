@@ -10,11 +10,10 @@ namespace MerriamWebster.NET.Tests.Parsing
     public class SynonymsParserTests
     {
         [TestMethod]
-        [ExpectedException(typeof(ArgumentNullException))] // ASSERT
         public void SynonymsParser_NullInput()
         {
-            // ACT
-            SynonymsParser.ExtractSynonyms(null);
+            // ACT / ASSERT
+            Should.Throw<ArgumentNullException>(() => SynonymsParser.ExtractSynonyms(null));
         }
 
         [TestMethod]

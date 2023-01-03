@@ -13,7 +13,7 @@ namespace MerriamWebster.NET.Tests
         public void CollectionExtensions_HasValue()
         {
             ICollection<string> collection = new List<string>() {"foo"};
-
+           
             // ACT
             var result = collection.HasValue();
 

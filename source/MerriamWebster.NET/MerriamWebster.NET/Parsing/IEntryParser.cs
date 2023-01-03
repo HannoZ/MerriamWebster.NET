@@ -14,11 +14,11 @@ namespace MerriamWebster.NET.Parsing
         /// <summary>
         /// Parses the result of an api request.
         /// </summary>
-        ResultModel Parse(string searchTerm, IEnumerable<Response.DictionaryEntry> results);
+        ResultModel Parse(string searchTerm, IEnumerable<Response.MwDictionaryEntry> results);
 
         /// <summary>
         /// Parses the result of an api request and returns the result using specific parse options.
         /// </summary>
-        ResultModel Parse(string searchTerm, IEnumerable<Response.DictionaryEntry> results, ParseOptions options);
+        ResultModel Parse(string searchTerm, IEnumerable<Response.MwDictionaryEntry> results, ParseOptions options);
     }
 }

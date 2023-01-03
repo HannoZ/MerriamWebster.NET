@@ -16,6 +16,6 @@ namespace MerriamWebster.NET.Response
         /// Gets or sets the cross-reference target.
         /// </summary>
         [JsonProperty("cxtis")] 
-        public CrossReferenceTarget[] CrossReferenceTargets { get; set; } = { };
+        public CrossReferenceTarget[] CrossReferenceTargets { get; set; } = System.Array.Empty<CrossReferenceTarget>();
     }
 }

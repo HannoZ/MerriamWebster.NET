@@ -59,7 +59,7 @@ namespace MerriamWebster.NET.Tests
 
                 try
                 {
-                    var result = JsonConvert.DeserializeObject<DictionaryEntry[]>(content, Converter.Settings);
+                    var result = JsonConvert.DeserializeObject<MwDictionaryEntry[]>(content, Converter.Settings);
                 }
                 catch (Exception ex)
                 {

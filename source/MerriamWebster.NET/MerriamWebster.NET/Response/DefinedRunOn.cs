@@ -22,7 +22,7 @@ namespace MerriamWebster.NET.Response
         public string FunctionalLabel { get; set; }
         
         [JsonProperty("prs", NullValueHandling = NullValueHandling.Ignore)]
-        public Pronunciation[] Pronunciations { get; set; } = { };
+        public Pronunciation[] Pronunciations { get; set; } = System.Array.Empty<Pronunciation>();
 
         [JsonProperty("def")]
         public Definition[] Definitions { get; set; }
@@ -39,24 +39,24 @@ namespace MerriamWebster.NET.Response
         /// General labels provide information such as whether a headword is typically capitalized, used as an attributive noun, etc.
         /// </summary>
         [JsonProperty("lbs", NullValueHandling = NullValueHandling.Ignore)]
-        public string[] GeneralLabels { get; set; } = { };
+        public string[] GeneralLabels { get; set; } = System.Array.Empty<string>();
 
         /// <summary>
         /// Gets or sets the subject/status labels.
         /// </summary>
         [JsonProperty("sls", NullValueHandling = NullValueHandling.Ignore)]
-        public string[] Sls { get; set; } = { };
+        public string[] Sls { get; set; } = System.Array.Empty<string>();
 
         /// <summary>
         /// Gets or sets variants.
         /// </summary>
         [JsonProperty("vrs", NullValueHandling = NullValueHandling.Ignore)]
-        public Variant[] Vrs { get; set; } = { };
+        public Variant[] Vrs { get; set; } = System.Array.Empty<Variant>();
 
         /// <summary>
         /// Gets or sets etymologies.
         /// </summary>
         [JsonProperty("et", NullValueHandling = NullValueHandling.Ignore)]
-        public Etymology[][] Et { get; set; } = { };
+        public Etymology[][] Et { get; set; } = System.Array.Empty<Etymology[]>();
     }
 }

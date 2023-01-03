@@ -8,6 +8,11 @@ namespace MerriamWebster.NET.Parsing
     {
         public static IEnumerable<Variant> Parse(Response.Variant[] sources, Language language, AudioFormat audioFormat)
         {
+            if (!sources.HasValue())
+            {
+                 yield break; 
+            }
+
             foreach (var source in sources)
             {
                 var variant = new Variant

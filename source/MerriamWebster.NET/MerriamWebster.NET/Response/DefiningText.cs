@@ -67,7 +67,7 @@ namespace MerriamWebster.NET.Response
         /// Gets or sets the <see cref="Pronunciation"/>s.
         /// </summary>
         [JsonProperty("prs")]
-        public Pronunciation[] Pronunciations { get; set; } = { };
+        public Pronunciation[] Pronunciations { get; set; } = System.Array.Empty<Pronunciation>();
 
         /// <summary>
         /// Gets or sets an alternate name such as pen name, nickname, title, etc.

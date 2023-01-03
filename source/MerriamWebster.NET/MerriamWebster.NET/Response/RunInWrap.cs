@@ -19,13 +19,13 @@ namespace MerriamWebster.NET.Response
         /// Gets or sets pronunciations (optional).
         /// </summary>
         [JsonProperty("prs", NullValueHandling = NullValueHandling.Ignore)]
-        public Pronunciation[] Pronunciations { get; set; } = { };
+        public Pronunciation[] Pronunciations { get; set; } = System.Array.Empty<Pronunciation>();
 
         /// <summary>
         /// Gets or sets variants (optional).
         /// </summary>
         [JsonProperty("vrs", NullValueHandling = NullValueHandling.Ignore)]
-        public Variant[] Vrs { get; set; } = { };
+        public Variant[] Vrs { get; set; } = System.Array.Empty<Variant>();
 
         /// <summary>
         /// intervening text

@@ -134,7 +134,7 @@ namespace MerriamWebster.NET.Tests.Parsing
         public void MarkupManipulator_Remove_Dxt_Test5()
         {
             string input = ".. light sources that may be described in terms of hue, lightness, and saturation {dx_def}see {dxt|saturation||4}{/dx_def} for objects ";
-            string expected = ".. light sources that may be described in terms of hue, lightness, and saturation (see saturation) for objects";
+            string expected = ".. light sources that may be described in terms of hue, lightness, and saturation (see saturation) for objects ";
 
             // ACT
             var output = MarkupManipulator.RemoveMarkupFromString(input);

@@ -7,9 +7,18 @@ namespace MerriamWebster.NET.Parsing
     /// <summary>
     /// Contains logic to extract synonyms that may appear as links in senses.
     /// </summary>
-    public class SynonymsParser
+    public partial class SynonymsParser
     {
-        private static readonly Regex SynonymsRegex = new Regex(@"{sx\|([\p{L}]*\s?[\p{L}]*?)\|\|}", RegexOptions.Compiled);
+
+#if NET7_0_OR_GREATER
+
+        private static readonly Regex SynonymsRegex = Pattern();
+
+        [GeneratedRegex("{sx\\|([\\p{L}]*\\s?[\\p{L}]*?)\\|\\|}")]
+        private static partial Regex Pattern();
+#else
+        private static readonly Regex SynonymsRegex = new Regex("{sx\\|([\\p{L}]*\\s?[\\p{L}]*?)\\|\\|}", RegexOptions.Compiled);
+#endif
 
         /// <summary>
         /// Find any synonymns (recognizable by {sx} markup) in the provided input string.
@@ -36,5 +45,6 @@ namespace MerriamWebster.NET.Parsing
 
             return results;
         }
+
     }
 }

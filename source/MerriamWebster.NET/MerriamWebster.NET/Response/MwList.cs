@@ -13,7 +13,7 @@ namespace MerriamWebster.NET.Response
         public string Word { get; set; }
 
         [JsonProperty("wvrs", NullValueHandling = NullValueHandling.Ignore)]
-        public WordVariant[] Variants { get; set; } = { };
+        public WordVariant[] Variants { get; set; } = System.Array.Empty<WordVariant>();
 
         [JsonProperty("wsls", NullValueHandling = NullValueHandling.Ignore)]
         public WordSubjectStatusLabel SubjectStatusLabel { get; set; }

@@ -32,7 +32,7 @@ namespace MerriamWebster.NET.Response
         /// Gets or sets pronunciations (optional).
         /// </summary>
         [JsonProperty("prs", NullValueHandling = NullValueHandling.Ignore)]
-        public Pronunciation[] Pronunciations { get; set; } = { };
+        public Pronunciation[] Pronunciations { get; set; } = System.Array.Empty<Pronunciation>();
 
         /// <summary>
         /// This label provides information on the grammatical number (eg, singular, plural) of an inflection in a particular sense.

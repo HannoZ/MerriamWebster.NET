@@ -35,13 +35,13 @@ namespace MerriamWebster.NET.Response
         public Target Target { get; set; }
         
         [JsonProperty("stems")] 
-        public string[] Stems { get; set; } = { };
+        public string[] Stems { get; set; } = Array.Empty<string>();
         
         [JsonProperty("syns")] 
-        public string[][] Synonyms { get; set; } = { };
+        public string[][] Synonyms { get; set; } = Array.Empty<string[]>();
 
         [JsonProperty("ants")]
-        public string[][] Antonyms { get; set; } = { };
+        public string[][] Antonyms { get; set; } = Array.Empty<string[]>();
 
         [JsonProperty("offensive")]
         public bool Offensive { get; set; }

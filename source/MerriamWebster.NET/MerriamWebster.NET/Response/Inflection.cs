@@ -18,7 +18,7 @@ namespace MerriamWebster.NET.Response
         /// Gets or sets the pronunciations.
         /// </summary>
         [JsonProperty("prs", NullValueHandling = NullValueHandling.Ignore)]
-        public Pronunciation[] Pronunciations { get; set; } = { };
+        public Pronunciation[] Pronunciations { get; set; } = System.Array.Empty<Pronunciation>();
 
         /// <summary>
         /// Gets or sets the inflection cutback.
