@@ -1,3 +1,7 @@
+2.3 Added some missing properties to output (synonyms/antonyms on headword metadata and some other not very important properties). Code refactoring and some technical improvements. Dependencies updated to latest versions. **This is the last version that support .NET standard 2.0** Next version 3.0 will only support .NET 6 and higher, which makes it easier to use some of the newer .NET framework features. 
+
+2.2 Unknown.. 
+
 2.1.1 Fix potential null reference in SummaryHelper; Fix deserialization error for entries with section value 'abbr'; Updated dependencies
 
 2.1.0 Add simple retry for transient http errors that may occur when calling the api. Makes use of the Polly library
