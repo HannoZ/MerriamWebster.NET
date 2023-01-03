@@ -13,9 +13,9 @@
 		<RepositoryType>Public</RepositoryType>
 		<PackageTags>Merriam-Webster dictionary thesaurus Spanish-English</PackageTags>
 		<PackageReleaseNotes>See project readme for further details.</PackageReleaseNotes>
-		<Version>2.2.0</Version>
-		<AssemblyVersion>2.2.0</AssemblyVersion>
-		<FileVersion>2.2.0</FileVersion>
+		<Version>2.3.0</Version>
+		<AssemblyVersion>2.3.0</AssemblyVersion>
+		<FileVersion>2.3.0</FileVersion>
 		<LangVersion>latest</LangVersion>
 	</PropertyGroup>
 
