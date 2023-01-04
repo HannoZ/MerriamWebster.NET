@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net7.0;net6.0;netstandard2.0</TargetFrameworks>
+		<TargetFrameworks>net7.0;net6.0</TargetFrameworks>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<Authors>Hanno Zwikstra</Authors>
 		<Company>Hanno Zwikstra</Company>
@@ -27,7 +27,7 @@
 	<ItemGroup Condition=" '$(TargetFramework)' == 'net7.0' ">
 		<PackageReference Include="Microsoft.Extensions.Http.Polly" Version="7.0.1" />
 	</ItemGroup>
-	<ItemGroup Condition=" '$(TargetFramework)' != 'net7.0' ">
+	<ItemGroup Condition=" '$(TargetFramework)' == 'net6.0' ">
 		<PackageReference Include="Microsoft.Extensions.Http.Polly" Version="6.0.12" />
 	</ItemGroup>
 	<ItemGroup>

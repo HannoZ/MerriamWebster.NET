@@ -12,20 +12,9 @@ namespace MerriamWebster.NET.Parsing.Content
     {
         public Entry Parse(MwDictionaryEntry source, Entry target, ParseOptions options)
         {
-            if (source == null)
-            {
-                throw new ArgumentNullException(nameof(source));
-            }
-
-            if (target == null)
-            {
-                throw new ArgumentNullException(nameof(target));
-            }
-
-            if (options == null)
-            {
-                throw new ArgumentNullException(nameof(options));
-            }
+            ArgumentNullException.ThrowIfNull(source, nameof(source));
+            ArgumentNullException.ThrowIfNull(target, nameof(target));
+            ArgumentNullException.ThrowIfNull(options, nameof(options));
 
             // parse and add any additional results (they appear in the 'DefinedRunOns' ('dro') property)
             if (!source.DefinedRunOns.HasValue())

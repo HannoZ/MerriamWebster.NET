@@ -13,31 +13,15 @@ namespace MerriamWebster.NET.Parsing.Content
     {
         public Entry Parse(MwDictionaryEntry source, Entry target, ParseOptions options)
         {
-#if NET6_0_OR_GREATER
-            ArgumentNullException.ThrowIfNull(source);
-            ArgumentNullException.ThrowIfNull(target);
-            ArgumentNullException.ThrowIfNull(source);
-#else
-            if (source == null)
-            {
-                throw new ArgumentNullException(nameof(source));
-            }
-
-            if (target == null)
-            {
-                throw new ArgumentNullException(nameof(target));
-            }
-
-            if (options == null)
-            {
-                throw new ArgumentNullException(nameof(options));
-            }
+            ArgumentNullException.ThrowIfNull(source, nameof(source));
+            ArgumentNullException.ThrowIfNull(target, nameof(target));
+            ArgumentNullException.ThrowIfNull(options, nameof(options));
 
             if (!source.Bios.HasValue())
             {
                 return target;
             }
-#endif
+
             target.BiographicalNote = new BiographicalNote();
             foreach (var bioElement in source.Bios)
             {
@@ -75,7 +59,7 @@ namespace MerriamWebster.NET.Parsing.Content
                     // but it does appear in results (see "curie" for example)
                     else if (typeOrText is "biodate" or "text" or "biotx")
                     {
-                        target.BiographicalNote.Contents.Add(new DefiningText(element[1].TypeOrText){Type = typeOrText});
+                        target.BiographicalNote.Contents.Add(new DefiningText(element[1].TypeOrText) { Type = typeOrText });
                     }
                 }
             }

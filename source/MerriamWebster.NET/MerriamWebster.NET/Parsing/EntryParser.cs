@@ -39,11 +39,11 @@ namespace MerriamWebster.NET.Parsing
         /// <inheritdoc />
         public ResultModel Parse(string searchTerm, IEnumerable<Response.MwDictionaryEntry> results, ParseOptions options)
         {
-            if (searchTerm == null)
-            {
-                throw new ArgumentNullException(nameof(searchTerm));
-            }
-
+#if NET7_0_OR_GREATER
+            ArgumentException.ThrowIfNullOrEmpty(searchTerm, nameof(searchTerm));
+#else
+            ArgumentNullException.ThrowIfNull(searchTerm, nameof(searchTerm));
+#endif
             options ??= ParseOptions.Default;
 
             var resultModel = new ResultModel
