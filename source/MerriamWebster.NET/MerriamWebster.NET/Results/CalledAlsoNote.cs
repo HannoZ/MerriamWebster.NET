@@ -2,7 +2,7 @@
 using System.Linq;
 using Newtonsoft.Json;
 
-namespace MerriamWebster.NET.Dto
+namespace MerriamWebster.NET.Results
 {
     /// <summary>
     /// A called-also note lists other names a headword is called in a given sense.

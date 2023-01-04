@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using MerriamWebster.NET.Dto;
+using MerriamWebster.NET.Results;
 
 namespace MerriamWebster.NET.Parsing
 {
@@ -27,7 +27,7 @@ namespace MerriamWebster.NET.Parsing
         }
 
         /// <summary>
-        /// Parses the input definition into a collection of <see cref="Dto.Sense"/>s.
+        /// Parses the input definition into a collection of <see cref="Sense"/>s.
         /// </summary>
         public void Parse(Definition definition)
         {

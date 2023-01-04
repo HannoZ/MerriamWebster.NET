@@ -1,8 +1,6 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
-namespace MerriamWebster.NET.Dto
+namespace MerriamWebster.NET.Results
 {
     /// <summary>
     /// Entry metadata is information about the entry, as opposed to the actual content of the entry.

@@ -1,6 +1,7 @@
 ﻿using System;
-using MerriamWebster.NET.Dto;
 using MerriamWebster.NET.Response;
+using MerriamWebster.NET.Results;
+using Artwork = MerriamWebster.NET.Results.Artwork;
 
 namespace MerriamWebster.NET.Parsing.Content
 {
@@ -20,7 +21,7 @@ namespace MerriamWebster.NET.Parsing.Content
 
             if (source.Artwork != null)
             {
-                target.Artwork = new Dto.Artwork
+                target.Artwork = new Artwork
                 {
                     Caption = source.Artwork.Caption,
                     HtmlLocation = ArtworkLinkCreator.CreatePageLink(source.Artwork),

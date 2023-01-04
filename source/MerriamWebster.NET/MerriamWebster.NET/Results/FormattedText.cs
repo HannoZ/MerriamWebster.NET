@@ -2,7 +2,7 @@
 using MerriamWebster.NET.Parsing.Markup;
 using Newtonsoft.Json;
 
-namespace MerriamWebster.NET.Dto
+namespace MerriamWebster.NET.Results
 {
     /// <summary>
     /// Contains raw text, formatted text (with MW-markup removed) and HTML-formatted text

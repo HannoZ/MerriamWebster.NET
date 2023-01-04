@@ -1,7 +1,7 @@
-﻿using MerriamWebster.NET.Dto;
-using MerriamWebster.NET.Parsing.Markup;
+﻿using MerriamWebster.NET.Parsing.Markup;
 using MerriamWebster.NET.Response;
-using Quote = MerriamWebster.NET.Dto.Quote;
+using MerriamWebster.NET.Results;
+using Quote = MerriamWebster.NET.Results.Quote;
 
 namespace MerriamWebster.NET.Parsing
 {

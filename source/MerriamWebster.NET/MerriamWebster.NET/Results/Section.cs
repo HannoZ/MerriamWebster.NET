@@ -1,4 +1,4 @@
-﻿namespace MerriamWebster.NET.Dto
+﻿namespace MerriamWebster.NET.Results
 {
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
     public enum Section

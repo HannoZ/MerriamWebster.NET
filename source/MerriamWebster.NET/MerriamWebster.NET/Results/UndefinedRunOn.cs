@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace MerriamWebster.NET.Dto
+namespace MerriamWebster.NET.Results
 {
     /// <summary>
     /// An undefined entry word is derived from or related to the headword, carries a functional label and possibly other information, but does not have any definitions.<br/>

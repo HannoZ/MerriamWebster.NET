@@ -2,7 +2,7 @@
 using MerriamWebster.NET.Parsing;
 using Newtonsoft.Json;
 
-namespace MerriamWebster.NET.Dto
+namespace MerriamWebster.NET.Results
 {
     /// <summary>
     /// Contains properties that both exist on <see cref="Sense"/> and <see cref="DividedSense"/>.

@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using MerriamWebster.NET.Dto;
 using MerriamWebster.NET.Response;
-using Conjugation = MerriamWebster.NET.Dto.Conjugation;
+using MerriamWebster.NET.Results;
+using Conjugation = MerriamWebster.NET.Results.Conjugation;
 
 namespace MerriamWebster.NET.Parsing.Content
 {

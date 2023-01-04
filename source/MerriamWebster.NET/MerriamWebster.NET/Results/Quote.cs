@@ -1,4 +1,4 @@
-﻿namespace MerriamWebster.NET.Dto
+﻿namespace MerriamWebster.NET.Results
 {
     /// <summary>
     /// In addition to the verbal illustrations provided throughout the entry, a larger section of quotations from cited sources is sometimes included. 

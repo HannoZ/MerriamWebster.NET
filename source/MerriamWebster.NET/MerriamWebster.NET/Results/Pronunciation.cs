@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MerriamWebster.NET.Dto
+namespace MerriamWebster.NET.Results
 {
     /// <summary>
     /// Contains the written pronunciation and an (optional) link to an audio file. <br/>

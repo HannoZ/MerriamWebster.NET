@@ -1,4 +1,4 @@
-﻿namespace MerriamWebster.NET.Dto
+﻿namespace MerriamWebster.NET.Results
 {
     /// <summary>
     /// A broad, general sense introducing a series of senses that give more contextual and specific meanings.

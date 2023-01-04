@@ -1,4 +1,4 @@
-﻿namespace MerriamWebster.NET.Dto
+﻿namespace MerriamWebster.NET.Results
 {
     /// <inheritdoc />
     public class AlternateHeadwordInformation : HeadwordInformation

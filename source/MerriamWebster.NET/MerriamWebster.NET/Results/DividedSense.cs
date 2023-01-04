@@ -1,4 +1,4 @@
-﻿namespace MerriamWebster.NET.Dto
+﻿namespace MerriamWebster.NET.Results
 {
     /// <summary>
     /// A <see cref="Sense"/> may be divided into two parts to show a particular relationship between two closely related meanings.

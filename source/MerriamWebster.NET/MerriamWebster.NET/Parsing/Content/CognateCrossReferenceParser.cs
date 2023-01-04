@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using MerriamWebster.NET.Dto;
 using MerriamWebster.NET.Response;
-using CognateCrossReference = MerriamWebster.NET.Dto.CognateCrossReference;
+using MerriamWebster.NET.Results;
+using CognateCrossReference = MerriamWebster.NET.Results.CognateCrossReference;
+using CrossReferenceTarget = MerriamWebster.NET.Results.CrossReferenceTarget;
 
 namespace MerriamWebster.NET.Parsing.Content
 {
@@ -36,7 +37,7 @@ namespace MerriamWebster.NET.Parsing.Content
 
                 foreach (var crossReferenceTarget in sourceCr.CrossReferenceTargets)
                 {
-                    targetCr.CrossReferenceTargets.Add(new Dto.CrossReferenceTarget
+                    targetCr.CrossReferenceTargets.Add(new CrossReferenceTarget
                     {
                         Target = crossReferenceTarget.Target,
                         Label = crossReferenceTarget.Label,

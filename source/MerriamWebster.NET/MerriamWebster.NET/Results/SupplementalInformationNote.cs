@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace MerriamWebster.NET.Dto
+namespace MerriamWebster.NET.Results
 {
     /// <summary>
     /// <i>Optional.</i> This note provides explanatory or historical information that supplements the definition text.

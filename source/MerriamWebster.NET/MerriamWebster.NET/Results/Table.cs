@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MerriamWebster.NET.Dto
+namespace MerriamWebster.NET.Results
 {
     /// <summary>
     /// A reference from an entry to a table

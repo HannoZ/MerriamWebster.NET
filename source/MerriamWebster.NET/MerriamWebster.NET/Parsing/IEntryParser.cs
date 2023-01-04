@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using MerriamWebster.NET.Dto;
+using MerriamWebster.NET.Results;
 
 namespace MerriamWebster.NET.Parsing
 {

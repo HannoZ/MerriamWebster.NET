@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace MerriamWebster.NET.Dto
+namespace MerriamWebster.NET.Results
 {
     /// <summary>
     /// Inflection is the change of form that words undergo to mark such distinctions as case, gender, number, tense, person, mood, or voice.

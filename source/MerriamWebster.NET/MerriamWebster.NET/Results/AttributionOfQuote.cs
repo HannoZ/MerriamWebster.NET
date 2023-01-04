@@ -1,4 +1,4 @@
-﻿namespace MerriamWebster.NET.Dto
+﻿namespace MerriamWebster.NET.Results
 {
     /// <summary>
     /// Direct quotes are used in both verbal illustrations and end-of-entry quotation sections.

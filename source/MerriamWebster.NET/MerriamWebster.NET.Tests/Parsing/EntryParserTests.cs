@@ -12,9 +12,10 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
-using MerriamWebster.NET.Dto;
-using DefiningText = MerriamWebster.NET.Dto.DefiningText;
-using SenseBase = MerriamWebster.NET.Dto.SenseBase;
+using MerriamWebster.NET.Results;
+using DefiningText = MerriamWebster.NET.Results.DefiningText;
+using Sense = MerriamWebster.NET.Results.Sense;
+using SenseBase = MerriamWebster.NET.Results.SenseBase;
 
 namespace MerriamWebster.NET.Tests.Parsing
 {
@@ -463,7 +464,7 @@ namespace MerriamWebster.NET.Tests.Parsing
             result.Entries.Count.ShouldBe(3);
 
             GetSenses(result.Entries)
-                .OfType<Dto.Sense>()
+                .OfType<Sense>()
                  .ShouldContain(s => s.SenseNumber == "2"); // to verify that the "bs" element was processed correctly
         }
 

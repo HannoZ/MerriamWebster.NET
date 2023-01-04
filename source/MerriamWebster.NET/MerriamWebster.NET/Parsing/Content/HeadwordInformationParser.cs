@@ -1,6 +1,6 @@
 ﻿using System;
-using MerriamWebster.NET.Dto;
 using MerriamWebster.NET.Response;
+using MerriamWebster.NET.Results;
 
 namespace MerriamWebster.NET.Parsing.Content
 {

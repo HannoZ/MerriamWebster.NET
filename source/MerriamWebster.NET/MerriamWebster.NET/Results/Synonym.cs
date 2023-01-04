@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace MerriamWebster.NET.Dto
+namespace MerriamWebster.NET.Results
 {
     /// <summary>
     /// Extensive discussions of synonyms for the headword may be included in the entry.

@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Linq;
-using MerriamWebster.NET.Dto;
 using MerriamWebster.NET.Response;
-using Metadata = MerriamWebster.NET.Dto.Metadata;
-using Section = MerriamWebster.NET.Dto.Section;
+using MerriamWebster.NET.Results;
+using Metadata = MerriamWebster.NET.Results.Metadata;
+using Section = MerriamWebster.NET.Results.Section;
+using Target = MerriamWebster.NET.Results.Target;
 
 namespace MerriamWebster.NET.Parsing.Content
 {
@@ -51,7 +52,7 @@ namespace MerriamWebster.NET.Parsing.Content
 
             if (sourceMeta.Target != null)
             {
-                metadata.Target = new Dto.Target
+                metadata.Target = new Target
                 {
                     Identifier = sourceMeta.Target.Identifier,
                     Source = sourceMeta.Target.Source

@@ -1,4 +1,4 @@
-﻿namespace MerriamWebster.NET.Dto
+﻿namespace MerriamWebster.NET.Results
 {
     /// <summary>
     /// <i>Spanish-English only.</i> When a headword or one of its senses represents a less common spelling or inflected form of another word, the definition is omitted and replaced by a cross-reference pointing to the entry containing detailed definition information.

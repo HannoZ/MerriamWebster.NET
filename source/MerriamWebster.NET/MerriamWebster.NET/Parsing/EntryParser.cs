@@ -1,9 +1,9 @@
-﻿using MerriamWebster.NET.Dto;
-using MerriamWebster.NET.Parsing.Content;
+﻿using MerriamWebster.NET.Parsing.Content;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using MerriamWebster.NET.Results;
 
 namespace MerriamWebster.NET.Parsing
 {

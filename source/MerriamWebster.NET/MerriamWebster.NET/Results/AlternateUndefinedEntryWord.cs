@@ -1,4 +1,4 @@
-﻿namespace MerriamWebster.NET.Dto
+﻿namespace MerriamWebster.NET.Results
 {
     /// <summary>
     /// In bilingual dictionaries, an undefined entry word may have multiple forms according to grammatical gender and number. 

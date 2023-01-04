@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using MerriamWebster.NET.Dto;
 using MerriamWebster.NET.Response;
-using UndefinedRunOn = MerriamWebster.NET.Dto.UndefinedRunOn;
+using MerriamWebster.NET.Results;
+using AlternateUndefinedEntryWord = MerriamWebster.NET.Results.AlternateUndefinedEntryWord;
+using Pronunciation = MerriamWebster.NET.Results.Pronunciation;
+using UndefinedRunOn = MerriamWebster.NET.Results.UndefinedRunOn;
 
 namespace MerriamWebster.NET.Parsing.Content
 {
@@ -62,7 +64,7 @@ namespace MerriamWebster.NET.Parsing.Content
 
                 if (uro.Pronunciations.Any())
                 {
-                    searchResult.Pronunciations = new List<Dto.Pronunciation>();
+                    searchResult.Pronunciations = new List<Pronunciation>();
                     foreach (var pronunciation in uro.Pronunciations)
                     {
                         var pron = PronunciationHelper.Parse(pronunciation, target.Metadata.Language,
@@ -73,7 +75,7 @@ namespace MerriamWebster.NET.Parsing.Content
 
                 if (uro.AlternateEntry != null)
                 {
-                    searchResult.AlternateEntry = new Dto.AlternateUndefinedEntryWord
+                    searchResult.AlternateEntry = new AlternateUndefinedEntryWord
                     {
                         Text = uro.AlternateEntry.Text,
                         TextCutback = uro.AlternateEntry.TextCutback

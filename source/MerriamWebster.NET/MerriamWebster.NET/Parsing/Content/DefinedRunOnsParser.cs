@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using MerriamWebster.NET.Dto;
 using MerriamWebster.NET.Response;
+using MerriamWebster.NET.Results;
+using DefinedRunOn = MerriamWebster.NET.Results.DefinedRunOn;
+using Definition = MerriamWebster.NET.Results.Definition;
 
 namespace MerriamWebster.NET.Parsing.Content
 {
@@ -31,11 +33,11 @@ namespace MerriamWebster.NET.Parsing.Content
                 return target;
             }
 
-            target.DefinedRunOns = new List<Dto.DefinedRunOn>();
+            target.DefinedRunOns = new List<DefinedRunOn>();
                 
             foreach (var dro in source.DefinedRunOns)
             {
-                var searchResult = new Dto.DefinedRunOn
+                var searchResult = new DefinedRunOn
                 {
                     Phrase = dro.Phrase,
                     PartOfSpeech = dro.FunctionalLabel,
@@ -63,7 +65,7 @@ namespace MerriamWebster.NET.Parsing.Content
                 foreach (var droDef in dro.Definitions)
                 {
                     var senseParser = new SenseParser(droDef, target.Metadata.Language, options);
-                    var def = new Dto.Definition();
+                    var def = new Definition();
                     senseParser.Parse(def);
 
                     searchResult.Definitions.Add(def);

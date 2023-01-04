@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MerriamWebster.NET.Dto
+namespace MerriamWebster.NET.Results
 {
     /// <summary>
     /// Entries may have illustrations to provide a visual depiction of the headword.

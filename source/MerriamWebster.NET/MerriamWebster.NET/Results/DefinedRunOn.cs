@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace MerriamWebster.NET.Dto
+namespace MerriamWebster.NET.Results
 {
     /// <summary>
     /// A defined run-on phrase is an expression or phrasal verb formed from the headword.

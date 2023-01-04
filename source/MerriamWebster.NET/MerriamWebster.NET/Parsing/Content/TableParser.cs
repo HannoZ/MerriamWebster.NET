@@ -1,6 +1,7 @@
 ﻿using System;
-using MerriamWebster.NET.Dto;
 using MerriamWebster.NET.Response;
+using MerriamWebster.NET.Results;
+using Table = MerriamWebster.NET.Results.Table;
 
 namespace MerriamWebster.NET.Parsing.Content
 {
@@ -20,7 +21,7 @@ namespace MerriamWebster.NET.Parsing.Content
 
             if (source.Table != null)
             {
-                target.Table = new Dto.Table
+                target.Table = new Table
                 {
                     Displayname = source.Table.Displayname,
                     TableId = source.Table.Tableid

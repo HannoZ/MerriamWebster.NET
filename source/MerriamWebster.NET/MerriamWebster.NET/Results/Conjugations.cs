@@ -1,4 +1,4 @@
-﻿namespace MerriamWebster.NET.Dto
+﻿namespace MerriamWebster.NET.Results
 {
     /// <summary>
     /// All conjugations of a verb. Appears in the Spanish-English dictionary for most verbs. 

@@ -1,4 +1,4 @@
-﻿namespace MerriamWebster.NET.Dto
+﻿namespace MerriamWebster.NET.Results
 {
     /// <summary>
     /// In bilingual dictionaries, an inflection may have a fully spelled-out form as well as a shortened cutback form for use in space-constrained environments.

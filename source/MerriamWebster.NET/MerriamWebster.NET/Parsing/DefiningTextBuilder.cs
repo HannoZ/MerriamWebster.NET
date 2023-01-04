@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using MerriamWebster.NET.Dto;
+using MerriamWebster.NET.Results;
 
 namespace MerriamWebster.NET.Parsing
 {

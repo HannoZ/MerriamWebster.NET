@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using MerriamWebster.NET.Dto;
 using MerriamWebster.NET.Response;
+using MerriamWebster.NET.Results;
+using DefiningText = MerriamWebster.NET.Results.DefiningText;
+using Synonym = MerriamWebster.NET.Results.Synonym;
 
 namespace MerriamWebster.NET.Parsing.Content
 {
@@ -27,11 +29,11 @@ namespace MerriamWebster.NET.Parsing.Content
 
             return target;
 
-            IEnumerable<Dto.Synonym> ParseSynonyms()
+            IEnumerable<Synonym> ParseSynonyms()
             {
                 foreach (var srcSynonym in source.Synonyms)
                 {
-                    var synonym = new Dto.Synonym
+                    var synonym = new Synonym
                     {
                         ParagraphLabel = srcSynonym.Pl
                     };
@@ -45,7 +47,7 @@ namespace MerriamWebster.NET.Parsing.Content
                     {
                         if (dt[0].TypeLabelOrText == DefiningTextTypes.Text)
                         {
-                            synonym.DefiningTexts.Add(new Dto.DefiningText(dt[1].TypeLabelOrText));
+                            synonym.DefiningTexts.Add(new DefiningText(dt[1].TypeLabelOrText));
                         }
                         else if (dt[0].TypeLabelOrText == DefiningTextTypes.VerbalIllustration)
                         {

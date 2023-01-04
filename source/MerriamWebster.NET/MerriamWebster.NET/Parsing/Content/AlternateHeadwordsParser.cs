@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using MerriamWebster.NET.Dto;
 using MerriamWebster.NET.Response;
+using MerriamWebster.NET.Results;
+using Pronunciation = MerriamWebster.NET.Results.Pronunciation;
 
 namespace MerriamWebster.NET.Parsing.Content
 {
@@ -37,7 +38,7 @@ namespace MerriamWebster.NET.Parsing.Content
 
                 if (alternateHeadword.Pronunciations.Any())
                 {
-                    alternateHeadwordInformation.Pronunciations = new List<Dto.Pronunciation>();
+                    alternateHeadwordInformation.Pronunciations = new List<Pronunciation>();
                     foreach (var pronunciation in alternateHeadword.Pronunciations)
                     {
                         alternateHeadwordInformation.Pronunciations.Add(PronunciationHelper.Parse(pronunciation, target.Metadata.Language, options.AudioFormat));

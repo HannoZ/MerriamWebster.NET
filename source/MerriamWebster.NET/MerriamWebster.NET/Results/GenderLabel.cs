@@ -1,7 +1,7 @@
 ﻿using System;
 using Newtonsoft.Json;
 
-namespace MerriamWebster.NET.Dto
+namespace MerriamWebster.NET.Results
 {
     /// <summary>
     /// <i>Optional, Spanish-English only</i> In a bilingual dictionary, a gender label provides the grammatical gender for the immediately preceding translation of the headword.

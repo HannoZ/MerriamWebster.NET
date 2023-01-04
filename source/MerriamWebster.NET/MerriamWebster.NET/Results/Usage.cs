@@ -2,7 +2,7 @@
 using MerriamWebster.NET.Parsing;
 using Newtonsoft.Json;
 
-namespace MerriamWebster.NET.Dto
+namespace MerriamWebster.NET.Results
 {
     /// <summary>
     /// In addition to <see cref="UsageNote"/> within definitions, a more extensive usage discussion may be included in the entry.

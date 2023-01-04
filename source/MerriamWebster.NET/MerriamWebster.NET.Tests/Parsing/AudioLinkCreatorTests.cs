@@ -1,7 +1,7 @@
 ﻿using System;
-using MerriamWebster.NET.Dto;
 using MerriamWebster.NET.Parsing;
 using MerriamWebster.NET.Response;
+using MerriamWebster.NET.Results;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Shouldly;
 

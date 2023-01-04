@@ -3,7 +3,7 @@ using MerriamWebster.NET.Parsing;
 using MerriamWebster.NET.Response;
 using Newtonsoft.Json;
 
-namespace MerriamWebster.NET.Dto
+namespace MerriamWebster.NET.Results
 {
     /// <summary>
     /// The <see cref="ResultModel"/> contains the result of a search query (in the <see cref="Entries"/> collection),  plus some additional properties.

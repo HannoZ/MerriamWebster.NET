@@ -1,4 +1,4 @@
-﻿namespace MerriamWebster.NET.Dto
+﻿namespace MerriamWebster.NET.Results
 {
     /// <summary>
     /// <i>Optional, Spanish-English only</i> n bilingual dictionaries, a headword translation may have multiple forms for different grammatical genders.

@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace MerriamWebster.NET.Dto
+﻿namespace MerriamWebster.NET.Results
 {
     /// <summary>
     /// An explanation of the historical origin of a word.

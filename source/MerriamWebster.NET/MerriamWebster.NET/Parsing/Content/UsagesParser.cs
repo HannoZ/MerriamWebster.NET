@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using MerriamWebster.NET.Dto;
 using MerriamWebster.NET.Response;
-using DefiningText = MerriamWebster.NET.Dto.DefiningText;
-using Usage = MerriamWebster.NET.Dto.Usage;
+using MerriamWebster.NET.Results;
+using DefiningText = MerriamWebster.NET.Results.DefiningText;
+using Usage = MerriamWebster.NET.Results.Usage;
 
 namespace MerriamWebster.NET.Parsing.Content
 {

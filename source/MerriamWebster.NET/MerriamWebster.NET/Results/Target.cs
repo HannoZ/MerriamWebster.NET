@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MerriamWebster.NET.Dto
+namespace MerriamWebster.NET.Results
 {
     /// <summary>
     /// Matching target entry in other Merriam-Webster data set.

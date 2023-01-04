@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using MerriamWebster.NET.Dto;
 using MerriamWebster.NET.Response;
+using MerriamWebster.NET.Results;
+using Quote = MerriamWebster.NET.Results.Quote;
 
 namespace MerriamWebster.NET.Parsing.Content
 {
@@ -24,7 +25,7 @@ namespace MerriamWebster.NET.Parsing.Content
                 return target;
             }
 
-            target.Quotes = new List<Dto.Quote>();
+            target.Quotes = new List<Quote>();
 
             foreach (var sourceQuote in source.Quotes)
             {

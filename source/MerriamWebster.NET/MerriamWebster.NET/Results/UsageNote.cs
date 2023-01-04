@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace MerriamWebster.NET.Dto
+namespace MerriamWebster.NET.Results
 {
     /// <summary>
     /// Provide usage information on a headword, <see cref="DefinedRunOn"/> phrase, or <see cref="UndefinedRunOn"/> word.

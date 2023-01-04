@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using MerriamWebster.NET.Dto;
 using MerriamWebster.NET.Response;
+using MerriamWebster.NET.Results;
+using BiographicalNote = MerriamWebster.NET.Results.BiographicalNote;
+using DefiningText = MerriamWebster.NET.Results.DefiningText;
+using Pronunciation = MerriamWebster.NET.Results.Pronunciation;
 
 namespace MerriamWebster.NET.Parsing.Content
 {
@@ -35,7 +38,7 @@ namespace MerriamWebster.NET.Parsing.Content
                 return target;
             }
 #endif
-            target.BiographicalNote = new Dto.BiographicalNote();
+            target.BiographicalNote = new BiographicalNote();
             foreach (var bioElement in source.Bios)
             {
                 foreach (var element in bioElement)
@@ -58,7 +61,7 @@ namespace MerriamWebster.NET.Parsing.Content
 
                         if (note.Prs.Any())
                         {
-                            content.Pronunciations = new List<Dto.Pronunciation>();
+                            content.Pronunciations = new List<Pronunciation>();
                             foreach (var pronunciation in note.Prs)
                             {
                                 content.Pronunciations.Add(PronunciationHelper.Parse(pronunciation, target.Metadata.Language, options.AudioFormat));
@@ -72,7 +75,7 @@ namespace MerriamWebster.NET.Parsing.Content
                     // but it does appear in results (see "curie" for example)
                     else if (typeOrText is "biodate" or "text" or "biotx")
                     {
-                        target.BiographicalNote.Contents.Add(new Dto.DefiningText(element[1].TypeOrText){Type = typeOrText});
+                        target.BiographicalNote.Contents.Add(new DefiningText(element[1].TypeOrText){Type = typeOrText});
                     }
                 }
             }

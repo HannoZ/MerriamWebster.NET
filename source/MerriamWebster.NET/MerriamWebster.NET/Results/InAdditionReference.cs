@@ -1,4 +1,4 @@
-﻿namespace MerriamWebster.NET.Dto
+﻿namespace MerriamWebster.NET.Results
 {
     /// <summary>
     /// Usage see in addition reference: contains the text and ID of a "see in addition" reference to another usage section.

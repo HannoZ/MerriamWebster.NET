@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using MerriamWebster.NET.Dto;
 using MerriamWebster.NET.Parsing;
+using MerriamWebster.NET.Results;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Shouldly;
 using Pronunciation = MerriamWebster.NET.Response.Pronunciation;
