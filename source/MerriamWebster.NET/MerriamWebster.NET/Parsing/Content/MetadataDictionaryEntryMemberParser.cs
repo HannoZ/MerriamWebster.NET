@@ -5,7 +5,7 @@ using MerriamWebster.NET.Results.Base;
 
 namespace MerriamWebster.NET.Parsing.Content
 {
-    public class JsonMetadataParser : IDictionaryEntryMemberParser
+    public class MetadataDictionaryEntryMemberParser : IDictionaryEntryMemberParser
     {
         public virtual void Parse(JsonProperty json, EntryBase target)
         {

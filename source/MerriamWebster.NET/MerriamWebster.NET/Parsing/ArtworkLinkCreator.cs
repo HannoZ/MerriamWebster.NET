@@ -1,5 +1,5 @@
 ﻿using System;
-using MerriamWebster.NET.Response;
+using System.Text.Json;
 
 namespace MerriamWebster.NET.Parsing
 {
@@ -8,20 +8,23 @@ namespace MerriamWebster.NET.Parsing
     /// </summary>
     public class ArtworkLinkCreator
     {
+        // TODO
 
         /// <summary>
         /// Creates a link to a web page that contains the artwork.
         /// </summary>
         /// <param name="artwork">The artwork object.</param>
         /// <returns>A <see cref="Uri"/> that locates the page.</returns>
-        public static Uri CreatePageLink(Artwork artwork)
+        public static Uri CreatePageLink(JsonElement artwork)
         {
-            if (string.IsNullOrEmpty(artwork?.Id))
-            {
-                return null;
-            }
+            return null;
 
-            return new Uri(string.Format(Configuration.ArtworkHtmlPagePlaceholder, artwork.Id));
+            //if (string.IsNullOrEmpty(artwork?.Id))
+            //{
+            //    return null;
+            //}
+
+            //return new Uri(string.Format(Configuration.ArtworkHtmlPagePlaceholder, artwork.Id));
         }
 
         /// <summary>
@@ -29,14 +32,16 @@ namespace MerriamWebster.NET.Parsing
         /// </summary>
         /// <param name="artwork">The artwork object.</param>
         /// <returns>A <see cref="Uri"/> that locates the file.</returns>
-        public static Uri CreateDirectLink(Artwork artwork)
+        public static Uri CreateDirectLink(JsonElement artwork)
         {
-            if (string.IsNullOrEmpty(artwork?.Id))
-            {
-                return null;
-            }
+            return null;
 
-            return new Uri(string.Format(Configuration.ArtworkDirectLinkPlaceholder, artwork.Id));
+            //if (string.IsNullOrEmpty(artwork?.Id))
+            //{
+            //    return null;
+            //}
+
+            //return new Uri(string.Format(Configuration.ArtworkDirectLinkPlaceholder, artwork.Id));
         }
     }
 }

@@ -1,6 +1,6 @@
-﻿using MerriamWebster.NET.Parsing;
+﻿using System.Text.Json.Serialization;
+using MerriamWebster.NET.Parsing;
 using MerriamWebster.NET.Parsing.Markup;
-using Newtonsoft.Json;
 
 namespace MerriamWebster.NET.Results
 {

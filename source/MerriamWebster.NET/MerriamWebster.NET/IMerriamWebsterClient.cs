@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Text.Json;
 using System.Threading.Tasks;
-using MerriamWebster.NET.Response;
 
 namespace MerriamWebster.NET
 {
@@ -23,7 +22,7 @@ namespace MerriamWebster.NET
         /// The API returns a list of suggestions if there is no direct match.
         /// The <see cref="MerriamWebsterClient"/> implementation of this method logs these suggestions as warnings and returns an empty collection.
         /// </remarks>
-        Task<IEnumerable<MwDictionaryEntry>> GetDictionaryEntry(string api, string entry);
+        //Task<IEnumerable<MwDictionaryEntry>> GetDictionaryEntry(string api, string entry);
 
 
         Task<JsonDocument> Search(string api, string searchTerm);

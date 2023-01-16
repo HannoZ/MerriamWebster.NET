@@ -11,11 +11,6 @@ namespace MerriamWebster.NET.Results.Base
     public class Entry : EntryBase
     {
         /// <summary>
-        /// Gets or sets the metadata.
-        /// </summary>
-        public Metadata Metadata { get; internal set; } = new ();
-        
-        /// <summary>
         /// <i>Optional.</i> Gets or sets the quotes.
         /// </summary>
         public ICollection<Quote> Quotes { get; internal set; }

@@ -12,7 +12,7 @@ namespace MerriamWebster.NET.Parsing.Content
                 case "meta":
                     if (api == Configuration.CollegiateThesaurus)
                     {
-                        return new JsonMetadataParser();
+                        return new MetadataDictionaryEntryMemberParser();
                     }
                     else if (api == Configuration.SpanishEnglishDictionary)
                     {
@@ -20,7 +20,7 @@ namespace MerriamWebster.NET.Parsing.Content
                     }
                     else
                     {
-                        return new JsonMetadataParser();
+                        return new MetadataDictionaryEntryMemberParser();
                     }
                 case "hwi":
                     return new HeadwordInformationDictionaryEntryMemberParser();

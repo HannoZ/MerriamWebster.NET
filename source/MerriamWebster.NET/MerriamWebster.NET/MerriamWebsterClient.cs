@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
-using MerriamWebster.NET.Response;
-using MerriamWebster.NET.Response.JsonConverters;
 using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
 
 namespace MerriamWebster.NET
 {
@@ -47,30 +42,6 @@ namespace MerriamWebster.NET
 
             return JsonDocument.Parse(responseString);
         }
-
-        /// <inheritdoc />
-        public async Task<IEnumerable<MwDictionaryEntry>> GetDictionaryEntry(string api, string entry)
-        {
-            var responseString = await _client.GetStringAsync($"{api}/json/{entry?.ToLower()}?key={_apiKey}");
-
-            try
-            {
-                var results = JsonConvert.DeserializeObject<MwDictionaryEntry[]>(responseString, Converter.Settings);
-                return results;
-            }
-            catch (NotImplementedException) // can occur in json converters when a structure is encountered that has not been implemented
-            {
-                throw;
-            }
-            catch
-            {
-                var response = JsonConvert.DeserializeObject<string[]>(responseString);
-                _logger.LogWarning($"No matches found for {entry}. Suggestions: {string.Join(",", response)}");
-            }
-
-            return Enumerable.Empty<MwDictionaryEntry>();
-        }
-
 
         /// <inheritdoc />
         public void Dispose()

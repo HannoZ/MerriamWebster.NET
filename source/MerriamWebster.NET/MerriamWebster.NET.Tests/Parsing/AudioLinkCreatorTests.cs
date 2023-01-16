@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Text.Json;
 using MerriamWebster.NET.Parsing;
-using MerriamWebster.NET.Response;
 using MerriamWebster.NET.Results;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Shouldly;

@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.Text.Json.Serialization;
 using MerriamWebster.NET.Parsing;
-using MerriamWebster.NET.Response;
 using MerriamWebster.NET.Results.Base;
-using Newtonsoft.Json;
 
 namespace MerriamWebster.NET.Results
 {

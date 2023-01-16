@@ -6,7 +6,7 @@ using MerriamWebster.NET.Results.SpanishEnglish;
 
 namespace MerriamWebster.NET.Parsing.Content.SpanishEnglish
 {
-    public class SpanishEnglishJsonMetadataParser : JsonMetadataParser
+    public class SpanishEnglishJsonMetadataParser : MetadataDictionaryEntryMemberParser
     {
         public override void Parse(JsonProperty json, EntryBase target)
         {
