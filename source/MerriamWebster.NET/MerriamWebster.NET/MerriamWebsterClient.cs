@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Text.Json;
 using System.Threading.Tasks;
 using MerriamWebster.NET.Response;
 using MerriamWebster.NET.Response.JsonConverters;
@@ -30,6 +31,21 @@ namespace MerriamWebster.NET
             _client = client;
             _logger = logger;
             _apiKey = config.ApiKey;
+        }
+
+        public async Task<JsonDocument> Search(string api, string searchTerm)
+        {
+
+#if NET7_0_OR_GREATER
+            ArgumentException.ThrowIfNullOrEmpty(searchTerm, nameof(searchTerm));
+#else
+            ArgumentNullException.ThrowIfNull(searchTerm, nameof(searchTerm));
+#endif
+            string urlPath = $"{api}/json/{searchTerm.ToLower()}";
+            _logger.LogInformation($"Sending request - {urlPath}");
+            var responseString = await _client.GetStringAsync($"{urlPath}?key={_apiKey}");
+
+            return JsonDocument.Parse(responseString);
         }
 
         /// <inheritdoc />

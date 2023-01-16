@@ -1,4 +1,6 @@
 ﻿using System;
+using MerriamWebster.NET.Parsing;
+using MerriamWebster.NET.Results;
 
 namespace MerriamWebster.NET
 {
@@ -21,6 +23,20 @@ namespace MerriamWebster.NET
         public static readonly string IntermediateThesaurus = "ithesaurus";
         public static readonly string SchoolDictionary = "sd4"; 
         public static readonly string SpanishEnglishDictionary = "spanish";
+
+        /// <summary>
+        /// Gets or sets the <see cref="ParseOptions"/>.
+        /// </summary>
+        /// <remarks>Can be set at runtime to change the default behavior.</remarks>
+        public static ParseOptions ParseOptions {get; set; } = ParseOptions.Default;
+        
+        /// <summary>
+        /// Gets or sets the <see cref="Language"/>.
+        /// </summary>
+        /// <remarks>
+        /// Only applies to audio links for entries in the Spanish-English dictionary with lang="es"
+        /// </remarks>
+        public static Language Language { get; set; } = Language.NotApplicable;
     }
 }
 #pragma warning restore CS1591 // Missing XML comment for publicly visible type or member

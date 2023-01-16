@@ -44,7 +44,7 @@ namespace MerriamWebster.NET.Results
         {
             get
             {
-                return Targets.Aggregate(Intro, (current, calledAlsoTarget) => current + calledAlsoTarget.TargetText);
+                return Intro + ": " + string.Join(',', Targets.Select(t => t.ToString()));
             }
         }
     }

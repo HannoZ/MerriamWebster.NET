@@ -3,15 +3,13 @@
     /// <summary>
     /// A label provides a brief note on the grammatical function, subject area, register, regional usage, or capitalization of a headword, whether generally or in a particular sense.
     /// </summary>
-    public class Label
+    public class Label : ILabel
     {
-        /// <summary>
-        /// Gets or sets the label text.
-        /// </summary>
+        /// <inheritdoc />
         public string Text { get; set; }
 
         /// <summary>
-        /// Creates a new default instance of the <see cref="Label"/> class.
+        /// Creates a new default instance.
         /// </summary>
         /// <remarks>Required for deserialization</remarks>
         public Label()
@@ -19,7 +17,7 @@
         }
 
         /// <summary>
-        /// Creates a new instance of the <see cref="Label"/> class with specified text.
+        /// Creates a new instance with specified text.
         /// </summary>
         public Label(string text)
         {

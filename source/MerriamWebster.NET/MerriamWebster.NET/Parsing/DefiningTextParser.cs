@@ -114,7 +114,7 @@ namespace MerriamWebster.NET.Parsing
                             ParenthesizedNumber = cat.ParenthesizedNumber,
                             Reference = cat.Reference,
                             TargetText = cat.Text,
-                            ParenthesizedSubjectStatusLabel = cat.ParenthesizedSubjectStatusLabel
+                            //ParenthesizedSubjectStatusLabel = cat.ParenthesizedSubjectStatusLabel
                         };
 
                         if (cat.Pronunciations.Any())
@@ -176,13 +176,13 @@ namespace MerriamWebster.NET.Parsing
 
                 else if (definitionType == DefiningTextTypes.SupplementalNote)
                 {
-                    var arr = definingTextObjects[1].DefiningTextObjects[0].DefiningTextComplexTypeWrappers;
-                    var supplementalInformationNote = new SupplementalInformationNote
-                    {
-                        Text = arr[1].TypeLabelOrText
-                    };
+                    //var arr = definingTextObjects[1].DefiningTextObjects[0].DefiningTextComplexTypeWrappers;
+                    //var supplementalInformationNote = new SupplementalInformationNote
+                    //{
+                    //    Text = arr[1].TypeLabelOrText
+                    //};
 
-                    targetSense.DefiningTexts.Add(supplementalInformationNote);
+                    //targetSense.DefiningTexts.Add(supplementalInformationNote);
                     
                     // todo nested ri, vis, requires sample json 
                 }
@@ -194,29 +194,29 @@ namespace MerriamWebster.NET.Parsing
 
                     var un = new UsageNote();
 
-                    foreach (var dtWrapper in arr.Where(x=>x.DefiningTextComplexTypes?.Any() == true))
-                    {
-                        var unType = dtWrapper.DefiningTextComplexTypes[0].TypeOrLabel;
-                        if (unType == DefiningTextTypes.Text)
-                        {
-                            un.Text = dtWrapper.DefiningTextComplexTypes[1].TypeOrLabel;
-                        }
-                        else if (unType == DefiningTextTypes.VerbalIllustration)
-                        {
-                            if (un.VerbalIllustrations == null)
-                            {
-                                un.VerbalIllustrations = new List<VerbalIllustration>();
-                            }
+                    //foreach (var dtWrapper in arr.Where(x=>x.DefiningTextComplexTypes?.Any() == true))
+                    //{
+                    //    var unType = dtWrapper.DefiningTextComplexTypes[0].TypeOrLabel;
+                    //    if (unType == DefiningTextTypes.Text)
+                    //    {
+                    //        un.Text = dtWrapper.DefiningTextComplexTypes[1].TypeOrLabel;
+                    //    }
+                    //    else if (unType == DefiningTextTypes.VerbalIllustration)
+                    //    {
+                    //        if (un.VerbalIllustrations == null)
+                    //        {
+                    //            un.VerbalIllustrations = new List<VerbalIllustration>();
+                    //        }
 
-                            foreach (var definingText in dtWrapper.DefiningTextComplexTypes[1].DefiningTexts)
-                            {
-                                var vis = VisHelper.Parse(definingText);
-                                un.VerbalIllustrations.Add(vis);
-                            }
-                        }
+                    //        foreach (var definingText in dtWrapper.DefiningTextComplexTypes[1].DefiningTexts)
+                    //        {
+                    //            var vis = VisHelper.Parse(definingText);
+                    //            un.VerbalIllustrations.Add(vis);
+                    //        }
+                    //    }
 
-                        // todo "ri", requires sample json 
-                    }
+                    //    // todo "ri", requires sample json 
+                    //}
                     
                     targetSense.DefiningTexts.Add(un);
                 }

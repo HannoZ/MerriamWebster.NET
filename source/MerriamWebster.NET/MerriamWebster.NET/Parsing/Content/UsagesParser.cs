@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using MerriamWebster.NET.Response;
 using MerriamWebster.NET.Results;
+using MerriamWebster.NET.Results.Base;
 using DefiningText = MerriamWebster.NET.Results.DefiningText;
 using Usage = MerriamWebster.NET.Results.Usage;
 
@@ -9,17 +10,17 @@ namespace MerriamWebster.NET.Parsing.Content
 {
     internal class UsagesParser : IContentParser
     {
-        public Entry Parse(MwDictionaryEntry source, Entry target, ParseOptions options)
+        public void Parse(MwDictionaryEntry source, EntryBase target, ParseOptions options)
         {
             ArgumentNullException.ThrowIfNull(source, nameof(source));
             ArgumentNullException.ThrowIfNull(target, nameof(target));
 
             if (!source.Usages.HasValue())
             {
-                return target;
+                return;
             }
             
-            target.Usages = new List<Usage>();
+       //     target.Usages = new List<Usage>();
             foreach (var srcUsage in source.Usages)
             {
                 var usage = new Usage
@@ -47,10 +48,9 @@ namespace MerriamWebster.NET.Parsing.Content
                     }
                 }
 
-                target.Usages.Add(usage);
+                //target.Usages.Add(usage);
             }
 
-            return target;
         }
     }
 }

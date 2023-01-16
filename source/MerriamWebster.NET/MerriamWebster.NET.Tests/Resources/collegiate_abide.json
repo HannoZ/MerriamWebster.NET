@@ -410,21 +410,21 @@
         ],
         "quotes": [
             {
-                "t": "A former party functionary, Yeltsin replaced Communist ideology with a supremely simplified vision of democracy, which boiled down to two tenets: He could not {qword}abide{/qword} Communists, and he supported freedom of the press.",
-                "aq": {
-                    "auth": "Masha Gessen",
-                    "source": "{it}New Republic{/it}",
-                    "aqdate": "5 June 2000"
-                }
+"t": "A former party functionary, Yeltsin replaced Communist ideology with a supremely simplified vision of democracy, which boiled down to two tenets: He could not {qword}abide{/qword} Communists, and he supported freedom of the press.",
+"aq": {
+    "auth": "Masha Gessen",
+    "source": "{it}New Republic{/it}",
+    "aqdate": "5 June 2000"
+}
             },
-            {
-                "t": "Now his anger had poisoned all relationships, no one could be put in the two empty beds in the room, and not even his long-suffering sister could {qword}abide{/qword} him in her house.",
-                "aq": {
-                    "auth": "Peter Pouncey",
-                    "source": "{it}Rules for Old Men Waiting{/it}",
-                    "aqdate": "2005"
-                }
-            }
+{
+    "t": "Now his anger had poisoned all relationships, no one could be put in the two empty beds in the room, and not even his long-suffering sister could {qword}abide{/qword} him in her house.",
+    "aq": {
+        "auth": "Peter Pouncey",
+        "source": "{it}Rules for Old Men Waiting{/it}",
+        "aqdate": "2005"
+    }
+}
         ],
         "et": [
             [

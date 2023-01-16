@@ -34,6 +34,13 @@ namespace MerriamWebster.NET.Results
         /// <b>Display Guidance:</b>
         /// Display within parentheses and in italics.
         /// </remarks>
-        public Label ParenthesizedSubjectStatusLabel { get; set; }
+        public ParenthesizedSubjectStatusLabel ParenthesizedSubjectStatusLabel { get; set; }
+
+        public override string ToString()
+        {
+            // TODO use the other properties as well 
+
+            return TargetText;
+        }
     }
 }

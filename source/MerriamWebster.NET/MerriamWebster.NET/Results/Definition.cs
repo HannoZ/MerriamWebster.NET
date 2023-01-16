@@ -44,6 +44,6 @@ namespace MerriamWebster.NET.Results
         /// <b>Display Guidance:</b>
         /// Typically rendered in italics. If there is a more than one element in the array, separate them with a comma and space.
         /// </remarks>
-        public ICollection<Label> SubjectStatusLabels { get; set; }
+        public ICollection<SubjectStatusLabel> SubjectStatusLabels { get; set; }
     }
 }

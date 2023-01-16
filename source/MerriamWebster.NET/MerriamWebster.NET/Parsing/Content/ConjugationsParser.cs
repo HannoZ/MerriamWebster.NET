@@ -1,44 +1,57 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using MerriamWebster.NET.Response;
+using System.Text.Json;
 using MerriamWebster.NET.Results;
+using MerriamWebster.NET.Results.Base;
+using MerriamWebster.NET.Results.SpanishEnglish;
 using Conjugation = MerriamWebster.NET.Results.Conjugation;
 
 namespace MerriamWebster.NET.Parsing.Content
 {
-    internal class ConjugationsParser : IContentParser
-    {
-        public Entry Parse(MwDictionaryEntry source, Entry target, ParseOptions options)
+    internal class ConjugationsParser : IDictionaryEntryMemberParser
+    {    
+        public void Parse(JsonProperty json, EntryBase target)
         {
-            ArgumentNullException.ThrowIfNull(source, nameof(source));
             ArgumentNullException.ThrowIfNull(target, nameof(target));
 
-            if (source.Supplemental == null || source.Supplemental.Conjugations.HasValue() == false)
+            if (json.Name != "suppl")
             {
-                return target;
+                throw new ArgumentException($"Cannot handle json object {json.Name}", nameof(json));
             }
 
-            var conjugations = new Conjugations();
-            var parsedConjugations = new List<Conjugation>();
-            foreach (var cjt in source.Supplemental.Conjugations)
+            var source = json.Value;
+            if (!source.TryGetProperty("cjts", out var cjtsElement))
             {
-                if (cjt.Id == "gppt")
+                return;
+            }
+
+            var cjts = cjtsElement.EnumerateArray();
+            var conjugations = new Conjugations();
+            var parsedConjugations = new List<Conjugation>(cjtsElement.GetArrayLength());
+            
+            foreach (var cjt in cjts)
+            {
+                var cjfs = cjt.GetProperty("cjfs");
+                var items = cjfs.EnumerateArray().ToList();
+
+                if (cjt.TryGetProperty("cjid", out var id)
+                    && id.GetString() == "gppt")
                 {
-                    conjugations.PastParticiple = cjt.Fields[1];
-                    conjugations.PresentParticiple = cjt.Fields[0];
+                    conjugations.PresentParticiple = items[0].GetString();
+                    conjugations.PastParticiple = items[1].GetString();
                 }
                 else
                 {
                     var conjugation = new Conjugation
                     {
-                        Tense = cjt.Id,
-                        SgFirst = cjt.Fields[0],
-                        SgSecond = cjt.Fields[1],
-                        SgThird = cjt.Fields[2],
-                        PlFirst = cjt.Fields[3],
-                        PlSecond = cjt.Fields[4],
-                        PlThird = cjt.Fields[5],
+                        Tense = id.GetString(),
+                        SgFirst = items[0].GetString(),
+                        SgSecond = items[1].GetString(),
+                        SgThird = items[2].GetString(),
+                        PlFirst = items[3].GetString(),
+                        PlSecond = items[4].GetString(),
+                        PlThird = items[5].GetString()
                     };
                     parsedConjugations.Add(conjugation);
                 }
@@ -62,9 +75,9 @@ namespace MerriamWebster.NET.Parsing.Content
             conjugations.PastPerfectSubjunctive = parsedConjugations.Single(c => c.Tense == "ppss1");
             conjugations.FuturePerfectSubjunctive = parsedConjugations.Single(c => c.Tense == "fpsb");
 
-            target.Conjugations = conjugations;
-
-            return target;
+            ((SpanishEnglishEntry)target).Conjugations = conjugations;
         }
+
+
     }
 }

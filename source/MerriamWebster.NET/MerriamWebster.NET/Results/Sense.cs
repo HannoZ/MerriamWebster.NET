@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using MerriamWebster.NET.Results.SpanishEnglish;
 
 namespace MerriamWebster.NET.Results
 {
@@ -59,7 +60,7 @@ namespace MerriamWebster.NET.Results
         public bool IsBindingSubstitute { get; set; }
 
         /// <summary>
-        /// <i>Optional.</i> Getsd or sets a collection of synonyms.
+        /// <i>Optional.</i> Gets or sets a collection of synonyms.
         /// </summary>
         /// <remarks>
         /// A thesaurus entry typically contains a list of synonyms for the headword.
@@ -67,7 +68,7 @@ namespace MerriamWebster.NET.Results
         public ICollection<string> Synonyms { get; set; } 
      
         /// <summary>
-        /// <i>Optional.</i> Getsd or sets a collection of cross references.
+        /// <i>Optional.</i> Gets or sets a collection of cross references.
         /// </summary>
         public ICollection<CrossReference> CrossReferences { get; set; }
 

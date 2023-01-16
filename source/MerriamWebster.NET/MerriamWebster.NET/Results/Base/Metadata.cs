@@ -1,7 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
-namespace MerriamWebster.NET.Results
+namespace MerriamWebster.NET.Results.Base
 {
+    public interface IMetadata
+    {
+
+    }
+
     /// <summary>
     /// Entry metadata is information about the entry, as opposed to the actual content of the entry.
     /// </summary>
@@ -9,7 +15,7 @@ namespace MerriamWebster.NET.Results
     /// <b>Display Guidance:</b>
     /// Not intended for display.
     /// </remarks>
-    public class Metadata
+    public class Metadata : IMetadata
     {
         /// <summary>
         /// Unique entry identifier within a particular dictionary data set, used in cross-references pointing to the entry. It consists of the headword, and in homograph entries, an appended colon and homograph number.
@@ -17,14 +23,24 @@ namespace MerriamWebster.NET.Results
         public string Id { get; set; }
 
         /// <summary>
+        /// Universally unique identifier
+        /// </summary>
+        public Guid UniqueIdentifier { get; set; }
+
+        /// <summary>
         /// A 9-digit code which may be used to sort entries in the proper dictionary order if alphabetical display is needed.
         /// </summary>
         public string Sort { get; set; }
 
         /// <summary>
+        /// Source data set for entry — ignore
+        /// </summary>
+        public string Source { get; set; }
+
+        /// <summary>
         /// Indicates the section the entry belongs to in print.
         /// </summary>
-        public Section Section { get; set; }
+        public string Section { get; set; }
 
         /// <summary>
         /// Lists all of the entry's headwords, variants, inflections, undefined entry words, and defined run-on phrases.
@@ -38,7 +54,7 @@ namespace MerriamWebster.NET.Results
         public bool Offensive { get; set; }
 
         /// <summary>
-        /// <i>Optional.</i> Bilingual dictionaries contain two distinct dictionaries within one work.
+        /// <i>Spanish-English only.</i> Bilingual dictionaries contain two distinct dictionaries within one work.
         /// In order to distinguish the two language directions for search and display purposes, an entry metadata item identifying the language of the entry's headword—or the language of word lookup as opposed to translation—is provided. 
         /// </summary>
         /// <remarks>
@@ -49,23 +65,5 @@ namespace MerriamWebster.NET.Results
         /// </para>
         /// </remarks>
         public Language Language { get; set; }
-
-        /// <summary>
-        /// Lists all synonyms given in the entry's <i>syn_list</i>; may be used for matching synonym search terms to the entry.        
-        /// </summary>
-        /// <remarks>
-        /// <i>Note</i>: this is a distinct usage from that described in <see cref="Synonym"/>
-        /// </remarks>
-        public ICollection<string> Synonyms { get; set; } = new List<string>();
-
-        /// <summary>
-        /// Lists all antonyms given in the entry's <i>ant_list</i>; may be used for matching antonym search terms to the entry.        
-        /// </summary>
-        public ICollection<string> Antonyms { get; set; } = new List<string>();
-
-        /// <summary>
-        /// Gets or sets the target entry.
-        /// </summary>
-        public Target Target {get;set; }
-    }    
+    }
 }

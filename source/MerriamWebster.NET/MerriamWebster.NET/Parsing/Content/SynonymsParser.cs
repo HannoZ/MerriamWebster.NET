@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using MerriamWebster.NET.Response;
 using MerriamWebster.NET.Results;
+using MerriamWebster.NET.Results.Base;
 using DefiningText = MerriamWebster.NET.Results.DefiningText;
 using Synonym = MerriamWebster.NET.Results.Synonym;
 
@@ -10,17 +11,16 @@ namespace MerriamWebster.NET.Parsing.Content
 {
     internal class SynonymsParser : IContentParser
     {
-        public Entry Parse(MwDictionaryEntry source, Entry target, ParseOptions options)
+        public void Parse(MwDictionaryEntry source, EntryBase target, ParseOptions options)
         {
             ArgumentNullException.ThrowIfNull(source, nameof(source));
             ArgumentNullException.ThrowIfNull(target, nameof(target));
 
             if (source.Synonyms.HasValue())
             {
-                target.Synonyms = ParseSynonyms().ToList();
+               // target.Synonyms = ParseSynonyms().ToList();
             }
 
-            return target;
 
             IEnumerable<Synonym> ParseSynonyms()
             {

@@ -30,31 +30,19 @@ namespace MerriamWebster.NET.Results
         public ICollection<Inflection> Inflections { get; set; }
 
         /// <summary>
-        /// <i>Optional.</i> General labels provide information such as whether a headword is typically capitalized, used as an attributive noun, etc.
+        /// <i>Optional.</i> Gets or sets the general labels.
         /// </summary>
-        /// <remarks>
-        /// <b>Display Guidance:</b>
-        /// Typically rendered in italics. If there is a more than one element in the array, separate them with a comma and space.
-        /// </remarks>
-        public ICollection<Label> GeneralLabels { get; set; }
+        public ICollection<GeneralLabel> GeneralLabels { get; set; }
 
         /// <summary>
-        /// <i>Optional.</i> A subject/status label describes the subject area (eg, "computing") or regional/usage status (eg, "British", "formal", "slang") of a headword or a particular sense of a headword.
+        /// <i>Optional.</i> Gets or sets the subject/status labels.
         /// </summary>
-        /// <remarks>
-        /// <b>Display Guidance:</b>
-        /// Typically rendered in italics. If there is a more than one element in the array, separate them with a comma and space.
-        /// </remarks>
-        public ICollection<Label> SubjectStatusLabels { get; set; }
+        public ICollection<SubjectStatusLabel> SubjectStatusLabels { get; set; }
 
         /// <summary>
-        /// <i>Optional.</i> This label notes whether a particular sense of a verb is transitive (T) or intransitive (I). 
+        /// <i>Optional.</i> Gets or sets the sense specific grammatical label
         /// </summary>
-        /// <remarks>
-        /// <b>Display Guidance:</b>
-        /// Typically displayed within square brackets and in italics.
-        /// </remarks>
-        public Label SenseSpecificGrammaticalLabel { get; set; }
+        public SenseSpecificGrammaticalLabel SenseSpecificGrammaticalLabel { get; set; }
         
         /// <summary>
         /// <i>Optional.</i> Gets or sets the etymology.

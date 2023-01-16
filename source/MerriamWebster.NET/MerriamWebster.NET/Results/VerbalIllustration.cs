@@ -23,7 +23,7 @@ namespace MerriamWebster.NET.Results
         /// <summary>
         /// Gets or sets the sentence.
         /// </summary>
-        public FormattedText Sentence { get; set; } = new FormattedText();
+        public FormattedText Sentence { get; set; } = new();
 
         /// <summary>
         /// <i>Only used in Spanish-English dictionary.</i>

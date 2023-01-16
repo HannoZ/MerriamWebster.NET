@@ -158,28 +158,29 @@ namespace MerriamWebster.NET.Parsing
         {
             var sense = new T();
 
-            if (sourceSense.GeneralLabels.Any())
-            {
-                sense.GeneralLabels = new List<Label>();
-                foreach (var generalLabel in sourceSense.GeneralLabels)
-                {
-                    sense.GeneralLabels.Add(generalLabel);
-                }
-            }
+            //sourceSense.GeneralLabels = LabelsParser.ParseMultiple<GeneralLabel>(sou)
+            //if (sourceSense.GeneralLabels.Any())
+            //{
+            //    sense.GeneralLabels = new List<Label>();
+            //    foreach (var generalLabel in sourceSense.GeneralLabels)
+            //    {
+            //        sense.GeneralLabels.Add(generalLabel);
+            //    }
+            //}
 
-            if (sourceSense.SubjectStatusLabels.Any())
-            {
-                sense.SubjectStatusLabels = new List<Label>();
-                foreach (var subjectStatusLabel in sourceSense.SubjectStatusLabels)
-                {
-                    sense.SubjectStatusLabels.Add(subjectStatusLabel);
-                }
-            }
+            //if (sourceSense.SubjectStatusLabels.Any())
+            //{
+            //    sense.SubjectStatusLabels = new List<Label>();
+            //    foreach (var subjectStatusLabel in sourceSense.SubjectStatusLabels)
+            //    {
+            //        sense.SubjectStatusLabels.Add(subjectStatusLabel);
+            //    }
+            //}
 
-            if (!string.IsNullOrEmpty(sourceSense.SenseSpecificGrammaticalLabel))
-            {
-                sense.SenseSpecificGrammaticalLabel = sourceSense.SenseSpecificGrammaticalLabel;
-            }
+            //if (!string.IsNullOrEmpty(sourceSense.SenseSpecificGrammaticalLabel))
+            //{
+            //    sense.SenseSpecificGrammaticalLabel = sourceSense.SenseSpecificGrammaticalLabel;
+            //}
 
             if (sourceSense.Variants.Any())
             {

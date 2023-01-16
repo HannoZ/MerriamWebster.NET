@@ -3,6 +3,7 @@ using MerriamWebster.NET.Parsing;
 using MerriamWebster.NET.Parsing.Content;
 using MerriamWebster.NET.Response;
 using MerriamWebster.NET.Results;
+using MerriamWebster.NET.Results.Base;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Shouldly;
 
@@ -27,11 +28,10 @@ namespace MerriamWebster.NET.Tests.Parsing
             var parser = new ArtworkParser();
 
             // ACT
-            var result = parser.Parse(source, target, ParseOptions.Default);
+            parser.Parse(source, target, ParseOptions.Default);
 
             // ASSERT
-            result.ShouldBe(target);
-            var artwork = result.Artwork;
+            var artwork = target.Artwork;
             artwork.ShouldNotBe(null);
             artwork.Caption.ShouldBe("caption");
             artwork.HtmlLocation.ToString().ShouldContain("id");
@@ -60,12 +60,13 @@ namespace MerriamWebster.NET.Tests.Parsing
         public void ArtworkParser_Parse_ArtworkIsNull()
         {
             var parser = new ArtworkParser();
+            var target = new Entry();
 
             // ACT
-            var result = parser.Parse(new MwDictionaryEntry(), new Entry(), ParseOptions.Default);
+            parser.Parse(new MwDictionaryEntry(), target, ParseOptions.Default);
 
             // ASSERT
-            result.Artwork.ShouldBe(null);
+            target.Artwork.ShouldBe(null);
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using MerriamWebster.NET.Results;
+using MerriamWebster.NET.Results.SpanishEnglish;
 
 namespace MerriamWebster.NET.Parsing
 {

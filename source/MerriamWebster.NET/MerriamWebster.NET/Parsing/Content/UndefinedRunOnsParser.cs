@@ -1,92 +1,96 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using MerriamWebster.NET.Response;
+using System.Text.Json;
 using MerriamWebster.NET.Results;
-using AlternateUndefinedEntryWord = MerriamWebster.NET.Results.AlternateUndefinedEntryWord;
-using Pronunciation = MerriamWebster.NET.Results.Pronunciation;
-using UndefinedRunOn = MerriamWebster.NET.Results.UndefinedRunOn;
+using MerriamWebster.NET.Results.Base;
 
 namespace MerriamWebster.NET.Parsing.Content
 {
-    internal class UndefinedRunOnsParser : IContentParser
+    public class UndefinedRunOnsDictionaryEntryMemberParser : IDictionaryEntryMemberParser
     {
-        public Entry Parse(MwDictionaryEntry source, Entry target, ParseOptions options)
+        public void Parse(JsonProperty json, EntryBase target)
         {
-            ArgumentNullException.ThrowIfNull(source, nameof(source));
             ArgumentNullException.ThrowIfNull(target, nameof(target));
-            ArgumentNullException.ThrowIfNull(options, nameof(options));
 
-            // parse and add any 'undefined run-ons'
-            if (!source.UndefinedRunOns.HasValue())
+            if (json.Name != "uros")
             {
-                return target;
+                throw new ArgumentException($"Cannot handle json object {json.Name}", nameof(json));
             }
 
-            target.UndefinedRunOns = new List<UndefinedRunOn>();
-
-            foreach (var uro in source.UndefinedRunOns)
+            var source = json.Value;
+            var runons = new List<UndefinedRunOn>();
+            foreach (var uro in source.EnumerateArray())
             {
-                var searchResult = new UndefinedRunOn
+                var runon = new UndefinedRunOn
                 {
-                    EntryWord = uro.EntryWord,
-                    PartOfSpeech = uro.FunctionalLabel
+                    EntryWord = JsonParserHelper.GetStringValue(uro, "ure"),
+                    FunctionalLabel = LabelsParser.ParseSingle<FunctionalLabel>(uro, "fl"),
+                    ParenthesizedSubjectStatusLabel = LabelsParser.ParseSingle<ParenthesizedSubjectStatusLabel>(uro, "psl"),
+                    GeneralLabels = LabelsParser.ParseMultiple<GeneralLabel>(uro, "lbs"),
+                    SubjectStatusLabels = LabelsParser.ParseMultiple<SubjectStatusLabel>(uro, "sls")
                 };
 
-                if (uro.GeneralLabels.Any())
+                if (uro.TryGetProperty("utxt", out var utxt))
                 {
-                    searchResult.GeneralLabels = new List<Label>();
-                    foreach (var generalLabel in uro.GeneralLabels)
+                    runon.RunOnTexts = new List<IDefiningText>();
+
+                    foreach (var runTextSection in utxt.EnumerateArray())
                     {
-                        searchResult.GeneralLabels.Add(generalLabel);
+                        var items = runTextSection.EnumerateArray().ToList();
+                        if (items.Count != 2)
+                        {
+                            continue;
+                        }
+
+                        var type = items[0].GetString();
+                        if (type == DefiningTextTypes.VerbalIllustration)
+                        {
+                            foreach (var visElement in items[1].EnumerateArray())
+                            {
+                                runon.RunOnTexts.Add(VisParser.Parse(visElement));
+                            }
+                        }
+                        else if (type == "uns")
+                        {
+                            var parser = new UsageNoteDefiningTextParser();
+                            runon.RunOnTexts.Add(parser.Parse(items[1]));
+                        }
                     }
                 }
 
-                if (uro.Sls.Any())
+                if (uro.TryGetProperty("ins", out var ins))
                 {
-                    searchResult.SubjectStatusLabels = new List<Label>();
-                    foreach (var sls in searchResult.SubjectStatusLabels)
-                    {
-                        searchResult.SubjectStatusLabels.Add(sls);
-                    }
+                    runon.Inflections = new List<Inflection>(InflectionsParser.Parse(ins));
                 }
 
-                if (uro.Pronunciations.Any())
+                if (uro.TryGetProperty("prs", out var prs))
                 {
-                    searchResult.Pronunciations = new List<Pronunciation>();
-                    foreach (var pronunciation in uro.Pronunciations)
-                    {
-                        var pron = PronunciationHelper.Parse(pronunciation, target.Metadata.Language,
-                            options.AudioFormat);
-                        searchResult.Pronunciations.Add(pron);
-                    }
+                    runon.Pronunciations = new List<Pronunciation>(PronuncationParser.Parse(prs));
                 }
 
-                if (uro.AlternateEntry != null)
+                if (uro.TryGetProperty("vrs", out var vrs))
                 {
-                    searchResult.AlternateEntry = new AlternateUndefinedEntryWord
+                    runon.Variants = new List<Variant>(VariantParser.Parse(vrs));
+                }
+
+                // spanish-english only
+                if (uro.TryGetProperty("aure", out var aure))
+                {
+                    runon.AlternateEntry = new AlternateUndefinedEntryWord()
                     {
-                        Text = uro.AlternateEntry.Text,
-                        TextCutback = uro.AlternateEntry.TextCutback
+                        Text = JsonParserHelper.GetStringValue(aure, "ure"),
+                        TextCutback = JsonParserHelper.GetStringValue(aure, "urec")
                     };
                 }
 
-                if (uro.Vrs.Any())
-                {
-                    searchResult.Variants = VariantHelper.Parse(uro.Vrs, target.Metadata.Language, options.AudioFormat).ToList();
-                }
-
-                if (uro.Inflections.Any())
-                {
-                    searchResult.Inflections = InflectionHelper.Parse(uro.Inflections, target.Metadata.Language, options.AudioFormat).ToList();
-                }
-
-                target.UndefinedRunOns.Add(searchResult);
+                runons.Add(runon);
             }
 
-            return target;
+            target.UndefinedRunOns = runons;
         }
-
-
     }
 }
+
+
+

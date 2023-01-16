@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using MerriamWebster.NET.Parsing;
 using MerriamWebster.NET.Response;
+using MerriamWebster.NET.Results.Base;
 using Newtonsoft.Json;
 
 namespace MerriamWebster.NET.Results
@@ -17,18 +18,18 @@ namespace MerriamWebster.NET.Results
         /// <summary>
         /// A collection of zero or more <see cref="Entry"/> objects. This is the main result. 
         /// </summary>
-        public ICollection<Entry> Entries { get; set; } = new List<Entry>();
+        public ICollection<EntryBase> Entries { get; set; } = new List<EntryBase>();
 
         /// <summary>
         /// The summary combines all non-empty summaries of the entries in the <see cref="Entries"/> property.
         /// </summary>
         [JsonIgnore]
         public string Summary => SummaryHelper.CreateSummary(SearchText, Entries);
+
         /// <summary>
         /// Gets or sets the raw response in JSON format. 
         /// </summary>
-        /// <remarks>The raw response can be used to get data that is not parsed by the <see cref="IEntryParser"/>.<br/>
-        /// Use <see cref="JsonConvert"/> to deserialize this string into a <see cref="MwDictionaryEntry"/>.</remarks>
+        /// <remarks>The raw response can be used to get data that is not parsed by the <see cref="IEntryParser"/>. </remarks>
         public string RawResponse { get; set; }
     }
 

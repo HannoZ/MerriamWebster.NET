@@ -8,7 +8,7 @@
         /// <summary>
         /// Source work for quote.
         /// </summary>
-        public string Source { get; set; }
+        public FormattedText Source { get; set; }
         /// <summary>
         /// Publication date of quote.
         /// </summary>

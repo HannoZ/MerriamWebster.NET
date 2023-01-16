@@ -5,6 +5,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json;
 using MerriamWebster.NET.Results;
 using Shouldly;
 using DefiningText = MerriamWebster.NET.Results.DefiningText;
@@ -14,6 +15,8 @@ using SenseBase = MerriamWebster.NET.Results.SenseBase;
 
 namespace MerriamWebster.NET.Tests.Parsing
 {
+    // TODO many tests should be moved to DefiningTextParserTests class
+
     [TestClass]
     public class SenseParserTests
     {
@@ -189,20 +192,34 @@ namespace MerriamWebster.NET.Tests.Parsing
         [TestMethod]
         public void SenseParser_CanParse_Abbey()
         {
-            var defs = LoadDefinitions("abbey");
-            List<Results.Definition> definitions = new List<Results.Definition>();
-
-            // ACT
-            foreach (var senseParser in defs.Select(definition => new SenseParser(definition, Language.Es, ParseOptions.Default)))
+            var content = @" 
             {
-                var def = new Results.Definition();
-                senseParser.Parse(def);
-                def.SenseSequence.ShouldNotBeEmpty();
-
-                definitions.Add(def);
+                ""sseq"": [
+                    [
+                        [
+                            ""sense"",
+                            {
+                                ""dt"": [
+                                    [
+                                        ""text"",
+                                        ""{bc}{a_link|abadía} ""
+                                    ],
+                                    [
+                                        ""gl"",
+                                        ""feminine""
+                                    ]
+                                ]
+                            }
+                        ]
+                    ]
+                ]
             }
+        ";
+            var doc = JsonDocument.Parse(content);
+            var target = new Results.Definition();
+            JsonSenseParser.Parse(doc.RootElement, target);
 
-            var gls = GetDefiningTexts(definitions)
+            var gls = GetDefiningTexts(new List<Results.Definition>{target})
                 .OfType<GenderLabel>().ToList();
 
             gls.ShouldNotBeEmpty();
@@ -404,19 +421,69 @@ namespace MerriamWebster.NET.Tests.Parsing
         [TestMethod]
         public void SenseParser_CanParseSense_Coll_Dodgson()
         {
-            var defs = LoadDefinitions("collegiate_Dodgson");
-            List<Results.Definition> definitions = new List<Results.Definition>();
-
-            foreach (var senseParser in defs.Select(definition => new SenseParser(definition, Language.NotApplicable, ParseOptions.Default)))
+            var content = @" 
             {
-                var def = new Results.Definition();
-                senseParser.Parse(def);
-                def.SenseSequence.ShouldNotBeEmpty();
-
-                definitions.Add(def);
-            }
-
-            var dts = GetDefiningTexts(definitions);
+        ""sseq"": [
+          [
+            [
+              ""sense"",
+              {
+                ""dt"": [
+                  [
+                    ""bnw"",
+                    {
+                      ""pname"": ""Charles Lut*widge"",
+                      ""prs"": [
+                        {
+                          ""mw"": ""ˈlət-wij"",
+                          ""sound"": {
+                            ""audio"": ""bixdod04"",
+                            ""ref"": ""c"",
+                            ""stat"": ""1""
+                          }
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    ""text"",
+                    ""1832–1898 pseudonym""
+                  ],
+                  [
+                    ""bnw"",
+                    {
+                      ""altname"": ""Lewis Car*roll"",
+                      ""prs"": [
+                        {
+                          ""mw"": ""ˈker-əl"",
+                          ""sound"": {
+                            ""audio"": ""bixdod05"",
+                            ""ref"": ""c"",
+                            ""stat"": ""1""
+                          }
+                        },
+                        {
+                          ""mw"": ""ˈka-rəl""
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    ""text"",
+                    "" English mathematician and writer""
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      }
+        ";
+            var doc = JsonDocument.Parse(content);
+            var target = new Results.Definition();
+            JsonSenseParser.Parse(doc.RootElement, target);
+            
+            var dts = GetDefiningTexts(new List<Results.Definition>{target});
             dts.OfType<BiographicalNameWrap>().Count().ShouldBe(2);
         }
 

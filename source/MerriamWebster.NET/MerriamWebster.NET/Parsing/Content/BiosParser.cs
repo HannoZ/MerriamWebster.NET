@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using MerriamWebster.NET.Response;
 using MerriamWebster.NET.Results;
+using MerriamWebster.NET.Results.Base;
 using BiographicalNote = MerriamWebster.NET.Results.BiographicalNote;
 using DefiningText = MerriamWebster.NET.Results.DefiningText;
 using Pronunciation = MerriamWebster.NET.Results.Pronunciation;
@@ -11,7 +12,7 @@ namespace MerriamWebster.NET.Parsing.Content
 {
     internal class BiosParser : IContentParser
     {
-        public Entry Parse(MwDictionaryEntry source, Entry target, ParseOptions options)
+        public void Parse(MwDictionaryEntry source, EntryBase target, ParseOptions options)
         {
             ArgumentNullException.ThrowIfNull(source, nameof(source));
             ArgumentNullException.ThrowIfNull(target, nameof(target));
@@ -19,10 +20,10 @@ namespace MerriamWebster.NET.Parsing.Content
 
             if (!source.Bios.HasValue())
             {
-                return target;
+                return;
             }
 
-            target.BiographicalNote = new BiographicalNote();
+            //target.BiographicalNote = new BiographicalNote();
             foreach (var bioElement in source.Bios)
             {
                 foreach (var element in bioElement)
@@ -48,23 +49,22 @@ namespace MerriamWebster.NET.Parsing.Content
                             content.Pronunciations = new List<Pronunciation>();
                             foreach (var pronunciation in note.Prs)
                             {
-                                content.Pronunciations.Add(PronunciationHelper.Parse(pronunciation, target.Metadata.Language, options.AudioFormat));
+                                content.Pronunciations.Add(PronunciationHelper.Parse(pronunciation, Language.NotApplicable, options.AudioFormat));
                             }
                         }
 
-                        target.BiographicalNote.Contents.Add(content);
+                        //   target.BiographicalNote.Contents.Add(content);
                     }
 
                     // note that "text" is not part of the official documenation,
                     // but it does appear in results (see "curie" for example)
                     else if (typeOrText is "biodate" or "text" or "biotx")
                     {
-                        target.BiographicalNote.Contents.Add(new DefiningText(element[1].TypeOrText) { Type = typeOrText });
+                        //  target.BiographicalNote.Contents.Add(new DefiningText(element[1].TypeOrText) { Type = typeOrText });
                     }
                 }
             }
 
-            return target;
         }
     }
 }

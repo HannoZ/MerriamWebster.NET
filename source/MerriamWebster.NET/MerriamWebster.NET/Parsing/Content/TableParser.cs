@@ -1,27 +1,27 @@
 ﻿using System;
 using MerriamWebster.NET.Response;
 using MerriamWebster.NET.Results;
+using MerriamWebster.NET.Results.Base;
 using Table = MerriamWebster.NET.Results.Table;
 
 namespace MerriamWebster.NET.Parsing.Content
 {
     internal class TableParser : IContentParser
     {
-        public Entry Parse(MwDictionaryEntry source, Entry target, ParseOptions options)
+        public void Parse(MwDictionaryEntry source, EntryBase target, ParseOptions options)
         {
             ArgumentNullException.ThrowIfNull(source, nameof(source));
             ArgumentNullException.ThrowIfNull(target, nameof(target));
 
             if (source.Table != null)
             {
-                target.Table = new Table
-                {
-                    Displayname = source.Table.Displayname,
-                    TableId = source.Table.Tableid
-                };
+                //target.Table = new Table
+                //{
+                //    Displayname = source.Table.Displayname,
+                //    TableId = source.Table.Tableid
+                //};
             }
 
-            return target;
         }
     }
 }

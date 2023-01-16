@@ -9,8 +9,7 @@ namespace MerriamWebster.NET.Tests
         public static string LoadResponseFromFile(string fileName)
         {
             var asm = Assembly.GetExecutingAssembly();
-            using var resourceStream =
-                asm.GetManifestResourceStream($"MerriamWebster.NET.Tests.Resources.{fileName}.json");
+            using var resourceStream = asm.GetManifestResourceStream($"MerriamWebster.NET.Tests.Resources.{fileName}.json");
 
             using var reader = new StreamReader(resourceStream);
             string content = reader.ReadToEnd();

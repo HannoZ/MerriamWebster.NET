@@ -3,6 +3,7 @@ using MerriamWebster.NET.Parsing;
 using MerriamWebster.NET.Parsing.Content;
 using MerriamWebster.NET.Response;
 using MerriamWebster.NET.Results;
+using MerriamWebster.NET.Results.Base;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Shouldly;
 
@@ -53,11 +54,10 @@ namespace MerriamWebster.NET.Tests.Parsing
             var parser = new BiosParser();
 
             // ACT
-            var result = parser.Parse(source, target, ParseOptions.Default);
+            parser.Parse(source, target, ParseOptions.Default);
 
             // ASSERT
-            result.ShouldBe(target);
-            var bios = result.BiographicalNote;
+            var bios = target.BiographicalNote;
             bios.ShouldNotBe(null);
             var content = bios.Contents.ToList();
             var bio1 = content[0] as BiographicalNameWrap;

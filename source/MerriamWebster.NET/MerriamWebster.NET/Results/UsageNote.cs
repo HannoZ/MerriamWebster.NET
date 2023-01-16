@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using MerriamWebster.NET.Parsing;
+using System.Collections.Generic;
 
 namespace MerriamWebster.NET.Results
 {
@@ -12,21 +13,11 @@ namespace MerriamWebster.NET.Results
     public class UsageNote : IDefiningText
     {
         /// <summary>
-        /// contains the usage note text.
+        /// Gets or set the defining texts.
         /// </summary>
-        public FormattedText Text { get; set; }
+        public ICollection<IDefiningText> DefiningTexts { get; set; } = new List<IDefiningText>();
 
-        /// <summary>
-        /// <i>Optional.</i> Gets or sets the run-in word.
-        /// </summary>
-        public RunInWord RunIn { get; set; }
-
-        /// <summary>
-        /// <i>Optional.</i>A collection of verbal illustrations (examples).
-        /// </summary>
-        public ICollection<VerbalIllustration> VerbalIllustrations { get; set; }
-
-        /// <inheritdoc />
-        public FormattedText MainText => Text;
+        /// <inheritdoc />}
+        public FormattedText MainText => "⟶ " + DefiningTexts.Build();
     }
 }
