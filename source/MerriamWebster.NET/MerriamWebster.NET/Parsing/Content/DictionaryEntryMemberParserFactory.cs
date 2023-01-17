@@ -34,6 +34,8 @@ namespace MerriamWebster.NET.Parsing.Content
                     return new CognateCrossReferenceJsonParser();
                 case "uros":
                     return new UndefinedRunOnsDictionaryEntryMemberParser();
+                case "art":
+                    return new ArtworkDictionaryEntryMemberParser();
 
                 // spanish-english only 
                 case "suppl":

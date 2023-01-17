@@ -8,10 +8,10 @@ using Shouldly;
 namespace MerriamWebster.NET.Tests.Parsing
 {
     [TestClass]
-    public class VariantsJsonContentParserTests
+    public class VariantsDictionaryEntryMemberParserTests
     {
         [TestMethod]
-        public void VariantsJsonContentParser_Parse()
+        public void VariantsDictionaryEntryMemberParser_Parse()
         {
             string source = @"{""vrs"":[
   {
@@ -43,20 +43,8 @@ namespace MerriamWebster.NET.Tests.Parsing
   }
 ]}";
             var target = new Entry();
-
-            var doc = JsonDocument.Parse(source);
-            var enumerator = doc.RootElement.EnumerateObject();
-            var vrs = new JsonProperty();
-            foreach (var prop in enumerator)
-            {
-                if (prop.Name == "vrs")
-                {
-                    vrs = prop;
-                    break;
-                }                
-            }
-
             var parser = new VariantsDictionaryEntryMemberParser();
+            var vrs = EntryMemberParserTestsHelper.GetJsonProperty(source, "vrs");
 
             // ACT
             parser.Parse(vrs, target);
@@ -64,7 +52,7 @@ namespace MerriamWebster.NET.Tests.Parsing
         }
 
         [TestMethod]
-        public void VariantsJsonContentParser_Parse_TargetIsNull()
+        public void VariantsDictionaryEntryMemberParser_Parse_TargetIsNull()
         {
             string source = @"{""vrs"":[
   {
@@ -73,25 +61,14 @@ namespace MerriamWebster.NET.Tests.Parsing
   }
 ]}";
 
-            var doc = JsonDocument.Parse(source);
-            var enumerator = doc.RootElement.EnumerateObject();
-            var vrs = new JsonProperty();
-            foreach (var prop in enumerator)
-            {
-                if (prop.Name == "vrs")
-                {
-                    vrs = prop;
-                    break;
-                }                
-            }
-
+            var vrs = EntryMemberParserTestsHelper.GetJsonProperty(source, "vrs");
             var parser = new VariantsDictionaryEntryMemberParser();
 
             Should.Throw<ArgumentNullException>(() => parser.Parse(vrs, null));
         }
 
         [TestMethod]
-        public void VariantsJsonContentParser_Parse_SourceIsNotVrs()
+        public void VariantsDictionaryEntryMemberParser_Parse_SourceIsNotVrs()
         {
             string source = @"{""abc"":[
   {
@@ -100,18 +77,7 @@ namespace MerriamWebster.NET.Tests.Parsing
   }
 ]}";
 
-            var doc = JsonDocument.Parse(source);
-            var enumerator = doc.RootElement.EnumerateObject();
-            var vrs = new JsonProperty();
-            foreach (var prop in enumerator)
-            {
-                if (prop.Name == "abc")
-                {
-                    vrs = prop;
-                    break;
-                }                
-            }
-
+            var vrs = EntryMemberParserTestsHelper.GetJsonProperty(source, "abc");
             var parser = new VariantsDictionaryEntryMemberParser();
 
             Should.Throw<ArgumentException>(() => parser.Parse(vrs, new Entry()));

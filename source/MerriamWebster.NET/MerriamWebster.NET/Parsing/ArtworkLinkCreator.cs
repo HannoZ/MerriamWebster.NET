@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Text.Json;
 
 namespace MerriamWebster.NET.Parsing
 {
@@ -8,40 +7,34 @@ namespace MerriamWebster.NET.Parsing
     /// </summary>
     public class ArtworkLinkCreator
     {
-        // TODO
-
         /// <summary>
         /// Creates a link to a web page that contains the artwork.
         /// </summary>
-        /// <param name="artwork">The artwork object.</param>
+        /// <param name="id">The artwork id.</param>
         /// <returns>A <see cref="Uri"/> that locates the page.</returns>
-        public static Uri CreatePageLink(JsonElement artwork)
+        public static Uri CreatePageLink(string id)
         {
-            return null;
+            if (string.IsNullOrEmpty(id))
+            {
+                return null;
+            }
 
-            //if (string.IsNullOrEmpty(artwork?.Id))
-            //{
-            //    return null;
-            //}
-
-            //return new Uri(string.Format(Configuration.ArtworkHtmlPagePlaceholder, artwork.Id));
+            return new Uri(string.Format(Configuration.ArtworkHtmlPagePlaceholder, id));
         }
 
         /// <summary>
         /// Creates a direct link to an artwork file.
         /// </summary>
-        /// <param name="artwork">The artwork object.</param>
+        /// <param name="id">The artwork id.</param>
         /// <returns>A <see cref="Uri"/> that locates the file.</returns>
-        public static Uri CreateDirectLink(JsonElement artwork)
+        public static Uri CreateDirectLink(string id)
         {
-            return null;
+            if (string.IsNullOrEmpty(id))
+            {
+                return null;
+            }
 
-            //if (string.IsNullOrEmpty(artwork?.Id))
-            //{
-            //    return null;
-            //}
-
-            //return new Uri(string.Format(Configuration.ArtworkDirectLinkPlaceholder, artwork.Id));
+            return new Uri(string.Format(Configuration.ArtworkDirectLinkPlaceholder, id));
         }
     }
 }
