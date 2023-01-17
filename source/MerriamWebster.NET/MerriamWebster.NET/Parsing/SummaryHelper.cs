@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using MerriamWebster.NET.Results;
 using MerriamWebster.NET.Results.Base;
 
 namespace MerriamWebster.NET.Parsing
@@ -11,17 +10,17 @@ namespace MerriamWebster.NET.Parsing
         {
             string summary = string.Empty;
 
-            //foreach (var entry in results.Where(e => e.ShortDefs?.Any() == true))
-            //{
-            //    if (entry.Metadata.Id == searchText)
-            //    {
-            //        summary += entry.Summary + " | ";
-            //    }
-            //    else
-            //    {
-            //        summary += $"{entry.Metadata.Id}: {entry.Summary} | ";
-            //    }
-            //}
+            foreach (var entry in results.Where(e => e.ShortDefs?.Any() == true))
+            {
+                if (entry.Metadata.Id == searchText)
+                {
+                    summary += entry.Summary + " | ";
+                }
+                else
+                {
+                    summary += $"{entry.Metadata.Id}: {entry.Summary} | ";
+                }
+            }
 
             return summary.TrimEnd(' ', '|');
         }

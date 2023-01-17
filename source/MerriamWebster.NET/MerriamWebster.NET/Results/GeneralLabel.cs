@@ -2,6 +2,7 @@
 {
     /// <summary>
     /// General labels provide information such as whether a headword is typically capitalized, used as an attributive noun, etc.
+    /// A set of one or more such labels is contained in an "lbs".
     /// </summary>
     /// <remarks>
     /// <b>Display Guidance:</b>

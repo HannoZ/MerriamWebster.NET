@@ -86,8 +86,7 @@ namespace MerriamWebster.NET.Results.Base
         /// <i>Optional.</i> Gets or sets defined run-ons.
         /// </summary>
         public ICollection<DefinedRunOn> DefinedRunOns { get; internal set; }
-
-
+        
         /// <summary>
         /// A short definition provides a highly abridged version of the main definition section, consisting of just the definition text for the first three senses.
         /// It is not meant to be displayed along with the full entry, but instead as an alternative, shortened preview of the entry content.

@@ -37,8 +37,6 @@ namespace MerriamWebster.NET.Parsing
                 var entryParser = new JsonEntryParser();
                 entryParser.Parse(result, entry);
 
-                // parse definitions
-                DefinitionParser.Parse(result, entry);
 
                 resultModel.Entries.Add(entry);
             }

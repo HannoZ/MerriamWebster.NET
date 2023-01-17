@@ -13,11 +13,6 @@ namespace MerriamWebster.NET.Results
         public ICollection<Pronunciation> Pronunciations { get; set; }
         
         /// <summary>
-        /// <i>Optional.</i>  Gets or sets the functional label.
-        /// </summary>
-        public FunctionalLabel FunctionalLabel { get; set; }
-
-        /// <summary>
         /// <i>Optional.</i>  Gets or sets the parenthesized subject/status label.
         /// </summary>
         public ParenthesizedSubjectStatusLabel ParenthesizedSubjectStatusLabel { get; set; }
@@ -36,10 +31,12 @@ namespace MerriamWebster.NET.Results
         /// <i>Optional.</i>  Gets or sets variants.
         /// </summary>
         public ICollection<Variant> Variants { get; set; }
-
+        
         /// <summary>
-        /// <i>Optional.</i> Undefined run-on text section containing <see cref="VerbalIllustration"/>s or <see cref="UsageNote"/>s.
+        /// <i>Required for Undefined run-ons. For Defined run-ons: Spanish-English only. </i>
+        /// <br/> Gets or sets the functional label.
         /// </summary>
-        public ICollection<IDefiningText> RunOnTexts { get; set; }
+        public FunctionalLabel FunctionalLabel { get; set; }
+
     }
 }

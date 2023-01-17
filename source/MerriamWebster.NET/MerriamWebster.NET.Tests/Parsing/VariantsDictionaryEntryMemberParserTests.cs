@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Text.Json;
 using MerriamWebster.NET.Parsing.Content;
 using MerriamWebster.NET.Results.Base;
 using Microsoft.VisualStudio.TestTools.UnitTesting;

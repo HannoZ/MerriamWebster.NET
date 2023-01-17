@@ -186,6 +186,8 @@ namespace MerriamWebster.NET.Tests.Parsing
             
             var senses = GetSenses(result.Entries).OfType<SenseBase>();
             senses.Where(s => s.Variants != null).ShouldNotBeNull();
+
+            entries.SelectMany(e=>e.DefinedRunOns).ShouldNotBeEmpty();
         }
 
         //[TestMethod]

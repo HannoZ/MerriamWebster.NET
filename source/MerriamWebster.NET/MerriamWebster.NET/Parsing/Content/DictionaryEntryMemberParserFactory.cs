@@ -32,8 +32,12 @@ namespace MerriamWebster.NET.Parsing.Content
                     return new VariantsDictionaryEntryMemberParser();
                 case "cxs":
                     return new CognateCrossReferenceJsonParser();
+                case "def":
+                    return new DefinitionDictionaryEntryMemberParser();
                 case "uros":
                     return new UndefinedRunOnsDictionaryEntryMemberParser();
+                case "dros":
+                    return new DefinedRunOnsDictionaryEntryMemberParser();
                 case "art":
                     return new ArtworkDictionaryEntryMemberParser();
 
