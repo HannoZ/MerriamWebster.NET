@@ -5,11 +5,6 @@ namespace MerriamWebster.NET.Results.Base
 
     public class Entry : EntryBase
     {
-        public Entry() : base()
-        {
-            
-        }
-
         /// <summary>
         /// <i>Optional.</i> Gets or sets the quotes.
         /// </summary>

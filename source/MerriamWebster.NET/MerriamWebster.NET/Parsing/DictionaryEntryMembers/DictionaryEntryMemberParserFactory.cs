@@ -42,6 +42,10 @@ namespace MerriamWebster.NET.Parsing.DictionaryEntryMembers
                     return new ArtworkDictionaryEntryMemberParser();
                 case "et":
                     return new EtymologyDictionaryEntryMemberParser();
+                case "dxnls":
+                    return new DirectionalCrossReferencesDictionaryEntryMemberParser();
+                case "usages":
+                    return new UsagesDictionaryEntryMemberParser();
 
                 // spanish-english only 
                 case "suppl":
