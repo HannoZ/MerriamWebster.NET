@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using MerriamWebster.NET.Parsing.DictionaryEntryMembers;
 using MerriamWebster.NET.Results.Base;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -51,6 +52,48 @@ namespace MerriamWebster.NET.Tests.Parsing
             var quote = target.Quotes.FirstOrDefault();
             quote.Text.Text.ShouldStartWith("Another of their assignments was to");
             quote.AttributionOfQuote.ShouldNotBe(null);
+        }
+
+         [TestMethod]
+        public void QuotesDictionaryEntryMemberParser_Parse_TargetIsNull()
+        {
+            string source = @"{ ""quotes"": [
+            {
+                ""t"": ""Another of their assignments was to slow-fly any plane that had a new engine to break it in; that meant flying the aircraft for a {qword}tedious{/qword} hour-and-a-half as slowly as it would possibly go without falling out of the sky."",
+                ""aq"": {
+                    ""auth"": ""Doris Weatherford"",
+                    ""source"": ""{it}American Women and World War II{/it}"",
+                    ""aqdate"": ""1990""
+                }
+            }            
+        ]}";
+
+            var parser = new QuotesDictionaryEntryMemberParser();
+            var quotes = EntryMemberParserTestsHelper.GetJsonProperty(source, "quotes");
+
+            // ACT/ ASSERT
+            Should.Throw<ArgumentNullException>(()=> parser.Parse(quotes, null));
+        }
+
+        [TestMethod]
+        public void QuotesDictionaryEntryMemberParser_Parse_SourceIsNotQuotes()
+        {
+            string source = @"{ ""abc"": [
+            {
+                ""t"": ""Another of their assignments was to slow-fly any plane that had a new engine to break it in; that meant flying the aircraft for a {qword}tedious{/qword} hour-and-a-half as slowly as it would possibly go without falling out of the sky."",
+                ""aq"": {
+                    ""auth"": ""Doris Weatherford"",
+                    ""source"": ""{it}American Women and World War II{/it}"",
+                    ""aqdate"": ""1990""
+                }
+            }            
+        ]}";
+
+            var parser = new QuotesDictionaryEntryMemberParser();
+            var quotes = EntryMemberParserTestsHelper.GetJsonProperty(source, "abc");
+
+            // ACT/ ASSERT
+            Should.Throw<ArgumentException>(()=> parser.Parse(quotes, new Entry()));
         }
     }
 }
