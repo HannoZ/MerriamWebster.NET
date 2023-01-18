@@ -155,7 +155,7 @@ namespace MerriamWebster.NET.Parsing
 
             if (source.TryGetProperty("prs", out var prs))
             {
-                sense.Pronunciations = new List<Pronunciation>(PronuncationParser.Parse(prs));
+                sense.Pronunciations = new List<Pronunciation>(PronunciationParser.Parse(prs));
             }
 
             if (source.TryGetProperty("ins", out var ins))

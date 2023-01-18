@@ -27,7 +27,7 @@ namespace MerriamWebster.NET.Parsing.DictionaryEntryMembers
 
             if (source.TryGetProperty("prs", out var prs))
             {
-                headwordInfo.Pronunciations = new List<Pronunciation>(PronuncationParser.Parse(prs));
+                headwordInfo.Pronunciations = new List<Pronunciation>(PronunciationParser.Parse(prs));
             }
 
             target.Headword = headwordInfo;

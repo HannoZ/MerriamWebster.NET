@@ -68,7 +68,7 @@ namespace MerriamWebster.NET.Parsing.DictionaryEntryMembers
 
                 if (uro.TryGetProperty("prs", out var prs))
                 {
-                    runon.Pronunciations = new List<Pronunciation>(PronuncationParser.Parse(prs));
+                    runon.Pronunciations = new List<Pronunciation>(PronunciationParser.Parse(prs));
                 }
 
                 if (uro.TryGetProperty("vrs", out var vrs))

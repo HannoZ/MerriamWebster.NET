@@ -17,7 +17,7 @@ namespace MerriamWebster.NET.Parsing.DefiningText
 
             if (source.TryGetProperty("prs", out var prs))
             {
-                biographicalNameWrap.Pronunciations = new List<Pronunciation>(PronuncationParser.Parse(prs));
+                biographicalNameWrap.Pronunciations = new List<Pronunciation>(PronunciationParser.Parse(prs));
             }
 
             return biographicalNameWrap;

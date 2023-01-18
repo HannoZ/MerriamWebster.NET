@@ -25,7 +25,7 @@ namespace MerriamWebster.NET.Tests.Parsing
             var doc = JsonDocument.Parse(source);
 
             // ACT
-            var prs = PronuncationParser.Parse(doc.RootElement).ToList();
+            var prs = PronunciationParser.Parse(doc.RootElement).ToList();
 
             // ASSERT
             prs.Count.ShouldBe(2);
@@ -55,7 +55,7 @@ namespace MerriamWebster.NET.Tests.Parsing
             var doc = JsonDocument.Parse(source);
 
             // ACT
-            var prs = PronuncationParser.Parse(doc.RootElement).ToList();
+            var prs = PronunciationParser.Parse(doc.RootElement).ToList();
 
             // ASSERT
             var pr = prs[0];
@@ -77,7 +77,7 @@ namespace MerriamWebster.NET.Tests.Parsing
   }";
             var doc = JsonDocument.Parse(source);
 
-            Should.Throw<ArgumentException>(() => PronuncationParser.Parse(doc.RootElement).ToList());
+            Should.Throw<ArgumentException>(() => PronunciationParser.Parse(doc.RootElement).ToList());
         }
     }
 }

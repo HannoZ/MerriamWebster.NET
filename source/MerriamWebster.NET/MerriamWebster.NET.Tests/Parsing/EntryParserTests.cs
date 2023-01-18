@@ -255,18 +255,19 @@ namespace MerriamWebster.NET.Tests.Parsing
 
         }
 
-        //[TestMethod]
-        //public void EntryParser_CanParse_Tedious()
-        //{
-        //    var data = LoadData("collegiate_tedious");
+        [TestMethod]
+        public async Task EntryParser_CanParse_Tedious()
+        {
+            var response = await TestHelper.LoadResponseFromFileAsync("collegiate_tedious");
+            var doc = JsonDocument.Parse(response);
 
-        //    // ACT
-        //    var result = _entryParser.Parse("tedious", data);
-
-        //    // ASSERT
-        //    result.Entries.Count.ShouldBe(1);
-        //    result.Entries.First().Quotes.Count.ShouldBe(3);
-        //}
+            // ACT
+            var result = _entryParser.ParseSearchResult(Configuration.CollegiateDictionary, doc);
+            
+            // ASSERT
+            result.Entries.Count.ShouldBe(1);
+            result.Entries.Cast<Entry>().First().Quotes.Count.ShouldBe(3);
+        }
 
         [TestMethod]
         public async Task EntryParser_CanParse_Knee()
@@ -387,67 +388,73 @@ namespace MerriamWebster.NET.Tests.Parsing
             result.Entries.First().Etymology.Text.Text.ShouldNotBeNull();
         }
 
-        //[TestMethod]
-        //public void EntryParser_CanParse_Collegiate_Agree()
-        //{
-        //    var data = LoadData("collegiate_agree");
+        [TestMethod]
+        public async Task EntryParser_CanParse_Collegiate_Agree()
+        {
+            var response = await TestHelper.LoadResponseFromFileAsync("collegiate_agree");
+            var doc = JsonDocument.Parse(response);
+            
+            // ACT
+            var result = _entryParser.ParseSearchResult(Configuration.CollegiateDictionary, doc);
 
-        //    // ACT
-        //    var result = _entryParser.Parse("agree", data);
+            // ASSERT
+            result.Entries.ShouldNotBeEmpty();
+            result.Entries.Cast<Entry>().ShouldContain(e => e.Synonyms != null && e.Synonyms.Any());
+        }
 
-        //    // ASSERT
-        //    result.Entries.ShouldNotBeEmpty();
-        //    result.Entries.ShouldContain(e=>e.Synonyms != null && e.Synonyms.Any());
-        //}
+        [TestMethod]
+        public async Task EntryParser_CanParse_Collegiate_Abide()
+        {
+            var response = await TestHelper.LoadResponseFromFileAsync("collegiate_abide");
+            var doc = JsonDocument.Parse(response);
+            
+            // ACT
+            var result = _entryParser.ParseSearchResult(Configuration.CollegiateDictionary, doc);
 
-        //[TestMethod]
-        //public void EntryParser_CanParse_Collegiate_Abide()
-        //{
-        //    var data = LoadData("collegiate_abide");
 
-        //    // ACT
-        //    var result = _entryParser.Parse("abide", data);
+            // ASSERT
+            result.Entries.ShouldNotBeEmpty();
+            result.Entries.Cast<Entry>().ShouldContain(e => e.Synonyms != null && e.Synonyms.Any());
 
-        //    // ASSERT
-        //    result.Entries.ShouldNotBeEmpty();
-        //    result.Entries.ShouldContain(e => e.Synonyms != null && e.Synonyms.Any());
+            var dts = GetDefiningTexts(result.Entries);
+            dts.ShouldNotBeEmpty();
+        }
 
-        //    var dts = GetDefiningTexts(result.Entries);
-        //    dts.ShouldNotBeEmpty();
-        //}
+        [TestMethod]
+        public async Task EntryParser_CanParse_Collegiate_Acadia()
+        {
+            var response = await TestHelper.LoadResponseFromFileAsync("collegiate_Acadia");
+            var doc = JsonDocument.Parse(response);
+            
+            // ACT
+            var result = _entryParser.ParseSearchResult(Configuration.CollegiateDictionary, doc);
+            
+            // ASSERT
+            result.Entries.Cast<Entry>().First().DirectionalCrossReferences.ShouldNotBeEmpty();
+        }
 
-        //[TestMethod]
-        //public void EntryParser_CanParse_Collegiate_Acadia()
-        //{
-        //    var data = LoadData("collegiate_Acadia");
+        [TestMethod]
+        public async Task EntryParser_CanParse_Collegiate_Above()
+        {
+            var response = await TestHelper.LoadResponseFromFileAsync("collegiate_above");
+            var doc = JsonDocument.Parse(response);
+            
+            // ACT
+            var result = _entryParser.ParseSearchResult(Configuration.CollegiateDictionary, doc);
 
-        //    // ACT
-        //    var result = _entryParser.Parse("acadia", data);
 
-        //    // ASSERT
-        //    result.Entries.First().DirectionalCrossReferences.ShouldNotBeEmpty();
+            // ASSERT
+            result.Entries.Count.ShouldBe(10);
+            var entries = result.Entries.Cast<Entry>().ToList();
+            entries.ShouldContain(e => e.Usages != null && e.Usages.Any());
 
-        //}
+            var usageTexts = entries.Where(e => e.Usages != null).SelectMany(e => e.Usages)
+                .SelectMany(u => u.ParagraphTexts)
+                .ToList();
+            usageTexts.OfType<DefiningText>().ShouldNotBeEmpty();
+            usageTexts.OfType<VerbalIllustration>().ShouldNotBeEmpty();
 
-        //[TestMethod]
-        //public void EntryParser_CanParse_Collegiate_Above()
-        //{
-        //    var data = LoadData("collegiate_above");
-
-        //    // ACT
-        //    var result = _entryParser.Parse("above", data);
-
-        //    // ASSERT
-        //    result.Entries.Count.ShouldBe(10);
-        //    result.Entries.ShouldContain(e=>e.Usages != null && e.Usages.Any());
-
-        //    var usageTexts = result.Entries.Where(e => e.Usages != null).SelectMany(e => e.Usages)
-        //        .SelectMany(u=>u.ParagraphTexts)
-        //        .ToList();
-        //    usageTexts.OfType<DefiningText>().ShouldNotBeEmpty();
-        //    usageTexts.OfType<VerbalIllustration>().ShouldNotBeEmpty();
-
-        //}
+        }
 
         //[TestMethod]
         //public void EntryParser_CanParse_Alphabet()

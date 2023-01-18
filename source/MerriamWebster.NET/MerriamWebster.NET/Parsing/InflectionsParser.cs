@@ -38,7 +38,7 @@ namespace MerriamWebster.NET.Parsing
                 }
                 if (ins.TryGetProperty("prs", out var prs))
                 {
-                    inflection.Pronunciations = new List<Pronunciation>(PronuncationParser.Parse(prs));
+                    inflection.Pronunciations = new List<Pronunciation>(PronunciationParser.Parse(prs));
                 }
 
                 // spanish-english only

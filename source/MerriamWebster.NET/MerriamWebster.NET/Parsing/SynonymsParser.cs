@@ -12,10 +12,10 @@ namespace MerriamWebster.NET.Parsing
 
 #if NET7_0_OR_GREATER
 
-        private static readonly Regex SynonymsRegex = Pattern();
+        private static readonly Regex SynonymsRegex = SynPattern();
 
         [GeneratedRegex("{sx\\|([\\p{L}]*\\s?[\\p{L}]*?)\\|\\|}")]
-        private static partial Regex Pattern();
+        private static partial Regex SynPattern();
 #else
         private static readonly Regex SynonymsRegex = new Regex("{sx\\|([\\p{L}]*\\s?[\\p{L}]*?)\\|\\|}", RegexOptions.Compiled);
 #endif

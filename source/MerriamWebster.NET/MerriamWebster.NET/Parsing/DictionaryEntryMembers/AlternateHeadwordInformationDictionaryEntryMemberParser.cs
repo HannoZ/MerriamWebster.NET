@@ -31,7 +31,7 @@ namespace MerriamWebster.NET.Parsing.DictionaryEntryMembers
 
                 if (ahw.TryGetProperty("prs", out var prs))
                 {
-                    altHw.Pronunciations = new List<Pronunciation>(PronuncationParser.Parse(prs));
+                    altHw.Pronunciations = new List<Pronunciation>(PronunciationParser.Parse(prs));
                 }
 
                 target.AlternateHeadwords.Add(altHw);

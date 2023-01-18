@@ -26,7 +26,7 @@ namespace MerriamWebster.NET.Parsing.DefiningText
                     };
                     if (cat.TryGetProperty("prs", out var prs))
                     {
-                        caTarget.Pronunciations = new List<Pronunciation>(PronuncationParser.Parse(prs));
+                        caTarget.Pronunciations = new List<Pronunciation>(PronunciationParser.Parse(prs));
                     }
 
                     note.Targets.Add(caTarget);

@@ -48,6 +48,8 @@ namespace MerriamWebster.NET.Parsing.DictionaryEntryMembers
                     return new UsagesDictionaryEntryMemberParser();
                 case "syns":
                     return new SynonymsDictionaryEntryMemberParser();
+                case "quotes":
+                    return new QuotesDictionaryEntryMemberParser();
 
                 // spanish-english only 
                 case "suppl":

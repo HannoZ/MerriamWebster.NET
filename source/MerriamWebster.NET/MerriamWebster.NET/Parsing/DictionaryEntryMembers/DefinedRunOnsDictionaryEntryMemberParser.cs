@@ -47,7 +47,7 @@ namespace MerriamWebster.NET.Parsing.DictionaryEntryMembers
 
                 if (dro.TryGetProperty("prs", out var prs))
                 {
-                    runon.Pronunciations = new List<Pronunciation>(PronuncationParser.Parse(prs));
+                    runon.Pronunciations = new List<Pronunciation>(PronunciationParser.Parse(prs));
                 }
 
                 if (dro.TryGetProperty("vrs", out var vrs))
