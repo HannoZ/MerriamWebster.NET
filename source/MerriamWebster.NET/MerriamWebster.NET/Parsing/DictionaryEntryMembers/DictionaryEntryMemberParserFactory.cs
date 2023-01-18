@@ -46,6 +46,8 @@ namespace MerriamWebster.NET.Parsing.DictionaryEntryMembers
                     return new DirectionalCrossReferencesDictionaryEntryMemberParser();
                 case "usages":
                     return new UsagesDictionaryEntryMemberParser();
+                case "syns":
+                    return new SynonymsDictionaryEntryMemberParser();
 
                 // spanish-english only 
                 case "suppl":

@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.Text.Json.Serialization;
+using MerriamWebster.NET.Parsing.DefiningText;
 
 namespace MerriamWebster.NET.Results
 {
@@ -26,11 +28,17 @@ namespace MerriamWebster.NET.Results
         /// <summary>
         /// paragraph text 
         /// </summary>
-        public ICollection<IDefiningText> DefiningTexts { get; set; } = new List<IDefiningText>();
+        public ICollection<IDefiningText> ParagraphTexts { get; set; }
 
         /// <summary>
-        /// see in addition reference: contains one or more elements, each of which is the text and ID of a "see in addition" reference to another synonym section.
+        /// See in addition reference: contains one or more elements, each of which is the text and ID of a "see in addition" reference to another synonym section.
         /// </summary>
         public ICollection<string> SeeInAdditionReference { get; set; }
+
+        /// <summary>
+        /// Experimental feature! A summary of the <see cref="ParagraphTexts"/> content.
+        /// </summary>
+        [JsonIgnore]
+        public FormattedText Summary => ParagraphTexts.Build();
     }
 }

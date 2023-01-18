@@ -14,12 +14,7 @@ namespace MerriamWebster.NET.Results.Base
         /// <i>Optional.</i> Gets or sets the artwork.
         /// </summary>
         public Artwork Artwork { get; internal set; }
-
-        /// <summary>
-        /// <i>Optional.</i> Gets or sets synonyms.
-        /// </summary>
-        public ICollection<Synonym> Synonyms { get; internal set; }
-
+        
         /// <summary>
         /// <i>Optional.</i> Directional cross-references to other entries may be presented after the main definition section.
         /// </summary>
@@ -33,6 +28,11 @@ namespace MerriamWebster.NET.Results.Base
         /// <i>Optional.</i> Gets or sets the usages. 
         /// </summary>
         public ICollection<Usage> Usages { get; internal set; }
+
+        /// <summary>
+        /// <i>Optional.</i> Gets or sets synonyms.
+        /// </summary>
+        public ICollection<Synonym> Synonyms { get; internal set; }
 
         /// <summary>
         /// <i>Optional.</i> Gets or sets a table.
