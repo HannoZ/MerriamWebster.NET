@@ -27,6 +27,6 @@ namespace MerriamWebster.NET.Results
         /// <summary>
         /// Gets the location of the table, based on the <see cref="TableId"/>.
         /// </summary>
-        public Uri TableLocation => new Uri(string.Format(BaseUri, TableId));
+        public Uri TableLocation => !string.IsNullOrEmpty(TableId) ? new Uri(string.Format(BaseUri, TableId)) : null;
     }
 }
