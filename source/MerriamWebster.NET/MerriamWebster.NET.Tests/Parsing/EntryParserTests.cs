@@ -3,11 +3,12 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using Moq.AutoMock;
-using Newtonsoft.Json;
 using Shouldly;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text.Json;
 using System.Threading.Tasks;
 using MerriamWebster.NET.Results;
@@ -44,52 +45,53 @@ namespace MerriamWebster.NET.Tests.Parsing
             result.Entries.ShouldNotBeEmpty();
         }
 
-        //[TestMethod]
-        //public async Task EntryParser_CanParse_All()
-        //{
-        //    string[] exclusions = { "coll_thes_above_meta.json", "sense_learn_apple.json", "sense_above.json", "sense_med_doctor.json" };
-        //    var asm = Assembly.GetExecutingAssembly();
-        //    var resources = asm.GetManifestResourceNames();
+        [TestMethod]
+        public async Task EntryParser_CanParse_All()
+        {
+            string[] exclusions = { "coll_thes_above_meta.json", "sense_learn_apple.json", "sense_above.json", "sense_med_doctor.json" };
+            var asm = Assembly.GetExecutingAssembly();
+            var resources = asm.GetManifestResourceNames();
+            
 
-        //    var settings = new JsonSerializerSettings
-        //    {
-        //        TypeNameAssemblyFormatHandling = TypeNameAssemblyFormatHandling.Simple,
-        //        TypeNameHandling = TypeNameHandling.Objects,
-        //        NullValueHandling = NullValueHandling.Ignore
-        //    };
+            foreach (var resource in resources)
+            {
+                if (exclusions.Any(e => resource.EndsWith(e)))
+                {
+                    continue;
+                }
 
-        //    foreach (var resource in resources)
-        //    {
-        //        if (exclusions.Any(e => resource.EndsWith(e)))
-        //        {
-        //            continue;
-        //        }
+                await using var resourceStream = asm.GetManifestResourceStream(resource);
 
-        //        await using var resourceStream = asm.GetManifestResourceStream(resource);
+                using var reader = new StreamReader(resourceStream);
+                string content = await reader.ReadToEndAsync();
 
-        //        using var reader = new StreamReader(resourceStream);
-        //        string content = await reader.ReadToEndAsync();
+                try
+                {
+                    // ACT
+                    var doc = JsonDocument.Parse(content);
+                    string api = resource.Contains("_")
+                        ? Configuration.CollegiateDictionary
+                        : Configuration.SpanishEnglishDictionary;
+                    var result = _entryParser.ParseSearchResult(api, doc);
 
-        //        try
-        //        {
-        //            var data = JsonConvert.DeserializeObject<MwDictionaryEntry[]>(content, Converter.Settings);
+                    // ASSERT
+                    result.Entries.ShouldNotBeEmpty();
 
-        //            // ACT
-        //            var result = _entryParser.Parse("api", data);
+                    // verify serialization/deserialization
+                    var options = new JsonSerializerOptions()
+                    {
+                        
+                    };
 
-        //            // ASSERT
-        //            result.Entries.ShouldNotBeEmpty();
-
-        //            // verify serialization/deserialization
-        //            var serialized = JsonConvert.SerializeObject(result, settings);
-        //            var deserialized = JsonConvert.DeserializeObject<ResultModel>(serialized, settings);
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            throw new NotImplementedException(resource, ex);
-        //        }
-        //    }
-        //}
+                    var serialized = System.Text.Json.JsonSerializer.Serialize(result, options);
+                    var deserialized = JsonSerializer.Deserialize<ResultModel>(serialized, options);
+                }
+                catch (Exception ex)
+                {
+                    throw new NotImplementedException(resource, ex);
+                }
+            }
+        }
 
 
 
@@ -189,67 +191,7 @@ namespace MerriamWebster.NET.Tests.Parsing
 
             entries.SelectMany(e=>e.DefinedRunOns).ShouldNotBeEmpty();
         }
-
-        //[TestMethod]
-        //public void EntryParser_CanParse_House()
-        //{
-        //    var data = LoadData("house");
-
-        //    // ACT
-        //    var result = _entryParser.Parse("house", data);
-
-        //    // ASSERT
-        //    result.Entries.ShouldNotBeEmpty();
-        //}
-
-        //[TestMethod]
-        //public void EntryParser_CanParse_Pueblo()
-        //{
-        //    var data = LoadData("pueblo");
-
-        //    // ACT
-        //    var result = _entryParser.Parse("pueblo", data);
-
-        //    // ASSERT
-        //    result.Entries.ShouldNotBeEmpty();
-        //}
-
-        //[TestMethod]
-        //public void EntryParser_CanParse_Abeja()
-        //{
-        //    var data = LoadData("abeja");
-
-        //    // ACT
-        //    var result = _entryParser.Parse("abeja", data);
-
-        //    // ASSERT
-        //    result.Entries.ShouldNotBeEmpty();
-        //}
-
-        //[TestMethod]
-        //public void EntryParser_CanParse_CollegiateDict_Voluminous()
-        //{
-        //    var data = LoadData("coll_dict_voluminous");
-
-        //    // ACT
-        //    var result = _entryParser.Parse("voluminous", data);
-
-        //    // ASSERT
-        //    result.Entries.ShouldNotBeEmpty();
-        //}
-
-        //[TestMethod]
-        //public void EntryParser_CanParse_CollegiateThes_Umpire()
-        //{
-        //    var data = LoadData("coll_thes_umpire");
-
-        //    // ACT
-        //    var result = _entryParser.Parse("umpire", data);
-
-        //    // ASSERT
-        //    result.Entries.ShouldNotBeEmpty();
-        //}
-
+        
 
         //[TestMethod]
         //public void EntryParser_CanParse_CollegiateThes_Above_Metadata()
@@ -265,20 +207,7 @@ namespace MerriamWebster.NET.Tests.Parsing
         //    //entry.Metadata.Synonyms.ShouldNotBeEmpty();
         //    //entry.Metadata.Antonyms.ShouldNotBeEmpty();
         //}
-
-
-        //[TestMethod]
-        //public void EntryParser_CanParse_Medical_Doctor()
-        //{
-        //    var data = LoadData("med_doctor");
-
-        //    // ACT
-        //    var result = _entryParser.Parse("doctor", data);
-
-        //    // ASSERT
-        //    result.Entries.ShouldNotBeEmpty();
-        //}
-
+        
         [TestMethod]
         public async Task EntryParser_CanParse_Learners_Apple()
         {
@@ -294,93 +223,37 @@ namespace MerriamWebster.NET.Tests.Parsing
             definingTexts.OfType<SupplementalInformationNote>().ShouldNotBeEmpty();
         }
 
-        //[TestMethod]
-        //public void EntryParser_CanParse_ElementaryDictionary_School()
-        //{
-        //    var data = LoadData("elem_dict_school");
+        [TestMethod]
+        public async Task EntryParser_CanParse_Quedar()
+        {
+            var response = await TestHelper.LoadResponseFromFileAsync("quedar");
+            var doc = JsonDocument.Parse(response);
 
-        //    // ACT
-        //    var result = _entryParser.Parse("school", data);
+            // ACT
+            var result = _entryParser.ParseSearchResult(Configuration.SpanishEnglishDictionary, doc);
+            var entries = result.Entries.Cast<SpanishEnglishEntry>().ToList();
 
-        //    // ASSERT
-        //    result.Entries.ShouldNotBeEmpty();
-        //}
+            // ASSERT
+            result.Entries.ShouldNotBeEmpty();
+            entries.ShouldContain(e => e.Conjugations != null);
+        }
+
+        [TestMethod]
+        public async Task EntryParser_CanParse_Sierra()
+        {
+            var response = await TestHelper.LoadResponseFromFileAsync("sierra");
+            var doc = JsonDocument.Parse(response);
+
+            // ACT
+            var result = _entryParser.ParseSearchResult(Configuration.SpanishEnglishDictionary, doc);
+            var entries = result.Entries.Cast<SpanishEnglishEntry>().ToList();
 
 
-        //[TestMethod]
-        //public void EntryParser_CanParse_IntermediateDictionary_Dragon()
-        //{
-        //    var data = LoadData("inter_dict_dragon");
+            // ASSERT
+            result.Entries.Count.ShouldBe(4);
+            entries.ShouldContain(e => e.CrossReferences.Any());
 
-        //    // ACT
-        //    var result = _entryParser.Parse("dragon", data);
-
-        //    // ASSERT
-        //    result.Entries.ShouldNotBeEmpty();
-        //}
-
-        //[TestMethod]
-        //public void EntryParser_CanParse_IntermediateThesaurus_Umpire()
-        //{
-        //    var data = LoadData("inter_thes_umpire");
-
-        //    // ACT
-        //    var result = _entryParser.Parse("umpire", data);
-
-        //    // ASSERT
-        //    result.Entries.ShouldNotBeEmpty();
-        //}
-
-        //[TestMethod]
-        //public void EntryParser_CanParse_SchoolDictionary_Baseball()
-        //{
-        //    var data = LoadData("school_dict_baseball");
-
-        //    // ACT
-        //    var result = _entryParser.Parse("baseball", data);
-
-        //    // ASSERT
-        //    result.Entries.ShouldNotBeEmpty();
-        //}
-
-        //[TestMethod]
-        //public void EntryParser_SynonymsNotInSummary()
-        //{
-        //    var data = LoadData("pueblo");
-
-        //    // ACT
-        //    var result = _entryParser.Parse("pueblo", data);
-
-        //    // ASSERT
-        //    result.Entries.ShouldNotBeEmpty();
-        //}
-
-        //[TestMethod]
-        //public void EntryParser_CanParse_Quedar()
-        //{
-        //    var data = LoadData("quedar");
-
-        //    // ACT
-        //    var result = _entryParser.Parse("quedar", data);
-
-        //    // ASSERT
-        //    result.Entries.ShouldNotBeEmpty();
-        //    //result.Entries.ShouldContain(e => e.Conjugations != null);
-        //}
-
-        //[TestMethod]
-        //public void EntryParser_CanParse_Sierra()
-        //{
-        //    var data = LoadData("sierra");
-
-        //    // ACT
-        //    var result = _entryParser.Parse("sierra", data);
-
-        //    // ASSERT
-        //    result.Entries.Count.ShouldBe(4);
-        //    result.Entries.ShouldContain(e => e.CrossReferences.Any());
-
-        //}
+        }
 
         //[TestMethod]
         //public void EntryParser_CanParse_Tedious()
@@ -409,63 +282,39 @@ namespace MerriamWebster.NET.Tests.Parsing
             result.Entries.Count.ShouldBe(10);
         }
 
-        //[TestMethod]
-        //public void EntryParser_CanParse_Med_Pelvis()
-        //{
-        //    var data = LoadData("med_pelvis");
+        [TestMethod]
+        public async Task EntryParser_CanParse_Collegiate_Pelvis()
+        {
+            var response = await TestHelper.LoadResponseFromFileAsync("collegiate_pelvis");
+            var doc = JsonDocument.Parse(response);
 
-        //    // ACT
-        //    var result = _entryParser.Parse("pelvis", data);
+            // ACT
+            var result = _entryParser.ParseSearchResult(Configuration.CollegiateDictionary, doc);
 
-        //    // ASSERT
-        //    result.Entries.Count.ShouldBe(7);
+            // ASSERT
+            result.Entries.Count.ShouldBe(2);
+            result.Entries.SelectMany(e => e.Definitions).ShouldContain(d => d.SubjectStatusLabels != null);
+        }
 
-        //}
+        [TestMethod]
+        public async Task EntryParser_CanParse_Collegiate_Heart()
+        {
+            var response = await TestHelper.LoadResponseFromFileAsync("collegiate_heart");
+            var doc = JsonDocument.Parse(response);
 
-        //[TestMethod]
-        //public void EntryParser_CanParse_Collegiate_Pelvis()
-        //{
-        //    var data = LoadData("collegiate_pelvis");
+            // ACT
+            var result = _entryParser.ParseSearchResult(Configuration.CollegiateDictionary, doc);
+            
+            // ASSERT
+            result.Entries.Count.ShouldBe(10);
+            var senses = GetSenses(result.Entries).OfType<SenseBase>();
+            senses.ShouldContain(s => s.SubjectStatusLabels != null);
 
-        //    // ACT
-        //    var result = _entryParser.Parse("pelvis", data);
+            var definingTexts = GetDefiningTexts(result.Entries).ToList();
 
-        //    // ASSERT
-        //    result.Entries.Count.ShouldBe(2);
-        //    result.Entries.SelectMany(e => e.Definitions).ShouldContain(d => d.SubjectStatusLabels != null);
-        //}
-
-        //[TestMethod]
-        //public void EntryParser_CanParse_Collegiate_Heart()
-        //{
-        //    var data = LoadData("collegiate_heart");
-
-        //    // ACT
-        //    var result = _entryParser.Parse("heart", data);
-
-        //    // ASSERT
-        //    result.Entries.Count.ShouldBe(10);
-        //    var senses = GetSenses(result.Entries).OfType<SenseBase>();
-        //    senses.ShouldContain(s => s.SubjectStatusLabels != null);
-
-        //    var definingTexts = GetDefiningTexts(result.Entries).ToList();
-
-        //    definingTexts.OfType<SupplementalInformationNote>().ShouldNotBeEmpty();
-        //    definingTexts.OfType<CalledAlsoNote>().ShouldNotBeEmpty();
-        //}
-
-        //[TestMethod]
-        //public void EntryParser_CanParse_Collegiate_Reap()
-        //{
-        //    var data = LoadData("collegiate_reap");
-
-        //    // ACT
-        //    var result = _entryParser.Parse("reap", data);
-
-        //    // ASSERT
-        //    result.Entries.Count.ShouldBe(4);
-
-        //}
+            definingTexts.OfType<SupplementalInformationNote>().ShouldNotBeEmpty();
+            definingTexts.OfType<CalledAlsoNote>().ShouldNotBeEmpty();
+        }
 
         [TestMethod]
         public async Task EntryParser_CanParse_Collegiate_Feline()
@@ -522,19 +371,21 @@ namespace MerriamWebster.NET.Tests.Parsing
             un.First().DefiningTexts.OfType<VerbalIllustration>().Count().ShouldBe(2);
         }
 
-        //[TestMethod]
-        //public void EntryParser_CanParse_Collegiate_Alliteration()
-        //{
-        //    var data = LoadData("collegiate_alliteration");
+        [TestMethod]
+        public async Task EntryParser_CanParse_Collegiate_Alliteration()
+        {
+            var response = await TestHelper.LoadResponseFromFileAsync("collegiate_alliteration");
+            var doc = JsonDocument.Parse(response);
+            
+            // ACT
+            var result = _entryParser.ParseSearchResult(Configuration.CollegiateDictionary, doc);
 
-        //    // ACT
-        //    var result = _entryParser.Parse("alliteration", data);
 
-        //    // ASSERT
-        //    result.Entries.Count.ShouldBe(1);
-        //    result.Entries.First().Etymology.Note.Text.ShouldNotBeNull();
-        //    result.Entries.First().Etymology.Text.Text.ShouldNotBeNull();
-        //}
+            // ASSERT
+            result.Entries.Count.ShouldBe(1);
+            result.Entries.First().Etymology.Note.Text.ShouldNotBeNull();
+            result.Entries.First().Etymology.Text.Text.ShouldNotBeNull();
+        }
 
         //[TestMethod]
         //public void EntryParser_CanParse_Collegiate_Agree()
@@ -657,34 +508,28 @@ namespace MerriamWebster.NET.Tests.Parsing
         //    result.Entries.First().BiographicalNote.Contents.Count.ShouldBe(7);
         //}
 
-        //[TestMethod]
-        //public void EntryParser_CanParse_Tejon()
-        //{
-        //    var data = LoadData("tejón");
 
-        //    // ACT
-        //    var result = _entryParser.Parse("tejón", data);
+        [TestMethod]
+        public async Task EntryParser_CanParse_Ver()
+        {
+            var response = await TestHelper.LoadResponseFromFileAsync("ver");
+            var doc = JsonDocument.Parse(response);
+            
+            // ACT
+            var result = _entryParser.ParseSearchResult(Configuration.SpanishEnglishDictionary, doc);
+            
+            // ASSERT
+            result.Entries.ShouldNotBeEmpty();
+            result.Summary.ShouldNotBeNull();
 
-        //    // ASSERT
-        //    result.Entries.ShouldNotBeEmpty();
+            var options = new JsonSerializerOptions()
+            {
+                        
+            };
+            var serialized = System.Text.Json.JsonSerializer.Serialize(result, options);
+            var d = JsonSerializer.Deserialize<ResultModel>(serialized, options);
+        }
 
-        //    result.Summary.ShouldNotBeNull();
-        //}
-
-        //[TestMethod]
-        //public void EntryParser_CanParse_Ver()
-        //{
-        //    var data = LoadData("ver");
-
-        //    // ACT
-        //    var result = _entryParser.Parse("ver", data);
-
-        //    // ASSERT
-        //    result.Entries.ShouldNotBeEmpty();
-
-        //    result.Summary.ShouldNotBeNull();
-        //}
-        
         private static IEnumerable<SenseSequenceSense> GetSenses(IEnumerable<EntryBase> entries) =>
             entries.SelectMany(e => e.Definitions)
                 .SelectMany(d => d.SenseSequence)

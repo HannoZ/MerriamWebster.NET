@@ -17,6 +17,11 @@ namespace MerriamWebster.NET.Results.Base
     /// </remarks>
     public class Metadata : IMetadata
     {
+        public Metadata()
+        {
+            
+        }
+
         /// <summary>
         /// Unique entry identifier within a particular dictionary data set, used in cross-references pointing to the entry. It consists of the headword, and in homograph entries, an appended colon and homograph number.
         /// </summary>

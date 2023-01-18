@@ -1,4 +1,4 @@
-﻿using MerriamWebster.NET.Parsing;
+﻿using MerriamWebster.NET.Parsing.DefiningText;
 using System.Collections.Generic;
 
 namespace MerriamWebster.NET.Results

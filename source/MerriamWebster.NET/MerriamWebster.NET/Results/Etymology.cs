@@ -1,4 +1,8 @@
-﻿namespace MerriamWebster.NET.Results
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Text.Json.Serialization;
+
+namespace MerriamWebster.NET.Results
 {
     /// <summary>
     /// An explanation of the historical origin of a word.
@@ -9,19 +13,30 @@
     /// <para>
     /// While the etymology most typically relates to the headword, it may also explain the origin of a defined run-on phrase or a particular sense.
     /// </para>
+    /// <para>
     /// <b>Display Guidance:</b>
     /// Typically displayed inline within square brackets or in its own block with a heading such as "Word Origin".
+    /// </para>
+    /// <para>
+    /// Etymology notes do not appear to ever have more than one item. So the note texts are summarized into a single property <see cref="Note"/> for easier use.
+    /// </para>
     /// </remarks>
     public class Etymology
     {
         /// <summary>
         /// Contains the etymology content.
         /// </summary>
-        public FormattedText Text { get; set; } = new FormattedText();
+        public FormattedText Text { get; set; } = new ();
 
         /// <summary>
-        /// <i>Optional.</i> Contains a supplemental information note for the etymology.
+        /// <i>Optional.</i> A summary of any notes.
         /// </summary>
-        public FormattedText Note { get; set; } 
+        [JsonIgnore]
+        public FormattedText Note => Notes?.Any() == true ? string.Join(',', Notes.Where(n=>n.Text != null).Select(n=>n.Text.RawText)) : null;
+
+        /// <summary>
+        /// <i>Optional.</i> Gets or sets the etymology notes.
+        /// </summary>
+        public ICollection<EtymologyNote> Notes { get; set; }
     }
 }

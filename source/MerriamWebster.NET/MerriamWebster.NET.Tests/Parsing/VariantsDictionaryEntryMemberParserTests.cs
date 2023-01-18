@@ -1,5 +1,5 @@
 ﻿using System;
-using MerriamWebster.NET.Parsing.Content;
+using MerriamWebster.NET.Parsing.DictionaryEntryMembers;
 using MerriamWebster.NET.Results.Base;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Shouldly;

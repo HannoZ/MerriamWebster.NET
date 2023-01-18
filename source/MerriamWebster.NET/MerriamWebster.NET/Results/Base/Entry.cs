@@ -2,24 +2,19 @@
 
 namespace MerriamWebster.NET.Results.Base
 {
-    /// <summary>
-    /// The organizational unit of a dictionary. An entry consists of at minimum a headword, along with content defining or translating the headword.
-    /// </summary>
-    /// <remarks>
-    /// A dictionary entry has many properties, but many appear only in specific APIs. (eg. <see cref="Conjugations"/> only appear in the Spanish-English dictionary)
-    /// </remarks>
+
     public class Entry : EntryBase
     {
+        public Entry() : base()
+        {
+            
+        }
+
         /// <summary>
         /// <i>Optional.</i> Gets or sets the quotes.
         /// </summary>
         public ICollection<Quote> Quotes { get; internal set; }
         
-        /// <summary>
-        /// <i>Optional.</i> Gets or sets the etymology.
-        /// </summary>
-        public Etymology Etymology { get; internal set; }
-
         /// <summary>
         /// <i>Optional.</i> Gets or sets the artwork.
         /// </summary>

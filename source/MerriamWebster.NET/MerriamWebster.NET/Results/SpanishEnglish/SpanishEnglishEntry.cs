@@ -5,6 +5,11 @@ namespace MerriamWebster.NET.Results.SpanishEnglish
 {
     public class SpanishEnglishEntry : EntryBase
     {
+        public SpanishEnglishEntry() : base()
+        {
+            
+        }
+
         //public SpanishEnglishMetadata Metadata { get; internal set; } = new ();
         
         /// <summary>

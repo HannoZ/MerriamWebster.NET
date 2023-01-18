@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Linq;
-using MerriamWebster.NET.Parsing.Content;
+using MerriamWebster.NET.Parsing.DictionaryEntryMembers;
 using MerriamWebster.NET.Results.Base;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Shouldly;
@@ -152,7 +152,7 @@ namespace MerriamWebster.NET.Tests.Parsing
             var dro = target.DefinedRunOns.First();
             dro.Phrase.ShouldBe("at heart");
             dro.FunctionalLabel.Text.ShouldBe("func label");
-            // TODO ET
+            dro.Etymology.Text.Text.ShouldBe("Some text");
             dro.Definitions.ShouldNotBeEmpty();
             dro.Pronunciations.ShouldNotBeEmpty();
             dro.Variants.ShouldNotBeEmpty();

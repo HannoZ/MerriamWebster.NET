@@ -1,9 +1,10 @@
-﻿using System;
+﻿using MerriamWebster.NET.Parsing.DefiningText;
+using MerriamWebster.NET.Results;
+using MerriamWebster.NET.Results.SpanishEnglish;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.Json;
-using MerriamWebster.NET.Results;
-using MerriamWebster.NET.Results.SpanishEnglish;
 
 namespace MerriamWebster.NET.Parsing
 {
@@ -162,8 +163,10 @@ namespace MerriamWebster.NET.Parsing
                 sense.Inflections = new List<Inflection>(InflectionsParser.Parse(ins));
             }
 
-
-            // TODO etymology
+            if (source.TryGetProperty("et", out var et))
+            {
+                sense.Etymology = EtymologyParser.Parse(et);
+            }
         }
 
         private static void ParseSpecificSenseProperties(JsonElement source, SenseBase sense)
@@ -176,7 +179,7 @@ namespace MerriamWebster.NET.Parsing
 
                 if (sense is Sense s)
                 {
-                    foreach (var dt in sense.DefiningTexts.OfType<DefiningText>())
+                    foreach (var dt in sense.DefiningTexts.OfType<Results.DefiningText>())
                     {
                         var text = dt.Text.RawText;
                         var synonyms = SynonymsParser.ExtractSynonyms(text).ToList();

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Text.Json;
-using MerriamWebster.NET.Parsing.Content;
+using MerriamWebster.NET.Parsing.DictionaryEntryMembers;
 using MerriamWebster.NET.Results;
 
 namespace MerriamWebster.NET.Parsing
@@ -36,8 +36,7 @@ namespace MerriamWebster.NET.Parsing
                 // handle some specific properties
                 var entryParser = new JsonEntryParser();
                 entryParser.Parse(result, entry);
-
-
+                
                 resultModel.Entries.Add(entry);
             }
 

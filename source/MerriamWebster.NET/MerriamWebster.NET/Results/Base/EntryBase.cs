@@ -3,8 +3,22 @@ using System.Text.Json.Serialization;
 
 namespace MerriamWebster.NET.Results.Base
 {
-    public abstract class EntryBase
+    /// <summary>
+    /// The organizational unit of a dictionary. An entry consists of at minimum a headword, along with content defining or translating the headword.
+    /// </summary>
+    /// <remarks>
+    /// A dictionary entry has many properties, but many appear only in specific APIs. (eg. <see cref="Conjugations"/> only appear in the Spanish-English dictionary)
+    /// </remarks>
+    public class EntryBase
     {
+        /// <summary>
+        /// Default constructor required for deserialization.
+        /// </summary>
+        public EntryBase()
+        {
+            
+        }
+
         public Metadata Metadata { get; set; }
 
         /// <summary>
@@ -87,6 +101,11 @@ namespace MerriamWebster.NET.Results.Base
         /// </summary>
         public ICollection<DefinedRunOn> DefinedRunOns { get; internal set; }
         
+        /// <summary>
+        /// <i>Optional.</i> Gets or sets the etymology.
+        /// </summary>
+        public Etymology Etymology { get; internal set; }
+
         /// <summary>
         /// A short definition provides a highly abridged version of the main definition section, consisting of just the definition text for the first three senses.
         /// It is not meant to be displayed along with the full entry, but instead as an alternative, shortened preview of the entry content.
