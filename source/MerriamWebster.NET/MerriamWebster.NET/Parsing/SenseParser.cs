@@ -9,9 +9,9 @@ using System.Text.Json;
 namespace MerriamWebster.NET.Parsing
 {
     /// <summary>
-    /// The <see cref="JsonSenseParser"/> class does the heavy-lifting of peeling the senses out of a search result.
+    /// The <see cref="SenseParser"/> class does the heavy-lifting of peeling the senses out of a search result.
     /// </summary>
-    public class JsonSenseParser
+    public class SenseParser
     {
         public static void Parse(JsonElement source, Definition target)
         {

@@ -13,7 +13,7 @@ namespace MerriamWebster.NET.Parsing
                 SubjectStatusLabels = LabelsParser.ParseMultiple<SubjectStatusLabel>(source, "sls")
             };
 
-            JsonSenseParser.Parse(source, definition);
+            SenseParser.Parse(source, definition);
 
             return definition;
         }

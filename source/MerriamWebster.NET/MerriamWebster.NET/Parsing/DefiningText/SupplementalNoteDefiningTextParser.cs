@@ -11,6 +11,8 @@ namespace MerriamWebster.NET.Parsing.DefiningText
         {
             var snote = new SupplementalInformationNote();
 
+            // supplemental notes can contain nested defining types like "vis" and "ri"
+            // we must collect those objects first and add each one to the supplemental note separately
             var elements = new List<JsonElement>();
             Enumerate(source);
 

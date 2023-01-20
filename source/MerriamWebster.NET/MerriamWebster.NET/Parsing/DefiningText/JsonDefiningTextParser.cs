@@ -32,7 +32,9 @@ namespace MerriamWebster.NET.Parsing.DefiningText
                     continue;
                 }
 
-                if (dataElement.ValueKind == JsonValueKind.Array)
+                if (dataElement.ValueKind == JsonValueKind.Array
+                    && definitionType != DefiningTextTypes.RunIn) 
+                    // run-in must be parsed as complete array instead of single elements because the elements belong together
                 {
                     // handle type like "vis" that contain an array of items 
                     foreach (var element in dataElement.EnumerateArray())

@@ -11,6 +11,8 @@ namespace MerriamWebster.NET.Parsing.DefiningText
         {
             var usageNote = new UsageNote();
 
+            // usage notes can contain nested defining types like "vis" and "ri"
+            // we must collect those objects first and add each one to the usage note separately
             var elements = new List<JsonElement>();
             Enumerate(source);
             foreach (var element in elements)

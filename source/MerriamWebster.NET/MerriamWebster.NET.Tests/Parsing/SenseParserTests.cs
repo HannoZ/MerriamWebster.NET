@@ -8,8 +8,6 @@ using Shouldly;
 
 namespace MerriamWebster.NET.Tests.Parsing
 {
-    // TODO many tests should be moved to DefiningTextParserTests class
-
     [TestClass]
     public class SenseParserTests
     {
@@ -122,51 +120,128 @@ namespace MerriamWebster.NET.Tests.Parsing
         //    }
         //}
 
-        //[TestMethod]
-        //public void SenseParser_CanParse_Abaco()
-        //{
-        //    var defs = LoadDefinitions("collegiate_abaco");
-        //    List<Results.Definition> definitions = new List<Results.Definition>();
+        [TestMethod]
+        public void SenseParser_CanParse_Abaco()
+        {
+            string source = @"{""sseq"": [
+                    [
+                        [
+                            ""sense"",
+                            {
+                                ""dt"": [
+                                    [
+                                        ""text"",
+                                        ""two islands of the Bahamas (""
+                                    ],
+                                    [
+                                        ""ri"",
+                                        [
+                                            [
+                                                ""riw"",
+                                                {
+                                                    ""rie"": ""Great Abaco""
+                                                }
+                                            ],
+                                            [
+                                                ""text"",
+                                                "" and ""
+                                            ],
+                                            [
+                                                ""riw"",
+                                                {
+                                                    ""rie"": ""Little Abaco""
+                                                }
+                                            ]
+                                        ]
+                                    ],
+                                    [
+                                        ""text"",
+                                        "" ) north of New Providence Island {it}area{/it} 776 square miles (2018 square kilometers), {it}population{/it} 13,170""
+                                    ]
+                                ]
+                            }
+                        ]
+                    ]
+                ]
+}";
 
-        //    // ACT
-        //    foreach (var senseParser in defs.Select(definition => new SenseParser(definition, Language.NotApplicable, ParseOptions.Default)))
-        //    {
-        //        var def = new Results.Definition();
-        //        senseParser.Parse(def);
-        //        def.SenseSequence.ShouldNotBeEmpty();
+            var doc = JsonDocument.Parse(source);
+            var target = new Results.Definition();
+            SenseParser.Parse(doc.RootElement, target);
 
-        //        definitions.Add(def);
-        //    }
+            var dts = GetDefiningTexts(new List<Definition>{target})
+               .ToList();
 
-        //    var dts = GetDefiningTexts(definitions)
-        //       .ToList();
+            dts.Count.ShouldBe(3);
+            dts.OfType<RunIn>().Count().ShouldBe(1);
 
-        //    dts.Count.ShouldBe(5);
-        //    dts.OfType<RunInWord>().Count().ShouldBe(2);
-        //}
+        }
 
-        //[TestMethod]
-        //public void SenseParser_CanParse_Algiers()
-        //{
-        //    var defs = LoadDefinitions("collegiate_algiers");
-        //    List<Results.Definition> definitions = new List<Results.Definition>();
+        [TestMethod]
+        public void SenseParser_CanParse_Algiers()
+        {
+            string source = @"{
+        ""sseq"": [
+          [
+            [
+              ""sense"",
+              {
+                ""sn"": ""1"",
+                ""dt"": [
+                  [
+                    ""text"",
+                    ""former {d_link|Barbary State|Barbary Coast:g} in northern Africa that is now Algeria""
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              ""sense"",
+              {
+                ""sn"": ""2"",
+                ""dt"": [
+                  [
+                    ""text"",
+                    ""city, port on the ""
+                  ],
+                  [
+                    ""ri"",
+                    [
+                      [
+                        ""riw"",
+                        {
+                          ""rie"": ""Bay of Algiers""
+                        }
+                      ],
+                      [
+                        ""text"",
+                        "" (an inlet of Mediterranean Sea)""
+                      ]
+                    ]
+                  ],
+                  [
+                    ""text"",
+                    "", and capital of Algeria {it}population{/it} 1,365,400""
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      }";
 
-        //    // ACT
-        //    foreach (var senseParser in defs.Select(definition => new SenseParser(definition, Language.NotApplicable, ParseOptions.Default)))
-        //    {
-        //        var def = new Results.Definition();
-        //        senseParser.Parse(def);
-        //        def.SenseSequence.ShouldNotBeEmpty();
+            var doc = JsonDocument.Parse(source);
+            var target = new Results.Definition();
+            SenseParser.Parse(doc.RootElement, target);
 
-        //        definitions.Add(def);
-        //    }
+            var dts = GetDefiningTexts(new List<Definition>{target})   
+                .ToList();
 
-        //    var dts = GetDefiningTexts(definitions)
-        //        .ToList();
-
-        //    dts.Count.ShouldBe(5);
-        //    dts.OfType<RunInWord>().Count().ShouldBe(1);
-        //}
+            dts.Count.ShouldBe(4);
+            dts.OfType<RunIn>().Count().ShouldBe(1);
+        }
 
         //[TestMethod]
         //public void SenseParser_CanParse_Abarrotado()
@@ -210,7 +285,7 @@ namespace MerriamWebster.NET.Tests.Parsing
         ";
             var doc = JsonDocument.Parse(content);
             var target = new Results.Definition();
-            JsonSenseParser.Parse(doc.RootElement, target);
+            SenseParser.Parse(doc.RootElement, target);
 
             var gls = GetDefiningTexts(new List<Results.Definition>{target})
                 .OfType<GenderLabel>().ToList();
@@ -475,7 +550,7 @@ namespace MerriamWebster.NET.Tests.Parsing
         ";
             var doc = JsonDocument.Parse(content);
             var target = new Results.Definition();
-            JsonSenseParser.Parse(doc.RootElement, target);
+            SenseParser.Parse(doc.RootElement, target);
             
             var dts = GetDefiningTexts(new List<Results.Definition>{target});
             dts.OfType<BiographicalNameWrap>().Count().ShouldBe(2);
