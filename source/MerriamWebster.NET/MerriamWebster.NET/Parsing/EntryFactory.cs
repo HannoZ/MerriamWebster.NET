@@ -1,4 +1,5 @@
 ﻿using MerriamWebster.NET.Results.Base;
+using MerriamWebster.NET.Results.Medical;
 using MerriamWebster.NET.Results.SpanishEnglish;
 
 namespace MerriamWebster.NET.Parsing
@@ -11,10 +12,9 @@ namespace MerriamWebster.NET.Parsing
             {
                 return new SpanishEnglishEntry();
             }
-            else if (api == Configuration.MedicalDictionary)
+            if (api == Configuration.MedicalDictionary)
             {
-                // todo medical entry
-                return new Entry();
+                return new MedicalEntry();
             }
 
             return new Entry();

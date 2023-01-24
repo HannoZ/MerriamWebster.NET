@@ -7,7 +7,7 @@ namespace MerriamWebster.NET.Parsing.DictionaryEntryMembers
 {
     public class MetadataDictionaryEntryMemberParser : IDictionaryEntryMemberParser
     {
-        public virtual void Parse(JsonProperty json, EntryBase target)
+        public virtual void Parse(JsonProperty json, EntryBase target) 
         {
             ArgumentNullException.ThrowIfNull(target, nameof(target));
 
@@ -70,6 +70,8 @@ namespace MerriamWebster.NET.Parsing.DictionaryEntryMembers
                 _ => section
             };
         }
+
+
 
     }
 }

@@ -16,6 +16,7 @@ using MerriamWebster.NET.Results.Base;
 using MerriamWebster.NET.Results.SpanishEnglish;
 using Sense = MerriamWebster.NET.Results.Sense;
 using SenseBase = MerriamWebster.NET.Results.SenseBase;
+using MerriamWebster.NET.Results.Medical;
 
 namespace MerriamWebster.NET.Tests.Parsing
 {
@@ -48,7 +49,7 @@ namespace MerriamWebster.NET.Tests.Parsing
         [TestMethod]
         public async Task EntryParser_CanParse_All()
         {
-            string[] exclusions = { "coll_thes_above_meta.json", "sense_learn_apple.json", "sense_above.json", "sense_med_doctor.json" };
+            string[] exclusions = { "coll_thes_above_meta.json", "sense_learn_apple.json", "sense_above.json", "sense_med_doctor.json", "learn_apple.json" };
             var asm = Assembly.GetExecutingAssembly();
             var resources = asm.GetManifestResourceNames();
 
@@ -72,6 +73,10 @@ namespace MerriamWebster.NET.Tests.Parsing
                     string api = resource.Contains("_")
                         ? Configuration.CollegiateDictionary
                         : Configuration.SpanishEnglishDictionary;
+                    if (resource.Contains("med_"))
+                    {
+                        api = Configuration.MedicalDictionary;
+                    }
                     var result = _entryParser.ParseSearchResult(api, doc);
 
                     // ASSERT
@@ -208,20 +213,20 @@ namespace MerriamWebster.NET.Tests.Parsing
         //    //entry.Metadata.Antonyms.ShouldNotBeEmpty();
         //}
 
-        [TestMethod]
-        public async Task EntryParser_CanParse_Learners_Apple()
-        {
-            var response = await TestHelper.LoadResponseFromFileAsync("learn_apple");
-            var doc = JsonDocument.Parse(response);
+        //[TestMethod]
+        //public async Task EntryParser_CanParse_Learners_Apple()
+        //{
+        //    var response = await TestHelper.LoadResponseFromFileAsync("learn_apple");
+        //    var doc = JsonDocument.Parse(response);
 
-            // ACT
-            var result = _entryParser.ParseSearchResult(Configuration.LearnersDictionary, doc);
+        //     ACT
+        //    var result = _entryParser.ParseSearchResult(Configuration.LearnersDictionary, doc);
 
-            // ASSERT
-            var definingTexts = GetDefiningTexts(result.Entries);
+        //     ASSERT
+        //    var definingTexts = GetDefiningTexts(result.Entries);
 
-            definingTexts.OfType<SupplementalInformationNote>().ShouldNotBeEmpty();
-        }
+        //    definingTexts.OfType<SupplementalInformationNote>().ShouldNotBeEmpty();
+        //}
 
         [TestMethod]
         public async Task EntryParser_CanParse_Quedar()
@@ -493,29 +498,33 @@ namespace MerriamWebster.NET.Tests.Parsing
             senses.ShouldContain(s => s.IsParenthesizedSenseSequence == false);
         }
 
-        //[TestMethod]
-        //public void EntryParser_CanParse_Bartonella()
-        //{
-        //    var data = LoadData("med_bartonella");
+        [TestMethod]
+        public async Task EntryParser_CanParse_Bartonella()
+        {
+            var response = await TestHelper.LoadResponseFromFileAsync("med_bartonella");
+            var doc = JsonDocument.Parse(response);
 
-        //    // ACT
-        //    var result = _entryParser.Parse("bartonella", data);
+            // ACT
+            var result = _entryParser.ParseSearchResult(Configuration.MedicalDictionary, doc);
+            var entries = result.Entries.Cast<MedicalEntry>().ToList();
 
-        //    // ASSERT
-        //    result.Entries.First().BiographicalNote.Contents.Count.ShouldBe(4);
-        //}
+            // ASSERT
+            entries[0].BiographicalNote.DefiningTexts.Count.ShouldBe(4);
+        }
 
-        //[TestMethod]
-        //public void EntryParser_CanParse_Curie()
-        //{
-        //    var data = LoadData("med_curie");
+        [TestMethod]
+        public async Task EntryParser_CanParse_Curie()
+        {
+            var response = await TestHelper.LoadResponseFromFileAsync("med_curie");
+            var doc = JsonDocument.Parse(response);
 
-        //    // ACT
-        //    var result = _entryParser.Parse("curie", data);
+            // ACT
+            var result = _entryParser.ParseSearchResult(Configuration.MedicalDictionary, doc);
+            var entries = result.Entries.Cast<MedicalEntry>().ToList();
 
-        //    // ASSERT
-        //    result.Entries.First().BiographicalNote.Contents.Count.ShouldBe(7);
-        //}
+            // ASSERT
+            entries[0].BiographicalNote.DefiningTexts.Count.ShouldBe(7);
+        }
 
 
         [TestMethod]

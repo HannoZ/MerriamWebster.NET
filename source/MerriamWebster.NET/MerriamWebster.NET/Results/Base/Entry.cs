@@ -28,22 +28,10 @@ namespace MerriamWebster.NET.Results.Base
         /// <i>Optional.</i> Gets or sets the quotes.
         /// </summary>
         public ICollection<Quote> Quotes { get; internal set; }
-
-        /// <summary>
-        /// <i>Optional.</i> Gets or sets the artwork.
-        /// </summary>
-        public Artwork Artwork { get; internal set; }
-
+        
         /// <summary>
         /// <i>Optional.</i> Gets or sets a table.
         /// </summary>
         public Table Table { get; internal set; }
-
-        /// <summary>
-        /// <i>Optional, medical dictionary only.</i> Gets or sets biographical notes.
-        /// </summary>
-        public BiographicalNote BiographicalNote { get; internal set; }
-
-
     }
 }

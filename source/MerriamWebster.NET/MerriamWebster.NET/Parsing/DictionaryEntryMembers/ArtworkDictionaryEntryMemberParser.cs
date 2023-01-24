@@ -5,7 +5,7 @@ using MerriamWebster.NET.Results.Base;
 
 namespace MerriamWebster.NET.Parsing.DictionaryEntryMembers
 {
-    internal class ArtworkDictionaryEntryMemberParser : IDictionaryEntryMemberParser
+    internal class ArtworkDictionaryEntryMemberParser :  IDictionaryEntryMemberParser
     {
         public void Parse(JsonProperty json, EntryBase target)
         {
@@ -26,7 +26,8 @@ namespace MerriamWebster.NET.Parsing.DictionaryEntryMembers
                 ImageLocation = ArtworkLinkCreator.CreateDirectLink(artId)
             };
 
-            ((Entry)target).Artwork = artwork;
+            target.Artwork = artwork;
         }
+
     }
 }

@@ -102,6 +102,11 @@ namespace MerriamWebster.NET.Results.Base
         public ICollection<DefinedRunOn> DefinedRunOns { get; internal set; }
         
         /// <summary>
+        /// <i>Optional.</i> Gets or sets the artwork.
+        /// </summary>
+        public Artwork Artwork { get; internal set; }
+
+        /// <summary>
         /// <i>Optional.</i> Gets or sets the etymology.
         /// </summary>
         public Etymology Etymology { get; internal set; }

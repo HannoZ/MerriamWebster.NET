@@ -2,7 +2,7 @@
 using System.Text;
 using MerriamWebster.NET.Parsing.Markup;
 
-namespace MerriamWebster.NET.Results
+namespace MerriamWebster.NET.Results.Medical
 {
     /// <summary>
     /// <i>Medical dictionary only.</i> A biographical note provides information on a historical or mythological figure relevant to the headword.
@@ -19,17 +19,17 @@ namespace MerriamWebster.NET.Results
         /// <summary>
         /// Gets the contents.
         /// </summary>
-        public ICollection<IDefiningText> Contents { get;  } = new List<IDefiningText>();
+        public ICollection<IDefiningText> DefiningTexts { get; } = new List<IDefiningText>();
 
         public override string ToString()
         {
-            if (!Contents.HasValue())
+            if (!DefiningTexts.HasValue())
             {
                 return base.ToString();
             }
 
             StringBuilder sb = new StringBuilder();
-            foreach (var definingText in Contents)
+            foreach (var definingText in DefiningTexts)
             {
                 if (definingText is BiographicalNameWrap bnw)
                 {
@@ -42,16 +42,13 @@ namespace MerriamWebster.NET.Results
                         sb.Append((bnw.FirstName + " " + bnw.Surname).Trim() + ", ");
                     }
                 }
-                else if (definingText is DefiningText dt)
+                else if (definingText is BiosDate date)
                 {
-                    if (dt.Type == "biodate")
-                    {
-                        sb.Append(dt.MainText + " " );
-                    }
-                    else
-                    {
-                        sb.Append(dt.MainText);
-                    }
+                    sb.Append(date.MainText + " ");
+                }
+                else
+                {
+                    sb.Append(definingText.MainText);
                 }
             }
 

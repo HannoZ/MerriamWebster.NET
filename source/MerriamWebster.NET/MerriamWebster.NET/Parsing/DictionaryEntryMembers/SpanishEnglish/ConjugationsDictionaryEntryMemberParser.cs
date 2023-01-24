@@ -76,7 +76,5 @@ namespace MerriamWebster.NET.Parsing.DictionaryEntryMembers.SpanishEnglish
 
             ((SpanishEnglishEntry)target).Conjugations = conjugations;
         }
-
-
     }
 }

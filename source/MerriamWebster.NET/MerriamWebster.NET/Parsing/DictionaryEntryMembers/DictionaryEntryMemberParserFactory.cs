@@ -1,11 +1,12 @@
 ﻿using System;
 using MerriamWebster.NET.Parsing.DictionaryEntryMembers.SpanishEnglish;
+using MerriamWebster.NET.Results.Base;
 
 namespace MerriamWebster.NET.Parsing.DictionaryEntryMembers
 {
     internal class DictionaryEntryMemberParserFactory
     {
-        public static IDictionaryEntryMemberParser GetDictionaryEntryMemberParser(string api, string elementName)
+        public static IDictionaryEntryMemberParser GetDictionaryEntryMemberParser(string api, string elementName) 
         {
             switch (elementName)
             {
@@ -52,6 +53,10 @@ namespace MerriamWebster.NET.Parsing.DictionaryEntryMembers
                     return new QuotesDictionaryEntryMemberParser();
                 case "table":
                     return new TableDictionaryEntryMemberParser();
+
+                // medical dictionary only
+                case "bios":
+                    return new BiosDictionaryEntryMemberParser();
 
                 // spanish-english only 
                 case "suppl":

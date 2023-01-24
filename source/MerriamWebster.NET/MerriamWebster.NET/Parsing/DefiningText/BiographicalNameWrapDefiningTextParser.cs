@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Text.Json;
 using MerriamWebster.NET.Results;
+using MerriamWebster.NET.Results.Medical;
 
 namespace MerriamWebster.NET.Parsing.DefiningText
 {

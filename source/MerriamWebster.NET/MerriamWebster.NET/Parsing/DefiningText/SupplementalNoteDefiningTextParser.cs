@@ -18,24 +18,44 @@ namespace MerriamWebster.NET.Parsing.DefiningText
 
             foreach (var element in elements)
             {
-                if (element.ValueKind == JsonValueKind.Array)
+                var items = element.EnumerateArray().ToList();
+                var type = items[0].GetString();
+                if (type == "t")
                 {
-                    foreach (var value in element.EnumerateArray())
+                    type = "text";
+                }
+                var parser = DefiningTextParserFactory.Create(type);
+                if (items[1].ValueKind == JsonValueKind.Array)
+                {
+                    foreach (var item in items[1].EnumerateArray())
                     {
-                        ParseObject(value);
+                        snote.DefiningTexts.Add(parser.Parse(item));
                     }
                 }
                 else
                 {
-                    ParseObject(element);
+                    snote.DefiningTexts.Add(parser.Parse(items[1]));
                 }
+
+
+                //if (element.ValueKind == JsonValueKind.Array)
+                //{
+                //    foreach (var value in element.EnumerateArray())
+                //    {
+                //        ParseObject(value);
+                //    }
+                //}
+                //else
+                //{
+                //    ParseObject(element);
+                //}
 
                 void ParseObject(JsonElement obj)
                 {
                     if (obj.ValueKind == JsonValueKind.String)
                     {
                         var stringValue = obj.GetString();
-                        if (stringValue != "t")
+                        if (stringValue != "t" && stringValue != "vis" && stringValue != "ri")
                         {
                             snote.DefiningTexts.Add(new Results.DefiningText(stringValue));
                         }

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
-namespace MerriamWebster.NET.Results
+namespace MerriamWebster.NET.Results.Medical
 {
     /// <summary>
     /// A biographical name wrap groups together personal name, surname, and alternate name information within a biographical entry.
@@ -44,11 +44,5 @@ namespace MerriamWebster.NET.Results
         /// <inheritdoc />
         [JsonIgnore]
         public FormattedText MainText => AlternateName ?? (FirstName + " " + Surname).Trim();
-
-        /// <inheritdoc />
-        public override string ToString()
-        {
-            return MainText == null ? base.ToString() : MainText.Text;
-        }
     }
 }

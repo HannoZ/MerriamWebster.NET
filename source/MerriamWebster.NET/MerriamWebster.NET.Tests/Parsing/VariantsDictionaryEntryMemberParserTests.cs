@@ -47,6 +47,8 @@ namespace MerriamWebster.NET.Tests.Parsing
 
             // ACT
             parser.Parse(vrs, target);
+           
+            // ASSERT
             target.Variants.Count.ShouldBe(5);
         }
 
