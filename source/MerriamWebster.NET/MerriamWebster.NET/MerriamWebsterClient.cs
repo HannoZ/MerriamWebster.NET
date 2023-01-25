@@ -28,7 +28,7 @@ namespace MerriamWebster.NET
             _apiKey = config.ApiKey;
         }
 
-        public async Task<JsonDocument> Search(string api, string searchTerm)
+        public async Task<string> Search(string api, string searchTerm)
         {
 
 #if NET7_0_OR_GREATER
@@ -40,7 +40,7 @@ namespace MerriamWebster.NET
             _logger.LogInformation($"Sending request - {urlPath}");
             var responseString = await _client.GetStringAsync($"{urlPath}?key={_apiKey}");
 
-            return JsonDocument.Parse(responseString);
+            return responseString;
         }
 
         /// <inheritdoc />

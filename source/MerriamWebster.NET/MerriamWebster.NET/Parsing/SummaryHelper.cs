@@ -4,9 +4,9 @@ using MerriamWebster.NET.Results.Base;
 
 namespace MerriamWebster.NET.Parsing
 {
-    internal static class SummaryHelper
+    internal static class SummaryHelper<T> where T: EntryBase
     {
-        public static string CreateSummary(string searchText, ICollection<EntryBase> results)
+        public static string CreateSummary(string searchText, ICollection<T> results)
         {
             string summary = string.Empty;
 

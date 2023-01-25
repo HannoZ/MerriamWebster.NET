@@ -25,6 +25,6 @@ namespace MerriamWebster.NET
         //Task<IEnumerable<MwDictionaryEntry>> GetDictionaryEntry(string api, string entry);
 
 
-        Task<JsonDocument> Search(string api, string searchTerm);
+        Task<string> Search(string api, string searchTerm);
     }
 }
