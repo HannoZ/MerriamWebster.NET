@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Net.Http;
-using System.Text.Json;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 
@@ -28,13 +27,15 @@ namespace MerriamWebster.NET
             _apiKey = config.ApiKey;
         }
 
+        /// <inheritdoc />
         public async Task<string> Search(string api, string searchTerm)
         {
-
 #if NET7_0_OR_GREATER
             ArgumentException.ThrowIfNullOrEmpty(searchTerm, nameof(searchTerm));
+            ArgumentException.ThrowIfNullOrEmpty(api, nameof(api));
 #else
             ArgumentNullException.ThrowIfNull(searchTerm, nameof(searchTerm));
+            ArgumentNullException.ThrowIfNull(api, nameof(api));
 #endif
             string urlPath = $"{api}/json/{searchTerm.ToLower()}";
             _logger.LogInformation($"Sending request - {urlPath}");

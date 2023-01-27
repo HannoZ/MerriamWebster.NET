@@ -1,10 +1,9 @@
 ﻿using System;
 using MerriamWebster.NET.Parsing.DictionaryEntryMembers.SpanishEnglish;
-using MerriamWebster.NET.Results.Base;
 
 namespace MerriamWebster.NET.Parsing.DictionaryEntryMembers
 {
-    internal class DictionaryEntryMemberParserFactory
+    internal class DictionaryEntryMemberParserFactory 
     {
         public static IDictionaryEntryMemberParser GetDictionaryEntryMemberParser(string api, string elementName) 
         {

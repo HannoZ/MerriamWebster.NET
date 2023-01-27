@@ -1,8 +1,6 @@
 ﻿using MerriamWebster.NET.Parsing;
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Moq;
-using Moq.AutoMock;
 using Shouldly;
 using System;
 using System.Collections.Generic;
@@ -50,28 +48,42 @@ namespace MerriamWebster.NET.Tests.Parsing
                 try
                 {
                     // ACT
-                    var doc = JsonDocument.Parse(content);
-                    string api = resource.Contains("_")
-                        ? Configuration.CollegiateDictionary
-                        : Configuration.SpanishEnglishDictionary;
+
+                    // verify serialization/deserialization
+                    var options = new JsonSerializerOptions()
+                    {
+
+                    };
+
                     if (resource.Contains("med_"))
                     {
-                        api = Configuration.MedicalDictionary;
+                        var parser = new JsonDocumentParser<MedicalEntry>();
+                        var result = parser.ParseSearchResult(Configuration.MedicalDictionary, content);
+                        result.Entries.ShouldNotBeEmpty();
+                        
+                        var serialized = System.Text.Json.JsonSerializer.Serialize(result, options);
+                        var deserialized = JsonSerializer.Deserialize<ResultModel<MedicalEntry>>(serialized, options);
+
+                    }
+                    else if (resource.Contains("_"))
+                    {
+                        var parser = new JsonDocumentParser<Entry>();
+                        var result = parser.ParseSearchResult(Configuration.CollegiateDictionary, content);
+                        result.Entries.ShouldNotBeEmpty();
+                        
+                        var serialized = System.Text.Json.JsonSerializer.Serialize(result, options);
+                        var deserialized = JsonSerializer.Deserialize<ResultModel<Entry>>(serialized, options);
+                    }
+                    else
+                    {
+                        var parser = new JsonDocumentParser<SpanishEnglishEntry>();
+                        var result = parser.ParseSearchResult(Configuration.SpanishEnglishDictionary, content);
+                        result.Entries.ShouldNotBeEmpty();
+                        
+                        var serialized = System.Text.Json.JsonSerializer.Serialize(result, options);
+                        var deserialized = JsonSerializer.Deserialize<ResultModel<SpanishEnglishEntry>>(serialized, options);
                     }
 
-                    //var result = _entryParser.ParseSearchResult(api, doc);
-
-                    //// ASSERT
-                    //result.Entries.ShouldNotBeEmpty();
-
-                    //// verify serialization/deserialization
-                    //var options = new JsonSerializerOptions()
-                    //{
-
-                    //};
-
-                    //var serialized = System.Text.Json.JsonSerializer.Serialize(result, options);
-                    //var deserialized = JsonSerializer.Deserialize<ResultModel>(serialized, options);
                 }
                 catch (Exception ex)
                 {

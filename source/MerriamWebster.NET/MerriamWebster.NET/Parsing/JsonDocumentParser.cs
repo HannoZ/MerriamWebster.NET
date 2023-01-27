@@ -26,8 +26,7 @@ namespace MerriamWebster.NET.Parsing
             var json = JsonDocument.Parse(searchResult);
 
             // the search result is an array with one or more objects that contain the data
-            var results = json.RootElement.EnumerateArray();
-            foreach (var result in results)
+            foreach (var result in json.RootElement.EnumerateArray())
             {
                 // not an object, probably the result of an invalid search request
                 if (result.ValueKind == JsonValueKind.String)
@@ -37,8 +36,7 @@ namespace MerriamWebster.NET.Parsing
 
                 var entry = new T();
 
-                var obj = result.EnumerateObject();
-                foreach (var prop in obj)
+                foreach (var prop in result.EnumerateObject())
                 {
                     // check if there is a specific parser for the current property
                     var parser = DictionaryEntryMemberParserFactory.GetDictionaryEntryMemberParser(api, prop.Name);

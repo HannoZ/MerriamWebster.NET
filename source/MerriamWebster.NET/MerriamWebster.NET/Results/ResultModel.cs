@@ -15,7 +15,7 @@ namespace MerriamWebster.NET.Results
         /// </summary>
         public string SearchText { get; set; }
         /// <summary>
-        /// A collection of zero or more <see cref="EntryBase"/> objects. This is the main result. 
+        /// A collection of zero or more <see cref="T"/> objects. This is the main result. 
         /// </summary>
         public ICollection<T> Entries { get; set; } = new List<T>();
 
@@ -28,7 +28,7 @@ namespace MerriamWebster.NET.Results
         /// <summary>
         /// Gets or sets the raw response in JSON format. 
         /// </summary>
-        /// <remarks>The raw response can be used to get data that is not parsed by the <see cref="JsonDocumentParser"/>. </remarks>
+        /// <remarks>The raw response can be used to get data that is not parsed by the <see cref="JsonDocumentParser{T}"/>. </remarks>
         public string RawResponse { get; set; }
     }
 
