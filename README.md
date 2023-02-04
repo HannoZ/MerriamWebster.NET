@@ -1,7 +1,7 @@
 ![Build Test Package](https://github.com/HannoZ/MerriamWebster.NET/workflows/Build%20Test%20Package/badge.svg)
 
 # MerriamWebster.NET
-A .NET client wrapper and object parser for Merriam-Webster's APIs. Tested with the Spanish-English and collegiate dictionaries and a little bit with the medical dictionary. It will also work for all available APIs, but data structures that are specific to those APIs will not be available in the parsed objects. Response objects for those APIs were created based on documentation and some example json files. 
+A super-fast, lightweight .NET client wrapper and object parser for Merriam-Webster's APIs. Tested with the Spanish-English and collegiate dictionaries and a little bit with the medical dictionary. It will also work for all available APIs, but data structures that are specific to those APIs will not be available in the parsed objects. Response objects for those APIs were created based on documentation and some example json files. 
 
 For a list of available APIs and in-depth documentation visit Merriam-Webster's [Developer Center](https://dictionaryapi.com/).
 
