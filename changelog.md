@@ -1,3 +1,5 @@
+3.0 Parsing was changed completely. No more deserialization into objects, but direct parsing of the data using System.Text.Json classes. Dependency on Newtonsoft.Json.NET was removed. This library now supports .NET 6 and .NET 7, support for .NET Standard 2.0 was removed. Maintainability and test coverage was greatly improved by creating separate parser classes for almost every type of JSON property that can be returned by the API. 
+
 2.1.1 Fix potential null reference in SummaryHelper; Fix deserialization error for entries with section value 'abbr'; Updated dependencies
 
 2.1.0 Add simple retry for transient http errors that may occur when calling the api. Makes use of the Polly library
