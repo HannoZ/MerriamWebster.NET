@@ -27,7 +27,7 @@ namespace MerriamWebster.NET.Parsing.DictionaryEntryMembers
             {
                 var usage = new Usage
                 {
-                    ParagraphLabel = JsonParserHelper.GetStringValue(usageElement, "pl")
+                    ParagraphLabel = JsonParserHelper.GetStringValue(usageElement, "pl") ?? string.Empty    
                 };
 
                 if (usageElement.TryGetProperty("pt", out var pt))

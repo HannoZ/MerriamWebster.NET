@@ -31,7 +31,7 @@ namespace MerriamWebster.NET.Results
         /// <summary>
         /// contains introductory text "called also"
         /// </summary>
-        public string Intro { get; set; }
+        public string Intro { get; set; } = string.Empty;
         /// <summary>
         /// Gets or sets the called-also targets.
         /// </summary>

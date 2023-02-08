@@ -26,7 +26,7 @@ namespace MerriamWebster.NET.Parsing
                 var type = items[0].GetString();
                 if (type == "text")
                 {
-                    etymology.Text = items[1].GetString();
+                    etymology.Text = items[1].GetString() ?? string.Empty;
                 }
                 else if (type == "et_snote")
                 {
@@ -42,8 +42,12 @@ namespace MerriamWebster.NET.Parsing
                         }
 
                         // texts[0] = "t"
-                        note.Text = texts[1].GetString();
-                        etymology.Notes.Add(note);
+                        var noteText = texts[1].GetString();
+                        if (!string.IsNullOrEmpty(noteText))
+                        {
+                            note.Text = noteText; 
+                            etymology.Notes.Add(note);
+                        }
                     }
                 }
             }

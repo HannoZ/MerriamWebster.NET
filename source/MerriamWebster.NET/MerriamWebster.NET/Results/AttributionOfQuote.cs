@@ -16,19 +16,21 @@
         /// <summary>
         /// Name of author.
         /// </summary>
-        public string Author { get; set; }
+        public string Author { get; set; } = string.Empty;
+
         /// <summary>
         /// Source work for quote.
         /// </summary>
-        public FormattedText Source { get; set; }
+        public FormattedText? Source { get; set; }
+
         /// <summary>
         /// Publication date of quote.
         /// </summary>
-        public string PublicationDate { get; set; }
+        public string? PublicationDate { get; set; }
         /// <summary>
         /// Gets or sets the <see cref="Subsource"/>.
         /// </summary>
-        public SubSource Subsource { get; set; }
+        public SubSource? Subsource { get; set; }
 
     }
 }

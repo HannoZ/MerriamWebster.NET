@@ -10,6 +10,12 @@ namespace MerriamWebster.NET.Results
     /// </summary>
     public class ResultModel<T> where T : EntryBase
     {
+        public ResultModel()
+        {
+            SearchText = string.Empty;
+            RawResponse = string.Empty;
+        }
+
         /// <summary>
         /// The search text that was used in the request.
         /// </summary>
@@ -28,7 +34,7 @@ namespace MerriamWebster.NET.Results
         /// <summary>
         /// Gets or sets the raw response in JSON format. 
         /// </summary>
-        /// <remarks>The raw response can be used to get data that is not parsed by the <see cref="JsonDocumentParser{T}"/>. </remarks>
+        /// <remarks>The raw response can be used to get data that is not parsed by the <see cref="JsonDocumentParser"/>. </remarks>
         public string RawResponse { get; set; }
     }
 

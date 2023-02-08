@@ -1,0 +1,65 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+#results h2 {
+    font-size: 16px;
+}
+
+
+
+.mw-entry-header {
+    margin-top: 10px;
+}
+
+.mw-entry-header > h1,h2 {
+    display: inline-block;
+}
+
+.mw-bc {
+    font-weight: bolder;
+    margin-right: 5px;
+}
+.mw-fl {
+    color: #258cfb;
+}
+
+.mw-vd {
+    display: block;
+    color: #258cfb;
+    font-style: italic;
+}
+
+.mw-sd {
+    color: #258cfb;
+    font-style: italic;
+}
+
+.mw-sense-nr {
+    font-size: 18px;
+}
+
+.mw-defining-text-vis {
+    padding-left: 50px;
+}
+
+

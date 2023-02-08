@@ -57,21 +57,21 @@ namespace MerriamWebster.NET.Results
         /// <summary>
         /// Gets or sets the  run-in entry word.
         /// </summary>
-        public FormattedText RunInEntryWord { get; set; }
+        public FormattedText? RunInEntryWord { get; set; }
 
         /// <summary>
         /// Gets or sets intervening text.
         /// </summary>
-        public FormattedText Text { get; set; }
+        public FormattedText? Text { get; set; }
         
         /// <summary>
         /// <i>Optional.</i> Gets or sets pronunciations.
         /// </summary>
-        public ICollection<Pronunciation> Pronunciations { get; set; }
+        public ICollection<Pronunciation>? Pronunciations { get; set; }
 
         /// <summary>
         /// <i>Optional.</i> Gets or sets variants.
         /// </summary>
-        public ICollection<Variant> Variants { get; set; }
+        public ICollection<Variant>? Variants { get; set; }
     }
 }

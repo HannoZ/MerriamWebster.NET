@@ -56,7 +56,7 @@ namespace MerriamWebster.NET.Parsing
                             var targetSense = new Sense
                             {
                                 IsTruncatedSense = true,
-                                SenseNumber = JsonParserHelper.GetStringValue(sourceSense, "sn")
+                                SenseNumber = JsonParserHelper.GetStringValue(sourceSense, "sn") ?? string.Empty
                             };
 
                             ParseGeneralSenseProperties(sourceSense, targetSense);
@@ -103,7 +103,7 @@ namespace MerriamWebster.NET.Parsing
                 }
             }
 
-            Sense ParseBsSense(JsonElement sourceSense)
+            Sense? ParseBsSense(JsonElement sourceSense)
             {
                 // a bs should always contain a nested sense object  
                 if (!sourceSense.TryGetProperty("sense", out var subSenseElement))
@@ -114,7 +114,7 @@ namespace MerriamWebster.NET.Parsing
                 var subSense = new Sense
                 {
                     IsBindingSubstitute = true,
-                    SenseNumber = JsonParserHelper.GetStringValue(subSenseElement, "sn")
+                    SenseNumber = JsonParserHelper.GetStringValue(subSenseElement, "sn") ?? string.Empty
                 };
 
                 ParseGeneralSenseProperties(subSenseElement, subSense);
@@ -127,7 +127,7 @@ namespace MerriamWebster.NET.Parsing
             {
                 var targetSense = new Sense
                 {
-                    SenseNumber = JsonParserHelper.GetStringValue(sourceSense, "sn")
+                    SenseNumber = JsonParserHelper.GetStringValue(sourceSense, "sn") ?? string.Empty
                 };
 
                 ParseGeneralSenseProperties(sourceSense, targetSense);
@@ -172,41 +172,37 @@ namespace MerriamWebster.NET.Parsing
         private static void ParseSpecificSenseProperties(JsonElement source, SenseBase sense)
         {
             var definingTexts = JsonDefiningTextParser.Parse(source);
+            sense.DefiningTexts = new List<IDefiningText>(definingTexts);
 
-            if (definingTexts != null)
+            if (sense is Sense s)
             {
-                sense.DefiningTexts = new List<IDefiningText>(definingTexts);
-
-                if (sense is Sense s)
+                foreach (var dt in s.DefiningTexts.OfType<Results.DefiningText>())
                 {
-                    foreach (var dt in sense.DefiningTexts.OfType<Results.DefiningText>())
+                    var text = dt.Text.RawText;
+                    var synonyms = SynonymsParser.ExtractSynonyms(text).ToList();
+                    if (synonyms.Any())
                     {
-                        var text = dt.Text.RawText;
-                        var synonyms = SynonymsParser.ExtractSynonyms(text).ToList();
-                        if (synonyms.Any())
-                        {
-                            s.Synonyms = new List<string>(synonyms);
+                        s.Synonyms = new List<string>(synonyms);
                        
-                            // not very robust, but until now I only found sx links at the beginning of a string in the spanish-english dictionary
-                            // in that case the synonyms should be removed from the text, in other cases we keep them between square brackets
+                        // not very robust, but until now I only found sx links at the beginning of a string in the spanish-english dictionary
+                        // in that case the synonyms should be removed from the text, in other cases we keep them between square brackets
                          
-                            if (text.StartsWith("{sx"))
+                        if (text.StartsWith("{sx"))
+                        {
+                            foreach (var synonym in s.Synonyms)
                             {
-                                foreach (var synonym in s.Synonyms)
-                                {
-                                    text = text.Replace(synonym, "");
-                                }
+                                text = text.Replace(synonym, "");
                             }
-                            else
-                            {
-                                foreach (var synonym in s.Synonyms)
-                                {
-                                    text = text.Replace(synonym, $"[{synonym}]");
-                                }
-                            }
-
-                            dt.Text = text;
                         }
+                        else
+                        {
+                            foreach (var synonym in s.Synonyms)
+                            {
+                                text = text.Replace(synonym, $"[{synonym}]");
+                            }
+                        }
+
+                        dt.Text = text;
                     }
                 }
             }

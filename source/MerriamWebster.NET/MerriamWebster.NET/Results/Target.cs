@@ -10,11 +10,11 @@ namespace MerriamWebster.NET.Results
         /// <summary>
         ///  Target entry universally unique identifier.
         /// </summary>
-        public Guid Identifier { get; set; }
+        public Guid? Identifier { get; set; }
 
         /// <summary>
         /// Target entry source data set.
         /// </summary>
-        public string Source { get; set; }
+        public string? Source { get; set; }
     }
 }

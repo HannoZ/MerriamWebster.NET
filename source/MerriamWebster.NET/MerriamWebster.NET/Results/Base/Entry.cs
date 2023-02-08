@@ -12,26 +12,26 @@ namespace MerriamWebster.NET.Results.Base
         /// <b>Display Guidance:</b>
         /// Display in a separate paragraph.
         /// </remarks>
-        public ICollection<FormattedText> DirectionalCrossReferences { get; internal set; }
+        public ICollection<FormattedText>? DirectionalCrossReferences { get; internal set; }
 
         /// <summary>
         /// <i>Optional.</i> Gets or sets the usages. 
         /// </summary>
-        public ICollection<Usage> Usages { get; internal set; }
+        public ICollection<Usage>? Usages { get; internal set; }
 
         /// <summary>
         /// <i>Optional.</i> Gets or sets synonyms.
         /// </summary>
-        public ICollection<Synonym> Synonyms { get; internal set; }
+        public ICollection<Synonym>? Synonyms { get; internal set; }
 
         /// <summary>
         /// <i>Optional.</i> Gets or sets the quotes.
         /// </summary>
-        public ICollection<Quote> Quotes { get; internal set; }
+        public ICollection<Quote>? Quotes { get; internal set; }
         
         /// <summary>
         /// <i>Optional.</i> Gets or sets a table.
         /// </summary>
-        public Table Table { get; internal set; }
+        public Table? Table { get; internal set; }
     }
 }

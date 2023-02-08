@@ -17,17 +17,17 @@ namespace MerriamWebster.NET.Results
         /// <summary>
         /// defined run-on phrase
         /// </summary>
-        public string Phrase { get; set; }
+        public string Phrase { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets the definitions.
         /// </summary>
-        public ICollection<Definition> Definitions { get; set; } = new List<Definition>();
+        public ICollection<Definition>? Definitions { get; set; } = new List<Definition>();
         
         /// <summary>
         /// <i>Optional.</i> Gets or sets the etymology.
         /// </summary>
-        public Etymology Etymology { get; set; }
+        public Etymology? Etymology { get; set; }
     }
 
 

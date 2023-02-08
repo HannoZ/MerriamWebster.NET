@@ -37,20 +37,20 @@ namespace MerriamWebster.NET.Parsing.DictionaryEntryMembers.SpanishEnglish
                 if (cjt.TryGetProperty("cjid", out var id)
                     && id.GetString() == "gppt")
                 {
-                    conjugations.PresentParticiple = items[0].GetString();
-                    conjugations.PastParticiple = items[1].GetString();
+                    conjugations.PresentParticiple = items[0].GetString() ?? string.Empty;
+                    conjugations.PastParticiple = items[1].GetString() ?? string.Empty;
                 }
                 else
                 {
                     var conjugation = new Conjugation
                     {
-                        Tense = id.GetString(),
-                        SgFirst = items[0].GetString(),
-                        SgSecond = items[1].GetString(),
-                        SgThird = items[2].GetString(),
-                        PlFirst = items[3].GetString(),
-                        PlSecond = items[4].GetString(),
-                        PlThird = items[5].GetString()
+                        Tense = id.GetString() ?? string.Empty,
+                        SgFirst = items[0].GetString() ?? string.Empty,
+                        SgSecond = items[1].GetString() ?? string.Empty,
+                        SgThird = items[2].GetString() ?? string.Empty,
+                        PlFirst = items[3].GetString() ?? string.Empty,
+                        PlSecond = items[4].GetString() ?? string.Empty,
+                        PlThird = items[5].GetString() ?? string.Empty
                     };
                     parsedConjugations.Add(conjugation);
                 }

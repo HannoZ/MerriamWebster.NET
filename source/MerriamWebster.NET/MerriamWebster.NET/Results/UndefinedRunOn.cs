@@ -11,21 +11,21 @@ namespace MerriamWebster.NET.Results
         /// <summary>
         /// Undefined entry word
         /// </summary>
-        public string EntryWord { get; set; }
+        public string EntryWord { get; set; } = string.Empty;
         
         /// <summary>
         /// <i>Optional.</i> Gets or sets the inflections.
         /// </summary>
-        public ICollection<Inflection> Inflections { get; set; }
+        public ICollection<Inflection>? Inflections { get; set; }
         
         /// <summary>
         /// <i>Optional.</i> Undefined run-on text section containing <see cref="VerbalIllustration"/>s or <see cref="UsageNote"/>s.
         /// </summary>
-        public ICollection<IDefiningText> RunOnTexts { get; set; }
+        public ICollection<IDefiningText>? RunOnTexts { get; set; }
 
         /// <summary>
         /// <i>Optional, Spanish-English only.</i> Gets or sets an alternate undefinied entry word.
         /// </summary>
-        public AlternateUndefinedEntryWord AlternateEntry { get; set; }
+        public AlternateUndefinedEntryWord? AlternateEntry { get; set; }
     }
 }

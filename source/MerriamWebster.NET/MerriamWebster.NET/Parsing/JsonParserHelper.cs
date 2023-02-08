@@ -5,7 +5,7 @@ namespace MerriamWebster.NET.Parsing
 {
     public static class JsonParserHelper
     {
-        public static string GetStringValue(JsonElement element, string propName)
+        public static string? GetStringValue(JsonElement element, string propName)
         {
             if (element.TryGetProperty(propName, out var value))
             {
@@ -15,7 +15,7 @@ namespace MerriamWebster.NET.Parsing
             return null;
         }
 
-        public static IEnumerable<string> GetStringValues(JsonElement element, string propName)
+        public static IEnumerable<string>? GetStringValues(JsonElement element, string propName)
         {
             if (element.TryGetProperty(propName, out var valuesElement))
             {
@@ -28,7 +28,11 @@ namespace MerriamWebster.NET.Parsing
                 var values = valuesElement.EnumerateArray();
                 foreach (var value in values)
                 {
-                    returnValue.Add(value.GetString());
+                    var strVal = value.GetString();
+                    if (strVal != null)
+                    {
+                        returnValue.Add(strVal);
+                    }
                 }
 
                 return returnValue;

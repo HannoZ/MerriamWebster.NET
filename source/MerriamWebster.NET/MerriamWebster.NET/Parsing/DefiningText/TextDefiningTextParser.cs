@@ -7,7 +7,7 @@ namespace MerriamWebster.NET.Parsing.DefiningText
     {
         public IDefiningText Parse(JsonElement source)
         {
-            string definitionText = source.GetString();
+            string? definitionText = source.GetString();
             var definingText = new Results.DefiningText(definitionText);
 
             return definingText;

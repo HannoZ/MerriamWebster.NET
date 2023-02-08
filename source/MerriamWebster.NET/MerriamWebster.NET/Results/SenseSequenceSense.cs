@@ -16,6 +16,6 @@ namespace MerriamWebster.NET.Results
         /// <summary>
         /// Gets or sets the senses. This property only has content if <see cref="IsParenthesizedSenseSequence"/> is <c>true</c>.
         /// </summary>
-        public ICollection<SenseSequenceSense> Senses { get; set; }
+        public ICollection<SenseSequenceSense>? Senses { get; set; }
     }
 }

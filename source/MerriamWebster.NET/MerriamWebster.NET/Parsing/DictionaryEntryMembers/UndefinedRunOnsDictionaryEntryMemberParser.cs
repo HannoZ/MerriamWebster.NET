@@ -23,9 +23,15 @@ namespace MerriamWebster.NET.Parsing.DictionaryEntryMembers
             var runons = new List<UndefinedRunOn>();
             foreach (var uro in source.EnumerateArray())
             {
+                var word = JsonParserHelper.GetStringValue(uro, "ure");
+                if (string.IsNullOrEmpty(word))
+                {
+                    continue;
+                }
+
                 var runon = new UndefinedRunOn
                 {
-                    EntryWord = JsonParserHelper.GetStringValue(uro, "ure"),
+                    EntryWord = word,
                     FunctionalLabel = LabelsParser.ParseSingle<FunctionalLabel>(uro, "fl"),
                     ParenthesizedSubjectStatusLabel = LabelsParser.ParseSingle<ParenthesizedSubjectStatusLabel>(uro, "psl"),
                     GeneralLabels = LabelsParser.ParseMultiple<GeneralLabel>(uro, "lbs"),
@@ -78,11 +84,15 @@ namespace MerriamWebster.NET.Parsing.DictionaryEntryMembers
                 // spanish-english only
                 if (uro.TryGetProperty("aure", out var aure))
                 {
-                    runon.AlternateEntry = new AlternateUndefinedEntryWord()
+                    var text = JsonParserHelper.GetStringValue(aure, "ure");
+                    if (text != null)
                     {
-                        Text = JsonParserHelper.GetStringValue(aure, "ure"),
-                        TextCutback = JsonParserHelper.GetStringValue(aure, "urec")
-                    };
+                        runon.AlternateEntry = new AlternateUndefinedEntryWord()
+                        {
+                            Text = text,
+                            TextCutback = JsonParserHelper.GetStringValue(aure, "urec")
+                        };
+                    }
                 }
 
                 runons.Add(runon);

@@ -10,7 +10,7 @@ namespace MerriamWebster.NET.Parsing.DefiningText
         {
             var note = new CalledAlsoNote
             {
-                Intro = JsonParserHelper.GetStringValue(source, "intro")
+                Intro = JsonParserHelper.GetStringValue(source, "intro") ?? string.Empty
             };
 
             if (source.TryGetProperty("cats", out var cats))
@@ -19,7 +19,7 @@ namespace MerriamWebster.NET.Parsing.DefiningText
                 {
                     var caTarget = new CalledAlsoTarget
                     {
-                        TargetText = JsonParserHelper.GetStringValue(cat, "cat"),
+                        TargetText = JsonParserHelper.GetStringValue(cat, "cat") ?? string.Empty,
                         Reference = JsonParserHelper.GetStringValue(cat, "catref"),
                         ParenthesizedNumber = JsonParserHelper.GetStringValue(cat, "pn"),
                         ParenthesizedSubjectStatusLabel = LabelsParser.ParseSingle<ParenthesizedSubjectStatusLabel>(cat, "psl")

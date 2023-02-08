@@ -16,7 +16,7 @@ namespace MerriamWebster.NET.Parsing
         {
             var vis = new VerbalIllustration
             {
-                Sentence = JsonParserHelper.GetStringValue(visElement, "t"),
+                Sentence = JsonParserHelper.GetStringValue(visElement, "t") ?? string.Empty,
                 // spanish-english only
                 Translation = JsonParserHelper.GetStringValue(visElement, "tr")
             };

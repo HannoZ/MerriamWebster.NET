@@ -20,7 +20,11 @@ namespace MerriamWebster.NET.Parsing.DefiningText
                 if (type == "riw")
                 {
                     var riw = items[1];
-                    wrap.RunInEntryWord = JsonParserHelper.GetStringValue(riw, "rie");
+                    var rie = JsonParserHelper.GetStringValue(riw, "rie");
+                    if (rie != null)
+                    {
+                        wrap.RunInEntryWord = rie;
+                    }
 
                     if (riw.TryGetProperty("prs", out var prs))
                     {
@@ -35,7 +39,11 @@ namespace MerriamWebster.NET.Parsing.DefiningText
                 }
                 else if (type == "text")
                 {
-                    wrap.Text = items[1].GetString();
+                    var text = items[1].GetString();
+                    if (text != null)
+                    {
+                        wrap.Text = text;
+                    }
                 }
 
                 runIn.Wraps.Add(wrap);

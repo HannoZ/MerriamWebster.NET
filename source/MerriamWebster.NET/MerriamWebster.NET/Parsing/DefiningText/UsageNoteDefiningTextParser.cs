@@ -19,6 +19,10 @@ namespace MerriamWebster.NET.Parsing.DefiningText
             {
                 var items = element.EnumerateArray().ToList();
                 var parser = DefiningTextParserFactory.Create(items[0].GetString());
+                if (parser == null)
+                {
+                    continue;
+                }
                 if (items[1].ValueKind == JsonValueKind.Array)
                 {
                     foreach (var item in items[1].EnumerateArray())

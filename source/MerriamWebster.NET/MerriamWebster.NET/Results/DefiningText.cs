@@ -11,12 +11,13 @@ namespace MerriamWebster.NET.Results
         /// </summary>
         public DefiningText()
         {
+            Text = new FormattedText();
         }
 
         /// <summary>
         /// Creates a new instance of <see cref="DefiningText"/> with the specified text.
         /// </summary>
-        public DefiningText(string text)
+        public DefiningText(string? text)
         {
             Text = text ?? throw new ArgumentNullException(nameof(text));
         }
@@ -33,7 +34,8 @@ namespace MerriamWebster.NET.Results
         /// <inheritdoc />
         public override string ToString()
         {
-            return Text == null ? base.ToString() : Text.ToString();
+            var toString = Text == string.Empty ? base.ToString() : Text.ToString();
+            return toString ?? string.Empty;
         }
     }
 }

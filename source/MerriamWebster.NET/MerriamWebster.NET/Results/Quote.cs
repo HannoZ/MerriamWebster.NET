@@ -8,11 +8,11 @@
         /// <summary>
         /// Gets or sets the quote text.
         /// </summary>
-        public FormattedText Text { get; set; } = new FormattedText();
+        public FormattedText Text { get; set; } = new ();
 
         /// <summary>
         /// Gets or sets the attribution of quote information.
         /// </summary>
-        public AttributionOfQuote AttributionOfQuote { get; set; }
+        public AttributionOfQuote? AttributionOfQuote { get; set; }
     }
 }

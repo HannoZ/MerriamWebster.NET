@@ -2,7 +2,7 @@
 {
     public class DefiningTextParserFactory
     {
-        public static IDefiningTextParser Create(string type)
+        public static IDefiningTextParser? Create(string? type)
         {
             return type switch
             {

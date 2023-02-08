@@ -9,7 +9,7 @@ namespace MerriamWebster.NET.Parsing.DefiningText
         {
             return new GenderForms
             {
-                GenderWordSpelledOut = JsonParserHelper.GetStringValue(source, "gwd"),
+                GenderWordSpelledOut = JsonParserHelper.GetStringValue(source, "gwd") ?? string.Empty,
                 GenderWordCutback = JsonParserHelper.GetStringValue(source, "gwc")
             };
         }

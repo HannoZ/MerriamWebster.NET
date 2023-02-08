@@ -33,6 +33,12 @@ namespace MerriamWebster.NET.Tests
             var mocker = new AutoMocker(MockBehavior.Loose);
             mocker.Use(httpClient);
 
+            var config = new MerriamWebsterConfig
+            {
+                ApiKey = "key"
+            };
+            mocker.Use(config);
+
             _client = mocker.CreateInstance<MerriamWebsterClient>();
         }
         
@@ -103,7 +109,7 @@ namespace MerriamWebster.NET.Tests
             var result = await _client.Search("api", "entry");
 
             // ASSERT
-           // result.ShouldNotBeEmpty();
+            result.ShouldNotBeNull();
         }
 
         [TestMethod]

@@ -23,31 +23,31 @@ namespace MerriamWebster.NET.Results
         /// <summary>
         /// Gets or sets the inflection label
         /// </summary>
-        public string Label { get; set; }
+        public string? Label { get; set; }
         
         /// <summary>
         /// Gets or sets the inflection cutback.
         /// </summary>
-        public string Cutback { get; set; }
+        public string? Cutback { get; set; }
 
         /// <summary>
         /// Gets or sets the inflection value.
         /// </summary>
-        public string Value { get; set; }
+        public string? Value { get; set; }
 
         /// <summary>
         ///  <i>Optional, Spanish-English only.</i> Gets or sets the alternate inflection.
         /// </summary>
-        public AlternateInflection Alternate { get; set; }
+        public AlternateInflection? Alternate { get; set; }
 
         /// <summary>
         /// <i>Optional.</i> Gets or sets pronunciations.
         /// </summary>
-        public ICollection<Pronunciation> Pronunciations { get; set; }
+        public ICollection<Pronunciation>? Pronunciations { get; set; }
 
         /// <summary>
         /// <i>Optional.</i> This label provides information on the grammatical number (eg, singular, plural) of an inflection in a particular sense.
         /// </summary>
-        public string SenseSpecificInflectionPluralLabel { get; set; }
+        public string? SenseSpecificInflectionPluralLabel { get; set; }
     }
 }

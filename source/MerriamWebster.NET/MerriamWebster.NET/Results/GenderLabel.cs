@@ -17,12 +17,13 @@ namespace MerriamWebster.NET.Results
         /// </summary>
         public GenderLabel()
         {
+            Label = new Label();
         }
 
         /// <summary>
         /// Creates a new instance of the <see cref="GenderLabel"/> class with specified label. 
         /// </summary>
-        public GenderLabel(string label)
+        public GenderLabel(string? label)
         {
             Label = label ?? throw new ArgumentNullException(nameof(label));
         }

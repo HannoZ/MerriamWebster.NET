@@ -18,15 +18,15 @@ namespace MerriamWebster.NET.Results
         /// ID of the target table. 
         /// </summary>
         /// <remarks>For internal use</remarks>
-        public string TableId { get; set; }
+        public string? TableId { get; set; }
         /// <summary>
         ///  Text to display in table link.
         /// </summary>
-        public string Displayname { get; set; }
+        public string? Displayname { get; set; }
 
         /// <summary>
         /// Gets the location of the table, based on the <see cref="TableId"/>.
         /// </summary>
-        public Uri TableLocation => !string.IsNullOrEmpty(TableId) ? new Uri(string.Format(BaseUri, TableId)) : null;
+        public Uri? TableLocation => !string.IsNullOrEmpty(TableId) ? new Uri(string.Format(BaseUri, TableId)) : null;
     }
 }

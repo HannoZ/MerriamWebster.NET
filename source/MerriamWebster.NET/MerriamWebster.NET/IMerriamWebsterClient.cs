@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 
 namespace MerriamWebster.NET
 {
@@ -20,5 +21,17 @@ namespace MerriamWebster.NET
         /// The API returns a list of suggestions if there is no direct match.
         /// </remarks>
         Task<string> Search(string api, string searchTerm);
+
+        /// <summary>
+        /// Execute a search request on the specified API with provided API key.
+        /// </summary>
+        /// <param name="api">Specifies the API</param>
+        /// <param name="searchTerm">The search term to pass to the API</param>
+        /// <param name="apiKey">The API key for the <paramref name="api"/></param>
+        /// <returns>The API response as string.</returns>
+        /// <remarks>
+        /// The API returns a list of suggestions if there is no direct match.
+        /// </remarks>
+        Task<string> Search(string api, string searchTerm, string apiKey);
     }
 }

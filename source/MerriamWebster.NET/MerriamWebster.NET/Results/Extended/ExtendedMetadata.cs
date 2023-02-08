@@ -11,17 +11,17 @@ namespace MerriamWebster.NET.Results.Extended
         /// <remarks>
         /// <i>Note</i>: this is a distinct usage from that described in <see cref="Synonym"/>
         /// </remarks>
-        public ICollection<string> Synonyms { get; set; } = new List<string>();
+        public ICollection<string>? Synonyms { get; set; } = new List<string>();
 
         /// <summary>
         /// Lists all antonyms given in the entry's <i>ant_list</i>; may be used for matching antonym search terms to the entry.        
         /// </summary>
-        public ICollection<string> Antonyms { get; set; } = new List<string>();
+        public ICollection<string>? Antonyms { get; set; } = new List<string>();
 
         /// <summary>
         /// Gets or sets the target entry.
         /// </summary>
-        public Target Target { get; set; }
+        public Target? Target { get; set; }
 
     }
 }

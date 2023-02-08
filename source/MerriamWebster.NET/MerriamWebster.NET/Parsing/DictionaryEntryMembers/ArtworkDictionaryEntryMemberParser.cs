@@ -17,8 +17,8 @@ namespace MerriamWebster.NET.Parsing.DictionaryEntryMembers
             }
 
             var source = json.Value;
+            var artId = JsonParserHelper.GetStringValue(source, "artid");
 
-            string artId = JsonParserHelper.GetStringValue(source, "artid");
             var artwork = new Artwork
             {
                 Caption = JsonParserHelper.GetStringValue(source, "capt"),

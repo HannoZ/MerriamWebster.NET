@@ -26,17 +26,28 @@ namespace MerriamWebster.NET.Results
         /// <summary>
         /// Contains the etymology content.
         /// </summary>
-        public FormattedText Text { get; set; } = new ();
+        public FormattedText Text { get; set; } = new();
 
         /// <summary>
         /// <i>Optional.</i> A summary of any notes.
         /// </summary>
         [JsonIgnore]
-        public FormattedText Note => Notes?.Any() == true ? string.Join(',', Notes.Where(n=>n.Text != null).Select(n=>n.Text.RawText)) : null;
+        public FormattedText? Note
+        {
+            get
+            {
+                if (Notes.HasValue() == false)
+                {
+                    return null;
+                }
+
+                return string.Join(',', Notes!.Where(n => n.Text != string.Empty).Select(n => n.Text.RawText));
+            }
+        }
 
         /// <summary>
         /// <i>Optional.</i> Gets or sets the etymology notes.
         /// </summary>
-        public ICollection<EtymologyNote> Notes { get; set; }
+        public ICollection<EtymologyNote>? Notes { get; set; }
     }
 }

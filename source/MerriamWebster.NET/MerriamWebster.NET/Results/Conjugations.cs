@@ -15,6 +15,29 @@
     /// </remarks>
     public class Conjugations
     {
+        public Conjugations()
+        {
+            PresentParticiple = string.Empty;
+            PastParticiple = string.Empty;
+            Present = new Conjugation();
+            IndefinitePast = new Conjugation();
+            ImperfectPast = new Conjugation();
+            Conditional = new Conjugation();
+            Future = new Conjugation();
+            Imperative = new Conjugation();
+            PresentPerfect = new Conjugation();
+            PastPerfect = new Conjugation();
+            PreteritePerfect = new Conjugation();
+            ConditionalPerfect = new Conjugation();
+            FuturePerfect = new Conjugation();
+            PresentSubjunctive = new Conjugation();
+            ImperfectSubjunctive = new Conjugation();
+            FutureSubjunctive = new Conjugation();
+            PresentPerfectSubjunctive = new Conjugation();
+            PastPerfectSubjunctive = new Conjugation();
+            FuturePerfectSubjunctive = new Conjugation();
+        }
+
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
         public string PresentParticiple { get; set; }
         public string PastParticiple { get; set; }
@@ -42,7 +65,7 @@
         /// <remarks>
         /// Also called Pluperfect subjunctive
         /// </remarks>
-        public Conjugation PastPerfectSubjunctive { get; set; } 
+        public Conjugation PastPerfectSubjunctive { get; set; }
         public Conjugation FuturePerfectSubjunctive { get; set; }
     }
 #pragma warning restore CS1591 // Missing XML comment for publicly visible type or member

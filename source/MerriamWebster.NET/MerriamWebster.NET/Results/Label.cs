@@ -14,6 +14,7 @@
         /// <remarks>Required for deserialization</remarks>
         public Label()
         {
+            Text = string.Empty;
         }
 
         /// <summary>
@@ -39,9 +40,9 @@
         /// </summary>
         /// <param name="label">The label object.</param>
         /// <returns>The label text.</returns>
-        public static implicit operator string(Label label)
+        public static implicit operator string(Label? label)
         {
-            return label.Text;
+            return label?.Text ?? string.Empty;
         }
 
         /// <inheritdoc />

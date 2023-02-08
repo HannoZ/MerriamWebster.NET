@@ -15,11 +15,11 @@ namespace MerriamWebster.NET.Results.SpanishEnglish
         /// <summary>
         /// <i>Optional.</i> Gets or sets the cross-references.
         /// </summary>
-        public ICollection<CrossReference> CrossReferences { get; internal set; }
+        public ICollection<CrossReference>? CrossReferences { get; internal set; }
 
         /// <summary>
         /// <i>Optional.</i> A supplemental verb conjugation section is included in some bilingual dictionary entries.
         /// </summary>
-        public Conjugations Conjugations { get; internal set; }
+        public Conjugations? Conjugations { get; internal set; }
     }
 }

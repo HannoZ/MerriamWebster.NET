@@ -25,6 +25,10 @@ namespace MerriamWebster.NET.Parsing.DefiningText
                     type = "text";
                 }
                 var parser = DefiningTextParserFactory.Create(type);
+                if (parser == null)
+                {
+                    continue;
+                }
                 if (items[1].ValueKind == JsonValueKind.Array)
                 {
                     foreach (var item in items[1].EnumerateArray())
@@ -37,36 +41,6 @@ namespace MerriamWebster.NET.Parsing.DefiningText
                     snote.DefiningTexts.Add(parser.Parse(items[1]));
                 }
 
-
-                //if (element.ValueKind == JsonValueKind.Array)
-                //{
-                //    foreach (var value in element.EnumerateArray())
-                //    {
-                //        ParseObject(value);
-                //    }
-                //}
-                //else
-                //{
-                //    ParseObject(element);
-                //}
-
-                void ParseObject(JsonElement obj)
-                {
-                    if (obj.ValueKind == JsonValueKind.String)
-                    {
-                        var stringValue = obj.GetString();
-                        if (stringValue != "t" && stringValue != "vis" && stringValue != "ri")
-                        {
-                            snote.DefiningTexts.Add(new Results.DefiningText(stringValue));
-                        }
-
-                    }
-                    else if (obj.ValueKind == JsonValueKind.Object)
-                    {
-                        var text = JsonParserHelper.GetStringValue(obj, "t");
-                        snote.DefiningTexts.Add(new Results.DefiningText(text));
-                    }
-                }
             }
 
             return snote;

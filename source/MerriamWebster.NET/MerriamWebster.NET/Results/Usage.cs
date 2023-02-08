@@ -22,7 +22,7 @@ namespace MerriamWebster.NET.Results
         /// <summary>
         /// paragraph label: heading to display at top of section
         /// </summary>
-        public FormattedText ParagraphLabel { get; set; }
+        public FormattedText ParagraphLabel { get; set; } = new();
 
         /// <summary>
         /// paragraph text containing the elements <see cref="DefiningText"/>, <see cref="VerbalIllustration"/>, <see cref="InAdditionReference"/> (not yet implemented)

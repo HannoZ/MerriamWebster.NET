@@ -14,11 +14,11 @@
         /// <summary>
         /// Get or sets the cross-reference text
         /// </summary>
-        public string Text { get; set; }
+        public string Text { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets the ID of cross-reference target
         /// </summary>
-        public string Target { get; set; }
+        public string Target { get; set; } = string.Empty;
     }
 }

@@ -8,8 +8,10 @@ using MerriamWebster.NET.Results.Base;
 
 namespace MerriamWebster.NET.Parsing.DictionaryEntryMembers
 {
+    /// <inheritdoc />
     public class SynonymsDictionaryEntryMemberParser : IDictionaryEntryMemberParser
     {
+        /// <inheritdoc />
         public void Parse(JsonProperty json, EntryBase target)
         {
             ArgumentNullException.ThrowIfNull(target, nameof(target));
@@ -27,7 +29,7 @@ namespace MerriamWebster.NET.Parsing.DictionaryEntryMembers
             {
                 var synonym = new Synonym()
                 {
-                    ParagraphLabel = JsonParserHelper.GetStringValue(synonymElement, "pl")
+                    ParagraphLabel = JsonParserHelper.GetStringValue(synonymElement, "pl") ?? string.Empty
                 };
 
                 if (synonymElement.TryGetProperty("pt", out var pt))
@@ -63,7 +65,11 @@ namespace MerriamWebster.NET.Parsing.DictionaryEntryMembers
                     synonym.SeeInAdditionReference = new List<string>();
                     foreach (var reference in refs.EnumerateArray())
                     {
-                        synonym.SeeInAdditionReference.Add(reference.GetString());
+                        var refString = reference.GetString();
+                        if (refString != null)
+                        {
+                            synonym.SeeInAdditionReference.Add(refString);
+                        }
                     }
                 }
 

@@ -25,7 +25,7 @@ namespace MerriamWebster.NET.Parsing.DictionaryEntryMembers
             {
                 var quote = new Quote
                 {
-                    Text = JsonParserHelper.GetStringValue(q, "t")
+                    Text = JsonParserHelper.GetStringValue(q, "t") ?? string.Empty,
                 };
 
                 if (q.TryGetProperty("aq", out var aq))

@@ -10,7 +10,7 @@ namespace MerriamWebster.NET.Results
         /// <summary>
         /// Cognate cross-reference label.
         /// </summary>
-        public string Label { get; set; }
+        public string? Label { get; set; }
 
         /// <summary>
         /// Gets or sets the cross-reference targets.

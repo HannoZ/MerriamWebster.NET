@@ -20,9 +20,9 @@ namespace MerriamWebster.NET.Parsing.DictionaryEntryMembers
 
             var metadata = new Metadata
             {
-                Id = JsonParserHelper.GetStringValue(source, "id"),
-                Sort = JsonParserHelper.GetStringValue(source, "sort"),
-                Source = JsonParserHelper.GetStringValue(source, "src")
+                Id = JsonParserHelper.GetStringValue(source, "id") ?? string.Empty,
+                Sort = JsonParserHelper.GetStringValue(source, "sort") ?? string.Empty,
+                Source = JsonParserHelper.GetStringValue(source, "src") ?? string.Empty
             };
 
             if (source.TryGetProperty("uuid", out var uuidElem)

@@ -12,6 +12,6 @@
         /// <summary>
         /// Creates a new instance of <see cref="BiosDate"/> with the specified text.
         /// </summary>
-        public BiosDate(string text) : base(text) {}
+        public BiosDate(string? text) : base(text) {}
     }
 }

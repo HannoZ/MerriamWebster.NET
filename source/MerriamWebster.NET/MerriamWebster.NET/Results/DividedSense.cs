@@ -14,6 +14,6 @@
         /// <summary>
         /// Gets or sets the sense divider (eg. 'also', 'especially')
         /// </summary>
-        public string SenseDivider { get; set; }
+        public string? SenseDivider { get; set; } 
     }
 }

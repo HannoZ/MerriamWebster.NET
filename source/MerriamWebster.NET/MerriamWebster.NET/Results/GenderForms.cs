@@ -17,11 +17,11 @@
         /// <summary>
         /// text of gender word cutback form.
         /// </summary>
-        public string GenderWordCutback { get; set; }
+        public string? GenderWordCutback { get; set; }
         /// <summary>
         /// text of gender word spelled-out form.
         /// </summary>
-        public string GenderWordSpelledOut { get; set; }
+        public string GenderWordSpelledOut { get; set; } = string.Empty;
 
         /// <inheritdoc />
         public FormattedText MainText => GenderWordSpelledOut;

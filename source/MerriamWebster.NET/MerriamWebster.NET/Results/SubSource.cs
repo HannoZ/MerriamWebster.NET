@@ -8,11 +8,11 @@
         /// <summary>
         /// Source work for quote.
         /// </summary>
-        public FormattedText Source { get; set; }
+        public FormattedText Source { get; set; } = new ();
         /// <summary>
         /// Publication date of quote.
         /// </summary>
-        public string PublicationDate { get; set; }
+        public string? PublicationDate { get; set; }
 
     }
 }

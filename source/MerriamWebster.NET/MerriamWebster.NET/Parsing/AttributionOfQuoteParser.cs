@@ -12,18 +12,29 @@ namespace MerriamWebster.NET.Parsing
         {
             var quote = new AttributionOfQuote
             {
-                Author = JsonParserHelper.GetStringValue(aq, "auth"),
-                Source = JsonParserHelper.GetStringValue(aq, "source"),
+                Author = JsonParserHelper.GetStringValue(aq, "auth") ?? string.Empty,
                 PublicationDate = JsonParserHelper.GetStringValue(aq, "aqdate")
             };
+
+            var source = JsonParserHelper.GetStringValue(aq, "source");
+            if (source != null)
+            {
+                quote.Source = source;
+            }
+
 
             if (aq.TryGetProperty("subsource", out var subsource))
             {
                 quote.Subsource = new SubSource
                 {
-                    Source = JsonParserHelper.GetStringValue(subsource, "source"),
                     PublicationDate = JsonParserHelper.GetStringValue(subsource, "aqdate")
                 };
+
+                var subSource = JsonParserHelper.GetStringValue(subsource, "source");
+                if (subSource != null)
+                {
+                    quote.Subsource.Source = subSource;
+                }
             }
 
             return quote;

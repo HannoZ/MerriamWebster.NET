@@ -5,7 +5,7 @@ namespace MerriamWebster.NET.Parsing.DictionaryEntryMembers
 {
     internal class DictionaryEntryMemberParserFactory 
     {
-        public static IDictionaryEntryMemberParser GetDictionaryEntryMemberParser(string api, string elementName) 
+        public static IDictionaryEntryMemberParser? GetDictionaryEntryMemberParser(string api, string elementName) 
         {
             switch (elementName)
             {

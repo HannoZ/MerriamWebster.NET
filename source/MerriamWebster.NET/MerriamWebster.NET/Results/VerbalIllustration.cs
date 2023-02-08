@@ -30,14 +30,27 @@ namespace MerriamWebster.NET.Results
         /// The translation of the <see cref="Sentence"/>.
         /// </summary>
         /// <remarks>Spanish-English only.</remarks>
-        public string Translation { get; set; }
+        public string? Translation { get; set; }
         /// <summary>
         /// Gets or sets the attribution of quote information.
         /// </summary>
-        public AttributionOfQuote AttributionOfQuote { get; set; }
+        public AttributionOfQuote? AttributionOfQuote { get; set; }
 
         /// <inheritdoc />
         [JsonIgnore]
-        public FormattedText MainText => Sentence;
+        public FormattedText MainText
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(Translation))
+                {
+                    return Sentence;
+                }
+                else
+                {
+                    return $"{Sentence} - {Translation}";
+                }
+            }
+        }
     }
 }

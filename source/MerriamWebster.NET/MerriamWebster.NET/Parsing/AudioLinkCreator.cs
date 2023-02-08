@@ -14,7 +14,7 @@ namespace MerriamWebster.NET.Parsing
         /// Creates a link (<see cref="Uri"/>) to an audio file.
         /// </summary>
         /// <returns>A <see cref="Uri"/> that points to the audio file, or <c>null</c> if no Audio string is provided.</returns>
-        public static Uri CreateLink(JsonElement source)
+        public static Uri? CreateLink(JsonElement source)
         {
             if (!source.TryGetProperty("audio", out var audioElement))
             {

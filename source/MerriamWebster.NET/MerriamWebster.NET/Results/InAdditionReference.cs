@@ -10,11 +10,11 @@
         /// <summary>
         /// Gets or sets the reference text
         /// </summary>
-        public string Text { get; set; }
+        public string Text { get; set; } = string.Empty;
         /// <summary>
         /// Gets or sets the reference ID
         /// </summary>
-        public string Id { get; set; }
+        public string? Id { get; set; }
 
         /// <inheritdoc />
         public FormattedText MainText => Text;

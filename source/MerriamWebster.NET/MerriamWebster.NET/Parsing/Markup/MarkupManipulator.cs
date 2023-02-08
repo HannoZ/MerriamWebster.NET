@@ -30,8 +30,13 @@ namespace MerriamWebster.NET.Parsing.Markup
         /// </summary>
         /// <param name="input">The input text.</param>
         /// <returns>Output text without any markup</returns>
-        public static string RemoveMarkupFromString(string input)
+        public static string RemoveMarkupFromString(string? input)
         {
+            if (input == null)
+            {
+                return string.Empty;
+            }
+
             input = input.Replace("{bc}", "")
                 .Replace("{dx_def}", "(")
                 .Replace("{/dx_def}", ")")
@@ -60,8 +65,13 @@ namespace MerriamWebster.NET.Parsing.Markup
         /// </summary>
         /// <param name="input">The input text.</param>
         /// <returns>Output text with HTML markup</returns>
-        public static string ReplaceMarkupInString(string input)
+        public static string ReplaceMarkupInString(string? input)
         {
+            if (input == null)
+            {
+                return string.Empty;
+            }
+
             input = MarkupManipulators.Aggregate(input, (current, markupRemover) => markupRemover.ReplaceMarkup(current));
             input = input.Replace("{bc}", "<b class=\"mw-bc\">:</b>");
 
@@ -73,7 +83,7 @@ namespace MerriamWebster.NET.Parsing.Markup
 
        
 
-        internal static string RegexReplace(string input, Regex regex, string htmlTag = null, string @class = null, string style = null)
+        internal static string RegexReplace(string input, Regex regex, string? htmlTag = null, string? @class = null, string? style = null)
         {
             var matches = regex.Matches(input);
             input = Regex.Replace(input, regex.ToString(), "[x]");

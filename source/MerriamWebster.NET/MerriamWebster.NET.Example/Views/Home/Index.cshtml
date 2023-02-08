@@ -1,0 +1,41 @@
+﻿@model SearchRequestModel
+
+@{
+    ViewBag.Title = "Search";
+    Layout = "_Layout";
+
+}
+
+<h2>Use the Merriam-Webster api</h2>
+<form asp-action="Index" class="col-4">
+    <div class="form-group">
+        <select class="form-control" asp-for="Api" asp-items="Model?.Apis"></select>
+    </div>
+    <div class="form-group">
+        <label asp-for="ApiKey">API key</label>
+        <input asp-for="ApiKey" type="text" class="form-control" maxlength="36" />
+    </div>
+    <div class="form-group">
+        <label asp-for="SearchTerm">Search term</label>
+        <input asp-for="SearchTerm" type="text" class="form-control" min="3" />
+    </div>
+    <div class="row">&nbsp;</div>
+
+    <button type="submit" class="btn btn-primary">Search</button>
+
+</form>
+<div id="results">
+    <partial name="_Response" model="Model" />
+</div>
+
+@section Scripts
+    {
+    <script>
+        (function () {
+            var element = document.getElementById("raw-response-json");
+            var obj = JSON.parse(element.innerText);
+            element.innerHTML = JSON.stringify(obj, undefined, 2);
+        })();
+
+    </script>
+}

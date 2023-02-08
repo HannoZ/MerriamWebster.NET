@@ -23,22 +23,22 @@ namespace MerriamWebster.NET.Results
         /// <summary>
         /// paragraph label: heading to display at top of section
         /// </summary>
-        public Label ParagraphLabel { get; set; }
+        public Label? ParagraphLabel { get; set; }
 
         /// <summary>
         /// paragraph text 
         /// </summary>
-        public ICollection<IDefiningText> ParagraphTexts { get; set; }
+        public ICollection<IDefiningText>? ParagraphTexts { get; set; }
 
         /// <summary>
         /// See in addition reference: contains one or more elements, each of which is the text and ID of a "see in addition" reference to another synonym section.
         /// </summary>
-        public ICollection<string> SeeInAdditionReference { get; set; }
+        public ICollection<string>? SeeInAdditionReference { get; set; }
 
         /// <summary>
         /// Experimental feature! A summary of the <see cref="ParagraphTexts"/> content.
         /// </summary>
         [JsonIgnore]
-        public FormattedText Summary => ParagraphTexts.Build();
+        public FormattedText Summary => ParagraphTexts != null ? ParagraphTexts.Build() : new FormattedText();
     }
 }

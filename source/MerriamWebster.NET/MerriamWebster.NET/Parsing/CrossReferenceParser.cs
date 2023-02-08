@@ -24,12 +24,12 @@ namespace MerriamWebster.NET.Parsing
                     var crossReference = new CrossReference();
                     if (xrs.TryGetProperty("xrt", out var xrt))
                     {
-                        crossReference.Text = xrt.ToString();
+                        crossReference.Text = xrt.GetString() ?? string.Empty;
                     }
 
                     if (xrs.TryGetProperty("xref", out var xref))
                     {
-                        crossReference.Target = xref.GetString();
+                        crossReference.Target = xref.GetString() ?? string.Empty;
                     }
 
                     yield return crossReference;

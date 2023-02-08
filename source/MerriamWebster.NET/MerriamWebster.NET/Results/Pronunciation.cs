@@ -25,36 +25,36 @@ namespace MerriamWebster.NET.Results
         /// <summary>
         /// Written pronunciation in Merriam-Webster format.
         /// </summary>
-        public string WrittenPronunciation { get; set; }
+        public string WrittenPronunciation { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets the audio link.
         /// </summary>
-        public Uri AudioLink { get; set; }
+        public Uri? AudioLink { get; set; }
 
         /// <summary>
         /// <i>Optional. Not used in Collegiate dictionary.</i> International Phonetic Alphabet pronunciation.
         /// </summary>
-        public string Ipa { get; set; }
+        public string? Ipa { get; set; }
 
         /// <summary>
         /// <i>Optional. Not used in Collegiate dictionary.</i>  Word-of-the-day pronunciation format.
         /// </summary>
-        public string Wod { get; set; }
+        public string? Wod { get; set; }
         
         /// <summary>
         /// pronunciation label <i>before</i> pronunciation
         /// </summary>
-        public string LabelBeforePronunciation { get; set; }
+        public string? LabelBeforePronunciation { get; set; }
 
         /// <summary>
         /// pronunciation label <i>after</i> pronunciation
         /// </summary>
-        public string LabelAfterPronunciation { get; set; }
+        public string? LabelAfterPronunciation { get; set; }
        
         /// <summary>
         /// punctuation to separate pronunciation objects.
         /// </summary>
-        public string Punctuation { get; set; }
+        public string? Punctuation { get; set; }
     }
 }

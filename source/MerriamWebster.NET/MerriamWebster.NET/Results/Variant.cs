@@ -16,12 +16,12 @@ namespace MerriamWebster.NET.Results
         /// <summary>
         /// <i>Optional.</i> Variant label, such as “or”.
         /// </summary>
-        public string Label { get; set; }
+        public string? Label { get; set; }
 
         /// <summary>
         /// Gets or sets the variant text.
         /// </summary>
-        public string Text { get; set; }
+        public string? Text { get; set; }
 
         /// <summary>
         /// <i>Spanish-English only.</i> <i>Optional.</i> Contains a cutback form of the preceding variant.
@@ -29,16 +29,16 @@ namespace MerriamWebster.NET.Results
         /// <remarks>
         /// A variant is often a sense-specific idiom or phrase containing the headword. In space-constrained environments, such variants may be presented in a shortened cutback form that omits the headword itself. 
         /// </remarks>
-        public string Cutback { get; set; }
+        public string? Cutback { get; set; }
 
         /// <summary>
         /// <i>Optional.</i> Gets or sets pronunciations.
         /// </summary>
-        public ICollection<Pronunciation> Pronunciations { get; set; }
+        public ICollection<Pronunciation>? Pronunciations { get; set; }
 
         /// <summary>
         /// <i>Optional.</i> This label provides information on the grammatical number (eg, singular, plural) of an inflection in a particular sense.
         /// </summary>
-        public Label SenseSpecificInflectionPluralLabel { get; set; }
+        public Label? SenseSpecificInflectionPluralLabel { get; set; }
     }
 }

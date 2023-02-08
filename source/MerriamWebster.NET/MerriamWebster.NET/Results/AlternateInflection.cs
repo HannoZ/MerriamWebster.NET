@@ -13,10 +13,10 @@
         /// <summary>
         /// an inflection ending (eg, Spanish "-as", English "-ing")
         /// </summary>
-        public string Cutback { get; set; }
+        public string? Cutback { get; set; }
         /// <summary>
         /// a fully spelled-out inflection
         /// </summary>
-        public string Inflection { get; set; }
+        public string? Inflection { get; set; }
     }
 }

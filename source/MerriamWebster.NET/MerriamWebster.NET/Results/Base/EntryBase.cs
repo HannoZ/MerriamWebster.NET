@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿#nullable enable
+using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
 namespace MerriamWebster.NET.Results.Base
@@ -19,7 +20,7 @@ namespace MerriamWebster.NET.Results.Base
             
         }
 
-        public Metadata Metadata { get; set; }
+        public Metadata Metadata { get; set; } = new ();
 
         /// <summary>
         /// <i>Optional.</i> Homographs are headwords with identical spellings but distinct meanings and origins.
@@ -30,7 +31,7 @@ namespace MerriamWebster.NET.Results.Base
         /// <b>Display Guidance:</b>
         /// In superscript immediately preceding the hw.
         /// </remarks>
-        public int Homograph { get; internal set; }
+        public int? Homograph { get; internal set; }
 
         /// <summary>
         /// The date of the earliest recorded use of a headword in English.
@@ -39,7 +40,7 @@ namespace MerriamWebster.NET.Results.Base
         /// <b>Display Guidance:</b>
         /// Typically displayed inline within parentheses or in its own block with a heading such as "First Known Use".
         /// </remarks>
-        public FormattedText Date { get; internal set; }
+        public FormattedText? Date { get; internal set; }
 
         /// <summary>
         /// Gets or sets the headword.
@@ -50,32 +51,32 @@ namespace MerriamWebster.NET.Results.Base
         /// <i>Optional.</i><br/>
         /// An alternate headword is a regional or less common spelling of a headword. 
         /// </summary>
-        public ICollection<AlternateHeadwordInformation> AlternateHeadwords { get; internal set; }
+        public ICollection<AlternateHeadwordInformation>? AlternateHeadwords { get; internal set; }
 
         /// <summary>
         /// <i>Optional.</i> Gets or sets the variants.
         /// </summary>
-        public ICollection<Variant> Variants { get; internal set; }
+        public ICollection<Variant>? Variants { get; internal set; }
         
         /// <summary>
         /// <i>Optional.</i> Gets or sets the functional label.
         /// </summary>
-        public FunctionalLabel FunctionalLabel { get; internal set; }
+        public FunctionalLabel? FunctionalLabel { get; internal set; }
 
         /// <summary>
         /// <i>Optional.</i> Gets or sets the general labels.
         /// </summary>
-        public ICollection<GeneralLabel> GeneralLabels { get; internal set; }
+        public ICollection<GeneralLabel>? GeneralLabels { get; internal set; }
 
         /// <summary>
         /// <i>Optional.</i> Gets or sets the subject/status labels.
         /// </summary>
-        public ICollection<SubjectStatusLabel> SubjectStatusLabels { get; internal set; }
+        public ICollection<SubjectStatusLabel>? SubjectStatusLabels { get; internal set; }
 
         /// <summary>
         /// <i>Optional.</i> Gets or sets the inflections.
         /// </summary>
-        public ICollection<Inflection> Inflections { get; internal set; }
+        public ICollection<Inflection>? Inflections { get; internal set; }
 
         /// <summary>
         /// Gets or sets the <i>cognate</i> cross-references.
@@ -84,7 +85,7 @@ namespace MerriamWebster.NET.Results.Base
         /// <b>Display Guidance:</b>
         /// If the collection has more than one element, separate them by a comma and space.
         /// </remarks>
-        public ICollection<CognateCrossReference> CognateCrossReferences { get; internal set; }
+        public ICollection<CognateCrossReference>? CognateCrossReferences { get; internal set; }
 
         /// <summary>
         /// Gets or sets the definitions.
@@ -94,22 +95,22 @@ namespace MerriamWebster.NET.Results.Base
         /// <summary>
         /// <i>Optional.</i> Gets or sets undefined run-ons.
         /// </summary>
-        public ICollection<UndefinedRunOn> UndefinedRunOns { get; internal set; }
+        public ICollection<UndefinedRunOn>? UndefinedRunOns { get; internal set; }
 
         /// <summary>
         /// <i>Optional.</i> Gets or sets defined run-ons.
         /// </summary>
-        public ICollection<DefinedRunOn> DefinedRunOns { get; internal set; }
+        public ICollection<DefinedRunOn>? DefinedRunOns { get; internal set; }
         
         /// <summary>
         /// <i>Optional.</i> Gets or sets the artwork.
         /// </summary>
-        public Artwork Artwork { get; internal set; }
+        public Artwork? Artwork { get; internal set; }
 
         /// <summary>
         /// <i>Optional.</i> Gets or sets the etymology.
         /// </summary>
-        public Etymology Etymology { get; internal set; }
+        public Etymology? Etymology { get; internal set; }
 
         /// <summary>
         /// A short definition provides a highly abridged version of the main definition section, consisting of just the definition text for the first three senses.

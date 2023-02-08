@@ -12,6 +12,6 @@ namespace MerriamWebster.NET.Results.Medical
         /// <summary>
         /// <i>Optional.</i> Gets or sets biographical notes.
         /// </summary>
-        public BiographicalNote BiographicalNote { get; internal set; }
+        public BiographicalNote? BiographicalNote { get; internal set; }
     }
 }

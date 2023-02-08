@@ -6,6 +6,9 @@ using MerriamWebster.NET.Results.Base;
 
 namespace MerriamWebster.NET.Parsing
 {
+    /// <summary>
+    /// Parser class for a few standard properties (labels, homograph, shortdefs, date) that don't require much specific parsing logic.
+    /// </summary>
     public class JsonEntryParser
     {
         public void Parse(JsonElement source, EntryBase target)
@@ -20,9 +23,9 @@ namespace MerriamWebster.NET.Parsing
 
             target.FunctionalLabel = LabelsParser.ParseSingle<FunctionalLabel>(source, "fl");
 
-            if (source.TryGetProperty("date", out var date))
+            if (source.TryGetProperty("date", out var date) )
             {
-                target.Date = date.GetString();
+                target.Date = date.GetString() ?? string.Empty;
             }
 
             var shortdef = JsonParserHelper.GetStringValues(source, "shortdef");

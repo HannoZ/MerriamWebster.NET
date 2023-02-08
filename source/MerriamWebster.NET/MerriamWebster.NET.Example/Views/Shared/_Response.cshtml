@@ -1,0 +1,294 @@
+﻿@using MerriamWebster.NET.Results
+@using MerriamWebster.NET.Results.Base
+@model SearchRequestModel?
+
+@if (Model?.Result != null)
+{
+    <div class="row">&nbsp;</div>
+    <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#raw-response">Raw response</button>
+
+    <div class="modal fade" id="raw-response" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Raw response</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <pre> <code id="raw-response-json">@Html.Raw(Model.Result.RawResponse)</code></pre>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>                                                                         
+
+    @* separate actual results and related results -> move logic to library*@
+    int index = 0;
+    List<Entry> validEntries = new List<Entry>();
+    List<Entry> relatedEntries = new List<Entry>();
+    foreach (var entry in Model.Result.Entries)
+    {
+        if (entry.Headword.Text?.Equals(Model.SearchTerm, StringComparison.OrdinalIgnoreCase) == true)
+        {
+            validEntries.Add(entry);
+            continue;
+        }
+        else
+        {
+            var colonIndex = entry.Metadata.Id.IndexOf(':');
+            if (colonIndex != -1)
+            {
+                if (entry.Metadata.Id[..colonIndex].Equals(Model.SearchTerm, StringComparison.OrdinalIgnoreCase))
+                {
+                    validEntries.Add(entry);
+                    continue;
+                }
+            }
+            else
+            {
+                if (entry.Metadata.Id.Equals(Model.SearchTerm, StringComparison.OrdinalIgnoreCase))
+                {
+                    validEntries.Add(entry);
+                    continue;
+                }
+            }
+        }
+
+        relatedEntries.Add(entry);
+    }
+    int total = validEntries.Count;
+    foreach (var result in validEntries)
+    {
+        index++;
+        <div class="mw-entry-header">
+            <h1>@Model.SearchTerm</h1> <span class="mw-fl">@result.FunctionalLabel</span> <span>@index of @total</span>
+            @if (result.Headword.Pronunciations != null  )
+            {
+                foreach (var pronunciation in result.Headword.Pronunciations)
+                {
+                    <a class="btn btn-secondary btn-sm" href="@pronunciation.AudioLink" target="_blank">
+                        @if (pronunciation.AudioLink != null)
+                        {
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-play" viewBox="0 0 16 16">
+                                <path d="M10.804 8 5 4.633v6.734L10.804 8zm.792-.696a.802.802 0 0 1 0 1.392l-6.363 3.692C4.713 12.69 4 12.345 4 11.692V4.308c0-.653.713-.998 1.233-.696l6.363 3.692z"/>
+                            </svg>
+                        }
+                        <text> @pronunciation.WrittenPronunciation</text>
+                    </a>
+                }
+            }
+        </div>
+
+        @*Definitions*@
+        <h2>Definitions</h2>
+        foreach (var definition in result.Definitions)
+        {
+            if (definition.VerbDivider != null)
+            {
+                <div class="mw-vd">@definition.VerbDivider</div>
+            }
+            foreach (var senseSequence in definition.SenseSequence)
+            {
+                foreach (var sseq in senseSequence.Senses)
+                {
+                    if (sseq.IsParenthesizedSenseSequence)
+                    {
+                        foreach (var senseSequenceSense in sseq.Senses)
+                        {
+                            if (senseSequenceSense is Sense sense)
+                            {
+                                int skip = 0;
+                                if (sense.SenseNumber != null)
+                                {
+                                    skip = 1;
+                                    var firstDef = sense.DefiningTexts.FirstOrDefault();
+                                    <div class="mw-sense-nr">
+                                        @sense.SenseNumber
+                                        
+                                            @if (sense.GeneralLabels.HasValue())
+                                        {
+                                            <span class="badge bg-secondary">
+                                                @Html.Raw(string.Join(',', sense.GeneralLabels))
+                                            </span>
+                                        }
+                                        <span class="mw-defining-text">@Html.Raw(firstDef?.MainText.HtmlText)</span>
+                                    </div>
+                                }
+                                @foreach (var definingText in sense.DefiningTexts.Skip(skip))
+                                {
+                                    var extraClass = "";
+                                    if (definingText is VerbalIllustration)
+                                    {
+                                        extraClass = "-vis";
+                                    }
+                                    <div class="mw-defining-text@(extraClass)">
+                                        @Html.Raw(definingText.MainText.HtmlText)
+                                    </div>
+                                }
+
+                                if (sense.DividedSense != null)
+                                {
+                                    <span class="mw-sd">@Html.Raw(sense.DividedSense.SenseDivider)</span>
+                                    <span>@Html.Raw(sense.DividedSense.DefiningTexts.First().MainText.HtmlText)</span>
+                                    @foreach (var definingText in sense.DividedSense.DefiningTexts.Skip(1))
+                                    {
+                                        var extraClass = "";
+                                        if (definingText is VerbalIllustration)
+                                        {
+                                            extraClass = "-vis";
+                                        }
+                                        <div class="mw-defining-text@(extraClass)">
+                                            @Html.Raw(definingText.MainText.HtmlText)
+                                        </div>
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    else if (sseq is Sense sense)
+                    {
+                        int skip = 0;
+                        if (sense.SenseNumber != null)
+                        {
+                            skip = 1;
+                            var firstDef = sense.DefiningTexts.FirstOrDefault();
+                            <div class="mw-sense-nr">
+                                @sense.SenseNumber
+                                @if (sense.GeneralLabels.HasValue())
+                                {
+                                    <span class="badge bg-secondary">
+                                        @Html.Raw(string.Join(',', sense.GeneralLabels))
+                                    </span>
+                                }
+                                <span class="mw-defining-text">@Html.Raw(firstDef?.MainText.HtmlText)</span>
+                            </div>
+                        }
+                        @foreach (var definingText in sense.DefiningTexts.Skip(skip))
+                        {
+                            var extraClass = "";
+                            if (definingText is VerbalIllustration)
+                            {
+                                extraClass = "-vis";
+                            }
+                            <div class="mw-defining-text@(extraClass)">
+                                @Html.Raw(definingText.MainText.HtmlText)
+                            </div>
+                        }
+
+                        if (sense.DividedSense != null)
+                        {
+                            <span class="mw-sd">@Html.Raw(sense.DividedSense.SenseDivider)</span>
+                            <span>@Html.Raw(sense.DividedSense.DefiningTexts.First().MainText.HtmlText)</span>
+                            @foreach (var definingText in sense.DividedSense.DefiningTexts.Skip(1))
+                            {
+                                var extraClass = "";
+                                if (definingText is VerbalIllustration)
+                                {
+                                    extraClass = "-vis";
+                                }
+                                <div class="mw-defining-text@(extraClass)">
+                                    @Html.Raw(definingText.MainText.HtmlText)
+                                </div>
+                            }
+                        }
+                    }
+
+                }
+            }
+        }
+
+        @* uros*@
+        if (result.UndefinedRunOns.HasValue())
+        {
+            foreach (var uro in result.UndefinedRunOns)
+            {
+                <div class="mw-entry-header">
+
+                    <h2>@uro.EntryWord</h2> <span class="mw-fl">@uro.FunctionalLabel</span>
+                    @if (uro.Pronunciations != null)
+                    {
+                        foreach (var pronunciation in uro.Pronunciations)
+                        {
+                            <a class="btn btn-secondary btn-sm" href="@pronunciation.AudioLink" target="_blank">
+                                @if (pronunciation.AudioLink != null)
+                                {
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-play" viewBox="0 0 16 16">
+                                        <path d="M10.804 8 5 4.633v6.734L10.804 8zm.792-.696a.802.802 0 0 1 0 1.392l-6.363 3.692C4.713 12.69 4 12.345 4 11.692V4.308c0-.653.713-.998 1.233-.696l6.363 3.692z"/>
+                                    </svg>
+                                }
+                                <text> @pronunciation.WrittenPronunciation</text>
+                            </a>
+                        }
+                    }
+                </div>
+            }
+        }
+
+        @* dros *@
+        if (result.DefinedRunOns.HasValue())
+        {
+            foreach (var dro in result.DefinedRunOns)
+            {
+                <div class="mw-entry-header">
+
+                    <h2>@dro.Phrase</h2> <span class="mw-fl">@dro.FunctionalLabel</span>
+                    @if (dro.Pronunciations != null)
+                    {
+                        foreach (var pronunciation in dro.Pronunciations)
+                        {
+                            <a class="btn btn-secondary btn-sm" href="@pronunciation.AudioLink" target="_blank">
+                                @if (pronunciation.AudioLink != null)
+                                {
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-play" viewBox="0 0 16 16">
+                                        <path d="M10.804 8 5 4.633v6.734L10.804 8zm.792-.696a.802.802 0 0 1 0 1.392l-6.363 3.692C4.713 12.69 4 12.345 4 11.692V4.308c0-.653.713-.998 1.233-.696l6.363 3.692z"/>
+                                    </svg>
+                                }
+                                <text> @pronunciation.WrittenPronunciation</text>
+                            </a>
+                        }
+                    }
+                </div>
+            }
+        }
+
+        @*Etymology*@
+        if (result.Etymology != null)
+        {
+            <h2>Etymology</h2>
+            <p>@Html.Raw(result.Etymology.Text.HtmlText)</p>
+            if (result.Etymology.Notes.HasValue())
+            {
+                foreach (var etymologyNote in result.Etymology.Notes)
+                {
+                    <p>@Html.Raw(etymologyNote.Text.HtmlText)</p>
+                }
+            }
+        }
+
+        @*first known use*@
+        if (result.Date != null)
+        {
+            <h2>First known use</h2>
+            <div>@Html.Raw(result.Date.HtmlText)</div>
+        }
+    }
+
+    @* show additional entries *@
+    if (relatedEntries.Any())
+    {
+        <hr/>
+        <h2>Related to @Model.SearchTerm: </h2>
+        <i>@string.Join(',', relatedEntries.Select(e => e.Metadata.Id));</i>
+    }
+
+    @* no results*@
+    if (!Model.Result.Entries.Any())
+    {
+        <h2>No results, check raw response</h2>
+    }
+
+
+}
+

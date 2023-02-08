@@ -15,13 +15,13 @@ namespace MerriamWebster.NET.Results
         /// <summary>
         /// Gets or sets the text (headword, phrase). 
         /// </summary>
-        public string Text { get; set; }
+        public string? Text { get; set; }
 
         /// <summary>
         /// Gets or sets a collection of pronunciations.
         /// </summary>
         /// <remarks>Usually there is only 1 pronunciation</remarks>
-        public ICollection<Pronunciation> Pronunciations { get; set; } = new List<Pronunciation>();
+        public ICollection<Pronunciation>? Pronunciations { get; set; } = new List<Pronunciation>();
 
     }
 }

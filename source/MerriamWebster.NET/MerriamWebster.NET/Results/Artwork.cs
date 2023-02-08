@@ -17,14 +17,14 @@ namespace MerriamWebster.NET.Results
         /// <summary>
         /// The image caption text.
         /// </summary>
-        public string Caption { get; set; }
+        public string? Caption { get; set; }
         /// <summary>
         /// A direct link to the image.
         /// </summary>
-        public Uri ImageLocation { get; set; }
+        public Uri? ImageLocation { get; set; }
         /// <summary>
         /// Location of the page that contains this image.
         /// </summary>
-        public Uri HtmlLocation { get; set; }
+        public Uri? HtmlLocation { get; set; }
     }
 }

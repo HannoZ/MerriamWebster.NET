@@ -22,7 +22,11 @@ namespace MerriamWebster.NET.Parsing.DictionaryEntryMembers
 
             foreach (var reference in source.EnumerateArray())
             {
-                references.Add(reference.GetString());
+                var refString = reference.GetString();
+                if (!string.IsNullOrEmpty(refString))
+                {
+                    references.Add(refString);
+                }
             }
 
             ((Entry)target).DirectionalCrossReferences = references;

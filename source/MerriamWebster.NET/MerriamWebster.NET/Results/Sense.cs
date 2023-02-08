@@ -21,7 +21,7 @@ namespace MerriamWebster.NET.Results
         /// <b>Display Guidance:</b>
         /// The sense number is typically displayed in bold.
         /// </remarks>
-        public string SenseNumber { get; set; }
+        public string SenseNumber { get; set; } = string.Empty;
 
         /// <summary>
         /// <i>Optional.</i> The divided sense contains at least a new <see cref="IDefiningText"/> but can also contain other properties that can also be present on regular senses.
@@ -29,9 +29,9 @@ namespace MerriamWebster.NET.Results
         /// <remarks>
         /// <b>Display Guidance:</b>
         /// The divided sense should be inline with the preceding <see cref="IDefiningText"/>.
-        /// The <see cref="DividedSense.SenseDivider"/> is displayed in italics, preceded by a semicolon and space, and followed by a space.
+        /// The <see cref="MerriamWebster.NET.Results.DividedSense.SenseDivider"/> is displayed in italics, preceded by a semicolon and space, and followed by a space.
         /// </remarks>
-        public DividedSense DividedSense { get; set; }
+        public DividedSense? DividedSense { get; set; }
 
         /// <summary>
         /// A truncated sense is a sense without a definition, and is used almost exclusively when two sense numbers are separated by a non-definition element.
@@ -65,12 +65,12 @@ namespace MerriamWebster.NET.Results
         /// <remarks>
         /// A thesaurus entry typically contains a list of synonyms for the headword.
         /// </remarks>
-        public ICollection<string> Synonyms { get; set; } 
+        public ICollection<string>? Synonyms { get; set; } 
      
         /// <summary>
         /// <i>Optional.</i> Gets or sets a collection of cross references.
         /// </summary>
-        public ICollection<CrossReference> CrossReferences { get; set; }
+        public ICollection<CrossReference>? CrossReferences { get; set; }
 
     }
 }

@@ -8,6 +8,6 @@
         /// <summary>
         /// Gets or sets the note text
         /// </summary>
-        public FormattedText Text { get; set;}
+        public FormattedText Text { get; set; } = new();
     }
 }

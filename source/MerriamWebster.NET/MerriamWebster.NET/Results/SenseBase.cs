@@ -17,37 +17,37 @@ namespace MerriamWebster.NET.Results
         /// <summary>
         /// <i>Optional.</i> Gets or sets pronunciations.
         /// </summary>
-        public ICollection<Pronunciation> Pronunciations { get; set; }
+        public ICollection<Pronunciation>? Pronunciations { get; set; }
 
         /// <summary>
         /// <i>Optional.</i> Gets or sets the variants.
         /// </summary>
-        public ICollection<Variant> Variants { get; set; }
+        public ICollection<Variant>? Variants { get; set; }
 
         /// <summary>
         /// <i>Optional.</i> Gets or sets the inflections.
         /// </summary>
-        public ICollection<Inflection> Inflections { get; set; }
+        public ICollection<Inflection>? Inflections { get; set; }
 
         /// <summary>
         /// <i>Optional.</i> Gets or sets the general labels.
         /// </summary>
-        public ICollection<GeneralLabel> GeneralLabels { get; set; }
+        public ICollection<GeneralLabel>? GeneralLabels { get; set; }
 
         /// <summary>
         /// <i>Optional.</i> Gets or sets the subject/status labels.
         /// </summary>
-        public ICollection<SubjectStatusLabel> SubjectStatusLabels { get; set; }
+        public ICollection<SubjectStatusLabel>? SubjectStatusLabels { get; set; }
 
         /// <summary>
         /// <i>Optional.</i> Gets or sets the sense specific grammatical label
         /// </summary>
-        public SenseSpecificGrammaticalLabel SenseSpecificGrammaticalLabel { get; set; }
+        public SenseSpecificGrammaticalLabel? SenseSpecificGrammaticalLabel { get; set; }
         
         /// <summary>
         /// <i>Optional.</i> Gets or sets the etymology.
         /// </summary>
-        public Etymology Etymology { get; set; }
+        public Etymology? Etymology { get; set; }
 
         /// <summary>
         /// Experimental feature! A summary of the <see cref="DefiningTexts"/> content.

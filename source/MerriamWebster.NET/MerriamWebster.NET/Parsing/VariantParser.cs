@@ -36,7 +36,11 @@ namespace MerriamWebster.NET.Parsing
 
                 if (variantElement.TryGetProperty("spl", out var spl))
                 {
-                    variant.SenseSpecificInflectionPluralLabel = spl.GetString();
+                    var splLabel = spl.GetString();
+                    if (splLabel != null)
+                    {
+                        variant.SenseSpecificInflectionPluralLabel = splLabel;
+                    }
                 }
 
                 if (variantElement.TryGetProperty("prs", out var prs))

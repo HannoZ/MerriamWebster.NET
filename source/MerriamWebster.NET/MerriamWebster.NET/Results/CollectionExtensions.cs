@@ -12,7 +12,7 @@ namespace MerriamWebster.NET.Results
         /// Safely checks if source collection has a value, even if source is null. 
         /// </summary>
         /// <returns><c>true</c> if collection contains at least one element, otherwise <c>false</c></returns>
-        public static bool HasValue<T>(this ICollection<T> source)
+        public static bool HasValue<T>(this ICollection<T>? source)
         {
             return source?.Any() == true;
         }

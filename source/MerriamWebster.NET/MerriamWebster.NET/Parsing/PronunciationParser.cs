@@ -20,7 +20,7 @@ namespace MerriamWebster.NET.Parsing
                 {
                     Ipa = JsonParserHelper.GetStringValue(pr, "ipa"),
                     Wod = JsonParserHelper.GetStringValue(pr, "wod"),
-                    WrittenPronunciation = JsonParserHelper.GetStringValue(pr, "mw"),
+                    WrittenPronunciation = JsonParserHelper.GetStringValue(pr, "mw") ?? string.Empty,
                     LabelBeforePronunciation = JsonParserHelper.GetStringValue(pr, "l"),
                     LabelAfterPronunciation = JsonParserHelper.GetStringValue(pr, "l2"),
                     Punctuation = JsonParserHelper.GetStringValue(pr, "pun")

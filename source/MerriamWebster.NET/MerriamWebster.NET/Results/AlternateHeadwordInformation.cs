@@ -10,7 +10,7 @@
         /// <remarks>
         /// <b>Display Guidance:</b> Display within parentheses and in italics.
         /// </remarks>
-        public ParenthesizedSubjectStatusLabel ParenthesizedSubjectStatusLabel { get; set; }
+        public ParenthesizedSubjectStatusLabel? ParenthesizedSubjectStatusLabel { get; set; }
 
         /// <summary>
         /// <i>Spanish-English only.</i> Contains a cutback form of the preceding alternate headword.
@@ -26,6 +26,6 @@
         /// only one of these two elements should be presented to the user at a time.
         /// </para>
         /// </remarks>
-        public string HeadwordCutback { get; set; }
+        public string? HeadwordCutback { get; set; }
     }
 }

@@ -25,11 +25,11 @@
         /// <summary>
         /// Text of undefined entry word cutback form
         /// </summary>
-        public string TextCutback { get; set; }
+        public string? TextCutback { get; set; }
 
         /// <summary>
         /// Text of undefined entry word spelled-out form
         /// </summary>
-        public string Text { get; set; }
+        public string Text { get; set; } = string.Empty;
     }
 }

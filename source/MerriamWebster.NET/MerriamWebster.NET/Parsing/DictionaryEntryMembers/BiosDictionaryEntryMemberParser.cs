@@ -8,8 +8,10 @@ using MerriamWebster.NET.Results.Medical;
 
 namespace MerriamWebster.NET.Parsing.DictionaryEntryMembers
 {
+    /// <inheritdoc />
     public class BiosDictionaryEntryMemberParser : IDictionaryEntryMemberParser
     {
+        /// <inheritdoc />
         public void Parse(JsonProperty json, EntryBase target)
         {
             ArgumentNullException.ThrowIfNull(target, nameof(target));

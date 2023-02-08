@@ -21,22 +21,22 @@
         /// <summary>
         /// Cognate cross-reference label.
         /// </summary>
-        public string Label { get; set; }
+        public string? Label { get; set; }
 
         /// <summary>
         ///  When present, use as cross-reference target ID for immediately preceding <see cref="Target"/>.
         /// </summary>
-        public string TargetId { get; set; }
+        public string? TargetId { get; set; }
 
         /// <summary>
         /// Provides hyperlink text in all cases, and cross-reference target ID when no immediately following <see cref="TargetId"/>.
         /// </summary>
-        public string Target { get; set; }
+        public string? Target { get; set; }
 
         /// <summary>
         /// Sense number of cross-reference target.
         /// </summary>
-        public string SenseNumber { get; set; }
+        public string? SenseNumber { get; set; }
 
     }
 }

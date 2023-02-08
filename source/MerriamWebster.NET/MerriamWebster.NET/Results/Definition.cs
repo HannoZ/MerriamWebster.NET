@@ -21,7 +21,7 @@ namespace MerriamWebster.NET.Results
         /// <b>Display Guidance:</b>
         /// Typically rendered in italics
         /// </remarks>
-        public string VerbDivider { get; set; }
+        public string? VerbDivider { get; set; }
 
         /// <summary>
         /// Gets or sets the sense sequences.
@@ -31,11 +31,11 @@ namespace MerriamWebster.NET.Results
         /// <summary>
         /// <i>Optional.</i> Gets or sets a collection of synonyms.
         /// </summary>
-        public ICollection<string> Synonyms { get; set; }
+        public ICollection<string>? Synonyms { get; set; }
         /// <summary>
         /// <i>Optional.</i> Gets or sets a collection of antonyms.
         /// </summary>
-        public ICollection<string> Antonyms { get; set; }
+        public ICollection<string>? Antonyms { get; set; }
 
         /// <summary>
         /// <i>Optional.</i>  A subject/status label describes the subject area (eg, "computing") or regional/usage status (eg, "British", "formal", "slang") of a headword or a particular sense of a headword.
@@ -44,6 +44,6 @@ namespace MerriamWebster.NET.Results
         /// <b>Display Guidance:</b>
         /// Typically rendered in italics. If there is a more than one element in the array, separate them with a comma and space.
         /// </remarks>
-        public ICollection<SubjectStatusLabel> SubjectStatusLabels { get; set; }
+        public ICollection<SubjectStatusLabel>? SubjectStatusLabels { get; set; }
     }
 }

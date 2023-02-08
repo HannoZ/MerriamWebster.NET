@@ -5,6 +5,17 @@
     /// </summary>
     public class Conjugation
     {
+        public Conjugation()
+        {
+            Tense = string.Empty;   
+            SgFirst = string.Empty;
+            SgSecond= string.Empty;
+            SgThird = string.Empty;
+            PlFirst = string.Empty;
+            PlSecond = string.Empty;
+            PlThird = string.Empty;
+        }
+
         /// <summary>
         /// Gets or sets the verb tense
         /// </summary>

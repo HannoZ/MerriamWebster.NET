@@ -10,7 +10,7 @@ namespace MerriamWebster.NET
     {
         private readonly HttpClient _client;
         private readonly ILogger<MerriamWebsterClient> _logger;
-        private string _apiKey;
+        private string? _apiKey;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="MerriamWebsterClient"/> class.
@@ -28,21 +28,33 @@ namespace MerriamWebster.NET
         }
 
         /// <inheritdoc />
-        public async Task<string> Search(string api, string searchTerm)
+        public  Task<string> Search(string api, string searchTerm)
+        {
+            if (string.IsNullOrEmpty(_apiKey))
+            {
+                throw new InvalidOperationException("No api key was registered, request not possible");
+            }
+
+            return Search(api, searchTerm, _apiKey);
+        }
+
+        /// <inheritdoc />
+        public async Task<string> Search(string api, string searchTerm, string apiKey)
         {
 #if NET7_0_OR_GREATER
             ArgumentException.ThrowIfNullOrEmpty(searchTerm, nameof(searchTerm));
             ArgumentException.ThrowIfNullOrEmpty(api, nameof(api));
+            ArgumentException.ThrowIfNullOrEmpty(apiKey, nameof(apiKey));
 #else
             ArgumentNullException.ThrowIfNull(searchTerm, nameof(searchTerm));
             ArgumentNullException.ThrowIfNull(api, nameof(api));
+            ArgumentNullException.ThrowIfNull(apiKey, nameof(apiKey));
 #endif
             string urlPath = $"{api}/json/{searchTerm.ToLower()}";
             _logger.LogInformation($"Sending request - {urlPath}");
-            var responseString = await _client.GetStringAsync($"{urlPath}?key={_apiKey}");
+            var responseString = await _client.GetStringAsync($"{urlPath}?key={apiKey}");
 
-            return responseString;
-        }
+            return responseString;        }
 
         /// <inheritdoc />
         public void Dispose()

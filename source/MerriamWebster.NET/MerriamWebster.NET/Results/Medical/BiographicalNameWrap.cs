@@ -24,22 +24,22 @@ namespace MerriamWebster.NET.Results.Medical
         /// <summary>
         /// Personal or first name
         /// </summary>
-        public string FirstName { get; set; }
+        public string? FirstName { get; set; }
 
         /// <summary>
         /// Surname
         /// </summary>
-        public string Surname { get; set; }
+        public string? Surname { get; set; }
 
         /// <summary>
         /// Alternate name such as pen name, nickname, title, etc.
         /// </summary>
-        public string AlternateName { get; set; }
+        public string? AlternateName { get; set; }
 
         /// <summary>
         /// <i>Optional.</i> Gets or sets pronunciations.
         /// </summary>
-        public ICollection<Pronunciation> Pronunciations { get; set; }
+        public ICollection<Pronunciation>? Pronunciations { get; set; }
 
         /// <inheritdoc />
         [JsonIgnore]

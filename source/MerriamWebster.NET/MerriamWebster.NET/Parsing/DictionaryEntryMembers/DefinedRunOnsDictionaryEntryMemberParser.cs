@@ -21,9 +21,14 @@ namespace MerriamWebster.NET.Parsing.DictionaryEntryMembers
             var runons = new List<DefinedRunOn>();
             foreach (var dro in source.EnumerateArray())
             {
+                var phrase = JsonParserHelper.GetStringValue(dro, "drp");
+                if (string.IsNullOrEmpty(phrase))
+                {
+                    continue;
+                }
                 var runon = new DefinedRunOn
                 {
-                    Phrase = JsonParserHelper.GetStringValue(dro, "drp"),
+                    Phrase = phrase,
                     GeneralLabels = LabelsParser.ParseMultiple<GeneralLabel>(dro, "lbs"),
                     ParenthesizedSubjectStatusLabel = LabelsParser.ParseSingle<ParenthesizedSubjectStatusLabel>(dro, "psl"),
                     SubjectStatusLabels = LabelsParser.ParseMultiple<SubjectStatusLabel>(dro, "sls"),

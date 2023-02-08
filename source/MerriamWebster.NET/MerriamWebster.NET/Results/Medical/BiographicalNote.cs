@@ -25,7 +25,7 @@ namespace MerriamWebster.NET.Results.Medical
         {
             if (!DefiningTexts.HasValue())
             {
-                return base.ToString();
+                return base.ToString() ?? "BiographicalNote";
             }
 
             StringBuilder sb = new StringBuilder();

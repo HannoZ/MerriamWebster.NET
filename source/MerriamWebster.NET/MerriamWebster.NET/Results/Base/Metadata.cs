@@ -19,7 +19,10 @@ namespace MerriamWebster.NET.Results.Base
     {
         public Metadata()
         {
-            
+            Id = string.Empty;
+            Sort = string.Empty;
+            Source = string.Empty;
+            Section = string.Empty;
         }
 
         /// <summary>
@@ -51,7 +54,7 @@ namespace MerriamWebster.NET.Results.Base
         /// Lists all of the entry's headwords, variants, inflections, undefined entry words, and defined run-on phrases.
         /// Each stem string is a valid search term that should match this entry.
         /// </summary>
-        public ICollection<string> Stems { get; set; } = new List<string>();
+        public ICollection<string>? Stems { get; set; } = new List<string>();
 
         /// <summary>
         /// <c>True</c> if there is a label containing "offensive" in the entry; otherwise, <c>False</c>.
@@ -69,6 +72,6 @@ namespace MerriamWebster.NET.Results.Base
         /// Contains an ISO 639-1 language code corresponding to the language of the entry's headword, ie, the language in which the user wishes to look up a word in order to get a translation to another language.
         /// </para>
         /// </remarks>
-        public Language Language { get; set; }
+        public Language? Language { get; set; }
     }
 }

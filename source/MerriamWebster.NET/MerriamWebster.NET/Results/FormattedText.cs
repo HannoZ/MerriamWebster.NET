@@ -15,7 +15,7 @@ namespace MerriamWebster.NET.Results
         /// <remarks>Required for deserialization</remarks>
         public FormattedText()
         {
-            
+            RawText = string.Empty;
         }
 
         /// <summary>

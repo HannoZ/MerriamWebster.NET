@@ -26,6 +26,7 @@ namespace MerriamWebster.NET
 
 
             services.AddTransient<MerriamWebsterSearch>();
+            services.AddSingleton<JsonDocumentParser>();
 
             return services;
         }
