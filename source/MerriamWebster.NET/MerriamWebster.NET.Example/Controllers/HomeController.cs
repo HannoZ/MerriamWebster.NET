@@ -1,8 +1,6 @@
 ﻿using MerriamWebster.NET.Example.Models;
 using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics;
 using MerriamWebster.NET.Results;
-using MerriamWebster.NET.Results.Base;
 using Microsoft.Extensions.Caching.Memory;
 
 namespace MerriamWebster.NET.Example.Controllers
@@ -26,7 +24,7 @@ namespace MerriamWebster.NET.Example.Controllers
         [HttpPost]
         public async Task<IActionResult> Index(SearchRequestModel model)
         {
-            if (_memCache.TryGetValue<ResultModel<Entry>>(model.Api + model.SearchTerm, out var result))
+            if (_memCache.TryGetValue<ResultModel>(model.Api + model.SearchTerm, out var result))
             {
                 model.Result = result;
             }

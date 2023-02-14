@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using MerriamWebster.NET.Results.Base;
+using MerriamWebster.NET.Results;
 
 namespace MerriamWebster.NET.Parsing
 {
-    internal static class SummaryHelper<T> where T: EntryBase
+    internal static class SummaryHelper
     {
-        public static string CreateSummary(string searchText, ICollection<T> results)
+        public static string CreateSummary(string searchText, ICollection<Entry> results)
         {
             string summary = string.Empty;
 

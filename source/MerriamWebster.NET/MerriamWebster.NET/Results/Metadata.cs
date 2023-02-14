@@ -1,13 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace MerriamWebster.NET.Results.Base
+namespace MerriamWebster.NET.Results
 {
-    public interface IMetadata
-    {
-
-    }
-
     /// <summary>
     /// Entry metadata is information about the entry, as opposed to the actual content of the entry.
     /// </summary>
@@ -15,7 +10,7 @@ namespace MerriamWebster.NET.Results.Base
     /// <b>Display Guidance:</b>
     /// Not intended for display.
     /// </remarks>
-    public class Metadata : IMetadata
+    public class Metadata
     {
         public Metadata()
         {
@@ -60,6 +55,24 @@ namespace MerriamWebster.NET.Results.Base
         /// <c>True</c> if there is a label containing "offensive" in the entry; otherwise, <c>False</c>.
         /// </summary>
         public bool Offensive { get; set; }
+
+        /// <summary>
+        /// <i>Optional.</i> Lists all synonyms given in the entry's <i>syn_list</i>; may be used for matching synonym search terms to the entry.        
+        /// </summary>
+        /// <remarks>
+        /// <i>Note</i>: this is a distinct usage from that described in <see cref="Synonym"/>
+        /// </remarks>
+        public ICollection<string>? Synonyms { get; set; } = new List<string>();
+
+        /// <summary>
+        /// <i>Optional.</i> Lists all antonyms given in the entry's <i>ant_list</i>; may be used for matching antonym search terms to the entry.        
+        /// </summary>
+        public ICollection<string>? Antonyms { get; set; } = new List<string>();
+
+        /// <summary>
+        /// <i>Optional.</i> Gets or sets the target entry.
+        /// </summary>
+        public Target? Target { get; set; }
 
         /// <summary>
         /// <i>Spanish-English only.</i> Bilingual dictionaries contain two distinct dictionaries within one work.

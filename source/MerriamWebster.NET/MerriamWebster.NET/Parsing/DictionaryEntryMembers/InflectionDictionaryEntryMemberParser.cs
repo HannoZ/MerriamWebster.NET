@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Linq;
 using System.Text.Json;
-using MerriamWebster.NET.Results.Base;
+using MerriamWebster.NET.Results;
 
 namespace MerriamWebster.NET.Parsing.DictionaryEntryMembers
 {
     internal class InflectionDictionaryEntryMemberParser : IDictionaryEntryMemberParser
     {
-        public void Parse(JsonProperty json, EntryBase target)
+        public void Parse(JsonProperty json, Entry target)
         {
             ArgumentNullException.ThrowIfNull(target, nameof(target));
 

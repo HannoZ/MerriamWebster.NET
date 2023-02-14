@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text.Json;
-using MerriamWebster.NET.Results.Base;
+using MerriamWebster.NET.Results;
 
 namespace MerriamWebster.NET.Parsing.DictionaryEntryMembers
 {
     public class MetadataDictionaryEntryMemberParser : IDictionaryEntryMemberParser
     {
-        public virtual void Parse(JsonProperty json, EntryBase target) 
+        public virtual void Parse(JsonProperty json, Entry target) 
         {
             ArgumentNullException.ThrowIfNull(target, nameof(target));
 
@@ -55,6 +55,12 @@ namespace MerriamWebster.NET.Parsing.DictionaryEntryMembers
                 }
             }
 
+            if (source.TryGetProperty("lang", out var lang)
+                && Enum.TryParse<Language>(lang.GetString(), ignoreCase: true, out var language))
+            {
+               metadata.Language = language;
+            }
+
             target.Metadata = metadata;
         }
 
@@ -70,8 +76,6 @@ namespace MerriamWebster.NET.Parsing.DictionaryEntryMembers
                 _ => section
             };
         }
-
-
 
     }
 }

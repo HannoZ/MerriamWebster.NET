@@ -1,6 +1,6 @@
 ﻿using System.Text.Json;
 using MerriamWebster.NET.Parsing.DefiningText;
-using MerriamWebster.NET.Results.Medical;
+using MerriamWebster.NET.Results;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Shouldly;
 

@@ -1,6 +1,8 @@
 ﻿using MerriamWebster.NET.Parsing;
-
+using MerriamWebster.NET.Results;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
+using Moq.AutoMock;
 using Shouldly;
 using System;
 using System.Collections.Generic;
@@ -9,14 +11,8 @@ using System.Linq;
 using System.Reflection;
 using System.Text.Json;
 using System.Threading.Tasks;
-using MerriamWebster.NET.Results;
-using MerriamWebster.NET.Results.Base;
-using MerriamWebster.NET.Results.SpanishEnglish;
 using Sense = MerriamWebster.NET.Results.Sense;
 using SenseBase = MerriamWebster.NET.Results.SenseBase;
-using MerriamWebster.NET.Results.Medical;
-using Moq;
-using Moq.AutoMock;
 
 namespace MerriamWebster.NET.Tests.Parsing
 {
@@ -69,28 +65,28 @@ namespace MerriamWebster.NET.Tests.Parsing
 
                     if (resource.Contains("med_"))
                     {
-                        var result = _parser.ParseSearchResult<MedicalEntry>(Configuration.MedicalDictionary, content);
+                        var result = _parser.ParseSearchResult(Configuration.MedicalDictionary, content);
                         result.Entries.ShouldNotBeEmpty();
                         
                         var serialized = System.Text.Json.JsonSerializer.Serialize(result, options);
-                        var deserialized = JsonSerializer.Deserialize<ResultModel<MedicalEntry>>(serialized, options);
+                        var deserialized = JsonSerializer.Deserialize<ResultModel>(serialized, options);
 
                     }
                     else if (resource.Contains("_"))
                     {
-                        var result = _parser.ParseSearchResult<Entry>(Configuration.CollegiateDictionary, content);
+                        var result = _parser.ParseSearchResult(Configuration.CollegiateDictionary, content);
                         result.Entries.ShouldNotBeEmpty();
                         
                         var serialized = System.Text.Json.JsonSerializer.Serialize(result, options);
-                        var deserialized = JsonSerializer.Deserialize<ResultModel<Entry>>(serialized, options);
+                        var deserialized = JsonSerializer.Deserialize<ResultModel>(serialized, options);
                     }
                     else
                     {
-                        var result = _parser.ParseSearchResult<SpanishEnglishEntry>(Configuration.SpanishEnglishDictionary, content);
+                        var result = _parser.ParseSearchResult(Configuration.SpanishEnglishDictionary, content);
                         result.Entries.ShouldNotBeEmpty();
                         
                         var serialized = System.Text.Json.JsonSerializer.Serialize(result, options);
-                        var deserialized = JsonSerializer.Deserialize<ResultModel<SpanishEnglishEntry>>(serialized, options);
+                        var deserialized = JsonSerializer.Deserialize<ResultModel>(serialized, options);
                     }
 
                 }
@@ -107,7 +103,7 @@ namespace MerriamWebster.NET.Tests.Parsing
             var response = await TestHelper.LoadResponseFromFileAsync("abarrotado");
 
             // ACT
-            var result = _parser.ParseSearchResult<SpanishEnglishEntry>(Configuration.SpanishEnglishDictionary, response);
+            var result = _parser.ParseSearchResult(Configuration.SpanishEnglishDictionary, response);
 
             // ASSERT
             result.Entries.ShouldNotBeEmpty();
@@ -141,7 +137,7 @@ namespace MerriamWebster.NET.Tests.Parsing
 ]";
 
             // ACT
-            var result = _parser.ParseSearchResult<SpanishEnglishEntry>(Configuration.SpanishEnglishDictionary, response);
+            var result = _parser.ParseSearchResult(Configuration.SpanishEnglishDictionary, response);
 
             // ASSERT
         }
@@ -151,7 +147,7 @@ namespace MerriamWebster.NET.Tests.Parsing
         public async Task EntryParser_CanParse_Casa()
         {
             var response = await TestHelper.LoadResponseFromFileAsync("casa");
-            var result = _parser.ParseSearchResult<SpanishEnglishEntry>(Configuration.SpanishEnglishDictionary, response);
+            var result = _parser.ParseSearchResult(Configuration.SpanishEnglishDictionary, response);
         
             // ASSERT
             result.Entries.Count.ShouldBe(4);
@@ -161,7 +157,7 @@ namespace MerriamWebster.NET.Tests.Parsing
         public async Task EntryParser_CanParse_Delgado()
         {
             var response = await TestHelper.LoadResponseFromFileAsync("delgado");
-            var result = _parser.ParseSearchResult<SpanishEnglishEntry>(Configuration.SpanishEnglishDictionary, response);
+            var result = _parser.ParseSearchResult(Configuration.SpanishEnglishDictionary, response);
          
             // ASSERT
             result.Entries.ShouldNotBeEmpty();
@@ -171,7 +167,7 @@ namespace MerriamWebster.NET.Tests.Parsing
         public async Task EntryParser_CanParse_Distinto()
         {
             var response = await TestHelper.LoadResponseFromFileAsync("distinto");
-            var result = _parser.ParseSearchResult<SpanishEnglishEntry>(Configuration.SpanishEnglishDictionary, response);
+            var result = _parser.ParseSearchResult(Configuration.SpanishEnglishDictionary, response);
 
             // ASSERT
             result.Entries.ShouldNotBeEmpty();
@@ -187,7 +183,7 @@ namespace MerriamWebster.NET.Tests.Parsing
         public async Task EntryParser_CanParse_Hilar()
         {
             var response = await TestHelper.LoadResponseFromFileAsync("hilar");
-            var result = _parser.ParseSearchResult<SpanishEnglishEntry>(Configuration.SpanishEnglishDictionary, response);
+            var result = _parser.ParseSearchResult(Configuration.SpanishEnglishDictionary, response);
 
             // ASSERT
             result.Entries.Count.ShouldBe(1);
@@ -198,7 +194,7 @@ namespace MerriamWebster.NET.Tests.Parsing
         public async Task EntryParser_CanParse_Robot()
         {
             var response = await TestHelper.LoadResponseFromFileAsync("robot");
-            var result = _parser.ParseSearchResult<SpanishEnglishEntry>(Configuration.SpanishEnglishDictionary, response);
+            var result = _parser.ParseSearchResult(Configuration.SpanishEnglishDictionary, response);
             var entries = result.Entries;
 
             // ASSERT
@@ -213,7 +209,7 @@ namespace MerriamWebster.NET.Tests.Parsing
         public async Task EntryParser_CanParse_Estar()
         {
             var response = await TestHelper.LoadResponseFromFileAsync("estar");
-            var result = _parser.ParseSearchResult<SpanishEnglishEntry>(Configuration.SpanishEnglishDictionary, response);
+            var result = _parser.ParseSearchResult(Configuration.SpanishEnglishDictionary, response);
             var entries = result.Entries.ToList();
 
             // ASSERT
@@ -261,7 +257,7 @@ namespace MerriamWebster.NET.Tests.Parsing
         public async Task EntryParser_CanParse_Quedar()
         {
             var response = await TestHelper.LoadResponseFromFileAsync("quedar");
-            var result = _parser.ParseSearchResult<SpanishEnglishEntry>(Configuration.SpanishEnglishDictionary, response);
+            var result = _parser.ParseSearchResult(Configuration.SpanishEnglishDictionary, response);
             var entries = result.Entries.ToList();
 
             // ASSERT
@@ -273,7 +269,7 @@ namespace MerriamWebster.NET.Tests.Parsing
         public async Task EntryParser_CanParse_Sierra()
         {
             var response = await TestHelper.LoadResponseFromFileAsync("sierra");
-            var result = _parser.ParseSearchResult<SpanishEnglishEntry>(Configuration.SpanishEnglishDictionary, response);
+            var result = _parser.ParseSearchResult(Configuration.SpanishEnglishDictionary, response);
             var entries = result.Entries.ToList();
             
             // ASSERT
@@ -287,7 +283,7 @@ namespace MerriamWebster.NET.Tests.Parsing
             var response = await TestHelper.LoadResponseFromFileAsync("collegiate_tedious"); 
 
             // ACT
-            var result = _parser.ParseSearchResult<Entry>(Configuration.CollegiateDictionary, response);
+            var result = _parser.ParseSearchResult(Configuration.CollegiateDictionary, response);
 
             // ASSERT
             result.Entries.Count.ShouldBe(1);
@@ -300,7 +296,7 @@ namespace MerriamWebster.NET.Tests.Parsing
             var response = await TestHelper.LoadResponseFromFileAsync("med_knee");
 
             // ACT
-            var result = _parser.ParseSearchResult<MedicalEntry>(Configuration.MedicalDictionary, response);
+            var result = _parser.ParseSearchResult(Configuration.MedicalDictionary, response);
 
             // ASSERT
             result.Entries.Count.ShouldBe(10);
@@ -310,7 +306,7 @@ namespace MerriamWebster.NET.Tests.Parsing
         public async Task EntryParser_CanParse_Collegiate_Pelvis()
         {
             var response = await TestHelper.LoadResponseFromFileAsync("collegiate_pelvis");
-            var result = _parser.ParseSearchResult<Entry>(Configuration.CollegiateDictionary, response);
+            var result = _parser.ParseSearchResult(Configuration.CollegiateDictionary, response);
 
             // ASSERT
             result.Entries.Count.ShouldBe(2);
@@ -321,7 +317,7 @@ namespace MerriamWebster.NET.Tests.Parsing
         public async Task EntryParser_CanParse_Collegiate_Heart()
         {
             var response = await TestHelper.LoadResponseFromFileAsync("collegiate_heart");
-            var result = _parser.ParseSearchResult<Entry>(Configuration.CollegiateDictionary, response);
+            var result = _parser.ParseSearchResult(Configuration.CollegiateDictionary, response);
 
             // ASSERT
             result.Entries.Count.ShouldBe(10);
@@ -338,7 +334,7 @@ namespace MerriamWebster.NET.Tests.Parsing
         public async Task EntryParser_CanParse_Collegiate_Feline()
         {
             var response = await TestHelper.LoadResponseFromFileAsync("collegiate_feline");
-            var result = _parser.ParseSearchResult<Entry>(Configuration.CollegiateDictionary, response);
+            var result = _parser.ParseSearchResult(Configuration.CollegiateDictionary, response);
 
 
             // ASSERT
@@ -354,7 +350,7 @@ namespace MerriamWebster.NET.Tests.Parsing
         public async Task EntryParser_CanParse_Collegiate_Tab()
         {
             var response = await TestHelper.LoadResponseFromFileAsync("collegiate_tab");
-            var result = _parser.ParseSearchResult<Entry>(Configuration.CollegiateDictionary, response);
+            var result = _parser.ParseSearchResult(Configuration.CollegiateDictionary, response);
 
             // ASSERT
             result.Entries.Count.ShouldBe(7);
@@ -372,7 +368,7 @@ namespace MerriamWebster.NET.Tests.Parsing
             var response = await TestHelper.LoadResponseFromFileAsync("collegiate_abeyance"); 
 
             // ACT
-            var result = _parser.ParseSearchResult<Entry>(Configuration.CollegiateDictionary, response);
+            var result = _parser.ParseSearchResult(Configuration.CollegiateDictionary, response);
 
             // ASSERT
             result.Entries.Count.ShouldBe(1);
@@ -389,7 +385,7 @@ namespace MerriamWebster.NET.Tests.Parsing
             var response = await TestHelper.LoadResponseFromFileAsync("collegiate_alliteration");
 
             // ACT
-            var result = _parser.ParseSearchResult<Entry>(Configuration.CollegiateDictionary, response);
+            var result = _parser.ParseSearchResult(Configuration.CollegiateDictionary, response);
 
 
             // ASSERT
@@ -404,7 +400,7 @@ namespace MerriamWebster.NET.Tests.Parsing
             var response = await TestHelper.LoadResponseFromFileAsync("collegiate_agree");
 
             // ACT
-            var result = _parser.ParseSearchResult<Entry>(Configuration.CollegiateDictionary, response);
+            var result = _parser.ParseSearchResult(Configuration.CollegiateDictionary, response);
 
             // ASSERT
             result.Entries.ShouldNotBeEmpty();
@@ -417,7 +413,7 @@ namespace MerriamWebster.NET.Tests.Parsing
             var response = await TestHelper.LoadResponseFromFileAsync("collegiate_abide");
 
             // ACT
-            var result = _parser.ParseSearchResult<Entry>(Configuration.CollegiateDictionary, response);
+            var result = _parser.ParseSearchResult(Configuration.CollegiateDictionary, response);
 
 
             // ASSERT
@@ -434,7 +430,7 @@ namespace MerriamWebster.NET.Tests.Parsing
             var response = await TestHelper.LoadResponseFromFileAsync("collegiate_Acadia");
 
             // ACT
-            var result = _parser.ParseSearchResult<Entry>(Configuration.CollegiateDictionary, response);
+            var result = _parser.ParseSearchResult(Configuration.CollegiateDictionary, response);
 
             // ASSERT
             result.Entries.Cast<Entry>().First().DirectionalCrossReferences.ShouldNotBeEmpty();
@@ -446,7 +442,7 @@ namespace MerriamWebster.NET.Tests.Parsing
             var response = await TestHelper.LoadResponseFromFileAsync("collegiate_above");
 
             // ACT
-            var result = _parser.ParseSearchResult<Entry>(Configuration.CollegiateDictionary, response);
+            var result = _parser.ParseSearchResult(Configuration.CollegiateDictionary, response);
 
 
             // ASSERT
@@ -468,7 +464,7 @@ namespace MerriamWebster.NET.Tests.Parsing
             var response = await TestHelper.LoadResponseFromFileAsync("collegiate_alphabet");
 
             // ACT
-            var result = _parser.ParseSearchResult<Entry>(Configuration.CollegiateDictionary, response);
+            var result = _parser.ParseSearchResult(Configuration.CollegiateDictionary, response);
 
             // ASSERT
             result.Entries.Count.ShouldBe(10);
@@ -481,7 +477,7 @@ namespace MerriamWebster.NET.Tests.Parsing
             var response = await TestHelper.LoadResponseFromFileAsync("collegiate_color");
 
             // ACT
-            var result = _parser.ParseSearchResult<Entry>(Configuration.CollegiateDictionary, response);
+            var result = _parser.ParseSearchResult(Configuration.CollegiateDictionary, response);
 
             // ASSERT
             result.Entries.Count.ShouldBe(10);
@@ -502,7 +498,7 @@ namespace MerriamWebster.NET.Tests.Parsing
             var response = await TestHelper.LoadResponseFromFileAsync("med_bartonella");
 
             // ACT
-            var result = _parser.ParseSearchResult<MedicalEntry>(Configuration.MedicalDictionary, response);
+            var result = _parser.ParseSearchResult(Configuration.MedicalDictionary, response);
             var entries = result.Entries.ToList();
 
             // ASSERT
@@ -515,7 +511,7 @@ namespace MerriamWebster.NET.Tests.Parsing
             var response = await TestHelper.LoadResponseFromFileAsync("med_curie");
 
             // ACT
-            var result = _parser.ParseSearchResult<MedicalEntry>(Configuration.MedicalDictionary, response);
+            var result = _parser.ParseSearchResult(Configuration.MedicalDictionary, response);
             var entries = result.Entries.ToList();
 
             // ASSERT
@@ -529,7 +525,7 @@ namespace MerriamWebster.NET.Tests.Parsing
             var response = await TestHelper.LoadResponseFromFileAsync("ver");
            
             // ACT
-            var result = _parser.ParseSearchResult<SpanishEnglishEntry>(Configuration.MedicalDictionary, response);
+            var result = _parser.ParseSearchResult(Configuration.MedicalDictionary, response);
 
             // ASSERT
             result.Entries.ShouldNotBeEmpty();
@@ -540,15 +536,15 @@ namespace MerriamWebster.NET.Tests.Parsing
 
             };
             var serialized = System.Text.Json.JsonSerializer.Serialize(result, options);
-            var d = JsonSerializer.Deserialize<ResultModel<SpanishEnglishEntry>>(serialized, options);
+            var d = JsonSerializer.Deserialize<ResultModel>(serialized, options);
         }
 
-        private static IEnumerable<SenseSequenceSense> GetSenses(IEnumerable<EntryBase> entries) =>
+        private static IEnumerable<SenseSequenceSense> GetSenses(IEnumerable<Entry> entries) =>
             entries.SelectMany(e => e.Definitions)
                 .SelectMany(d => d.SenseSequence)
                 .SelectMany(ss => ss.Senses);
 
-        private static IEnumerable<IDefiningText> GetDefiningTexts(IEnumerable<EntryBase> entries) =>
+        private static IEnumerable<IDefiningText> GetDefiningTexts(IEnumerable<Entry> entries) =>
                  GetSenses(entries)
                      .OfType<SenseBase>()
                 .SelectMany(s => s.DefiningTexts).ToList();

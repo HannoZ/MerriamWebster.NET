@@ -28,7 +28,7 @@ namespace MerriamWebster.NET
         /// Gets or sets the <see cref="ParseOptions"/>.
         /// </summary>
         /// <remarks>Can be set at runtime to change the default behavior.</remarks>
-        public static ParseOptions ParseOptions {get; set; } = ParseOptions.Default;
+        public static ParseOptions ParseOptions { get; set; } = ParseOptions.Default;
         
         /// <summary>
         /// Gets or sets the <see cref="Language"/>.

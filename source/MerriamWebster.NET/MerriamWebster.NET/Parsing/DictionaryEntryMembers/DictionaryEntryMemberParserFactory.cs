@@ -10,18 +10,7 @@ namespace MerriamWebster.NET.Parsing.DictionaryEntryMembers
             switch (elementName)
             {
                 case "meta":
-                    if (api == Configuration.CollegiateThesaurus)
-                    {
-                        return new MetadataDictionaryEntryMemberParser();
-                    }
-                    else if (api == Configuration.SpanishEnglishDictionary)
-                    {
-                        return new SpanishEnglishMetadataDictionaryEntryMemberParser();
-                    }
-                    else
-                    {
-                        return new MetadataDictionaryEntryMemberParser();
-                    }
+                    return new MetadataDictionaryEntryMemberParser();
                 case "hwi":
                     return new HeadwordInformationDictionaryEntryMemberParser();
                 case "ahws":

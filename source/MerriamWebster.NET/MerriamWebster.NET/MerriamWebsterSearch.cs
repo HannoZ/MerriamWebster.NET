@@ -2,9 +2,6 @@
 using System.Threading.Tasks;
 using MerriamWebster.NET.Parsing;
 using MerriamWebster.NET.Results;
-using MerriamWebster.NET.Results.Base;
-using MerriamWebster.NET.Results.Medical;
-using MerriamWebster.NET.Results.SpanishEnglish;
 
 namespace MerriamWebster.NET
 {
@@ -31,11 +28,11 @@ namespace MerriamWebster.NET
         /// <param name="api">One of the Merriam-Webster apis</param>
         /// <param name="searchTerm">The search term</param>
         /// <returns>The parsed result</returns>
-        public async Task<ResultModel<Entry>> Search(string api, string searchTerm)
+        public async Task<ResultModel> Search(string api, string searchTerm)
         {
             var result = await _client.Search(api, searchTerm);
 
-            return ParseApiResponse<Entry>(api, searchTerm, result);
+            return ParseApiResponse(api, searchTerm, result);
         }
 
         /// <summary>
@@ -45,11 +42,11 @@ namespace MerriamWebster.NET
         /// <param name="searchTerm">The search term</param>
         /// <param name="apiKey">The api key</param>
         /// <returns>The parsed result</returns>
-        public async Task<ResultModel<Entry>> Search(string api, string searchTerm, string apiKey)
+        public async Task<ResultModel> Search(string api, string searchTerm, string apiKey)
         {
             var result = await _client.Search(api, searchTerm, apiKey);
 
-            return ParseApiResponse<Entry>(api, searchTerm, result);
+            return ParseApiResponse(api, searchTerm, result);
         }
 
         /// <summary>
@@ -57,11 +54,11 @@ namespace MerriamWebster.NET
         /// </summary>
         /// <param name="searchTerm">The search term</param>
         /// <returns>The parsed result</returns>
-        public async Task<ResultModel<Entry>> SearchCollegiateDictionary(string searchTerm)
+        public async Task<ResultModel> SearchCollegiateDictionary(string searchTerm)
         {
             var result = await _client.Search(Configuration.CollegiateDictionary, searchTerm);
 
-            return ParseApiResponse<Entry>(Configuration.CollegiateDictionary, searchTerm, result);
+            return ParseApiResponse(Configuration.CollegiateDictionary, searchTerm, result);
         }
 
         /// <summary>
@@ -70,11 +67,11 @@ namespace MerriamWebster.NET
         /// <param name="searchTerm">The search term</param>
         /// <param name="apiKey">The api key</param>
         /// <returns>The parsed result</returns>
-        public async Task<ResultModel<Entry>> SearchCollegiateDictionary(string searchTerm, string apiKey)
+        public async Task<ResultModel> SearchCollegiateDictionary(string searchTerm, string apiKey)
         {
             var result = await _client.Search(Configuration.CollegiateDictionary, searchTerm, apiKey);
 
-            return ParseApiResponse<Entry>(Configuration.CollegiateDictionary, searchTerm, result);
+            return ParseApiResponse(Configuration.CollegiateDictionary, searchTerm, result);
         }
 
         /// <summary>
@@ -82,11 +79,11 @@ namespace MerriamWebster.NET
         /// </summary>
         /// <param name="searchTerm">The search term</param>
         /// <returns>The parsed result</returns>
-        public async Task<ResultModel<Entry>> SearchCollegiateThesaurus(string searchTerm)
+        public async Task<ResultModel> SearchCollegiateThesaurus(string searchTerm)
         {
             var result = await _client.Search(Configuration.CollegiateThesaurus, searchTerm);
 
-            return ParseApiResponse<Entry>(Configuration.CollegiateThesaurus, searchTerm, result);
+            return ParseApiResponse(Configuration.CollegiateThesaurus, searchTerm, result);
         }
 
         /// <summary>
@@ -95,11 +92,11 @@ namespace MerriamWebster.NET
         /// <param name="searchTerm">The search term</param>
         /// <param name="apiKey">The api key</param>
         /// <returns>The parsed result</returns>
-        public async Task<ResultModel<Entry>> SearchCollegiateThesaurus(string searchTerm, string apiKey)
+        public async Task<ResultModel> SearchCollegiateThesaurus(string searchTerm, string apiKey)
         {
             var result = await _client.Search(Configuration.CollegiateThesaurus, searchTerm, apiKey);
 
-            return ParseApiResponse<Entry>(Configuration.CollegiateThesaurus, searchTerm, result);
+            return ParseApiResponse(Configuration.CollegiateThesaurus, searchTerm, result);
         }
         
         /// <summary>
@@ -107,11 +104,11 @@ namespace MerriamWebster.NET
         /// </summary>
         /// <param name="searchTerm">The search term</param>
         /// <returns>The parsed result</returns>
-        public async Task<ResultModel<MedicalEntry>> SearchMedicalDictionary(string searchTerm)
+        public async Task<ResultModel> SearchMedicalDictionary(string searchTerm)
         {
             var result = await _client.Search(Configuration.MedicalDictionary, searchTerm);
 
-            return ParseApiResponse<MedicalEntry>(Configuration.MedicalDictionary, searchTerm, result);
+            return ParseApiResponse(Configuration.MedicalDictionary, searchTerm, result);
         }
 
         /// <summary>
@@ -120,11 +117,11 @@ namespace MerriamWebster.NET
         /// <param name="searchTerm">The search term</param>
         /// <param name="apiKey">The api key</param>
         /// <returns>The parsed result</returns>
-        public async Task<ResultModel<MedicalEntry>> SearchMedicalDictionary(string searchTerm, string apiKey)
+        public async Task<ResultModel> SearchMedicalDictionary(string searchTerm, string apiKey)
         {
             var result = await _client.Search(Configuration.MedicalDictionary, searchTerm, apiKey);
 
-            return ParseApiResponse<MedicalEntry>(Configuration.MedicalDictionary, searchTerm, result);
+            return ParseApiResponse(Configuration.MedicalDictionary, searchTerm, result);
         }
 
         /// <summary>
@@ -132,11 +129,11 @@ namespace MerriamWebster.NET
         /// </summary>
         /// <param name="searchTerm">The search term</param>
         /// <returns>The parsed result</returns>
-        public async Task<ResultModel<SpanishEnglishEntry>> SearchSpanishEnglishDictionary(string searchTerm)
+        public async Task<ResultModel> SearchSpanishEnglishDictionary(string searchTerm)
         {
             var result = await _client.Search(Configuration.SpanishEnglishDictionary, searchTerm);
 
-            return ParseApiResponse<SpanishEnglishEntry>(Configuration.SpanishEnglishDictionary, searchTerm, result);
+            return ParseApiResponse(Configuration.SpanishEnglishDictionary, searchTerm, result);
         }
 
         /// <summary>
@@ -145,11 +142,11 @@ namespace MerriamWebster.NET
         /// <param name="searchTerm">The search term</param>
         /// <param name="apiKey">The api key</param>
         /// <returns>The parsed result</returns>
-        public async Task<ResultModel<SpanishEnglishEntry>> SearchSpanishEnglishDictionary(string searchTerm, string apiKey)
+        public async Task<ResultModel> SearchSpanishEnglishDictionary(string searchTerm, string apiKey)
         {
             var result = await _client.Search(Configuration.SpanishEnglishDictionary, searchTerm, apiKey);
 
-            return ParseApiResponse<SpanishEnglishEntry>(Configuration.SpanishEnglishDictionary, searchTerm, result);
+            return ParseApiResponse(Configuration.SpanishEnglishDictionary, searchTerm, result);
         }
 
         /// <summary>
@@ -159,9 +156,9 @@ namespace MerriamWebster.NET
         /// <param name="searchTerm">The search term</param>
         /// <param name="json">The API response in JSON format</param>
         /// <returns>The parsed result</returns>
-        public ResultModel<TEntry> ParseApiResponse<TEntry>(string api, string searchTerm, string json) where TEntry : EntryBase, new()
+        public ResultModel ParseApiResponse(string api, string searchTerm, string json)
         {
-            var resultModel = _parser.ParseSearchResult<TEntry>(api, json);
+            var resultModel = _parser.ParseSearchResult(api, json);
             resultModel.SearchText = searchTerm;
 
             return resultModel;

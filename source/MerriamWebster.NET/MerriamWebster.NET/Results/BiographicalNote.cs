@@ -2,7 +2,7 @@
 using System.Text;
 using MerriamWebster.NET.Parsing.Markup;
 
-namespace MerriamWebster.NET.Results.Medical
+namespace MerriamWebster.NET.Results
 {
     /// <summary>
     /// <i>Medical dictionary only.</i> A biographical note provides information on a historical or mythological figure relevant to the headword.

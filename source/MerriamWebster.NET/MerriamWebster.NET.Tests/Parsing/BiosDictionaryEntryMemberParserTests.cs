@@ -1,8 +1,6 @@
 ﻿using System.Linq;
 using MerriamWebster.NET.Parsing.DictionaryEntryMembers;
 using MerriamWebster.NET.Results;
-using MerriamWebster.NET.Results.Base;
-using MerriamWebster.NET.Results.Medical;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Shouldly;
 
@@ -48,7 +46,7 @@ namespace MerriamWebster.NET.Tests.Parsing
             ]
         ]}";
 
-            var target = new MedicalEntry();
+            var target = new Entry();
             var parser = new BiosDictionaryEntryMemberParser();
             var bios = EntryMemberParserTestsHelper.GetJsonProperty(source, "bios");
 

@@ -5,7 +5,6 @@ using System.Linq;
 using System.Text.Json;
 using MerriamWebster.NET.Results;
 using Shouldly;
-using MerriamWebster.NET.Results.Medical;
 
 namespace MerriamWebster.NET.Tests.Parsing
 {

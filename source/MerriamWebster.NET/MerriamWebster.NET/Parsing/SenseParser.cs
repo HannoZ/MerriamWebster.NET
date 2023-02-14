@@ -1,6 +1,5 @@
 ﻿using MerriamWebster.NET.Parsing.DefiningText;
 using MerriamWebster.NET.Results;
-using MerriamWebster.NET.Results.SpanishEnglish;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -61,6 +60,7 @@ namespace MerriamWebster.NET.Parsing
 
                             ParseGeneralSenseProperties(sourceSense, targetSense);
 
+                            // spanish-english only
                             if (sourceSense.TryGetProperty("xrs", out var xrs))
                             {
                                 targetSense.CrossReferences = new List<CrossReference>(CrossReferenceParser.Parse(xrs));

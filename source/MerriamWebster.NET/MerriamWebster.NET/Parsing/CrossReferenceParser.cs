@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text.Json;
-using MerriamWebster.NET.Results.SpanishEnglish;
+using MerriamWebster.NET.Results;
 
 namespace MerriamWebster.NET.Parsing
 {

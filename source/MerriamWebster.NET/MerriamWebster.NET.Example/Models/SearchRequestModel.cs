@@ -1,5 +1,4 @@
 ﻿using MerriamWebster.NET.Results;
-using MerriamWebster.NET.Results.Base;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace MerriamWebster.NET.Example.Models
@@ -18,7 +17,7 @@ namespace MerriamWebster.NET.Example.Models
             new("Spanish-English dictionary", Configuration.SpanishEnglishDictionary)
         };
 
-        public ResultModel<Entry>? Result { get; set; }
+        public ResultModel Result { get; set; }
     }
 
 }

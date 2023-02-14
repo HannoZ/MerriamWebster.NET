@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Text.Json;
 using MerriamWebster.NET.Results;
-using MerriamWebster.NET.Results.Base;
 
 namespace MerriamWebster.NET.Parsing.DictionaryEntryMembers
 {
     public class TableDictionaryEntryMemberParser : IDictionaryEntryMemberParser
     {
-        public void Parse(JsonProperty json, EntryBase target)
+        public void Parse(JsonProperty json, Entry target)
         {
             ArgumentNullException.ThrowIfNull(target, nameof(target));
 
@@ -24,7 +23,7 @@ namespace MerriamWebster.NET.Parsing.DictionaryEntryMembers
                 TableId = JsonParserHelper.GetStringValue(source, "tableid")
             };
             
-            ((Entry)target).Table = table;
+            target.Table = table;
         }
     }
 }

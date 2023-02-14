@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.Json;
 using MerriamWebster.NET.Results;
-using MerriamWebster.NET.Results.Base;
-using MerriamWebster.NET.Results.Medical;
 
 namespace MerriamWebster.NET.Parsing.DictionaryEntryMembers
 {
@@ -12,7 +10,7 @@ namespace MerriamWebster.NET.Parsing.DictionaryEntryMembers
     public class BiosDictionaryEntryMemberParser : IDictionaryEntryMemberParser
     {
         /// <inheritdoc />
-        public void Parse(JsonProperty json, EntryBase target)
+        public void Parse(JsonProperty json, Entry target)
         {
             ArgumentNullException.ThrowIfNull(target, nameof(target));
 
@@ -66,7 +64,7 @@ namespace MerriamWebster.NET.Parsing.DictionaryEntryMembers
                 }
             }
 
-            ((MedicalEntry)target).BiographicalNote = biographicalNote;
+            target.BiographicalNote = biographicalNote;
         }
     }
 }

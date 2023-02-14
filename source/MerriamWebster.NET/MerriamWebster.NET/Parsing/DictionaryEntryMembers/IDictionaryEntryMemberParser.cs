@@ -1,5 +1,5 @@
 ﻿using System.Text.Json;
-using MerriamWebster.NET.Results.Base;
+using MerriamWebster.NET.Results;
 
 namespace MerriamWebster.NET.Parsing.DictionaryEntryMembers
 {
@@ -13,6 +13,6 @@ namespace MerriamWebster.NET.Parsing.DictionaryEntryMembers
         /// </summary>
         /// <param name="json"></param>
         /// <param name="target"></param>
-        void Parse(JsonProperty json, EntryBase target);
+        void Parse(JsonProperty json, Entry target);
     }
 }

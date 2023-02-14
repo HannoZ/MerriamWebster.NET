@@ -3,14 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.Json;
 using MerriamWebster.NET.Results;
-using MerriamWebster.NET.Results.Base;
-using MerriamWebster.NET.Results.SpanishEnglish;
 
 namespace MerriamWebster.NET.Parsing.DictionaryEntryMembers.SpanishEnglish
 {
     internal class ConjugationsDictionaryEntryMemberParser : IDictionaryEntryMemberParser
     {
-        public void Parse(JsonProperty json, EntryBase target)
+        public void Parse(JsonProperty json, Entry target)
         {
             ArgumentNullException.ThrowIfNull(target, nameof(target));
 
@@ -74,7 +72,7 @@ namespace MerriamWebster.NET.Parsing.DictionaryEntryMembers.SpanishEnglish
             conjugations.PastPerfectSubjunctive = parsedConjugations.Single(c => c.Tense == "ppss1");
             conjugations.FuturePerfectSubjunctive = parsedConjugations.Single(c => c.Tense == "fpsb");
 
-            ((SpanishEnglishEntry)target).Conjugations = conjugations;
+            target.Conjugations = conjugations;
         }
     }
 }

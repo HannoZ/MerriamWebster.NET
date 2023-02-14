@@ -1,4 +1,4 @@
-﻿namespace MerriamWebster.NET.Results.Medical
+﻿namespace MerriamWebster.NET.Results
 {
     public class BiosText : DefiningText
     {

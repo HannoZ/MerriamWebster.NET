@@ -32,8 +32,10 @@ namespace MerriamWebster.NET.Tests.Parsing
             string source = @"{""audio"":""hola001"",""ref"":""c"",""stat"":""1""}";
             
             Configuration.Language = Language.Es;
+            Configuration.ParseOptions.AudioFormat = AudioFormat.Mp3;
             var doc = JsonDocument.Parse(source);
             
+
             // ACT
             var link = AudioLinkCreator.CreateLink(doc.RootElement);
 
@@ -50,6 +52,7 @@ namespace MerriamWebster.NET.Tests.Parsing
             
             var doc = JsonDocument.Parse(source);
             Configuration.Language = Language.En;
+            Configuration.ParseOptions.AudioFormat = AudioFormat.Mp3;
 
             // ACT
             var link = AudioLinkCreator.CreateLink(doc.RootElement);
@@ -66,7 +69,9 @@ namespace MerriamWebster.NET.Tests.Parsing
             string source = @"{""audio"":""hello001"",""ref"":""c"",""stat"":""1""}";
             
             var doc = JsonDocument.Parse(source);
-            
+            Configuration.Language = Language.En;
+            Configuration.ParseOptions.AudioFormat = AudioFormat.Mp3;
+
             // ACT
             var link = AudioLinkCreator.CreateLink(doc.RootElement);
 
@@ -83,6 +88,7 @@ namespace MerriamWebster.NET.Tests.Parsing
             
             var doc = JsonDocument.Parse(source);
             Configuration.Language = Language.Es;
+            Configuration.ParseOptions.AudioFormat = AudioFormat.Mp3;
 
             // ACT
             var link = AudioLinkCreator.CreateLink(doc.RootElement);
@@ -100,6 +106,7 @@ namespace MerriamWebster.NET.Tests.Parsing
             
             var doc = JsonDocument.Parse(source);
             Configuration.Language = Language.En;
+            Configuration.ParseOptions.AudioFormat = AudioFormat.Mp3;
 
             // ACT
             var link = AudioLinkCreator.CreateLink(doc.RootElement);
@@ -117,6 +124,7 @@ namespace MerriamWebster.NET.Tests.Parsing
             
             var doc = JsonDocument.Parse(source);
             Configuration.Language = Language.Es;
+            Configuration.ParseOptions.AudioFormat = AudioFormat.Mp3;
 
             // ACT
             var link = AudioLinkCreator.CreateLink(doc.RootElement);
@@ -134,6 +142,7 @@ namespace MerriamWebster.NET.Tests.Parsing
             
             var doc = JsonDocument.Parse(source);
             Configuration.Language = Language.En;
+            Configuration.ParseOptions.AudioFormat = AudioFormat.Mp3;
 
             // ACT
             var link = AudioLinkCreator.CreateLink(doc.RootElement);
@@ -151,6 +160,7 @@ namespace MerriamWebster.NET.Tests.Parsing
             
             var doc = JsonDocument.Parse(source);
             Configuration.Language = Language.Es;
+            Configuration.ParseOptions.AudioFormat = AudioFormat.Mp3;
 
             // ACT
             var link = AudioLinkCreator.CreateLink(doc.RootElement);
@@ -168,6 +178,7 @@ namespace MerriamWebster.NET.Tests.Parsing
             
             var doc = JsonDocument.Parse(source);
             Configuration.Language = Language.En;
+            Configuration.ParseOptions.AudioFormat = AudioFormat.Mp3;
 
             // ACT
             var link = AudioLinkCreator.CreateLink(doc.RootElement);
@@ -185,6 +196,7 @@ namespace MerriamWebster.NET.Tests.Parsing
             
             var doc = JsonDocument.Parse(source);
             Configuration.Language = Language.Es;
+            Configuration.ParseOptions.AudioFormat = AudioFormat.Mp3;
 
             // ACT
             var link = AudioLinkCreator.CreateLink(doc.RootElement);
@@ -202,6 +214,7 @@ namespace MerriamWebster.NET.Tests.Parsing
             
             var doc = JsonDocument.Parse(source);
             Configuration.Language = Language.En;
+            Configuration.ParseOptions.AudioFormat = AudioFormat.Mp3;
 
             // ACT
             var link = AudioLinkCreator.CreateLink(doc.RootElement);

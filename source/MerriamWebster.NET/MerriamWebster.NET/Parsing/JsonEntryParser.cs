@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Text.Json;
 using MerriamWebster.NET.Results;
-using MerriamWebster.NET.Results.Base;
 
 namespace MerriamWebster.NET.Parsing
 {
@@ -11,7 +10,7 @@ namespace MerriamWebster.NET.Parsing
     /// </summary>
     public class JsonEntryParser
     {
-        public void Parse(JsonElement source, EntryBase target)
+        public void Parse(JsonElement source, Entry target)
         {
             ArgumentNullException.ThrowIfNull(target, nameof(target));
 

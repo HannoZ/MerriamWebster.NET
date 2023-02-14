@@ -2,13 +2,12 @@
 using System.Text.Json;
 using MerriamWebster.NET.Parsing.DictionaryEntryMembers;
 using MerriamWebster.NET.Results;
-using MerriamWebster.NET.Results.Base;
 using Microsoft.Extensions.Logging;
 
 namespace MerriamWebster.NET.Parsing
 {
     /// <summary>
-    /// Contains methods to parse the raw API response data into a <see cref="ResultModel{T}"/>.
+    /// Contains methods to parse the raw API response data into a <see cref="ResultModel"/>.
     /// </summary>
     public class JsonDocumentParser 
     {
@@ -22,12 +21,11 @@ namespace MerriamWebster.NET.Parsing
         /// <summary>
         /// Parses the result of an api request and returns the result using specific parse options.
         /// </summary>
-        public ResultModel<T> ParseSearchResult<T>(string api, string searchResult)
-            where T : EntryBase, new()
+        public ResultModel ParseSearchResult(string api, string searchResult)
         {
             ArgumentNullException.ThrowIfNull(api, nameof(api));
 
-            var resultModel = new ResultModel<T>
+            var resultModel = new ResultModel
             {
                 RawResponse = searchResult
             };
@@ -45,7 +43,7 @@ namespace MerriamWebster.NET.Parsing
                         continue;
                     }
 
-                    var entry = new T();
+                    var entry = new Entry();
 
                     foreach (var prop in result.EnumerateObject())
                     {

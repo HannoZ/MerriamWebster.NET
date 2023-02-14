@@ -1,6 +1,6 @@
 ﻿using System;
 using MerriamWebster.NET.Parsing.DictionaryEntryMembers;
-using MerriamWebster.NET.Results.Base;
+using MerriamWebster.NET.Results;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Shouldly;
 

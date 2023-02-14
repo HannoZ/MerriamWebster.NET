@@ -1,14 +1,14 @@
 ﻿using System.Collections.Generic;
 using System.Text.Json.Serialization;
 using MerriamWebster.NET.Parsing;
-using MerriamWebster.NET.Results.Base;
+
 
 namespace MerriamWebster.NET.Results
 {
     /// <summary>
     /// The result model contains the result of a search query (in the <see cref="Entries"/> collection),  plus some additional properties.
     /// </summary>
-    public class ResultModel<T> where T : EntryBase
+    public class ResultModel
     {
         public ResultModel()
         {
@@ -23,13 +23,13 @@ namespace MerriamWebster.NET.Results
         /// <summary>
         /// A collection of zero or more <see cref="T"/> objects. This is the main result. 
         /// </summary>
-        public ICollection<T> Entries { get; set; } = new List<T>();
+        public ICollection<Entry> Entries { get; set; } = new List<Entry>();
 
         /// <summary>
         /// The summary combines all non-empty summaries of the entries in the <see cref="Entries"/> property.
         /// </summary>
         [JsonIgnore]
-        public string Summary => SummaryHelper<T>.CreateSummary(SearchText, Entries);
+        public string Summary => SummaryHelper.CreateSummary(SearchText, Entries);
 
         /// <summary>
         /// Gets or sets the raw response in JSON format. 

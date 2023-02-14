@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Text.Json;
-using MerriamWebster.NET.Results.Base;
+using MerriamWebster.NET.Results;
 
 namespace MerriamWebster.NET.Parsing.DictionaryEntryMembers
 {
     public class DefinitionDictionaryEntryMemberParser : IDictionaryEntryMemberParser
     {
-        public void Parse(JsonProperty json, EntryBase target)
+        public void Parse(JsonProperty json, Entry target)
         {
             ArgumentNullException.ThrowIfNull(target, nameof(target));
 
