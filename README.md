@@ -1,7 +1,7 @@
 ![Build Test Package](https://github.com/HannoZ/MerriamWebster.NET/workflows/Build%20Test%20Package/badge.svg)
 
 # MerriamWebster.NET
-A super-fast, lightweight .NET client wrapper and object parser for Merriam-Webster's APIs. Tested with the Spanish-English and collegiate dictionaries and a little bit with the medical dictionary. It will also work for all available APIs, but data structures that are specific to those APIs will not be available in the parsed objects. Response objects for those APIs were created based on documentation and some example json files. 
+A super-fast, lightweight .NET client wrapper and object parser for Merriam-Webster's APIs. Tested with the Spanish-English and collegiate dictionaries and a little bit with the medical dictionary. It will also work for all available APIs, but data structures that are specific to those APIs may not be available in the parsed objects. Response objects for those APIs were created based on documentation and some example json files. 
 
 For a list of available APIs and in-depth documentation visit Merriam-Webster's [Developer Center](https://dictionaryapi.com/).
 
@@ -18,7 +18,7 @@ Version 3 of this library was rewritten almost entirely, it now uses the System.
 ## About the libary
 The library contains two main folders: Parsing and Results. The Parsing folder contains a large number of (internal) classes to parse the result, the Results folder contains all the objects that are returned by MerriamWebsterSearch. All objects are documented with the texts from the official documentation, along with the display guidance notes from the documentation.
 
-The return type of the MerriamWebsterSearch search methods is a `ResultModel<Entry>`. This model contains a collection of `Entry` objects. An entry is the central unit of a search result and contains a large number of properties that may, or may not, be present, depending on what was returned in the response. As of version 3 of this library, some APIs return a more specific type of entry with additional properties that are only present for a certain API. Spanish-English dictionary: ``SpanishEnglishEntry``, Medical dictionary: ``MedicalEntry``.
+The return type of the MerriamWebsterSearch search methods is a `ResultModel`. This model contains a collection of `Entry` objects. An entry is the central unit of a search result and contains a large number of properties that may, or may not, be present, depending on what was returned in the response and which API was used. 
 
 Now comes the difficult part, even in the parsed objects: the actual defining texts are found as follows: Entry > Definitions > SenseSequences > Senses > DefiningTexts
 (see code sample below) 
@@ -70,6 +70,7 @@ public void ConfigureServices(IServiceCollection services)
     // this registers the IMerriamWebsterClient and MerriamWebsterSearch
     services.RegisterMerriamWebster(mwConfig);
 }
+
 ```
 
 ``` C#
@@ -106,10 +107,11 @@ public class Example
     }
 }
 ```
-For a fully working example on how to use the library and how to render the results, see the MerriamWebster.NET.Example project (based on the standard ASP.NET Core MVC template)
+For a fully working example on how to use the library and how to render the results, see the MerriamWebster.NET.Example demo project (based on the standard ASP.NET Core MVC template). The demo site is also available on https://merriam-webster-net-example.azurewebsites.net/ (it runs on free infrastructure which may take a minute to start up)
 
 ## A note on serialization/deserialization
 Serialization and deserialization only works with the Json.NET library. The System.Text.Json classes don't support deserialization of interfaces (for example the DefiningTexts property on the SenseBase class is a collection of IDefiningText). 
+
 Serialization and deserialization has been tested with the following serializer settings: 
 ``` C#
 private static readonly JsonSerializerSettings SerializerSettings = new JsonSerializerSettings()
@@ -120,4 +122,4 @@ private static readonly JsonSerializerSettings SerializerSettings = new JsonSeri
 };
 
 ```
-Serialization settings are also required when the ResultModel is returned by a WebApi method, else a lot of information will be missing in the JSON response (all defining texts for example)
+Serialization settings are also required when the ResultModel is returned by a WebApi method to a client (Angular web app for example, though in that case it may be a better idea to transform the ResultModel in the backend into objects that can be used by the client directly), else a lot of information will be missing in the JSON response (all defining texts for example)
