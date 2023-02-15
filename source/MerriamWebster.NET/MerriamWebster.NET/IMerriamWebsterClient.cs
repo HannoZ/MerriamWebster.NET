@@ -1,6 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
 using System.Threading.Tasks;
-using MerriamWebster.NET.Response;
 
 namespace MerriamWebster.NET
 {
@@ -13,15 +12,26 @@ namespace MerriamWebster.NET
     public interface IMerriamWebsterClient
     {
         /// <summary>
-        /// Gets a dictionary entry. 
+        /// Execute a search request on the specified API.
         /// </summary>
         /// <param name="api">Specifies the API</param>
-        /// <param name="entry">The dictionary entry to retrieve</param>
-        /// <returns>Zero or more results.</returns>
+        /// <param name="searchTerm">The search term to pass to the API</param>
+        /// <returns>The API response as string.</returns>
         /// <remarks>
         /// The API returns a list of suggestions if there is no direct match.
-        /// The <see cref="MerriamWebsterClient"/> implementation of this method logs these suggestions as warnings and returns an empty collection.
         /// </remarks>
-        Task<IEnumerable<MwDictionaryEntry>> GetDictionaryEntry(string api, string entry);
+        Task<string> Search(string api, string searchTerm);
+
+        /// <summary>
+        /// Execute a search request on the specified API with provided API key.
+        /// </summary>
+        /// <param name="api">Specifies the API</param>
+        /// <param name="searchTerm">The search term to pass to the API</param>
+        /// <param name="apiKey">The API key for the <paramref name="api"/></param>
+        /// <returns>The API response as string.</returns>
+        /// <remarks>
+        /// The API returns a list of suggestions if there is no direct match.
+        /// </remarks>
+        Task<string> Search(string api, string searchTerm, string apiKey);
     }
 }

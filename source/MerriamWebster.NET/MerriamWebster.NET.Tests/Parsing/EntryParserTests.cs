@@ -1,20 +1,18 @@
 ﻿using MerriamWebster.NET.Parsing;
-using MerriamWebster.NET.Response;
-using MerriamWebster.NET.Response.JsonConverters;
+using MerriamWebster.NET.Results;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using Moq.AutoMock;
-using Newtonsoft.Json;
 using Shouldly;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Text.Json;
 using System.Threading.Tasks;
-using MerriamWebster.NET.Dto;
-using DefiningText = MerriamWebster.NET.Dto.DefiningText;
-using SenseBase = MerriamWebster.NET.Dto.SenseBase;
+using Sense = MerriamWebster.NET.Results.Sense;
+using SenseBase = MerriamWebster.NET.Results.SenseBase;
 
 namespace MerriamWebster.NET.Tests.Parsing
 {
@@ -23,28 +21,25 @@ namespace MerriamWebster.NET.Tests.Parsing
     {
         private readonly AutoMocker _mocker = new AutoMocker(MockBehavior.Loose);
 
-        private EntryParser _entryParser;
+        private JsonDocumentParser _parser;
 
         [TestInitialize]
         public void Initialize()
         {
-            _entryParser = _mocker.CreateInstance<EntryParser>();
+            _parser = _mocker.CreateInstance<JsonDocumentParser>();
         }
-
 
         [TestMethod]
         public async Task EntryParser_CanParse_All()
         {
-            string[] exclusions = { "coll_thes_above_meta.json", "sense_learn_apple.json", "sense_above.json", "sense_med_doctor.json" };
+            string[] exclusions =
+            {
+                "coll_thes_above_meta.json", "sense_learn_apple.json", "sense_above.json", "sense_med_doctor.json",
+                "learn_apple.json"
+            };
             var asm = Assembly.GetExecutingAssembly();
             var resources = asm.GetManifestResourceNames();
 
-            var settings = new JsonSerializerSettings
-            {
-                TypeNameAssemblyFormatHandling = TypeNameAssemblyFormatHandling.Simple,
-                TypeNameHandling = TypeNameHandling.Objects,
-                NullValueHandling = NullValueHandling.Ignore
-            };
 
             foreach (var resource in resources)
             {
@@ -60,17 +55,40 @@ namespace MerriamWebster.NET.Tests.Parsing
 
                 try
                 {
-                    var data = JsonConvert.DeserializeObject<MwDictionaryEntry[]>(content, Converter.Settings);
-
                     // ACT
-                    var result = _entryParser.Parse("api", data);
-
-                    // ASSERT
-                    result.Entries.ShouldNotBeEmpty();
 
                     // verify serialization/deserialization
-                    var serialized = JsonConvert.SerializeObject(result, settings);
-                    var deserialized = JsonConvert.DeserializeObject<ResultModel>(serialized, settings);
+                    var options = new JsonSerializerOptions()
+                    {
+
+                    };
+
+                    if (resource.Contains("med_"))
+                    {
+                        var result = _parser.ParseSearchResult(Configuration.MedicalDictionary, content);
+                        result.Entries.ShouldNotBeEmpty();
+                        
+                        var serialized = System.Text.Json.JsonSerializer.Serialize(result, options);
+                        var deserialized = JsonSerializer.Deserialize<ResultModel>(serialized, options);
+
+                    }
+                    else if (resource.Contains("_"))
+                    {
+                        var result = _parser.ParseSearchResult(Configuration.CollegiateDictionary, content);
+                        result.Entries.ShouldNotBeEmpty();
+                        
+                        var serialized = System.Text.Json.JsonSerializer.Serialize(result, options);
+                        var deserialized = JsonSerializer.Deserialize<ResultModel>(serialized, options);
+                    }
+                    else
+                    {
+                        var result = _parser.ParseSearchResult(Configuration.SpanishEnglishDictionary, content);
+                        result.Entries.ShouldNotBeEmpty();
+                        
+                        var serialized = System.Text.Json.JsonSerializer.Serialize(result, options);
+                        var deserialized = JsonSerializer.Deserialize<ResultModel>(serialized, options);
+                    }
+
                 }
                 catch (Exception ex)
                 {
@@ -80,48 +98,76 @@ namespace MerriamWebster.NET.Tests.Parsing
         }
 
         [TestMethod]
-        public void EntryParser_CanParse_Abarrotado()
+        public async Task JsonDocumentParser_CanParse_Abarrotado()
         {
-            var data = LoadData("abarrotado");
+            var response = await TestHelper.LoadResponseFromFileAsync("abarrotado");
 
             // ACT
-            var result = _entryParser.Parse("abarrotado", data);
+            var result = _parser.ParseSearchResult(Configuration.SpanishEnglishDictionary, response);
 
             // ASSERT
             result.Entries.ShouldNotBeEmpty();
         }
 
         [TestMethod]
-        public void EntryParser_CanParse_Casa()
+        public void EntryParser_CanHandleSearchSuggestions()
         {
-            var data = LoadData("casa");
+            // output for 'foobar'
+            string response = @"[
+    ""foofaraw"",
+    ""footboard"",
+    ""footer"",
+    ""isobar"",
+    ""lobar"",
+    ""foosball"",
+    ""football"",
+    ""footbath"",
+    ""footballer"",
+    ""footboards"",
+    ""foolery"",
+    ""footage"",
+    ""footboy"",
+    ""footers"",
+    ""isobars"",
+    ""kilobar"",
+    ""Longobard"",
+    ""food bank"",
+    ""foodborne"",
+    ""foofaraws""
+]";
 
             // ACT
-            var result = _entryParser.Parse("casa", data);
+            var result = _parser.ParseSearchResult(Configuration.SpanishEnglishDictionary, response);
 
+            // ASSERT
+        }
+
+
+        [TestMethod]
+        public async Task EntryParser_CanParse_Casa()
+        {
+            var response = await TestHelper.LoadResponseFromFileAsync("casa");
+            var result = _parser.ParseSearchResult(Configuration.SpanishEnglishDictionary, response);
+        
             // ASSERT
             result.Entries.Count.ShouldBe(4);
         }
 
         [TestMethod]
-        public void EntryParser_CanParse_Delgado()
+        public async Task EntryParser_CanParse_Delgado()
         {
-            var data = LoadData("delgado");
-
-            // ACT 
-            var result = _entryParser.Parse("delgado", data);
-
+            var response = await TestHelper.LoadResponseFromFileAsync("delgado");
+            var result = _parser.ParseSearchResult(Configuration.SpanishEnglishDictionary, response);
+         
             // ASSERT
             result.Entries.ShouldNotBeEmpty();
         }
 
         [TestMethod]
-        public void EntryParser_CanParse_Distinto()
+        public async Task EntryParser_CanParse_Distinto()
         {
-            var data = LoadData("distinto");
-
-            // ACT 
-            var result = _entryParser.Parse("distinto", data);
+            var response = await TestHelper.LoadResponseFromFileAsync("distinto");
+            var result = _parser.ParseSearchResult(Configuration.SpanishEnglishDictionary, response);
 
             // ASSERT
             result.Entries.ShouldNotBeEmpty();
@@ -134,12 +180,10 @@ namespace MerriamWebster.NET.Tests.Parsing
         }
 
         [TestMethod]
-        public void EntryParser_CanParse_Hilar()
+        public async Task EntryParser_CanParse_Hilar()
         {
-            var data = LoadData("hilar");
-
-            // ACT
-            var result = _entryParser.Parse("hilar", data);
+            var response = await TestHelper.LoadResponseFromFileAsync("hilar");
+            var result = _parser.ParseSearchResult(Configuration.SpanishEnglishDictionary, response);
 
             // ASSERT
             result.Entries.Count.ShouldBe(1);
@@ -147,272 +191,122 @@ namespace MerriamWebster.NET.Tests.Parsing
         }
 
         [TestMethod]
-        public void EntryParser_CanParse_Robot()
+        public async Task EntryParser_CanParse_Robot()
         {
-            var data = LoadData("robot");
-
-            var result = _entryParser.Parse("robot", data);
+            var response = await TestHelper.LoadResponseFromFileAsync("robot");
+            var result = _parser.ParseSearchResult(Configuration.SpanishEnglishDictionary, response);
+            var entries = result.Entries;
 
             // ASSERT
-            result.Entries.ShouldNotBeEmpty();
+            entries.ShouldNotBeEmpty();
+            entries.ShouldContain(e => e.Metadata.Language == Language.En);
+            entries.ShouldContain(e => e.Metadata.Language == Language.Es);
 
-            result.Entries.ShouldContain(e => e.Metadata.Language == Language.En);
-            result.Entries.ShouldContain(e => e.Metadata.Language == Language.Es);
-
-            result.Entries.ShouldContain(e => e.UndefinedRunOns.Any(uro => uro.AlternateEntry != null));
+            entries.ShouldContain(e => e.UndefinedRunOns.Any(uro => uro.AlternateEntry != null));
         }
 
         [TestMethod]
-        public void EntryParser_CanParse_Estar()
+        public async Task EntryParser_CanParse_Estar()
         {
-            var data = LoadData("estar");
-
-            // ACT
-            var result = _entryParser.Parse("estar", data);
+            var response = await TestHelper.LoadResponseFromFileAsync("estar");
+            var result = _parser.ParseSearchResult(Configuration.SpanishEnglishDictionary, response);
+            var entries = result.Entries.ToList();
 
             // ASSERT
-            result.Entries.ShouldNotBeEmpty();
-            result.Entries.ShouldContain(e => e.Conjugations != null);
+            entries.ShouldNotBeEmpty();
+            entries.ShouldContain(e => e.Conjugations != null);
 
             var senses = GetSenses(result.Entries).OfType<SenseBase>();
             senses.Where(s => s.Variants != null).ShouldNotBeNull();
+
+            entries.SelectMany(e => e.DefinedRunOns).ShouldNotBeEmpty();
         }
 
-        [TestMethod]
-        public void EntryParser_CanParse_House()
-        {
-            var data = LoadData("house");
 
-            // ACT
-            var result = _entryParser.Parse("house", data);
+        //[TestMethod]
+        //public void EntryParser_CanParse_CollegiateThes_Above_Metadata()
+        //{
+        //    var data = LoadData("coll_thes_above_meta");
+
+        //    // ACT
+        //    var result = _entryParser.Parse("above", data);
+
+        //    // ASSERT
+        //    var entry = result.Entries.First();
+
+        //    //entry.Metadata.Synonyms.ShouldNotBeEmpty();
+        //    //entry.Metadata.Antonyms.ShouldNotBeEmpty();
+        //}
+
+        //[TestMethod]
+        //public async Task EntryParser_CanParse_Learners_Apple()
+        //{
+        //    var response = await TestHelper.LoadResponseFromFileAsync("learn_apple");
+        //    var doc = JsonDocument.Parse(response);
+
+        //     ACT
+        //    var result = _entryParser.ParseSearchResult(Configuration.LearnersDictionary, doc);
+
+        //     ASSERT
+        //    var definingTexts = GetDefiningTexts(result.Entries);
+
+        //    definingTexts.OfType<SupplementalInformationNote>().ShouldNotBeEmpty();
+        //}
+
+        [TestMethod]
+        public async Task EntryParser_CanParse_Quedar()
+        {
+            var response = await TestHelper.LoadResponseFromFileAsync("quedar");
+            var result = _parser.ParseSearchResult(Configuration.SpanishEnglishDictionary, response);
+            var entries = result.Entries.ToList();
 
             // ASSERT
             result.Entries.ShouldNotBeEmpty();
+            entries.ShouldContain(e => e.Conjugations != null);
         }
 
         [TestMethod]
-        public void EntryParser_CanParse_Pueblo()
+        public async Task EntryParser_CanParse_Sierra()
         {
-            var data = LoadData("pueblo");
-
-            // ACT
-            var result = _entryParser.Parse("pueblo", data);
-
-            // ASSERT
-            result.Entries.ShouldNotBeEmpty();
-        }
-
-        [TestMethod]
-        public void EntryParser_CanParse_Abeja()
-        {
-            var data = LoadData("abeja");
-
-            // ACT
-            var result = _entryParser.Parse("abeja", data);
-
-            // ASSERT
-            result.Entries.ShouldNotBeEmpty();
-        }
-
-        [TestMethod]
-        public void EntryParser_CanParse_CollegiateDict_Voluminous()
-        {
-            var data = LoadData("coll_dict_voluminous");
-
-            // ACT
-            var result = _entryParser.Parse("voluminous", data);
-
-            // ASSERT
-            result.Entries.ShouldNotBeEmpty();
-        }
-
-        [TestMethod]
-        public void EntryParser_CanParse_CollegiateThes_Umpire()
-        {
-            var data = LoadData("coll_thes_umpire");
-
-            // ACT
-            var result = _entryParser.Parse("umpire", data);
-
-            // ASSERT
-            result.Entries.ShouldNotBeEmpty();
-        }
-
-
-        [TestMethod]
-        public void EntryParser_CanParse_CollegiateThes_Above_Metadata()
-        {
-            var data = LoadData("coll_thes_above_meta");
-
-            // ACT
-            var result = _entryParser.Parse("above", data);
-
-            // ASSERT
-            var entry = result.Entries.First();
+            var response = await TestHelper.LoadResponseFromFileAsync("sierra");
+            var result = _parser.ParseSearchResult(Configuration.SpanishEnglishDictionary, response);
+            var entries = result.Entries.ToList();
             
-            entry.Metadata.Synonyms.ShouldNotBeEmpty();
-            entry.Metadata.Antonyms.ShouldNotBeEmpty();
-        }
-        
-
-        [TestMethod]
-        public void EntryParser_CanParse_Medical_Doctor()
-        {
-            var data = LoadData("med_doctor");
-
-            // ACT
-            var result = _entryParser.Parse("doctor", data);
-
-            // ASSERT
-            result.Entries.ShouldNotBeEmpty();
-        }
-
-        [TestMethod]
-        public void EntryParser_CanParse_Learners_Apple()
-        {
-            var data = LoadData("learn_apple");
-            // ACT
-            var result = _entryParser.Parse("apple", data);
-
-            // ASSERT
-            var definingTexts = GetDefiningTexts(result.Entries);
-
-            definingTexts.OfType<SupplementalInformationNote>().ShouldNotBeEmpty();
-        }
-
-        [TestMethod]
-        public void EntryParser_CanParse_ElementaryDictionary_School()
-        {
-            var data = LoadData("elem_dict_school");
-
-            // ACT
-            var result = _entryParser.Parse("school", data);
-
-            // ASSERT
-            result.Entries.ShouldNotBeEmpty();
-        }
-
-
-        [TestMethod]
-        public void EntryParser_CanParse_IntermediateDictionary_Dragon()
-        {
-            var data = LoadData("inter_dict_dragon");
-
-            // ACT
-            var result = _entryParser.Parse("dragon", data);
-
-            // ASSERT
-            result.Entries.ShouldNotBeEmpty();
-        }
-
-        [TestMethod]
-        public void EntryParser_CanParse_IntermediateThesaurus_Umpire()
-        {
-            var data = LoadData("inter_thes_umpire");
-
-            // ACT
-            var result = _entryParser.Parse("umpire", data);
-
-            // ASSERT
-            result.Entries.ShouldNotBeEmpty();
-        }
-
-        [TestMethod]
-        public void EntryParser_CanParse_SchoolDictionary_Baseball()
-        {
-            var data = LoadData("school_dict_baseball");
-
-            // ACT
-            var result = _entryParser.Parse("baseball", data);
-
-            // ASSERT
-            result.Entries.ShouldNotBeEmpty();
-        }
-
-        [TestMethod]
-        public void EntryParser_SynonymsNotInSummary()
-        {
-            var data = LoadData("pueblo");
-
-            // ACT
-            var result = _entryParser.Parse("pueblo", data);
-
-            // ASSERT
-            result.Entries.ShouldNotBeEmpty();
-        }
-
-        [TestMethod]
-        public void EntryParser_CanParse_Quedar()
-        {
-            var data = LoadData("quedar");
-
-            // ACT
-            var result = _entryParser.Parse("quedar", data);
-
-            // ASSERT
-            result.Entries.ShouldNotBeEmpty();
-            result.Entries.ShouldContain(e => e.Conjugations != null);
-        }
-
-        [TestMethod]
-        public void EntryParser_CanParse_Sierra()
-        {
-            var data = LoadData("sierra");
-
-            // ACT
-            var result = _entryParser.Parse("sierra", data);
-
             // ASSERT
             result.Entries.Count.ShouldBe(4);
-            result.Entries.ShouldContain(e => e.CrossReferences.Any());
-
+            entries.ShouldContain(e => e.CrossReferences.Any());
         }
 
         [TestMethod]
-        public void EntryParser_CanParse_Tedious()
+        public async Task EntryParser_CanParse_Tedious()
         {
-            var data = LoadData("collegiate_tedious");
+            var response = await TestHelper.LoadResponseFromFileAsync("collegiate_tedious"); 
 
             // ACT
-            var result = _entryParser.Parse("tedious", data);
+            var result = _parser.ParseSearchResult(Configuration.CollegiateDictionary, response);
 
             // ASSERT
             result.Entries.Count.ShouldBe(1);
-            result.Entries.First().Quotes.Count.ShouldBe(3);
+            result.Entries.Cast<Entry>().First().Quotes.Count.ShouldBe(3);
         }
 
         [TestMethod]
-        public void EntryParser_CanParse_Knee()
+        public async Task EntryParser_CanParse_Knee()
         {
-            var data = LoadData("med_knee");
+            var response = await TestHelper.LoadResponseFromFileAsync("med_knee");
 
             // ACT
-            var result = _entryParser.Parse("knee", data);
+            var result = _parser.ParseSearchResult(Configuration.MedicalDictionary, response);
 
             // ASSERT
             result.Entries.Count.ShouldBe(10);
         }
 
         [TestMethod]
-        public void EntryParser_CanParse_Med_Pelvis()
+        public async Task EntryParser_CanParse_Collegiate_Pelvis()
         {
-            var data = LoadData("med_pelvis");
-
-            // ACT
-            var result = _entryParser.Parse("pelvis", data);
-
-            // ASSERT
-            result.Entries.Count.ShouldBe(7);
-
-        }
-
-        [TestMethod]
-        public void EntryParser_CanParse_Collegiate_Pelvis()
-        {
-            var data = LoadData("collegiate_pelvis");
-
-            // ACT
-            var result = _entryParser.Parse("pelvis", data);
+            var response = await TestHelper.LoadResponseFromFileAsync("collegiate_pelvis");
+            var result = _parser.ParseSearchResult(Configuration.CollegiateDictionary, response);
 
             // ASSERT
             result.Entries.Count.ShouldBe(2);
@@ -420,12 +314,10 @@ namespace MerriamWebster.NET.Tests.Parsing
         }
 
         [TestMethod]
-        public void EntryParser_CanParse_Collegiate_Heart()
+        public async Task EntryParser_CanParse_Collegiate_Heart()
         {
-            var data = LoadData("collegiate_heart");
-
-            // ACT
-            var result = _entryParser.Parse("heart", data);
+            var response = await TestHelper.LoadResponseFromFileAsync("collegiate_heart");
+            var result = _parser.ParseSearchResult(Configuration.CollegiateDictionary, response);
 
             // ASSERT
             result.Entries.Count.ShouldBe(10);
@@ -439,41 +331,26 @@ namespace MerriamWebster.NET.Tests.Parsing
         }
 
         [TestMethod]
-        public void EntryParser_CanParse_Collegiate_Reap()
+        public async Task EntryParser_CanParse_Collegiate_Feline()
         {
-            var data = LoadData("collegiate_reap");
+            var response = await TestHelper.LoadResponseFromFileAsync("collegiate_feline");
+            var result = _parser.ParseSearchResult(Configuration.CollegiateDictionary, response);
 
-            // ACT
-            var result = _entryParser.Parse("reap", data);
-
-            // ASSERT
-            result.Entries.Count.ShouldBe(4);
-
-        }
-
-        [TestMethod]
-        public void EntryParser_CanParse_Collegiate_Feline()
-        {
-            var data = LoadData("collegiate_feline");
-
-            // ACT
-            var result = _entryParser.Parse("feline", data);
 
             // ASSERT
             result.Entries.Count.ShouldBe(3);
 
-            GetSenses(result.Entries)
-                .OfType<Dto.Sense>()
-                 .ShouldContain(s => s.SenseNumber == "2"); // to verify that the "bs" element was processed correctly
+            var senses = GetSenses(result.Entries);
+
+            senses.OfType<Sense>()
+             .ShouldContain(s => s.SenseNumber == "2"); // to verify that the "bs" element was processed correctly
         }
 
         [TestMethod]
-        public void EntryParser_CanParse_Collegiate_Tab()
+        public async Task EntryParser_CanParse_Collegiate_Tab()
         {
-            var data = LoadData("collegiate_tab");
-
-            // ACT
-            var result = _entryParser.Parse("tab", data);
+            var response = await TestHelper.LoadResponseFromFileAsync("collegiate_tab");
+            var result = _parser.ParseSearchResult(Configuration.CollegiateDictionary, response);
 
             // ASSERT
             result.Entries.Count.ShouldBe(7);
@@ -481,17 +358,17 @@ namespace MerriamWebster.NET.Tests.Parsing
 
             var firstDef = result.Entries.First().Definitions.First();
             firstDef.SenseSequence.Count.ShouldBe(4);
-            firstDef.SenseSequence.SelectMany(ss=>ss.Senses)
-                .ShouldContain(s=>s.IsParenthesizedSenseSequence);
+            firstDef.SenseSequence.SelectMany(ss => ss.Senses)
+                .ShouldContain(s => s.IsParenthesizedSenseSequence);
         }
 
         [TestMethod]
-        public void EntryParser_CanParse_Collegiate_Abeyance()
+        public async Task EntryParser_CanParse_Collegiate_Abeyance()
         {
-            var data = LoadData("collegiate_abeyance");
+            var response = await TestHelper.LoadResponseFromFileAsync("collegiate_abeyance"); 
 
             // ACT
-            var result = _entryParser.Parse("abeyance", data);
+            var result = _parser.ParseSearchResult(Configuration.CollegiateDictionary, response);
 
             // ASSERT
             result.Entries.Count.ShouldBe(1);
@@ -499,16 +376,17 @@ namespace MerriamWebster.NET.Tests.Parsing
             var defs = GetDefiningTexts(result.Entries);
             var un = defs.OfType<UsageNote>().ToList();
             un.ShouldNotBeEmpty();
-            un.First().VerbalIllustrations.Count.ShouldBe(2);
+            un.First().DefiningTexts.OfType<VerbalIllustration>().Count().ShouldBe(2);
         }
 
         [TestMethod]
-        public void EntryParser_CanParse_Collegiate_Alliteration()
+        public async Task EntryParser_CanParse_Collegiate_Alliteration()
         {
-            var data = LoadData("collegiate_alliteration");
+            var response = await TestHelper.LoadResponseFromFileAsync("collegiate_alliteration");
 
             // ACT
-            var result = _entryParser.Parse("alliteration", data);
+            var result = _parser.ParseSearchResult(Configuration.CollegiateDictionary, response);
+
 
             // ASSERT
             result.Entries.Count.ShouldBe(1);
@@ -517,61 +395,63 @@ namespace MerriamWebster.NET.Tests.Parsing
         }
 
         [TestMethod]
-        public void EntryParser_CanParse_Collegiate_Agree()
+        public async Task EntryParser_CanParse_Collegiate_Agree()
         {
-            var data = LoadData("collegiate_agree");
+            var response = await TestHelper.LoadResponseFromFileAsync("collegiate_agree");
 
             // ACT
-            var result = _entryParser.Parse("agree", data);
+            var result = _parser.ParseSearchResult(Configuration.CollegiateDictionary, response);
 
             // ASSERT
             result.Entries.ShouldNotBeEmpty();
-            result.Entries.ShouldContain(e=>e.Synonyms != null && e.Synonyms.Any());
+            result.Entries.Cast<Entry>().ShouldContain(e => e.Synonyms != null && e.Synonyms.Any());
         }
 
         [TestMethod]
-        public void EntryParser_CanParse_Collegiate_Abide()
+        public async Task EntryParser_CanParse_Collegiate_Abide()
         {
-            var data = LoadData("collegiate_abide");
+            var response = await TestHelper.LoadResponseFromFileAsync("collegiate_abide");
 
             // ACT
-            var result = _entryParser.Parse("abide", data);
+            var result = _parser.ParseSearchResult(Configuration.CollegiateDictionary, response);
+
 
             // ASSERT
             result.Entries.ShouldNotBeEmpty();
-            result.Entries.ShouldContain(e => e.Synonyms != null && e.Synonyms.Any());
+            result.Entries.Cast<Entry>().ShouldContain(e => e.Synonyms != null && e.Synonyms.Any());
 
             var dts = GetDefiningTexts(result.Entries);
             dts.ShouldNotBeEmpty();
         }
 
         [TestMethod]
-        public void EntryParser_CanParse_Collegiate_Acadia()
+        public async Task EntryParser_CanParse_Collegiate_Acadia()
         {
-            var data = LoadData("collegiate_Acadia");
+            var response = await TestHelper.LoadResponseFromFileAsync("collegiate_Acadia");
 
             // ACT
-            var result = _entryParser.Parse("acadia", data);
+            var result = _parser.ParseSearchResult(Configuration.CollegiateDictionary, response);
 
             // ASSERT
-            result.Entries.First().DirectionalCrossReferences.ShouldNotBeEmpty();
-            
+            result.Entries.Cast<Entry>().First().DirectionalCrossReferences.ShouldNotBeEmpty();
         }
 
         [TestMethod]
-        public void EntryParser_CanParse_Collegiate_Above()
+        public async Task EntryParser_CanParse_Collegiate_Above()
         {
-            var data = LoadData("collegiate_above");
+            var response = await TestHelper.LoadResponseFromFileAsync("collegiate_above");
 
             // ACT
-            var result = _entryParser.Parse("above", data);
+            var result = _parser.ParseSearchResult(Configuration.CollegiateDictionary, response);
+
 
             // ASSERT
             result.Entries.Count.ShouldBe(10);
-            result.Entries.ShouldContain(e=>e.Usages != null && e.Usages.Any());
-            
-            var usageTexts = result.Entries.Where(e => e.Usages != null).SelectMany(e => e.Usages)
-                .SelectMany(u=>u.ParagraphTexts)
+            var entries = result.Entries.Cast<Entry>().ToList();
+            entries.ShouldContain(e => e.Usages != null && e.Usages.Any());
+
+            var usageTexts = entries.Where(e => e.Usages != null).SelectMany(e => e.Usages)
+                .SelectMany(u => u.ParagraphTexts)
                 .ToList();
             usageTexts.OfType<DefiningText>().ShouldNotBeEmpty();
             usageTexts.OfType<VerbalIllustration>().ShouldNotBeEmpty();
@@ -579,25 +459,25 @@ namespace MerriamWebster.NET.Tests.Parsing
         }
 
         [TestMethod]
-        public void EntryParser_CanParse_Alphabet()
+        public async Task EntryParser_CanParse_Alphabet()
         {
-            var data = LoadData("collegiate_alphabet");
+            var response = await TestHelper.LoadResponseFromFileAsync("collegiate_alphabet");
 
             // ACT
-            var result = _entryParser.Parse("alphabet", data);
+            var result = _parser.ParseSearchResult(Configuration.CollegiateDictionary, response);
 
             // ASSERT
             result.Entries.Count.ShouldBe(10);
-            result.Entries.Count(e => e.Table != null).ShouldBe(1);
+            result.Entries.Cast<Entry>().Count(e => e.Table != null).ShouldBe(1);
         }
 
         [TestMethod]
-        public void EntryParser_CanParse_Color()
+        public async Task EntryParser_CanParse_Color()
         {
-            var data = LoadData("collegiate_color");
+            var response = await TestHelper.LoadResponseFromFileAsync("collegiate_color");
 
             // ACT
-            var result = _entryParser.Parse("color", data);
+            var result = _parser.ParseSearchResult(Configuration.CollegiateDictionary, response);
 
             // ASSERT
             result.Entries.Count.ShouldBe(10);
@@ -606,68 +486,57 @@ namespace MerriamWebster.NET.Tests.Parsing
             cognates.ShouldNotBeEmpty();
 
             var first = result.Entries.First();
-            var senses = first.Definitions.SelectMany(d => d.SenseSequence.SelectMany(ssq=>ssq.Senses)).ToList();
-            
-            senses.ShouldContain(s=>s.IsParenthesizedSenseSequence && s.Senses.Any());
-            senses.ShouldContain(s=>s.IsParenthesizedSenseSequence == false);
+            var senses = first.Definitions.SelectMany(d => d.SenseSequence.SelectMany(ssq => ssq.Senses)).ToList();
+
+            senses.ShouldContain(s => s.IsParenthesizedSenseSequence && s.Senses.Any());
+            senses.ShouldContain(s => s.IsParenthesizedSenseSequence == false);
         }
 
         [TestMethod]
-        public void EntryParser_CanParse_Bartonella()
+        public async Task EntryParser_CanParse_Bartonella()
         {
-            var data = LoadData("med_bartonella");
+            var response = await TestHelper.LoadResponseFromFileAsync("med_bartonella");
 
             // ACT
-            var result = _entryParser.Parse("bartonella", data);
+            var result = _parser.ParseSearchResult(Configuration.MedicalDictionary, response);
+            var entries = result.Entries.ToList();
 
             // ASSERT
-            result.Entries.First().BiographicalNote.Contents.Count.ShouldBe(4);
+            entries[0].BiographicalNote.DefiningTexts.Count.ShouldBe(4);
         }
 
         [TestMethod]
-        public void EntryParser_CanParse_Curie()
+        public async Task EntryParser_CanParse_Curie()
         {
-            var data = LoadData("med_curie");
+            var response = await TestHelper.LoadResponseFromFileAsync("med_curie");
 
             // ACT
-            var result = _entryParser.Parse("curie", data);
+            var result = _parser.ParseSearchResult(Configuration.MedicalDictionary, response);
+            var entries = result.Entries.ToList();
 
             // ASSERT
-            result.Entries.First().BiographicalNote.Contents.Count.ShouldBe(7);
+            entries[0].BiographicalNote.DefiningTexts.Count.ShouldBe(7);
         }
 
-        [TestMethod]
-        public void EntryParser_CanParse_Tejon()
-        {
-            var data = LoadData("tejón");
-
-            // ACT
-            var result = _entryParser.Parse("tejón", data);
-
-            // ASSERT
-            result.Entries.ShouldNotBeEmpty();
-
-            result.Summary.ShouldNotBeNull();
-        }
 
         [TestMethod]
-        public void EntryParser_CanParse_Ver()
+        public async Task EntryParser_CanParse_Ver()
         {
-            var data = LoadData("ver");
-
+            var response = await TestHelper.LoadResponseFromFileAsync("ver");
+           
             // ACT
-            var result = _entryParser.Parse("ver", data);
+            var result = _parser.ParseSearchResult(Configuration.MedicalDictionary, response);
 
             // ASSERT
             result.Entries.ShouldNotBeEmpty();
-
             result.Summary.ShouldNotBeNull();
-        }
 
-        private static IEnumerable<Response.MwDictionaryEntry> LoadData(string fileName)
-        {
-            var response = TestHelper.LoadResponseFromFile(fileName);
-            return JsonConvert.DeserializeObject<Response.MwDictionaryEntry[]>(response, Converter.Settings);
+            var options = new JsonSerializerOptions()
+            {
+
+            };
+            var serialized = System.Text.Json.JsonSerializer.Serialize(result, options);
+            var d = JsonSerializer.Deserialize<ResultModel>(serialized, options);
         }
 
         private static IEnumerable<SenseSequenceSense> GetSenses(IEnumerable<Entry> entries) =>

@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
-using MerriamWebster.NET.Response;
-using MerriamWebster.NET.Response.JsonConverters;
 using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
 
 namespace MerriamWebster.NET
 {
@@ -15,7 +10,7 @@ namespace MerriamWebster.NET
     {
         private readonly HttpClient _client;
         private readonly ILogger<MerriamWebsterClient> _logger;
-        private string _apiKey;
+        private string? _apiKey;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="MerriamWebsterClient"/> class.
@@ -33,28 +28,33 @@ namespace MerriamWebster.NET
         }
 
         /// <inheritdoc />
-        public async Task<IEnumerable<MwDictionaryEntry>> GetDictionaryEntry(string api, string entry)
+        public  Task<string> Search(string api, string searchTerm)
         {
-            var responseString = await _client.GetStringAsync($"{api}/json/{entry?.ToLower()}?key={_apiKey}");
-
-            try
+            if (string.IsNullOrEmpty(_apiKey))
             {
-                var results = JsonConvert.DeserializeObject<MwDictionaryEntry[]>(responseString, Converter.Settings);
-                return results;
-            }
-            catch (NotImplementedException) // can occur in json converters when a structure is encountered that has not been implemented
-            {
-                throw;
-            }
-            catch
-            {
-                var response = JsonConvert.DeserializeObject<string[]>(responseString);
-                _logger.LogWarning($"No matches found for {entry}. Suggestions: {string.Join(",", response)}");
+                throw new InvalidOperationException("No api key was registered, request not possible");
             }
 
-            return Enumerable.Empty<MwDictionaryEntry>();
+            return Search(api, searchTerm, _apiKey);
         }
 
+        /// <inheritdoc />
+        public async Task<string> Search(string api, string searchTerm, string apiKey)
+        {
+#if NET7_0_OR_GREATER
+            ArgumentException.ThrowIfNullOrEmpty(searchTerm, nameof(searchTerm));
+            ArgumentException.ThrowIfNullOrEmpty(api, nameof(api));
+            ArgumentException.ThrowIfNullOrEmpty(apiKey, nameof(apiKey));
+#else
+            ArgumentNullException.ThrowIfNull(searchTerm, nameof(searchTerm));
+            ArgumentNullException.ThrowIfNull(api, nameof(api));
+            ArgumentNullException.ThrowIfNull(apiKey, nameof(apiKey));
+#endif
+            string urlPath = $"{api}/json/{searchTerm.ToLower()}";
+            _logger.LogInformation($"Sending request - {urlPath}");
+            var responseString = await _client.GetStringAsync($"{urlPath}?key={apiKey}");
+
+            return responseString;        }
 
         /// <inheritdoc />
         public void Dispose()

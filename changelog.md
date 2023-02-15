@@ -1,4 +1,5 @@
-3.0 A brand new version of the library! Responses are no longer deserialized using Newtonsoft.Json but parsed directly using System.Text.Json methods. Response structure was improved, many other small improvements were made. Check the readme for more details.
+3.0 A brand new version of the library! Parsing was changed completely. No more deserialization into objects, but direct parsing of the data using System.Text.Json classes. Dependency on Newtonsoft.Json.NET was removed. This library now supports .NET 6 and .NET 7, support for .NET Standard 2.0 was removed. Maintainability and test coverage was greatly improved by creating separate parser classes for almost every type of JSON property that can be returned by the API. 
+Check the readme for more details.
 
 2.3 Added some missing properties to output (synonyms/antonyms on headword metadata and some other not very important properties). Code refactoring and some technical improvements. Dependencies updated to latest versions. **This is the last version that support .NET standard 2.0** Next version 3.0 will only support .NET 6 and higher, which makes it easier to use some of the newer .NET framework features. 
 

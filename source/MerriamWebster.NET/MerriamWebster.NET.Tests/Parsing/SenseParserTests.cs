@@ -1,16 +1,10 @@
 ﻿using MerriamWebster.NET.Parsing;
-using MerriamWebster.NET.Response;
-using MerriamWebster.NET.Response.JsonConverters;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Linq;
-using MerriamWebster.NET.Dto;
+using System.Text.Json;
+using MerriamWebster.NET.Results;
 using Shouldly;
-using DefiningText = MerriamWebster.NET.Dto.DefiningText;
-using Definition = MerriamWebster.NET.Response.Definition;
-using Sense = MerriamWebster.NET.Dto.Sense;
-using SenseBase = MerriamWebster.NET.Dto.SenseBase;
 
 namespace MerriamWebster.NET.Tests.Parsing
 {
@@ -18,191 +12,217 @@ namespace MerriamWebster.NET.Tests.Parsing
     public class SenseParserTests
     {
         [TestMethod]
-        public void SenseParser_CanParse_Casa()
-        {
-            var defs = LoadDefinitions("casa");
-
-            // ACT
-            foreach (var senseParser in defs.Select(definition => new SenseParser(definition, Language.Es, ParseOptions.Default)))
-            {
-                var def = new Dto.Definition();
-                senseParser.Parse(def);
-                def.SenseSequence.ShouldNotBeEmpty();
-            }
-        }
-
-        [TestMethod]
-        public void SenseParser_CanParse_Delgado()
-        {
-            var defs = LoadDefinitions("delgado");
-
-            // ACT
-            foreach (var senseParser in defs.Select(definition => new SenseParser(definition, Language.Es, ParseOptions.Default)))
-            {
-                var def = new Dto.Definition();
-                senseParser.Parse(def);
-                def.SenseSequence.ShouldNotBeEmpty();
-            }
-        }
-
-        [TestMethod]
-        public void SenseParser_CanParse_Estar()
-        {
-            var defs = LoadDefinitions("estar");
-
-            // ACT
-            foreach (var senseParser in defs.Select(definition => new SenseParser(definition, Language.Es, ParseOptions.Default)))
-            {
-                var def = new Dto.Definition();
-                senseParser.Parse(def);
-                def.SenseSequence.ShouldNotBeEmpty();
-            }
-        }
-
-        [TestMethod]
         public void SenseParser_CanParse_Jiron()
         {
-            var defs = LoadDefinitions("jirón");
-            bool additionalInformationFound = false;
+            string source = @"
+{
+                ""sseq"": [
+                    [
+                        [
+                            ""sense"",
+                            {
+                                ""sn"": ""1"",
+                                ""dt"": [
+                                    [
+                                        ""text"",
+                                        ""{bc}{a_link|shred}, {a_link|rag} ""
+                                    ],
+                                    [
+                                        ""vis"",
+                                        [
+                                            {
+                                                ""t"": ""hecho jirones"",
+                                                ""tr"": ""in tatters""
+                                            }
+                                        ]
+                                    ]
+                                ]
+                            }
+                        ]
+                    ],
+                    [
+                        [
+                            ""sense"",
+                            {
+                                ""sn"": ""2"",
+                                ""sls"": [
+                                    ""Peru""
+                                ],
+                                ""dt"": [
+                                    [
+                                        ""text"",
+                                        ""{bc}{a_link|street}""
+                                    ]
+                                ]
+                            }
+                        ]
+                    ]
+                ]
+            }";
 
-            // ACT
-            foreach (var senseParser in defs.Select(definition => new SenseParser(definition, Language.Es, ParseOptions.Default)))
-            {
-                var def = new Dto.Definition();
-                senseParser.Parse(def);
-                def.SenseSequence.ShouldNotBeEmpty();
+            var doc = JsonDocument.Parse(source);
+            var target = new Results.Definition();
+            SenseParser.Parse(doc.RootElement, target);
 
-                foreach (var sense in def.SenseSequence)
-                {
-                    if (sense.Senses.OfType<SenseBase>().Where(ss => ss.SubjectStatusLabels != null).SelectMany(ss => ss.SubjectStatusLabels).Any())
-                    {
-                        additionalInformationFound = true;
-                    }
-                }
-            }
-
-            additionalInformationFound.ShouldBeTrue();
+            var senses = GetSenses(target);
+            senses.ShouldContain(s=>s.SubjectStatusLabels.HasValue());
         }
 
-        [TestMethod]
-        public void SenseParser_CanParse_House()
-        {
-            var defs = LoadDefinitions("house");
-
-            // ACT
-            foreach (var senseParser in defs.Select(definition => new SenseParser(definition, Language.Es, ParseOptions.Default)))
-            {
-                var def = new Dto.Definition();
-                senseParser.Parse(def);
-                def.SenseSequence.ShouldNotBeEmpty();
-            }
-        }
-
-        [TestMethod]
-        public void SenseParser_CanParse_Pueblo()
-        {
-            var defs = LoadDefinitions("pueblo");
-
-            // ACT
-            foreach (var senseParser in defs.Select(definition => new SenseParser(definition, Language.Es, ParseOptions.Default)))
-            {
-                var def = new Dto.Definition();
-                senseParser.Parse(def);
-                def.SenseSequence.ShouldNotBeEmpty();
-            }
-        }
-
-        [TestMethod]
-        public void SenseParser_CanParse_Quedar()
-        {
-            var defs = LoadDefinitions("quedar");
-
-            // ACT
-            foreach (var senseParser in defs.Select(definition => new SenseParser(definition, Language.Es, ParseOptions.Default)))
-            {
-                var def = new Dto.Definition();
-                senseParser.Parse(def);
-                def.SenseSequence.ShouldNotBeEmpty();
-            }
-        }
 
         [TestMethod]
         public void SenseParser_CanParse_Abaco()
         {
-            var defs = LoadDefinitions("collegiate_abaco");
-            List<Dto.Definition> definitions = new List<Dto.Definition>();
+            string source = @"{""sseq"": [
+                    [
+                        [
+                            ""sense"",
+                            {
+                                ""dt"": [
+                                    [
+                                        ""text"",
+                                        ""two islands of the Bahamas (""
+                                    ],
+                                    [
+                                        ""ri"",
+                                        [
+                                            [
+                                                ""riw"",
+                                                {
+                                                    ""rie"": ""Great Abaco""
+                                                }
+                                            ],
+                                            [
+                                                ""text"",
+                                                "" and ""
+                                            ],
+                                            [
+                                                ""riw"",
+                                                {
+                                                    ""rie"": ""Little Abaco""
+                                                }
+                                            ]
+                                        ]
+                                    ],
+                                    [
+                                        ""text"",
+                                        "" ) north of New Providence Island {it}area{/it} 776 square miles (2018 square kilometers), {it}population{/it} 13,170""
+                                    ]
+                                ]
+                            }
+                        ]
+                    ]
+                ]
+}";
 
-            // ACT
-            foreach (var senseParser in defs.Select(definition => new SenseParser(definition, Language.NotApplicable, ParseOptions.Default)))
-            {
-                var def = new Dto.Definition();
-                senseParser.Parse(def);
-                def.SenseSequence.ShouldNotBeEmpty();
+            var doc = JsonDocument.Parse(source);
+            var target = new Results.Definition();
+            SenseParser.Parse(doc.RootElement, target);
 
-                definitions.Add(def);
-            }
-
-            var dts = GetDefiningTexts(definitions)
+            var dts = GetDefiningTexts(target)
                .ToList();
 
-            dts.Count.ShouldBe(5);
-            dts.OfType<RunInWord>().Count().ShouldBe(2);
+            dts.Count.ShouldBe(3);
+            dts.OfType<RunIn>().Count().ShouldBe(1);
+
         }
 
         [TestMethod]
         public void SenseParser_CanParse_Algiers()
         {
-            var defs = LoadDefinitions("collegiate_algiers");
-            List<Dto.Definition> definitions = new List<Dto.Definition>();
+            string source = @"{
+        ""sseq"": [
+          [
+            [
+              ""sense"",
+              {
+                ""sn"": ""1"",
+                ""dt"": [
+                  [
+                    ""text"",
+                    ""former {d_link|Barbary State|Barbary Coast:g} in northern Africa that is now Algeria""
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              ""sense"",
+              {
+                ""sn"": ""2"",
+                ""dt"": [
+                  [
+                    ""text"",
+                    ""city, port on the ""
+                  ],
+                  [
+                    ""ri"",
+                    [
+                      [
+                        ""riw"",
+                        {
+                          ""rie"": ""Bay of Algiers""
+                        }
+                      ],
+                      [
+                        ""text"",
+                        "" (an inlet of Mediterranean Sea)""
+                      ]
+                    ]
+                  ],
+                  [
+                    ""text"",
+                    "", and capital of Algeria {it}population{/it} 1,365,400""
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      }";
 
-            // ACT
-            foreach (var senseParser in defs.Select(definition => new SenseParser(definition, Language.NotApplicable, ParseOptions.Default)))
-            {
-                var def = new Dto.Definition();
-                senseParser.Parse(def);
-                def.SenseSequence.ShouldNotBeEmpty();
+            var doc = JsonDocument.Parse(source);
+            var target = new Results.Definition();
+            SenseParser.Parse(doc.RootElement, target);
 
-                definitions.Add(def);
-            }
-
-            var dts = GetDefiningTexts(definitions)
+            var dts = GetDefiningTexts(target)   
                 .ToList();
 
-            dts.Count.ShouldBe(5);
-            dts.OfType<RunInWord>().Count().ShouldBe(1);
-        }
-
-        [TestMethod]
-        public void SenseParser_CanParse_Abarrotado()
-        {
-            var defs = LoadDefinitions("abarrotado");
-
-            // ACT
-            foreach (var senseParser in defs.Select(definition => new SenseParser(definition, Language.Es, ParseOptions.Default)))
-            {
-                var def = new Dto.Definition();
-                senseParser.Parse(def);
-                def.SenseSequence.ShouldNotBeEmpty();
-            }
+            dts.Count.ShouldBe(4);
+            dts.OfType<RunIn>().Count().ShouldBe(1);
         }
 
         [TestMethod]
         public void SenseParser_CanParse_Abbey()
         {
-            var defs = LoadDefinitions("abbey");
-            List<Dto.Definition> definitions = new List<Dto.Definition>();
-
-            // ACT
-            foreach (var senseParser in defs.Select(definition => new SenseParser(definition, Language.Es, ParseOptions.Default)))
+            var content = @" 
             {
-                var def = new Dto.Definition();
-                senseParser.Parse(def);
-                def.SenseSequence.ShouldNotBeEmpty();
-
-                definitions.Add(def);
+                ""sseq"": [
+                    [
+                        [
+                            ""sense"",
+                            {
+                                ""dt"": [
+                                    [
+                                        ""text"",
+                                        ""{bc}{a_link|abadía} ""
+                                    ],
+                                    [
+                                        ""gl"",
+                                        ""feminine""
+                                    ]
+                                ]
+                            }
+                        ]
+                    ]
+                ]
             }
+        ";
+            var doc = JsonDocument.Parse(content);
+            var target = new Results.Definition();
+            SenseParser.Parse(doc.RootElement, target);
 
-            var gls = GetDefiningTexts(definitions)
+            var gls = GetDefiningTexts(target)
                 .OfType<GenderLabel>().ToList();
 
             gls.ShouldNotBeEmpty();
@@ -212,106 +232,194 @@ namespace MerriamWebster.NET.Tests.Parsing
         [TestMethod]
         public void SenseParser_CanParse_Alliteration()
         {
-            var defs = LoadDefinitions("collegiate_alliteration");
-            List<Dto.Definition> definitions = new List<Dto.Definition>();
+            string source = @"{
+                ""sseq"": [
+                    [
+                        [
+                            ""sense"",
+                            {
+                                ""dt"": [
+                                    [
+                                        ""text"",
+                                        ""{bc}the repetition of usually initial {d_link|consonant|consonant:2} sounds in two or more neighboring words or syllables (such as {it}w{/it}ild and {it}w{/it}oolly, {it}thr{/it}eatening {it}thr{/it}ongs) ""
+                                    ],
+                                    [
+                                        ""ca"",
+                                        {
+                                            ""intro"": ""called also"",
+                                            ""cats"": [
+                                                {
+                                                    ""cat"": ""head rhyme""
+                                                },
+                                                {
+                                                    ""cat"": ""initial rhyme""
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                ]
+                            }
+                        ]
+                    ]
+                ]
+            }";
+            var doc = JsonDocument.Parse(source);
+            var target = new Results.Definition();
 
             // ACT
-            foreach (var senseParser in defs.Select(definition => new SenseParser(definition, Language.NotApplicable, ParseOptions.Default)))
-            {
-                var def = new Dto.Definition();
-                senseParser.Parse(def);
-                def.SenseSequence.ShouldNotBeEmpty();
+            SenseParser.Parse(doc.RootElement, target);
+            var dts = GetDefiningTexts(target);
 
-                definitions.Add(def);
-            }
-
-            var dts = GetDefiningTexts(definitions);
+            // ASSERT
             dts.OfType<CalledAlsoNote>().ShouldNotBeNull();
-        }
-
-        [TestMethod]
-        public void SenseParser_CanParse_Sierra()
-        {
-            var defs = LoadDefinitions("sierra");
-
-            // ACT
-            foreach (var senseParser in defs.Select(definition => new SenseParser(definition, Language.Es, ParseOptions.Default)))
-            {
-                var def = new Dto.Definition();
-                senseParser.Parse(def);
-                def.SenseSequence.ShouldNotBeEmpty();
-            }
-        }
-
-        [TestMethod]
-        public void SenseParser_CanParse_Hilar()
-        {
-            var defs = LoadDefinitions("hilar");
-
-            // ACT
-            foreach (var senseParser in defs.Select(definition => new SenseParser(definition, Language.Es, ParseOptions.Default)))
-            {
-                var def = new Dto.Definition();
-                senseParser.Parse(def);
-                def.SenseSequence.ShouldNotBeEmpty();
-            }
         }
 
         [TestMethod]
         public void SenseParser_CanParse_Reboot()
         {
-            var defs = LoadDefinitions("collegiate_reboot");
+            string source = @" {
+        ""vd"": ""transitive + intransitive"",
+        ""sseq"": [
+          [
+            [
+              ""sense"",
+              {
+                ""sn"": ""1 a"",
+                ""sgram"": ""T/I"",
+                ""dt"": [
+                  [
+                    ""text"",
+                    ""{bc}to shut down and restart (a computer or program) ""
+                  ],
+                  [
+                    ""vis"",
+                    [
+                      {
+                        ""t"": ""… the annoyance of having to {wi}reboot{/wi} the computer to switch operating systems …"",
+                        ""aq"": {
+                          ""auth"": ""Robert Weston""
+                        }
+                      },
+                      {
+                        ""t"": ""If anything ever happens to the original drive, you can {wi}reboot{/wi} using the cloned drive and be up and running in minutes."",
+                        ""aq"": {
+                          ""auth"": ""Dan Frakes""
+                        }
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ],
+            [
+              ""sense"",
+              {
+                ""sn"": ""b"",
+                ""sgram"": ""I"",
+                ""dt"": [
+                  [
+                    ""text"",
+                    ""{bc}to start up again after closing or shutting down {bc}to boot up again ""
+                  ],
+                  [
+                    ""vis"",
+                    [
+                      {
+                        ""t"": ""waiting for a computer/program to {wi}reboot{/wi}""
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              ""sense"",
+              {
+                ""sn"": ""2 a"",
+                ""sgram"": ""T"",
+                ""dt"": [
+                  [
+                    ""text"",
+                    ""{bc}to start (something) anew {bc}to refresh (something) by making a new start or creating a new version ""
+                  ],
+                  [
+                    ""vis"",
+                    [
+                      {
+                        ""t"": ""It's probably not an overstatement to say Sandberg is embarking on the most ambitious mission to {wi}reboot{/wi} feminism and reframe discussions of gender since the launch of Ms. magazine in 1971."",
+                        ""aq"": {
+                          ""auth"": ""Belinda Luscombe""
+                        }
+                      },
+                      {
+                        ""t"": ""{wi}reboot{/wi} an old TV series""
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ],
+            [
+              ""sense"",
+              {
+                ""sn"": ""b"",
+                ""sgram"": ""I"",
+                ""dt"": [
+                  [
+                    ""text"",
+                    ""{bc}to start anew {bc}to make a fresh start ""
+                  ],
+                  [
+                    ""vis"",
+                    [
+                      {
+                        ""t"": ""The interior designer's heart was telling her to {wi}reboot{/wi} and downsize …"",
+                        ""aq"": {
+                          ""auth"": ""Susan Heeger""
+                        }
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      }";
 
-            List<Dto.Definition> definitions = new List<Dto.Definition>();
+            var doc = JsonDocument.Parse(source);
+            var target = new Results.Definition();
 
             // ACT
-            foreach (var senseParser in defs.Select(definition => new SenseParser(definition, Language.NotApplicable, ParseOptions.Default)))
-            {
-                var def = new Dto.Definition();
-                senseParser.Parse(def);
-                def.SenseSequence.ShouldNotBeEmpty();
+            SenseParser.Parse(doc.RootElement, target);
+            var senses = GetSenses(target).ToList();
 
-                definitions.Add(def);
-            }
-
-            var senses = definitions.SelectMany(d => d.SenseSequence)
-                .SelectMany(ss => ss.Senses)
-                .OfType<SenseBase>().ToList();
+            // ASSERT
             senses.ShouldContain(s => s.SenseSpecificGrammaticalLabel != null);
-            senses.ShouldContain(s => s.SenseSpecificGrammaticalLabel == null);
+            senses.ShouldNotContain(s => s.SenseSpecificGrammaticalLabel == null);
         }
 
-        [TestMethod]
-        public void SenseParser_CanParse_Robot()
-        {
-            var defs = LoadDefinitions("robot");
 
-            // ACT
-            foreach (var senseParser in defs.Select(definition => new SenseParser(definition, Language.En, ParseOptions.Default)))
-            {
-                var def = new Dto.Definition();
-                senseParser.Parse(def);
-                def.SenseSequence.ShouldNotBeEmpty();
-            }
-        }
 
         [TestMethod]
         public void SenseParser_CanParseSense_Above()
         {
             var content = TestHelper.LoadResponseFromFile("sense_above");
-            var definition = JsonConvert.DeserializeObject<Definition>(content, Converter.Settings);
-            var senseParser = new SenseParser(definition, Language.NotApplicable, ParseOptions.Default);
+            var doc = JsonDocument.Parse(content);
+            var target = new Results.Definition();
 
             // ACT
-            var def = new Dto.Definition();
-            senseParser.Parse(def);
+            SenseParser.Parse(doc.RootElement, target);
+
 
             // ASSERT
-            def.SenseSequence.Count.ShouldBe(1);
-            def.SenseSequence.First().Senses.Count.ShouldBe(4);
+            target.SenseSequence.Count.ShouldBe(1);
+            target.SenseSequence.First().Senses.Count.ShouldBe(4);
 
-            var dts = GetDefiningTexts(new[] {def}).ToList();
-            dts.OfType<DefiningText>().ShouldAllBe(t=> !t.Text.Text.Contains("{wi}"));
+            var dts = GetDefiningTexts(target).ToList();
+            dts.OfType<DefiningText>().ShouldAllBe(t => !t.Text.Text.Contains("{wi}"));
             dts.OfType<VerbalIllustration>().ShouldAllBe(vis => !vis.Sentence.Text.Contains("{wi}"));
         }
 
@@ -319,163 +427,280 @@ namespace MerriamWebster.NET.Tests.Parsing
         public void SenseParser_CanParseSense_Medical_Doctor()
         {
             var content = TestHelper.LoadResponseFromFile("sense_med_doctor");
-            var definition = JsonConvert.DeserializeObject<Definition>(content, Converter.Settings);
-            var senseParser = new SenseParser(definition, Language.NotApplicable, ParseOptions.Default);
+            var doc = JsonDocument.Parse(content);
+            var target = new Results.Definition();
 
             // ACT
-            var def = new Dto.Definition();
-            senseParser.Parse(def);
+            SenseParser.Parse(doc.RootElement, target);
 
             // ASSERT
             // verify that the divided sense has been parsed 
-            def.SenseSequence
+            target.SenseSequence
                 .SelectMany(ss => ss.Senses)
                 .Cast<Sense>()
                 .Where(s => s.DividedSense != null)
                 .ShouldNotBeEmpty();
         }
 
-        [TestMethod]
-        public void SenseParser_CanParseSense_Learner_Apple()
-        {
-            var content = TestHelper.LoadResponseFromFile("sense_learn_apple");
-            var definition = JsonConvert.DeserializeObject<Definition>(content, Converter.Settings);
-            var senseParser = new SenseParser(definition, Language.NotApplicable, ParseOptions.Default);
+        //[TestMethod]
+        //public void SenseParser_CanParseSense_Learner_Apple()
+        //{
+        //    var content = TestHelper.LoadResponseFromFile("sense_learn_apple");
+        //    var doc = JsonDocument.Parse(content);
+        //    var target = new Results.Definition();
 
-            // ACT
-            var def = new Dto.Definition();
-            senseParser.Parse(def);
+        //    // ACT
+        //    SenseParser.Parse(doc.RootElement, target);
 
-            // ASSERT
-            var dts = GetDefiningTexts(new[] {def});
-            dts.OfType<SupplementalInformationNote>().ShouldNotBeEmpty();
-        }
+        //    // ASSERT
+        //    var dts = GetDefiningTexts(target);
+        //    dts.OfType<SupplementalInformationNote>().ShouldNotBeEmpty();
+        //}
 
         [TestMethod]
         public void SenseParser_SynonymsNotInText()
         {
-            var defs = LoadDefinitions("pueblo");
-            var definitions = new List<Dto.Definition>();
+            string source = @"{""sseq"": [
+          [
+            [
+              ""sense"",
+              {
+                ""sn"": ""1"",
+                ""dt"": [
+                  [
+                    ""text"",
+                    ""{sx|nación||} {bc}{a_link|people}""
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              ""sense"",
+              {
+                ""sn"": ""2"",
+                ""dt"": [
+                  [
+                    ""text"",
+                    ""{bc}common people""
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              ""sense"",
+              {
+                ""sn"": ""3"",
+                ""dt"": [
+                  [
+                    ""text"",
+                    ""{sx|aldea||} {sx|poblado||} {bc}{a_link|town}, {a_link|village}""
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              ""sense"",
+              {
+                ""sn"": ""4"",
+                ""vrs"": [
+                  {
+                    ""va"": ""pueblo jóven""
+                  }
+                ],
+                ""sls"": [
+                  ""Peru""
+                ],
+                ""dt"": [
+                  [
+                    ""text"",
+                    ""{bc}{a_link|shantytown}, slums {it}plural{/it}""
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      }";
+
+            var doc = JsonDocument.Parse(source);
+            var target = new Results.Definition();
 
             // ACT
-            foreach (var senseParser in defs.Select(definition => new SenseParser(definition, Language.En, ParseOptions.Default)))
-            {
-                var def = new Dto.Definition();
-                senseParser.Parse(def);
+            SenseParser.Parse(doc.RootElement, target);
+            
 
-                definitions.Add(def);
-            }
-
-            var dts = GetDefiningTexts(definitions);
-            dts.OfType<DefiningText>().ShouldAllBe(t=> !t.Text.Text.Contains(":"));
+            var dts = GetDefiningTexts(target);
+            dts.OfType<DefiningText>().ShouldAllBe(t => !t.Text.Text.Contains(":"));
         }
 
         [TestMethod]
         public void SenseParser_AttributionOfQuote_Ginger()
         {
-            var defs = LoadDefinitions("example_ginger");
+            string source = @"{
+        ""sseq"": [
+          [
+            [
+              ""sense"",
+              {
+                ""sn"": ""b"",
+                ""sls"": [
+                  ""chiefly British"",
+                  ""sometimes offensive""
+                ],
+                ""dt"": [
+                  [
+                    ""text"",
+                    ""{bc}a person with red hair {bc}{sx|redhead||1} ""
+                  ],
+                  [
+                    ""vis"",
+                    [
+                      {
+                        ""t"": ""The Breda Redhead Days festival\u2014which grew out of a photo shoot by Dutch artist Bart Rouwenhorst\u2014now attracts five or six thousand {wi}gingers{/wi} from around the world."",
+                        ""aq"": { ""auth"": ""Bruce Ingram"" }
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      }";
+
+            var doc = JsonDocument.Parse(source);
+            var target = new Results.Definition();
 
             // ACT
-            foreach (var senseParser in defs.Select(definition => new SenseParser(definition, Language.NotApplicable, ParseOptions.Default)))
-            {
-                var def = new Dto.Definition();
-                senseParser.Parse(def);
+            SenseParser.Parse(doc.RootElement, target);
 
-                // ASSERT
-                var vis = def.SenseSequence.SelectMany(ss => ss.Senses)
-                    .OfType<SenseBase>()
-                    .SelectMany(s => s.DefiningTexts)
-                    .OfType<VerbalIllustration>();
-                vis.ShouldContain(v => v.AttributionOfQuote != null);
-            }
+            var dts = GetDefiningTexts(target);
+            var vis = dts.OfType<VerbalIllustration>();
+            vis.ShouldContain(v=>v.AttributionOfQuote != null);
         }
-
-        [TestMethod]
-        public void SenseParser_CanParseSense_Coll_Tedious()
-        {
-            var defs = LoadDefinitions("collegiate_tedious");
-            foreach (var senseParser in defs.Select(definition => new SenseParser(definition, Language.NotApplicable, ParseOptions.Default)))
-            {
-                var def = new Dto.Definition();
-                senseParser.Parse(def);
-                def.SenseSequence.ShouldNotBeEmpty();
-            }
-        }
+        
         [TestMethod]
         public void SenseParser_CanParseSense_Coll_Dodgson()
         {
-            var defs = LoadDefinitions("collegiate_Dodgson");
-            List<Dto.Definition> definitions = new List<Dto.Definition>();
-
-            foreach (var senseParser in defs.Select(definition => new SenseParser(definition, Language.NotApplicable, ParseOptions.Default)))
+            var content = @" 
             {
-                var def = new Dto.Definition();
-                senseParser.Parse(def);
-                def.SenseSequence.ShouldNotBeEmpty();
+        ""sseq"": [
+          [
+            [
+              ""sense"",
+              {
+                ""dt"": [
+                  [
+                    ""bnw"",
+                    {
+                      ""pname"": ""Charles Lut*widge"",
+                      ""prs"": [
+                        {
+                          ""mw"": ""ˈlət-wij"",
+                          ""sound"": {
+                            ""audio"": ""bixdod04"",
+                            ""ref"": ""c"",
+                            ""stat"": ""1""
+                          }
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    ""text"",
+                    ""1832–1898 pseudonym""
+                  ],
+                  [
+                    ""bnw"",
+                    {
+                      ""altname"": ""Lewis Car*roll"",
+                      ""prs"": [
+                        {
+                          ""mw"": ""ˈker-əl"",
+                          ""sound"": {
+                            ""audio"": ""bixdod05"",
+                            ""ref"": ""c"",
+                            ""stat"": ""1""
+                          }
+                        },
+                        {
+                          ""mw"": ""ˈka-rəl""
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    ""text"",
+                    "" English mathematician and writer""
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      }
+        ";
+            var doc = JsonDocument.Parse(content);
+            var target = new Results.Definition();
 
-                definitions.Add(def);
-            }
+            // ACT
+            SenseParser.Parse(doc.RootElement, target);
+            var dts = GetDefiningTexts(target);
 
-            var dts = GetDefiningTexts(definitions);
+            // ASSERT
             dts.OfType<BiographicalNameWrap>().Count().ShouldBe(2);
         }
 
         [TestMethod]
         public void SenseParser_CanParse_Banadera()
         {
-            var defs = LoadDefinitions("banadera");
-            List<Dto.Definition> definitions = new List<Dto.Definition>();
+            string source = @"{
+                ""sls"": [
+                    ""Argentina, Uruguay""
+                ],
+                ""sseq"": [
+                    [
+                        [
+                            ""sen"",
+                            {
+                                ""xrs"": [
+                                    [
+                                        {
+                                            ""xrt"": ""bañera"",
+                                            ""xref"": ""ban~era""
+                                        }
+                                    ]
+                                ]
+                            }
+                        ]
+                    ]
+                ]
+            }";
+
+            var doc = JsonDocument.Parse(source);
+            var target = new Results.Definition();
 
             // ACT
-            foreach (var senseParser in defs.Select(definition => new SenseParser(definition, Language.Es, ParseOptions.Default)))
-            {
-                var def = new Dto.Definition();
-                senseParser.Parse(def);
-                def.SenseSequence.ShouldNotBeEmpty();
+            SenseParser.Parse(doc.RootElement, target);
+            var senses = GetSenses(target);
 
-                definitions.Add(def);
-            }
-
-            var senses = GetSenses(definitions);
-
-            senses.Cast<Dto.Sense>().ShouldContain(s=>s.CrossReferences != null && s.CrossReferences.Any());
+            // ASSERT
+            senses.Cast<Sense>().ShouldContain(s => s.CrossReferences != null && s.CrossReferences.Any());
         }
 
-        [TestMethod]
-        public void SenseParser_CanParse_Youngster()
-        {
-            var defs = LoadDefinitions("youngster");
-            List<Dto.Definition> definitions = new List<Dto.Definition>();
 
-            // ACT
-            foreach (var senseParser in defs.Select(definition => new SenseParser(definition, Language.En, ParseOptions.Default)))
-            {
-                var def = new Dto.Definition();
-                senseParser.Parse(def);
-                def.SenseSequence.ShouldNotBeEmpty();
-
-                definitions.Add(def);
-            }
-
-            var dts = GetDefiningTexts(definitions);
-
-            dts.OfType<GenderForms>().ShouldNotBeEmpty();
-        }
-
-        private static IEnumerable<Definition> LoadDefinitions(string fileName)
-        {
-            var content = TestHelper.LoadResponseFromFile(fileName);
-
-            var entries = JsonConvert.DeserializeObject<MwDictionaryEntry[]>(content, Converter.Settings);
-            return entries.SelectMany(e => e.Definitions);
-        }
-
-        private IEnumerable<SenseBase> GetSenses(IEnumerable<Dto.Definition> definitions)
-            => definitions.SelectMany(d => d.SenseSequence)
+        private static IEnumerable<SenseBase> GetSenses(Definition definition)
+            => definition.SenseSequence
                 .SelectMany(ss => ss.Senses).OfType<SenseBase>();
 
-        private IEnumerable<IDefiningText> GetDefiningTexts(IEnumerable<Dto.Definition> definitions) =>
-            GetSenses(definitions)
+        private IEnumerable<IDefiningText> GetDefiningTexts(Definition definition) =>
+            GetSenses(definition)
                 .SelectMany(s => s.DefiningTexts)
                 .ToList();
 

@@ -1,102 +1,74 @@
-﻿using System.Collections.Generic;
+﻿using MerriamWebster.NET.Parsing.DefiningText;
+using MerriamWebster.NET.Results;
+using System;
+using System.Collections.Generic;
 using System.Linq;
-using MerriamWebster.NET.Dto;
+using System.Text.Json;
 
 namespace MerriamWebster.NET.Parsing
 {
     /// <summary>
-    /// The <see cref="SenseParser"/> class does the heavy-lifting of peeling the senses out of a <see cref="Response.Definition"/>.
+    /// The <see cref="SenseParser"/> class does the heavy-lifting of peeling the senses out of a search result.
     /// </summary>
     public class SenseParser
     {
-        private readonly Response.Definition _def;
-        private readonly Language _language;
-        private readonly ParseOptions _parseOptions;
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="SenseParser"/> class.
-        /// </summary>
-        /// <param name="def">The definition object to parse.</param>
-        /// <param name="language">The language from metadata</param>
-        /// <param name="parseOptions">The parse options.</param>
-        public SenseParser(Response.Definition def, Language language, ParseOptions parseOptions)
+        public static void Parse(JsonElement source, Definition target)
         {
-            _def = def;
-            _language = language;
-            _parseOptions = parseOptions;
-        }
+            ArgumentNullException.ThrowIfNull(target, nameof(target));
 
-        /// <summary>
-        /// Parses the input definition into a collection of <see cref="Dto.Sense"/>s.
-        /// </summary>
-        public void Parse(Definition definition)
-        {
-            if (definition == null)
+            if (source.TryGetProperty("sseq", out var sseqElement))
             {
-                return;
-            }
-
-            foreach (var sourceSseqs in _def.SenseSequences)
-            {
-                var senseSequence = new SenseSequence();
-
-                foreach (var sourceSseq in sourceSseqs)
+                var sseqs = sseqElement.EnumerateArray();
+                foreach (var sseq in sseqs)
                 {
-                    // sourceSseq comes in pairs: a string that defines the object ("sense", "sen", "pseq", etc.) , followed by the actual object
-                    if (sourceSseq.Length == 2)
+                    var senseSequence = new SenseSequence();
+
+                    var sequences = sseq.EnumerateArray();
+                    foreach (var sequence in sequences)
                     {
-                        if (sourceSseq[0].Name == Response.SseqEnum.Bs)
+                        var items = sequence.EnumerateArray().ToList();
+
+                        // sourceSseq comes in pairs: a string that defines the object ("sense", "sen", "pseq", etc.) , followed by the actual object
+                        if (items.Count != 2)
                         {
-                            var sourceSense = sourceSseq[1].Sense;
-
-                            // a binding substitute (bs) should always contain a nested sense object  
-                            if (sourceSense?.SubSense != null)
-                            {
-                                var sense = ParseGeneralSenseProperties<Sense>(sourceSense.SubSense);
-                                sense.SenseNumber = sourceSense.SubSense.SenseNumber;
-                                ParseSpecificSenseProperties(sourceSense.SubSense, sense);
-                                sense.IsBindingSubstitute = true;
-
-                                senseSequence.Senses.Add(sense);
-                            }
+                            continue;
                         }
 
-                        if (sourceSseq[0].Name == Response.SseqEnum.Sense)
+                        var type = items[0].GetString();
+                        var sourceSense = items[1];
+                        
+                        if (type == "bs") // binding substitute
                         {
-                            var sourceSense = sourceSseq[1].Sense;
-                            if (sourceSense != null)
+                            var subSense = ParseBsSense(sourceSense);
+                            if (subSense != null)
                             {
-
-                                var sense = ParseGeneralSenseProperties<Sense>(sourceSense);
-                                sense.SenseNumber = sourceSense.SenseNumber;
-                                ParseSpecificSenseProperties(sourceSense, sense);
-
-                                if (sourceSense.CrossReferences.Any())
-                                {
-                                    sense.CrossReferences = CrossReferenceHelper.Parse(sourceSense.CrossReferences).ToList();
-                                }
-
-                                senseSequence.Senses.Add(sense);
+                                senseSequence.Senses.Add(subSense);
                             }
                         }
-                        else if (sourceSseq[0].Name == Response.SseqEnum.Sen)
+                        else if (type == "sense") // common sense ;-) 
                         {
-                            var sourceSense = sourceSseq[1].Sense;
-                            if (sourceSense != null)
-                            {
-                                var sense = ParseGeneralSenseProperties<Sense>(sourceSense);
-                                sense.SenseNumber = sourceSense.SenseNumber;
-                                sense.IsTruncatedSense = true;
-
-                                if (sourceSense.CrossReferences.Any())
-                                {
-                                    sense.CrossReferences = CrossReferenceHelper.Parse(sourceSense.CrossReferences).ToList();
-                                }
-
-                                senseSequence.Senses.Add(sense);
-                            }
+                            var targetSense = ParseCommonSense(sourceSense);
+                            senseSequence.Senses.Add(targetSense);
                         }
-                        else if (sourceSseq[0].Name == Response.SseqEnum.Pseq && sourceSseq[1].SenseSequences != null)
+                        else if (type == "sen") // truncated sense
+                        {
+                            var targetSense = new Sense
+                            {
+                                IsTruncatedSense = true,
+                                SenseNumber = JsonParserHelper.GetStringValue(sourceSense, "sn") ?? string.Empty
+                            };
+
+                            ParseGeneralSenseProperties(sourceSense, targetSense);
+
+                            // spanish-english only
+                            if (sourceSense.TryGetProperty("xrs", out var xrs))
+                            {
+                                targetSense.CrossReferences = new List<CrossReference>(CrossReferenceParser.Parse(xrs));
+                            }
+                            
+                            senseSequence.Senses.Add(targetSense);
+                        }
+                        else if (type == "pseq") // parenthesized sense sequence
                         {
                             var pseq = new SenseSequenceSense()
                             {
@@ -104,122 +76,149 @@ namespace MerriamWebster.NET.Parsing
                                 Senses = new List<SenseSequenceSense>()
                             };
 
-                            foreach (var sourceSequence in sourceSseq[1].SenseSequences)
+                            foreach (var sourceSequence in sourceSense.EnumerateArray())
                             {
-                                if (sourceSequence[0].Name == Response.SseqEnum.Bs)
+                                var pseqElements = sourceSequence.EnumerateArray().ToList();
+                                var pseqType = pseqElements[0].GetString();
+                                if (pseqType == "bs")
                                 {
-                                    var sourceSense = sourceSequence[1].Sense;
-
-                                    // a binding substitute (bs) should always contain a nested sense object  
-                                    if (sourceSense?.SubSense != null)
+                                    var subSense = ParseBsSense(pseqElements[1]);
+                                    if (subSense != null)
                                     {
-                                        var sense = ParseGeneralSenseProperties<Sense>(sourceSense.SubSense);
-                                        sense.SenseNumber = sourceSense.SubSense.SenseNumber;
-                                        ParseSpecificSenseProperties(sourceSense.SubSense, sense);
-                                        sense.IsBindingSubstitute = true;
-
-                                        pseq.Senses.Add(sense);
+                                        pseq.Senses.Add(subSense);
                                     }
                                 }
-
-                                if (sourceSequence[0].Name == Response.SseqEnum.Sense)
+                                else if (pseqType == "sense")
                                 {
-                                    var sourceSense = sourceSequence[1].Sense;
-                                    if (sourceSense != null)
-                                    {
-                                        var sense = ParseGeneralSenseProperties<Sense>(sourceSense);
-                                        sense.SenseNumber = sourceSense.SenseNumber;
-                                        ParseSpecificSenseProperties(sourceSense, sense);
-
-                                        pseq.Senses.Add(sense);
-                                    }
+                                    var sense = ParseCommonSense(pseqElements[1]);
+                                    pseq.Senses.Add(sense);
                                 }
-
                             }
 
                             senseSequence.Senses.Add(pseq);
                         }
-
-
                     }
-                    // else? 
-                    //sourceSseq.Length != 2, should not occur
+
+                    target.SenseSequence.Add(senseSequence);
+                }
+            }
+
+            Sense? ParseBsSense(JsonElement sourceSense)
+            {
+                // a bs should always contain a nested sense object  
+                if (!sourceSense.TryGetProperty("sense", out var subSenseElement))
+                {
+                    return null;
                 }
 
-                definition.SenseSequence.Add(senseSequence);
+                var subSense = new Sense
+                {
+                    IsBindingSubstitute = true,
+                    SenseNumber = JsonParserHelper.GetStringValue(subSenseElement, "sn") ?? string.Empty
+                };
+
+                ParseGeneralSenseProperties(subSenseElement, subSense);
+                ParseSpecificSenseProperties(subSenseElement, subSense);
+
+                return subSense;
+            }
+
+            Sense ParseCommonSense(JsonElement sourceSense)
+            {
+                var targetSense = new Sense
+                {
+                    SenseNumber = JsonParserHelper.GetStringValue(sourceSense, "sn") ?? string.Empty
+                };
+
+                ParseGeneralSenseProperties(sourceSense, targetSense);
+                ParseSpecificSenseProperties(sourceSense, targetSense);
+
+                if (sourceSense.TryGetProperty("xrs", out var xrs))
+                {
+                    targetSense.CrossReferences = new List<CrossReference>(CrossReferenceParser.Parse(xrs));
+                }
+
+                return targetSense;
             }
         }
 
-        /// <summary>
-        /// Creates a new sense instance from a source sense with properties that occur on all sense types.
-        /// </summary>
-        private T ParseGeneralSenseProperties<T>(Response.SenseBase sourceSense)
-            where T : SenseBase, new()
+        private static void ParseGeneralSenseProperties(JsonElement source, SenseBase sense)
         {
-            var sense = new T();
-
-            if (sourceSense.GeneralLabels.Any())
-            {
-                sense.GeneralLabels = new List<Label>();
-                foreach (var generalLabel in sourceSense.GeneralLabels)
-                {
-                    sense.GeneralLabels.Add(generalLabel);
-                }
-            }
-
-            if (sourceSense.SubjectStatusLabels.Any())
-            {
-                sense.SubjectStatusLabels = new List<Label>();
-                foreach (var subjectStatusLabel in sourceSense.SubjectStatusLabels)
-                {
-                    sense.SubjectStatusLabels.Add(subjectStatusLabel);
-                }
-            }
-
-            if (!string.IsNullOrEmpty(sourceSense.SenseSpecificGrammaticalLabel))
-            {
-                sense.SenseSpecificGrammaticalLabel = sourceSense.SenseSpecificGrammaticalLabel;
-            }
-
-            if (sourceSense.Variants.Any())
-            {
-                sense.Variants = VariantHelper.Parse(sourceSense.Variants, _language, _parseOptions.AudioFormat).ToList();
-            }
-
-            if (sourceSense.Pronunciations.Any())
-            {
-                sense.Pronunciations = new List<Pronunciation>();
-                foreach (var pronunciation in sourceSense.Pronunciations)
-                {
-                    sense.Pronunciations.Add(PronunciationHelper.Parse(pronunciation, _language, _parseOptions.AudioFormat));
-                }
-            }
-
-            if (sourceSense.Inflections.Any())
-            {
-                sense.Inflections = InflectionHelper.Parse(sourceSense.Inflections, _language, _parseOptions.AudioFormat).ToList();
-            }
-
-            if (sourceSense.Etymologies.Any())
-            {
-                sense.Etymology = sourceSense.Etymologies.ParseEtymology();
-            }
+            sense.SubjectStatusLabels = LabelsParser.ParseMultiple<SubjectStatusLabel>(source, "sls");
+            sense.GeneralLabels = LabelsParser.ParseMultiple<GeneralLabel>(source, "lbs");
+            sense.SenseSpecificGrammaticalLabel = LabelsParser.ParseSingle<SenseSpecificGrammaticalLabel>(source, "sgram");
             
-            return sense;
+            if (source.TryGetProperty("vrs", out var vrs))
+            {
+                sense.Variants = new List<Variant>(VariantParser.Parse(vrs));
+            }
+
+            if (source.TryGetProperty("prs", out var prs))
+            {
+                sense.Pronunciations = new List<Pronunciation>(PronunciationParser.Parse(prs));
+            }
+
+            if (source.TryGetProperty("ins", out var ins))
+            {
+                sense.Inflections = new List<Inflection>(InflectionsParser.Parse(ins));
+            }
+
+            if (source.TryGetProperty("et", out var et))
+            {
+                sense.Etymology = EtymologyParser.Parse(et);
+            }
         }
 
-        private void ParseSpecificSenseProperties(Response.SenseBase sourceSense, SenseBase targetSense)
+        private static void ParseSpecificSenseProperties(JsonElement source, SenseBase sense)
         {
-            sourceSense.ParseDefiningText(targetSense, _language, _parseOptions.AudioFormat);
+            var definingTexts = JsonDefiningTextParser.Parse(source);
+            sense.DefiningTexts = new List<IDefiningText>(definingTexts);
 
-            // sdsense
-            if (sourceSense is Response.Sense s && s.DividedSense != null)
+            if (sense is Sense s)
             {
-                var dSense = ParseGeneralSenseProperties<DividedSense>(s.DividedSense);
-                ParseSpecificSenseProperties(s.DividedSense, dSense);
-                dSense.SenseDivider = s.DividedSense.SenseDivider;
+                foreach (var dt in s.DefiningTexts.OfType<Results.DefiningText>())
+                {
+                    var text = dt.Text.RawText;
+                    var synonyms = SynonymsParser.ExtractSynonyms(text).ToList();
+                    if (synonyms.Any())
+                    {
+                        s.Synonyms = new List<string>(synonyms);
+                       
+                        // not very robust, but until now I only found sx links at the beginning of a string in the spanish-english dictionary
+                        // in that case the synonyms should be removed from the text, in other cases we keep them between square brackets
+                         
+                        if (text.StartsWith("{sx"))
+                        {
+                            foreach (var synonym in s.Synonyms)
+                            {
+                                text = text.Replace(synonym, "");
+                            }
+                        }
+                        else
+                        {
+                            foreach (var synonym in s.Synonyms)
+                            {
+                                text = text.Replace(synonym, $"[{synonym}]");
+                            }
+                        }
 
-                ((Sense)targetSense).DividedSense = dSense;
+                        dt.Text = text;
+                    }
+                }
+            }
+
+            if (source.TryGetProperty("sdsense", out var sdsense))
+            {
+                var dividedSense = new DividedSense();
+                ParseGeneralSenseProperties(sdsense, dividedSense);
+                ParseSpecificSenseProperties(sdsense, dividedSense);
+
+                if (sdsense.TryGetProperty("sd", out var sd))
+                {
+                    dividedSense.SenseDivider = sd.GetString();
+                }
+
+                ((Sense)sense).DividedSense = dividedSense;
             }
         }
     }

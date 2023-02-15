@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using MerriamWebster.NET.Dto;
+using MerriamWebster.NET.Results;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Shouldly;
 

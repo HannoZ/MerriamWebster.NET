@@ -25,7 +25,8 @@ namespace MerriamWebster.NET
                 .AddTransientHttpErrorPolicy(builder => builder.RetryAsync(2));
 
 
-            services.AddTransient<IEntryParser, EntryParser>();
+            services.AddTransient<MerriamWebsterSearch>();
+            services.AddSingleton<JsonDocumentParser>();
 
             return services;
         }

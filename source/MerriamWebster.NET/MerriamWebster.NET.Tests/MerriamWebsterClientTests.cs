@@ -1,3 +1,8 @@
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
+using Moq.AutoMock;
+using Moq.Protected;
+using Shouldly;
 using System;
 using System.IO;
 using System.Linq;
@@ -6,14 +11,6 @@ using System.Net.Http;
 using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
-using MerriamWebster.NET.Response;
-using MerriamWebster.NET.Response.JsonConverters;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Moq;
-using Moq.AutoMock;
-using Moq.Protected;
-using Newtonsoft.Json;
-using Shouldly;
 
 namespace MerriamWebster.NET.Tests
 {
@@ -36,9 +33,15 @@ namespace MerriamWebster.NET.Tests
             var mocker = new AutoMocker(MockBehavior.Loose);
             mocker.Use(httpClient);
 
+            var config = new MerriamWebsterConfig
+            {
+                ApiKey = "key"
+            };
+            mocker.Use(config);
+
             _client = mocker.CreateInstance<MerriamWebsterClient>();
         }
-
+        
         [TestMethod]
         public async Task MerriamWebsterClient_DeserializeAll()
         {
@@ -57,9 +60,16 @@ namespace MerriamWebster.NET.Tests
                 using var reader = new StreamReader(resourceStream);
                 string content = await reader.ReadToEndAsync();
 
+
+                _handlerMock.Protected()
+                    .Setup<Task<HttpResponseMessage>>("SendAsync", ItExpr.IsAny<HttpRequestMessage>(),
+                        ItExpr.IsAny<CancellationToken>())
+                    .ReturnsAsync(SetupOkResponseMessage(content));
+                
                 try
                 {
-                    var result = JsonConvert.DeserializeObject<MwDictionaryEntry[]>(content, Converter.Settings);
+                    var result = await _client.Search("api", "entry");
+                    result.ShouldNotBe(null);
                 }
                 catch (Exception ex)
                 {
@@ -79,10 +89,10 @@ namespace MerriamWebster.NET.Tests
                 .ReturnsAsync(SetupOkResponseMessage(response));
 
             // ACT
-            var result = await _client.GetDictionaryEntry("api", "entry");
+            var result = await _client.Search("api", "entry");
 
             // ASSERT
-            result.ShouldNotBeEmpty();
+            result.ShouldNotBe(null);
         }
 
         [TestMethod]
@@ -96,10 +106,10 @@ namespace MerriamWebster.NET.Tests
                 .ReturnsAsync(SetupOkResponseMessage(response));
 
             // ACT
-            var result = await _client.GetDictionaryEntry("api", "entry");
+            var result = await _client.Search("api", "entry");
 
             // ASSERT
-            result.ShouldNotBeEmpty();
+            result.ShouldNotBeNull();
         }
 
         [TestMethod]
@@ -113,10 +123,10 @@ namespace MerriamWebster.NET.Tests
                 .ReturnsAsync(SetupOkResponseMessage(response));
 
             // ACT
-            var result = await _client.GetDictionaryEntry("api", "entry");
+            var result = await _client.Search("api", "entry");
 
             // ASSERT
-            result.ShouldNotBeEmpty();
+            result.ShouldNotBe(null);
         }
 
         [TestMethod]
@@ -130,113 +140,13 @@ namespace MerriamWebster.NET.Tests
                 .ReturnsAsync(SetupOkResponseMessage(response));
 
             // ACT
-            var result = await _client.GetDictionaryEntry("api", "entry");
+            var result = await _client.Search("api", "entry");
 
             // ASSERT
-            result.ShouldNotBeEmpty();
+            result.ShouldNotBe(null);
         }
 
-        [TestMethod]
-        public async Task MerriamWebsterClient_CanDeserialize_House()
-        {
-            string response = await TestHelper.LoadResponseFromFileAsync("house");
-
-            _handlerMock.Protected()
-                .Setup<Task<HttpResponseMessage>>("SendAsync", ItExpr.IsAny<HttpRequestMessage>(),
-                    ItExpr.IsAny<CancellationToken>())
-                .ReturnsAsync(SetupOkResponseMessage(response));
-
-            // ACT
-            var result = await _client.GetDictionaryEntry("api", "entry");
-
-            // ASSERT
-            result.ShouldNotBeEmpty();
-        }
-
-        [TestMethod]
-        public async Task MerriamWebsterClient_CanDeserialize_Abarrotado()
-        {
-            string response = await TestHelper.LoadResponseFromFileAsync("abarrotado");
-
-            _handlerMock.Protected()
-                .Setup<Task<HttpResponseMessage>>("SendAsync", ItExpr.IsAny<HttpRequestMessage>(),
-                    ItExpr.IsAny<CancellationToken>())
-                .ReturnsAsync(SetupOkResponseMessage(response));
-
-            // ACT
-            var result = await _client.GetDictionaryEntry("api", "entry");
-
-            // ASSERT
-            result.ShouldNotBeEmpty();
-        }
-
-        [TestMethod]
-        public async Task MerriamWebsterClient_CanDeserialize_Sierra()
-        {
-            string response = await TestHelper.LoadResponseFromFileAsync("sierra");
-
-            _handlerMock.Protected()
-                .Setup<Task<HttpResponseMessage>>("SendAsync", ItExpr.IsAny<HttpRequestMessage>(),
-                    ItExpr.IsAny<CancellationToken>())
-                .ReturnsAsync(SetupOkResponseMessage(response));
-
-            // ACT
-            var result = await _client.GetDictionaryEntry("api", "entry");
-
-            // ASSERT
-            result.ShouldNotBeEmpty();
-        }
-
-        [TestMethod]
-        public async Task MerriamWebsterClient_CanDeserialize_Jiron()
-        {
-            string response = await TestHelper.LoadResponseFromFileAsync("jirón");
-
-            _handlerMock.Protected()
-                .Setup<Task<HttpResponseMessage>>("SendAsync", ItExpr.IsAny<HttpRequestMessage>(),
-                    ItExpr.IsAny<CancellationToken>())
-                .ReturnsAsync(SetupOkResponseMessage(response));
-
-            // ACT
-            var result = await _client.GetDictionaryEntry("api", "entry");
-
-            // ASSERT
-            result.ShouldNotBeEmpty();
-        }
-
-        [TestMethod]
-        public async Task MerriamWebsterClient_CanDeserialize_Tedious()
-        {
-            string response = await TestHelper.LoadResponseFromFileAsync("collegiate_tedious");
-
-            _handlerMock.Protected()
-                .Setup<Task<HttpResponseMessage>>("SendAsync", ItExpr.IsAny<HttpRequestMessage>(),
-                    ItExpr.IsAny<CancellationToken>())
-                .ReturnsAsync(SetupOkResponseMessage(response));
-
-            // ACT
-            var result = await _client.GetDictionaryEntry("api", "entry");
-
-            // ASSERT
-            result.ShouldNotBeEmpty();
-        }
-
-        [TestMethod]
-        public async Task MerriamWebsterClient_CanDeserialize_Med_Pelvis()
-        {
-            string response = await TestHelper.LoadResponseFromFileAsync("med_pelvis");
-
-            _handlerMock.Protected()
-                .Setup<Task<HttpResponseMessage>>("SendAsync", ItExpr.IsAny<HttpRequestMessage>(),
-                    ItExpr.IsAny<CancellationToken>())
-                .ReturnsAsync(SetupOkResponseMessage(response));
-
-            // ACT
-            var result = (await _client.GetDictionaryEntry("api", "entry")).ToList();
-
-            // ASSERT
-            result.ShouldNotBeEmpty();
-        }
+        
 
         [TestMethod]
         public async Task MerriamWebsterClient_CanDeserialize_Med_Knee()
@@ -249,100 +159,13 @@ namespace MerriamWebster.NET.Tests
                 .ReturnsAsync(SetupOkResponseMessage(response));
 
             // ACT
-            var result = await _client.GetDictionaryEntry("api", "entry");
+            var result = await _client.Search("api", "entry");
 
-            // ASSERT
-            result.ShouldNotBeEmpty();
+            //// ASSERT
+            result.ShouldNotBe(null);
         }
 
-        [TestMethod]
-        public async Task MerriamWebsterClient_CanDeserialize_Dodgson()
-        {
-
-
-            string response = await TestHelper.LoadResponseFromFileAsync("collegiate_Dodgson");
-
-            _handlerMock.Protected()
-                .Setup<Task<HttpResponseMessage>>("SendAsync", ItExpr.IsAny<HttpRequestMessage>(),
-                    ItExpr.IsAny<CancellationToken>())
-                .ReturnsAsync(SetupOkResponseMessage(response));
-
-            // ACT
-            var result = (await _client.GetDictionaryEntry("api", "entry")).ToList();
-
-            // ASSERT
-            result.ShouldNotBeEmpty();
-        }
-
-        [TestMethod]
-        public async Task MerriamWebsterClient_CanDeserialize_Reap()
-        {
-            string response = await TestHelper.LoadResponseFromFileAsync("collegiate_reap");
-
-            _handlerMock.Protected()
-                .Setup<Task<HttpResponseMessage>>("SendAsync", ItExpr.IsAny<HttpRequestMessage>(),
-                    ItExpr.IsAny<CancellationToken>())
-                .ReturnsAsync(SetupOkResponseMessage(response));
-
-            // ACT
-            var result = (await _client.GetDictionaryEntry("api", "entry")).ToList();
-            
-            // ASSERT
-            result.ShouldNotBeEmpty();
-        }
-
-        [TestMethod]
-        public async Task MerriamWebsterClient_CanDeserialize_Reboot()
-        {
-            string response = await TestHelper.LoadResponseFromFileAsync("collegiate_reboot");
-
-            _handlerMock.Protected()
-                .Setup<Task<HttpResponseMessage>>("SendAsync", ItExpr.IsAny<HttpRequestMessage>(),
-                    ItExpr.IsAny<CancellationToken>())
-                .ReturnsAsync(SetupOkResponseMessage(response));
-
-            // ACT
-            var result = (await _client.GetDictionaryEntry("api", "entry")).ToList();
-
-
-            // ASSERT
-            result.Count.ShouldBe(2);
-        }
-
-        [TestMethod]
-        public async Task MerriamWebsterClient_CanDeserialize_Agree()
-        {
-            string response = await TestHelper.LoadResponseFromFileAsync("coll_thes_agree");
-
-            _handlerMock.Protected()
-                .Setup<Task<HttpResponseMessage>>("SendAsync", ItExpr.IsAny<HttpRequestMessage>(),
-                    ItExpr.IsAny<CancellationToken>())
-                .ReturnsAsync(SetupOkResponseMessage(response));
-
-            // ACT
-            var result = (await _client.GetDictionaryEntry("api", "entry")).ToList();
-
-
-            // ASSERT
-            result.Count.ShouldBe(4);
-        }
-
-        [TestMethod]
-        public async Task MerriamWebsterClient_CanDeserialize_Ver()
-        {
-            string response = await TestHelper.LoadResponseFromFileAsync("ver");
-
-            _handlerMock.Protected()
-                .Setup<Task<HttpResponseMessage>>("SendAsync", ItExpr.IsAny<HttpRequestMessage>(),
-                    ItExpr.IsAny<CancellationToken>())
-                .ReturnsAsync(SetupOkResponseMessage(response));
-
-            // ACT
-            var result = await _client.GetDictionaryEntry("api", "entry");
-
-            // ASSERT
-            result.ShouldNotBeEmpty();
-        }
+        
 
         private static HttpResponseMessage SetupOkResponseMessage(string content)
         {
