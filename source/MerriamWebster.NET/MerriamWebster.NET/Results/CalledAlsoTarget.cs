@@ -32,6 +32,7 @@ namespace MerriamWebster.NET.Results
         /// </summary>
         public ParenthesizedSubjectStatusLabel? ParenthesizedSubjectStatusLabel { get; set; }
 
+        /// <inheritdoc />
         public override string ToString()
         {
             // TODO use the other properties as well 

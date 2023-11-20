@@ -6,10 +6,16 @@ using MerriamWebster.NET.Results;
 namespace MerriamWebster.NET.Parsing
 {
     /// <summary>
-    /// Spanish-English only
+    /// <i>Spanish-English only.</i> Parses the cross-reference ("xrs") object.
     /// </summary>
     public class CrossReferenceParser
     {
+        /// <summary>
+        /// Parses a cross-reference object.
+        /// </summary>
+        /// <param name="source">The object to parse</param>
+        /// <returns>The parsed cross reference(s)</returns>
+        /// <exception cref="ArgumentException">Thrown if <paramref name="source"/> was not an array</exception>
         public static IEnumerable<CrossReference> Parse(JsonElement source)
         {
             if (source.ValueKind != JsonValueKind.Array)

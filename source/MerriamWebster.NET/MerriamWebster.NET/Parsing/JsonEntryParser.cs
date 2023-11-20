@@ -10,7 +10,10 @@ namespace MerriamWebster.NET.Parsing
     /// </summary>
     public class JsonEntryParser
     {
-        public void Parse(JsonElement source, Entry target)
+        /// <summary>
+        /// Parses a few standard properties (labels, homograph, shortdefs, date) that don't require much specific parsing logic.
+        /// </summary>
+        public static void Parse(JsonElement source, Entry target)
         {
             ArgumentNullException.ThrowIfNull(target, nameof(target));
 

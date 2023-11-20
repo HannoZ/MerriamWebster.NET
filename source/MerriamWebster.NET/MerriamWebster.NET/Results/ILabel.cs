@@ -1,5 +1,8 @@
 ﻿namespace MerriamWebster.NET.Results
 {
+    /// <summary>
+    /// Represents a generic label.
+    /// </summary>
     public interface ILabel
     {
         /// <summary>

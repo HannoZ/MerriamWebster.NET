@@ -21,6 +21,7 @@ namespace MerriamWebster.NET.Results
         /// </summary>
         public ICollection<IDefiningText> DefiningTexts { get; } = new List<IDefiningText>();
 
+        /// <inheritdoc />
         public override string ToString()
         {
             if (!DefiningTexts.HasValue())

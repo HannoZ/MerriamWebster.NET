@@ -3,8 +3,14 @@ using System.Text.Json;
 
 namespace MerriamWebster.NET.Parsing
 {
+    /// <summary>
+    /// Helper class for parsing json elements.
+    /// </summary>
     public static class JsonParserHelper
     {
+        /// <summary>
+        /// Gets the string value of a property, or <c>null</c> if the property does not exist
+        /// </summary>
         public static string? GetStringValue(JsonElement element, string propName)
         {
             if (element.TryGetProperty(propName, out var value))
@@ -15,6 +21,9 @@ namespace MerriamWebster.NET.Parsing
             return null;
         }
 
+        /// <summary>
+        /// Gets the string values of a property, or <c>null</c> if the property does not exist or is not an array.
+        /// </summary>
         public static IEnumerable<string>? GetStringValues(JsonElement element, string propName)
         {
             if (element.TryGetProperty(propName, out var valuesElement))

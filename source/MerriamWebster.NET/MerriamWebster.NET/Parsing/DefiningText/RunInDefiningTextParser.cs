@@ -5,8 +5,12 @@ using MerriamWebster.NET.Results;
 
 namespace MerriamWebster.NET.Parsing.DefiningText
 {
+    /// <summary>
+    /// Parses the defining text of a run-in ("ri") object.
+    /// </summary>
     public class RunInDefiningTextParser : IDefiningTextParser
     {
+        /// <inheritdoc />
         public IDefiningText Parse(JsonElement source)
         {
             var runIn = new RunIn();

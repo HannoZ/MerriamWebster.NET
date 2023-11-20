@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text.Json;
 using MerriamWebster.NET.Results;
 
@@ -22,8 +21,13 @@ namespace MerriamWebster.NET.Parsing
         where T : ILabel
         {
             var text = JsonParserHelper.GetStringValue(source, propName);
+            if (string.IsNullOrEmpty(text))
+            {
+                return default;
+            }
 
-            return string.IsNullOrEmpty(text) ? default : (T)Activator.CreateInstance(typeof(T), text);
+            var instance = Activator.CreateInstance(typeof(T), text);
+            return instance is T t ? t : default;
         }
         
         /// <summary>
@@ -37,9 +41,22 @@ namespace MerriamWebster.NET.Parsing
           where T : ILabel
         {
             var labels = JsonParserHelper.GetStringValues(source, propName);
-            return labels != null
-                ? new List<T>(labels.Select(label => (T)Activator.CreateInstance(typeof(T), label)))
-                : null;
+            if (labels == null)
+            {
+                return null;
+            }
+
+            var result = new List<T>();
+            foreach (var label in labels)
+            {
+                var instance = Activator.CreateInstance(typeof(T), label);
+                if (instance is T t)
+                {
+                    result.Add(t);
+                }
+            }
+
+            return result;
         }
     }
 }

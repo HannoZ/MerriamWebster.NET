@@ -20,6 +20,9 @@ namespace MerriamWebster.NET.Results
             
         }
 
+        /// <summary>
+        /// Gets or sets the <see cref="Metadata"/>.
+        /// </summary>
         public Metadata Metadata { get; set; } = new ();
 
         /// <summary>
@@ -34,7 +37,7 @@ namespace MerriamWebster.NET.Results
         public int? Homograph { get; internal set; }
 
         /// <summary>
-        /// The date of the earliest recorded use of a headword in English.
+        /// The date of the earliest recorded use of a headword in English (as <see cref="FormattedText"/> object).
         /// </summary>
         /// <remarks>
         /// <b>Display Guidance:</b>
@@ -43,7 +46,7 @@ namespace MerriamWebster.NET.Results
         public FormattedText? Date { get; internal set; }
 
         /// <summary>
-        /// Gets or sets the headword.
+        /// Gets or sets the <see cref="HeadwordInformation"/>.
         /// </summary>
         public HeadwordInformation Headword { get; internal set; } = new ();
 
@@ -59,7 +62,7 @@ namespace MerriamWebster.NET.Results
         public ICollection<Variant>? Variants { get; internal set; }
         
         /// <summary>
-        /// <i>Optional.</i> Gets or sets the functional label.
+        /// <i>Optional.</i> Gets or sets the <see cref="FunctionalLabel"/>.
         /// </summary>
         public FunctionalLabel? FunctionalLabel { get; internal set; }
 

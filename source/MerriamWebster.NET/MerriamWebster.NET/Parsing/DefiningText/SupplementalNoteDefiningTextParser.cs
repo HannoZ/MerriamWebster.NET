@@ -5,8 +5,12 @@ using MerriamWebster.NET.Results;
 
 namespace MerriamWebster.NET.Parsing.DefiningText
 {
+    /// <summary>
+    /// Parses the defining text of a supplemental note ("snote") object.
+    /// </summary>
     public class SupplementalNoteDefiningTextParser : IDefiningTextParser
     {
+        /// <inheritdoc />
         public IDefiningText Parse(JsonElement source)
         {
             var snote = new SupplementalInformationNote();

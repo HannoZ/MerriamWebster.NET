@@ -1,7 +1,15 @@
 ﻿namespace MerriamWebster.NET.Parsing.DefiningText
 {
+    /// <summary>
+    /// Factory for creating <see cref="IDefiningTextParser"/> instances.
+    /// </summary>
     public class DefiningTextParserFactory
     {
+        /// <summary>
+        /// Creates a <see cref="IDefiningTextParser"/> instance based on the specified type.
+        /// </summary>
+        /// <param name="type">The defining text type. All known types are defined in the <see cref="DefiningTextTypes"/> class.</param>
+        /// <returns>The implementation for the specified <paramref name="type"/>, or <c>null</c> for an unknown type.</returns>
         public static IDefiningTextParser? Create(string? type)
         {
             return type switch

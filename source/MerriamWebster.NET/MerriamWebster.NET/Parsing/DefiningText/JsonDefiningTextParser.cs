@@ -5,8 +5,14 @@ using MerriamWebster.NET.Results;
 
 namespace MerriamWebster.NET.Parsing.DefiningText
 {
+    /// <summary>
+    /// Parser for the defining text ("dt") json object.
+    /// </summary>
     public class JsonDefiningTextParser
     {
+        /// <summary>
+        /// Parses the defining text ("dt") json object.
+        /// </summary>
         public static IEnumerable<IDefiningText> Parse(JsonElement source)
         {
             if (!source.TryGetProperty("dt", out var dtElement))

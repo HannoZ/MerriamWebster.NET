@@ -5,8 +5,12 @@ using MerriamWebster.NET.Results;
 
 namespace MerriamWebster.NET.Parsing.DictionaryEntryMembers
 {
+    /// <summary>
+    /// Parses a metadata ("meta") json object.
+    /// </summary>
     public class MetadataDictionaryEntryMemberParser : IDictionaryEntryMemberParser
     {
+        /// <inheritdoc />
         public virtual void Parse(JsonProperty json, Entry target) 
         {
             ArgumentNullException.ThrowIfNull(target, nameof(target));

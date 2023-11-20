@@ -1,5 +1,5 @@
 ﻿@using MerriamWebster.NET.Results
-@model SearchRequestModel?
+@model SearchModel
 
 @if (Model?.Result != null)
 {
@@ -29,7 +29,8 @@
     List<Entry> relatedEntries = new List<Entry>();
     foreach (var entry in Model.Result.Entries)
     {
-        if (entry.Headword.Text?.Equals(Model.SearchTerm, StringComparison.OrdinalIgnoreCase) == true)
+        if (entry.Headword.Text?.Equals(Model.SearchTerm, StringComparison.OrdinalIgnoreCase) == true
+            || (entry.AlternateHeadwords.HasValue() && entry.AlternateHeadwords.Any(hw => hw.Text?.Equals(Model.SearchTerm, StringComparison.OrdinalIgnoreCase) == true)))
         {
             validEntries.Add(entry);
             continue;
@@ -62,140 +63,26 @@
     {
         index++;
         <div class="mw-entry-header">
-            <h1>@Model.SearchTerm</h1> <span class="mw-fl">@result.FunctionalLabel</span> <span>@index of @total</span>
+            <h1>@result.Headword.Text</h1> <span class="mw-fl">@result.FunctionalLabel</span> 
+            @if (total > 1)
+            {
+                <span>@index of @total</span>
+            }
             @if (result.Headword.Pronunciations != null  )
             {
-                foreach (var pronunciation in result.Headword.Pronunciations)
-                {
-                    <a class="btn btn-secondary btn-sm" href="@pronunciation.AudioLink" target="_blank">
-                        @if (pronunciation.AudioLink != null)
-                        {
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-play" viewBox="0 0 16 16">
-                                <path d="M10.804 8 5 4.633v6.734L10.804 8zm.792-.696a.802.802 0 0 1 0 1.392l-6.363 3.692C4.713 12.69 4 12.345 4 11.692V4.308c0-.653.713-.998 1.233-.696l6.363 3.692z"/>
-                            </svg>
-                        }
-                        <text> @pronunciation.WrittenPronunciation</text>
-                    </a>
-                }
+                <partial name="_pronunciation" model="result.Headword.Pronunciations" />
             }
         </div>
 
+        <partial name="_Labels" model="result.GeneralLabels" />
+        <partial name="_Labels" model="result.SubjectStatusLabels" />
+        
+        <div class="clear"></div>
         @*Definitions*@
         <h2>Definitions</h2>
         foreach (var definition in result.Definitions)
         {
-            if (definition.VerbDivider != null)
-            {
-                <div class="mw-vd">@definition.VerbDivider</div>
-            }
-            foreach (var senseSequence in definition.SenseSequence)
-            {
-                foreach (var sseq in senseSequence.Senses)
-                {
-                    if (sseq.IsParenthesizedSenseSequence)
-                    {
-                        foreach (var senseSequenceSense in sseq.Senses)
-                        {
-                            if (senseSequenceSense is Sense sense)
-                            {
-                                int skip = 0;
-                                if (sense.SenseNumber != null)
-                                {
-                                    skip = 1;
-                                    var firstDef = sense.DefiningTexts.FirstOrDefault();
-                                    <div class="mw-sense-nr">
-                                        @sense.SenseNumber
-                                        
-                                            @if (sense.GeneralLabels.HasValue())
-                                        {
-                                            <span class="badge bg-secondary">
-                                                @Html.Raw(string.Join(',', sense.GeneralLabels))
-                                            </span>
-                                        }
-                                        <span class="mw-defining-text">@Html.Raw(firstDef?.MainText.HtmlText)</span>
-                                    </div>
-                                }
-                                @foreach (var definingText in sense.DefiningTexts.Skip(skip))
-                                {
-                                    var extraClass = "";
-                                    if (definingText is VerbalIllustration)
-                                    {
-                                        extraClass = "-vis";
-                                    }
-                                    <div class="mw-defining-text@(extraClass)">
-                                        @Html.Raw(definingText.MainText.HtmlText)
-                                    </div>
-                                }
-
-                                if (sense.DividedSense != null)
-                                {
-                                    <span class="mw-sd">@Html.Raw(sense.DividedSense.SenseDivider)</span>
-                                    <span>@Html.Raw(sense.DividedSense.DefiningTexts.First().MainText.HtmlText)</span>
-                                    @foreach (var definingText in sense.DividedSense.DefiningTexts.Skip(1))
-                                    {
-                                        var extraClass = "";
-                                        if (definingText is VerbalIllustration)
-                                        {
-                                            extraClass = "-vis";
-                                        }
-                                        <div class="mw-defining-text@(extraClass)">
-                                            @Html.Raw(definingText.MainText.HtmlText)
-                                        </div>
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    else if (sseq is Sense sense)
-                    {
-                        int skip = 0;
-                        if (sense.SenseNumber != null)
-                        {
-                            skip = 1;
-                            var firstDef = sense.DefiningTexts.FirstOrDefault();
-                            <div class="mw-sense-nr">
-                                @sense.SenseNumber
-                                @if (sense.GeneralLabels.HasValue())
-                                {
-                                    <span class="badge bg-secondary">
-                                        @Html.Raw(string.Join(',', sense.GeneralLabels))
-                                    </span>
-                                }
-                                <span class="mw-defining-text">@Html.Raw(firstDef?.MainText.HtmlText)</span>
-                            </div>
-                        }
-                        @foreach (var definingText in sense.DefiningTexts.Skip(skip))
-                        {
-                            var extraClass = "";
-                            if (definingText is VerbalIllustration)
-                            {
-                                extraClass = "-vis";
-                            }
-                            <div class="mw-defining-text@(extraClass)">
-                                @Html.Raw(definingText.MainText.HtmlText)
-                            </div>
-                        }
-
-                        if (sense.DividedSense != null)
-                        {
-                            <span class="mw-sd">@Html.Raw(sense.DividedSense.SenseDivider)</span>
-                            <span>@Html.Raw(sense.DividedSense.DefiningTexts.First().MainText.HtmlText)</span>
-                            @foreach (var definingText in sense.DividedSense.DefiningTexts.Skip(1))
-                            {
-                                var extraClass = "";
-                                if (definingText is VerbalIllustration)
-                                {
-                                    extraClass = "-vis";
-                                }
-                                <div class="mw-defining-text@(extraClass)">
-                                    @Html.Raw(definingText.MainText.HtmlText)
-                                </div>
-                            }
-                        }
-                    }
-
-                }
-            }
+            <partial name="_definition" model="definition"/>
         }
 
         @* uros*@
@@ -208,20 +95,16 @@
                     <h2>@uro.EntryWord</h2> <span class="mw-fl">@uro.FunctionalLabel</span>
                     @if (uro.Pronunciations != null)
                     {
-                        foreach (var pronunciation in uro.Pronunciations)
-                        {
-                            <a class="btn btn-secondary btn-sm" href="@pronunciation.AudioLink" target="_blank">
-                                @if (pronunciation.AudioLink != null)
-                                {
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-play" viewBox="0 0 16 16">
-                                        <path d="M10.804 8 5 4.633v6.734L10.804 8zm.792-.696a.802.802 0 0 1 0 1.392l-6.363 3.692C4.713 12.69 4 12.345 4 11.692V4.308c0-.653.713-.998 1.233-.696l6.363 3.692z"/>
-                                    </svg>
-                                }
-                                <text> @pronunciation.WrittenPronunciation</text>
-                            </a>
-                        }
+                        <partial name="_pronunciation" model="uro.Pronunciations" />
                     }
                 </div>
+                @if (uro.RunOnTexts.HasValue())
+                {
+                    foreach (var runOnText in uro.RunOnTexts)
+                    {
+                        <partial name="_definingText" model="runOnText"/>
+                    }
+                }
             }
         }
 
@@ -235,20 +118,14 @@
                     <h2>@dro.Phrase</h2> <span class="mw-fl">@dro.FunctionalLabel</span>
                     @if (dro.Pronunciations != null)
                     {
-                        foreach (var pronunciation in dro.Pronunciations)
-                        {
-                            <a class="btn btn-secondary btn-sm" href="@pronunciation.AudioLink" target="_blank">
-                                @if (pronunciation.AudioLink != null)
-                                {
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-play" viewBox="0 0 16 16">
-                                        <path d="M10.804 8 5 4.633v6.734L10.804 8zm.792-.696a.802.802 0 0 1 0 1.392l-6.363 3.692C4.713 12.69 4 12.345 4 11.692V4.308c0-.653.713-.998 1.233-.696l6.363 3.692z"/>
-                                    </svg>
-                                }
-                                <text> @pronunciation.WrittenPronunciation</text>
-                            </a>
-                        }
+                        <partial name="_pronunciation" model="dro.Pronunciations"/>
                     }
                 </div>
+
+                @foreach (var definition in dro.Definitions)
+                {
+                    <partial name="_definition" model="definition"/>
+                }
             }
         }
 

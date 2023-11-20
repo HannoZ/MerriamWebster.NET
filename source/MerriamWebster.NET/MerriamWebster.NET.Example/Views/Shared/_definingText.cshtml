@@ -1,0 +1,12 @@
+﻿@using MerriamWebster.NET.Results
+@model MerriamWebster.NET.Results.IDefiningText
+@{
+    var extraClass = "";
+    if (Model is VerbalIllustration)
+    {
+        extraClass = "-vis";
+    }
+}
+<div class="mw-defining-text@(extraClass)">
+    @Html.Raw(Model.MainText.HtmlText)
+</div>

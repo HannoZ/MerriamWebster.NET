@@ -3,8 +3,16 @@ using MerriamWebster.NET.Results;
 
 namespace MerriamWebster.NET.Parsing
 {
+    /// <summary>
+    /// Parser for definition ("def") objects.
+    /// </summary>
     public class DefinitionParser
     {
+        /// <summary>
+        /// Parses a definition ("def") json element.
+        /// </summary>
+        /// <param name="source"></param>
+        /// <returns></returns>
         public static Definition Parse(JsonElement source)
         {
             var definition = new Definition
