@@ -12,6 +12,9 @@ namespace MerriamWebster.NET.Results
     /// </remarks>
     public class Metadata
     {
+        /// <summary>
+        /// Creates a new instance of <see cref="Metadata"/>.
+        /// </summary>
         public Metadata()
         {
             Id = string.Empty;

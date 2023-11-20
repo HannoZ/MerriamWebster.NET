@@ -5,7 +5,7 @@
     /// </summary>
     /// <remarks>
     /// <para>
-    /// The defining text is a collection that usually starts with a "text" object (<see cref="DefiningText"/> that contains the main definition.
+    /// The defining text is a collection that usually starts with a "text" object (<see cref="DefiningText"/>) that contains the main definition.
     /// There are a number of other types that together form the entire definition. 
     /// </para>
     /// <para>

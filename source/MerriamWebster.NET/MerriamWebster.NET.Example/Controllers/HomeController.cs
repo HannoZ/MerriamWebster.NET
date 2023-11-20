@@ -18,11 +18,11 @@ namespace MerriamWebster.NET.Example.Controllers
 
         public IActionResult Index()
         {
-            return View(new SearchRequestModel());
+            return View(new SearchModel());
         }
 
         [HttpPost]
-        public async Task<IActionResult> Index(SearchRequestModel model)
+        public async Task<IActionResult> Index(SearchModel model)
         {
             if (_memCache.TryGetValue<ResultModel>(model.Api + model.SearchTerm, out var result))
             {
@@ -30,6 +30,7 @@ namespace MerriamWebster.NET.Example.Controllers
             }
             else
             {
+                Configuration.Language = model.Api == Configuration.SpanishEnglishDictionary ? Language.Es : Language.En;
                 result = await _search.Search(model.Api, model.SearchTerm, model.ApiKey);
                 model.Result = result;
 
@@ -39,5 +40,20 @@ namespace MerriamWebster.NET.Example.Controllers
             return View(model);
         }
 
+        [HttpGet]
+        public IActionResult Load()
+        {
+            return View(new LoadModel());
+        }
+
+        [HttpPost]
+        public IActionResult Load(LoadModel model)
+        {
+            Configuration.Language = model.Api == Configuration.SpanishEnglishDictionary ? Language.Es : Language.En;
+            var resultModel = _search.ParseApiResponse(model.Api, model.SearchTerm, model.Response);
+            model.Result = resultModel;
+
+            return View(model);
+        }
     }
 }

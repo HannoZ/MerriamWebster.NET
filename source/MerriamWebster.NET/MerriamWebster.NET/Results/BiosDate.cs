@@ -1,5 +1,8 @@
 ﻿namespace MerriamWebster.NET.Results
 {
+    /// <summary>
+    /// Represents date information ("biodate") in a <see cref="BiographicalNote"/>.
+    /// </summary>
     public class BiosDate : DefiningText
     {
         /// <summary>

@@ -5,8 +5,13 @@ using MerriamWebster.NET.Results;
 
 namespace MerriamWebster.NET.Parsing.DictionaryEntryMembers
 {
+    /// <summary>
+    /// Parses the alternate headword information ("ahws") object.
+    /// </summary>
     public class AlternateHeadwordInformationDictionaryEntryMemberParser : IDictionaryEntryMemberParser
     {
+        /// <inheritdoc />
+        /// <exception cref="ArgumentException"><paramref name="json"/>.Name is not "ahws"</exception>
         public void Parse(JsonProperty json, Entry target)
         {
             ArgumentNullException.ThrowIfNull(target, nameof(target));

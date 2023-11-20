@@ -1,5 +1,8 @@
 ﻿namespace MerriamWebster.NET.Results
 {
+    /// <summary>
+    /// Represents text information ("biotext") in a <see cref="BiographicalNote"/>.
+    /// </summary>
     public class BiosText : DefiningText
     {
         /// <summary>

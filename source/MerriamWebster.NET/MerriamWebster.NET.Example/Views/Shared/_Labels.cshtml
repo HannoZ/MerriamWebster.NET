@@ -1,0 +1,7 @@
+﻿@model IEnumerable<object>
+@if (Model != null && Model.Any())
+{
+    <span class="badge bg-secondary">
+        @Html.Raw(string.Join(',', Model))
+    </span>
+}

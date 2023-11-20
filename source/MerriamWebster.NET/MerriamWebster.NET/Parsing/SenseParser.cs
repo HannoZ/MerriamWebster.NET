@@ -12,6 +12,11 @@ namespace MerriamWebster.NET.Parsing
     /// </summary>
     public class SenseParser
     {
+        /// <summary>
+        /// Parses the senses from the specified json element and adds them to the target <see cref="Definition"/>.
+        /// </summary>
+        /// <param name="source"></param>
+        /// <param name="target"></param>
         public static void Parse(JsonElement source, Definition target)
         {
             ArgumentNullException.ThrowIfNull(target, nameof(target));

@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace MerriamWebster.NET.Example.Models
 {
-    public class SearchRequestModel
+    public class SearchModel
     {
         public string ApiKey { get; set; }
         public string Api { get; set; }
@@ -20,4 +20,8 @@ namespace MerriamWebster.NET.Example.Models
         public ResultModel Result { get; set; }
     }
 
+    public class LoadModel : SearchModel
+    {
+        public string Response { get; set; }
+    }
 }

@@ -8,6 +8,11 @@ namespace MerriamWebster.NET.Parsing
     /// </summary>
     public class AttributionOfQuoteParser
     {
+        /// <summary>
+        /// Parses an attribution of quote ("aq") object.
+        /// </summary>
+        /// <param name="aq">The aq element</param>
+        /// <returns>A parsed <see cref="AttributionOfQuote"/> object.</returns>
         public static AttributionOfQuote Parse(JsonElement aq)
         {
             var quote = new AttributionOfQuote

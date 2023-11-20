@@ -5,8 +5,12 @@ using MerriamWebster.NET.Results;
 
 namespace MerriamWebster.NET.Parsing.DictionaryEntryMembers.SpanishEnglish
 {
+    /// <summary>
+    /// <i>Spanish-English only</i>. Parses a cross-references ("xrs") json object.
+    /// </summary>
     public class CrossReferencesDictionaryEntryMemberParser : IDictionaryEntryMemberParser
     {
+        /// <inheritdoc />
         public void Parse(JsonProperty json, Entry target)
         {
             ArgumentNullException.ThrowIfNull(target, nameof(target));

@@ -5,8 +5,12 @@ using MerriamWebster.NET.Results;
 
 namespace MerriamWebster.NET.Parsing.DictionaryEntryMembers
 {
+    /// <summary>
+    /// Parses the defined run-ons ("dros") json property.
+    /// </summary>
     public class DefinedRunOnsDictionaryEntryMemberParser : IDictionaryEntryMemberParser
     {
+        /// <inheritdoc />
         public void Parse(JsonProperty json, Entry target)
         {
             ArgumentNullException.ThrowIfNull(target, nameof(target));

@@ -4,8 +4,12 @@ using MerriamWebster.NET.Results;
 
 namespace MerriamWebster.NET.Parsing.DictionaryEntryMembers
 {
+    /// <summary>
+    /// Parses the etymology ("et") json object.
+    /// </summary>
     public class EtymologyDictionaryEntryMemberParser : IDictionaryEntryMemberParser
     {
+        /// <inheritdoc />
         public void Parse(JsonProperty json, Entry target)
         {
             ArgumentNullException.ThrowIfNull(target, nameof(target));

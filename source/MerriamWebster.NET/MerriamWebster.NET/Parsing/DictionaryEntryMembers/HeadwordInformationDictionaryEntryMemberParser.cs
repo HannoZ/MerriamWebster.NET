@@ -5,8 +5,12 @@ using MerriamWebster.NET.Results;
 
 namespace MerriamWebster.NET.Parsing.DictionaryEntryMembers
 {
+    /// <summary>
+    /// Parses headword information ("hwi") json object.
+    /// </summary>
     public class HeadwordInformationDictionaryEntryMemberParser : IDictionaryEntryMemberParser
     {
+        /// <inheritdoc />
         public void Parse(JsonProperty json, Entry target)
         {
             ArgumentNullException.ThrowIfNull(target, nameof(target));

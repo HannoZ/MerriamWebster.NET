@@ -13,6 +13,10 @@ namespace MerriamWebster.NET.Parsing
     {
         private readonly ILogger<JsonDocumentParser> _logger;
         
+        /// <summary>
+        /// Initializes a new instance of the <see cref="JsonDocumentParser"/> class.
+        /// </summary>
+        /// <param name="logger"></param>
         public JsonDocumentParser(ILogger<JsonDocumentParser> logger)
         {
             _logger = logger;
@@ -53,8 +57,7 @@ namespace MerriamWebster.NET.Parsing
                     }
 
                     // handle some specific properties
-                    var entryParser = new JsonEntryParser();
-                    entryParser.Parse(result, entry);
+                    JsonEntryParser.Parse(result, entry);
 
                     resultModel.Entries.Add(entry);
                 }

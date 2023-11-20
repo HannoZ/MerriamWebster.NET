@@ -4,8 +4,12 @@ using MerriamWebster.NET.Results;
 
 namespace MerriamWebster.NET.Parsing.DefiningText
 {
+    /// <summary>
+    /// Parses the defining text of a called-also note ("ca" object).
+    /// </summary>
     public class CalledAlsoNoteDefiningTextParser : IDefiningTextParser
     {
+        /// <inheritdoc />
         public IDefiningText Parse(JsonElement source)
         {
             var note = new CalledAlsoNote

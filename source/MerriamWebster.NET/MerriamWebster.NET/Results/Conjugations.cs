@@ -15,6 +15,9 @@
     /// </remarks>
     public class Conjugations
     {
+        /// <summary>
+        /// Creates a new instance of <see cref="Conjugations"/>.
+        /// </summary>
         public Conjugations()
         {
             PresentParticiple = string.Empty;

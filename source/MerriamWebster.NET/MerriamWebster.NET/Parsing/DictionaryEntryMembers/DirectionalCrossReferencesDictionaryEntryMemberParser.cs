@@ -5,8 +5,12 @@ using MerriamWebster.NET.Results;
 
 namespace MerriamWebster.NET.Parsing.DictionaryEntryMembers
 {
+    /// <summary>
+    /// Parses the directional cross references ("dxnls") json property.
+    /// </summary>
     public class DirectionalCrossReferencesDictionaryEntryMemberParser : IDictionaryEntryMemberParser
     {
+        /// <inheritdoc />
         public void Parse(JsonProperty json, Entry target)
         {
             ArgumentNullException.ThrowIfNull(target, nameof(target));

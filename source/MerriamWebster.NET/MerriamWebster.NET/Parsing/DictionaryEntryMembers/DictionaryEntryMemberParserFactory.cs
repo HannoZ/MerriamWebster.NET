@@ -3,6 +3,9 @@ using MerriamWebster.NET.Parsing.DictionaryEntryMembers.SpanishEnglish;
 
 namespace MerriamWebster.NET.Parsing.DictionaryEntryMembers
 {
+    /// <summary>
+    /// Factory for <see cref="IDictionaryEntryMemberParser"/> implementations.
+    /// </summary>
     internal class DictionaryEntryMemberParserFactory 
     {
         public static IDictionaryEntryMemberParser? GetDictionaryEntryMemberParser(string api, string elementName) 

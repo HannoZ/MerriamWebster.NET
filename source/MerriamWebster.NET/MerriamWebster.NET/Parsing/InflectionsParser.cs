@@ -6,10 +6,16 @@ using MerriamWebster.NET.Results;
 namespace MerriamWebster.NET.Parsing
 {
     /// <summary>
-    /// Helper class to parse inflections.
+    /// Parser for <see cref="Inflection"/> ("ins") objects.
     /// </summary>
     public class InflectionsParser
     {
+        /// <summary>
+        /// Parses a <see cref="Inflection"/> ("ins") json element.
+        /// </summary>
+        /// <param name="source">The source element</param>
+        /// <returns>The parsed inflection(s)</returns>
+        /// <exception cref="ArgumentException">Thrown if <paramref name="source"/> is not an array.</exception>
         public static IEnumerable<Inflection> Parse(JsonElement source)
         {
             if (source.ValueKind != JsonValueKind.Array)

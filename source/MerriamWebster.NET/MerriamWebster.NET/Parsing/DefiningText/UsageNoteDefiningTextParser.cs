@@ -5,8 +5,12 @@ using MerriamWebster.NET.Results;
 
 namespace MerriamWebster.NET.Parsing.DefiningText
 {
+    /// <summary>
+    /// Parses the defining text of a usage note ("uns") object.
+    /// </summary>
     public class UsageNoteDefiningTextParser : IDefiningTextParser
     {
+        /// <inheritdoc />
         public IDefiningText Parse(JsonElement source)
         {
             var usageNote = new UsageNote();

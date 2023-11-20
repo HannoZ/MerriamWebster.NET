@@ -5,8 +5,14 @@ using MerriamWebster.NET.Results;
 
 namespace MerriamWebster.NET.Parsing
 {
+    /// <summary>
+    /// Parser for pronunciation ("prs") objects.
+    /// </summary>
     public class PronunciationParser
     {
+        /// <summary>
+        /// Parses a pronunciation ("prs") json object.
+        /// </summary>
         public static IEnumerable<Pronunciation> Parse(JsonElement sourceElement)
         {
             if (sourceElement.ValueKind != JsonValueKind.Array)

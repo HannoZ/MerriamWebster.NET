@@ -19,12 +19,14 @@ namespace MerriamWebster.NET.Parsing.Markup
         // which is a problem if we have a word like 'worn-out'
         private static readonly Regex Pattern = new Regex(@"{dxt\|([^}|^\|]*)\|.*?}", RegexOptions.Compiled);
 #endif
-
+        
+        /// <inheritdoc />
         public string RemoveMarkup(string input)
         {
             return RegexReplace(input, Pattern);
         }
-
+        
+        /// <inheritdoc />
         public string ReplaceMarkup(string input)
         {
             return input;

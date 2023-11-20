@@ -10,6 +10,9 @@ namespace MerriamWebster.NET.Results
     /// </summary>
     public class ResultModel
     {
+        /// <summary>
+        /// Creates a new instance of <see cref="ResultModel"/>.
+        /// </summary>
         public ResultModel()
         {
             SearchText = string.Empty;
@@ -21,7 +24,7 @@ namespace MerriamWebster.NET.Results
         /// </summary>
         public string SearchText { get; set; }
         /// <summary>
-        /// A collection of zero or more <see cref="T"/> objects. This is the main result. 
+        /// A collection of zero or more <see cref="Entry"/> objects. This is the main result. 
         /// </summary>
         public ICollection<Entry> Entries { get; set; } = new List<Entry>();
 

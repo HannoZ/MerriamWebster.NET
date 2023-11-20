@@ -1,4 +1,4 @@
-﻿@model SearchRequestModel
+﻿@model SearchModel
 
 @{
     ViewBag.Title = "Search";
@@ -7,9 +7,15 @@
 }
 
 <h2>Use the Merriam-Webster api</h2>
+<p>Enter the API, API key and search term to make a request to the Merriam-Webster API.</p>
+<p>
+    Or, if you rather want to upload an existing JSON response, you can do so
+    <br/>
+    <a asp-action="Load">on this page</a>.
+</p>
 <form asp-action="Index" class="col-4">
     <div class="form-group">
-        <select class="form-control" asp-for="Api" asp-items="Model?.Apis"></select>
+        <select class="form-control" asp-for="Api" asp-items="Model.Apis"></select>
     </div>
     <div class="form-group">
         <label asp-for="ApiKey">API key</label>

@@ -11,6 +11,9 @@ namespace MerriamWebster.NET.Parsing
     /// </summary>
     public class EtymologyParser
     {
+        /// <summary>
+        /// Parses the etymology json element.
+        /// </summary>
         public static Etymology Parse(JsonElement source)
         {
             var etymology = new Etymology();

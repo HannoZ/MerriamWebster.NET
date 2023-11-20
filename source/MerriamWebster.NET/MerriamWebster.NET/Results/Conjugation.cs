@@ -5,6 +5,9 @@
     /// </summary>
     public class Conjugation
     {
+        /// <summary>
+        /// Creates a new instance of <see cref="Conjugation"/>.
+        /// </summary>
         public Conjugation()
         {
             Tense = string.Empty;   
