@@ -19,11 +19,11 @@ jobs:
       - name: Set up .NET Core
         uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: '7.x'
-          include-prerelease: true
+          dotnet-version: '8.x'
+          include-prerelease: false
 
       - name: Build with dotnet
-        run: dotnet build --configuration Release
+        run: dotnet build ./source/MerriamWebster.NET/MerriamWebster.NET.Example.sln --configuration Release
 
       - name: dotnet publish
         run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
