@@ -21,12 +21,7 @@
                     @Html.Raw(Model.MainText.HtmlText)
                 </p>
             </blockquote>
-            @if(vi.AttributionOfQuote.Source != null)
-            {
-                var source = vi.AttributionOfQuote.Source.Text;
-                <figcaption class="blockquote-footer">@vi.AttributionOfQuote.AttributionText.HtmlText</figcaption>
-
-            }
+            <figcaption class="blockquote-footer">@Html.Raw(vi.AttributionOfQuote.AttributionText.HtmlText)</figcaption>
         </figure>
     }
     else

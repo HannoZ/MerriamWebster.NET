@@ -22,7 +22,7 @@ namespace MerriamWebster.NET.Results
         /// <summary>
         ///  Text to display in table link.
         /// </summary>
-        public string? Displayname { get; set; }
+        public FormattedText? Displayname { get; set; }
 
         /// <summary>
         /// Gets the location of the table, based on the <see cref="TableId"/>.

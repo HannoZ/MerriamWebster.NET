@@ -73,7 +73,7 @@
 
         <partial name="_Labels" model="result.GeneralLabels" />
         <partial name="_Labels" model="result.SubjectStatusLabels" />
-
+        
         @* inflections *@
         <partial name="_inflection" model="result.Inflections" />
       
@@ -142,8 +142,7 @@
                         </blockquote>
                         @if (quote.AttributionOfQuote != null)
                         {
-                            var source = quote.AttributionOfQuote.Source.Text;
-                            <figcaption class="blockquote-footer"><cite title="@source">@Html.Raw(quote.AttributionOfQuote.AttributionText.HtmlText)</cite></figcaption>
+                            <figcaption class="blockquote-footer">@Html.Raw(quote.AttributionOfQuote.AttributionText.HtmlText)</figcaption>
                         }
                     </figure>
                 }
@@ -191,6 +190,46 @@
                 <h2>First known use</h2>
                 <div>@Html.Raw(result.Date.HtmlText)</div>
             </p>
+        }
+
+        @* artwork*@
+        if (result.Artwork != null)
+        {
+            <div class="fst-italic">Illustration of @result.Headword.Text</div>
+            <figure>
+                <img src="@result.Artwork.ImageLocation" alt="@result.Artwork.Caption.Text" />
+                <figcaption>@Html.Raw(@result.Artwork.Caption.HtmlText)</figcaption>
+            </figure>                                                             
+        }
+
+        @* table *@
+        if (result.Table != null)
+        {
+            <div class="mw-table">
+                <a target="_blank" href="@result.Table.TableLocation">Open table "@Html.Raw(@result.Table.Displayname.HtmlText)"</a>
+            </div>
+        }
+
+        @* synonyms*@
+        @if (result.Synonyms.HasValue())
+        {
+            <div>Synonyms for <span class="fst-italic">@result.Headword.Text</span></div>
+            foreach (var synonym in result.Synonyms)
+            {
+                <p>
+                    <h2>@synonym.ParagraphLabel.Text</h2>
+                </p>
+                foreach (var definingText in synonym.ParagraphTexts)
+                {
+                    <div>
+                    <partial name="_definingText" model="definingText"/>
+                    </div>
+                }
+                if (synonym.SeeInAdditionReference.HasValue())
+                {
+                    <span>See in addition: @string.Join(',', synonym.SeeInAdditionReference)</span>
+                }
+            }
         }
     }
 
