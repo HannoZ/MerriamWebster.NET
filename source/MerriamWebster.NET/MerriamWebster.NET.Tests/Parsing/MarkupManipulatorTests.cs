@@ -272,7 +272,19 @@ namespace MerriamWebster.NET.Tests.Parsing
             output.ShouldBe(expected);
         }
 
-        
+        [TestMethod]
+        public void MarkupManipulator_Remove_Sx4()
+        {
+            string input = "a piece of {sx|bite||}, {sx|gnaw||} text";
+            string expected = "a piece of bite, gnaw text";
+
+            // ACT
+            var output = MarkupManipulator.RemoveMarkupFromString(input);
+
+            // ASSERT
+            output.ShouldBe(expected);
+        }
+
 
         [TestMethod]
         public void MarkupManipulator_ALinkWithDash()

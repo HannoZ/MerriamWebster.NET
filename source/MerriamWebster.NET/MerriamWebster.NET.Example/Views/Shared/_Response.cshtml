@@ -21,7 +21,7 @@
                 </div>
             </div>
         </div>
-    </div>                                                                         
+    </div>
 
     @* separate actual results and related results -> move logic to library*@
     int index = 0;
@@ -63,98 +63,141 @@
     {
         index++;
         <div class="mw-entry-header">
-            <h1>@result.Headword.Text</h1> <span class="mw-fl">@result.FunctionalLabel</span> 
+            <h1>@result.Headword.Text</h1> <span class="mw-fl">@result.FunctionalLabel</span>
             @if (total > 1)
             {
                 <span>@index of @total</span>
             }
-            @if (result.Headword.Pronunciations != null  )
-            {
-                <partial name="_pronunciation" model="result.Headword.Pronunciations" />
-            }
+            <partial name="_pronunciation" model="result.Headword.Pronunciations" />
         </div>
 
         <partial name="_Labels" model="result.GeneralLabels" />
         <partial name="_Labels" model="result.SubjectStatusLabels" />
-        
-        <div class="clear"></div>
-        @*Definitions*@
-        <h2>Definitions</h2>
-        foreach (var definition in result.Definitions)
-        {
-            <partial name="_definition" model="definition"/>
-        }
 
+        @* inflections *@
+        <partial name="_inflection" model="result.Inflections" />
+      
+        @*Definitions*@
+        <p>
+            <h2>Definitions</h2>
+            @foreach (var definition in result.Definitions)
+            {
+                <partial name="_definition" model="definition" />
+            }
+        </p>
         @* uros*@
         if (result.UndefinedRunOns.HasValue())
         {
-            foreach (var uro in result.UndefinedRunOns)
-            {
-                <div class="mw-entry-header">
-
-                    <h2>@uro.EntryWord</h2> <span class="mw-fl">@uro.FunctionalLabel</span>
-                    @if (uro.Pronunciations != null)
-                    {
-                        <partial name="_pronunciation" model="uro.Pronunciations" />
-                    }
-                </div>
-                @if (uro.RunOnTexts.HasValue())
+            <p class="mw-uros">
+                @foreach (var uro in result.UndefinedRunOns)
                 {
-                    foreach (var runOnText in uro.RunOnTexts)
+                    <div class="mw-entry-header">
+
+                        <h2>@uro.EntryWord</h2> <span class="mw-fl">@uro.FunctionalLabel</span>
+                        <partial name="_pronunciation" model="uro.Pronunciations" />
+                    </div>
+                    @if (uro.RunOnTexts.HasValue())
                     {
-                        <partial name="_definingText" model="runOnText"/>
+                        foreach (var runOnText in uro.RunOnTexts)
+                        {
+                            <partial name="_definingText" model="runOnText" />
+                        }
                     }
                 }
-            }
+            </p>
         }
 
         @* dros *@
         if (result.DefinedRunOns.HasValue())
         {
-            foreach (var dro in result.DefinedRunOns)
-            {
-                <div class="mw-entry-header">
-
-                    <h2>@dro.Phrase</h2> <span class="mw-fl">@dro.FunctionalLabel</span>
-                    @if (dro.Pronunciations != null)
-                    {
-                        <partial name="_pronunciation" model="dro.Pronunciations"/>
-                    }
-                </div>
-
-                @foreach (var definition in dro.Definitions)
+            <p class="mw-dros">
+                @foreach (var dro in result.DefinedRunOns)
                 {
-                    <partial name="_definition" model="definition"/>
+                    <div class="mw-entry-header">
+
+                        <h2>@dro.Phrase</h2> <span class="mw-fl">@dro.FunctionalLabel</span>
+                        <partial name="_pronunciation" model="dro.Pronunciations" />
+                    </div>
+
+                    @foreach (var definition in dro.Definitions)
+                    {
+                        <partial name="_definition" model="definition" />
+                    }
                 }
-            }
+            </p>
+        }
+
+        @* quotes *@
+        if (result.Quotes.HasValue())
+        {
+            <p class="mw-quotes">
+                <h2>Quotes</h2>
+                @foreach (var quote in result.Quotes)
+                {
+                    <figure>
+                        <blockquote class="blockquote">
+                            <p>
+                                @Html.Raw(quote.Text.HtmlText)
+                            </p>
+                        </blockquote>
+                        @if (quote.AttributionOfQuote != null)
+                        {
+                            var source = quote.AttributionOfQuote.Source.Text;
+                            <figcaption class="blockquote-footer"><cite title="@source">@Html.Raw(quote.AttributionOfQuote.AttributionText.HtmlText)</cite></figcaption>
+                        }
+                    </figure>
+                }
+            </p>
+        }
+
+        @* usage *@
+        @if (result.Usages.HasValue())
+        {
+            <p class="mw-usage">
+                <h2>Usages</h2>
+                @foreach (var usage in result.Usages)
+                {
+                    <span>@Html.Raw(usage.ParagraphLabel.HtmlText)</span>
+                    @foreach (var dt in usage.ParagraphTexts)
+                    {
+                        <div>
+                <partial name="_definingText" model="dt"/>
+                        </div>
+                    }
+                }
+            </p>
         }
 
         @*Etymology*@
-        if (result.Etymology != null)
+        @if (result.Etymology != null)
         {
-            <h2>Etymology</h2>
+            <p class="mw-etymology">
+                <h2>Etymology</h2>
             <p>@Html.Raw(result.Etymology.Text.HtmlText)</p>
-            if (result.Etymology.Notes.HasValue())
-            {
-                foreach (var etymologyNote in result.Etymology.Notes)
+                @if (result.Etymology.Notes.HasValue())
                 {
+                    foreach (var etymologyNote in result.Etymology.Notes)
+                    {
                     <p>@Html.Raw(etymologyNote.Text.HtmlText)</p>
+                    }
                 }
-            }
+                        </p>
         }
 
         @*first known use*@
         if (result.Date != null)
         {
-            <h2>First known use</h2>
-            <div>@Html.Raw(result.Date.HtmlText)</div>
+            <p class="mw-first-use">
+                <h2>First known use</h2>
+                <div>@Html.Raw(result.Date.HtmlText)</div>
+            </p>
         }
     }
 
     @* show additional entries *@
     if (relatedEntries.Any())
     {
-        <hr/>
+        <hr />
         <h2>Related to @Model.SearchTerm: </h2>
         <i>@string.Join(',', relatedEntries.Select(e => e.Metadata.Id));</i>
     }

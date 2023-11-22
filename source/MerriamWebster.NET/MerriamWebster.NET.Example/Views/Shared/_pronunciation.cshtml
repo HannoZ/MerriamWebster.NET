@@ -1,5 +1,10 @@
 ﻿@model IEnumerable<MerriamWebster.NET.Results.Pronunciation>
 @{
+    if (Model == null)
+    {
+        return;
+    }
+
     foreach (var pronunciation in Model)
     {
         <a class="btn btn-secondary btn-sm" href="@pronunciation.AudioLink" target="_blank">

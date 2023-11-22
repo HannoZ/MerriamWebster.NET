@@ -1,0 +1,28 @@
+﻿@model ICollection<MerriamWebster.NET.Results.Inflection>
+@{
+    if (Model == null)
+    {
+        return;
+    }
+}
+<div class="mw-inflections">
+    @foreach (var inflection in Model)
+    {
+        <div class="mw-inflection">
+            @if (!string.IsNullOrEmpty(inflection.Label))
+            {
+                <span class="badge bg-secondary">
+                    @Html.Raw(inflection.Label)
+                </span>
+            }
+            @if (!string.IsNullOrEmpty(inflection.SenseSpecificInflectionPluralLabel))
+            {
+                <span class="badge bg-secondary">
+                    @Html.Raw(inflection.SenseSpecificInflectionPluralLabel)
+                </span>
+            }
+            @Html.Raw(inflection.Value)
+            <partial name="_pronunciation" model="inflection.Pronunciations" />
+        </div>
+    }
+</div>

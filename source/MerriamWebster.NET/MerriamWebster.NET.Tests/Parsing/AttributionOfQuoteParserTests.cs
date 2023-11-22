@@ -25,9 +25,9 @@ namespace MerriamWebster.NET.Tests.Parsing
             
             // ASSERT
             aq.Author.ShouldBe("Peter Pouncey");
-            aq.Source.Text.ShouldBe("Rules for Old Men Waiting");
+            // HTML is now added to the source text aq.Source.Text.ShouldBe("Rules for Old Men Waiting");
+            aq.Source.Text.ShouldNotContain("{it}");
             aq.PublicationDate.ShouldBe("2005");
-
         }
 
         [TestMethod]

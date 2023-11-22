@@ -32,5 +32,36 @@
         /// </summary>
         public SubSource? Subsource { get; set; }
 
+        public FormattedText AttributionText
+        {
+            get
+            {
+                var text = Author;
+                if (Source != null)
+                {
+                    text += $", {Source.RawText}";
+                }
+
+                if (PublicationDate != null)
+                {
+                    text += $", {PublicationDate}";
+                }
+
+                if (Subsource != null)
+                {
+                    if (!string.IsNullOrEmpty(Subsource.Source.RawText))
+                    {
+                        text += $", {Subsource.Source.RawText}";
+                    }
+
+                    if (Subsource.PublicationDate != null)
+                    {
+                        text += $", {Subsource.PublicationDate}";
+                    }
+                }
+
+                return new FormattedText(text);
+            }
+        }
     }
 }

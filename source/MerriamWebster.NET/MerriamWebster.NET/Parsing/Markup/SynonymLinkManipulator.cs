@@ -11,10 +11,10 @@ namespace MerriamWebster.NET.Parsing.Markup
 
         private static readonly Regex Pattern = ParsePattern();
 
-        [GeneratedRegex(@"{sx\|([^}]*)\|.*?\|.*?}")]
+        [GeneratedRegex(@"{sx\|([^|}]*)\|.*?\|.*?}")]
         private static partial Regex ParsePattern();
 #else
-        private static readonly Regex Pattern = new Regex(@"{sx\|([^}]*)\|.*?\|.*?}", RegexOptions.Compiled);
+        private static readonly Regex Pattern = new Regex(@"{sx\|([^|}]*)\|.*?\|.*?}", RegexOptions.Compiled);
 #endif       
         /// <inheritdoc />
         public string RemoveMarkup(string input)
