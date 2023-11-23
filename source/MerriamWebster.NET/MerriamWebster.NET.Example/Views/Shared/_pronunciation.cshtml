@@ -7,6 +7,10 @@
 
     foreach (var pronunciation in Model)
     {
+        if (pronunciation.LabelBeforePronunciation != null)
+        {
+            <span class="fst-italic">@pronunciation.LabelBeforePronunciation</span>
+        }
         <a class="btn btn-secondary btn-sm" href="@pronunciation.AudioLink" target="_blank">
             @if (pronunciation.AudioLink != null)
             {
@@ -16,5 +20,9 @@
             }
             <text> @pronunciation.WrittenPronunciation</text>
         </a>
+        if (pronunciation.LabelAfterPronunciation != null)
+        {
+            <span class="fst-italic">@pronunciation.LabelAfterPronunciation</span>
+        }
     }
 }

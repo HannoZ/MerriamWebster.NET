@@ -1,22 +1,69 @@
 ﻿@using MerriamWebster.NET.Results
 @model MerriamWebster.NET.Results.Definition
 @{
+    <partial name="_Labels" model="Model.SubjectStatusLabels" />
+
     if (Model.VerbDivider != null)
     {
         <div class="mw-vd">@Model.VerbDivider</div>
     }
     <ul class="list-group list-group-flush">
-    @foreach (var senseSequence in Model.SenseSequence)
-    {
-        foreach (var sseq in senseSequence.Senses)
+        @foreach (var senseSequence in Model.SenseSequence)
         {
-            <li class="list-group-item ">
-            @if (sseq.IsParenthesizedSenseSequence)
+            foreach (var sseq in senseSequence.Senses)
             {
-                foreach (var senseSequenceSense in sseq.Senses)
-                {
-                    if (senseSequenceSense is Sense sense)
+                <li class="list-group-item ">
+                    @if (sseq.IsParenthesizedSenseSequence)
                     {
+                        foreach (var senseSequenceSense in sseq.Senses)
+                        {
+                            if (senseSequenceSense is Sense sense)
+                            {
+                                int skip = 0;
+                                if (sense.SenseNumber != null)
+                                {
+                                    skip = 1;
+                                    var firstDef = sense.DefiningTexts.FirstOrDefault();
+                                    <div>
+                                        <span class="mw-sense-nr">
+                                            @sense.SenseNumber
+                                            <partial name="_Labels" model="sense.GeneralLabels" />
+                                            <partial name="_Labels" model="sense.SubjectStatusLabels" />
+                                        </span>
+
+                                        <partial name="_inflection" model="sense.Inflections" />
+                                        <partial name="_variant" model="@sense.Variants" />
+                                        <partial name="_definingText" model="firstDef" />
+                                    </div>
+                                }
+                                @foreach (var definingText in sense.DefiningTexts.Skip(skip))
+                                {
+                                    <div>
+                                        <partial name="_definingText" model="definingText" />
+                                    </div>
+                                }
+
+                                if (sense.DividedSense != null)
+                                {
+                                    <span class="mw-sd">@Html.Raw(sense.DividedSense.SenseDivider)</span>
+                                    <span>@Html.Raw(sense.DividedSense.DefiningTexts.First().MainText.HtmlText)</span>
+                                    @foreach (var definingText in sense.DividedSense.DefiningTexts.Skip(1))
+                                    {
+                                        <div>
+                                            <partial name="_definingText" model="definingText" />
+                                        </div>
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    else if (sseq is Sense sense)
+                    {
+                        if (sense.Synonyms.HasValue())
+                        {
+                            <span class="text-uppercase">@string.Join(',', sense.Synonyms)</span>
+                        }
+
                         int skip = 0;
                         if (sense.SenseNumber != null)
                         {
@@ -25,76 +72,38 @@
                             <div>
                                 <span class="mw-sense-nr">
                                     @sense.SenseNumber
-                                    <partial name="_Labels" model="sense.GeneralLabels"/>
-                                    <partial name="_Labels" model="sense.SubjectStatusLabels"/>
+                                    <partial name="_Labels" model="sense.GeneralLabels" />
+                                    <partial name="_Labels" model="sense.SubjectStatusLabels" />
                                 </span>
-                                
-                                <partial name="_inflection" model="sense.Inflections"/>
-                                <partial name="_definingText" model="firstDef"/>
+                                <partial name="_inflection" model="sense.Inflections" />
+                                <partial name="_variant" model="@sense.Variants" />
+
+                                <partial name="_definingText" model="firstDef" />
                             </div>
                         }
                         @foreach (var definingText in sense.DefiningTexts.Skip(skip))
                         {
                             <div>
-                                <partial name="_definingText" model="definingText"/>
+                                <partial name="_definingText" model="definingText" />
                             </div>
                         }
 
                         if (sense.DividedSense != null)
                         {
                             <span class="mw-sd">@Html.Raw(sense.DividedSense.SenseDivider)</span>
-                            <span>@Html.Raw(sense.DividedSense.DefiningTexts.First().MainText.HtmlText)</span>
+                            var first = sense.DividedSense.DefiningTexts.First();
+                            <partial name="_definingText" model="first" />
+
                             @foreach (var definingText in sense.DividedSense.DefiningTexts.Skip(1))
                             {
                                 <div>
-                                 <partial name="_definingText" model="definingText"/>
+                                    <partial name="_definingText" model="definingText" />
                                 </div>
                             }
                         }
                     }
-                }
+                </li>
             }
-            else if (sseq is Sense sense)
-            {
-                int skip = 0;
-                if (sense.SenseNumber != null)
-                {
-                    skip = 1;
-                    var firstDef = sense.DefiningTexts.FirstOrDefault();
-                    <div>
-                        <span class="mw-sense-nr">
-                            @sense.SenseNumber
-                            <partial name="_Labels" model="sense.GeneralLabels"/>
-                            <partial name="_Labels" model="sense.SubjectStatusLabels"/>
-
-                        </span>
-                        <partial name="_inflection" model="sense.Inflections"/>
-                        <partial name="_definingText" model="firstDef"/>
-                    </div>
-                }
-                @foreach (var definingText in sense.DefiningTexts.Skip(skip))
-                {
-                    <div>
-                  <partial name="_definingText" model="definingText"/>
-                    </div>
-                }
-
-                if (sense.DividedSense != null)
-                {
-                    <span class="mw-sd">@Html.Raw(sense.DividedSense.SenseDivider)</span>
-                    var first = sense.DividedSense.DefiningTexts.First();
-                    <partial name="_definingText" model="first"/>
-
-                    @foreach (var definingText in sense.DividedSense.DefiningTexts.Skip(1))
-                    {
-                        <div>
-                            <partial name="_definingText" model="definingText"/>
-                        </div>
-                    }
-                }
-            }
-            </li>
         }
-    }
     </ul>
 }

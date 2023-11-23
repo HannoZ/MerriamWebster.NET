@@ -33,6 +33,9 @@ namespace MerriamWebster.NET.Parsing.DictionaryEntryMembers
                 headwordInfo.Pronunciations = new List<Pronunciation>(PronunciationParser.Parse(prs));
             }
 
+            headwordInfo.ParenthesizedSubjectStatusLabel = LabelsParser.ParseSingle<ParenthesizedSubjectStatusLabel>(source, "psl");
+
+
             target.Headword = headwordInfo;
         }
     }

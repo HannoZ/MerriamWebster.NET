@@ -1,0 +1,19 @@
+﻿@using MerriamWebster.NET.Results
+@model ICollection<MerriamWebster.NET.Results.Variant>
+@if (!Model.HasValue())
+{
+    return;
+}
+<div class="mw-variants">
+    Variants: 
+    @foreach (var variant in Model)
+    {
+        @if(variant.SenseSpecificInflectionPluralLabel != null)
+        {
+            <span class="badge bg-secondary">@variant.SenseSpecificInflectionPluralLabel</span>
+        }
+        <span class="fst-italic">@variant.Label</span>
+        @variant.Text 
+        <partial name="_pronunciation" model="@variant.Pronunciations"/>
+    }
+</div>

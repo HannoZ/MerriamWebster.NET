@@ -63,28 +63,63 @@
     {
         index++;
         <div class="mw-entry-header">
+            <partial name="_psl" model="@result.Headword.ParenthesizedSubjectStatusLabel"/>
             <h1>@result.Headword.Text</h1> <span class="mw-fl">@result.FunctionalLabel</span>
             @if (total > 1)
             {
                 <span>@index of @total</span>
             }
-            <partial name="_pronunciation" model="result.Headword.Pronunciations" />
+            <partial name="_pronunciation" model="result.Headword.Pronunciations"/>
         </div>
 
         <partial name="_Labels" model="result.GeneralLabels" />
         <partial name="_Labels" model="result.SubjectStatusLabels" />
-        
+
         @* inflections *@
         <partial name="_inflection" model="result.Inflections" />
-      
-        @*Definitions*@
-        <p>
-            <h2>Definitions</h2>
-            @foreach (var definition in result.Definitions)
+
+        @* alternate headwords *@
+        @if (result.AlternateHeadwords.HasValue())
+        {
+            <div class="fw-light">
+                @foreach (var ahw in result.AlternateHeadwords)
+                {
+                    <partial name="_psl" model="@ahw.ParenthesizedSubjectStatusLabel" />
+                    @ahw.Text
+                    <partial name="_pronunciation" model="ahw.Pronunciations" />
+                }
+            </div>
+        }
+        @* cross-references *@
+        @if (result.CognateCrossReferences.HasValue())
+        {
+            foreach (var crossReference in result.CognateCrossReferences)
             {
-                <partial name="_definition" model="definition" />
+                <span class="fst-italic">@crossReference.Label</span>
+                @foreach (var crossReferenceTarget in crossReference.CrossReferenceTargets)
+                {
+                    <span>@crossReferenceTarget.Label</span>
+                    <span>@crossReferenceTarget.SenseNumber</span>
+                    <span>@crossReferenceTarget.Target</span>
+                }
             }
-        </p>
+        }
+
+        @* variants *@
+        <partial name="_variant" model="@result.Variants" />
+
+        @*Definitions*@
+        @if (result.Definitions.HasValue())
+        {
+            <p>
+                <h2>Definitions</h2>
+                @foreach (var definition in result.Definitions)
+                {
+                    <partial name="_definition" model="definition"/>
+                }
+            </p>
+        }
+
         @* uros*@
         if (result.UndefinedRunOns.HasValue())
         {
@@ -92,15 +127,23 @@
                 @foreach (var uro in result.UndefinedRunOns)
                 {
                     <div class="mw-entry-header">
-
-                        <h2>@uro.EntryWord</h2> <span class="mw-fl">@uro.FunctionalLabel</span>
+                        <partial name="_psl" model="@uro.ParenthesizedSubjectStatusLabel" />
+                        <h2>
+                            @uro.EntryWord
+                        </h2> <span class="mw-fl">@uro.FunctionalLabel</span>
                         <partial name="_pronunciation" model="uro.Pronunciations" />
                     </div>
+                    <partial name="_Labels" model="@uro.GeneralLabels" />
+                    <partial name="_Labels" model="@uro.SubjectStatusLabels" />
+                    <partial name="_inflection" model="@uro.Inflections" />
+                    <partial name="_variant" model="@uro.Variants" />
                     @if (uro.RunOnTexts.HasValue())
                     {
                         foreach (var runOnText in uro.RunOnTexts)
                         {
-                            <partial name="_definingText" model="runOnText" />
+                     <div>
+                         <partial name="_definingText" model="runOnText" />
+                     </div>
                         }
                     }
                 }
@@ -111,18 +154,24 @@
         if (result.DefinedRunOns.HasValue())
         {
             <p class="mw-dros">
+                <h2>Additional phrases</h2>
                 @foreach (var dro in result.DefinedRunOns)
                 {
                     <div class="mw-entry-header">
-
+                        <partial name="_psl" model="@dro.ParenthesizedSubjectStatusLabel"/>
                         <h2>@dro.Phrase</h2> <span class="mw-fl">@dro.FunctionalLabel</span>
-                        <partial name="_pronunciation" model="dro.Pronunciations" />
+                        <partial name="_pronunciation" model="dro.Pronunciations"/>
                     </div>
+                    <partial name="_Labels" model="@dro.GeneralLabels"/>
+                    <partial name="_Labels" model="@dro.SubjectStatusLabels"/>
+                    <partial name="_variant" model="@dro.Variants"/>
 
                     @foreach (var definition in dro.Definitions)
                     {
-                        <partial name="_definition" model="definition" />
+                        <partial name="_definition" model="definition"/>
                     }
+
+                    <partial name="_etymology" model="@dro.Etymology"/>
                 }
             </p>
         }
@@ -160,7 +209,7 @@
                     @foreach (var dt in usage.ParagraphTexts)
                     {
                         <div>
-                <partial name="_definingText" model="dt"/>
+                            <partial name="_definingText" model="dt" />
                         </div>
                     }
                 }
@@ -168,20 +217,7 @@
         }
 
         @*Etymology*@
-        @if (result.Etymology != null)
-        {
-            <p class="mw-etymology">
-                <h2>Etymology</h2>
-            <p>@Html.Raw(result.Etymology.Text.HtmlText)</p>
-                @if (result.Etymology.Notes.HasValue())
-                {
-                    foreach (var etymologyNote in result.Etymology.Notes)
-                    {
-                    <p>@Html.Raw(etymologyNote.Text.HtmlText)</p>
-                    }
-                }
-                        </p>
-        }
+        <partial name="_etymology" model="@result.Etymology" />
 
         @*first known use*@
         if (result.Date != null)
@@ -199,7 +235,7 @@
             <figure>
                 <img src="@result.Artwork.ImageLocation" alt="@result.Artwork.Caption.Text" />
                 <figcaption>@Html.Raw(@result.Artwork.Caption.HtmlText)</figcaption>
-            </figure>                                                             
+            </figure>
         }
 
         @* table *@
@@ -222,7 +258,7 @@
                 foreach (var definingText in synonym.ParagraphTexts)
                 {
                     <div>
-                    <partial name="_definingText" model="definingText"/>
+                        <partial name="_definingText" model="definingText" />
                     </div>
                 }
                 if (synonym.SeeInAdditionReference.HasValue())
@@ -231,6 +267,17 @@
                 }
             }
         }
+
+        @if (result.DirectionalCrossReferences.HasValue())
+        {
+            <p class="mw-dxnls">
+
+                @foreach (var dx in result.DirectionalCrossReferences)
+                {
+                    <div>@Html.Raw(dx.HtmlText)</div>
+                }
+            </p>
+        }
     }
 
     @* show additional entries *@
@@ -238,7 +285,7 @@
     {
         <hr />
         <h2>Related to @Model.SearchTerm: </h2>
-        <i>@string.Join(',', relatedEntries.Select(e => e.Metadata.Id));</i>
+        <i>@string.Join(',', relatedEntries.Select(e => e.Metadata.Id))</i>
     }
 
     @* no results*@

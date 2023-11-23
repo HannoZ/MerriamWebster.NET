@@ -27,7 +27,7 @@ namespace MerriamWebster.NET.Tests.Parsing
 
             // ASSERT
             target.Table.ShouldNotBe(null);
-            target.Table.Displayname.ShouldBe("Alphabet Table");
+            target.Table.Displayname.Text.ShouldBe("Alphabet Table");
             target.Table.TableId.ShouldBe("alphabet");
             target.Table.TableLocation.ToString().ShouldBe("https://www.merriam-webster.com/table/collegiate/alphabet.htm");
         }
