@@ -20,7 +20,7 @@ namespace MerriamWebster.NET.Parsing.DictionaryEntryMembers
 
             var artwork = new Artwork
             {
-                Caption = JsonParserHelper.GetStringValue(source, "capt"),
+                Caption = JsonParserHelper.GetStringValue(source, "capt") ?? string.Empty,
                 HtmlLocation = ArtworkLinkCreator.CreatePageLink(artId),
                 ImageLocation = ArtworkLinkCreator.CreateDirectLink(artId)
             };

@@ -14,7 +14,7 @@ namespace MerriamWebster.NET.Tests.Parsing
         {
             string source = @"{""art"":{
   ""artid"":""heart"",
-  ""capt"":""heart 1a ...""
+  ""capt"":""heart {it}1a{/it} ...""
 }
 }";
 
@@ -26,7 +26,8 @@ namespace MerriamWebster.NET.Tests.Parsing
             parser.Parse(art, target);
 
             // ASSERT
-            target.Artwork.Caption.ShouldBe("heart 1a ...");
+            target.Artwork.ShouldNotBe(null);
+            target.Artwork.Caption.Text.ShouldBe("heart 1a ...");
             target.Artwork.HtmlLocation.ShouldNotBe(null);
             target.Artwork.ImageLocation.ShouldNotBe(null);
         }

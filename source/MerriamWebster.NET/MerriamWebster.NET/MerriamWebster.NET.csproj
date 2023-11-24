@@ -11,7 +11,7 @@
 		<RepositoryType>Git</RepositoryType>
 		<PackageTags>Merriam-Webster dictionary thesaurus Spanish-English</PackageTags>
 		<PackageReleaseNotes>See project readme for further details.</PackageReleaseNotes>
-		<Version>3.1.0</Version>
+		<Version>3.1.1</Version>
 		<LangVersion>latest</LangVersion>
 		<Nullable>enable</Nullable>
 	</PropertyGroup>
@@ -24,10 +24,10 @@
 		<PackageReference Include="Microsoft.Extensions.Http.Polly" Version="8.0.0" />
 	</ItemGroup>
 	<ItemGroup Condition=" '$(TargetFramework)' == 'net7.0' ">
-		<PackageReference Include="Microsoft.Extensions.Http.Polly" Version="7.0.2" />
+		<PackageReference Include="Microsoft.Extensions.Http.Polly" Version="7.0.14" />
 	</ItemGroup>
 	<ItemGroup Condition=" '$(TargetFramework)' == 'net6.0' ">
-		<PackageReference Include="Microsoft.Extensions.Http.Polly" Version="6.0.13" />
+		<PackageReference Include="Microsoft.Extensions.Http.Polly" Version="6.0.25" />
 	</ItemGroup>
 	<ItemGroup>
 		<AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleToAttribute">

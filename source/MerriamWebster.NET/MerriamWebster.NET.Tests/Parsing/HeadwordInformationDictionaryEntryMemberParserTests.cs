@@ -19,7 +19,8 @@ namespace MerriamWebster.NET.Tests.Parsing
   ""prs"":[{
     ""mw"":""\u02c8test"",
     ""sound"":{""audio"":""test0001"",""ref"":""c"",""stat"":""1""}
-  }]
+  }],
+  ""psl"":""chiefly US""
 }
 }";
 
@@ -32,6 +33,7 @@ namespace MerriamWebster.NET.Tests.Parsing
             // ASSERT
             target.Headword.Pronunciations.ShouldNotBeEmpty();
             target.Headword.Text.ShouldBe("test");
+            target.Headword.ParenthesizedSubjectStatusLabel.Text.ShouldBe("chiefly US");
         }
 
         [TestMethod]

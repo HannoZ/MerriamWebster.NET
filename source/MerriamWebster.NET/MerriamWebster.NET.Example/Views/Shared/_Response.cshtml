@@ -21,7 +21,7 @@
                 </div>
             </div>
         </div>
-    </div>                                                                         
+    </div>
 
     @* separate actual results and related results -> move logic to library*@
     int index = 0;
@@ -63,100 +63,385 @@
     {
         index++;
         <div class="mw-entry-header">
-            <h1>@result.Headword.Text</h1> <span class="mw-fl">@result.FunctionalLabel</span> 
+            <partial name="_psl" model="@result.Headword.ParenthesizedSubjectStatusLabel"/>
+            <h1>@result.Headword.Text</h1> <span class="mw-fl">@result.FunctionalLabel</span>
             @if (total > 1)
             {
                 <span>@index of @total</span>
             }
-            @if (result.Headword.Pronunciations != null  )
-            {
-                <partial name="_pronunciation" model="result.Headword.Pronunciations" />
-            }
+            <partial name="_pronunciation" model="result.Headword.Pronunciations"/>
         </div>
 
         <partial name="_Labels" model="result.GeneralLabels" />
         <partial name="_Labels" model="result.SubjectStatusLabels" />
-        
-        <div class="clear"></div>
-        @*Definitions*@
-        <h2>Definitions</h2>
-        foreach (var definition in result.Definitions)
+
+        @* inflections *@
+        <partial name="_inflection" model="result.Inflections" />
+
+        @* alternate headwords *@
+        if (result.AlternateHeadwords.HasValue())
         {
-            <partial name="_definition" model="definition"/>
+            <div class="fw-light">
+                @foreach (var ahw in result.AlternateHeadwords)
+                {
+                    <partial name="_psl" model="@ahw.ParenthesizedSubjectStatusLabel" />
+                    @ahw.Text
+                    <partial name="_pronunciation" model="ahw.Pronunciations" />
+                }
+            </div>
+        }
+        @* cross-references *@
+        if (result.CognateCrossReferences.HasValue())
+        {
+            foreach (var crossReference in result.CognateCrossReferences)
+            {
+                <span class="fst-italic">@crossReference.Label</span>
+                @foreach (var crossReferenceTarget in crossReference.CrossReferenceTargets)
+                {
+                    <span>@crossReferenceTarget.Label</span>
+                    <span>@crossReferenceTarget.SenseNumber</span>
+                    <span>@crossReferenceTarget.Target</span>
+                }
+
+            }
+        }
+
+        @* variants *@
+        <partial name="_variant" model="@result.Variants" />
+
+        @*Definitions*@
+        if (result.Definitions.HasValue())
+        {
+            <p>
+                <h2>Definitions</h2>
+                @foreach (var definition in result.Definitions)
+                {
+                    <partial name="_definition" model="definition"/>
+                }
+            </p>
         }
 
         @* uros*@
         if (result.UndefinedRunOns.HasValue())
         {
-            foreach (var uro in result.UndefinedRunOns)
-            {
-                <div class="mw-entry-header">
-
-                    <h2>@uro.EntryWord</h2> <span class="mw-fl">@uro.FunctionalLabel</span>
-                    @if (uro.Pronunciations != null)
-                    {
-                        <partial name="_pronunciation" model="uro.Pronunciations" />
-                    }
-                </div>
-                @if (uro.RunOnTexts.HasValue())
+            <p class="mw-uros">
+                @foreach (var uro in result.UndefinedRunOns)
                 {
-                    foreach (var runOnText in uro.RunOnTexts)
+                    <div class="mw-entry-header">
+                        <partial name="_psl" model="@uro.ParenthesizedSubjectStatusLabel" />
+                        <h2>
+                            @uro.EntryWord
+                        </h2> <span class="mw-fl">@uro.FunctionalLabel</span>
+                        <partial name="_pronunciation" model="uro.Pronunciations" />
+                    </div>
+                    <partial name="_Labels" model="@uro.GeneralLabels" />
+                    <partial name="_Labels" model="@uro.SubjectStatusLabels" />
+                    <partial name="_inflection" model="@uro.Inflections" />
+                    <partial name="_variant" model="@uro.Variants" />
+                    @if (uro.RunOnTexts.HasValue())
                     {
-                        <partial name="_definingText" model="runOnText"/>
+                        foreach (var runOnText in uro.RunOnTexts)
+                        {
+                            <div>
+                                <partial name="_definingText" model="runOnText" />
+                            </div>
+                        }
+                    }
+                    @if(uro.AlternateEntry != null)
+                    {
+                        <span class="fst-italic">Or @uro.AlternateEntry.Text</span>
                     }
                 }
-            }
+            </p>
         }
 
         @* dros *@
         if (result.DefinedRunOns.HasValue())
         {
-            foreach (var dro in result.DefinedRunOns)
-            {
-                <div class="mw-entry-header">
-
-                    <h2>@dro.Phrase</h2> <span class="mw-fl">@dro.FunctionalLabel</span>
-                    @if (dro.Pronunciations != null)
-                    {
-                        <partial name="_pronunciation" model="dro.Pronunciations"/>
-                    }
-                </div>
-
-                @foreach (var definition in dro.Definitions)
+            <p class="mw-dros">
+                <h2>Additional phrases</h2>
+                @foreach (var dro in result.DefinedRunOns)
                 {
-                    <partial name="_definition" model="definition"/>
+                    <div class="mw-entry-header">
+                        <partial name="_psl" model="@dro.ParenthesizedSubjectStatusLabel"/>
+                        <h2>@dro.Phrase</h2> <span class="mw-fl">@dro.FunctionalLabel</span>
+                        <partial name="_pronunciation" model="dro.Pronunciations"/>
+                    </div>
+                    <partial name="_Labels" model="@dro.GeneralLabels"/>
+                    <partial name="_Labels" model="@dro.SubjectStatusLabels"/>
+                    <partial name="_variant" model="@dro.Variants"/>
+
+                    @foreach (var definition in dro.Definitions)
+                    {
+                        <partial name="_definition" model="definition"/>
+                    }
+
+                    <partial name="_etymology" model="@dro.Etymology"/>
                 }
-            }
+            </p>
+        }
+
+        @* quotes *@
+        if (result.Quotes.HasValue())
+        {
+            <p class="mw-quotes">
+                <h2>Quotes</h2>
+                @foreach (var quote in result.Quotes)
+                {
+                    <figure>
+                        <blockquote class="blockquote">
+                            <p>
+                                @Html.Raw(quote.Text.HtmlText)
+                            </p>
+                        </blockquote>
+                        @if (quote.AttributionOfQuote != null)
+                        {
+                            <figcaption class="blockquote-footer">@Html.Raw(quote.AttributionOfQuote.AttributionText.HtmlText)</figcaption>
+                        }
+                    </figure>
+                }
+            </p>
+        }
+
+        @* usage *@
+        if (result.Usages.HasValue())
+        {
+            <p class="mw-usage">
+                <h2>Usages</h2>
+                @foreach (var usage in result.Usages)
+                {
+                    <span>@Html.Raw(usage.ParagraphLabel.HtmlText)</span>
+                    @foreach (var dt in usage.ParagraphTexts)
+                    {
+                        <div>
+                            <partial name="_definingText" model="dt" />
+                        </div>
+                    }
+                }
+            </p>
         }
 
         @*Etymology*@
-        if (result.Etymology != null)
-        {
-            <h2>Etymology</h2>
-            <p>@Html.Raw(result.Etymology.Text.HtmlText)</p>
-            if (result.Etymology.Notes.HasValue())
-            {
-                foreach (var etymologyNote in result.Etymology.Notes)
-                {
-                    <p>@Html.Raw(etymologyNote.Text.HtmlText)</p>
-                }
-            }
-        }
+        <partial name="_etymology" model="@result.Etymology" />
 
         @*first known use*@
         if (result.Date != null)
         {
-            <h2>First known use</h2>
-            <div>@Html.Raw(result.Date.HtmlText)</div>
+            <p class="mw-first-use">
+                <h2>First known use</h2>
+                <div>@Html.Raw(result.Date.HtmlText)</div>
+            </p>
+        }
+
+        @* artwork*@
+        if (result.Artwork != null)
+        {
+            <div class="fst-italic">Illustration of @result.Headword.Text
+            </div>
+            <figure>
+                <img src="@result.Artwork.ImageLocation" alt="@result.Artwork.Caption.Text" />
+                <figcaption>@Html.Raw(@result.Artwork.Caption.HtmlText)</figcaption>
+            </figure>
+        }
+
+        @* table *@
+        if (result.Table != null)
+        {
+            <div class="mw-table">
+                <a target="_blank" href="@result.Table.TableLocation">Open table "@Html.Raw(@result.Table.Displayname.HtmlText)"</a>
+            </div>
+        }
+
+        @* synonyms*@
+        if (result.Synonyms.HasValue())
+        {
+            <div>Synonyms for <span class="fst-italic">@result.Headword.Text
+                </span></div>
+            foreach (var synonym in result.Synonyms)
+            {
+                <p>
+                    <h2>@synonym.ParagraphLabel.Text</h2>
+                </p>
+                foreach (var definingText in synonym.ParagraphTexts)
+                {
+                    <div>
+                        <partial name="_definingText" model="definingText" />
+                    </div>
+                }
+                if (synonym.SeeInAdditionReference.HasValue())
+                {
+                    <span>See in addition: @string.Join(',', synonym.SeeInAdditionReference)</span>
+                }
+
+            }
+        }
+
+        if (result.DirectionalCrossReferences.HasValue())
+        {
+            <p class="mw-dxnls">
+
+                @foreach (var dx in result.DirectionalCrossReferences)
+                {
+                    <div>@Html.Raw(dx.HtmlText)</div>
+                }
+            </p>
+        }
+
+        if (result.Conjugations != null)
+        {
+            <div><h2>Conjugations</h2></div>
+            <div >
+                <div class="card card-body">
+                    <div class="row">
+                        <div class="col-12"><span class="font-weight-bold">Present participle: </span>@result.Conjugations.PresentParticiple</div>
+                        <div class="col-12"><span class="font-weight-bold">Past participle: </span>@result.Conjugations.PastParticiple</div>
+                    </div>
+                    <table class="table table-sm table-responsive-sm">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Present</th>
+                                <th>Imperfect</th>
+                                <th>Preterite</th>
+                                <th>Future</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th>yo</th>
+                                <td>@result.Conjugations.Present.SgFirst</td>
+                                <td>@result.Conjugations.ImperfectPast.SgFirst</td>
+                                <td>@result.Conjugations.IndefinitePast.SgFirst</td>
+                                <td>@result.Conjugations.Future.SgFirst</td>
+                            </tr>
+                            <tr>
+                                <th>tú</th>
+                                <td>@result.Conjugations.Present.SgSecond</td>
+                                <td>@result.Conjugations.ImperfectPast.SgSecond</td>
+                                <td>@result.Conjugations.IndefinitePast.SgSecond</td>
+                                <td>@result.Conjugations.Future.SgSecond</td>
+                            </tr>
+                            <tr>
+                                <th>él/Ud</th>
+                                <td>@result.Conjugations.Present.SgThird</td>
+                                <td>@result.Conjugations.ImperfectPast.SgThird</td>
+                                <td>@result.Conjugations.IndefinitePast.SgThird</td>
+                                <td>@result.Conjugations.Future.SgThird</td>
+                            </tr>
+                            <tr>
+                                <th>nosotros</th>
+                                <td>@result.Conjugations.Present.PlFirst</td>
+                                <td>@result.Conjugations.ImperfectPast.PlFirst</td>
+                                <td>@result.Conjugations.IndefinitePast.PlFirst</td>
+                                <td>@result.Conjugations.Future.PlFirst</td>
+                            </tr>
+                            <tr>
+                                <th>vosotros</th>
+                                <td>@result.Conjugations.Present.PlSecond</td>
+                                <td>@result.Conjugations.ImperfectPast.PlSecond</td>
+                                <td>@result.Conjugations.IndefinitePast.PlSecond</td>
+                                <td>@result.Conjugations.Future.PlSecond</td>
+                            </tr>
+                            <tr>
+                                <th>ellos/Uds</th>
+                                <td>@result.Conjugations.Present.PlThird</td>
+                                <td>@result.Conjugations.ImperfectPast.PlThird</td>
+                                <td>@result.Conjugations.IndefinitePast.PlThird</td>
+                                <td>@result.Conjugations.Future.PlThird</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-responsive-sm">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Conditional</th>
+                                <th>Imperative</th>
+                                <th>Pres. Subj.</th>
+                                <th>Imperf.Subj.</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th>yo</th>
+                                <td>@result.Conjugations.Conditional.SgFirst</td>
+                                <td>@result.Conjugations.Imperative.SgFirst</td>
+                                <td>@result.Conjugations.PresentSubjunctive.SgFirst</td>
+                                <td>@result.Conjugations.ImperfectSubjunctive.SgFirst</td>
+                            </tr>
+                            <tr>
+                                <th>tú</th>
+                                <td>@result.Conjugations.Conditional.SgSecond</td>
+                                <td>@result.Conjugations.Imperative.SgSecond</td>
+                                <td>@result.Conjugations.PresentSubjunctive.SgSecond</td>
+                                <td>@result.Conjugations.ImperfectSubjunctive.SgSecond</td>
+                            </tr>
+                            <tr>
+                                <th>él/Ud</th>
+                                <td>@result.Conjugations.Conditional.SgThird</td>
+                                <td>@result.Conjugations.Imperative.SgThird</td>
+                                <td>@result.Conjugations.PresentSubjunctive.SgThird</td>
+                                <td>@result.Conjugations.ImperfectSubjunctive.SgThird</td>
+                            </tr>
+                            <tr>
+                                <th>nosotros</th>
+                                <td>@result.Conjugations.Conditional.PlFirst</td>
+                                <td>@result.Conjugations.Imperative.PlFirst</td>
+                                <td>@result.Conjugations.PresentSubjunctive.PlFirst</td>
+                                <td>@result.Conjugations.ImperfectSubjunctive.PlFirst</td>
+                            </tr>
+                            <tr>
+                                <th>vosotros</th>
+                                <td>@result.Conjugations.Conditional.PlSecond</td>
+                                <td>@result.Conjugations.Imperative.PlSecond</td>
+                                <td>@result.Conjugations.PresentSubjunctive.PlSecond</td>
+                                <td>@result.Conjugations.ImperfectSubjunctive.PlSecond</td>
+                            </tr>
+                            <tr>
+                                <th>ellos/Uds</th>
+                                <td>@result.Conjugations.Conditional.PlThird</td>
+                                <td>@result.Conjugations.Imperative.PlThird</td>
+                                <td>@result.Conjugations.PresentSubjunctive.PlThird</td>
+                                <td>@result.Conjugations.ImperfectSubjunctive.PlThird</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        }
+
+        if (result.CrossReferences.HasValue())
+        {
+            <div class="mw-xref">
+                <span class="mw-xref-label">See also: </span>
+                @foreach (var xref in result.CrossReferences)
+                {
+                    <span class="mw-xref-item">@xref.Text</span>
+                }
+            </div>
+        }
+
+        if (result.BiographicalNote != null)
+        {
+            <div class="mw-bio">
+                <h2>Biographical note</h2>
+                <div>
+                    @foreach(var bio in result.BiographicalNote.DefiningTexts)
+                    {
+                        <partial name="_definingText" model="bio"/>
+                    }
+                </div>               
+            </div>
         }
     }
 
     @* show additional entries *@
     if (relatedEntries.Any())
     {
-        <hr/>
+        <hr />
         <h2>Related to @Model.SearchTerm: </h2>
-        <i>@string.Join(',', relatedEntries.Select(e => e.Metadata.Id));</i>
+        <i>@string.Join(',', relatedEntries.Select(e => e.Metadata.Id))</i>
     }
 
     @* no results*@

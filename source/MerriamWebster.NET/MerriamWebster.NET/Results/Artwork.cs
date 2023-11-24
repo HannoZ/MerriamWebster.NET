@@ -17,7 +17,7 @@ namespace MerriamWebster.NET.Results
         /// <summary>
         /// The image caption text.
         /// </summary>
-        public string? Caption { get; set; }
+        public FormattedText? Caption { get; set; }
         /// <summary>
         /// A direct link to the image.
         /// </summary>

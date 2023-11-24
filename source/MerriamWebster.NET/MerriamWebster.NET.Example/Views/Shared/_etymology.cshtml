@@ -1,0 +1,18 @@
+﻿@using MerriamWebster.NET.Results
+@model MerriamWebster.NET.Results.Etymology
+@if (Model == null)
+{
+    return;
+}
+
+<p class="mw-etymology">
+    <h2>Etymology</h2>
+    <p>@Html.Raw(Model.Text.HtmlText)</p>
+    @if (Model.Notes.HasValue())
+    {
+        foreach (var etymologyNote in Model.Notes)
+        {
+            <p>@Html.Raw(etymologyNote.Text.HtmlText)</p>
+        }
+    }
+</p>

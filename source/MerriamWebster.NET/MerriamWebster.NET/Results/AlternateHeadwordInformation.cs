@@ -4,15 +4,6 @@
     public class AlternateHeadwordInformation : HeadwordInformation
     {
         /// <summary>
-        /// <i>Optional.</i> A parenthesized subject/status label describes the subject area or regional/usage status (eg, "British") of a headword or other defined term, and is displayed in parentheses.<br/>
-        /// The parenthesized subject/status label is contained in a <see cref="ParenthesizedSubjectStatusLabel"/>.
-        /// </summary>
-        /// <remarks>
-        /// <b>Display Guidance:</b> Display within parentheses and in italics.
-        /// </remarks>
-        public ParenthesizedSubjectStatusLabel? ParenthesizedSubjectStatusLabel { get; set; }
-
-        /// <summary>
         /// <i>Spanish-English only.</i> Contains a cutback form of the preceding alternate headword.
         /// </summary>
         /// <remarks>

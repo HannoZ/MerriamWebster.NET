@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using System.Text.RegularExpressions;
 using MerriamWebster.NET.Parsing;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Shouldly;
@@ -87,7 +88,17 @@ namespace MerriamWebster.NET.Tests.Parsing
             // ASSERT
             result.Count().ShouldBe(2);
         }
-  
-       
+
+        [TestMethod]
+        public void SynonymsParser_CommaSeparated()
+        {
+            string input = "{sx|bite||}, {sx|gnaw||}";
+
+            // ACT
+            var result = SynonymsParser.ExtractSynonyms(input);
+
+            // ASSERT
+            result.Count().ShouldBe(2);
+        }
     }
 }

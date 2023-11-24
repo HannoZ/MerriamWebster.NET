@@ -1,4 +1,5 @@
 ﻿using System.Text.Json;
+using MerriamWebster.NET.Parsing.Markup;
 using MerriamWebster.NET.Results;
 
 namespace MerriamWebster.NET.Parsing
@@ -24,7 +25,9 @@ namespace MerriamWebster.NET.Parsing
             var source = JsonParserHelper.GetStringValue(aq, "source");
             if (source != null)
             {
-                quote.Source = source;
+                // this works as long as the display is HTML but it's not the best solution
+                var cleanSource = MarkupManipulator.RemoveMarkupFromString(source);
+                quote.Source = $"<cite title=\"{cleanSource}\">{source}</cite>";
             }
 
 

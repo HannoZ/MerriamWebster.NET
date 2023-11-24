@@ -1,12 +1,31 @@
 ﻿@using MerriamWebster.NET.Results
 @model MerriamWebster.NET.Results.IDefiningText
 @{
+    if (Model == null)
+    {
+        return;
+    }
+
     var extraClass = "";
     if (Model is VerbalIllustration)
     {
         extraClass = "-vis";
     }
 }
-<div class="mw-defining-text@(extraClass)">
-    @Html.Raw(Model.MainText.HtmlText)
-</div>
+<span class="mw-defining-text@(extraClass)">
+    @if (Model is VerbalIllustration { AttributionOfQuote: not null } vi)
+    {
+        <figure>
+            <blockquote class="blockquote">
+                <p>
+                    @Html.Raw(Model.MainText.HtmlText)
+                </p>
+            </blockquote>
+            <figcaption class="blockquote-footer">@Html.Raw(vi.AttributionOfQuote.AttributionText.HtmlText)</figcaption>
+        </figure>
+    }
+    else
+    {
+        @Html.Raw(Model.MainText.HtmlText)
+    }
+</span>
