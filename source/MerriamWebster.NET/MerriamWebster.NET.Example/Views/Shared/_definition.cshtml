@@ -101,6 +101,16 @@
                                 </div>
                             }
                         }
+                        if (sense.CrossReferences.HasValue())
+                        {
+                            <div class="mw-xref">
+                                <span class="mw-xref-label">See also: </span>
+                                @foreach (var xref in sense.CrossReferences)
+                                {
+                                    <span class="mw-xref-item">@xref.Text</span>
+                                }
+                            </div>
+                        }
                     }
                 </li>
             }

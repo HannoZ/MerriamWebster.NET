@@ -23,6 +23,12 @@
             }
             @Html.Raw(inflection.Value)
             <partial name="_pronunciation" model="inflection.Pronunciations" />
+            @if (inflection.Alternate != null)
+            {
+                <span class="fst-italic">Or:
+                    @inflection.Alternate.Inflection
+                </span>
+            }
         </div>
     }
 </div>

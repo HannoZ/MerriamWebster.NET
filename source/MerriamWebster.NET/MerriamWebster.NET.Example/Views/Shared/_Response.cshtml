@@ -79,7 +79,7 @@
         <partial name="_inflection" model="result.Inflections" />
 
         @* alternate headwords *@
-        @if (result.AlternateHeadwords.HasValue())
+        if (result.AlternateHeadwords.HasValue())
         {
             <div class="fw-light">
                 @foreach (var ahw in result.AlternateHeadwords)
@@ -91,7 +91,7 @@
             </div>
         }
         @* cross-references *@
-        @if (result.CognateCrossReferences.HasValue())
+        if (result.CognateCrossReferences.HasValue())
         {
             foreach (var crossReference in result.CognateCrossReferences)
             {
@@ -102,6 +102,7 @@
                     <span>@crossReferenceTarget.SenseNumber</span>
                     <span>@crossReferenceTarget.Target</span>
                 }
+
             }
         }
 
@@ -109,7 +110,7 @@
         <partial name="_variant" model="@result.Variants" />
 
         @*Definitions*@
-        @if (result.Definitions.HasValue())
+        if (result.Definitions.HasValue())
         {
             <p>
                 <h2>Definitions</h2>
@@ -141,10 +142,14 @@
                     {
                         foreach (var runOnText in uro.RunOnTexts)
                         {
-                     <div>
-                         <partial name="_definingText" model="runOnText" />
-                     </div>
+                            <div>
+                                <partial name="_definingText" model="runOnText" />
+                            </div>
                         }
+                    }
+                    @if(uro.AlternateEntry != null)
+                    {
+                        <span class="fst-italic">Or @uro.AlternateEntry.Text</span>
                     }
                 }
             </p>
@@ -199,7 +204,7 @@
         }
 
         @* usage *@
-        @if (result.Usages.HasValue())
+        if (result.Usages.HasValue())
         {
             <p class="mw-usage">
                 <h2>Usages</h2>
@@ -231,7 +236,8 @@
         @* artwork*@
         if (result.Artwork != null)
         {
-            <div class="fst-italic">Illustration of @result.Headword.Text</div>
+            <div class="fst-italic">Illustration of @result.Headword.Text
+            </div>
             <figure>
                 <img src="@result.Artwork.ImageLocation" alt="@result.Artwork.Caption.Text" />
                 <figcaption>@Html.Raw(@result.Artwork.Caption.HtmlText)</figcaption>
@@ -247,9 +253,10 @@
         }
 
         @* synonyms*@
-        @if (result.Synonyms.HasValue())
+        if (result.Synonyms.HasValue())
         {
-            <div>Synonyms for <span class="fst-italic">@result.Headword.Text</span></div>
+            <div>Synonyms for <span class="fst-italic">@result.Headword.Text
+                </span></div>
             foreach (var synonym in result.Synonyms)
             {
                 <p>
@@ -265,10 +272,11 @@
                 {
                     <span>See in addition: @string.Join(',', synonym.SeeInAdditionReference)</span>
                 }
+
             }
         }
 
-        @if (result.DirectionalCrossReferences.HasValue())
+        if (result.DirectionalCrossReferences.HasValue())
         {
             <p class="mw-dxnls">
 
@@ -277,6 +285,154 @@
                     <div>@Html.Raw(dx.HtmlText)</div>
                 }
             </p>
+        }
+
+        if (result.Conjugations != null)
+        {
+            <div><h2>Conjugations</h2></div>
+            <div >
+                <div class="card card-body">
+                    <div class="row">
+                        <div class="col-12"><span class="font-weight-bold">Present participle: </span>@result.Conjugations.PresentParticiple</div>
+                        <div class="col-12"><span class="font-weight-bold">Past participle: </span>@result.Conjugations.PastParticiple</div>
+                    </div>
+                    <table class="table table-sm table-responsive-sm">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Present</th>
+                                <th>Imperfect</th>
+                                <th>Preterite</th>
+                                <th>Future</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th>yo</th>
+                                <td>@result.Conjugations.Present.SgFirst</td>
+                                <td>@result.Conjugations.ImperfectPast.SgFirst</td>
+                                <td>@result.Conjugations.IndefinitePast.SgFirst</td>
+                                <td>@result.Conjugations.Future.SgFirst</td>
+                            </tr>
+                            <tr>
+                                <th>tú</th>
+                                <td>@result.Conjugations.Present.SgSecond</td>
+                                <td>@result.Conjugations.ImperfectPast.SgSecond</td>
+                                <td>@result.Conjugations.IndefinitePast.SgSecond</td>
+                                <td>@result.Conjugations.Future.SgSecond</td>
+                            </tr>
+                            <tr>
+                                <th>él/Ud</th>
+                                <td>@result.Conjugations.Present.SgThird</td>
+                                <td>@result.Conjugations.ImperfectPast.SgThird</td>
+                                <td>@result.Conjugations.IndefinitePast.SgThird</td>
+                                <td>@result.Conjugations.Future.SgThird</td>
+                            </tr>
+                            <tr>
+                                <th>nosotros</th>
+                                <td>@result.Conjugations.Present.PlFirst</td>
+                                <td>@result.Conjugations.ImperfectPast.PlFirst</td>
+                                <td>@result.Conjugations.IndefinitePast.PlFirst</td>
+                                <td>@result.Conjugations.Future.PlFirst</td>
+                            </tr>
+                            <tr>
+                                <th>vosotros</th>
+                                <td>@result.Conjugations.Present.PlSecond</td>
+                                <td>@result.Conjugations.ImperfectPast.PlSecond</td>
+                                <td>@result.Conjugations.IndefinitePast.PlSecond</td>
+                                <td>@result.Conjugations.Future.PlSecond</td>
+                            </tr>
+                            <tr>
+                                <th>ellos/Uds</th>
+                                <td>@result.Conjugations.Present.PlThird</td>
+                                <td>@result.Conjugations.ImperfectPast.PlThird</td>
+                                <td>@result.Conjugations.IndefinitePast.PlThird</td>
+                                <td>@result.Conjugations.Future.PlThird</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-responsive-sm">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Conditional</th>
+                                <th>Imperative</th>
+                                <th>Pres. Subj.</th>
+                                <th>Imperf.Subj.</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th>yo</th>
+                                <td>@result.Conjugations.Conditional.SgFirst</td>
+                                <td>@result.Conjugations.Imperative.SgFirst</td>
+                                <td>@result.Conjugations.PresentSubjunctive.SgFirst</td>
+                                <td>@result.Conjugations.ImperfectSubjunctive.SgFirst</td>
+                            </tr>
+                            <tr>
+                                <th>tú</th>
+                                <td>@result.Conjugations.Conditional.SgSecond</td>
+                                <td>@result.Conjugations.Imperative.SgSecond</td>
+                                <td>@result.Conjugations.PresentSubjunctive.SgSecond</td>
+                                <td>@result.Conjugations.ImperfectSubjunctive.SgSecond</td>
+                            </tr>
+                            <tr>
+                                <th>él/Ud</th>
+                                <td>@result.Conjugations.Conditional.SgThird</td>
+                                <td>@result.Conjugations.Imperative.SgThird</td>
+                                <td>@result.Conjugations.PresentSubjunctive.SgThird</td>
+                                <td>@result.Conjugations.ImperfectSubjunctive.SgThird</td>
+                            </tr>
+                            <tr>
+                                <th>nosotros</th>
+                                <td>@result.Conjugations.Conditional.PlFirst</td>
+                                <td>@result.Conjugations.Imperative.PlFirst</td>
+                                <td>@result.Conjugations.PresentSubjunctive.PlFirst</td>
+                                <td>@result.Conjugations.ImperfectSubjunctive.PlFirst</td>
+                            </tr>
+                            <tr>
+                                <th>vosotros</th>
+                                <td>@result.Conjugations.Conditional.PlSecond</td>
+                                <td>@result.Conjugations.Imperative.PlSecond</td>
+                                <td>@result.Conjugations.PresentSubjunctive.PlSecond</td>
+                                <td>@result.Conjugations.ImperfectSubjunctive.PlSecond</td>
+                            </tr>
+                            <tr>
+                                <th>ellos/Uds</th>
+                                <td>@result.Conjugations.Conditional.PlThird</td>
+                                <td>@result.Conjugations.Imperative.PlThird</td>
+                                <td>@result.Conjugations.PresentSubjunctive.PlThird</td>
+                                <td>@result.Conjugations.ImperfectSubjunctive.PlThird</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        }
+
+        if (result.CrossReferences.HasValue())
+        {
+            <div class="mw-xref">
+                <span class="mw-xref-label">See also: </span>
+                @foreach (var xref in result.CrossReferences)
+                {
+                    <span class="mw-xref-item">@xref.Text</span>
+                }
+            </div>
+        }
+
+        if (result.BiographicalNote != null)
+        {
+            <div class="mw-bio">
+                <h2>Biographical note</h2>
+                <div>
+                    @foreach(var bio in result.BiographicalNote.DefiningTexts)
+                    {
+                        <partial name="_definingText" model="bio"/>
+                    }
+                </div>               
+            </div>
         }
     }
 
