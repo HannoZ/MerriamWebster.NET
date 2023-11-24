@@ -23,10 +23,10 @@ jobs:
           include-prerelease: false
 
       - name: Build with dotnet
-        run: dotnet build ./source/MerriamWebster.NET/MerriamWebster.NET.Example.sln --configuration Release
+        run: dotnet build ./source/MerriamWebster.NET/MerriamWebster.NET.Example/MerriamWebster.NET.Example.csproj --configuration Release
 
       - name: dotnet publish
-        run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
+        run: dotnet publish ./source/MerriamWebster.NET/MerriamWebster.NET.Example/MerriamWebster.NET.Example.csproj -c Release -o ${{env.DOTNET_ROOT}}/myapp
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
