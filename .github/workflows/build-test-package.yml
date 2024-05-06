@@ -2,8 +2,7 @@ name: Build Test Package
 
 on:
   push:
-    branches: [ master ] 
-    paths-ignore: '**.md'
+    branches: [ master ]     
     paths:
       - source/MerriamWebster.NET
     
