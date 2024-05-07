@@ -4,7 +4,7 @@ on:
   push:
     branches: [ master ]     
     paths:
-      - ./source/MerriamWebster.NET
+      - ./source/MerriamWebster.NET/MerriamWebster.NET
     
 jobs:
   build:
