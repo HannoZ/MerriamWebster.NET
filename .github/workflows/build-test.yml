@@ -1,10 +1,11 @@
 name: Build & Test
 
 on:
+  workflow_dispatch:
   pull_request:
     branches: [ master ]
     paths:
-      - source
+      - ./source
 
 jobs:
   build:
