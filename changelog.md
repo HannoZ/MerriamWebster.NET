@@ -1,3 +1,5 @@
+3.1.2 Package updates, removed .NET 7 support
+
 3.1.1 Some small improvements and fixes
 
 3.1 Added .NET 8 support. Added missing documentation for public members
