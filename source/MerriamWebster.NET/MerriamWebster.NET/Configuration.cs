@@ -4,11 +4,10 @@ using MerriamWebster.NET.Results;
 
 namespace MerriamWebster.NET
 {
-#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
     public static class Configuration
     {
-        public static readonly Uri ApiBaseAddress = new Uri("https://www.dictionaryapi.com/api/v3/references/");
-        public static readonly Uri MediaBaseAddres = new Uri("https://media.merriam-webster.com/audio/prons/");
+        public static readonly Uri ApiBaseAddress = new("https://www.dictionaryapi.com/api/v3/references/");
+        public static readonly Uri MediaBaseAddres = new("https://media.merriam-webster.com/audio/prons/");
 
         public static readonly string ArtworkHtmlPagePlaceholder = "https://www.merriam-webster.com/art/dict/{0}.htm";
         public static readonly string ArtworkDirectLinkPlaceholder = "https://www.merriam-webster.com/assets/mw/static/art/dict/{0}.gif";
@@ -39,4 +38,3 @@ namespace MerriamWebster.NET
         public static Language Language { get; set; } = Language.NotApplicable;
     }
 }
-#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member

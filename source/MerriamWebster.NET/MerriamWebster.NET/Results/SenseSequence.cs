@@ -14,6 +14,6 @@ namespace MerriamWebster.NET.Results
         /// <summary>
         /// Gets or sets the senses.
         /// </summary>
-        public ICollection<SenseSequenceSense> Senses { get; set; } = new List<SenseSequenceSense>();
+        public ICollection<SenseSequenceSense> Senses { get; set; } = [];
     }
 }

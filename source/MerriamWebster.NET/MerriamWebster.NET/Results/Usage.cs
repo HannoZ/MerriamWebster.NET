@@ -27,7 +27,7 @@ namespace MerriamWebster.NET.Results
         /// <summary>
         /// paragraph text containing the elements <see cref="DefiningText"/>, <see cref="VerbalIllustration"/>, <see cref="InAdditionReference"/> (not yet implemented)
         /// </summary>
-        public ICollection<IDefiningText> ParagraphTexts { get; set; } = new List<IDefiningText>();
+        public ICollection<IDefiningText> ParagraphTexts { get; set; } = [];
 
         /// <summary>
         /// Experimental feature! A summary of the <see cref="ParagraphTexts"/> content.

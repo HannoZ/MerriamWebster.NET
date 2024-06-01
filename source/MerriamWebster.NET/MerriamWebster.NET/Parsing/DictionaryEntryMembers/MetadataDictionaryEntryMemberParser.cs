@@ -52,11 +52,7 @@ namespace MerriamWebster.NET.Parsing.DictionaryEntryMembers
             var stems = JsonParserHelper.GetStringValues(source, "stems");
             if (stems != null)
             {
-                metadata.Stems = new List<string>();
-                foreach (var stem in stems)
-                {
-                    metadata.Stems.Add(stem);
-                }
+                metadata.Stems = [.. stems];
             }
 
             if (source.TryGetProperty("lang", out var lang)

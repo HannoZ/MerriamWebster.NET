@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Threading.Tasks;
 using MerriamWebster.NET.Parsing;
 using MerriamWebster.NET.Results;
@@ -156,7 +157,7 @@ namespace MerriamWebster.NET
         /// <param name="searchTerm">The search term</param>
         /// <param name="json">The API response in JSON format</param>
         /// <returns>The parsed result</returns>
-        public ResultModel ParseApiResponse(string api, string searchTerm, string json)
+        public ResultModel ParseApiResponse(string api, string searchTerm, [StringSyntax(StringSyntaxAttribute.Json)] string json)
         {
             var resultModel = _parser.ParseSearchResult(api, json);
             resultModel.SearchText = searchTerm;

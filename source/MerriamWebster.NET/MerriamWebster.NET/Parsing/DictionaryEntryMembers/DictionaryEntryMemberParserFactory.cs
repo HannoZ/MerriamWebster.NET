@@ -8,55 +8,33 @@ namespace MerriamWebster.NET.Parsing.DictionaryEntryMembers
     /// </summary>
     internal class DictionaryEntryMemberParserFactory 
     {
-        public static IDictionaryEntryMemberParser? GetDictionaryEntryMemberParser(string api, string elementName) 
+        public static IDictionaryEntryMemberParser? GetDictionaryEntryMemberParser(string api, string elementName)
         {
-            switch (elementName)
+            return elementName switch
             {
-                case "meta":
-                    return new MetadataDictionaryEntryMemberParser();
-                case "hwi":
-                    return new HeadwordInformationDictionaryEntryMemberParser();
-                case "ahws":
-                    return new AlternateHeadwordInformationDictionaryEntryMemberParser();
-                case "ins":
-                    return new InflectionDictionaryEntryMemberParser();
-                case "vrs":
-                    return new VariantsDictionaryEntryMemberParser();
-                case "cxs":
-                    return new CognateCrossReferenceDictionaryEntryMemberParser();
-                case "def":
-                    return new DefinitionDictionaryEntryMemberParser();
-                case "uros":
-                    return new UndefinedRunOnsDictionaryEntryMemberParser();
-                case "dros":
-                    return new DefinedRunOnsDictionaryEntryMemberParser();
-                case "art":
-                    return new ArtworkDictionaryEntryMemberParser();
-                case "et":
-                    return new EtymologyDictionaryEntryMemberParser();
-                case "dxnls":
-                    return new DirectionalCrossReferencesDictionaryEntryMemberParser();
-                case "usages":
-                    return new UsagesDictionaryEntryMemberParser();
-                case "syns":
-                    return new SynonymsDictionaryEntryMemberParser();
-                case "quotes":
-                    return new QuotesDictionaryEntryMemberParser();
-                case "table":
-                    return new TableDictionaryEntryMemberParser();
-
+                "meta" => new MetadataDictionaryEntryMemberParser(),
+                "hwi" => new HeadwordInformationDictionaryEntryMemberParser(),
+                "ahws" => new AlternateHeadwordInformationDictionaryEntryMemberParser(),
+                "ins" => new InflectionDictionaryEntryMemberParser(),
+                "vrs" => new VariantsDictionaryEntryMemberParser(),
+                "cxs" => new CognateCrossReferenceDictionaryEntryMemberParser(),
+                "def" => new DefinitionDictionaryEntryMemberParser(),
+                "uros" => new UndefinedRunOnsDictionaryEntryMemberParser(),
+                "dros" => new DefinedRunOnsDictionaryEntryMemberParser(),
+                "art" => new ArtworkDictionaryEntryMemberParser(),
+                "et" => new EtymologyDictionaryEntryMemberParser(),
+                "dxnls" => new DirectionalCrossReferencesDictionaryEntryMemberParser(),
+                "usages" => new UsagesDictionaryEntryMemberParser(),
+                "syns" => new SynonymsDictionaryEntryMemberParser(),
+                "quotes" => new QuotesDictionaryEntryMemberParser(),
+                "table" => new TableDictionaryEntryMemberParser(),
                 // medical dictionary only
-                case "bios":
-                    return new BiosDictionaryEntryMemberParser();
-
+                "bios" => new BiosDictionaryEntryMemberParser(),
                 // spanish-english only 
-                case "suppl":
-                    return new ConjugationsDictionaryEntryMemberParser();
-                case "xrs":
-                    return new CrossReferencesDictionaryEntryMemberParser();
-
-                default: return null;
-            }
+                "suppl" => new ConjugationsDictionaryEntryMemberParser(),
+                "xrs" => new CrossReferencesDictionaryEntryMemberParser(),
+                _ => null
+            };
         }
     }
 }

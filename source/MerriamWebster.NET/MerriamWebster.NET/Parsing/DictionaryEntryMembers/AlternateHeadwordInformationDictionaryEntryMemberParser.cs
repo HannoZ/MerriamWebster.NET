@@ -22,7 +22,7 @@ namespace MerriamWebster.NET.Parsing.DictionaryEntryMembers
             }
 
             var source = json.Value;
-            target.AlternateHeadwords = new List<AlternateHeadwordInformation>();
+            target.AlternateHeadwords = [];
 
             foreach (var ahw in source.EnumerateArray())
             {

@@ -26,7 +26,7 @@ namespace MerriamWebster.NET.Results
         /// <summary>
         /// A collection of zero or more <see cref="Entry"/> objects. This is the main result. 
         /// </summary>
-        public ICollection<Entry> Entries { get; set; } = new List<Entry>();
+        public ICollection<Entry> Entries { get; set; } = [];
 
         /// <summary>
         /// The summary combines all non-empty summaries of the entries in the <see cref="Entries"/> property.

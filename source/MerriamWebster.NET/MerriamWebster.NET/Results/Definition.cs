@@ -26,7 +26,7 @@ namespace MerriamWebster.NET.Results
         /// <summary>
         /// Gets or sets the sense sequences.
         /// </summary>
-        public ICollection<SenseSequence> SenseSequence { get; set; } = new List<SenseSequence>();
+        public ICollection<SenseSequence> SenseSequence { get; set; } = [];
         
         /// <summary>
         /// <i>Optional.</i> Gets or sets a collection of synonyms.

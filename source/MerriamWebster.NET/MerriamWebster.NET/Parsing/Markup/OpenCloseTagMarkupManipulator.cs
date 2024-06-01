@@ -2,7 +2,7 @@ namespace MerriamWebster.NET.Parsing.Markup
 {
     internal class OpenCloseTagMarkupManipulator : IMarkupManipulator
     {
-        private readonly string[] _tags = {"b", "it", "inf", "sup", "sc", "wi", "phrase", "qword", "parahw" };
+        private readonly string[] _tags = ["b", "it", "inf", "sup", "sc", "wi", "phrase", "qword", "parahw"];
 
         public string RemoveMarkup(string input)
         {

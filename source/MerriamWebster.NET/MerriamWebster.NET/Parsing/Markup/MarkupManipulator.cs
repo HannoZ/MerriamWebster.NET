@@ -21,7 +21,7 @@ namespace MerriamWebster.NET.Parsing.Markup
                 .GetTypes()
                 .Where(type => typeof(IMarkupManipulator).IsAssignableFrom(type) && !type.IsInterface);
 
-            MarkupManipulators = new List<IMarkupManipulator>();
+            MarkupManipulators = [];
             foreach (var instance in types.Select(Activator.CreateInstance))
             {
                 if (instance is IMarkupManipulator markupManipulator)

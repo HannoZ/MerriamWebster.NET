@@ -21,7 +21,7 @@ namespace MerriamWebster.NET.Results
         /// <remarks>
         /// Each run-in wrap either contains a run-in entry word or intervening text.
         /// </remarks>
-        public ICollection<RunInWrap> Wraps { get; set; } = new List<RunInWrap>();
+        public ICollection<RunInWrap> Wraps { get; set; } = [];
         
         /// <inheritdoc />
         [JsonIgnore]

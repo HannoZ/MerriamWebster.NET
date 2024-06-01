@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using MerriamWebster.NET.Results;
 
@@ -17,9 +16,9 @@ namespace MerriamWebster.NET.Parsing.DefiningText
         /// <remarks>
         /// Note: this is an experimental feature
         /// </remarks>
-        public static FormattedText Build(this ICollection<IDefiningText> definingTexts)
+        public static FormattedText Build(this ICollection<IDefiningText>? definingTexts)
         {
-            if (definingTexts == null || !definingTexts.Any())
+            if (definingTexts == null || definingTexts.Count == 0)
             {
                 return string.Empty;
             }
