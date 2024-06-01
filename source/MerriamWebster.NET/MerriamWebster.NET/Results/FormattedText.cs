@@ -22,9 +22,9 @@ namespace MerriamWebster.NET.Results
         /// Creates a new instance of the <see cref="FormattedText"/> class.
         /// </summary>
         /// <param name="text">The text.</param>
-        public FormattedText(string text)
+        public FormattedText(string? text)
         {
-            RawText = text;
+            RawText = text ?? string.Empty;
         }
 
         /// <summary>
@@ -53,7 +53,7 @@ namespace MerriamWebster.NET.Results
         /// <summary>
         /// Creates a new <see cref="FormattedText"/> instance from the input string.
         /// </summary>
-        public static implicit operator FormattedText(string text)
+        public static implicit operator FormattedText(string? text)
         {
             return new FormattedText(text);
         }
@@ -61,9 +61,9 @@ namespace MerriamWebster.NET.Results
         /// <summary>
         /// Takes a FormattedText object and returns the <see cref="RawText"/> value. 
         /// </summary>
-        public static implicit operator string(FormattedText text)
+        public static implicit operator string?(FormattedText? text)
         {
-            return text.RawText;
+            return text?.RawText;
         }
 
         /// <inheritdoc />

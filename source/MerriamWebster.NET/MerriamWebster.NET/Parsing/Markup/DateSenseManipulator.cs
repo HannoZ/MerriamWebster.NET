@@ -16,7 +16,7 @@ namespace MerriamWebster.NET.Parsing.Markup
         [GeneratedRegex(@"{ds\|([^}]*)}")]
         private static partial Regex ParsePattern();
 #else
-        private static readonly Regex Pattern = new Regex(@"{ds\|([^}]*)}", RegexOptions.Compiled);
+        private static readonly Regex Pattern = new(@"{ds\|([^}]*)}", RegexOptions.Compiled);
 #endif
 
         /// <inheritdoc />
@@ -31,7 +31,7 @@ namespace MerriamWebster.NET.Parsing.Markup
             input = Regex.Replace(input, Pattern.ToString(), "[x]");
             var index = input.IndexOf("[x]", StringComparison.OrdinalIgnoreCase);
 
-            return input.Substring(0, index);
+            return input[..index];
         }
 
         /// <inheritdoc />
@@ -48,7 +48,7 @@ namespace MerriamWebster.NET.Parsing.Markup
             var target = match.Groups[1].Value;
 
             var index = input.IndexOf("[x]", StringComparison.OrdinalIgnoreCase);
-            string first = input.Substring(0, index);
+            string first = input[..index];
 
             var tokens = target.Split('|');
             if (tokens.All(string.IsNullOrEmpty))

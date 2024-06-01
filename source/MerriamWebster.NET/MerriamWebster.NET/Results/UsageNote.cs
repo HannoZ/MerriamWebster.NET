@@ -15,7 +15,7 @@ namespace MerriamWebster.NET.Results
         /// <summary>
         /// Gets or set the defining texts.
         /// </summary>
-        public ICollection<IDefiningText> DefiningTexts { get; set; } = new List<IDefiningText>();
+        public ICollection<IDefiningText> DefiningTexts { get; set; } = [];
 
         /// <inheritdoc />}
         public FormattedText MainText => "⟶ " + DefiningTexts.Build();

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Text.Json;
 using MerriamWebster.NET.Parsing.DictionaryEntryMembers;
 using MerriamWebster.NET.Results;
@@ -25,7 +26,7 @@ namespace MerriamWebster.NET.Parsing
         /// <summary>
         /// Parses the result of an api request and returns the result using specific parse options.
         /// </summary>
-        public ResultModel ParseSearchResult(string api, string searchResult)
+        public ResultModel ParseSearchResult(string api, [StringSyntax(StringSyntaxAttribute.Json)] string searchResult)
         {
             ArgumentNullException.ThrowIfNull(api, nameof(api));
 

@@ -33,7 +33,7 @@ namespace MerriamWebster.NET.Parsing.DictionaryEntryMembers
 
                 if (synonymElement.TryGetProperty("pt", out var pt))
                 {
-                    synonym.ParagraphTexts = new List<IDefiningText>();
+                    synonym.ParagraphTexts = [];
                     foreach (var ptElement in pt.EnumerateArray())
                     {
                         var items = ptElement.EnumerateArray().ToList();
@@ -61,7 +61,7 @@ namespace MerriamWebster.NET.Parsing.DictionaryEntryMembers
 
                 if (synonymElement.TryGetProperty("sarefs", out var refs))
                 {
-                    synonym.SeeInAdditionReference = new List<string>();
+                    synonym.SeeInAdditionReference = [];
                     foreach (var reference in refs.EnumerateArray())
                     {
                         var refString = reference.GetString();

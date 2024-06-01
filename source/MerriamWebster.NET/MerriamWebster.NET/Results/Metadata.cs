@@ -52,7 +52,7 @@ namespace MerriamWebster.NET.Results
         /// Lists all of the entry's headwords, variants, inflections, undefined entry words, and defined run-on phrases.
         /// Each stem string is a valid search term that should match this entry.
         /// </summary>
-        public ICollection<string>? Stems { get; set; } = new List<string>();
+        public ICollection<string>? Stems { get; set; } = [];
 
         /// <summary>
         /// <c>True</c> if there is a label containing "offensive" in the entry; otherwise, <c>False</c>.
@@ -65,12 +65,12 @@ namespace MerriamWebster.NET.Results
         /// <remarks>
         /// <i>Note</i>: this is a distinct usage from that described in <see cref="Synonym"/>
         /// </remarks>
-        public ICollection<string>? Synonyms { get; set; } = new List<string>();
+        public ICollection<string>? Synonyms { get; set; } = [];
 
         /// <summary>
         /// <i>Optional.</i> Lists all antonyms given in the entry's <i>ant_list</i>; may be used for matching antonym search terms to the entry.        
         /// </summary>
-        public ICollection<string>? Antonyms { get; set; } = new List<string>();
+        public ICollection<string>? Antonyms { get; set; } = [];
 
         /// <summary>
         /// <i>Optional.</i> Gets or sets the target entry.

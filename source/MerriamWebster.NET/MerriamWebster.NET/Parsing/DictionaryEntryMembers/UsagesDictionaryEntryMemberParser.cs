@@ -35,7 +35,7 @@ namespace MerriamWebster.NET.Parsing.DictionaryEntryMembers
 
                 if (usageElement.TryGetProperty("pt", out var pt))
                 {
-                    usage.ParagraphTexts = new List<IDefiningText>();
+                    usage.ParagraphTexts = [];
                     foreach (var ptElement in pt.EnumerateArray())
                     {
                         var items = ptElement.EnumerateArray().ToList();

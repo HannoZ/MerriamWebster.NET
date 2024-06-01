@@ -1,9 +1,14 @@
 ﻿using System.IO;
 using System.Reflection;
 using System.Threading.Tasks;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+// parallelize everything! 
+[assembly: Parallelize(Workers = 0, Scope = ExecutionScope.MethodLevel)]
 
 namespace MerriamWebster.NET.Tests
 {
+
     public class TestHelper
     {
         public static string LoadResponseFromFile(string fileName)

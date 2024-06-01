@@ -8,6 +8,7 @@ using Shouldly;
 namespace MerriamWebster.NET.Tests.Parsing
 {
     [TestClass]
+    [DoNotParallelize] // because the tests change the global configuration this causes issues when running in parallel
     public class AudioLinkCreatorTests
     {
         [TestMethod]

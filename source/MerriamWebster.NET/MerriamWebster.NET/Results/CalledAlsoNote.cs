@@ -35,7 +35,7 @@ namespace MerriamWebster.NET.Results
         /// <summary>
         /// Gets or sets the called-also targets.
         /// </summary>
-        public ICollection<CalledAlsoTarget> Targets { get; set; } = new List<CalledAlsoTarget>();
+        public ICollection<CalledAlsoTarget> Targets { get; set; } = [];
 
 
         /// <inheritdoc />

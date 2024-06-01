@@ -43,7 +43,7 @@ namespace MerriamWebster.NET.Parsing.DictionaryEntryMembers
 
                 if (uro.TryGetProperty("utxt", out var utxt))
                 {
-                    runon.RunOnTexts = new List<IDefiningText>();
+                    runon.RunOnTexts = [];
 
                     foreach (var runTextSection in utxt.EnumerateArray())
                     {

@@ -19,7 +19,7 @@ namespace MerriamWebster.NET.Results
         /// <summary>
         /// Gets the contents.
         /// </summary>
-        public ICollection<IDefiningText> DefiningTexts { get; } = new List<IDefiningText>();
+        public ICollection<IDefiningText> DefiningTexts { get; } = [];
 
         /// <inheritdoc />
         public override string ToString()

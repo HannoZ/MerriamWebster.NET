@@ -21,7 +21,7 @@ namespace MerriamWebster.NET.Parsing.DictionaryEntryMembers
                 throw new ArgumentException($"Cannot handle json object {json.Name}", nameof(json));
             }
 
-            target.CognateCrossReferences = new List<CognateCrossReference>();
+            target.CognateCrossReferences = [];
 
             var source = json.Value;
             foreach (var cxs in source.EnumerateArray())
@@ -34,7 +34,7 @@ namespace MerriamWebster.NET.Parsing.DictionaryEntryMembers
 
                 if (cxs.TryGetProperty("cxtis", out var cxtis))
                 {
-                    crossRef.CrossReferenceTargets = new List<CrossReferenceTarget>();
+                    crossRef.CrossReferenceTargets = [];
                     foreach (var cxti in cxtis.EnumerateArray())
                     {
                         var crossReferenceTarget = new CrossReferenceTarget();

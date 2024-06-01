@@ -78,7 +78,7 @@ namespace MerriamWebster.NET.Parsing
                             var pseq = new SenseSequenceSense()
                             {
                                 IsParenthesizedSenseSequence = true,
-                                Senses = new List<SenseSequenceSense>()
+                                Senses = []
                             };
 
                             foreach (var sourceSequence in sourceSense.EnumerateArray())

@@ -93,7 +93,7 @@ namespace MerriamWebster.NET.Results
         /// <summary>
         /// Gets or sets the definitions.
         /// </summary>
-        public ICollection<Definition> Definitions { get; internal set; } = new List<Definition>();
+        public ICollection<Definition> Definitions { get; internal set; } = [];
         
         /// <summary>
         /// <i>Optional.</i> Gets or sets undefined run-ons.
@@ -128,7 +128,7 @@ namespace MerriamWebster.NET.Results
         /// Note this section should not be displayed alongside the main definition section content, but only in specialized contexts where a preview or shortened entry view is needed.
         /// </para>
         /// </remarks>
-        public ICollection<string> ShortDefs { get; internal set; } = new List<string>();
+        public ICollection<string> ShortDefs { get; internal set; } = [];
 
         /// <summary>
         /// Displays the contents of the <see cref="ShortDefs"/> collection, separated by commas. 

@@ -33,7 +33,7 @@ namespace MerriamWebster.NET.Parsing
                 }
                 else if (type == "et_snote")
                 {
-                    etymology.Notes = new List<EtymologyNote>();
+                    etymology.Notes = [];
                     foreach (var noteElement in items[1].EnumerateArray())
                     {
                         var note = new EtymologyNote();

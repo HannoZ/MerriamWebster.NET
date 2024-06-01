@@ -14,7 +14,7 @@ namespace MerriamWebster.NET.Results
         /// <returns><c>true</c> if collection contains at least one element, otherwise <c>false</c></returns>
         public static bool HasValue<T>(this ICollection<T>? source)
         {
-            return source?.Any() == true;
+            return source is { Count: > 0 };
         }
     }
 }

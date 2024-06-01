@@ -22,7 +22,7 @@ namespace MerriamWebster.NET.Results
         /// <summary>
         /// Gets or sets the definitions.
         /// </summary>
-        public ICollection<Definition>? Definitions { get; set; } = new List<Definition>();
+        public ICollection<Definition> Definitions { get; set; } = [];
         
         /// <summary>
         /// <i>Optional.</i> Gets or sets the etymology.

@@ -15,6 +15,6 @@ namespace MerriamWebster.NET.Results
         /// <summary>
         /// Gets or sets the cross-reference targets.
         /// </summary>
-        public ICollection<CrossReferenceTarget> CrossReferenceTargets { get; set; } = new List<CrossReferenceTarget>();
+        public ICollection<CrossReferenceTarget> CrossReferenceTargets { get; set; } = [];
     }
 }

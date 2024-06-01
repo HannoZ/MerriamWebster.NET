@@ -41,7 +41,7 @@ namespace MerriamWebster.NET.Parsing.DictionaryEntryMembers
 
                 if (dro.TryGetProperty("def", out var defs))
                 {
-                    runon.Definitions = new List<Definition>();
+                    runon.Definitions = [];
                     foreach (var def in defs.EnumerateArray())
                     {
                         runon.Definitions.Add(DefinitionParser.Parse(def));

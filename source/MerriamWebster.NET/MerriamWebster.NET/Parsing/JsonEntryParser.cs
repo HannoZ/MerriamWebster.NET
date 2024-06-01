@@ -33,7 +33,7 @@ namespace MerriamWebster.NET.Parsing
             var shortdef = JsonParserHelper.GetStringValues(source, "shortdef");
             if (shortdef != null)
             {
-                target.ShortDefs = new List<string>();
+                target.ShortDefs = [];
                 foreach (var def in shortdef)
                 {
                     target.ShortDefs.Add(def);

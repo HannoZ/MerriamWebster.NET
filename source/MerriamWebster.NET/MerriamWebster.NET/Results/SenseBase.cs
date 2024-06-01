@@ -12,7 +12,7 @@ namespace MerriamWebster.NET.Results
         /// <summary>
         /// Gets or sets the defining texts.
         /// </summary>
-        public ICollection<IDefiningText> DefiningTexts { get; set; } = new List<IDefiningText>();
+        public ICollection<IDefiningText> DefiningTexts { get; set; } = [];
 
         /// <summary>
         /// <i>Optional.</i> Gets or sets pronunciations.
