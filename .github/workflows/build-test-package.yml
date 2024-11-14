@@ -14,14 +14,14 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Setup .NET Core 6
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: 6.0.x    
     - name: Setup .NET Core 8
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 8.0.x        
+    - name: Setup .NET Core 9
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 9.0.x    
     - name: Install dependencies
       run: dotnet restore ./source/MerriamWebster.NET/MerriamWebster.NET.sln
     - name: Build
