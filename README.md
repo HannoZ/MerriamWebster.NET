@@ -111,6 +111,7 @@ For a fully working example on how to use the library and how to render the resu
 
 ## A note on serialization/deserialization
 Serialization and deserialization only works with the Json.NET library. The System.Text.Json classes don't support deserialization of interfaces (for example the DefiningTexts property on the SenseBase class is a collection of IDefiningText). 
+> _Note_: Since .NET 7, System.Text.Json does offer [some form of type serialization](https://learn.microsoft.com/en-us/dotnet/standard/serialization/system-text-json/polymorphism#serialize-properties-of-derived-classes), which requires configuration through attributes on base classes to define which child classes are supported. This is not implemented.
 
 Serialization and deserialization has been tested with the following serializer settings: 
 ``` C#

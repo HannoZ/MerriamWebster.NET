@@ -16,7 +16,6 @@ namespace MerriamWebster.NET.Results
         public ResultModel()
         {
             SearchText = string.Empty;
-            RawResponse = string.Empty;
         }
 
         /// <summary>
@@ -35,10 +34,11 @@ namespace MerriamWebster.NET.Results
         public string Summary => SummaryHelper.CreateSummary(SearchText, Entries);
 
         /// <summary>
-        /// Gets or sets the raw response in JSON format. 
+        /// <i>Optional.</i> Gets or sets the raw response in JSON format. 
         /// </summary>
-        /// <remarks>The raw response can be used to get data that is not parsed by the <see cref="JsonDocumentParser"/>. </remarks>
-        public string RawResponse { get; set; }
+        /// <remarks>
+        /// Raw response is only included if the <see cref="MerriamWebsterConfig.IncludeRawResponse"/> property is set to <c>true</c>.
+        /// The raw response can be used to get data that is not parsed by the <see cref="JsonDocumentParser"/>. </remarks>
+        public string? RawResponse { get; set; }
     }
-
 }

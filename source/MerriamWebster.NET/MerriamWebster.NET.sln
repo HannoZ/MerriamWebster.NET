@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MerriamWebster.NET.Tests", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MerriamWebster.NET.Example", "MerriamWebster.NET.Example\MerriamWebster.NET.Example.csproj", "{67D4F98B-B897-4263-9546-94EB08DE8B02}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MerriamWebster.NET.Benchmark", "MerriamWebster.NET.Benchmark\MerriamWebster.NET.Benchmark.csproj", "{95F74F8F-F0BE-4694-9103-D2C3341C3DAD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{67D4F98B-B897-4263-9546-94EB08DE8B02}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{67D4F98B-B897-4263-9546-94EB08DE8B02}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{67D4F98B-B897-4263-9546-94EB08DE8B02}.Release|Any CPU.Build.0 = Release|Any CPU
+		{95F74F8F-F0BE-4694-9103-D2C3341C3DAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95F74F8F-F0BE-4694-9103-D2C3341C3DAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95F74F8F-F0BE-4694-9103-D2C3341C3DAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95F74F8F-F0BE-4694-9103-D2C3341C3DAD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
