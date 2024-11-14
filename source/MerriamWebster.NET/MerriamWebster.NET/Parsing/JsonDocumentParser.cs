@@ -13,14 +13,16 @@ namespace MerriamWebster.NET.Parsing
     public class JsonDocumentParser 
     {
         private readonly ILogger<JsonDocumentParser> _logger;
-        
+        private readonly MerriamWebsterConfig _configuration;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="JsonDocumentParser"/> class.
         /// </summary>
         /// <param name="logger"></param>
-        public JsonDocumentParser(ILogger<JsonDocumentParser> logger)
+        public JsonDocumentParser(ILogger<JsonDocumentParser> logger, MerriamWebsterConfig configuration)
         {
             _logger = logger;
+            _configuration = configuration;
         }
 
         /// <summary>
@@ -30,10 +32,11 @@ namespace MerriamWebster.NET.Parsing
         {
             ArgumentNullException.ThrowIfNull(api, nameof(api));
 
-            var resultModel = new ResultModel
+            var resultModel = new ResultModel();
+            if (_configuration.IncludeRawResponse)
             {
-                RawResponse = searchResult
-            };
+                resultModel.RawResponse = searchResult;
+            }
 
             try
             {

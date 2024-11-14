@@ -32,6 +32,12 @@
         /// </summary>
         public SubSource? Subsource { get; set; }
 
+        /// <summary>
+        /// Gets the formatted attribution text which includes the author, source, publication date, and subsource details.
+        /// </summary>
+        /// <remarks>
+        /// The text is formatted with each piece of information separated by a comma and space.
+        /// </remarks>
         public FormattedText AttributionText
         {
             get
