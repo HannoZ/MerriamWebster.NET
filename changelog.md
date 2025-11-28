@@ -1,3 +1,5 @@
+3.3.0 Library now supports .NET 9 and .NET 10. All package dependencies updated to latest versions.
+
 3.2.0 Library now supports .NET 8 and .NET 9. Including the raw JSON response in search results was made optional (default off)
 
 3.1.2 Package updates, removed .NET 7 support
