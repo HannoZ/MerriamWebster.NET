@@ -54,18 +54,6 @@ For advanced scenarios, the full parsed structure is available too. In that case
 The structure for senses is as follows: SenseSequence > SenseBase > Sense/DividedSense. This structure is necessary because a sense sequence can contain any order of regular senses (`Sense`), parenthesized senses (a structure that has its own nested senses), divided senses, and a number of others.
 Much more can be said about the structures, but the official documentation explains them in detail.
 
-## Parsing of Merriam-Webster markup. 
-Many text properties can contain specific Merriam-Webster markup. Most of those properties are defined as `FormattedText`, a class that has three properties: `RawText`, `Text`, and `HtmlText`. The `Text` property has all markup removed, and the `HtmlText` property has the markup replaced by HTML markup.
-For example this text: 
-> an ion NH{inf}4{/inf}{sup}+{/sup} derived from {a_link|ammonia} by combination with a hydrogen ion and ...
-
-Is converted to 
-> an ion NH<sub class="mw-inf">4</sub><sup class="mw-sup">+</sup> derived from <i class="mw-link mw-auto-link">ammonia</i> by combination with a hydrogen ion and ...
-
-A MW markup tag is either replaced directly by an HTML tag *(eg. {it} is replaced by \<i>)*, or wrapped by a \<span> tag *(eg. {bc} is replaced by \<span>\<b>:\</b>\</span> to render a bold colon)*. For all replacements a CSS class is assigned in the format 'mw-{tagname}' to support additional and/or custom styling *(eg. \<i class="mw-it">, \<i class="mw-qword">)*. Replacements for links get two classes 'mw-link' and a class for the specific link type *(eg. \<i class="mw-link mw-auto-link">)*
-    
-The HTML replacements follow the display guidelines that are found in the API documentation. Also note that some markup only needs to be removed or replaced with other non-HTML characters *(eg. {ldquo} is replaced by &#8220; )*.
-    
 ## Usage 
 The configuration / services registration supports 1 api key and a default API name via `ApiName`.
 The `MerriamWebsterSearch` class exposes a single `Search` method where both `api` and `apiKey` are optional values.
@@ -143,6 +131,19 @@ public class Example
 ```
 
 For a fully working example on how to use the library and how to render the results, see the `MerriamWebster.NET.Example` demo project (based on the standard ASP.NET Core MVC template). The demo site is also available on https://merriam-webster-net-example.azurewebsites.net/ (it runs on free infrastructure which may take a minute to start up)
+
+## Advanced scenario: Parsing of Merriam-Webster markup. 
+Many text properties can contain specific Merriam-Webster markup. Most of those properties are defined as `FormattedText`, a class that has three properties: `RawText`, `Text`, and `HtmlText`. The `Text` property has all markup removed, and the `HtmlText` property has the markup replaced by HTML markup.
+For example this text: 
+> an ion NH{inf}4{/inf}{sup}+{/sup} derived from {a_link|ammonia} by combination with a hydrogen ion and ...
+
+Is converted to 
+> an ion NH<sub class="mw-inf">4</sub><sup class="mw-sup">+</sup> derived from <i class="mw-link mw-auto-link">ammonia</i> by combination with a hydrogen ion and ...
+
+A MW markup tag is either replaced directly by an HTML tag *(eg. {it} is replaced by \<i>)*, or wrapped by a \<span> tag *(eg. {bc} is replaced by \<span>\<b>:\</b>\</span> to render a bold colon)*. For all replacements a CSS class is assigned in the format 'mw-{tagname}' to support additional and/or custom styling *(eg. \<i class="mw-it">, \<i class="mw-qword">)*. Replacements for links get two classes 'mw-link' and a class for the specific link type *(eg. \<i class="mw-link mw-auto-link">)*
+    
+The HTML replacements follow the display guidelines that are found in the API documentation. Also note that some markup only needs to be removed or replaced with other non-HTML characters *(eg. {ldquo} is replaced by &#8220; )*.
+    
 
 ## A note on serialization/deserialization
 Serialization and deserialization now works with both `Json.NET` and `System.Text.Json` for the library’s polymorphic `IDefiningText` values. The library includes a custom `JsonConverter` for `IDefiningText`, so `ResultModel` can be serialized and deserialized by `System.Text.Json` without requiring additional converter configuration for the built-in defining text types.
