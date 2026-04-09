@@ -10,7 +10,7 @@ namespace MerriamWebster.NET.Parsing
     /// <summary>
     /// Contains methods to parse the raw API response data into a <see cref="ResultModel"/>.
     /// </summary>
-    public class JsonDocumentParser 
+    public class JsonDocumentParser : IJsonDocumentParser 
     {
         private readonly ILogger<JsonDocumentParser> _logger;
         private readonly MerriamWebsterConfig _configuration;
@@ -30,7 +30,8 @@ namespace MerriamWebster.NET.Parsing
         /// </summary>
         public ResultModel ParseSearchResult(string api, [StringSyntax(StringSyntaxAttribute.Json)] string searchResult)
         {
-            ArgumentNullException.ThrowIfNull(api, nameof(api));
+            ArgumentNullException.ThrowIfNullOrEmpty(api, nameof(api));
+            ArgumentNullException.ThrowIfNullOrEmpty(searchResult, nameof(searchResult));
 
             var resultModel = new ResultModel();
             if (_configuration.IncludeRawResponse)
@@ -40,7 +41,14 @@ namespace MerriamWebster.NET.Parsing
 
             try
             {
-                var json = JsonDocument.Parse(searchResult);
+                using var json = JsonDocument.Parse(searchResult);
+
+                if (json.RootElement.ValueKind != JsonValueKind.Array)
+                {
+                    var responsePreview = searchResult.Length > 200 ? searchResult[..200] : searchResult;
+                    _logger.LogWarning("Unexpected JSON root element '{RootKind}' from API '{Api}'. Response preview: {ResponsePreview}", json.RootElement.ValueKind, api, responsePreview);
+                    return resultModel;
+                }
 
                 // the search result is an array with one or more objects that contain the data
                 foreach (var result in json.RootElement.EnumerateArray())
@@ -66,9 +74,14 @@ namespace MerriamWebster.NET.Parsing
                     resultModel.Entries.Add(entry);
                 }
             }
+            catch (JsonException jsonEx)
+            {
+                var responsePreview = searchResult.Length > 200 ? searchResult[..200] : searchResult;
+                _logger.LogError(jsonEx, "JSON parsing failed for API '{Api}'. Response preview: {ResponsePreview}", api, responsePreview);
+            }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Parsing the response failed.");
+                _logger.LogError(ex, "Parsing the response failed for API '{Api}'.", api);
             }
 
             return resultModel;

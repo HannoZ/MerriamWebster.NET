@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
@@ -6,11 +7,11 @@ using Microsoft.Extensions.Logging;
 namespace MerriamWebster.NET
 {
     /// <inheritdoc cref="IMerriamWebsterClient" />
-    public class MerriamWebsterClient : IMerriamWebsterClient, IDisposable
+    public class MerriamWebsterClient : IMerriamWebsterClient
     {
         private readonly HttpClient _client;
         private readonly ILogger<MerriamWebsterClient> _logger;
-        private string? _apiKey;
+        private readonly MerriamWebsterConfig _config;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="MerriamWebsterClient"/> class.
@@ -24,54 +25,90 @@ namespace MerriamWebster.NET
         {
             _client = client;
             _logger = logger;
-            _apiKey = config.ApiKey;
+            _config = config;
+        }
+
+        /// <inheritdoc />
+        public Task<string> Search(string searchTerm)
+        {
+            if (string.IsNullOrEmpty(_config.ApiKey))
+            {
+                throw new InvalidOperationException("No api key was registered, request not possible");
+            }
+
+            return Search(_config.ApiName, searchTerm, _config.ApiKey);
         }
 
         /// <inheritdoc />
         public  Task<string> Search(string api, string searchTerm)
         {
-            if (string.IsNullOrEmpty(_apiKey))
+            if (string.IsNullOrEmpty(_config.ApiKey))
             {
                 throw new InvalidOperationException("No api key was registered, request not possible");
             }
 
-            return Search(api, searchTerm, _apiKey);
+            return Search(api, searchTerm, _config.ApiKey);
         }
 
         /// <inheritdoc />
         public async Task<string> Search(string api, string searchTerm, string apiKey)
         {
-#if NET7_0_OR_GREATER
             ArgumentException.ThrowIfNullOrEmpty(searchTerm, nameof(searchTerm));
             ArgumentException.ThrowIfNullOrEmpty(api, nameof(api));
             ArgumentException.ThrowIfNullOrEmpty(apiKey, nameof(apiKey));
-#else
-            ArgumentNullException.ThrowIfNull(searchTerm, nameof(searchTerm));
-            ArgumentNullException.ThrowIfNull(api, nameof(api));
-            ArgumentNullException.ThrowIfNull(apiKey, nameof(apiKey));
-#endif
-            string urlPath = $"{api}/json/{searchTerm.ToLower()}";
-            _logger.LogInformation($"Sending request - {urlPath}");
-            var responseString = await _client.GetStringAsync($"{urlPath}?key={apiKey}");
 
-            return responseString;        }
-
-        /// <inheritdoc />
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }
-
-#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
-        protected virtual void Dispose(bool disposing)
-#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
-        {
-            if (disposing)
+            if (string.IsNullOrWhiteSpace(searchTerm))
             {
-                _client?.Dispose();
-                _apiKey = null;
+                throw new ArgumentException("Search term cannot be whitespace.", nameof(searchTerm));
             }
+            if (string.IsNullOrWhiteSpace(api))
+            {
+                throw new ArgumentException("API cannot be whitespace.", nameof(api));
+            }
+            if (string.IsNullOrWhiteSpace(apiKey))
+            {
+                throw new ArgumentException("API key cannot be whitespace.", nameof(apiKey));
+            }
+
+            string encodedTerm = Uri.EscapeDataString(searchTerm.ToLowerInvariant());
+            string urlPath = $"{api}/json/{encodedTerm}";
+            _logger.LogDebug("Sending request to Merriam-Webster API for term: {SearchTerm}", searchTerm);
+            
+            using var response = await _client.GetAsync($"{urlPath}?key={apiKey}");
+            var responseString = await response.Content.ReadAsStringAsync();
+
+            if (!response.IsSuccessStatusCode)
+            {
+                _logger.LogError("API request failed with status code {StatusCode}.", response.StatusCode);
+                
+                // Provide specific exception types based on HTTP status code
+                if (response.StatusCode == System.Net.HttpStatusCode.BadRequest)
+                {
+                    throw new ArgumentException($"Bad request. The search term or API parameter is invalid.", nameof(searchTerm));
+                }
+                else if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
+                {
+                    throw new UnauthorizedAccessException("Unauthorized. Invalid or missing API key.");
+                }
+                else if (response.StatusCode == System.Net.HttpStatusCode.Forbidden)
+                {
+                    throw new UnauthorizedAccessException("Forbidden. The API key does not have permission for this resource.");
+                }
+                else if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                {
+                    throw new KeyNotFoundException($"No entry found for search term '{searchTerm}'.");
+                }
+                else if (response.StatusCode == System.Net.HttpStatusCode.TooManyRequests)
+                {
+                    throw new InvalidOperationException("Rate limit exceeded. Please wait before making another request.");
+                }
+                else
+                {
+                    throw new HttpRequestException($"API request failed with status code {(int)response.StatusCode} ({response.StatusCode}).");
+                }
+            }
+
+            return responseString;
         }
     }
 }

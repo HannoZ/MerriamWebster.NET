@@ -38,7 +38,7 @@
         /// </summary>
         /// <remarks>
         /// In some cases a bunch of (mostly) unrelated entries can be returned as a list of additional stems. (eg. uña will return many entries related to 'una', casa will return many additional entries of combinations of case + another word)
-        /// Set to <c>true</c> (this is the default), to have those entries filtered out. 
+        /// Set to <c>true</c> (the default is <c>false</c>), to have those entries filtered out. 
         /// </remarks>
         public bool SkipAdditionalStems { get; set; }
     }

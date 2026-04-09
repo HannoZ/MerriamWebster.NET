@@ -2,19 +2,15 @@
 using Microsoft.AspNetCore.Mvc;
 using MerriamWebster.NET.Results;
 using Microsoft.Extensions.Caching.Memory;
+using MerriamWebster.NET.Parsing;
 
 namespace MerriamWebster.NET.Example.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController(IMerriamWebsterSearch search, IJsonDocumentParser parser, IMemoryCache memCache) : Controller
     {
-        private readonly MerriamWebsterSearch _search;
-        private readonly IMemoryCache _memCache;
-
-        public HomeController(MerriamWebsterSearch search, IMemoryCache memCache)
-        {
-            _search = search;
-            _memCache = memCache;
-        }
+        private readonly IMerriamWebsterSearch _search = search;
+        private readonly IMemoryCache _memCache = memCache;
+        private readonly IJsonDocumentParser _parser = parser;
 
         public IActionResult Index()
         {
@@ -31,7 +27,7 @@ namespace MerriamWebster.NET.Example.Controllers
             else
             {
                 Configuration.Language = model.Api == Configuration.SpanishEnglishDictionary ? Language.Es : Language.En;
-                result = await _search.Search(model.Api, model.SearchTerm, model.ApiKey);
+                result = await _search.Search(model.SearchTerm, model.Api, model.ApiKey);
                 model.Result = result;
 
                 _memCache.Set(model.Api + model.SearchTerm, result);
@@ -50,7 +46,9 @@ namespace MerriamWebster.NET.Example.Controllers
         public IActionResult Load(LoadModel model)
         {
             Configuration.Language = model.Api == Configuration.SpanishEnglishDictionary ? Language.Es : Language.En;
-            var resultModel = _search.ParseApiResponse(model.Api, model.SearchTerm, model.Response);
+
+            var resultModel = _parser.ParseSearchResult(model.Api, model.Response);
+            resultModel.SearchText = model.SearchTerm;
             model.Result = resultModel;
 
             return View(model);

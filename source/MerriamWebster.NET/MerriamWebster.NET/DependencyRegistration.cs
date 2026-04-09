@@ -13,10 +13,17 @@ namespace MerriamWebster.NET
         /// Registers the classes that are required to make calls to the Merriam-Webster API.
         /// </summary>
         /// <param name="services">The IServiceCollection.</param>
-        /// <param name="config">The configuration. A valid API key should be present.</param>
+        /// <param name="config">The configuration. A valid API key and API name should be present.</param>
         /// <returns>The IServiceCollection</returns>
         public static IServiceCollection RegisterMerriamWebster(this IServiceCollection services, MerriamWebsterConfig config)
         {
+            ArgumentNullException.ThrowIfNull(config, nameof(config));
+
+            if (string.IsNullOrWhiteSpace(config.ApiName) || !Configuration.IsKnownApiName(config.ApiName))
+            {
+                throw new ArgumentException("A valid ApiName must be provided in configuration.", nameof(config));
+            }
+
             services.AddSingleton(config);
             services.AddHttpClient<IMerriamWebsterClient, MerriamWebsterClient>(client =>
                 {
@@ -25,8 +32,8 @@ namespace MerriamWebster.NET
                 .AddTransientHttpErrorPolicy(builder => builder.RetryAsync(2));
 
 
-            services.AddTransient<MerriamWebsterSearch>();
-            services.AddSingleton<JsonDocumentParser>();
+            services.AddTransient<IMerriamWebsterSearch, MerriamWebsterSearch>();
+            services.AddSingleton<IJsonDocumentParser, JsonDocumentParser>();
 
             return services;
         }

@@ -63,217 +63,246 @@
     {
         index++;
         <div class="mw-entry-header">
+            @if (result.Homograph.HasValue)
+            {
+                <sup>@result.Homograph</sup>
+            }
             <partial name="_psl" model="@result.Headword.ParenthesizedSubjectStatusLabel"/>
-            <h1>@result.Headword.Text</h1> <span class="mw-fl">@result.FunctionalLabel</span>
+            <h1>@result.Headword.Text</h1>
+            @if (!string.IsNullOrEmpty(result.FunctionalLabel))
+            {
+                <span class="mw-fl">@result.FunctionalLabel</span>
+            }
             @if (total > 1)
             {
-                <span>@index of @total</span>
+                <div style="font-size: 0.9rem; color: #999;">@index of @total</div>
             }
             <partial name="_pronunciation" model="result.Headword.Pronunciations"/>
         </div>
 
-        <partial name="_Labels" model="result.GeneralLabels" />
-        <partial name="_Labels" model="result.SubjectStatusLabels" />
+        <div class="mw-labels">
+            <partial name="_Labels" model="result.GeneralLabels" />
+            <partial name="_Labels" model="result.SubjectStatusLabels" />
+        </div>
 
         @* inflections *@
-        <partial name="_inflection" model="result.Inflections" />
+        <div class="mw-inflection">
+            <partial name="_inflection" model="result.Inflections" />
+        </div>
 
         @* alternate headwords *@
-        if (result.AlternateHeadwords.HasValue())
+        @if (result.AlternateHeadwords.HasValue())
         {
-            <div class="fw-light">
+            <div style="margin: 0.5rem 0; font-size: 0.95rem;">
                 @foreach (var ahw in result.AlternateHeadwords)
                 {
-                    <partial name="_psl" model="@ahw.ParenthesizedSubjectStatusLabel" />
-                    @ahw.Text
+                    <div class="mw-variant">
+                        <partial name="_psl" model="@ahw.ParenthesizedSubjectStatusLabel" />
+                        @ahw.Text
+                    </div>
                     <partial name="_pronunciation" model="ahw.Pronunciations" />
                 }
             </div>
         }
         @* cross-references *@
-        if (result.CognateCrossReferences.HasValue())
+        @if (result.CognateCrossReferences.HasValue())
         {
-            foreach (var crossReference in result.CognateCrossReferences)
-            {
-                <span class="fst-italic">@crossReference.Label</span>
-                @foreach (var crossReferenceTarget in crossReference.CrossReferenceTargets)
+            <div style="margin: 1rem 0; padding: 1rem; background-color: #f0f7ff;">
+                @foreach (var crossReference in result.CognateCrossReferences)
                 {
-                    <span>@crossReferenceTarget.Label</span>
-                    <span>@crossReferenceTarget.SenseNumber</span>
-                    <span>@crossReferenceTarget.Target</span>
+                    <div style="margin-bottom: 0.5rem;">
+                        <span style="font-style: italic; font-weight: bold;">@crossReference.Label</span>
+                        @foreach (var crossReferenceTarget in crossReference.CrossReferenceTargets)
+                        {
+                            <span style="margin-left: 1rem;">@crossReferenceTarget.Label @crossReferenceTarget.SenseNumber — @crossReferenceTarget.Target</span>
+                        }
+                    </div>
                 }
-
-            }
+            </div>
         }
 
         @* variants *@
         <partial name="_variant" model="@result.Variants" />
 
         @*Definitions*@
-        if (result.Definitions.HasValue())
+        @if (result.Definitions.HasValue())
         {
-            <p>
-                <h2>Definitions</h2>
+            <div style="margin: 1.5rem 0;">
+                <h2 style="font-size: 1.1rem; margin-bottom: 1rem; border-bottom: 1px solid #ddd; padding-bottom: 0.5rem;">Definitions</h2>
                 @foreach (var definition in result.Definitions)
                 {
                     <partial name="_definition" model="definition"/>
                 }
-            </p>
+            </div>
         }
 
         @* uros*@
-        if (result.UndefinedRunOns.HasValue())
+        @if (result.UndefinedRunOns.HasValue())
         {
-            <p class="mw-uros">
+            <div class="mw-uros" style="margin: 1.5rem 0;">
+                <h2 style="font-size: 1.1rem; margin-bottom: 1rem; border-bottom: 1px solid #ddd; padding-bottom: 0.5rem;">Related Words</h2>
                 @foreach (var uro in result.UndefinedRunOns)
                 {
-                    <div class="mw-entry-header">
-                        <partial name="_psl" model="@uro.ParenthesizedSubjectStatusLabel" />
-                        <h2>
-                            @uro.EntryWord
-                        </h2> <span class="mw-fl">@uro.FunctionalLabel</span>
-                        <partial name="_pronunciation" model="uro.Pronunciations" />
-                    </div>
-                    <partial name="_Labels" model="@uro.GeneralLabels" />
-                    <partial name="_Labels" model="@uro.SubjectStatusLabels" />
-                    <partial name="_inflection" model="@uro.Inflections" />
-                    <partial name="_variant" model="@uro.Variants" />
-                    @if (uro.RunOnTexts.HasValue())
-                    {
-                        foreach (var runOnText in uro.RunOnTexts)
+                    <div style="margin: 1rem 0; padding-left: 1.5rem;">
+                        <div class="mw-entry-header" style="border-bottom: none; padding-bottom: 0; margin-bottom: 0.5rem;">
+                            <partial name="_psl" model="@uro.ParenthesizedSubjectStatusLabel" />
+                            <strong>@uro.EntryWord</strong>
+                            @if (!string.IsNullOrEmpty(uro.FunctionalLabel))
+                            {
+                                <span class="mw-fl">@uro.FunctionalLabel</span>
+                            }
+                            <partial name="_pronunciation" model="uro.Pronunciations" />
+                        </div>
+                        <partial name="_Labels" model="@uro.GeneralLabels" />
+                        <partial name="_Labels" model="@uro.SubjectStatusLabels" />
+                        <partial name="_inflection" model="@uro.Inflections" />
+                        <partial name="_variant" model="@uro.Variants" />
+                        @if (uro.RunOnTexts.HasValue())
                         {
-                            <div>
-                                <partial name="_definingText" model="runOnText" />
-                            </div>
+                            @foreach (var runOnText in uro.RunOnTexts)
+                            {
+                                <div>
+                                    <partial name="_definingText" model="runOnText" />
+                                </div>
+                            }
                         }
-                    }
-                    @if(uro.AlternateEntry != null)
-                    {
-                        <span class="fst-italic">Or @uro.AlternateEntry.Text</span>
-                    }
+                        @if(uro.AlternateEntry != null)
+                        {
+                            <div style="font-style: italic; margin-top: 0.25rem;">Or @uro.AlternateEntry.Text</div>
+                        }
+                    </div>
                 }
-            </p>
+            </div>
         }
 
         @* dros *@
-        if (result.DefinedRunOns.HasValue())
+        @if (result.DefinedRunOns.HasValue())
         {
-            <p class="mw-dros">
-                <h2>Additional phrases</h2>
+            <div style="margin: 1.5rem 0;">
+                <h2 style="font-size: 1.1rem; margin-bottom: 1rem; border-bottom: 1px solid #ddd; padding-bottom: 0.5rem;">Phrases</h2>
                 @foreach (var dro in result.DefinedRunOns)
                 {
-                    <div class="mw-entry-header">
-                        <partial name="_psl" model="@dro.ParenthesizedSubjectStatusLabel"/>
-                        <h2>@dro.Phrase</h2> <span class="mw-fl">@dro.FunctionalLabel</span>
-                        <partial name="_pronunciation" model="dro.Pronunciations"/>
+                    <div style="margin: 1rem 0; padding-left: 1.5rem;">
+                        <div class="mw-entry-header" style="border-bottom: none; padding-bottom: 0; margin-bottom: 0.5rem;">
+                            <partial name="_psl" model="@dro.ParenthesizedSubjectStatusLabel"/>
+                            <strong>@dro.Phrase</strong>
+                            @if (!string.IsNullOrEmpty(dro.FunctionalLabel))
+                            {
+                                <span class="mw-fl">@dro.FunctionalLabel</span>
+                            }
+                            <partial name="_pronunciation" model="dro.Pronunciations"/>
+                        </div>
+                        <partial name="_Labels" model="@dro.GeneralLabels"/>
+                        <partial name="_Labels" model="@dro.SubjectStatusLabels"/>
+                        <partial name="_variant" model="@dro.Variants"/>
+
+                        @foreach (var definition in dro.Definitions)
+                        {
+                            <partial name="_definition" model="definition"/>
+                        }
+
+                        <partial name="_etymology" model="@dro.Etymology"/>
                     </div>
-                    <partial name="_Labels" model="@dro.GeneralLabels"/>
-                    <partial name="_Labels" model="@dro.SubjectStatusLabels"/>
-                    <partial name="_variant" model="@dro.Variants"/>
-
-                    @foreach (var definition in dro.Definitions)
-                    {
-                        <partial name="_definition" model="definition"/>
-                    }
-
-                    <partial name="_etymology" model="@dro.Etymology"/>
                 }
-            </p>
+            </div>
         }
 
         @* quotes *@
-        if (result.Quotes.HasValue())
+        @if (result.Quotes.HasValue())
         {
-            <p class="mw-quotes">
-                <h2>Quotes</h2>
+            <div style="margin: 1.5rem 0;">
+                <h2 style="font-size: 1.1rem; margin-bottom: 1rem; border-bottom: 1px solid #ddd; padding-bottom: 0.5rem;">Examples</h2>
                 @foreach (var quote in result.Quotes)
                 {
-                    <figure>
-                        <blockquote class="blockquote">
-                            <p>
+                    <figure style="margin: 1rem 0 1rem 2rem; padding: 0;">
+                        <blockquote style="border-left: 3px solid #ddd; padding-left: 1rem; margin-left: 0;">
+                            <p style="font-style: italic; margin: 0.5rem 0;">
                                 @Html.Raw(quote.Text.HtmlText)
                             </p>
                         </blockquote>
                         @if (quote.AttributionOfQuote != null)
                         {
-                            <figcaption class="blockquote-footer">@Html.Raw(quote.AttributionOfQuote.AttributionText.HtmlText)</figcaption>
+                            <figcaption style="margin-top: 0.5rem; font-size: 0.875rem; color: #666;">— @Html.Raw(quote.AttributionOfQuote.AttributionText.HtmlText)</figcaption>
                         }
                     </figure>
                 }
-            </p>
+            </div>
         }
 
         @* usage *@
-        if (result.Usages.HasValue())
+        @if (result.Usages.HasValue())
         {
-            <p class="mw-usage">
-                <h2>Usages</h2>
+            <div style="margin: 1.5rem 0;">
+                <h2 style="font-size: 1.1rem; margin-bottom: 1rem; border-bottom: 1px solid #ddd; padding-bottom: 0.5rem;">Usage</h2>
                 @foreach (var usage in result.Usages)
                 {
-                    <span>@Html.Raw(usage.ParagraphLabel.HtmlText)</span>
-                    @foreach (var dt in usage.ParagraphTexts)
-                    {
-                        <div>
-                            <partial name="_definingText" model="dt" />
-                        </div>
-                    }
+                    <div style="margin: 0.75rem 0; padding-left: 1.5rem;">
+                        <div style="font-weight: bold; margin-bottom: 0.25rem;">@Html.Raw(usage.ParagraphLabel.HtmlText)</div>
+                        @foreach (var dt in usage.ParagraphTexts)
+                        {
+                            <div>
+                                <partial name="_definingText" model="dt" />
+                            </div>
+                        }
+                    </div>
                 }
-            </p>
+            </div>
         }
 
         @*Etymology*@
         <partial name="_etymology" model="@result.Etymology" />
 
         @*first known use*@
-        if (result.Date != null)
+        @if (result.Date != null)
         {
-            <p class="mw-first-use">
-                <h2>First known use</h2>
-                <div>@Html.Raw(result.Date.HtmlText)</div>
-            </p>
+            <div style="margin: 1.5rem 0; padding: 1rem; background-color: #f9f9f9; border-left: 3px solid #ddd;">
+                <h3 style="font-size: 0.9rem; margin: 0 0 0.5rem 0; font-weight: bold;">First Known Use</h3>
+                <div style="font-style: italic;">@Html.Raw(result.Date.HtmlText)</div>
+            </div>
         }
 
         @* artwork*@
-        if (result.Artwork != null)
+        @if (result.Artwork != null)
         {
-            <div class="fst-italic">Illustration of @result.Headword.Text
+            <div style="margin: 1.5rem 0; padding: 1rem; background-color: #f9f9f9;">
+                <div style="font-style: italic; margin-bottom: 0.5rem;">Illustration of @result.Headword.Text</div>
+                <figure style="margin: 0;">
+                    <img src="@result.Artwork.ImageLocation" alt="@result.Artwork.Caption.Text" style="max-width: 100%; height: auto;" />
+                    <figcaption style="margin-top: 0.5rem; font-size: 0.875rem; color: #666;">@Html.Raw(@result.Artwork.Caption.HtmlText)</figcaption>
+                </figure>
             </div>
-            <figure>
-                <img src="@result.Artwork.ImageLocation" alt="@result.Artwork.Caption.Text" />
-                <figcaption>@Html.Raw(@result.Artwork.Caption.HtmlText)</figcaption>
-            </figure>
         }
 
         @* table *@
-        if (result.Table != null)
+        @if (result.Table != null)
         {
-            <div class="mw-table">
-                <a target="_blank" href="@result.Table.TableLocation">Open table "@Html.Raw(@result.Table.Displayname.HtmlText)"</a>
+            <div style="margin: 1rem 0; padding: 1rem; background-color: #f9f9f9; border-left: 3px solid #ddd;">
+                <a target="_blank" href="@result.Table.TableLocation" style="font-weight: bold;">📊 View table: @Html.Raw(@result.Table.Displayname.HtmlText)</a>
             </div>
         }
 
         @* synonyms*@
-        if (result.Synonyms.HasValue())
+        @if (result.Synonyms.HasValue())
         {
-            <div>Synonyms for <span class="fst-italic">@result.Headword.Text
-                </span></div>
-            foreach (var synonym in result.Synonyms)
-            {
-                <p>
-                    <h2>@synonym.ParagraphLabel.Text</h2>
-                </p>
-                foreach (var definingText in synonym.ParagraphTexts)
+            <div style="margin: 1.5rem 0;">
+                <h2 style="font-size: 1.1rem; margin-bottom: 1rem; border-bottom: 1px solid #ddd; padding-bottom: 0.5rem;">Synonyms for <span style="font-style: italic;">@result.Headword.Text</span></h2>
+                @foreach (var synonym in result.Synonyms)
                 {
-                    <div>
-                        <partial name="_definingText" model="definingText" />
+                    <div style="margin: 1rem 0; padding-left: 1.5rem;">
+                        <h3 style="font-size: 0.95rem; font-weight: bold; margin: 0.5rem 0;">@synonym.ParagraphLabel.Text</h3>
+                        @foreach (var definingText in synonym.ParagraphTexts)
+                        {
+                            <div>
+                                <partial name="_definingText" model="definingText" />
+                            </div>
+                        }
+                        @if (synonym.SeeInAdditionReference.HasValue())
+                        {
+                            <div style="margin-top: 0.5rem; font-style: italic; color: #666;">See in addition: @string.Join(", ", synonym.SeeInAdditionReference)</div>
+                        }
                     </div>
                 }
-                if (synonym.SeeInAdditionReference.HasValue())
-                {
-                    <span>See in addition: @string.Join(',', synonym.SeeInAdditionReference)</span>
-                }
-
-            }
+            </div>
         }
 
         if (result.DirectionalCrossReferences.HasValue())
@@ -411,21 +440,33 @@
 
         }
 
-        if (result.CrossReferences.HasValue())
+        @if (result.DirectionalCrossReferences.HasValue())
         {
-            <div class="mw-xref">
-                <span class="mw-xref-label">See also: </span>
-                @foreach (var xref in result.CrossReferences)
+            <div style="margin: 1rem 0; padding: 1rem; background-color: #f0f6ff; border-left: 3px solid #0066cc;">
+                @foreach (var dx in result.DirectionalCrossReferences)
                 {
-                    <span class="mw-xref-item">@xref.Text</span>
+                    <div>@Html.Raw(dx.HtmlText)</div>
                 }
             </div>
         }
 
-        if (result.BiographicalNote != null)
+        @if (result.CrossReferences.HasValue())
         {
-            <div class="mw-bio">
-                <h2>Biographical note</h2>
+            <div style="margin: 1rem 0; padding: 1rem; background-color: #f0f7ff;">
+                <span style="font-weight: bold;">See also:</span>
+                <div style="margin-top: 0.5rem;">
+                    @foreach (var xref in result.CrossReferences)
+                    {
+                        <span style="display: inline-block; margin-right: 1rem; margin-bottom: 0.25rem;">@xref.Text</span>
+                    }
+                </div>
+            </div>
+        }
+
+        @if (result.BiographicalNote != null)
+        {
+            <div style="margin: 1.5rem 0; padding: 1rem; background-color: #f9f9f9; border-left: 3px solid #ddd;">
+                <h2 style="font-size: 1.1rem; margin-bottom: 1rem; font-weight: bold;">Biographical Note</h2>
                 <div>
                     @foreach(var bio in result.BiographicalNote.DefiningTexts)
                     {
@@ -437,15 +478,15 @@
     }
 
     @* show additional entries *@
-    if (relatedEntries.Any())
+    @if (relatedEntries.Any())
     {
         <hr />
         <h2>Related to @Model.SearchTerm: </h2>
-        <i>@string.Join(',', relatedEntries.Select(e => e.Metadata.Id))</i>
+        <i>@string.Join(", ", relatedEntries.Select(e => e.Metadata.Id))</i>
     }
 
     @* no results*@
-    if (!Model.Result.Entries.Any())
+    @if (!Model.Result.Entries.Any())
     {
         <h2>No results, check raw response</h2>
     }

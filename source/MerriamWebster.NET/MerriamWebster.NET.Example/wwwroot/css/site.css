@@ -49,6 +49,102 @@ body {
     font-style: italic;
 }
 
+.mw-entry-header {
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid #333;
+    padding-bottom: 0.75rem;
+}
+
+.mw-entry-header h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 0.5rem 0;
+    display: inline;
+}
+
+.mw-entry-header sup {
+    font-size: 0.8rem;
+    margin-right: 0.25rem;
+}
+
+.mw-entry-header .mw-fl {
+    font-style: italic;
+    margin-left: 1rem;
+    color: #555;
+}
+
+.mw-entry-header .mw-pron {
+    display: block;
+    font-size: 0.95rem;
+    color: #666;
+    margin-top: 0.25rem;
+}
+
+.mw-synonyms {
+    display: inline;
+    font-weight: normal;
+}
+
+.mw-definition-block {
+    margin: 1rem 0;
+    padding-left: 2rem;
+}
+
+.mw-sense-num {
+    font-weight: bold;
+    margin-right: 0.5rem;
+}
+
+.mw-sense-text {
+    display: inline;
+}
+
+.mw-variant {
+    font-weight: bold;
+    margin: 0.25rem 0;
+}
+
+.mw-variant-label {
+    font-style: italic;
+    margin-right: 0.5rem;
+}
+
+.mw-labels {
+    font-style: italic;
+    color: #666;
+    margin-bottom: 0.5rem;
+}
+
+.mw-label {
+    display: inline;
+    margin-right: 1rem;
+}
+
+.mw-verbal-illustration {
+    display: block;
+    margin-left: 1.5rem;
+    margin-top: 0.25rem;
+    font-style: italic;
+    color: #333;
+    border-left: 2px solid #ddd;
+    padding-left: 0.75rem;
+}
+
+.mw-inflection {
+    font-weight: bold;
+    margin: 0.5rem 0;
+}
+
+.mw-inflection-label {
+    font-style: italic;
+    margin-right: 0.25rem;
+}
+
+.mw-psl {
+    font-style: italic;
+    color: #666;
+}
+
 .mw-sd {
     color: #258cfb;
     font-style: italic;
