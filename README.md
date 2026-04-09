@@ -9,7 +9,7 @@ For a list of available APIs and in-depth documentation of the API, visit Merria
 ## About the library
 
 Requests to the Merriam-Webster APIs are very simple: there is only one GET method, and all APIs use the same format:
-> https://www.dictionaryapi.com/api/v3/references/\<apiName\>/json/\<searchTerm\>?key=myKey
+> https://www.dictionaryapi.com/api/v3/references/<apiName\>/json/<searchTerm\>?key=myKey
 >
 (all API names are available in the `Configuration` class)
 
