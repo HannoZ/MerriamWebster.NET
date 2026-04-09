@@ -27,7 +27,7 @@ For most applications, the simplest way to use the library is to read the short 
 ```csharp
 public async Task GetResults(string searchTerm)
 {
-    var result = await _mwSearch.Search(searchTerm, Configuration.SpanishEnglishDictionary);
+    var result = await _mwSearch.Search(searchTerm);
 
     foreach (var shortDef in result.ShortDefinitions)
     {
@@ -66,7 +66,7 @@ A MW markup tag is either replaced directly by an HTML tag *(eg. {it} is replace
     
 The HTML replacements follow the display guidelines that are found in the API documentation. Also note that some markup only needs to be removed or replaced with other non-HTML characters *(eg. {ldquo} is replaced by &#8220; )*.
     
-## Usage (.NET Core) 
+## Usage 
 The configuration / services registration supports 1 api key and a default API name via `ApiName`.
 The `MerriamWebsterSearch` class exposes a single `Search` method where both `api` and `apiKey` are optional values.
 ```JSON
@@ -78,6 +78,7 @@ The `MerriamWebsterSearch` class exposes a single `Search` method where both `ap
   }
 }
 ```
+
 ``` C#
 // in Program.cs (minimal hosting)
 using MerriamWebster.NET;
@@ -100,6 +101,7 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
+```
 
 ``` C#
 public class Example
