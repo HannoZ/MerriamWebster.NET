@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using MerriamWebster.NET.Parsing;
 using MerriamWebster.NET.Results;
@@ -66,19 +67,45 @@ namespace MerriamWebster.NET
         public static readonly string IntermediateDictionary = "sd3";
 
         /// <summary>
-        /// The path for the Intermediate Thesaurus API.
-        /// </summary>
-        public static readonly string IntermediateThesaurus = "ithesaurus";
-
-        /// <summary>
         /// The path for the School Dictionary API.
         /// </summary>
         public static readonly string SchoolDictionary = "sd4";
 
         /// <summary>
+        /// The path for the Intermediate Thesaurus API.
+        /// </summary>
+        public static readonly string IntermediateThesaurus = "ithesaurus";
+
+        /// <summary>
         /// The path for the Spanish-English Dictionary API.
         /// </summary>
         public static readonly string SpanishEnglishDictionary = "spanish";
+
+        /// <summary>
+        /// Gets the names of supported APIs.
+        /// </summary>
+        private static readonly HashSet<string> KnownApiNames = new(StringComparer.OrdinalIgnoreCase)
+        {
+            CollegiateDictionary,
+            CollegiateThesaurus,
+            MedicalDictionary,
+            LearnersDictionary,
+            ElementaryDictionary,
+            IntermediateDictionary,
+            IntermediateThesaurus,
+            SchoolDictionary,
+            SpanishEnglishDictionary
+        };
+
+        /// <summary>
+        /// Determines whether the provided API name is supported.
+        /// </summary>
+        /// <param name="apiName">The API name to validate.</param>
+        /// <returns><c>true</c> if the API is supported; otherwise <c>false</c>.</returns>
+        public static bool IsKnownApiName(string apiName)
+        {
+            return !string.IsNullOrWhiteSpace(apiName) && KnownApiNames.Contains(apiName);
+        }
 
         /// <summary>
         /// Gets or sets the <see cref="ParseOptions"/>.

@@ -142,6 +142,26 @@ namespace MerriamWebster.NET.Tests.Parsing
             // ASSERT
         }
 
+        [TestMethod]
+        public void SystemTextJson_CanRoundTrip_IDefiningTextList()
+        {
+            var source = new List<IDefiningText>
+            {
+                new DefiningText("hello"),
+                new UsageNote
+                {
+                    DefiningTexts = new List<IDefiningText> { new DefiningText("note") }
+                }
+            };
+
+            var json = JsonSerializer.Serialize(source);
+            var deserialized = JsonSerializer.Deserialize<List<IDefiningText>>(json);
+
+            deserialized.ShouldNotBeNull();
+            deserialized.Count.ShouldBe(2);
+            deserialized[0].ShouldBeOfType<DefiningText>();
+            deserialized[1].ShouldBeOfType<UsageNote>();
+        }
 
         [TestMethod]
         public async Task EntryParser_CanParse_Casa()
@@ -151,6 +171,19 @@ namespace MerriamWebster.NET.Tests.Parsing
         
             // ASSERT
             result.Entries.Count.ShouldBe(4);
+        }
+
+        [TestMethod]
+        public async Task EntryParser_CanReturn_ShortDefinitions()
+        {
+            var response = await TestHelper.LoadResponseFromFileAsync("casa");
+            var result = _parser.ParseSearchResult(Configuration.SpanishEnglishDictionary, response);
+
+            // ASSERT
+            result.ShortDefinitions.ShouldNotBeEmpty();
+            result.ShortDefinitions.ShouldContain("house");
+            result.ShortDefinitions.ShouldContain("hogar : home");
+            result.ShortDefinitions.ShouldContain("home (in sports)");
         }
 
         [TestMethod]

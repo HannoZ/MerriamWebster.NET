@@ -12,7 +12,7 @@
 		<PackageReadmeFile>readme.md</PackageReadmeFile>
 		<PackageTags>Merriam-Webster dictionary thesaurus Spanish-English</PackageTags>
 		<PackageReleaseNotes>See project readme for further details.</PackageReleaseNotes>
-		<Version>3.3.0</Version>
+		<Version>4.0.0</Version>
 		<LangVersion>latest</LangVersion>
 		<Nullable>enable</Nullable>
 	</PropertyGroup>

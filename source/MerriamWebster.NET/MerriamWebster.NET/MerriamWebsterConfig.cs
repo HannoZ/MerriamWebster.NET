@@ -11,6 +11,11 @@
         public string ApiKey { get; set; } = string.Empty;
 
         /// <summary>
+        /// Gets or sets the default API name.
+        /// </summary>
+        public string ApiName { get; set; } = Configuration.CollegiateDictionary;
+
+        /// <summary>
         /// Gets or sets a value indicating whether to include the raw JSON response. Default value is <c>false</c>.
         /// </summary>
         public bool IncludeRawResponse { get; set; } = false;

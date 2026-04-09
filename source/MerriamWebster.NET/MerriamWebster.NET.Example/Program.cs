@@ -13,7 +13,7 @@ namespace MerriamWebster.NET.Example
 
             // a real app would have the config section with the api key in appsettings
             // but for this demo app the key should be provided as part of the search request
-            var config = new MerriamWebsterConfig();
+            var config = new MerriamWebsterConfig { IncludeRawResponse = true };
             builder.Services.RegisterMerriamWebster(config);
 
             var app = builder.Build();

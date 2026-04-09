@@ -15,6 +15,7 @@ public class Program
 
 [SimpleJob(runtimeMoniker: RuntimeMoniker.Net80, baseline: true)]
 [SimpleJob(runtimeMoniker: RuntimeMoniker.Net90)]
+[SimpleJob(runtimeMoniker: RuntimeMoniker.Net10_0)]
 [MemoryDiagnoser]
 public class Benchmark
 {

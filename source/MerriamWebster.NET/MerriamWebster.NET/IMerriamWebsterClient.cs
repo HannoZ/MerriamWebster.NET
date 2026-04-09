@@ -12,7 +12,17 @@ namespace MerriamWebster.NET
     public interface IMerriamWebsterClient
     {
         /// <summary>
-        /// Execute a search request on the specified API.
+        /// Execute a search request on the configured API with the configured API key.
+        /// </summary>
+        /// <param name="searchTerm">The search term to pass to the API</param>
+        /// <returns>The API response as string.</returns>
+        /// <remarks>
+        /// The API returns a list of suggestions if there is no direct match.
+        /// </remarks>
+        Task<string> Search(string searchTerm);
+
+        /// <summary>
+        /// Execute a search request on the specified API with API key from the configuration.
         /// </summary>
         /// <param name="api">Specifies the API</param>
         /// <param name="searchTerm">The search term to pass to the API</param>

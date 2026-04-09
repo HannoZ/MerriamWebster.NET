@@ -1,4 +1,6 @@
-﻿namespace MerriamWebster.NET.Results
+﻿using System.Text.Json.Serialization;
+
+namespace MerriamWebster.NET.Results
 {
     /// <summary>
     /// The defining text is the text of the definition or translation for a particular sense.
@@ -13,6 +15,7 @@
     /// Inline in normal font
     /// </para>
     /// </remarks>
+    [JsonConverter(typeof(IDefiningTextJsonConverter))]
     public interface IDefiningText
     {
         /// <summary>
